@@ -1,0 +1,225 @@
+{
+  "site": {
+    "name": "ClawStudio",
+    "slogan": "Free Online Dev Tools"
+  },
+  "nav": {
+    "home": "Home",
+    "tools": "Tools"
+  },
+  "footer": {
+    "copyright": "© {year} ClawStudio. All rights reserved.",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  },
+  "home": {
+    "title": "Free Online Dev Tools",
+    "tools": {
+      "gifToSprite": {
+        "title": "GIF to Spritesheet",
+        "description": "Convert GIF animations into sprite sheets or individual frame PNGs."
+      }
+    }
+  },
+  "gifToSprite": {
+    "title": "GIF to PNG Spritesheet Converter",
+    "subtitle": "Convert GIF animations into a PNG sprite sheet or extract individual frames as PNG files.",
+    "mode": {
+      "spritesheet": "Spritesheet",
+      "frames": "Frames"
+    },
+    "upload": {
+      "title": "Drop your GIF here or click to select",
+      "button": "Select GIF File",
+      "limit": "Max file size: 20MB",
+      "accept": "Only .gif files are accepted",
+      "changeFile": "Click to choose a different file"
+    },
+    "convert": "Convert!",
+    "url": {
+      "placeholder": "Or paste a GIF URL..."
+    },
+    "options": {
+      "title": "Advanced Options",
+      "columns": "Columns",
+      "columnsHint": "Leave empty for auto layout",
+      "padding": "Padding (px)",
+      "removeBg": "Remove Background",
+      "removeBgHint": "Automatically detects and removes solid-color backgrounds from each frame, replacing them with transparency.",
+      "bgColor": "Background Color",
+      "bgColorAuto": "Auto-detect from corner pixels",
+      "bgColorCustom": "Specify a hex color",
+      "bgColorHint": "\"Auto\" samples the four corners of each frame to find the background color. Choose a custom color if the auto-detection doesn't match your GIF.",
+      "tolerance": "Tolerance",
+      "toleranceHint": "How similar a pixel must be to the background color to be removed. Low values (0–30) for clean backgrounds, higher values (50–80) for gradients or compression artifacts."
+    },
+    "adModal": {
+      "title": "🥺 Please support us by watching this Ad. 🌸",
+      "description": "Watch a short ad to unlock 5 more conversions. Thank you for supporting this free tool!",
+      "remaining": "{count} free conversion remaining | {count} free conversions remaining",
+      "watch": "Watch Ad",
+      "close": "Close"
+    },
+    "status": {
+      "uploading": "Uploading...",
+      "converting": "Converting...",
+      "error": "Conversion failed",
+      "retry": "Try Again"
+    },
+    "result": {
+      "spritesheet": {
+        "title": "Spritesheet Preview",
+        "info": "{width} × {height} px • {size}",
+        "download": "Download Spritesheet"
+      },
+      "frames": {
+        "title": "Frames extracted",
+        "info": "ZIP archive containing individual PNG frames",
+        "download": "Download ZIP"
+      },
+      "reset": "Convert Another GIF"
+    },
+    "seo": {
+      "api": {
+        "title": "Use GIF to PNG Sprite Sheet API",
+        "content": "Want to integrate GIF-to-spritesheet conversion into your own application? The Easy GIF2Sprite API provides the same powerful conversion engine behind this tool as a RESTful API. Upload a GIF file or pass a URL, and receive a PNG sprite sheet or individual frames in seconds — all via a simple HTTP request.",
+        "content2": "The API supports all the features available in this tool: custom grid layouts, adjustable frame padding, automatic background removal, and frame extraction to ZIP. It's ideal for game asset pipelines, automated sprite generation workflows, batch processing tools, and any application that needs programmatic GIF-to-PNG conversion.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": {
+          "title": "API Highlights",
+          "endpoints": "Two endpoints: /to-spritesheet (PNG) and /to-frames (ZIP)",
+          "input": "Accept file uploads or public GIF URLs",
+          "params": "Full parameter control: columns, padding, background removal, tolerance",
+          "limit": "Supports GIF files up to 20 MB",
+          "formats": "Compatible with both GIF87a and GIF89a standards",
+          "response": "Fast response times with Cloud Run auto-scaling"
+        }
+      },
+      "whatIs": {
+        "title": "What Is a Sprite Sheet?",
+        "content": "A sprite sheet (also called a spritesheet or texture atlas) is a single image file that contains multiple smaller images — typically animation frames — arranged in a grid. Instead of loading dozens of individual image files, game engines and web browsers load one sprite sheet and display each frame by shifting the visible region. This dramatically reduces HTTP requests, lowers memory overhead, and keeps your animations smooth and efficient.",
+        "content2": "Sprite sheets are a fundamental technique in 2D game development, CSS animation, and motion graphics. Engines like Unity, Godot, Phaser, and PixiJS all natively support sprite sheets. On the web, CSS developers use the background-position property to step through frames, creating lightweight animations without JavaScript or video files."
+      },
+      "whatIsFrames": {
+        "title": "What Is Frame Extraction?",
+        "content": "Frame extraction is the process of splitting a GIF animation into its individual frames, each saved as a separate PNG image. This is useful when you need to edit specific frames, re-sequence an animation, or import frames individually into a game engine or video editor.",
+        "content2": "Our tool packages all extracted frames into a single ZIP archive for convenient download. Each frame is named with a zero-padded index (e.g., frame_00.png, frame_01.png) so they sort correctly in any file manager or import dialog."
+      },
+      "howTo": {
+        "title": "How to Convert a GIF to a Sprite Sheet",
+        "step1": {
+          "title": "1. Choose Your Output Mode",
+          "content": "Select \"Spritesheet\" to combine all frames into a single PNG grid, or \"Frames\" to extract every frame as an individual PNG packed in a ZIP file."
+        },
+        "step2": {
+          "title": "2. Upload Your GIF",
+          "content": "Drag and drop your GIF file onto the upload area, or click to open the file picker. You can also paste a publicly accessible GIF URL if your file is hosted online. We accept both GIF87a and GIF89a formats up to 20 MB."
+        },
+        "step3": {
+          "title": "3. Configure Options (Optional)",
+          "content": "Expand the Advanced Options panel to fine-tune your output. For sprite sheets, you can set the number of columns in the grid and the pixel padding between frames. You can also enable automatic background removal, which uses a smart algorithm to detect and remove solid-color backgrounds from each frame."
+        },
+        "step4": {
+          "title": "4. Download Your Result",
+          "content": "Once conversion is complete, sprite sheets are displayed as a full-width preview image that you can inspect before downloading. For frame extraction, the ZIP file downloads automatically. Click \"Convert Another GIF\" to start over with a new file."
+        }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "spritesheet": {
+            "title": "Sprite Sheet Generation",
+            "content": "Combine all GIF frames into a single PNG image arranged in a customizable grid. The default layout calculates the closest-to-square arrangement automatically, or you can specify the exact number of columns."
+          },
+          "frames": {
+            "title": "Individual Frame Extraction",
+            "content": "Extract every frame from a GIF animation as a separate PNG file. All frames are packaged in a ZIP archive with zero-padded filenames for correct sorting."
+          },
+          "columns": {
+            "title": "Custom Grid Layout",
+            "content": "Control how frames are arranged in your sprite sheet by specifying the number of columns. Leave it on auto to get a balanced, near-square grid, or set a specific number for horizontal strip layouts (1 row) or vertical strips (1 column)."
+          },
+          "padding": {
+            "title": "Frame Padding",
+            "content": "Add pixel gaps between frames in your sprite sheet. Padding prevents texture bleeding — a common artifact in game engines where adjacent frames leak pixels into each other during rendering. A padding of 1–2 px is usually sufficient."
+          },
+          "removeBg": {
+            "title": "Automatic Background Removal",
+            "content": "Remove solid-color backgrounds from each frame before compositing. The algorithm samples the four corner pixels of each frame to auto-detect the background color, then uses a flood-fill from all corners to make matching pixels transparent. Adjust the tolerance slider (0–255) to control how aggressively similar colors are removed."
+          },
+          "url": {
+            "title": "Convert from URL",
+            "content": "Don't have the GIF file on your device? Paste a publicly accessible URL and we'll fetch and convert it directly. This is especially handy on mobile devices or when working with GIFs hosted on image sharing platforms."
+          },
+          "privacy": {
+            "title": "Privacy First",
+            "content": "Your files are processed on the server and never stored. Once the converted result is returned to your browser, the original upload is immediately discarded. No registration, no tracking, no data retention."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "gamedev": {
+            "title": "2D Game Development",
+            "content": "Sprite sheets are the standard format for 2D character animations, particle effects, and UI elements in game engines. Convert your GIF mockups or pixel art animations into engine-ready sprite sheets for Unity, Godot, Phaser, GameMaker, or RPG Maker. Set custom column counts and padding to match your engine's import requirements."
+          },
+          "css": {
+            "title": "CSS Sprite Animations",
+            "content": "Create lightweight CSS animations without video files or JavaScript libraries. Use a sprite sheet as a CSS background image and animate it with the steps() timing function and background-position. This technique is widely used for loading spinners, animated icons, and micro-interactions on the web."
+          },
+          "motionGraphics": {
+            "title": "Motion Graphics & Video Editing",
+            "content": "Extract individual frames from a GIF to import into video editors like After Effects, Premiere Pro, or DaVinci Resolve. Frame extraction gives you full control to re-time, recolor, or composite each frame independently."
+          },
+          "emotes": {
+            "title": "Emotes & Sticker Sheets",
+            "content": "Combine animated emotes or sticker frames into a single sprite sheet for chat platforms, streaming overlays, or social media tools. The auto-background-removal feature cleanly separates characters from solid-color backgrounds."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "formats": {
+            "q": "What file formats are supported?",
+            "a": "We accept GIF files only (both GIF87a and GIF89a standards). The output is always PNG — either a single PNG sprite sheet or multiple PNGs in a ZIP archive."
+          },
+          "maxSize": {
+            "q": "What is the maximum file size?",
+            "a": "The maximum input file size is 20 MB. This applies to both direct file uploads and GIF URLs. Most animated GIFs fall well within this limit."
+          },
+          "maxFrames": {
+            "q": "Is there a limit on the number of frames?",
+            "a": "There is no hard limit on frame count. However, GIFs with hundreds of frames will produce very large sprite sheets. For extremely long animations, consider using the Frames mode to extract individual PNGs instead."
+          },
+          "transparency": {
+            "q": "Does the output preserve transparency?",
+            "a": "Yes. If your original GIF has transparent regions, they are preserved in the output PNG. If you enable background removal, the detected background color is replaced with transparency."
+          },
+          "autoColumns": {
+            "q": "How does the auto column layout work?",
+            "a": "When you leave the Columns field empty, the tool calculates the number of columns as the ceiling of the square root of the total frame count. This produces the closest-to-square grid layout, which is optimal for texture memory and easy to work with in most game engines."
+          },
+          "bgRemoval": {
+            "q": "How does automatic background removal work?",
+            "a": "The algorithm samples the RGBA color values of the four corner pixels of each frame. If all four corners are within the tolerance threshold of each other, their average color is used as the background target. A flood-fill starting from all four corners then removes all connected pixels within the tolerance range. If the corners are too different from each other, the frame is left unchanged to avoid removing foreground content."
+          },
+          "tolerance": {
+            "q": "What tolerance value should I use?",
+            "a": "The default value of 30 works well for most GIFs with clean, solid-color backgrounds. For GIFs with slight gradients or compression artifacts in the background, try increasing to 50–80. Values above 100 become aggressive and may remove foreground pixels that are similar to the background color."
+          },
+          "free": {
+            "q": "Is this tool free?",
+            "a": "Yes, this tool is completely free to use with no registration required."
+          },
+          "api": {
+            "q": "Is there an API available?",
+            "a": "Yes. This tool is powered by the Easy GIF2Sprite API, which is available on RapidAPI for developers who want to integrate GIF-to-sprite conversion into their own applications and workflows."
+          }
+        }
+      }
+    }
+  }
+}

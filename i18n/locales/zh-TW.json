@@ -1,0 +1,225 @@
+{
+  "site": {
+    "name": "ClawStudio",
+    "slogan": "免費線上開發工具"
+  },
+  "nav": {
+    "home": "首頁",
+    "tools": "工具"
+  },
+  "footer": {
+    "copyright": "© {year} ClawStudio. 保留所有權利。",
+    "terms": "服務條款",
+    "privacy": "隱私政策"
+  },
+  "home": {
+    "title": "免費線上開發工具",
+    "tools": {
+      "gifToSprite": {
+        "title": "GIF 轉 Spritesheet",
+        "description": "將 GIF 動畫轉換為 Sprite 圖或逐幀 PNG 圖片。"
+      }
+    }
+  },
+  "gifToSprite": {
+    "title": "GIF 轉 PNG Spritesheet 工具",
+    "subtitle": "將 GIF 動畫轉換為 PNG Sprite 圖，或逐幀提取為 PNG 圖片。",
+    "mode": {
+      "spritesheet": "Spritesheet",
+      "frames": "逐幀提取"
+    },
+    "upload": {
+      "title": "拖放 GIF 檔案至此，或點擊選擇",
+      "button": "選擇 GIF 檔案",
+      "limit": "檔案大小上限：20MB",
+      "accept": "僅接受 .gif 檔案",
+      "changeFile": "點擊選擇其他檔案"
+    },
+    "convert": "Convert!",
+    "url": {
+      "placeholder": "或貼上 GIF 網址..."
+    },
+    "options": {
+      "title": "進階選項",
+      "columns": "欄數",
+      "columnsHint": "留空則自動排列",
+      "padding": "間距 (px)",
+      "removeBg": "移除背景",
+      "removeBgHint": "自動偵測並移除每一幀的純色背景，替換為透明。",
+      "bgColor": "背景色",
+      "bgColorAuto": "自動偵測（取樣四角像素）",
+      "bgColorCustom": "指定 Hex 色碼",
+      "bgColorHint": "「自動偵測」會取樣每一幀四個角落的像素來判定背景色。如果自動偵測結果不符預期，可改用自訂色碼。",
+      "tolerance": "容差值",
+      "toleranceHint": "像素與背景色的相似度門檻。低值（0–30）適合乾淨的純色背景，較高值（50–80）適合有漸層或壓縮瑕疵的背景。"
+    },
+    "adModal": {
+      "title": "🥺 請支持我們 🌸 幫忙看一下廣告 🙏",
+      "description": "觀看一則短廣告即可解鎖 5 次轉換。感謝你支持這個免費工具！",
+      "remaining": "剩餘 {count} 次免費轉換",
+      "watch": "觀看廣告",
+      "close": "關閉"
+    },
+    "status": {
+      "uploading": "上傳中...",
+      "converting": "轉換中...",
+      "error": "轉換失敗",
+      "retry": "重試"
+    },
+    "result": {
+      "spritesheet": {
+        "title": "Spritesheet 預覽",
+        "info": "{width} × {height} px・{size}",
+        "download": "下載 Spritesheet"
+      },
+      "frames": {
+        "title": "逐幀提取完成",
+        "info": "ZIP 壓縮檔，包含逐幀 PNG 圖片",
+        "download": "下載 ZIP"
+      },
+      "reset": "轉換另一個 GIF"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 GIF 轉 PNG Sprite Sheet API",
+        "content": "想將 GIF 轉 Spritesheet 的功能整合到你自己的應用程式中嗎？Easy GIF2Sprite API 提供與本工具相同的轉換引擎，以 RESTful API 的形式開放使用。上傳 GIF 檔案或傳入網址，即可在數秒內取得 PNG Sprite Sheet 或逐幀圖片 —— 一切只需一個簡單的 HTTP 請求。",
+        "content2": "API 支援本工具的所有功能：自訂網格佈局、可調整的幀間距、自動背景移除，以及逐幀提取為 ZIP。非常適合遊戲素材產線、自動化 Sprite 生成工作流程、批次處理工具，以及任何需要程式化 GIF 轉 PNG 的應用場景。",
+        "cta": "在 RapidAPI 上查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "兩個端點：/to-spritesheet（PNG）和 /to-frames（ZIP）",
+          "input": "支援檔案上傳或公開 GIF 網址",
+          "params": "完整參數控制：欄數、間距、背景移除、容差值",
+          "limit": "支援最大 20 MB 的 GIF 檔案",
+          "formats": "相容 GIF87a 和 GIF89a 兩種標準",
+          "response": "Cloud Run 自動擴展，回應速度快"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 Sprite Sheet（精靈圖）？",
+        "content": "Sprite Sheet（精靈圖，也稱為 Spritesheet 或材質圖集）是一張將多張小圖片（通常是動畫幀）排列在網格中的單一圖片檔案。遊戲引擎和網頁瀏覽器只需載入一張 Sprite Sheet，透過偏移可見區域來顯示每一幀，而非載入數十張獨立的圖片檔案。這大幅減少了 HTTP 請求數量、降低記憶體開銷，讓動畫更加流暢高效。",
+        "content2": "Sprite Sheet 是 2D 遊戲開發、CSS 動畫和動態圖形中的基礎技術。Unity、Godot、Phaser、PixiJS 等遊戲引擎都原生支援 Sprite Sheet。在網頁開發中，CSS 開發者利用 background-position 屬性逐幀切換，無需 JavaScript 或影片檔案即可建立輕量級動畫。"
+      },
+      "whatIsFrames": {
+        "title": "什麼是逐幀提取？",
+        "content": "逐幀提取是將 GIF 動畫拆分為獨立幀的過程，每一幀儲存為單獨的 PNG 圖片。當你需要編輯特定幀、重新排列動畫順序，或將各幀分別匯入遊戲引擎或影片編輯器時，這項功能非常實用。",
+        "content2": "本工具會將所有提取的幀打包成一個 ZIP 壓縮檔供下載。每一幀以零填充索引命名（例如 frame_00.png、frame_01.png），確保在任何檔案管理器或匯入對話框中都能正確排序。"
+      },
+      "howTo": {
+        "title": "如何將 GIF 轉換為 Sprite Sheet",
+        "step1": {
+          "title": "1. 選擇輸出模式",
+          "content": "選擇「Spritesheet」將所有幀合併為單一 PNG 網格圖，或選擇「逐幀提取」將每一幀提取為獨立的 PNG 圖片並打包為 ZIP 檔案。"
+        },
+        "step2": {
+          "title": "2. 上傳你的 GIF",
+          "content": "將 GIF 檔案拖放至上傳區域，或點擊開啟檔案選擇器。如果你的檔案已託管在線上，也可以貼上公開的 GIF 網址。我們支援 GIF87a 和 GIF89a 兩種格式，檔案大小上限為 20 MB。"
+        },
+        "step3": {
+          "title": "3. 設定進階選項（可選）",
+          "content": "展開「進階選項」面板來微調輸出結果。在 Spritesheet 模式下，你可以設定網格的欄數和幀與幀之間的像素間距。你也可以啟用自動背景移除功能，它會使用智慧演算法偵測並移除每一幀的純色背景。"
+        },
+        "step4": {
+          "title": "4. 下載你的成果",
+          "content": "轉換完成後，Sprite Sheet 會以全寬預覽圖顯示，你可以先檢視再下載。逐幀提取模式下，ZIP 檔案會自動觸發下載。點擊「轉換另一個 GIF」即可重新開始處理新的檔案。"
+        }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "spritesheet": {
+            "title": "Sprite Sheet 生成",
+            "content": "將所有 GIF 幀合併為單一 PNG 圖片，排列在可自訂的網格中。預設佈局會自動計算最接近正方形的排列方式，你也可以指定精確的欄數。"
+          },
+          "frames": {
+            "title": "逐幀提取",
+            "content": "從 GIF 動畫中提取每一幀為獨立的 PNG 檔案。所有幀打包在一個 ZIP 壓縮檔中，檔名以零填充索引命名，確保正確排序。"
+          },
+          "columns": {
+            "title": "自訂網格佈局",
+            "content": "透過指定欄數來控制 Sprite Sheet 中幀的排列方式。留空自動選項可獲得均衡的近正方形網格，或設定特定數字來建立水平條狀佈局（1 列）或垂直條狀佈局（1 欄）。"
+          },
+          "padding": {
+            "title": "幀間距",
+            "content": "在 Sprite Sheet 的幀之間加入像素間距。間距可防止材質溢出（texture bleeding）—— 這是遊戲引擎中常見的瑕疵，相鄰幀的像素會在渲染時互相滲透。通常 1–2 像素的間距就足夠了。"
+          },
+          "removeBg": {
+            "title": "自動背景移除",
+            "content": "在合成前移除每一幀的純色背景。演算法會取樣每一幀四個角落的像素來自動偵測背景色，然後從所有角落進行填充式移除，將匹配的像素轉為透明。調整容差值滑桿（0–255）可控制移除相似顏色的力度。"
+          },
+          "url": {
+            "title": "從網址轉換",
+            "content": "手邊沒有 GIF 檔案？貼上公開的網址，我們會直接擷取並轉換。這在行動裝置上或處理圖片分享平台上的 GIF 時特別方便。"
+          },
+          "privacy": {
+            "title": "隱私優先",
+            "content": "你的檔案在伺服器端處理後絕不會被儲存。轉換結果回傳至瀏覽器後，原始上傳檔案即被立即丟棄。無需註冊、不追蹤、不保留任何資料。"
+          }
+        }
+      },
+      "useCases": {
+        "title": "應用場景",
+        "items": {
+          "gamedev": {
+            "title": "2D 遊戲開發",
+            "content": "Sprite Sheet 是遊戲引擎中 2D 角色動畫、粒子特效和 UI 元素的標準格式。將你的 GIF 動態模型或像素風格動畫轉換為引擎可用的 Sprite Sheet，適用於 Unity、Godot、Phaser、GameMaker 或 RPG Maker。設定自訂欄數和間距以符合引擎的匯入需求。"
+          },
+          "css": {
+            "title": "CSS 精靈動畫",
+            "content": "無需影片檔案或 JavaScript 函式庫，即可建立輕量級 CSS 動畫。將 Sprite Sheet 作為 CSS 背景圖片，搭配 steps() 時間函數和 background-position 屬性來驅動動畫。這項技術廣泛用於載入旋轉圖示、動態圖標和網頁微互動效果。"
+          },
+          "motionGraphics": {
+            "title": "動態圖形與影片剪輯",
+            "content": "從 GIF 中提取個別幀，匯入 After Effects、Premiere Pro 或 DaVinci Resolve 等影片編輯器。逐幀提取讓你完全掌控每一幀的時間調整、重新上色或獨立合成。"
+          },
+          "emotes": {
+            "title": "表情貼圖與貼紙圖集",
+            "content": "將動態表情或貼紙幀合併為單一 Sprite Sheet，適用於聊天平台、直播覆蓋層或社群媒體工具。自動背景移除功能可以乾淨地將角色從純色背景中分離出來。"
+          }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "formats": {
+            "q": "支援哪些檔案格式？",
+            "a": "我們僅接受 GIF 檔案（支援 GIF87a 和 GIF89a 兩種標準）。輸出格式一律為 PNG —— 單一 PNG Sprite Sheet 或多個 PNG 打包成 ZIP 壓縮檔。"
+          },
+          "maxSize": {
+            "q": "檔案大小上限是多少？",
+            "a": "輸入檔案的大小上限為 20 MB，無論是直接上傳檔案或使用 GIF 網址皆適用。大多數 GIF 動畫的大小都遠在此限制之內。"
+          },
+          "maxFrames": {
+            "q": "幀數有限制嗎？",
+            "a": "幀數沒有硬性限制。但幀數較多的 GIF 會產生非常大的 Sprite Sheet。對於超長動畫，建議使用「逐幀提取」模式來提取個別 PNG 圖片。"
+          },
+          "transparency": {
+            "q": "輸出是否保留透明度？",
+            "a": "是的。如果你的原始 GIF 包含透明區域，輸出的 PNG 會保留這些透明度。如果你啟用背景移除功能，偵測到的背景色會被替換為透明。"
+          },
+          "autoColumns": {
+            "q": "自動欄數佈局是如何運作的？",
+            "a": "當你將欄數欄位留空時，工具會將欄數計算為總幀數的平方根的上取整值。這會產生最接近正方形的網格佈局，對材質記憶體來說最為理想，在大多數遊戲引擎中也最容易使用。"
+          },
+          "bgRemoval": {
+            "q": "自動背景移除是如何運作的？",
+            "a": "演算法會取樣每一幀四個角落像素的 RGBA 色彩值。如果四個角落的色彩都在容差閾值範圍內，就會取其平均色作為背景目標色。然後從四個角落同時開始填充式移除，將容差範圍內所有相連的像素移除。如果角落之間的色差過大，該幀會保持不變，以避免誤移除前景內容。"
+          },
+          "tolerance": {
+            "q": "容差值應該設定多少？",
+            "a": "預設值 30 適用於大多數具有乾淨純色背景的 GIF。對於背景有輕微漸層或壓縮瑕疵的 GIF，可嘗試將容差提高到 50–80。超過 100 的值會變得較為激進，可能會移除與背景色相近的前景像素。"
+          },
+          "free": {
+            "q": "這個工具是免費的嗎？",
+            "a": "是的，本工具完全免費使用，無需註冊。"
+          },
+          "api": {
+            "q": "有提供 API 嗎？",
+            "a": "有。本工具由 Easy GIF2Sprite API 驅動，已上架 RapidAPI，開發者可以將 GIF 轉 Sprite 的功能整合到自己的應用程式和工作流程中。"
+          }
+        }
+      }
+    }
+  }
+}
