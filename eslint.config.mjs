@@ -7,6 +7,9 @@ export default withNuxt({
     'vue/max-attributes-per-line': 'off',
     'vue/no-multiple-template-root': 'off',
     'vue/attributes-order': 'off',
-    'nuxt/nuxt-config-keys-order': 'off'
+    'nuxt/nuxt-config-keys-order': 'off',
+    'vue/first-attribute-linebreak': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'no-empty': 'off'
   }
 })
