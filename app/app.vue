@@ -9,9 +9,30 @@ useHead({
   link: [
     { rel: 'icon', href: '/favicon.ico' }
   ],
+  script: [
+    {
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6385934484512467',
+      async: true,
+      crossorigin: 'anonymous'
+    }
+  ],
   htmlAttrs: {
     lang: locale
   }
+})
+
+function pushAd() {
+  if (import.meta.client) {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
+    } catch {}
+  }
+}
+
+onMounted(() => {
+  pushAd()
+  pushAd()
+  pushAd()
 })
 
 const title = computed(() => t('site.name'))
@@ -66,9 +87,13 @@ const localeItems = computed(() =>
       <!-- Left Ad Sidebar -->
       <aside class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <div class="w-[160px] h-[600px] bg-muted/30 rounded-lg flex items-center justify-center text-muted text-xs">
-            Ad
-          </div>
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6385934484512467"
+            data-ad-slot="8882057481"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
         </div>
       </aside>
 
@@ -80,11 +105,25 @@ const localeItems = computed(() =>
       <!-- Right Ad Sidebar -->
       <aside class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <div class="w-[160px] h-[600px] bg-muted/30 rounded-lg flex items-center justify-center text-muted text-xs">
-            Ad
-          </div>
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6385934484512467"
+            data-ad-slot="3629730800"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
         </div>
       </aside>
+    </div>
+
+    <!-- Ad Slot: Above Footer -->
+    <div class="ad-slot flex justify-center py-4">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="autorelaxed"
+        data-ad-client="ca-pub-6385934484512467"
+        data-ad-slot="1939246744"
+      />
     </div>
 
     <UFooter>

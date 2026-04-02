@@ -190,6 +190,16 @@ function onAdWatched() {
   usageCount.value = 0
 }
 
+onMounted(() => {
+  // Initialize in-article ad slots
+  const adSlots = document.querySelectorAll('.ad-slot .adsbygoogle')
+  adSlots.forEach(() => {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
+    } catch {}
+  })
+})
+
 onUnmounted(() => {
   if (previewUrl.value) URL.revokeObjectURL(previewUrl.value)
   if (resultUrl.value) URL.revokeObjectURL(resultUrl.value)
@@ -495,6 +505,17 @@ onUnmounted(() => {
         </div>
       </section>
 
+      <!-- Ad Slot: Before What Is -->
+      <div class="ad-slot flex justify-center">
+        <ins class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-6385934484512467"
+          data-ad-slot="7383145112"
+        />
+      </div>
+
       <!-- What is a Sprite Sheet -->
       <section>
         <h2 class="text-2xl font-bold mb-4">
@@ -508,6 +529,17 @@ onUnmounted(() => {
         </p>
       </section>
 
+      <!-- Ad Slot: Before What Is Frames -->
+      <div class="ad-slot flex justify-center">
+        <ins class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-6385934484512467"
+          data-ad-slot="3210094258"
+        />
+      </div>
+
       <!-- What is Frame Extraction -->
       <section>
         <h2 class="text-2xl font-bold mb-4">
@@ -520,6 +552,17 @@ onUnmounted(() => {
           {{ t('gifToSprite.seo.whatIsFrames.content2') }}
         </p>
       </section>
+
+      <!-- Ad Slot: Before How To -->
+      <div class="ad-slot flex justify-center">
+        <ins class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-6385934484512467"
+          data-ad-slot="8504655099"
+        />
+      </div>
 
       <!-- How To -->
       <section>
@@ -537,6 +580,17 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
+
+      <!-- Ad Slot: Before Features -->
+      <div class="ad-slot flex justify-center">
+        <ins class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-6385934484512467"
+          data-ad-slot="5316113927"
+        />
+      </div>
 
       <!-- Features -->
       <section>
@@ -559,6 +613,17 @@ onUnmounted(() => {
         </div>
       </section>
 
+      <!-- Ad Slot: Before Use Cases -->
+      <div class="ad-slot flex justify-center">
+        <ins class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-6385934484512467"
+          data-ad-slot="3438159116"
+        />
+      </div>
+
       <!-- Use Cases -->
       <section>
         <h2 class="text-2xl font-bold mb-6">
@@ -578,6 +643,17 @@ onUnmounted(() => {
           </div>
         </div>
       </section>
+
+      <!-- Ad Slot: Before FAQ -->
+      <div class="ad-slot flex justify-center">
+        <ins class="adsbygoogle"
+          style="display:block; text-align:center;"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-6385934484512467"
+          data-ad-slot="7191573428"
+        />
+      </div>
 
       <!-- FAQ -->
       <section>
