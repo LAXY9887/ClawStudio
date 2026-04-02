@@ -8,7 +8,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "deploy": "git push origin main",
+    "firebase:secrets": "firebase apphosting:secrets:set",
+    "firebase:rollouts": "firebase apphosting:rollouts:list"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.100",

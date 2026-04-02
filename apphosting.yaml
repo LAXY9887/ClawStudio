@@ -23,5 +23,7 @@ runConfig:
   # - variable: MY_SECRET
   #   secret: mySecretRef
 env:
+  - variable: NUXT_GIF_SERVICE_URL
+    secret: NUXT_GIF_SERVICE_URL
   - variable: NUXT_INTERNAL_KEY
     secret: NUXT_INTERNAL_KEY
