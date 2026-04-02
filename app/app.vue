@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, tm, locale, locales } = useI18n()
+const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
 useHead({
