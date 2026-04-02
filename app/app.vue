@@ -21,20 +21,6 @@ useHead({
   }
 })
 
-function pushAd() {
-  if (import.meta.client) {
-    try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
-    } catch {}
-  }
-}
-
-onMounted(() => {
-  pushAd()
-  pushAd()
-  pushAd()
-})
-
 const title = computed(() => t('site.name'))
 const description = computed(() => t('site.slogan'))
 
@@ -97,13 +83,7 @@ const localeItems = computed(() =>
       <!-- Left Ad Sidebar -->
       <aside class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-6385934484512467"
-            data-ad-slot="8882057481"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          />
+          <AdUnit slot="8882057481" />
         </div>
       </aside>
 
@@ -115,25 +95,14 @@ const localeItems = computed(() =>
       <!-- Right Ad Sidebar -->
       <aside class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-6385934484512467"
-            data-ad-slot="3629730800"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          />
+          <AdUnit slot="3629730800" />
         </div>
       </aside>
     </div>
 
     <!-- Ad Slot: Above Footer -->
-    <div class="ad-slot flex justify-center py-4">
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-format="autorelaxed"
-        data-ad-client="ca-pub-6385934484512467"
-        data-ad-slot="1939246744"
-      />
+    <div class="flex justify-center py-4">
+      <AdUnit slot="1939246744" format="autorelaxed" :responsive="false" />
     </div>
 
     <UFooter>

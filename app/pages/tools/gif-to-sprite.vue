@@ -200,16 +200,6 @@ function onAdConfirm() {
   })
 }
 
-onMounted(() => {
-  // Initialize in-article ad slots
-  const adSlots = document.querySelectorAll('.ad-slot .adsbygoogle')
-  adSlots.forEach(() => {
-    try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
-    } catch {}
-  })
-})
-
 onUnmounted(() => {
   if (previewUrl.value) URL.revokeObjectURL(previewUrl.value)
   if (resultUrl.value) URL.revokeObjectURL(resultUrl.value)
@@ -524,15 +514,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before What Is -->
-      <div class="ad-slot flex justify-center">
-        <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-6385934484512467"
-          data-ad-slot="7383145112"
-        />
-      </div>
+      <AdUnit slot="7383145112" format="fluid" layout="in-article" />
 
       <!-- What is a Sprite Sheet -->
       <section>
@@ -548,15 +530,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before What Is Frames -->
-      <div class="ad-slot flex justify-center">
-        <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-6385934484512467"
-          data-ad-slot="3210094258"
-        />
-      </div>
+      <AdUnit slot="3210094258" format="fluid" layout="in-article" />
 
       <!-- What is Frame Extraction -->
       <section>
@@ -572,15 +546,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before How To -->
-      <div class="ad-slot flex justify-center">
-        <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-6385934484512467"
-          data-ad-slot="8504655099"
-        />
-      </div>
+      <AdUnit slot="8504655099" format="fluid" layout="in-article" />
 
       <!-- How To -->
       <section>
@@ -600,15 +566,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before Features -->
-      <div class="ad-slot flex justify-center">
-        <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-6385934484512467"
-          data-ad-slot="5316113927"
-        />
-      </div>
+      <AdUnit slot="5316113927" format="fluid" layout="in-article" />
 
       <!-- Features -->
       <section>
@@ -632,15 +590,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before Use Cases -->
-      <div class="ad-slot flex justify-center">
-        <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-6385934484512467"
-          data-ad-slot="3438159116"
-        />
-      </div>
+      <AdUnit slot="3438159116" format="fluid" layout="in-article" />
 
       <!-- Use Cases -->
       <section>
@@ -663,15 +613,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before FAQ -->
-      <div class="ad-slot flex justify-center">
-        <ins class="adsbygoogle"
-          style="display:block; text-align:center;"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-6385934484512467"
-          data-ad-slot="7191573428"
-        />
-      </div>
+      <AdUnit slot="7191573428" format="fluid" layout="in-article" />
 
       <!-- FAQ -->
       <section>

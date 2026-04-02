@@ -12,15 +12,9 @@ useSeoMeta({
 })
 
 onMounted(() => {
-  // Redirect if no blob data
   if (!store.blob.value) {
     navigateTo(returnPath.value)
-    return
   }
-  // Initialize ad
-  try {
-    ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
-  } catch {}
 })
 </script>
 
@@ -30,13 +24,7 @@ onMounted(() => {
     :return-path="returnPath"
   >
     <template #ad>
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-6385934484512467"
-        data-ad-slot="1774557803"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <AdUnit slot="1774557803" />
     </template>
 
     <template #content>
