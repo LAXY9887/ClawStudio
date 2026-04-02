@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
-const i18nHead = useLocaleHead({ addSeoAttributes: true })
+const i18nHead = useLocaleHead({ addSeoAttributes: true } as any)
 
 useHead({
   meta: [
