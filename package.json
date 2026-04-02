@@ -11,7 +11,8 @@
     "typecheck": "nuxt typecheck",
     "deploy": "git push origin main",
     "firebase:secrets": "firebase apphosting:secrets:set",
-    "firebase:rollouts": "firebase apphosting:rollouts:list"
+    "firebase:rollouts": "firebase apphosting:rollouts:list clawstudio-webapp",
+    "firebase:redeploy": "firebase apphosting:rollouts:create clawstudio-webapp"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.100",
