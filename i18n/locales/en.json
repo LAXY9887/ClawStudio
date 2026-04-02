@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "ClawStudio",
+    "name": "ClawStudiouo",
     "slogan": "Free Online Dev Tools"
   },
   "nav": {
@@ -8,9 +8,66 @@
     "tools": "Tools"
   },
   "footer": {
-    "copyright": "© {year} ClawStudio. All rights reserved.",
-    "terms": "Terms",
-    "privacy": "Privacy"
+    "copyright": "© {year} ClawStudiouo. All rights reserved.",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact": "Contact Us",
+    "termsContent": {
+      "intro": "By using ClawStudiouo, you agree to the following terms:",
+      "items": [
+        "**Permitted Use.** This website and its tools are provided for lawful purposes only. You may use them to process files you own or have the rights to, or publicly accessible files.",
+        "**Prohibited Use.** You may not use this website to process content that is illegal, infringing, or violates third-party intellectual property rights. Automated abuse, circumvention of usage limits, or attempts to overload the service are prohibited.",
+        "**No Storage.** ClawStudiouo does not store uploaded files or processed output. All processing occurs in-memory and data is discarded after each request.",
+        "**No Warranty.** All tools are provided \"as is\" without warranty of any kind. Output quality depends on the input files and selected parameters.",
+        "**Limitation of Liability.** The provider is not liable for any direct, indirect, or consequential damages arising from use of this website or its tools.",
+        "**Changes.** These terms and the website functionality may be updated at any time. Continued use after changes constitutes acceptance."
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "seoTitle": "Privacy Policy - ClawStudiouo",
+    "lastUpdated": "Last updated: April 2, 2026",
+    "intro": "Welcome to ClawStudiouo (hereinafter referred to as \"this website\"). We take your privacy very seriously. This policy explains how we collect, use, and protect your personal information.",
+    "section1": {
+      "title": "1. Information We Collect",
+      "item1Title": "Non-personal Information:",
+      "item1": "When you use our image conversion tools (such as GIF to Spritesheet), we do not permanently store your original files on our servers. All uploaded images are used for real-time processing only and are automatically deleted shortly after processing is complete.",
+      "item2Title": "Browsing Records:",
+      "item2": "We record your IP address, browser type, visit time, and pages clicked for website traffic analysis and user experience optimization."
+    },
+    "section2": {
+      "title": "2. Use of Cookies",
+      "intro": "This website uses cookies to store certain information and provide better services:",
+      "item1Title": "Functional Cookies:",
+      "item1": "Used to record your usage preferences (such as tool settings and usage count).",
+      "item2Title": "Advertising Cookies:",
+      "item2": "We partner with third-party providers such as Google to serve ads based on your past visits to this website or other websites through cookies."
+    },
+    "section3": {
+      "title": "3. Google AdSense & Third-Party Advertising",
+      "item1": "Google, as a third-party provider, uses cookies to serve ads on this website.",
+      "item2": "Google's use of advertising cookies enables Google and its partners to serve ads to users based on their visits to this website and/or other websites on the internet.",
+      "item3": "You can opt out of personalized advertising by visiting the",
+      "item3Link": "Google Ads Settings",
+      "item3After": "page."
+    },
+    "section4": {
+      "title": "4. Data Security",
+      "content": "We take standard security measures (such as SSL encrypted transmission) to protect your data. However, internet transmission is not 100% secure, and we cannot guarantee absolute security."
+    },
+    "section5": {
+      "title": "5. Third-Party Links",
+      "content": "This website may contain links to other websites (such as RapidAPI). Please note that we are not responsible for the privacy practices of these external websites, and we recommend that you read their respective privacy policies."
+    },
+    "section6": {
+      "title": "6. Your Rights",
+      "content": "Under applicable laws (such as GDPR), you have the right to request access to, correction of, or deletion of personal data we hold about you. If you have any questions, please contact us using the information below."
+    },
+    "section7": {
+      "title": "7. Contact Us",
+      "content": "If you have any questions about this privacy policy, please email:"
+    }
   },
   "home": {
     "title": "Free Online Dev Tools",

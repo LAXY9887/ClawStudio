@@ -2,6 +2,10 @@
 
 A personal portal and free online tool hub built with Nuxt 4, powered by custom GCP Cloud Run APIs.
 
+## Branding Note
+
+The public-facing brand name is **ClawStudiouo** (domain: `clawstudiouo.com`). The project ID, repo name, and `package.json` name remain `ClawStudio` for simplicity. All user-visible text uses "ClawStudiouo" and is managed via i18n locale files.
+
 ## About
 
 ClawStudio is a collection of free, browser-based developer tools. Each tool is backed by a dedicated microservice running on GCP Cloud Run, with Nuxt acting as a server-side proxy to handle authentication and hide internal endpoints.
