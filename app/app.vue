@@ -83,7 +83,7 @@ const localeItems = computed(() =>
       <!-- Left Ad Sidebar -->
       <aside class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <AdUnit slot="8882057481" />
+          <AdUnit ad-slot="8882057481" />
         </div>
       </aside>
 
@@ -95,14 +95,14 @@ const localeItems = computed(() =>
       <!-- Right Ad Sidebar -->
       <aside class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <AdUnit slot="3629730800" />
+          <AdUnit ad-slot="3629730800" />
         </div>
       </aside>
     </div>
 
     <!-- Ad Slot: Above Footer -->
     <div class="flex justify-center py-4">
-      <AdUnit slot="1939246744" format="autorelaxed" :responsive="false" />
+      <AdUnit ad-slot="1939246744" format="autorelaxed" :responsive="false" />
     </div>
 
     <UFooter>

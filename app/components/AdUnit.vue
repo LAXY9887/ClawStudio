@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  slot: string
+  adSlot: string
   format?: string
   layout?: string
   responsive?: boolean
@@ -33,7 +33,7 @@ const adStyle = computed(() => {
       class="adsbygoogle"
       :style="adStyle"
       data-ad-client="ca-pub-6385934484512467"
-      :data-ad-slot="slot"
+      :data-ad-slot="adSlot"
       :data-ad-format="format"
       :data-ad-layout="layout || undefined"
       :data-full-width-responsive="responsive || undefined"

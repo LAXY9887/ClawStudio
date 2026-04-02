@@ -514,7 +514,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before What Is -->
-      <AdUnit slot="7383145112" format="fluid" layout="in-article" />
+      <AdUnit ad-slot="7383145112" format="fluid" layout="in-article" />
 
       <!-- What is a Sprite Sheet -->
       <section>
@@ -530,7 +530,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before What Is Frames -->
-      <AdUnit slot="3210094258" format="fluid" layout="in-article" />
+      <AdUnit ad-slot="3210094258" format="fluid" layout="in-article" />
 
       <!-- What is Frame Extraction -->
       <section>
@@ -546,7 +546,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before How To -->
-      <AdUnit slot="8504655099" format="fluid" layout="in-article" />
+      <AdUnit ad-slot="8504655099" format="fluid" layout="in-article" />
 
       <!-- How To -->
       <section>
@@ -566,7 +566,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before Features -->
-      <AdUnit slot="5316113927" format="fluid" layout="in-article" />
+      <AdUnit ad-slot="5316113927" format="fluid" layout="in-article" />
 
       <!-- Features -->
       <section>
@@ -590,7 +590,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before Use Cases -->
-      <AdUnit slot="3438159116" format="fluid" layout="in-article" />
+      <AdUnit ad-slot="3438159116" format="fluid" layout="in-article" />
 
       <!-- Use Cases -->
       <section>
@@ -613,7 +613,7 @@ onUnmounted(() => {
       </section>
 
       <!-- Ad Slot: Before FAQ -->
-      <AdUnit slot="7191573428" format="fluid" layout="in-article" />
+      <AdUnit ad-slot="7191573428" format="fluid" layout="in-article" />
 
       <!-- FAQ -->
       <section>

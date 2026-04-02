@@ -24,7 +24,7 @@ onMounted(() => {
     :return-path="returnPath"
   >
     <template #ad>
-      <AdUnit slot="1774557803" />
+      <AdUnit ad-slot="1774557803" />
     </template>
 
     <template #content>
