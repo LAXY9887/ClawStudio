@@ -1,13 +1,16 @@
 <script setup lang="ts">
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const i18nHead = useLocaleHead({ addSeoAttributes: true })
 
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    ...(i18nHead.value.meta || [])
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: '/favicon.ico' },
+    ...(i18nHead.value.link || [])
   ],
   script: [
     {
@@ -17,7 +20,7 @@ useHead({
     }
   ],
   htmlAttrs: {
-    lang: locale
+    ...i18nHead.value.htmlAttrs
   }
 })
 
