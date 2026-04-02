@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locale, locales } = useI18n()
+const { t, tm, rt, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
 useHead({
@@ -137,9 +137,9 @@ const localeItems = computed(() =>
           <button class="text-muted hover:text-primary" @click="showTerms = true">
             {{ t('footer.terms') }}
           </button>
-          <NuxtLink to="/contact" class="text-muted hover:text-primary">
+          <a href="mailto:angelcemept@gmail.com" class="text-muted hover:text-primary">
             {{ t('footer.contact') }}
-          </NuxtLink>
+          </a>
         </div>
         <p class="text-sm text-muted w-full text-center">
           {{ t('footer.copyright', { year: new Date().getFullYear() }) }}
@@ -158,7 +158,7 @@ const localeItems = computed(() =>
             {{ t('footer.termsContent.intro') }}
           </p>
           <ol class="space-y-3 text-sm text-muted leading-relaxed list-decimal pl-5">
-            <li v-for="(item, i) in (t('footer.termsContent.items') as unknown as string[])" :key="i" v-html="item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')" />
+            <li v-for="(item, i) in tm('footer.termsContent.items')" :key="i" v-html="rt(item).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')" />
           </ol>
           <div class="flex justify-end pt-2">
             <UButton label="OK" @click="showTerms = false" />
