@@ -63,8 +63,8 @@ const localeItems = computed(() =>
   <UApp>
     <UHeader>
       <template #left>
-        <NuxtLink to="/" class="text-lg font-bold">
-          {{ t('site.name') }}
+        <NuxtLink to="/" class="flex items-center">
+          <img src="/logo.png" alt="ClawStudiouo" class="h-8">
         </NuxtLink>
       </template>
 
