@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, tm, rt, locale, locales } = useI18n()
+const { t, tm, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
 useHead({
@@ -46,6 +46,14 @@ useSeoMeta({
 })
 
 const showTerms = ref(false)
+
+const termsItems = computed(() => {
+  const items: string[] = []
+  for (let i = 0; i < 6; i++) {
+    items.push(t(`footer.termsContent.items[${i}]`).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
+  }
+  return items
+})
 
 const allLocales = computed(() => locales.value as Array<{ code: string, name: string }>)
 
@@ -158,7 +166,7 @@ const localeItems = computed(() =>
             {{ t('footer.termsContent.intro') }}
           </p>
           <ol class="space-y-3 text-sm text-muted leading-relaxed list-decimal pl-5">
-            <li v-for="(item, i) in tm('footer.termsContent.items')" :key="i" v-html="rt(item).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')" />
+            <li v-for="(item, i) in termsItems" :key="i" v-html="item" />
           </ol>
           <div class="flex justify-end pt-2">
             <UButton label="OK" @click="showTerms = false" />

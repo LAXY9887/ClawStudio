@@ -10,6 +10,7 @@ export default withNuxt({
     'nuxt/nuxt-config-keys-order': 'off',
     'vue/first-attribute-linebreak': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'no-empty': 'off'
+    'no-empty': 'off',
+    'vue/no-v-html': 'off'
   }
 })
