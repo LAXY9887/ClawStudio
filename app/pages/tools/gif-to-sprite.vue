@@ -39,10 +39,11 @@ const previewUrl = ref('')
 const openOptions = ref(['options'])
 
 // Usage limiter
-const FREE_LIMIT = 5
+const FREE_LIMIT = 3
 const usageCount = useCookie<number>('usage_count', { default: () => 0, maxAge: 60 * 60 * 24 })
 const showAdModal = ref(false)
 const remainingUses = computed(() => FREE_LIMIT - usageCount.value)
+const limitExceeded = computed(() => usageCount.value >= FREE_LIMIT)
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
@@ -122,8 +123,9 @@ async function convert() {
 
     const blob = response._data as unknown as Blob
 
+    resultBlob.value = blob
+
     if (mode.value === 'spritesheet') {
-      resultBlob.value = blob
       resultUrl.value = URL.createObjectURL(blob)
       resultInfo.value.size = formatSize(blob.size)
 
@@ -135,12 +137,17 @@ async function convert() {
       }
       img.src = resultUrl.value
     } else {
-      // Frames mode: trigger download directly
-      resultBlob.value = blob
-      downloadResult()
+      resultInfo.value.size = formatSize(blob.size)
     }
 
     status.value = 'done'
+
+    // Show modal when free limit exceeded
+    if (usageCount.value >= FREE_LIMIT) {
+      // Store blob for waiting room download
+      useDownloadStore().setBlob(blob, mode.value === 'spritesheet' ? 'spritesheet.png' : 'frames.zip')
+      showAdModal.value = true
+    }
   } catch (e: unknown) {
     status.value = 'error'
     const err = e as { data?: { detail?: string } }
@@ -176,18 +183,21 @@ function reset() {
 
 function submitConvert() {
   if (!file.value && !gifUrl.value.trim()) return
-  if (usageCount.value >= FREE_LIMIT) {
-    showAdModal.value = true
-    return
-  }
   if (gifUrl.value.trim()) file.value = null
   usageCount.value++
   convert()
 }
 
-function onAdWatched() {
+function onAdConfirm() {
   showAdModal.value = false
-  usageCount.value = 0
+  const localePath = useLocalePath()
+  navigateTo({
+    path: localePath('/download'),
+    query: {
+      type: mode.value,
+      from: localePath('/tools/gif-to-sprite')
+    }
+  })
 }
 
 onMounted(() => {
@@ -437,10 +447,18 @@ onUnmounted(() => {
         <!-- Action buttons -->
         <div class="flex gap-3">
           <UButton
+            v-if="!limitExceeded"
             :label="mode === 'spritesheet' ? t('gifToSprite.result.spritesheet.download') : t('gifToSprite.result.frames.download')"
             icon="i-lucide-download"
             size="lg"
             @click="downloadResult"
+          />
+          <UButton
+            v-if="limitExceeded"
+            :label="t('gifToSprite.adModal.watch')"
+            icon="i-lucide-arrow-right"
+            size="lg"
+            @click="showAdModal = true"
           />
           <UButton
             :label="t('gifToSprite.result.reset')"
@@ -678,25 +696,18 @@ onUnmounted(() => {
   <UModal v-model:open="showAdModal">
     <template #content>
       <div class="p-6 text-center space-y-4">
-        <UIcon name="i-lucide-tv" class="text-4xl text-primary mx-auto" />
+        <UIcon name="i-lucide-heart" class="text-4xl text-primary mx-auto" />
         <h3 class="text-lg font-bold">
           {{ t('gifToSprite.adModal.title') }}
         </h3>
         <p class="text-sm text-muted">
           {{ t('gifToSprite.adModal.description') }}
         </p>
-
-        <!-- Ad placeholder -->
-        <div class="w-full h-[250px] bg-muted/30 rounded-lg flex items-center justify-center text-muted text-xs">
-          Ad
-        </div>
-
         <div class="flex justify-center gap-3 pt-2">
           <UButton
             :label="t('gifToSprite.adModal.watch')"
-            icon="i-lucide-play"
             size="lg"
-            @click="onAdWatched"
+            @click="onAdConfirm"
           />
           <UButton
             :label="t('gifToSprite.adModal.close')"

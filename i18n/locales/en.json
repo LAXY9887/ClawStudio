@@ -69,6 +69,23 @@
       "content": "If you have any questions about this privacy policy, please email:"
     }
   },
+  "waitingRoom": {
+    "title": "Your Download",
+    "countdown": "Please wait {seconds} seconds...",
+    "ready": "Your file is ready!",
+    "download": "Download",
+    "redirecting": "Download started! Redirecting back...",
+    "tipsTitle": "Did You Know? Useful Tips",
+    "tips": [
+      "Use the **Padding** option to add pixel gaps between frames in your sprite sheet. This prevents texture bleeding — a common rendering artifact in game engines where adjacent frames leak into each other.",
+      "Enable **Remove Background** to automatically detect and remove solid-color backgrounds from each frame. The algorithm samples the four corner pixels to find the background color.",
+      "The hex color picker includes an **eyedropper tool** — click it to pick any color directly from the preview image or anywhere on your screen. This is perfect for selecting the exact background color when auto-detection doesn't match.",
+      "Adjust the **Tolerance** slider to control how aggressively similar colors are removed. A value of 30 works for most clean backgrounds, while 50–80 handles gradients or compression artifacts."
+    ],
+    "apiTitle": "Integrate with Your Workflow",
+    "apiPromo": "Need to automate this? The Easy GIF2Sprite API on RapidAPI lets you integrate the same conversion engine into your own applications and workflows.",
+    "apiCta": "View API on RapidAPI"
+  },
   "home": {
     "title": "Free Online Dev Tools",
     "tools": {
@@ -111,10 +128,10 @@
       "toleranceHint": "How similar a pixel must be to the background color to be removed. Low values (0–30) for clean backgrounds, higher values (50–80) for gradients or compression artifacts."
     },
     "adModal": {
-      "title": "🥺 Please support us by watching this Ad. 🌸",
-      "description": "Watch a short ad to unlock 5 more conversions. Thank you for supporting this free tool!",
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!",
       "remaining": "{count} free conversion remaining | {count} free conversions remaining",
-      "watch": "Watch Ad",
+      "watch": "Confirm",
       "close": "Close"
     },
     "status": {
