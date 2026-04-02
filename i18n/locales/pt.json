@@ -1,0 +1,299 @@
+{
+  "site": {
+    "name": "ClawStudiouo",
+    "slogan": "Ferramentas de desenvolvimento online gratuitas"
+  },
+  "nav": {
+    "home": "Início",
+    "tools": "Ferramentas"
+  },
+  "footer": {
+    "copyright": "© {year} ClawStudiouo. Todos os direitos reservados.",
+    "terms": "Termos de serviço",
+    "privacy": "Política de privacidade",
+    "contact": "Contacte-nos",
+    "termsContent": {
+      "intro": "Ao usar o ClawStudiouo, você concorda com os seguintes termos:",
+      "items": [
+        "**Uso permitido.** Este site e suas ferramentas são fornecidos apenas para fins legais. Você pode usá-los para processar arquivos que possui ou sobre os quais tem direitos, ou arquivos de acesso público.",
+        "**Uso proibido.** Você não pode usar este site para processar conteúdo que seja ilegal, infrator ou que viole direitos de propriedade intelectual de terceiros. Abuso automatizado, evasão de limites de uso ou tentativas de sobrecarregar o serviço são proibidos.",
+        "**Sem armazenamento.** O ClawStudiouo não armazena os arquivos enviados nem os resultados processados. Todo o processamento ocorre na memória e os dados são descartados após cada solicitação.",
+        "**Sem garantia.** Todas as ferramentas são fornecidas \"como estão\", sem garantia de qualquer tipo. A qualidade da saída depende dos arquivos de entrada e dos parâmetros selecionados.",
+        "**Limitação de responsabilidade.** O provedor não é responsável por quaisquer danos diretos, indiretos ou consequentes decorrentes do uso deste site ou de suas ferramentas.",
+        "**Alterações.** Estes termos e a funcionalidade do site podem ser atualizados a qualquer momento. O uso continuado após as alterações constitui aceitação."
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Política de privacidade",
+    "seoTitle": "Política de privacidade - ClawStudiouo",
+    "lastUpdated": "Última atualização: 2 de abril de 2026",
+    "intro": "Bem-vindo ao ClawStudiouo (doravante referido como \"este site\"). Levamos sua privacidade muito a sério. Esta política explica como coletamos, usamos e protegemos suas informações pessoais.",
+    "section1": {
+      "title": "1. Informações que coletamos",
+      "item1Title": "Informações não pessoais:",
+      "item1": "Quando você usa nossas ferramentas de conversão de imagens (como GIF to Spritesheet), não armazenamos permanentemente seus arquivos originais em nossos servidores. Todas as imagens enviadas são usadas apenas para processamento em tempo real e são automaticamente excluídas logo após a conclusão do processamento.",
+      "item2Title": "Registros de navegação:",
+      "item2": "Registramos seu endereço IP, tipo de navegador, horário da visita e páginas clicadas para análise de tráfego do site e otimização da experiência do usuário."
+    },
+    "section2": {
+      "title": "2. Uso de cookies",
+      "intro": "Este site usa cookies para armazenar certas informações e fornecer melhores serviços:",
+      "item1Title": "Cookies funcionais:",
+      "item1": "Usados para registrar suas preferências de uso (como configurações de ferramentas e contagem de uso).",
+      "item2Title": "Cookies de publicidade:",
+      "item2": "Fazemos parceria com provedores terceiros como o Google para exibir anúncios baseados em suas visitas anteriores a este site ou outros sites por meio de cookies."
+    },
+    "section3": {
+      "title": "3. Google AdSense e publicidade de terceiros",
+      "item1": "O Google, como provedor terceiro, usa cookies para exibir anúncios neste site.",
+      "item2": "O uso de cookies de publicidade pelo Google permite que o Google e seus parceiros exibam anúncios aos usuários com base em suas visitas a este site e/ou outros sites na internet.",
+      "item3": "Você pode desativar a publicidade personalizada visitando a página de",
+      "item3Link": "Configurações de anúncios do Google",
+      "item3After": "."
+    },
+    "section4": {
+      "title": "4. Segurança de dados",
+      "content": "Adotamos medidas de segurança padrão (como transmissão criptografada SSL) para proteger seus dados. No entanto, a transmissão pela internet não é 100% segura e não podemos garantir segurança absoluta."
+    },
+    "section5": {
+      "title": "5. Links para terceiros",
+      "content": "Este site pode conter links para outros sites (como RapidAPI). Observe que não somos responsáveis pelas práticas de privacidade desses sites externos e recomendamos que você leia suas respectivas políticas de privacidade."
+    },
+    "section6": {
+      "title": "6. Seus direitos",
+      "content": "De acordo com as leis aplicáveis (como o RGPD), você tem o direito de solicitar acesso, correção ou exclusão de dados pessoais que mantemos sobre você. Se tiver alguma dúvida, entre em contato conosco usando as informações abaixo."
+    },
+    "section7": {
+      "title": "7. Contacte-nos",
+      "content": "Se tiver alguma dúvida sobre esta política de privacidade, envie um e-mail para:"
+    }
+  },
+  "waitingRoom": {
+    "title": "Seu download",
+    "countdown": "Por favor aguarde {seconds} segundos...",
+    "ready": "Seu arquivo está pronto!",
+    "download": "Baixar",
+    "redirecting": "Download iniciado! Redirecionando...",
+    "tipsTitle": "Você sabia? Dicas úteis",
+    "tips": [
+      "Use a opção **Padding** para adicionar espaços de pixels entre os quadros na sua folha de sprites. Isso evita o sangramento de textura — um artefato de renderização comum em motores de jogos onde quadros adjacentes vazam um para o outro.",
+      "Ative **Remove Background** para detectar e remover automaticamente fundos de cor sólida de cada quadro. O algoritmo amostra os quatro pixels dos cantos para identificar a cor de fundo.",
+      "O seletor de cor hexadecimal inclui uma **ferramenta conta-gotas** — clique nela para escolher qualquer cor diretamente da imagem de visualização ou de qualquer lugar na sua tela. Perfeito para selecionar a cor de fundo exata quando a detecção automática não corresponde.",
+      "Ajuste o controle deslizante **Tolerance** para controlar a intensidade da remoção de cores semelhantes. Um valor de 30 funciona para a maioria dos fundos limpos, enquanto 50–80 lida com gradientes ou artefatos de compressão."
+    ],
+    "apiTitle": "Integre ao seu fluxo de trabalho",
+    "apiPromo": "Precisa de automação? A API Easy GIF2Sprite no RapidAPI permite integrar o mesmo motor de conversão em suas próprias aplicações e fluxos de trabalho.",
+    "apiCta": "Ver API no RapidAPI"
+  },
+  "home": {
+    "title": "Ferramentas de desenvolvimento online gratuitas",
+    "tools": {
+      "gifToSprite": {
+        "title": "GIF to Spritesheet",
+        "description": "Converta animações GIF em folhas de sprites ou PNGs de quadros individuais."
+      }
+    }
+  },
+  "gifToSprite": {
+    "title": "Conversor de GIF para folha de sprites PNG",
+    "subtitle": "Converta animações GIF em uma folha de sprites PNG ou extraia quadros individuais como arquivos PNG.",
+    "mode": {
+      "spritesheet": "Folha de sprites",
+      "frames": "Quadros"
+    },
+    "upload": {
+      "title": "Arraste seu GIF aqui ou clique para selecionar",
+      "button": "Selecionar arquivo GIF",
+      "limit": "Tamanho máximo do arquivo: 20 MB",
+      "accept": "Apenas arquivos .gif são aceitos",
+      "changeFile": "Clique para escolher um arquivo diferente"
+    },
+    "convert": "Converter!",
+    "url": {
+      "placeholder": "Ou cole uma URL de GIF..."
+    },
+    "options": {
+      "title": "Opções avançadas",
+      "columns": "Colunas",
+      "columnsHint": "Deixe vazio para layout automático",
+      "padding": "Espaçamento (px)",
+      "removeBg": "Remover fundo",
+      "removeBgHint": "Detecta e remove automaticamente fundos de cor sólida de cada quadro, substituindo-os por transparência.",
+      "bgColor": "Cor de fundo",
+      "bgColorAuto": "Detecção automática a partir dos pixels dos cantos",
+      "bgColorCustom": "Especificar uma cor hexadecimal",
+      "bgColorHint": "\"Automático\" amostra os quatro cantos de cada quadro para identificar a cor de fundo. Escolha uma cor personalizada se a detecção automática não corresponder ao seu GIF.",
+      "tolerance": "Tolerância",
+      "toleranceHint": "Quão semelhante um pixel deve ser à cor de fundo para ser removido. Valores baixos (0–30) para fundos limpos, valores mais altos (50–80) para gradientes ou artefatos de compressão."
+    },
+    "adModal": {
+      "title": "🥺 Por favor, apoie-nos. 🌸",
+      "description": "Desbloqueie mais 3 conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "status": {
+      "uploading": "Enviando...",
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar novamente"
+    },
+    "result": {
+      "spritesheet": {
+        "title": "Visualização da folha de sprites",
+        "info": "{width} × {height} px • {size}",
+        "download": "Baixar folha de sprites"
+      },
+      "frames": {
+        "title": "Quadros extraídos",
+        "info": "Arquivo ZIP contendo quadros PNG individuais",
+        "download": "Baixar ZIP"
+      },
+      "reset": "Converter outro GIF"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de GIF para folha de sprites PNG",
+        "content": "Deseja integrar a conversão de GIF para folha de sprites em sua própria aplicação? A API Easy GIF2Sprite fornece o mesmo poderoso motor de conversão por trás desta ferramenta como uma API RESTful. Envie um arquivo GIF ou passe uma URL e receba uma folha de sprites PNG ou quadros individuais em segundos — tudo por meio de uma simples solicitação HTTP.",
+        "content2": "A API suporta todas as funcionalidades disponíveis nesta ferramenta: layouts de grade personalizados, espaçamento ajustável entre quadros, remoção automática de fundo e extração de quadros em ZIP. É ideal para pipelines de recursos de jogos, fluxos de trabalho automatizados de geração de sprites, ferramentas de processamento em lote e qualquer aplicação que precise de conversão programática de GIF para PNG.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o tutorial completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "Dois endpoints: /to-spritesheet (PNG) e /to-frames (ZIP)",
+          "input": "Aceita envio de arquivos ou URLs de GIF públicas",
+          "params": "Controle total de parâmetros: colunas, espaçamento, remoção de fundo, tolerância",
+          "limit": "Suporta arquivos GIF de até 20 MB",
+          "formats": "Compatível com os padrões GIF87a e GIF89a",
+          "response": "Tempos de resposta rápidos com auto-scaling do Cloud Run"
+        }
+      },
+      "whatIs": {
+        "title": "O que é uma folha de sprites?",
+        "content": "Uma folha de sprites (também chamada de spritesheet ou atlas de texturas) é um único arquivo de imagem que contém múltiplas imagens menores — tipicamente quadros de animação — dispostas em uma grade. Em vez de carregar dezenas de arquivos de imagem individuais, motores de jogos e navegadores web carregam uma folha de sprites e exibem cada quadro deslocando a região visível. Isso reduz drasticamente as solicitações HTTP, diminui a sobrecarga de memória e mantém suas animações suaves e eficientes.",
+        "content2": "Folhas de sprites são uma técnica fundamental no desenvolvimento de jogos 2D, animação CSS e motion graphics. Motores como Unity, Godot, Phaser e PixiJS suportam folhas de sprites nativamente. Na web, desenvolvedores CSS usam a propriedade background-position para percorrer os quadros, criando animações leves sem JavaScript ou arquivos de vídeo."
+      },
+      "whatIsFrames": {
+        "title": "O que é extração de quadros?",
+        "content": "Extração de quadros é o processo de dividir uma animação GIF em seus quadros individuais, cada um salvo como uma imagem PNG separada. Isso é útil quando você precisa editar quadros específicos, resequenciar uma animação ou importar quadros individualmente em um motor de jogos ou editor de vídeo.",
+        "content2": "Nossa ferramenta empacota todos os quadros extraídos em um único arquivo ZIP para download conveniente. Cada quadro é nomeado com um índice preenchido com zeros (por exemplo, frame_00.png, frame_01.png) para que sejam classificados corretamente em qualquer gerenciador de arquivos ou diálogo de importação."
+      },
+      "howTo": {
+        "title": "Como converter um GIF em uma folha de sprites",
+        "step1": {
+          "title": "1. Escolha o modo de saída",
+          "content": "Selecione \"Folha de sprites\" para combinar todos os quadros em uma única grade PNG, ou \"Quadros\" para extrair cada quadro como um PNG individual empacotado em um arquivo ZIP."
+        },
+        "step2": {
+          "title": "2. Envie seu GIF",
+          "content": "Arraste e solte seu arquivo GIF na área de envio, ou clique para abrir o seletor de arquivos. Você também pode colar uma URL de GIF publicamente acessível se seu arquivo estiver hospedado online. Aceitamos formatos GIF87a e GIF89a de até 20 MB."
+        },
+        "step3": {
+          "title": "3. Configure as opções (opcional)",
+          "content": "Expanda o painel de Opções avançadas para ajustar sua saída. Para folhas de sprites, você pode definir o número de colunas na grade e o espaçamento em pixels entre os quadros. Você também pode ativar a remoção automática de fundo, que usa um algoritmo inteligente para detectar e remover fundos de cor sólida de cada quadro."
+        },
+        "step4": {
+          "title": "4. Baixe seu resultado",
+          "content": "Após a conclusão da conversão, as folhas de sprites são exibidas como uma imagem de visualização em largura total que você pode inspecionar antes de baixar. Para extração de quadros, o arquivo ZIP é baixado automaticamente. Clique em \"Converter outro GIF\" para recomeçar com um novo arquivo."
+        }
+      },
+      "features": {
+        "title": "Funcionalidades",
+        "items": {
+          "spritesheet": {
+            "title": "Geração de folha de sprites",
+            "content": "Combina todos os quadros GIF em uma única imagem PNG disposta em uma grade personalizável. O layout padrão calcula automaticamente a disposição mais próxima do quadrado, ou você pode especificar o número exato de colunas."
+          },
+          "frames": {
+            "title": "Extração de quadros individuais",
+            "content": "Extrai cada quadro de uma animação GIF como um arquivo PNG separado. Todos os quadros são empacotados em um arquivo ZIP com nomes de arquivo preenchidos com zeros para classificação correta."
+          },
+          "columns": {
+            "title": "Layout de grade personalizado",
+            "content": "Controle como os quadros são dispostos na sua folha de sprites especificando o número de colunas. Deixe no automático para obter uma grade equilibrada e quase quadrada, ou defina um número específico para layouts de faixa horizontal (1 linha) ou faixas verticais (1 coluna)."
+          },
+          "padding": {
+            "title": "Espaçamento entre quadros",
+            "content": "Adiciona espaços de pixels entre os quadros na sua folha de sprites. O espaçamento previne o sangramento de textura — um artefato comum em motores de jogos onde pixels de quadros adjacentes vazam uns para os outros durante a renderização. Um espaçamento de 1–2 px geralmente é suficiente."
+          },
+          "removeBg": {
+            "title": "Remoção automática de fundo",
+            "content": "Remove fundos de cor sólida de cada quadro antes da composição. O algoritmo amostra os quatro pixels dos cantos de cada quadro para detectar automaticamente a cor de fundo, então usa um preenchimento por inundação a partir de todos os cantos para tornar os pixels correspondentes transparentes. Ajuste o controle deslizante de tolerância (0–255) para controlar a intensidade da remoção de cores semelhantes."
+          },
+          "url": {
+            "title": "Converter a partir de URL",
+            "content": "Não tem o arquivo GIF no seu dispositivo? Cole uma URL publicamente acessível e nós baixaremos e converteremos diretamente. Especialmente prático em dispositivos móveis ou ao trabalhar com GIFs hospedados em plataformas de compartilhamento de imagens."
+          },
+          "privacy": {
+            "title": "Privacidade em primeiro lugar",
+            "content": "Seus arquivos são processados no servidor e nunca armazenados. Uma vez que o resultado convertido é retornado ao seu navegador, o envio original é imediatamente descartado. Sem registro, sem rastreamento, sem retenção de dados."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "gamedev": {
+            "title": "Desenvolvimento de jogos 2D",
+            "content": "Folhas de sprites são o formato padrão para animações de personagens 2D, efeitos de partículas e elementos de UI em motores de jogos. Converta seus mockups GIF ou animações de pixel art em folhas de sprites prontas para o motor para Unity, Godot, Phaser, GameMaker ou RPG Maker. Defina contagens de colunas e espaçamentos personalizados para corresponder aos requisitos de importação do seu motor."
+          },
+          "css": {
+            "title": "Animações CSS de sprites",
+            "content": "Crie animações CSS leves sem arquivos de vídeo ou bibliotecas JavaScript. Use uma folha de sprites como imagem de fundo CSS e anime-a com a função de temporização steps() e background-position. Esta técnica é amplamente usada para indicadores de carregamento, ícones animados e micro-interações na web."
+          },
+          "motionGraphics": {
+            "title": "Motion graphics e edição de vídeo",
+            "content": "Extraia quadros individuais de um GIF para importar em editores de vídeo como After Effects, Premiere Pro ou DaVinci Resolve. A extração de quadros dá controle total para re-temporizar, recolorir ou compor cada quadro independentemente."
+          },
+          "emotes": {
+            "title": "Emotes e folhas de stickers",
+            "content": "Combine quadros de emotes animados ou stickers em uma única folha de sprites para plataformas de chat, overlays de streaming ou ferramentas de redes sociais. A função de remoção automática de fundo separa claramente os personagens de fundos de cor sólida."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas frequentes",
+        "items": {
+          "formats": {
+            "q": "Quais formatos de arquivo são suportados?",
+            "a": "Aceitamos apenas arquivos GIF (padrões GIF87a e GIF89a). A saída é sempre PNG — uma única folha de sprites PNG ou múltiplos PNGs em um arquivo ZIP."
+          },
+          "maxSize": {
+            "q": "Qual é o tamanho máximo do arquivo?",
+            "a": "O tamanho máximo do arquivo de entrada é 20 MB. Isso se aplica tanto ao envio direto de arquivos quanto a URLs de GIF. A maioria dos GIFs animados está bem dentro deste limite."
+          },
+          "maxFrames": {
+            "q": "Há um limite no número de quadros?",
+            "a": "Não há um limite rígido na contagem de quadros. No entanto, GIFs com centenas de quadros produzirão folhas de sprites muito grandes. Para animações extremamente longas, considere usar o modo Quadros para extrair PNGs individuais."
+          },
+          "transparency": {
+            "q": "A saída preserva a transparência?",
+            "a": "Sim. Se seu GIF original tem regiões transparentes, elas são preservadas no PNG de saída. Se você ativar a remoção de fundo, a cor de fundo detectada é substituída por transparência."
+          },
+          "autoColumns": {
+            "q": "Como funciona o layout automático de colunas?",
+            "a": "Quando você deixa o campo de Colunas vazio, a ferramenta calcula o número de colunas como o teto da raiz quadrada da contagem total de quadros. Isso produz o layout de grade mais próximo do quadrado, que é ideal para a memória de textura e fácil de trabalhar na maioria dos motores de jogos."
+          },
+          "bgRemoval": {
+            "q": "Como funciona a remoção automática de fundo?",
+            "a": "O algoritmo amostra os valores de cor RGBA dos quatro pixels dos cantos de cada quadro. Se os quatro cantos estiverem dentro do limiar de tolerância entre si, sua cor média é usada como alvo de fundo. Em seguida, um preenchimento por inundação é iniciado a partir de todos os quatro cantos, removendo todos os pixels conectados dentro do intervalo de tolerância. Se os cantos forem muito diferentes entre si, o quadro é deixado inalterado para evitar a remoção de conteúdo do primeiro plano."
+          },
+          "tolerance": {
+            "q": "Qual valor de tolerância devo usar?",
+            "a": "O valor padrão de 30 funciona bem para a maioria dos GIFs com fundos limpos de cor sólida. Para GIFs com gradientes leves ou artefatos de compressão no fundo, tente aumentar para 50–80. Valores acima de 100 tornam-se agressivos e podem remover pixels do primeiro plano semelhantes à cor de fundo."
+          },
+          "free": {
+            "q": "Esta ferramenta é gratuita?",
+            "a": "Sim, esta ferramenta é completamente gratuita sem necessidade de registro."
+          },
+          "api": {
+            "q": "Há uma API disponível?",
+            "a": "Sim. Esta ferramenta é alimentada pela API Easy GIF2Sprite, que está disponível no RapidAPI para desenvolvedores que desejam integrar a conversão de GIF para sprites em suas próprias aplicações e fluxos de trabalho."
+          }
+        }
+      }
+    }
+  }
+}

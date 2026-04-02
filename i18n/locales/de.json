@@ -1,0 +1,299 @@
+{
+  "site": {
+    "name": "ClawStudiouo",
+    "slogan": "Kostenlose Online-Entwicklertools"
+  },
+  "nav": {
+    "home": "Startseite",
+    "tools": "Tools"
+  },
+  "footer": {
+    "copyright": "© {year} ClawStudiouo. Alle Rechte vorbehalten.",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzrichtlinie",
+    "contact": "Kontakt",
+    "termsContent": {
+      "intro": "Durch die Nutzung von ClawStudiouo stimmen Sie den folgenden Bedingungen zu:",
+      "items": [
+        "**Erlaubte Nutzung.** Diese Website und ihre Tools werden ausschließlich für rechtmäßige Zwecke bereitgestellt. Sie dürfen sie zur Verarbeitung von Dateien verwenden, die Sie besitzen oder an denen Sie Rechte haben, oder öffentlich zugängliche Dateien.",
+        "**Verbotene Nutzung.** Sie dürfen diese Website nicht zur Verarbeitung von Inhalten verwenden, die illegal sind, Rechte verletzen oder gegen geistiges Eigentum Dritter verstoßen. Automatisierter Missbrauch, Umgehung von Nutzungsbeschränkungen oder Versuche, den Dienst zu überlasten, sind untersagt.",
+        "**Keine Speicherung.** ClawStudiouo speichert keine hochgeladenen Dateien oder verarbeiteten Ergebnisse. Die gesamte Verarbeitung erfolgt im Arbeitsspeicher und die Daten werden nach jeder Anfrage verworfen.",
+        "**Keine Gewährleistung.** Alle Tools werden ohne jegliche Gewährleistung \"wie besehen\" bereitgestellt. Die Ausgabequalität hängt von den Eingabedateien und den gewählten Parametern ab.",
+        "**Haftungsbeschränkung.** Der Anbieter haftet nicht für direkte, indirekte oder Folgeschäden, die aus der Nutzung dieser Website oder ihrer Tools entstehen.",
+        "**Änderungen.** Diese Bedingungen und die Website-Funktionalität können jederzeit aktualisiert werden. Die fortgesetzte Nutzung nach Änderungen gilt als Zustimmung."
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "seoTitle": "Datenschutzrichtlinie - ClawStudiouo",
+    "lastUpdated": "Zuletzt aktualisiert: 2. April 2026",
+    "intro": "Willkommen bei ClawStudiouo (nachfolgend \"diese Website\"). Wir nehmen Ihre Privatsphäre sehr ernst. Diese Richtlinie erklärt, wie wir Ihre personenbezogenen Daten erheben, verwenden und schützen.",
+    "section1": {
+      "title": "1. Informationen, die wir erheben",
+      "item1Title": "Nicht-personenbezogene Informationen:",
+      "item1": "Wenn Sie unsere Bildkonvertierungstools (wie GIF to Spritesheet) verwenden, speichern wir Ihre Originaldateien nicht dauerhaft auf unseren Servern. Alle hochgeladenen Bilder werden nur für die Echtzeitverarbeitung verwendet und nach Abschluss der Verarbeitung automatisch gelöscht.",
+      "item2Title": "Browsing-Aufzeichnungen:",
+      "item2": "Wir zeichnen Ihre IP-Adresse, Ihren Browsertyp, die Besuchszeit und angeklickte Seiten auf, um den Website-Traffic zu analysieren und die Benutzererfahrung zu optimieren."
+    },
+    "section2": {
+      "title": "2. Verwendung von Cookies",
+      "intro": "Diese Website verwendet Cookies, um bestimmte Informationen zu speichern und bessere Dienste bereitzustellen:",
+      "item1Title": "Funktionale Cookies:",
+      "item1": "Werden verwendet, um Ihre Nutzungseinstellungen (wie Tool-Einstellungen und Nutzungshäufigkeit) zu speichern.",
+      "item2Title": "Werbe-Cookies:",
+      "item2": "Wir arbeiten mit Drittanbietern wie Google zusammen, um über Cookies Werbung basierend auf Ihren früheren Besuchen auf dieser oder anderen Websites zu schalten."
+    },
+    "section3": {
+      "title": "3. Google AdSense und Drittanbieter-Werbung",
+      "item1": "Google verwendet als Drittanbieter Cookies, um Werbung auf dieser Website zu schalten.",
+      "item2": "Die Verwendung von Werbe-Cookies durch Google ermöglicht es Google und seinen Partnern, Nutzern Werbung basierend auf ihren Besuchen auf dieser und/oder anderen Websites im Internet anzuzeigen.",
+      "item3": "Sie können personalisierte Werbung deaktivieren, indem Sie die Seite",
+      "item3Link": "Google-Anzeigeneinstellungen",
+      "item3After": "besuchen."
+    },
+    "section4": {
+      "title": "4. Datensicherheit",
+      "content": "Wir ergreifen standardmäßige Sicherheitsmaßnahmen (wie SSL-verschlüsselte Übertragung), um Ihre Daten zu schützen. Die Datenübertragung über das Internet ist jedoch nicht zu 100 % sicher, und wir können keine absolute Sicherheit garantieren."
+    },
+    "section5": {
+      "title": "5. Links zu Dritten",
+      "content": "Diese Website kann Links zu anderen Websites (wie RapidAPI) enthalten. Bitte beachten Sie, dass wir nicht für die Datenschutzpraktiken dieser externen Websites verantwortlich sind, und wir empfehlen Ihnen, deren jeweilige Datenschutzrichtlinien zu lesen."
+    },
+    "section6": {
+      "title": "6. Ihre Rechte",
+      "content": "Gemäß geltendem Recht (wie der DSGVO) haben Sie das Recht, Zugang zu, Berichtigung oder Löschung der von uns über Sie gespeicherten personenbezogenen Daten zu verlangen. Bei Fragen kontaktieren Sie uns bitte über die nachstehenden Informationen."
+    },
+    "section7": {
+      "title": "7. Kontakt",
+      "content": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, senden Sie bitte eine E-Mail an:"
+    }
+  },
+  "waitingRoom": {
+    "title": "Ihr Download",
+    "countdown": "Bitte warten Sie {seconds} Sekunden...",
+    "ready": "Ihre Datei ist bereit!",
+    "download": "Herunterladen",
+    "redirecting": "Download gestartet! Weiterleitung...",
+    "tipsTitle": "Wussten Sie schon? Nützliche Tipps",
+    "tips": [
+      "Verwenden Sie die **Padding**-Option, um Pixel-Abstände zwischen den Frames in Ihrem Sprite Sheet hinzuzufügen. Dies verhindert Texture Bleeding — ein häufiges Rendering-Artefakt in Spiel-Engines, bei dem benachbarte Frames ineinander übergehen.",
+      "Aktivieren Sie **Remove Background**, um einfarbige Hintergründe automatisch aus jedem Frame zu erkennen und zu entfernen. Der Algorithmus untersucht die vier Eckpixel, um die Hintergrundfarbe zu identifizieren.",
+      "Der Hex-Farbwähler enthält ein **Pipetten-Tool** — klicken Sie darauf, um eine Farbe direkt aus dem Vorschaubild oder von einer beliebigen Stelle auf Ihrem Bildschirm auszuwählen. Perfekt geeignet, um die exakte Hintergrundfarbe auszuwählen, wenn die automatische Erkennung nicht übereinstimmt.",
+      "Passen Sie den **Tolerance**-Regler an, um zu steuern, wie aggressiv ähnliche Farben entfernt werden. Ein Wert von 30 funktioniert für die meisten sauberen Hintergründe, während 50–80 Farbverläufe oder Kompressionsartefakte bewältigt."
+    ],
+    "apiTitle": "In Ihren Workflow integrieren",
+    "apiPromo": "Automatisierung benötigt? Die Easy GIF2Sprite API auf RapidAPI ermöglicht es Ihnen, dieselbe Konvertierungs-Engine in Ihre eigenen Anwendungen und Workflows zu integrieren.",
+    "apiCta": "API auf RapidAPI ansehen"
+  },
+  "home": {
+    "title": "Kostenlose Online-Entwicklertools",
+    "tools": {
+      "gifToSprite": {
+        "title": "GIF to Spritesheet",
+        "description": "Konvertieren Sie GIF-Animationen in Sprite Sheets oder einzelne Frame-PNGs."
+      }
+    }
+  },
+  "gifToSprite": {
+    "title": "GIF-zu-PNG-Sprite-Sheet-Konverter",
+    "subtitle": "Konvertieren Sie GIF-Animationen in ein PNG-Sprite-Sheet oder extrahieren Sie einzelne Frames als PNG-Dateien.",
+    "mode": {
+      "spritesheet": "Sprite Sheet",
+      "frames": "Frames"
+    },
+    "upload": {
+      "title": "GIF hierher ziehen oder klicken zum Auswählen",
+      "button": "GIF-Datei auswählen",
+      "limit": "Maximale Dateigröße: 20 MB",
+      "accept": "Nur .gif-Dateien werden akzeptiert",
+      "changeFile": "Klicken, um eine andere Datei auszuwählen"
+    },
+    "convert": "Konvertieren!",
+    "url": {
+      "placeholder": "Oder fügen Sie eine GIF-URL ein..."
+    },
+    "options": {
+      "title": "Erweiterte Optionen",
+      "columns": "Spalten",
+      "columnsHint": "Leer lassen für automatisches Layout",
+      "padding": "Abstand (px)",
+      "removeBg": "Hintergrund entfernen",
+      "removeBgHint": "Erkennt und entfernt automatisch einfarbige Hintergründe aus jedem Frame und ersetzt sie durch Transparenz.",
+      "bgColor": "Hintergrundfarbe",
+      "bgColorAuto": "Automatische Erkennung aus Eckpixeln",
+      "bgColorCustom": "Hex-Farbe angeben",
+      "bgColorHint": "\"Automatisch\" untersucht die vier Ecken jedes Frames, um die Hintergrundfarbe zu identifizieren. Wählen Sie eine benutzerdefinierte Farbe, wenn die automatische Erkennung nicht mit Ihrem GIF übereinstimmt.",
+      "tolerance": "Toleranz",
+      "toleranceHint": "Wie ähnlich ein Pixel der Hintergrundfarbe sein muss, um entfernt zu werden. Niedrige Werte (0–30) für saubere Hintergründe, höhere Werte (50–80) für Farbverläufe oder Kompressionsartefakte."
+    },
+    "adModal": {
+      "title": "🥺 Bitte unterstützen Sie uns. 🌸",
+      "description": "Schalten Sie 3 weitere Konvertierungen frei, indem Sie unsere Artikel lesen. Vielen Dank für die Unterstützung dieses kostenlosen Tools!",
+      "remaining": "{count} kostenlose Konvertierung verbleibend | {count} kostenlose Konvertierungen verbleibend",
+      "watch": "Bestätigen",
+      "close": "Schließen"
+    },
+    "status": {
+      "uploading": "Wird hochgeladen...",
+      "converting": "Wird konvertiert...",
+      "error": "Konvertierung fehlgeschlagen",
+      "retry": "Erneut versuchen"
+    },
+    "result": {
+      "spritesheet": {
+        "title": "Sprite-Sheet-Vorschau",
+        "info": "{width} × {height} px • {size}",
+        "download": "Sprite Sheet herunterladen"
+      },
+      "frames": {
+        "title": "Frames extrahiert",
+        "info": "ZIP-Archiv mit einzelnen PNG-Frames",
+        "download": "ZIP herunterladen"
+      },
+      "reset": "Weiteres GIF konvertieren"
+    },
+    "seo": {
+      "api": {
+        "title": "GIF-zu-PNG-Sprite-Sheet-API verwenden",
+        "content": "Möchten Sie die GIF-zu-Spritesheet-Konvertierung in Ihre eigene Anwendung integrieren? Die Easy GIF2Sprite API bietet dieselbe leistungsstarke Konvertierungs-Engine hinter diesem Tool als RESTful API. Laden Sie eine GIF-Datei hoch oder übergeben Sie eine URL und erhalten Sie in Sekunden ein PNG-Sprite-Sheet oder einzelne Frames — alles über eine einfache HTTP-Anfrage.",
+        "content2": "Die API unterstützt alle in diesem Tool verfügbaren Funktionen: benutzerdefinierte Rasterlayouts, einstellbare Frame-Abstände, automatische Hintergrundentfernung und Frame-Extraktion als ZIP. Ideal für Game-Asset-Pipelines, automatisierte Sprite-Generierungs-Workflows, Stapelverarbeitungstools und jede Anwendung, die eine programmatische GIF-zu-PNG-Konvertierung benötigt.",
+        "cta": "API auf RapidAPI ansehen",
+        "tutorial": "Vollständiges Tutorial lesen",
+        "features": {
+          "title": "API-Highlights",
+          "endpoints": "Zwei Endpunkte: /to-spritesheet (PNG) und /to-frames (ZIP)",
+          "input": "Akzeptiert Datei-Uploads oder öffentliche GIF-URLs",
+          "params": "Volle Parameterkontrolle: Spalten, Abstand, Hintergrundentfernung, Toleranz",
+          "limit": "Unterstützt GIF-Dateien bis zu 20 MB",
+          "formats": "Kompatibel mit GIF87a- und GIF89a-Standards",
+          "response": "Schnelle Antwortzeiten mit Cloud Run Auto-Scaling"
+        }
+      },
+      "whatIs": {
+        "title": "Was ist ein Sprite Sheet?",
+        "content": "Ein Sprite Sheet (auch Spritesheet oder Texturatlas genannt) ist eine einzelne Bilddatei, die mehrere kleinere Bilder — typischerweise Animationsframes — in einem Raster angeordnet enthält. Anstatt Dutzende einzelner Bilddateien zu laden, laden Spiel-Engines und Webbrowser ein Sprite Sheet und zeigen jeden Frame an, indem sie den sichtbaren Bereich verschieben. Dies reduziert HTTP-Anfragen drastisch, senkt den Speicheroverhead und hält Ihre Animationen flüssig und effizient.",
+        "content2": "Sprite Sheets sind eine fundamentale Technik in der 2D-Spieleentwicklung, CSS-Animation und Motion Graphics. Engines wie Unity, Godot, Phaser und PixiJS unterstützen Sprite Sheets nativ. Im Web verwenden CSS-Entwickler die background-position-Eigenschaft, um durch Frames zu schalten und leichtgewichtige Animationen ohne JavaScript oder Videodateien zu erstellen."
+      },
+      "whatIsFrames": {
+        "title": "Was ist Frame-Extraktion?",
+        "content": "Frame-Extraktion ist der Prozess der Aufteilung einer GIF-Animation in ihre einzelnen Frames, wobei jeder als separates PNG-Bild gespeichert wird. Dies ist nützlich, wenn Sie bestimmte Frames bearbeiten, eine Animation neu sequenzieren oder Frames einzeln in eine Spiel-Engine oder einen Video-Editor importieren möchten.",
+        "content2": "Unser Tool verpackt alle extrahierten Frames in ein einzelnes ZIP-Archiv zum bequemen Download. Jeder Frame wird mit einem nullgefüllten Index benannt (z. B. frame_00.png, frame_01.png), sodass sie in jedem Dateimanager oder Importdialog korrekt sortiert werden."
+      },
+      "howTo": {
+        "title": "So konvertieren Sie ein GIF in ein Sprite Sheet",
+        "step1": {
+          "title": "1. Ausgabemodus wählen",
+          "content": "Wählen Sie \"Sprite Sheet\", um alle Frames in ein einzelnes PNG-Raster zu kombinieren, oder \"Frames\", um jeden Frame als einzelnes PNG in einer ZIP-Datei zu extrahieren."
+        },
+        "step2": {
+          "title": "2. GIF hochladen",
+          "content": "Ziehen Sie Ihre GIF-Datei per Drag & Drop in den Upload-Bereich oder klicken Sie, um den Dateiauswahldialog zu öffnen. Sie können auch eine öffentlich zugängliche GIF-URL einfügen, wenn Ihre Datei online gehostet ist. Wir akzeptieren sowohl GIF87a- als auch GIF89a-Formate bis zu 20 MB."
+        },
+        "step3": {
+          "title": "3. Optionen konfigurieren (optional)",
+          "content": "Erweitern Sie das Panel \"Erweiterte Optionen\", um Ihre Ausgabe feinzutunen. Für Sprite Sheets können Sie die Anzahl der Spalten im Raster und den Pixelabstand zwischen den Frames festlegen. Sie können auch die automatische Hintergrundentfernung aktivieren, die einen intelligenten Algorithmus verwendet, um einfarbige Hintergründe aus jedem Frame zu erkennen und zu entfernen."
+        },
+        "step4": {
+          "title": "4. Ergebnis herunterladen",
+          "content": "Nach Abschluss der Konvertierung wird das Sprite Sheet als Vorschaubild in voller Breite angezeigt, das Sie vor dem Herunterladen überprüfen können. Bei der Frame-Extraktion wird die ZIP-Datei automatisch heruntergeladen. Klicken Sie auf \"Weiteres GIF konvertieren\", um mit einer neuen Datei von vorne zu beginnen."
+        }
+      },
+      "features": {
+        "title": "Funktionen",
+        "items": {
+          "spritesheet": {
+            "title": "Sprite-Sheet-Generierung",
+            "content": "Kombiniert alle GIF-Frames in ein einzelnes PNG-Bild, das in einem anpassbaren Raster angeordnet ist. Das Standardlayout berechnet automatisch die annähernd quadratischste Anordnung, oder Sie können die genaue Spaltenanzahl angeben."
+          },
+          "frames": {
+            "title": "Einzelne Frame-Extraktion",
+            "content": "Extrahiert jeden Frame einer GIF-Animation als separate PNG-Datei. Alle Frames werden in einem ZIP-Archiv mit nullgefüllten Dateinamen für korrekte Sortierung verpackt."
+          },
+          "columns": {
+            "title": "Benutzerdefiniertes Rasterlayout",
+            "content": "Steuern Sie die Anordnung der Frames in Ihrem Sprite Sheet, indem Sie die Spaltenanzahl angeben. Lassen Sie es auf automatisch für ein ausgewogenes, annähernd quadratisches Raster, oder legen Sie eine bestimmte Zahl für horizontale Streifenlayouts (1 Zeile) oder vertikale Streifen (1 Spalte) fest."
+          },
+          "padding": {
+            "title": "Frame-Abstand",
+            "content": "Fügt Pixel-Abstände zwischen den Frames in Ihrem Sprite Sheet hinzu. Der Abstand verhindert Texture Bleeding — ein häufiges Artefakt in Spiel-Engines, bei dem Pixel benachbarter Frames während des Renderings ineinander übergehen. Ein Abstand von 1–2 px ist normalerweise ausreichend."
+          },
+          "removeBg": {
+            "title": "Automatische Hintergrundentfernung",
+            "content": "Entfernt einfarbige Hintergründe aus jedem Frame vor der Zusammensetzung. Der Algorithmus untersucht die vier Eckpixel jedes Frames, um die Hintergrundfarbe automatisch zu erkennen, und führt dann eine Flutfüllung von allen Ecken aus, um übereinstimmende Pixel transparent zu machen. Passen Sie den Toleranzregler (0–255) an, um die Aggressivität der Entfernung ähnlicher Farben zu steuern."
+          },
+          "url": {
+            "title": "Von URL konvertieren",
+            "content": "Keine GIF-Datei auf Ihrem Gerät? Fügen Sie eine öffentlich zugängliche URL ein und wir laden sie direkt herunter und konvertieren sie. Besonders praktisch auf Mobilgeräten oder bei der Arbeit mit GIFs auf Bild-Sharing-Plattformen."
+          },
+          "privacy": {
+            "title": "Datenschutz zuerst",
+            "content": "Ihre Dateien werden auf dem Server verarbeitet und niemals gespeichert. Sobald das konvertierte Ergebnis an Ihren Browser zurückgegeben wird, wird der ursprüngliche Upload sofort verworfen. Keine Registrierung, kein Tracking, keine Datenspeicherung."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Anwendungsfälle",
+        "items": {
+          "gamedev": {
+            "title": "2D-Spieleentwicklung",
+            "content": "Sprite Sheets sind das Standardformat für 2D-Charakteranimationen, Partikeleffekte und UI-Elemente in Spiel-Engines. Konvertieren Sie Ihre GIF-Mockups oder Pixel-Art-Animationen in engine-fertige Sprite Sheets für Unity, Godot, Phaser, GameMaker oder RPG Maker. Legen Sie benutzerdefinierte Spaltenanzahlen und Abstände fest, um den Importanforderungen Ihrer Engine zu entsprechen."
+          },
+          "css": {
+            "title": "CSS-Sprite-Animationen",
+            "content": "Erstellen Sie leichtgewichtige CSS-Animationen ohne Videodateien oder JavaScript-Bibliotheken. Verwenden Sie ein Sprite Sheet als CSS-Hintergrundbild und animieren Sie es mit der steps()-Timing-Funktion und background-position. Diese Technik wird häufig für Ladeanzeigen, animierte Icons und Mikro-Interaktionen im Web verwendet."
+          },
+          "motionGraphics": {
+            "title": "Motion Graphics und Videobearbeitung",
+            "content": "Extrahieren Sie einzelne Frames aus einem GIF zum Import in Video-Editoren wie After Effects, Premiere Pro oder DaVinci Resolve. Die Frame-Extraktion gibt Ihnen volle Kontrolle über Retiming, Umfärbung oder unabhängige Komposition jedes Frames."
+          },
+          "emotes": {
+            "title": "Emotes und Sticker Sheets",
+            "content": "Kombinieren Sie animierte Emotes oder Sticker-Frames in ein einzelnes Sprite Sheet für Chat-Plattformen, Streaming-Overlays oder Social-Media-Tools. Die automatische Hintergrundentfernung trennt Charaktere sauber von einfarbigen Hintergründen."
+          }
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "items": {
+          "formats": {
+            "q": "Welche Dateiformate werden unterstützt?",
+            "a": "Wir akzeptieren nur GIF-Dateien (GIF87a- und GIF89a-Standards). Die Ausgabe ist immer PNG — entweder ein einzelnes PNG-Sprite-Sheet oder mehrere PNGs in einem ZIP-Archiv."
+          },
+          "maxSize": {
+            "q": "Was ist die maximale Dateigröße?",
+            "a": "Die maximale Eingabedateigröße beträgt 20 MB. Dies gilt sowohl für direkte Datei-Uploads als auch für GIF-URLs. Die meisten animierten GIFs liegen deutlich innerhalb dieses Limits."
+          },
+          "maxFrames": {
+            "q": "Gibt es ein Limit für die Anzahl der Frames?",
+            "a": "Es gibt kein festes Limit für die Frame-Anzahl. GIFs mit Hunderten von Frames erzeugen jedoch sehr große Sprite Sheets. Für extrem lange Animationen sollten Sie den Frame-Modus verwenden, um einzelne PNGs zu extrahieren."
+          },
+          "transparency": {
+            "q": "Wird Transparenz in der Ausgabe beibehalten?",
+            "a": "Ja. Wenn Ihr Original-GIF transparente Bereiche hat, werden diese im Ausgabe-PNG beibehalten. Wenn Sie die Hintergrundentfernung aktivieren, wird die erkannte Hintergrundfarbe durch Transparenz ersetzt."
+          },
+          "autoColumns": {
+            "q": "Wie funktioniert das automatische Spaltenlayout?",
+            "a": "Wenn Sie das Spaltenfeld leer lassen, berechnet das Tool die Spaltenanzahl als aufgerundete Quadratwurzel der Gesamtframezahl. Dies ergibt das annähernd quadratischste Rasterlayout, das für den Texturspeicher optimal ist und in den meisten Spiel-Engines einfach zu handhaben ist."
+          },
+          "bgRemoval": {
+            "q": "Wie funktioniert die automatische Hintergrundentfernung?",
+            "a": "Der Algorithmus untersucht die RGBA-Farbwerte der vier Eckpixel jedes Frames. Wenn alle vier Ecken innerhalb der Toleranzschwelle zueinander liegen, wird deren Durchschnittsfarbe als Hintergrundziel verwendet. Anschließend wird von allen vier Ecken eine Flutfüllung gestartet, die alle verbundenen Pixel innerhalb des Toleranzbereichs entfernt. Wenn die Ecken zu unterschiedlich sind, bleibt der Frame unverändert, um das Entfernen von Vordergrundinhalten zu vermeiden."
+          },
+          "tolerance": {
+            "q": "Welchen Toleranzwert sollte ich verwenden?",
+            "a": "Der Standardwert von 30 funktioniert gut für die meisten GIFs mit sauberen, einfarbigen Hintergründen. Für GIFs mit leichten Farbverläufen oder Kompressionsartefakten im Hintergrund versuchen Sie, auf 50–80 zu erhöhen. Werte über 100 werden aggressiv und können Vordergrundpixel entfernen, die der Hintergrundfarbe ähnlich sind."
+          },
+          "free": {
+            "q": "Ist dieses Tool kostenlos?",
+            "a": "Ja, dieses Tool ist vollständig kostenlos und ohne Registrierung nutzbar."
+          },
+          "api": {
+            "q": "Gibt es eine verfügbare API?",
+            "a": "Ja. Dieses Tool wird von der Easy GIF2Sprite API angetrieben, die auf RapidAPI für Entwickler verfügbar ist, die die GIF-zu-Sprite-Konvertierung in ihre eigenen Anwendungen und Workflows integrieren möchten."
+          }
+        }
+      }
+    }
+  }
+}

@@ -50,7 +50,7 @@ const currentLocaleName = computed(() =>
 const localeItems = computed(() =>
   allLocales.value.map(l => ({
     label: l.name,
-    to: switchLocalePath(l.code as 'en' | 'zh-TW'),
+    to: switchLocalePath(l.code as 'en' | 'zh-TW' | 'zh-CN' | 'ja' | 'ko' | 'de' | 'es' | 'pt' | 'ru'),
     active: l.code === locale.value
   }))
 )
