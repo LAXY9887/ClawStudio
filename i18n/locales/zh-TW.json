@@ -96,10 +96,10 @@
     }
   },
   "gifToSprite": {
-    "title": "GIF 轉 PNG Spritesheet 工具",
+    "title": "GIF 轉 PNG Sprite Sheet 工具",
     "subtitle": "將 GIF 動畫轉換為 PNG Sprite 圖，或逐幀提取為 PNG 圖片。",
     "mode": {
-      "spritesheet": "Spritesheet",
+      "spritesheet": "Sprite Sheet",
       "frames": "逐幀提取"
     },
     "upload": {

@@ -96,10 +96,10 @@
     }
   },
   "gifToSprite": {
-    "title": "GIF to PNG Spritesheet Converter",
+    "title": "GIF to PNG Sprite Sheet Converter",
     "subtitle": "Convert GIF animations into a PNG sprite sheet or extract individual frames as PNG files.",
     "mode": {
-      "spritesheet": "Spritesheet",
+      "spritesheet": "Sprite Sheet",
       "frames": "Frames"
     },
     "upload": {
