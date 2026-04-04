@@ -86,6 +86,12 @@
     "apiPromo": "需要自動化？RapidAPI 上的 Easy GIF2Sprite API 讓你將相同的轉換引擎整合到自己的應用程式和工作流程中。",
     "apiCta": "在 RapidAPI 上查看 API"
   },
+  "relatedTools": {
+    "label": "相關工具",
+    "gifToSprite": "GIF → Spritesheet",
+    "framesToGif": "逐幀 → GIF",
+    "spritesheetToGif": "Spritesheet → GIF"
+  },
   "home": {
     "title": "免費線上開發工具",
     "tools": {

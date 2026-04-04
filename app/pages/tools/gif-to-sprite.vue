@@ -1,10 +1,58 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-useSeoMeta({
-  title: () => t('gifToSprite.title'),
-  description: () => t('gifToSprite.subtitle')
-})
+const seoSections = [
+  {
+    type: 'text' as const,
+    titleKey: 'gifToSprite.seo.whatIs.title',
+    contentKeys: ['gifToSprite.seo.whatIs.content', 'gifToSprite.seo.whatIs.content2'],
+    adSlot: '7383145112'
+  },
+  {
+    type: 'text' as const,
+    titleKey: 'gifToSprite.seo.whatIsFrames.title',
+    contentKeys: ['gifToSprite.seo.whatIsFrames.content', 'gifToSprite.seo.whatIsFrames.content2'],
+    adSlot: '3210094258'
+  },
+  {
+    type: 'steps' as const,
+    titleKey: 'gifToSprite.seo.howTo.title',
+    stepKeys: ['gifToSprite.seo.howTo.step1', 'gifToSprite.seo.howTo.step2', 'gifToSprite.seo.howTo.step3', 'gifToSprite.seo.howTo.step4'],
+    adSlot: '8504655099'
+  },
+  {
+    type: 'features' as const,
+    titleKey: 'gifToSprite.seo.features.title',
+    itemKeys: [
+      'gifToSprite.seo.features.items.spritesheet', 'gifToSprite.seo.features.items.frames',
+      'gifToSprite.seo.features.items.columns', 'gifToSprite.seo.features.items.padding',
+      'gifToSprite.seo.features.items.removeBg', 'gifToSprite.seo.features.items.url',
+      'gifToSprite.seo.features.items.privacy'
+    ],
+    adSlot: '5316113927'
+  },
+  {
+    type: 'useCases' as const,
+    titleKey: 'gifToSprite.seo.useCases.title',
+    itemKeys: [
+      'gifToSprite.seo.useCases.items.gamedev', 'gifToSprite.seo.useCases.items.css',
+      'gifToSprite.seo.useCases.items.motionGraphics', 'gifToSprite.seo.useCases.items.emotes'
+    ],
+    adSlot: '3438159116'
+  },
+  {
+    type: 'faq' as const,
+    titleKey: 'gifToSprite.seo.faq.title',
+    itemKeys: [
+      'gifToSprite.seo.faq.items.formats', 'gifToSprite.seo.faq.items.maxSize',
+      'gifToSprite.seo.faq.items.maxFrames', 'gifToSprite.seo.faq.items.transparency',
+      'gifToSprite.seo.faq.items.autoColumns', 'gifToSprite.seo.faq.items.bgRemoval',
+      'gifToSprite.seo.faq.items.tolerance', 'gifToSprite.seo.faq.items.free',
+      'gifToSprite.seo.faq.items.api'
+    ],
+    adSlot: '7191573428'
+  }
+]
 
 // State
 const mode = ref<'spritesheet' | 'frames'>('spritesheet')
@@ -207,15 +255,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto px-4 pt-6 space-y-4">
-    <div class="text-center">
-      <h1 class="text-2xl font-bold">
-        {{ t('gifToSprite.title') }}
-      </h1>
-      <p class="text-sm text-muted mt-1">
-        {{ t('gifToSprite.subtitle') }}
-      </p>
-    </div>
+  <ToolPageLayout
+    title-key="gifToSprite.title"
+    subtitle-key="gifToSprite.subtitle"
+    prefix="gifToSprite"
+    :seo-sections="seoSections"
+  >
+    <template #workspace>
       <!-- Mode Selector -->
       <UTabs
         :items="[
@@ -460,179 +506,8 @@ onUnmounted(() => {
           />
         </div>
       </div>
-  </div>
-
-  <!-- SEO Content Sections -->
-  <USeparator class="my-4" />
-
-  <UPageSection>
-    <div class="max-w-3xl mx-auto space-y-12">
-      <!-- API Promotion -->
-      <section>
-        <h2 class="text-2xl font-bold mb-4">
-          {{ t('gifToSprite.seo.api.title') }}
-        </h2>
-        <p class="text-muted leading-relaxed mb-3">
-          {{ t('gifToSprite.seo.api.content') }}
-        </p>
-        <p class="text-muted leading-relaxed mb-6">
-          {{ t('gifToSprite.seo.api.content2') }}
-        </p>
-
-        <!-- API Highlights -->
-        <div class="border border-muted rounded-lg p-5 mb-6">
-          <h3 class="font-semibold mb-3">
-            {{ t('gifToSprite.seo.api.features.title') }}
-          </h3>
-          <ul class="space-y-2 text-sm text-muted">
-            <li v-for="key in ['endpoints', 'input', 'params', 'limit', 'formats', 'response']" :key="key" class="flex items-start gap-2">
-              <UIcon name="i-lucide-check" class="text-primary shrink-0 mt-0.5" />
-              <span>{{ t(`gifToSprite.seo.api.features.${key}`) }}</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap gap-3">
-          <UButton
-            :label="t('gifToSprite.seo.api.cta')"
-            icon="i-lucide-external-link"
-            to="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites"
-            target="_blank"
-            size="lg"
-          />
-          <UButton
-            :label="t('gifToSprite.seo.api.tutorial')"
-            icon="i-lucide-book-open"
-            to="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites/tutorials/how-to-use-easy-gif-to-sprites"
-            target="_blank"
-            color="neutral"
-            variant="outline"
-            size="lg"
-          />
-        </div>
-      </section>
-
-      <!-- Ad Slot: Before What Is -->
-      <AdUnit ad-slot="7383145112" format="fluid" layout="in-article" />
-
-      <!-- What is a Sprite Sheet -->
-      <section>
-        <h2 class="text-2xl font-bold mb-4">
-          {{ t('gifToSprite.seo.whatIs.title') }}
-        </h2>
-        <p class="text-muted leading-relaxed mb-3">
-          {{ t('gifToSprite.seo.whatIs.content') }}
-        </p>
-        <p class="text-muted leading-relaxed">
-          {{ t('gifToSprite.seo.whatIs.content2') }}
-        </p>
-      </section>
-
-      <!-- Ad Slot: Before What Is Frames -->
-      <AdUnit ad-slot="3210094258" format="fluid" layout="in-article" />
-
-      <!-- What is Frame Extraction -->
-      <section>
-        <h2 class="text-2xl font-bold mb-4">
-          {{ t('gifToSprite.seo.whatIsFrames.title') }}
-        </h2>
-        <p class="text-muted leading-relaxed mb-3">
-          {{ t('gifToSprite.seo.whatIsFrames.content') }}
-        </p>
-        <p class="text-muted leading-relaxed">
-          {{ t('gifToSprite.seo.whatIsFrames.content2') }}
-        </p>
-      </section>
-
-      <!-- Ad Slot: Before How To -->
-      <AdUnit ad-slot="8504655099" format="fluid" layout="in-article" />
-
-      <!-- How To -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6">
-          {{ t('gifToSprite.seo.howTo.title') }}
-        </h2>
-        <div class="space-y-6">
-          <div v-for="step in ['step1', 'step2', 'step3', 'step4']" :key="step">
-            <h3 class="text-lg font-semibold mb-2">
-              {{ t(`gifToSprite.seo.howTo.${step}.title`) }}
-            </h3>
-            <p class="text-muted leading-relaxed">
-              {{ t(`gifToSprite.seo.howTo.${step}.content`) }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ad Slot: Before Features -->
-      <AdUnit ad-slot="5316113927" format="fluid" layout="in-article" />
-
-      <!-- Features -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6">
-          {{ t('gifToSprite.seo.features.title') }}
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div
-            v-for="key in ['spritesheet', 'frames', 'columns', 'padding', 'removeBg', 'url', 'privacy']"
-            :key="key"
-            class="border border-muted rounded-lg p-5"
-          >
-            <h3 class="font-semibold mb-2">
-              {{ t(`gifToSprite.seo.features.items.${key}.title`) }}
-            </h3>
-            <p class="text-sm text-muted leading-relaxed">
-              {{ t(`gifToSprite.seo.features.items.${key}.content`) }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ad Slot: Before Use Cases -->
-      <AdUnit ad-slot="3438159116" format="fluid" layout="in-article" />
-
-      <!-- Use Cases -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6">
-          {{ t('gifToSprite.seo.useCases.title') }}
-        </h2>
-        <div class="space-y-6">
-          <div
-            v-for="key in ['gamedev', 'css', 'motionGraphics', 'emotes']"
-            :key="key"
-          >
-            <h3 class="text-lg font-semibold mb-2">
-              {{ t(`gifToSprite.seo.useCases.items.${key}.title`) }}
-            </h3>
-            <p class="text-muted leading-relaxed">
-              {{ t(`gifToSprite.seo.useCases.items.${key}.content`) }}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ad Slot: Before FAQ -->
-      <AdUnit ad-slot="7191573428" format="fluid" layout="in-article" />
-
-      <!-- FAQ -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6">
-          {{ t('gifToSprite.seo.faq.title') }}
-        </h2>
-        <UAccordion
-          :items="[
-            'formats', 'maxSize', 'maxFrames', 'transparency',
-            'autoColumns', 'bgRemoval', 'tolerance', 'free', 'api'
-          ].map(key => ({
-            label: t(`gifToSprite.seo.faq.items.${key}.q`),
-            value: key,
-            content: t(`gifToSprite.seo.faq.items.${key}.a`)
-          }))"
-        />
-      </section>
-    </div>
-  </UPageSection>
+    </template>
+  </ToolPageLayout>
 
   <!-- Ad Modal -->
   <UModal v-model:open="showAdModal">

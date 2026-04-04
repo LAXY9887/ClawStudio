@@ -11,11 +11,19 @@ X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com
 
 ## Endpoints
 
-| Method   | Path                | Description                                        |
-| -------- | ------------------- | -------------------------------------------------- |
-| `POST` | `/to-spritesheet` | Convert a GIF into a single sprite sheet PNG       |
-| `POST` | `/to-frames`      | Extract all GIF frames as individual PNGs in a ZIP |
-| `GET`  | `/health`         | Service health check                               |
+| Method   | Path                  | Description                     |
+| -------- | --------------------- | ------------------------------- |
+| `POST` | `/to-spritesheet`   | GIF → single sprite sheet PNG  |
+| `POST` | `/to-frames`        | GIF → individual PNGs in a ZIP |
+| `POST` | `/from-frames`      | Multiple PNGs → animated GIF   |
+| `POST` | `/from-spritesheet` | SpriteSheet PNG → animated GIF |
+| `GET`  | `/health`           | Service health check            |
+
+---
+
+## ⚠️ NOTICE
+
+End point `/from-frames` can NOT be test on RapidAPI console, due to the single file upload limitation. You should test this end point on your PC.
 
 ---
 
@@ -172,6 +180,222 @@ curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/to-frames \
 
 ---
 
+## POST /from-frames
+
+Assembles multiple PNG file uploads into an animated GIF.
+
+### Request
+
+**Content-Type:** `multipart/form-data`
+
+| Parameter           | Type    | Required | Default           | Description                                                                |
+| ------------------- | ------- | -------- | ----------------- | -------------------------------------------------------------------------- |
+| `files`           | file[]  | Yes      | —                | Multiple PNG files                                                         |
+| `duration`        | integer | No       | `100`           | Frame duration in milliseconds. Min:`10`, Max: `10000`.                |
+| `loop`            | integer | No       | `0`             | Loop count.`0` = infinite loop.                                          |
+| `file_name_order` | boolean | No       | `false`         | Sort frames by `_N` filename suffix instead of upload order.             |
+| `resize`          | string  | No       | `"transparent"` | Dimension mismatch handling:`"error"`, `"fill"`, or `"transparent"`. |
+| `bg_fill_color`   | string  | No       | `"#000000"`     | Fill color when `resize="fill"`. Hex `#RRGGBB`. Ignored otherwise.     |
+
+**No `url` parameter** — multi-file upload is file-only.
+
+**Limits:** max 100 files, 5 MB per file, 60 MB total. PNG only.
+
+#### Frame Ordering
+
+- `file_name_order=false` (default): frames ordered by upload order.
+- `file_name_order=true`: sorted by the numeric suffix `_N` before the file extension (e.g., `walk_0.png` → 0, `walk_12.png` → 12). Files without `_N` suffix return `400`.
+
+#### Dimension Mismatch
+
+- `resize="transparent"` (default): smaller frames are centered on a transparent canvas.
+- `resize="fill"`: smaller frames are centered on a canvas filled with `bg_fill_color`.
+- `resize="transparent"`: smaller frames are centered on a transparent canvas.
+
+### Response
+
+| Status     | Content-Type         | Body                            |
+| ---------- | -------------------- | ------------------------------- |
+| `200 OK` | `image/gif`        | Raw GIF binary                  |
+| `400`    | `application/json` | Validation error                |
+| `413`    | `application/json` | File too large / too many files |
+| `422`    | `application/json` | Invalid parameter value         |
+
+### Examples
+
+**Basic — multiple PNGs:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-frames \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "files=@frame_01.png" \
+  -F "files=@frame_02.png" \
+  -F "files=@frame_03.png" \
+  -F "duration=100" \
+  --output animation.gif
+```
+
+**With filename ordering:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-frames \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "files=@walk_2.png" \
+  -F "files=@walk_0.png" \
+  -F "files=@walk_1.png" \
+  -F "file_name_order=true" \
+  --output animation.gif
+```
+
+**With dimension mismatch handling:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-frames \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "files=@small.png" \
+  -F "files=@large.png" \
+  -F "resize=fill" \
+  -F "bg_fill_color=#FFFFFF" \
+  --output animation.gif
+```
+
+---
+
+## POST /from-spritesheet
+
+Slices a SpriteSheet PNG into individual frames and produces an animated GIF.
+
+### Request
+
+**Content-Type:** `multipart/form-data`
+
+| Parameter        | Type    | Required                | Default  | Description                                                                                   |
+| ---------------- | ------- | ----------------------- | -------- | --------------------------------------------------------------------------------------------- |
+| `file`         | file    | One of `file`/`url` | —       | SpriteSheet PNG file                                                                          |
+| `url`          | string  | One of `file`/`url` | —       | Publicly accessible URL of a SpriteSheet PNG                                                  |
+| `columns`      | integer | See below               | —       | Number of columns in the grid. Min:`1`.                                                     |
+| `rows`         | integer | See below               | —       | Number of rows in the grid. Min:`1`.                                                        |
+| `cell_width`   | integer | See below               | —       | Width of each cell in pixels. Min:`1`.                                                      |
+| `cell_height`  | integer | See below               | —       | Height of each cell in pixels. Min:`1`.                                                     |
+| `frame_count`  | integer | No                      | auto     | Actual number of frames (for incomplete last row). Min:`1`.                                 |
+| `padding`      | integer | No                      | `0`    | Pixel gap between cells in the spritesheet. Min:`0`.                                        |
+| `column_range` | string  | No                      | all      | Column range to extract (0-indexed).`"0-5"` = columns 0 through 5. `"2"` = column 2 only. |
+| `row_range`    | string  | No                      | all      | Row range to extract (0-indexed).`"0"` = first row only. `"1-3"` = rows 1 through 3.      |
+| `skip_empty`   | boolean | No                      | `true` | Automatically remove fully transparent frames from the output.                                |
+| `duration`     | integer | No                      | `100`  | Frame duration in milliseconds. Min:`10`, Max: `10000`.                                   |
+| `loop`         | integer | No                      | `0`    | Loop count.`0` = infinite loop.                                                             |
+
+**Slicing mode (one required):**
+
+- **Grid mode:** `columns` + `rows` (both required)
+- **Cell mode:** `cell_width` + `cell_height`
+
+Cannot mix modes.
+
+**How padding works:**
+
+- Grid mode: `cell_width = (image_width - (columns-1) * padding) / columns`
+- Cell mode: `columns = (image_width + padding) / (cell_width + padding)`
+- Padding is the gap between cells only — not on the outer edges of the spritesheet.
+
+**Range selection:** Use `column_range` and `row_range` to extract a sub-region of the spritesheet. For example, `column_range="0-5"` + `row_range="0"` extracts only the first 6 cells of row 0. Processing order: range → frame_count → skip_empty.
+
+**Transparency:** Transparent regions in the source PNG are preserved as GIF transparency in the output.
+
+### Response
+
+| Status     | Content-Type         | Body                    |
+| ---------- | -------------------- | ----------------------- |
+| `200 OK` | `image/gif`        | Raw GIF binary          |
+| `400`    | `application/json` | Validation error        |
+| `413`    | `application/json` | File too large          |
+| `422`    | `application/json` | Invalid parameter value |
+
+### Examples
+
+**Grid mode — columns + rows:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "columns=4" \
+  -F "rows=3" \
+  -F "duration=80" \
+  --output animation.gif
+```
+
+**Cell mode:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "cell_width=64" \
+  -F "cell_height=64" \
+  -F "frame_count=10" \
+  --output animation.gif
+```
+
+**From URL:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "url=https://example.com/spritesheet.png" \
+  -F "columns=8" \
+  -F "rows=4" \
+  --output animation.gif
+```
+
+**With padding (gaps between cells):**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "columns=4" \
+  -F "rows=3" \
+  -F "padding=5" \
+  --output animation.gif
+```
+
+**Extract specific range (first row, columns 0–5 only):**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "columns=8" \
+  -F "rows=4" \
+  -F "column_range=0-5" \
+  -F "row_range=0" \
+  --output first_row.gif
+```
+
+**Keep empty frames (disable auto-removal):**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "columns=4" \
+  -F "rows=3" \
+  -F "skip_empty=false" \
+  --output animation_with_blanks.gif
+```
+
+---
+
 ## GET /health
 
 Returns the service status. Does not require authentication.
@@ -220,7 +444,7 @@ There are two different keys involved. They serve completely different purposes 
 | `X-RapidAPI-Key`          | RapidAPI Developer Dashboard&gt; Apps          | **Callers** — included in every request  | Identifies the caller to the RapidAPI gateway for auth and billing                                       |
 | `X-RapidAPI-Proxy-Secret` | Hub Listing&gt; Gateway &gt; Firewall Settings | **Backend only** — never sent by callers | Injected by RapidAPI proxy when forwarding to the backend, used to verify the request came from RapidAPI |
 
-- `X-RapidAPI-Key` is consumed by the RapidAPI gateway and **never forwarded to the backend**. 
+- `X-RapidAPI-Key` is consumed by the RapidAPI gateway and **never forwarded to the backend**.
 - `X-RapidAPI-Proxy-Secret` is added by the proxy and **never visible to callers**.
 
 ### Testing Note
@@ -229,10 +453,10 @@ The **RapidAPI test console** (Hub Listing &gt; Test tab) converts uploaded imag
 
 ### RapidAPI Firewall Settings
 
-| Setting | Recommended | Reason |
-|---|---|---|
-| Threat Protection | **OFF** | Claims to only scan "non-binary data in multipart/form-data", but actually scans binary GIF data and produces false-positive `400` blocks on larger files. This API has no SQL or JavaScript attack surface — Threat Protection provides no security benefit and breaks core functionality. |
-| Request Schema Validation | **OFF** | FastAPI + Pydantic already validates all parameters server-side with proper error responses (`422`). |
+| Setting                   | Recommended   | Reason                                                                                                                                                                                                                                                                                         |
+| ------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Threat Protection         | **OFF** | Claims to only scan "non-binary data in multipart/form-data", but actually scans binary GIF data and produces false-positive `400` blocks on larger files. This API has no SQL or JavaScript attack surface — Threat Protection provides no security benefit and breaks core functionality. |
+| Request Schema Validation | **OFF** | FastAPI + Pydantic already validates all parameters server-side with proper error responses (`422`).                                                                                                                                                                                         |
 
 ---
 
