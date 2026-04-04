@@ -75,16 +75,27 @@
     "ready": "Your file is ready!",
     "download": "Download",
     "redirecting": "Download started! Redirecting back...",
-    "tipsTitle": "Did You Know? Useful Tips",
-    "tips": [
-      "Use the **Padding** option to add pixel gaps between frames in your sprite sheet. This prevents texture bleeding — a common rendering artifact in game engines where adjacent frames leak into each other.",
-      "Enable **Remove Background** to automatically detect and remove solid-color backgrounds from each frame. The algorithm samples the four corner pixels to find the background color.",
-      "The hex color picker includes an **eyedropper tool** — click it to pick any color directly from the preview image or anywhere on your screen. This is perfect for selecting the exact background color when auto-detection doesn't match.",
-      "Adjust the **Tolerance** slider to control how aggressively similar colors are removed. A value of 30 works for most clean backgrounds, while 50–80 handles gradients or compression artifacts."
-    ],
     "apiTitle": "Integrate with Your Workflow",
     "apiPromo": "Need to automate this? The Easy GIF2Sprite API on RapidAPI lets you integrate the same conversion engine into your own applications and workflows.",
-    "apiCta": "View API on RapidAPI"
+    "apiCta": "View API on RapidAPI",
+    "gifToSprite": {
+      "tipsTitle": "Did You Know? GIF to Spritesheet Tips",
+      "tips": [
+        "Use the **Padding** option to add pixel gaps between frames in your sprite sheet. This prevents texture bleeding — a common rendering artifact in game engines where adjacent frames leak into each other.",
+        "Enable **Remove Background** to automatically detect and remove solid-color backgrounds from each frame. The algorithm samples the four corner pixels to find the background color.",
+        "The hex color picker includes an **eyedropper tool** — click it to pick any color directly from the preview image or anywhere on your screen. This is perfect for selecting the exact background color when auto-detection doesn't match.",
+        "Adjust the **Tolerance** slider to control how aggressively similar colors are removed. A value of 30 works for most clean backgrounds, while 50–80 handles gradients or compression artifacts."
+      ]
+    },
+    "toGif": {
+      "tipsTitle": "Did You Know? PNG to GIF Tips",
+      "tips": [
+        "Set **Frame Duration** to control animation speed. 100ms gives a smooth 10 FPS animation, while 50ms creates a fast 20 FPS effect. Most pixel art animations look best at 80–120ms.",
+        "Enable **Sort by Filename** when your frames use a naming convention like walk_0.png, walk_1.png. The tool will sort by the numeric suffix instead of upload order.",
+        "If your frames have **different sizes**, choose \"Center on transparent canvas\" to automatically align them on the largest frame's dimensions without cropping.",
+        "In **Spritesheet mode**, use the grid preview overlay to verify your column and row settings before converting. The red lines show exactly where the tool will slice."
+      ]
+    }
   },
   "relatedTools": {
     "label": "Related Tools",

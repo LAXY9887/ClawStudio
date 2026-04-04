@@ -6,6 +6,18 @@ const store = useDownloadStore()
 
 const returnPath = computed(() => (route.query.from as string) || localePath('/'))
 
+// Detect which tool the user came from
+const toolKey = computed(() => {
+  const from = returnPath.value
+  if (from.includes('png-to-gif') || from.includes('to-gif')) return 'toGif'
+  return 'gifToSprite'
+})
+
+const tipCount = computed(() => {
+  // Both tools currently have 4 tips
+  return 4
+})
+
 useSeoMeta({
   title: () => t('waitingRoom.title'),
   robots: 'noindex, nofollow'
@@ -29,20 +41,20 @@ onMounted(() => {
 
     <template #content>
       <div class="space-y-8">
-        <!-- Tips Section -->
+        <!-- Tips Section (tool-specific) -->
         <section class="space-y-4">
           <h2 class="text-xl font-bold">
-            {{ t('waitingRoom.tipsTitle') }}
+            {{ t(`waitingRoom.${toolKey}.tipsTitle`) }}
           </h2>
           <ul class="space-y-3 text-sm text-muted leading-relaxed">
-            <li v-for="i in 4" :key="i" class="flex items-start gap-2">
+            <li v-for="i in tipCount" :key="i" class="flex items-start gap-2">
               <UIcon name="i-lucide-lightbulb" class="text-primary shrink-0 mt-0.5" />
-              <span v-html="t(`waitingRoom.tips[${i - 1}]`).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')" />
+              <span v-html="t(`waitingRoom.${toolKey}.tips[${i - 1}]`).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')" />
             </li>
           </ul>
         </section>
 
-        <!-- API Promo Section -->
+        <!-- API Promo Section (shared) -->
         <section class="border border-muted rounded-lg p-5 space-y-3">
           <h2 class="text-lg font-bold">
             {{ t('waitingRoom.apiTitle') }}

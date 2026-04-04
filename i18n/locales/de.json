@@ -75,16 +75,27 @@
     "ready": "Ihre Datei ist bereit!",
     "download": "Herunterladen",
     "redirecting": "Download gestartet! Weiterleitung...",
-    "tipsTitle": "Wussten Sie schon? Nützliche Tipps",
-    "tips": [
-      "Verwenden Sie die **Padding**-Option, um Pixel-Abstände zwischen den Frames in Ihrem Sprite Sheet hinzuzufügen. Dies verhindert Texture Bleeding — ein häufiges Rendering-Artefakt in Spiel-Engines, bei dem benachbarte Frames ineinander übergehen.",
-      "Aktivieren Sie **Remove Background**, um einfarbige Hintergründe automatisch aus jedem Frame zu erkennen und zu entfernen. Der Algorithmus untersucht die vier Eckpixel, um die Hintergrundfarbe zu identifizieren.",
-      "Der Hex-Farbwähler enthält ein **Pipetten-Tool** — klicken Sie darauf, um eine Farbe direkt aus dem Vorschaubild oder von einer beliebigen Stelle auf Ihrem Bildschirm auszuwählen. Perfekt geeignet, um die exakte Hintergrundfarbe auszuwählen, wenn die automatische Erkennung nicht übereinstimmt.",
-      "Passen Sie den **Tolerance**-Regler an, um zu steuern, wie aggressiv ähnliche Farben entfernt werden. Ein Wert von 30 funktioniert für die meisten sauberen Hintergründe, während 50–80 Farbverläufe oder Kompressionsartefakte bewältigt."
-    ],
     "apiTitle": "In Ihren Workflow integrieren",
     "apiPromo": "Automatisierung benötigt? Die Easy GIF2Sprite API auf RapidAPI ermöglicht es Ihnen, dieselbe Konvertierungs-Engine in Ihre eigenen Anwendungen und Workflows zu integrieren.",
-    "apiCta": "API auf RapidAPI ansehen"
+    "apiCta": "API auf RapidAPI ansehen",
+    "gifToSprite": {
+      "tipsTitle": "Wussten Sie schon? GIF to Spritesheet Tipps",
+      "tips": [
+        "Verwenden Sie die **Padding**-Option, um Pixel-Abstände zwischen den Frames in Ihrem Sprite Sheet hinzuzufügen. Dies verhindert Texture Bleeding — ein häufiges Rendering-Artefakt in Spiel-Engines, bei dem benachbarte Frames ineinander übergehen.",
+        "Aktivieren Sie **Remove Background**, um einfarbige Hintergründe automatisch aus jedem Frame zu erkennen und zu entfernen. Der Algorithmus untersucht die vier Eckpixel, um die Hintergrundfarbe zu identifizieren.",
+        "Der Hex-Farbwähler enthält ein **Pipetten-Tool** — klicken Sie darauf, um eine Farbe direkt aus dem Vorschaubild oder von einer beliebigen Stelle auf Ihrem Bildschirm auszuwählen. Perfekt geeignet, um die exakte Hintergrundfarbe auszuwählen, wenn die automatische Erkennung nicht übereinstimmt.",
+        "Passen Sie den **Tolerance**-Regler an, um zu steuern, wie aggressiv ähnliche Farben entfernt werden. Ein Wert von 30 funktioniert für die meisten sauberen Hintergründe, während 50–80 Farbverläufe oder Kompressionsartefakte bewältigt."
+      ]
+    },
+    "toGif": {
+      "tipsTitle": "Wussten Sie schon? PNG to GIF Tipps",
+      "tips": [
+        "Stellen Sie **Frame Duration** ein, um die Animationsgeschwindigkeit zu steuern. 100ms ergibt eine flüssige 10-FPS-Animation, während 50ms einen schnellen 20-FPS-Effekt erzeugt. Die meisten Pixel-Art-Animationen sehen bei 80–120ms am besten aus.",
+        "Aktivieren Sie **Sort by Filename**, wenn Ihre Frames eine Namenskonvention wie walk_0.png, walk_1.png verwenden. Das Tool sortiert nach dem numerischen Suffix anstatt nach der Upload-Reihenfolge.",
+        "Wenn Ihre Frames **unterschiedliche Größen** haben, wählen Sie \"Auf transparentem Canvas zentrieren\", um sie automatisch an den Abmessungen des größten Frames auszurichten, ohne zu beschneiden.",
+        "Im **Spritesheet-Modus** verwenden Sie das Rastervorschau-Overlay, um Ihre Spalten- und Zeileneinstellungen vor der Konvertierung zu überprüfen. Die roten Linien zeigen genau, wo das Tool schneiden wird."
+      ]
+    }
   },
   "home": {
     "title": "Kostenlose Online-Entwicklertools",

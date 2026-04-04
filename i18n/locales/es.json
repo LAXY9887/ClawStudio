@@ -75,16 +75,27 @@
     "ready": "¡Su archivo está listo!",
     "download": "Descargar",
     "redirecting": "¡Descarga iniciada! Redirigiendo...",
-    "tipsTitle": "¿Sabía que? Consejos útiles",
-    "tips": [
-      "Use la opción **Padding** para agregar espacios de píxeles entre los fotogramas en su hoja de sprites. Esto previene el sangrado de texturas — un artefacto de renderizado común en motores de juegos donde los fotogramas adyacentes se filtran entre sí.",
-      "Active **Remove Background** para detectar y eliminar automáticamente fondos de color sólido de cada fotograma. El algoritmo muestrea los cuatro píxeles de las esquinas para identificar el color de fondo.",
-      "El selector de color hexadecimal incluye una **herramienta cuentagotas** — haga clic en ella para seleccionar cualquier color directamente de la imagen de vista previa o de cualquier lugar de su pantalla. Perfecto para seleccionar el color de fondo exacto cuando la detección automática no coincide.",
-      "Ajuste el control deslizante **Tolerance** para controlar la agresividad con la que se eliminan los colores similares. Un valor de 30 funciona para la mayoría de los fondos limpios, mientras que 50–80 maneja gradientes o artefactos de compresión."
-    ],
     "apiTitle": "Integre en su flujo de trabajo",
     "apiPromo": "¿Necesita automatización? La API Easy GIF2Sprite en RapidAPI le permite integrar el mismo motor de conversión en sus propias aplicaciones y flujos de trabajo.",
-    "apiCta": "Ver API en RapidAPI"
+    "apiCta": "Ver API en RapidAPI",
+    "gifToSprite": {
+      "tipsTitle": "¿Sabía que? Consejos de GIF to Spritesheet",
+      "tips": [
+        "Use la opción **Padding** para agregar espacios de píxeles entre los fotogramas en su hoja de sprites. Esto previene el sangrado de texturas — un artefacto de renderizado común en motores de juegos donde los fotogramas adyacentes se filtran entre sí.",
+        "Active **Remove Background** para detectar y eliminar automáticamente fondos de color sólido de cada fotograma. El algoritmo muestrea los cuatro píxeles de las esquinas para identificar el color de fondo.",
+        "El selector de color hexadecimal incluye una **herramienta cuentagotas** — haga clic en ella para seleccionar cualquier color directamente de la imagen de vista previa o de cualquier lugar de su pantalla. Perfecto para seleccionar el color de fondo exacto cuando la detección automática no coincide.",
+        "Ajuste el control deslizante **Tolerance** para controlar la agresividad con la que se eliminan los colores similares. Un valor de 30 funciona para la mayoría de los fondos limpios, mientras que 50–80 maneja gradientes o artefactos de compresión."
+      ]
+    },
+    "toGif": {
+      "tipsTitle": "¿Sabía que? Consejos de PNG to GIF",
+      "tips": [
+        "Configure **Frame Duration** para controlar la velocidad de animación. 100ms produce una animación fluida de 10 FPS, mientras que 50ms crea un efecto rápido de 20 FPS. La mayoría de las animaciones de pixel art se ven mejor a 80–120ms.",
+        "Active **Sort by Filename** cuando sus fotogramas usen una convención de nombres como walk_0.png, walk_1.png. La herramienta ordenará por el sufijo numérico en lugar del orden de carga.",
+        "Si sus fotogramas tienen **tamaños diferentes**, elija \"Centrar en lienzo transparente\" para alinearlos automáticamente a las dimensiones del fotograma más grande sin recortar.",
+        "En el **modo Spritesheet**, use la superposición de vista previa de cuadrícula para verificar sus configuraciones de columnas y filas antes de convertir. Las líneas rojas muestran exactamente dónde cortará la herramienta."
+      ]
+    }
   },
   "home": {
     "title": "Herramientas de desarrollo en línea gratuitas",

@@ -75,16 +75,27 @@
     "ready": "Seu arquivo está pronto!",
     "download": "Baixar",
     "redirecting": "Download iniciado! Redirecionando...",
-    "tipsTitle": "Você sabia? Dicas úteis",
-    "tips": [
-      "Use a opção **Padding** para adicionar espaços de pixels entre os quadros na sua folha de sprites. Isso evita o sangramento de textura — um artefato de renderização comum em motores de jogos onde quadros adjacentes vazam um para o outro.",
-      "Ative **Remove Background** para detectar e remover automaticamente fundos de cor sólida de cada quadro. O algoritmo amostra os quatro pixels dos cantos para identificar a cor de fundo.",
-      "O seletor de cor hexadecimal inclui uma **ferramenta conta-gotas** — clique nela para escolher qualquer cor diretamente da imagem de visualização ou de qualquer lugar na sua tela. Perfeito para selecionar a cor de fundo exata quando a detecção automática não corresponde.",
-      "Ajuste o controle deslizante **Tolerance** para controlar a intensidade da remoção de cores semelhantes. Um valor de 30 funciona para a maioria dos fundos limpos, enquanto 50–80 lida com gradientes ou artefatos de compressão."
-    ],
     "apiTitle": "Integre ao seu fluxo de trabalho",
     "apiPromo": "Precisa de automação? A API Easy GIF2Sprite no RapidAPI permite integrar o mesmo motor de conversão em suas próprias aplicações e fluxos de trabalho.",
-    "apiCta": "Ver API no RapidAPI"
+    "apiCta": "Ver API no RapidAPI",
+    "gifToSprite": {
+      "tipsTitle": "Você sabia? Dicas de GIF to Spritesheet",
+      "tips": [
+        "Use a opção **Padding** para adicionar espaços de pixels entre os quadros na sua folha de sprites. Isso evita o sangramento de textura — um artefato de renderização comum em motores de jogos onde quadros adjacentes vazam um para o outro.",
+        "Ative **Remove Background** para detectar e remover automaticamente fundos de cor sólida de cada quadro. O algoritmo amostra os quatro pixels dos cantos para identificar a cor de fundo.",
+        "O seletor de cor hexadecimal inclui uma **ferramenta conta-gotas** — clique nela para escolher qualquer cor diretamente da imagem de visualização ou de qualquer lugar na sua tela. Perfeito para selecionar a cor de fundo exata quando a detecção automática não corresponde.",
+        "Ajuste o controle deslizante **Tolerance** para controlar a intensidade da remoção de cores semelhantes. Um valor de 30 funciona para a maioria dos fundos limpos, enquanto 50–80 lida com gradientes ou artefatos de compressão."
+      ]
+    },
+    "toGif": {
+      "tipsTitle": "Você sabia? Dicas de PNG to GIF",
+      "tips": [
+        "Defina **Frame Duration** para controlar a velocidade da animação. 100ms produz uma animação suave de 10 FPS, enquanto 50ms cria um efeito rápido de 20 FPS. A maioria das animações de pixel art fica melhor a 80–120ms.",
+        "Ative **Sort by Filename** quando seus quadros usarem uma convenção de nomes como walk_0.png, walk_1.png. A ferramenta ordenará pelo sufixo numérico em vez da ordem de envio.",
+        "Se seus quadros tiverem **tamanhos diferentes**, escolha \"Centralizar em tela transparente\" para alinhá-los automaticamente às dimensões do maior quadro sem cortar.",
+        "No **modo Spritesheet**, use a sobreposição de visualização de grade para verificar suas configurações de colunas e linhas antes de converter. As linhas vermelhas mostram exatamente onde a ferramenta irá cortar."
+      ]
+    }
   },
   "home": {
     "title": "Ferramentas de desenvolvimento online gratuitas",
