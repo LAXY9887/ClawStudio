@@ -269,7 +269,7 @@ onUnmounted(() => {
           { label: t('gifToSprite.mode.frames'), value: 'frames' }
         ]"
         :model-value="mode"
-        @update:model-value="mode = ($event as 'spritesheet' | 'frames')"
+        @update:model-value="mode = ($event as 'spritesheet' | 'frames'); reset()"
       />
 
       <!-- Upload Zone (shown when idle or error) -->

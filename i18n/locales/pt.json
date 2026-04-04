@@ -92,6 +92,10 @@
       "gifToSprite": {
         "title": "GIF to Spritesheet",
         "description": "Converta animações GIF em folhas de sprites ou PNGs de quadros individuais."
+      },
+      "toGif": {
+        "title": "PNG para GIF",
+        "description": "Converta quadros PNG ou uma folha de sprites em um GIF animado."
       }
     }
   },
@@ -291,6 +295,248 @@
           "api": {
             "q": "Há uma API disponível?",
             "a": "Sim. Esta ferramenta é alimentada pela API Easy GIF2Sprite, que está disponível no RapidAPI para desenvolvedores que desejam integrar a conversão de GIF para sprites em suas próprias aplicações e fluxos de trabalho."
+          }
+        }
+      }
+    }
+  },
+  "relatedTools": {
+    "label": "Ferramentas relacionadas",
+    "gifToSprite": "GIF → Folha de sprites",
+    "toGif": "PNG → GIF"
+  },
+  "toGif": {
+    "title": "Conversor de PNG para GIF",
+    "subtitle": "Converta quadros PNG ou uma folha de sprites em um GIF animado.",
+    "mode": {
+      "frames": "De quadros",
+      "spritesheet": "De folha de sprites"
+    },
+    "framesUpload": {
+      "title": "Arraste seus quadros PNG aqui ou clique para selecionar",
+      "limit": "Máx 100 arquivos, 5 MB cada, 60 MB no total",
+      "accept": "Apenas arquivos .png são aceitos",
+      "changeFiles": "Clique para adicionar ou substituir arquivos"
+    },
+    "spritesheetUpload": {
+      "title": "Arraste sua folha de sprites PNG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 20 MB",
+      "accept": "Apenas arquivos .png são aceitos",
+      "changeFile": "Clique para escolher um arquivo diferente"
+    },
+    "convert": "Converter!",
+    "url": {
+      "placeholder": "Ou cole uma URL de folha de sprites PNG..."
+    },
+    "framesOptions": {
+      "title": "Opções de animação",
+      "duration": "Duração do quadro (ms)",
+      "durationHint": "Duração de cada quadro em milissegundos. Mín. 10, máx. 10.000.",
+      "loop": "Contagem de repetições",
+      "loopHint": "0 = repetição infinita.",
+      "fileNameOrder": "Ordenar por nome de arquivo",
+      "fileNameOrderHint": "Ordena quadros pelo sufixo _N em nomes de arquivo (por exemplo, walk_0.png, walk_1.png) em vez da ordem de envio.",
+      "resize": "Incompatibilidade de dimensões",
+      "resizeHint": "Como lidar com quadros com tamanhos diferentes.",
+      "resizeTransparent": "Centralizar em tela transparente",
+      "resizeFill": "Centralizar em tela preenchida",
+      "resizeError": "Retornar erro",
+      "bgFillColor": "Cor de preenchimento",
+      "bgFillColorHint": "Cor de preenchimento da tela ao usar o modo \"preenchimento\"."
+    },
+    "slicingMode": {
+      "title": "Modo de fatiamento",
+      "grid": "Grade (colunas × linhas)",
+      "cell": "Célula (tamanho em pixels)"
+    },
+    "spritesheetOptions": {
+      "title": "Opções",
+      "columns": "Colunas",
+      "rows": "Linhas",
+      "cellWidth": "Largura da célula (px)",
+      "cellHeight": "Altura da célula (px)",
+      "frameCount": "Contagem de quadros",
+      "frameCountHint": "Número real de quadros (para última linha incompleta). Deixe vazio para automático.",
+      "padding": "Espaçamento (px)",
+      "paddingHint": "Espaço em pixels entre células na folha de sprites.",
+      "columnRange": "Intervalo de colunas",
+      "columnRangeHint": "Intervalo com índice 0, por exemplo \"0-5\" ou \"2\". Deixe vazio para todos.",
+      "rowRange": "Intervalo de linhas",
+      "rowRangeHint": "Intervalo com índice 0, por exemplo \"0\" ou \"1-3\". Deixe vazio para todos.",
+      "skipEmpty": "Pular quadros vazios",
+      "skipEmptyHint": "Remove automaticamente quadros totalmente transparentes da saída.",
+      "duration": "Duração do quadro (ms)",
+      "durationHint": "Duração de cada quadro em milissegundos.",
+      "loop": "Contagem de repetições",
+      "loopHint": "0 = repetição infinita."
+    },
+    "status": {
+      "uploading": "Enviando...",
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar novamente"
+    },
+    "result": {
+      "title": "Visualização de GIF",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar GIF",
+      "reset": "Converter outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, apoie-nos. 🌸",
+      "description": "Desbloqueie 3 conversões a mais lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de PNG para GIF",
+        "content": "Integre a conversão de PNG para GIF em suas aplicações com a API Easy GIF2Sprite. Se precisar montar quadros individuais ou fatiar uma folha de sprites, a API maneja ambos os fluxos de trabalho através de dois endpoints dedicados.",
+        "content2": "Envie quadros PNG ou uma folha de sprites por uma simples solicitação HTTP e receba um GIF animado em segundos. Perfeito para pipelines de recursos de jogos, fluxos de trabalho automatizados de sprites e ferramentas de processamento em lote.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o tutorial completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "Dois endpoints: /from-frames (múltiplos PNGs) e /from-spritesheet (PNG único)",
+          "input": "Envie arquivos PNG ou forneça uma URL pública",
+          "params": "Controle duração, repetição, ordenação de quadros, fatiamento em grade e mais",
+          "limit": "100 arquivos por solicitação ou 20 MB arquivo único",
+          "formats": "Entrada em PNG, saída em GIF",
+          "response": "Resposta rápida com auto-scaling do Cloud Run"
+        }
+      },
+      "whatIsFramesToGif": {
+        "title": "O que é conversão de quadros PNG para GIF?",
+        "content": "A conversão de quadros PNG para GIF pega uma série de imagens PNG individuais e as monta em um único arquivo GIF animado. Cada PNG se torna um quadro da animação, reproduzido em sequência em uma velocidade especificada. O processo preserva a transparência dos arquivos PNG originais, para que personagens ou objetos com fundos transparentes se animem perfeitamente sem bordas brancas indesejadas ou artefatos de fundo.",
+        "content2": "Este é o oposto da extração de quadros — em vez de dividir uma animação, você está construindo uma do zero. É o fluxo de trabalho padrão para desenvolvedores de jogos, animadores e designers que criam cada quadro individualmente e precisam visualizar ou exportar a animação final como GIF. A ferramenta suporta até 100 arquivos PNG individuais por conversão, com duração de quadro configurável variando de 10 milissegundos a 10 segundos por quadro, dando a você controle preciso sobre o tempo da animação.",
+        "content3": "Ao montar quadros, você pode escolher como lidar com arquivos PNG com dimensões incompatíveis. A ferramenta oferece três abordagens: centralizar quadros menores em uma tela transparente dimensionada para o maior quadro, preencher o fundo com uma cor sólida ou sinalizar a incompatibilidade como um erro para que você possa corrigi-lo antes de converter. Você também pode ativar a ordenação baseada em nome de arquivo, que classifica quadros pelo sufixo numérico em nomes de arquivo (por exemplo, walk_0.png, walk_1.png, walk_2.png), garantindo que sua animação seja reproduzida na sequência correta, independentemente da ordem de envio."
+      },
+      "whatIsSpritesheetToGif": {
+        "title": "O que é conversão de folha de sprites para GIF?",
+        "content": "A conversão de folha de sprites para GIF fatia uma única imagem contendo múltiplos quadros dispostos em uma grade (uma folha de sprites) e os remonta em um GIF animado. Você especifica o layout da grade — seja por contagem de coluna/linha ou dimensões de célula em pixels — e a ferramenta extrai cada célula como um quadro. A ferramenta lê quadros da esquerda para a direita, de cima para baixo, seguindo a convenção padrão de folha de sprites usada pela maioria dos motores de jogos e ferramentas de animação.",
+        "content2": "Isso é particularmente útil para visualizar animações de folha de sprites sem um motor de jogos, compartilhar animações de sprites em plataformas que suportam apenas GIF ou converter recursos de jogos existentes em um formato adequado para documentação, mídia social ou análises de design. Você também pode selecionar intervalos específicos de linhas e colunas para extrair apenas uma porção da folha de sprites, o que é ideal quando uma única folha contém múltiplas sequências de animação — como ciclos de caminhada, corrida e inatividade dispostos em linhas diferentes.",
+        "content3": "O modo de fatiamento de folha de sprites suporta espaçamento entre células, que leva em conta o espaçamento que algumas ferramentas adicionam entre quadros durante a exportação. Você também pode ativar o modo pular-vazios para detectar e descartar automaticamente células totalmente transparentes, evitando quadros em branco no final da animação. Quer sua folha de sprites tenha sido criada em Aseprite, Photoshop, TexturePacker ou qualquer outra ferramenta, o processo de conversão funciona com qualquer layout padrão baseado em grade."
+      },
+      "whyConvert": {
+        "title": "Por que converter PNG para GIF?",
+        "content": "GIF permanece um dos formatos de imagem mais universalmente suportados na internet. Diferentemente de arquivos de vídeo ou PNGs animados (APNG), animações GIF são reproduzidas automaticamente em praticamente todos os navegadores, clientes de e-mail, aplicativos de mensagens e plataformas de mídia social sem exigir plugins ou JavaScript. Isso torna GIF o formato ideal quando você precisa de uma animação leve que simplesmente funciona em qualquer lugar.",
+        "content2": "Converter quadros PNG ou folhas de sprites para GIF é especialmente valioso quando você quer compartilhar animações fora de seu contexto original. Desenvolvedores de jogos podem visualizar animações de personagens sem iniciar um motor de jogos. Designers podem incorporar mockups de UI animados diretamente em documentação ou mensagens do Slack. Artistas podem exibir sua pixel art em plataformas que não suportam reprodução de folha de sprites. Em cada caso, GIF funciona como um formato universal de visualização que qualquer pessoa pode ver instantaneamente.",
+        "content3": "Animações GIF também são auto-contidas — um único arquivo contém cada quadro, a informação de tempo e a contagem de repetições. Não há necessidade de players externos, bibliotecas JavaScript ou animações CSS para fazê-las funcionar. Essa simplicidade torna GIF ideal para arquivos README, wikis, boletins informativos por e-mail e qualquer contexto onde você precisa de uma animação que simplesmente se reproduza sozinha sem nenhuma dependência."
+      },
+      "formatsExplained": {
+        "title": "Entendendo PNG vs GIF",
+        "content": "PNG e GIF são ambos formatos de imagem raster, mas servem a propósitos diferentes. PNG suporta milhões de cores (24 bits ou 32 bits com transparência alfa), compressão sem perdas e um único quadro estático. É o formato preferido para imagens de alta qualidade, capturas de tela e quadros de animação individual onde a precisão de cores importa. GIF, por outro lado, é limitado a uma paleta de 256 cores por quadro, mas suporta múltiplos quadros em um único arquivo, tornando-o o formato clássico para animações simples.",
+        "content2": "A limitação de 256 cores do GIF significa que a conversão de PNG pode introduzir mudanças de cor leves se suas imagens de origem usarem uma ampla gama de cores. Para pixel art e ilustrações com cores sólidas, isso é raramente perceptível. Para conteúdo fotográfico ou com muitos gradientes, a redução de paleta pode produzir bandagem visível. A ferramenta maneja essa conversão automaticamente, selecionando a melhor paleta de 256 cores para seus quadros específicos.",
+        "content3": "Outra diferença fundamental é o tratamento da transparência. PNG suporta transparência alfa completa com 256 níveis de opacidade, permitindo bordas semi-transparentes suaves. A transparência GIF é binária — cada pixel é totalmente transparente ou totalmente opaco. Isso significa que bordas suaves ou sobreposições semi-transparentes em seus quadros PNG serão convertidas em bordas duras na saída GIF. Para melhores resultados com animações GIF transparentes, use quadros PNG de origem que já possuem transparência limpa com bordas duras."
+      },
+      "howTo": {
+        "title": "Como converter PNG para GIF",
+        "step1": {
+          "title": "1. Escolha seu modo de entrada",
+          "content": "Selecione \"De quadros\" se você tem arquivos PNG individuais para cada quadro de animação — por exemplo, um conjunto de quadros exportados de Aseprite, Photoshop ou qualquer ferramenta de desenho. Selecione \"De folha de sprites\" se você tem uma única imagem PNG com todos os quadros dispostos em uma grade, o que é comum para recursos de jogos e animações de sprites. Você pode alternar entre os modos a qualquer momento usando as abas no topo da ferramenta."
+        },
+        "step2": {
+          "title": "2. Envie seus arquivos",
+          "content": "Para o modo de quadros, arraste e solte múltiplos arquivos PNG na área de envio ou clique para abrir um seletor de arquivos. Você pode enviar até 100 arquivos, com cada arquivo até 5 MB e um tamanho total combinado de 60 MB. Os arquivos enviados são listados com seus nomes de arquivo para que você possa verificar a seleção e remover arquivos individuais se necessário. Para o modo de folha de sprites, envie um único arquivo PNG ou cole uma URL pública apontando para a imagem da folha de sprites. Uma visualização da folha de sprites aparecerá para que você possa confirmar que foi carregada corretamente."
+        },
+        "step3": {
+          "title": "3. Configure as configurações de animação",
+          "content": "Defina a duração do quadro em milissegundos — isso controla quanto tempo cada quadro é exibido. O padrão de 100 ms oferece uma animação suave de 10 FPS, mas você pode ir tão rápido quanto 10 ms ou tão lento quanto 10.000 ms por quadro. Defina a contagem de repetições como 0 para repetição infinita ou um número específico para reproduzir a animação um número fixo de vezes. Para o modo de quadros, ative a classificação baseada em nome de arquivo se seus arquivos seguem uma convenção de nomenclatura como walk_0.png, walk_1.png, e escolha como lidar com quadros com dimensões diferentes. Para o modo de folha de sprites, especifique colunas e linhas (ou dimensões de célula em pixels) e opcionalmente defina intervalos de coluna/linha para extrair apenas uma animação específica de uma folha com múltiplas animações."
+        },
+        "step4": {
+          "title": "4. Converta e baixe",
+          "content": "Clique em Converter para enviar seus arquivos ao servidor e gerar o GIF animado. A conversão geralmente leva apenas alguns segundos. Uma vez concluído, uma visualização ao vivo exibe a animação para que você possa verificar o tempo, ordem dos quadros e aparência geral antes de baixar. Se o resultado não estiver correto, ajuste suas configurações e converta novamente. Quando estiver satisfeito, clique em Baixar para salvar o GIF no seu dispositivo. Clique em \"Converter outro\" para limpar tudo e começar uma nova conversão com arquivos novos."
+        }
+      },
+      "features": {
+        "title": "Funcionalidades",
+        "items": {
+          "frames": {
+            "title": "Montagem de múltiplos quadros",
+            "content": "Envie até 100 arquivos PNG individuais e combine-os em um único GIF animado. Os quadros são montados na ordem de envio, ou opcionalmente classificados pelo sufixo numérico em nomes de arquivo. Isso torna fácil exportar em lote quadros de qualquer ferramenta de desenho ou animação e montá-los em um GIF polido sem reorganização manual."
+          },
+          "spritesheet": {
+            "title": "Fatiamento de folha de sprites",
+            "content": "Fatia automaticamente uma folha de sprites PNG em quadros individuais usando o modo de grade (colunas × linhas) ou modo de célula (dimensões em pixels). A ferramenta suporta espaçamento entre células para levar em conta o espaçamento adicionado por ferramentas de exportação como TexturePacker ou Aseprite. Você também pode limitar a conversão a linhas e colunas específicas, possibilitando extrair uma única animação de uma folha que contém muitas."
+          },
+          "duration": {
+            "title": "Duração de quadro ajustável",
+            "content": "Controle a velocidade da animação definindo a duração do quadro de 10 ms (muito rápido) a 10.000 ms (10 segundos por quadro). O padrão de 100 ms produz uma animação suave de 10 FPS adequada para a maioria das visualizações de sprites. Para sequências cinemáticas, você pode aumentar para 200 ms ou mais, enquanto animações de ação rápida geralmente têm melhor aparência com 50-80 ms por quadro."
+          },
+          "fileOrder": {
+            "title": "Ordenação baseada em nome de arquivo",
+            "content": "Ative a classificação de nome de arquivo para ordenar automaticamente quadros pelo sufixo numérico _N em nomes de arquivo (por exemplo, walk_0.png, walk_1.png, walk_2.png), independentemente da ordem de envio. Isso é especialmente útil ao selecionar arquivos de uma pasta onde o sistema operacional pode não preservar a sequência original, garantindo que sua animação sempre seja reproduzida na ordem pretendida."
+          },
+          "resize": {
+            "title": "Manipulação de incompatibilidade de dimensões",
+            "content": "Quando quadros têm tamanhos diferentes, escolha como tratá-los: centralize quadros menores em uma tela transparente dimensionada para o maior quadro, preencha o espaço extra com uma cor de fundo configurável ou retorne um erro para que você possa padronizar as dimensões primeiro. Essa flexibilidade significa que você não precisa redimensionar manualmente cada quadro antes de converter — a ferramenta se adapta ao seu fluxo de trabalho."
+          },
+          "rangeSelect": {
+            "title": "Seleção de intervalo",
+            "content": "Extraia apenas uma porção de uma folha de sprites especificando intervalos de coluna e linha (por exemplo, colunas 0-3, linhas 2-4). Isso é essencial para folhas de sprites que empacotam múltiplas sequências de animação em uma única imagem. Em vez de fatiar a folha inteira, você pode direcionar exatamente o ciclo de caminhada, animação de ataque ou loop inativo que precisa e converter apenas essa seção em GIF."
+          },
+          "privacy": {
+            "title": "Privacidade em primeiro lugar",
+            "content": "Seus arquivos são processados no servidor e nunca armazenados permanentemente. Uma vez que o GIF é gerado e retornado ao seu navegador, os envios originais são imediatamente descartados da memória do servidor. Nenhum registro é necessário, nenhum cookie é usado para rastreamento e seus dados de imagem nunca são compartilhados com terceiros ou usados para qualquer propósito além da conversão que você solicitou."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "gamePreview": {
+            "title": "Visualização de animação de jogos",
+            "content": "Visualize animações de folha de sprites como GIFs sem carregá-las em um motor de jogos. Compartilhe ciclos de caminhada de personagens, sequências de ataque, efeitos de partículas ou transições de UI com sua equipe em um formato universalmente visualizável. Por exemplo, um artista pode exportar uma folha de sprites de Aseprite, convertê-la para GIF e soltá-la em um canal do Slack para feedback — ninguém precisa instalar nenhum software especial para ver a animação em ação."
+          },
+          "socialMedia": {
+            "title": "Mídia social e portfólio",
+            "content": "Converta seus quadros de pixel art ou animações de folha de sprites em GIFs para compartilhar no Twitter, Discord, Reddit ou seu site de portfólio. GIF é universalmente suportado e reproduz automaticamente na maioria das plataformas, tornando-o o melhor formato para exibir trabalhos animados onde você quer que o visualizador veja o movimento imediatamente. Muitos desenvolvedores de jogos usam esse fluxo de trabalho para compartilhar progresso diário — exporte os quadros de hoje, converta para GIF e poste uma atualização rápida mostrando uma nova animação de personagem ou efeito ambiental."
+          },
+          "documentation": {
+            "title": "Documentação técnica",
+            "content": "Crie diagramas animados, demonstrações de fluxo de UI ou guias visuais passo a passo a partir de capturas de tela individuais. Incorpore o GIF resultante diretamente em arquivos README do GitHub, páginas do Confluence, documentos do Notion ou qualquer site de documentação. Isso é particularmente eficaz para mostrar fluxos de trabalho com várias etapas, comparações antes e depois ou componentes de UI interativos onde uma captura de tela estática não consegue transmitir o comportamento completo."
+          },
+          "prototyping": {
+            "title": "Prototipagem de design",
+            "content": "Monte rapidamente quadros de mockup de UI em passe-visualmente para testar o tempo de animação e transições antes de se comprometer com uma implementação completa em código. Exporte cada estado de tela como PNG, organize-os em sequência e converta para GIF para criar um protótipo rápido que os stakeholders podem revisar. Essa abordagem é mais rápida que construir protótipos interativos para feedback no estágio inicial, e o GIF resultante pode ser compartilhado por e-mail ou incorporado em slides de apresentação."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas frequentes",
+        "items": {
+          "formats": {
+            "q": "Quais formatos de arquivo são suportados?",
+            "a": "A entrada deve ser arquivos PNG — isso se aplica aos dois modos. No modo de quadros, cada arquivo enviado deve ser uma imagem PNG. No modo de folha de sprites, a entrada deve ser um único arquivo PNG (enviado diretamente ou por uma URL pública). A saída é sempre um GIF animado. Outros formatos de imagem como JPEG, WebP ou BMP não são suportados como entrada, então você precisará convertê-los para PNG primeiro, se necessário."
+          },
+          "maxFiles": {
+            "q": "Quantos quadros posso enviar?",
+            "a": "No modo de quadros, você pode enviar até 100 arquivos PNG individuais. Cada arquivo pode ter até 5 MB, e o tamanho total combinado de todos os arquivos não deve exceder 60 MB. No modo de folha de sprites, o arquivo PNG único pode ter até 20 MB. Esses limites garantem tempos de processamento rápidos enquanto acomodam a maioria dos recursos de animação e folha de sprites do mundo real."
+          },
+          "frameOrder": {
+            "q": "Como os quadros são ordenados?",
+            "a": "Por padrão, os quadros são ordenados pela sequência em que são enviados. Se você quiser ordenação automática, ative \"Ordenar por nome de arquivo\" para organizá-los pelo sufixo numérico _N em nomes de arquivo (por exemplo, frame_0.png, frame_1.png, frame_2.png). Isso é útil quando seu sistema operacional não preserva a ordem do arquivo durante a seleção. Para o modo de folha de sprites, os quadros são sempre lidos da esquerda para a direita, de cima para baixo, seguindo a convenção padrão de folha de sprites."
+          },
+          "differentSizes": {
+            "q": "O que acontece se meus quadros tiverem tamanhos diferentes?",
+            "a": "Você tem três opções para lidar com incompatibilidades de dimensões. \"Transparente\" centraliza cada quadro em uma tela transparente dimensionada para corresponder ao maior quadro, o que funciona bem para sprites com caixas delimitadoras variáveis. \"Preenchimento\" faz o mesmo centralização, mas preenche o espaço extra com uma cor de fundo de sua escolha (configurável através de um seletor de cor). \"Erro\" rejeita a conversão e retorna um erro 400, solicitando que você padronize as dimensões do quadro antes de tentar novamente — útil se você quiser detectar diferenças de tamanho não intencionais."
+          },
+          "gridVsCell": {
+            "q": "Qual é a diferença entre modo de fatiamento de grade e célula?",
+            "a": "O modo de grade solicita o número de colunas e linhas em sua folha de sprites, então calcula o tamanho em pixels de cada célula dividindo as dimensões da imagem pelas contagens de coluna e linha. O modo de célula funciona de maneira oposta — você fornece a largura e altura em pixels exatos de cada quadro, e a ferramenta calcula quantas colunas e linhas cabem. Use o modo de grade quando você sabe que sua folha é organizada como, digamos, 8 colunas por 4 linhas. Use o modo de célula quando você sabe que cada quadro tem exatamente 64×64 pixels, mas não tem certeza sobre o layout da grade."
+          },
+          "transparency": {
+            "q": "A saída preserva a transparência?",
+            "a": "Sim, regiões transparentes em seus quadros PNG são preservadas como transparência GIF na animação de saída. No entanto, observe que GIF suporta apenas transparência binária (totalmente transparente ou totalmente opaco), diferentemente de PNG que suporta transparência alfa parcial. Pixels semi-transparentes em seus quadros PNG serão convertidos para totalmente transparentes ou totalmente opacos na saída GIF."
+          },
+          "free": {
+            "q": "Esta ferramenta é gratuita?",
+            "a": "Sim, esta ferramenta é completamente gratuita para usar sem necessidade de registro ou criação de conta. Você pode converter quadros PNG ou folhas de sprites para GIF quantas vezes precisar. A ferramenta é apoiada por prompts ocasionais não-intrusivos e o serviço de API complementar no RapidAPI."
+          },
+          "api": {
+            "q": "Há uma API disponível?",
+            "a": "Sim. Esta ferramenta é alimentada pela API Easy GIF2Sprite disponível no RapidAPI. A API oferece dois endpoints: /from-frames para montar múltiplos arquivos PNG em um GIF animado, e /from-spritesheet para fatiar uma folha de sprites PNG em quadros e produzir um GIF animado. Ambos os endpoints suportam os mesmos parâmetros disponíveis na ferramenta web, tornando simples automatizar conversões no seu pipeline de construção ou aplicação."
           }
         }
       }

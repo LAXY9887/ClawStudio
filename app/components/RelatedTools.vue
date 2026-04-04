@@ -5,8 +5,7 @@ const route = useRoute()
 
 const tools = [
   { key: 'gifToSprite', icon: 'i-lucide-grid-3x3', to: '/tools/gif-to-sprite' },
-  { key: 'framesToGif', icon: 'i-lucide-film', to: '/tools/frames-to-gif' },
-  { key: 'spritesheetToGif', icon: 'i-lucide-play-circle', to: '/tools/spritesheet-to-gif' }
+  { key: 'toGif', icon: 'i-lucide-film', to: '/tools/png-to-gif' }
 ]
 
 const currentPath = computed(() => route.path)

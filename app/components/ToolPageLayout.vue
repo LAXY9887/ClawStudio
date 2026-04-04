@@ -9,6 +9,8 @@ const props = defineProps<{
   prefix: string
   seoSections: SeoSection[]
   apiHighlightKeys?: string[]
+  apiUrl?: string
+  tutorialUrl?: string
 }>()
 
 useSeoMeta({
@@ -41,5 +43,7 @@ useSeoMeta({
     :prefix="prefix"
     :sections="seoSections"
     :api-highlight-keys="apiHighlightKeys"
+    :api-url="apiUrl"
+    :tutorial-url="tutorialUrl"
   />
 </template>

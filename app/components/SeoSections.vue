@@ -7,6 +7,8 @@ const props = defineProps<{
   prefix: string
   sections: SeoSection[]
   apiHighlightKeys?: string[]
+  apiUrl?: string
+  tutorialUrl?: string
 }>()
 
 // API promo is shared across all tools
@@ -46,14 +48,14 @@ const apiFeatureKeys = props.apiHighlightKeys || ['endpoints', 'input', 'params'
           <UButton
             :label="t(`${prefix}.seo.api.cta`)"
             icon="i-lucide-external-link"
-            to="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites"
+            :to="apiUrl || 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'"
             target="_blank"
             size="lg"
           />
           <UButton
             :label="t(`${prefix}.seo.api.tutorial`)"
             icon="i-lucide-book-open"
-            to="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites/tutorials/how-to-use-easy-gif-to-sprites"
+            :to="tutorialUrl || 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites/tutorials/how-to-use-easy-gif-to-sprites'"
             target="_blank"
             color="neutral"
             variant="outline"

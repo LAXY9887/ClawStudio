@@ -89,8 +89,7 @@
   "relatedTools": {
     "label": "相關工具",
     "gifToSprite": "GIF → Spritesheet",
-    "framesToGif": "逐幀 → GIF",
-    "spritesheetToGif": "Spritesheet → GIF"
+    "toGif": "PNG → GIF"
   },
   "home": {
     "title": "免費線上開發工具",
@@ -98,6 +97,10 @@
       "gifToSprite": {
         "title": "GIF 轉 Spritesheet",
         "description": "將 GIF 動畫轉換為 Sprite 圖或逐幀 PNG 圖片。"
+      },
+      "toGif": {
+        "title": "PNG 轉 GIF",
+        "description": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫。"
       }
     }
   },
@@ -297,6 +300,243 @@
           "api": {
             "q": "有提供 API 嗎？",
             "a": "有。本工具由 Easy GIF2Sprite API 驅動，已上架 RapidAPI，開發者可以將 GIF 轉 Sprite 的功能整合到自己的應用程式和工作流程中。"
+          }
+        }
+      }
+    }
+  },
+  "toGif": {
+    "title": "PNG 轉 GIF 工具",
+    "subtitle": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫。",
+    "mode": {
+      "frames": "逐幀上傳",
+      "spritesheet": "Spritesheet"
+    },
+    "framesUpload": {
+      "title": "拖放 PNG 檔案至此，或點擊選擇",
+      "limit": "最多 100 張，單檔 5MB，總計 60MB",
+      "accept": "僅接受 .png 檔案",
+      "changeFiles": "點擊新增或替換檔案"
+    },
+    "spritesheetUpload": {
+      "title": "拖放 Spritesheet PNG 至此，或點擊選擇",
+      "limit": "檔案大小上限：20MB",
+      "accept": "僅接受 .png 檔案",
+      "changeFile": "點擊選擇其他檔案"
+    },
+    "convert": "Convert!",
+    "url": {
+      "placeholder": "或貼上 Spritesheet PNG 網址..."
+    },
+    "framesOptions": {
+      "title": "動畫選項",
+      "duration": "幀延遲 (ms)",
+      "durationHint": "每幀顯示的毫秒數。最小 10，最大 10000。",
+      "loop": "循環次數",
+      "loopHint": "0 = 無限循環。",
+      "fileNameOrder": "依檔名排序",
+      "fileNameOrderHint": "依檔名中的 _N 後綴排序（例如 walk_0.png、walk_1.png），而非上傳順序。",
+      "resize": "尺寸不一致處理",
+      "resizeHint": "當各幀尺寸不同時的處理方式。",
+      "resizeTransparent": "置中於透明畫布",
+      "resizeFill": "置中於填色畫布",
+      "resizeError": "回傳錯誤",
+      "bgFillColor": "填充顏色",
+      "bgFillColorHint": "使用「填色」模式時的畫布填充顏色。"
+    },
+    "slicingMode": {
+      "title": "切割模式",
+      "grid": "網格（欄 × 列）",
+      "cell": "像素尺寸"
+    },
+    "spritesheetOptions": {
+      "title": "選項",
+      "columns": "欄數",
+      "rows": "列數",
+      "cellWidth": "格寬 (px)",
+      "cellHeight": "格高 (px)",
+      "frameCount": "幀數",
+      "frameCountHint": "實際幀數（用於最後一列不完整的情況）。留空自動計算。",
+      "padding": "間距 (px)",
+      "paddingHint": "Spritesheet 中格子之間的像素間距。",
+      "columnRange": "欄範圍",
+      "columnRangeHint": "0 索引範圍，例如 \"0-5\" 或 \"2\"。留空表示全部。",
+      "rowRange": "列範圍",
+      "rowRangeHint": "0 索引範圍，例如 \"0\" 或 \"1-3\"。留空表示全部。",
+      "skipEmpty": "跳過空幀",
+      "skipEmptyHint": "自動移除完全透明的幀。",
+      "duration": "幀延遲 (ms)",
+      "durationHint": "每幀顯示的毫秒數。",
+      "loop": "循環次數",
+      "loopHint": "0 = 無限循環。"
+    },
+    "status": {
+      "uploading": "上傳中...",
+      "converting": "轉換中...",
+      "error": "轉換失敗",
+      "retry": "重試"
+    },
+    "result": {
+      "title": "GIF 預覽",
+      "info": "{width} × {height} px・{size}",
+      "download": "下載 GIF",
+      "reset": "轉換另一個"
+    },
+    "adModal": {
+      "title": "🥺 請支持我們 🌸",
+      "description": "閱讀一篇文章以取得 3 次轉換。感謝你支持這個免費工具！",
+      "remaining": "剩餘 {count} 次免費轉換",
+      "watch": "確認",
+      "close": "關閉"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 PNG 轉 GIF API",
+        "content": "透過 Easy GIF2Sprite API 將 PNG 轉 GIF 的功能整合到你的應用程式中。無論是組裝逐幀圖片或切割 Spritesheet，API 都透過兩個專用端點處理。",
+        "content2": "上傳 PNG 逐幀圖片或 Spritesheet，透過簡單的 HTTP 請求即可取得 GIF 動畫。非常適合遊戲素材產線、自動化 Sprite 工作流程和批次處理工具。",
+        "cta": "在 RapidAPI 上查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "兩個端點：/from-frames（多張 PNG）和 /from-spritesheet（單張 PNG）",
+          "input": "支援 PNG 檔案上傳或公開網址",
+          "params": "控制延遲、循環、幀排序、網格切割等",
+          "limit": "每次最多 100 張或單檔 20MB",
+          "formats": "PNG 輸入，GIF 輸出",
+          "response": "Cloud Run 自動擴展，回應速度快"
+        }
+      },
+      "whatIsFramesToGif": {
+        "title": "什麼是 PNG 逐幀轉 GIF？",
+        "content": "PNG 逐幀轉 GIF 是將一系列獨立的 PNG 圖片組裝成一個 GIF 動畫檔案的過程。每張 PNG 成為動畫的一幀，按指定速度依序播放。轉換過程會保留原始 PNG 的透明度，因此帶有透明背景的角色或物件在動畫中不會出現白邊或背景瑕疵。",
+        "content2": "這是逐幀提取的反向操作 —— 不是將動畫拆開，而是從零開始組裝。這是遊戲開發者、動畫師和設計師的標準工作流程，他們會逐幀繪製，然後需要預覽或輸出最終動畫為 GIF。工具支援單次轉換最多 100 張 PNG，幀延遲可從 10 毫秒調整到 10 秒，讓你精確控制動畫的播放節奏。",
+        "content3": "在組裝幀時，你可以選擇如何處理尺寸不一致的 PNG 檔案。工具提供三種方式：將較小的幀置中於以最大幀為尺寸的透明畫布上、用指定的純色填充背景，或將不一致標記為錯誤以便你在轉換前修正。你也可以啟用依檔名排序功能，按檔名中的數字後綴排列幀（例如 walk_0.png、walk_1.png、walk_2.png），確保無論上傳順序如何，動畫都能按正確順序播放。"
+      },
+      "whatIsSpritesheetToGif": {
+        "title": "什麼是 Spritesheet 轉 GIF？",
+        "content": "Spritesheet 轉 GIF 是將一張包含多個幀的網格圖片（Spritesheet）切割並重新組裝為 GIF 動畫的過程。你只需指定網格佈局 —— 欄列數或像素尺寸 —— 工具就會提取每個格子作為一幀。工具依照大多數遊戲引擎和動畫工具的慣例，從左到右、從上到下依序讀取每一格。",
+        "content2": "這在以下情境特別實用：不用遊戲引擎就能預覽 Spritesheet 動畫、在只支援 GIF 的平台上分享 Sprite 動畫，或將現有遊戲素材轉換為適合文件、社群媒體或設計審查的格式。你還可以指定特定的欄列範圍來只提取 Spritesheet 的一部分，這對單張圖包含多組動畫序列（例如行走、奔跑、待機動作分別放在不同列）的情況非常理想。",
+        "content3": "Spritesheet 切割模式支援格子之間的間距設定，以應對部分工具在匯出時自動加入的框線或留白。你也可以啟用跳過空白幀功能，自動偵測並捨棄完全透明的格子，避免動畫結尾出現空白幀。無論你的 Spritesheet 是用 Aseprite、Photoshop、TexturePacker 或其他工具製作的，只要是標準的網格排列，都能順利轉換。"
+      },
+      "whyConvert": {
+        "title": "為什麼要將 PNG 轉換為 GIF？",
+        "content": "GIF 是網路上相容性最廣泛的圖片格式之一。不同於影片檔或 APNG（動態 PNG），GIF 動畫幾乎在所有瀏覽器、電子郵件客戶端、通訊軟體和社群媒體平台上都能自動播放，完全不需要安裝任何外掛或執行 JavaScript。當你需要一個輕量且到處都能正常顯示的動畫時，GIF 是最實用的選擇。",
+        "content2": "將 PNG 逐幀圖片或 Spritesheet 轉為 GIF 在需要脫離原始環境分享動畫時特別有價值。遊戲開發者可以在不啟動遊戲引擎的情況下預覽角色動畫；設計師可以把動態 UI 模擬圖直接貼到文件或 Slack 訊息中；美術創作者可以在不支援 Spritesheet 播放的平台上展示像素風格作品。在這些情境中，GIF 都扮演著通用預覽格式的角色，任何人都能即時觀看。",
+        "content3": "GIF 動畫也是完全自包含的 —— 單一檔案就包含所有幀、時間資訊和循環設定。不需要外部播放器、JavaScript 函式庫或 CSS 動畫就能讓它運作。這種簡潔特性讓 GIF 非常適合嵌入 README 檔案、Wiki 頁面、電子報，以及任何需要零依賴即自動播放動畫的場景。"
+      },
+      "formatsExplained": {
+        "title": "了解 PNG 與 GIF 的差異",
+        "content": "PNG 和 GIF 都是點陣圖格式，但各有不同的用途。PNG 支援數百萬種顏色（24 位元或含 Alpha 透明的 32 位元）、無損壓縮，且為單一靜態幀，是高品質圖片、螢幕截圖和需要準確色彩的動畫逐幀素材的首選格式。相對地，GIF 每幀僅支援 256 色調色盤，但能在單一檔案中容納多個幀，成為簡單動畫的經典格式。",
+        "content2": "GIF 的 256 色限制意味著，如果原始 PNG 使用了大量色彩，轉換後可能出現輕微的色差。對於像素風格美術和純色系插畫，這通常不明顯。但對攝影風格或漸層較多的內容，調色盤縮減可能產生可見的色帶效果。工具會自動處理這項轉換，根據你的幀內容選擇最合適的 256 色調色盤。",
+        "content3": "另一個關鍵差異在於透明度的處理方式。PNG 支援完整的 Alpha 透明度，具有 256 個層級的不透明度，能呈現平滑的半透明邊緣。GIF 的透明度是二元的 —— 每個像素不是完全透明就是完全不透明。這表示 PNG 幀中的半透明效果或柔和邊緣在 GIF 輸出中會變成硬邊。為了取得最佳的透明 GIF 動畫效果，建議使用已經具有乾淨硬邊透明度的 PNG 來源幀。"
+      },
+      "howTo": {
+        "title": "如何將 PNG 轉換為 GIF",
+        "step1": {
+          "title": "1. 選擇輸入模式",
+          "content": "如果你有每幀獨立的 PNG 檔案，選擇「逐幀上傳」—— 例如從 Aseprite、Photoshop 或其他繪圖工具匯出的幀序列。如果你有一張所有幀排列在網格中的 PNG，選擇「Spritesheet」，這在遊戲素材和 Sprite 動畫中很常見。你可以隨時使用工具頂部的分頁切換模式。"
+        },
+        "step2": {
+          "title": "2. 上傳檔案",
+          "content": "逐幀模式下，將多張 PNG 檔案拖放到上傳區域，或點擊開啟檔案選擇器。最多上傳 100 張，單檔上限 5MB，總計不超過 60MB。上傳後會顯示檔案列表，方便你確認選取結果並移除不需要的項目。Spritesheet 模式下，上傳單一 PNG 檔案或貼上指向 Spritesheet 圖片的公開網址，上傳後會顯示預覽圖以確認載入無誤。"
+        },
+        "step3": {
+          "title": "3. 設定動畫參數",
+          "content": "設定幀延遲（毫秒）—— 這控制每幀顯示的時間長度。預設 100ms 可產生流暢的 10 FPS 動畫，最快可設為 10ms，最慢可達每幀 10,000ms。循環次數設為 0 代表無限循環，或指定一個數字讓動畫播放固定次數。逐幀模式下，可啟用依檔名排序（適用於 walk_0.png、walk_1.png 這類命名），並選擇尺寸不一致時的處理方式。Spritesheet 模式下，指定欄數和列數（或格子的像素尺寸），還可以設定欄列範圍以從多動畫的 Spritesheet 中只提取特定動畫。"
+        },
+        "step4": {
+          "title": "4. 轉換並下載",
+          "content": "點擊 Convert 將檔案傳送至伺服器並產生 GIF 動畫，轉換通常只需數秒。完成後會顯示即時預覽，讓你檢查動畫的時間、幀順序和整體效果。如果結果不滿意，可以調整設定後重新轉換。確認滿意後點擊下載將 GIF 儲存到裝置。點擊「轉換另一個」可清除所有內容，開始新的轉換。"
+        }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "frames": {
+            "title": "多幀組裝",
+            "content": "上傳最多 100 張獨立 PNG 檔案，合併為單一 GIF 動畫。幀按上傳順序排列，也可依檔名中的數字後綴自動排序。這讓你能輕鬆從任何繪圖或動畫工具批次匯出幀，直接組裝成精緻的 GIF，不必手動重新排列。"
+          },
+          "spritesheet": {
+            "title": "Spritesheet 切割",
+            "content": "使用網格模式（欄 × 列）或像素模式（指定格子尺寸）自動切割 Spritesheet PNG 為逐幀動畫。支援格子間的間距設定，以應對 TexturePacker 或 Aseprite 等匯出工具所加入的留白。你也可以限定特定的欄列範圍，從包含多組動畫的 Spritesheet 中只提取一組。"
+          },
+          "duration": {
+            "title": "可調幀延遲",
+            "content": "設定幀延遲從 10ms（超快）到 10,000ms（每幀 10 秒）來控制動畫速度。預設 100ms 可產生流暢的 10 FPS 動畫，適合大多數 Sprite 預覽。電影風格的序列可以提高到 200ms 以上，而快節奏的動作動畫通常在 50-80ms 效果最佳。"
+          },
+          "fileOrder": {
+            "title": "依檔名排序",
+            "content": "啟用檔名排序，依檔名中的 _N 數字後綴自動排列幀（例如 walk_0.png、walk_1.png、walk_2.png），不受上傳順序影響。當作業系統在選取檔案時未保留原始順序，這個功能特別有用，能確保動畫始終按照預定的順序播放。"
+          },
+          "resize": {
+            "title": "尺寸不一致處理",
+            "content": "當各幀尺寸不同時，你可以選擇：將較小的幀置中於以最大幀為尺寸的透明畫布上、以可自訂的背景色填充多餘空間，或回傳錯誤以便你先統一尺寸。這種彈性意味著你不需要在轉換前手動調整每一幀的大小 —— 工具會配合你的工作流程。"
+          },
+          "rangeSelect": {
+            "title": "範圍選擇",
+            "content": "透過指定欄和列範圍（例如欄 0-3、列 2-4），僅提取 Spritesheet 的部分區域。對於將多組動畫序列打包在同一張圖上的 Spritesheet 來說不可或缺。你可以精準鎖定想要的行走循環、攻擊動畫或待機動作，只將該區段轉換為 GIF，而非切割整張圖。"
+          },
+          "privacy": {
+            "title": "隱私優先",
+            "content": "你的檔案在伺服器端處理後絕不會被永久儲存。GIF 產生並回傳至瀏覽器後，原始上傳檔案即從伺服器記憶體中立即丟棄。無需建立帳號、不使用 Cookie 追蹤，你的圖片資料不會與第三方分享，也不會被用於轉換以外的任何用途。"
+          }
+        }
+      },
+      "useCases": {
+        "title": "應用場景",
+        "items": {
+          "gamePreview": {
+            "title": "遊戲動畫預覽",
+            "content": "不用載入遊戲引擎即可將 Spritesheet 動畫預覽為 GIF。與團隊分享角色行走循環、攻擊序列、粒子特效或 UI 轉場，所有人都能直接檢視。例如美術人員可以從 Aseprite 匯出 Spritesheet 後轉為 GIF，直接丟到 Slack 頻道中收集回饋 —— 團隊成員不需要安裝任何特殊軟體就能看到完整動畫效果。"
+          },
+          "socialMedia": {
+            "title": "社群媒體與作品集",
+            "content": "將像素風格逐幀圖或 Spritesheet 動畫轉為 GIF，分享到 Twitter、Discord、Reddit 或個人作品集網站。GIF 被所有平台廣泛支援且自動播放，是展示動態作品最理想的格式，讓觀看者能立即看到動畫效果。許多遊戲開發者會用這個流程分享每日進度 —— 匯出當天的幀、轉為 GIF、發一則快速更新來展示新的角色動畫或場景特效。"
+          },
+          "documentation": {
+            "title": "技術文件",
+            "content": "從個別螢幕截圖製作動態圖解、UI 流程展示或逐步視覺指南，將產生的 GIF 直接嵌入 GitHub README、Confluence 頁面、Notion 文件或任何文件網站中。這對於展示多步驟操作流程、前後對比，或靜態截圖無法完整呈現行為的互動式 UI 元件特別有效。"
+          },
+          "prototyping": {
+            "title": "設計原型",
+            "content": "快速將 UI 設計稿的各幀組裝成動態展示，在正式實作程式碼之前測試動畫時間和轉場效果。將每個畫面狀態匯出為 PNG，按順序排列後轉為 GIF，即可建立快速原型供利害關係人審閱。這種方式比製作互動式原型更快，適合早期階段收集回饋，產生的 GIF 還能透過電子郵件分享或嵌入簡報投影片中。"
+          }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "formats": {
+            "q": "支援哪些檔案格式？",
+            "a": "輸入必須為 PNG 檔案 —— 兩種模式皆適用。逐幀模式下，所有上傳的檔案都必須是 PNG。Spritesheet 模式下，輸入必須是單一 PNG 檔案（直接上傳或透過公開網址提供）。輸出一律為 GIF 動畫。其他圖片格式如 JPEG、WebP 或 BMP 不支援作為輸入，如有需要請先轉換為 PNG。"
+          },
+          "maxFiles": {
+            "q": "可以上傳多少張圖片？",
+            "a": "逐幀模式最多上傳 100 張獨立的 PNG 檔案，單檔上限 5MB，所有檔案總計不超過 60MB。Spritesheet 模式的單一 PNG 檔案上限為 20MB。這些限制在確保快速處理的同時，也能涵蓋大部分實際的動畫和 Spritesheet 素材需求。"
+          },
+          "frameOrder": {
+            "q": "幀的排列順序是什麼？",
+            "a": "預設情況下，幀依上傳順序排列。如果需要自動排序，啟用「依檔名排序」可按檔名中的 _N 數字後綴排列（例如 frame_0.png、frame_1.png、frame_2.png）。當作業系統在選取檔案時未保留原始順序，這個功能特別有幫助。Spritesheet 模式下，幀始終依照標準慣例從左到右、從上到下讀取。"
+          },
+          "differentSizes": {
+            "q": "如果各幀尺寸不同怎麼辦？",
+            "a": "你有三種處理方式。「透明」會將每幀置中於以最大幀為尺寸的透明畫布上，適合邊界框大小不一的 Sprite。「填充」同樣置中，但以你選擇的背景色（可透過調色盤設定）填充多餘空間。「錯誤」會拒絕轉換並回傳 400 錯誤，提示你先統一幀的尺寸 —— 適合用來捕捉非預期的大小差異。"
+          },
+          "gridVsCell": {
+            "q": "網格模式和像素模式有什麼差別？",
+            "a": "網格模式要求輸入 Spritesheet 的欄數和列數，然後用圖片尺寸除以欄列數來計算每格的像素大小。像素模式則相反 —— 你提供每幀的精確像素寬高，工具會計算出能容納多少欄和列。當你知道 Spritesheet 的排列方式（例如 8 欄 4 列）時用網格模式；當你知道每幀是 64×64 像素但不確定網格佈局時用像素模式。"
+          },
+          "transparency": {
+            "q": "輸出是否保留透明度？",
+            "a": "是的，PNG 幀中的透明區域會在輸出的 GIF 動畫中保留為 GIF 透明。不過要注意，GIF 僅支援二元透明（完全透明或完全不透明），不像 PNG 支援部分 Alpha 透明。PNG 幀中的半透明像素在 GIF 輸出中會被轉換為完全透明或完全不透明。"
+          },
+          "free": {
+            "q": "這個工具是免費的嗎？",
+            "a": "是的，本工具完全免費使用，不需要註冊或建立帳號。你可以不限次數地將 PNG 逐幀圖或 Spritesheet 轉換為 GIF。本工具的營運仰賴偶爾的非侵入式提示，以及 RapidAPI 上的配套 API 服務。"
+          },
+          "api": {
+            "q": "有提供 API 嗎？",
+            "a": "有。本工具由 RapidAPI 上的 Easy GIF2Sprite API 驅動，提供兩個端點：/from-frames 用於將多張 PNG 組裝成 GIF 動畫，/from-spritesheet 用於切割 Spritesheet PNG 並產生 GIF 動畫。兩個端點都支援與網頁工具相同的參數，方便你在建構流程或應用程式中自動化轉換。"
           }
         }
       }

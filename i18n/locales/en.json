@@ -89,8 +89,7 @@
   "relatedTools": {
     "label": "Related Tools",
     "gifToSprite": "GIF → Spritesheet",
-    "framesToGif": "Frames → GIF",
-    "spritesheetToGif": "Spritesheet → GIF"
+    "toGif": "PNG → GIF"
   },
   "home": {
     "title": "Free Online Dev Tools",
@@ -98,6 +97,10 @@
       "gifToSprite": {
         "title": "GIF to Spritesheet",
         "description": "Convert GIF animations into sprite sheets or individual frame PNGs."
+      },
+      "toGif": {
+        "title": "PNG to GIF",
+        "description": "Convert PNG frames or a spritesheet into an animated GIF."
       }
     }
   },
@@ -297,6 +300,243 @@
           "api": {
             "q": "Is there an API available?",
             "a": "Yes. This tool is powered by the Easy GIF2Sprite API, which is available on RapidAPI for developers who want to integrate GIF-to-sprite conversion into their own applications and workflows."
+          }
+        }
+      }
+    }
+  },
+  "toGif": {
+    "title": "PNG to GIF Converter",
+    "subtitle": "Convert PNG frames or a spritesheet into an animated GIF.",
+    "mode": {
+      "frames": "From Frames",
+      "spritesheet": "From Spritesheet"
+    },
+    "framesUpload": {
+      "title": "Drop your PNG frames here or click to select",
+      "limit": "Max 100 files, 5MB each, 60MB total",
+      "accept": "Only .png files are accepted",
+      "changeFiles": "Click to add or replace files"
+    },
+    "spritesheetUpload": {
+      "title": "Drop your spritesheet PNG here or click to select",
+      "limit": "Max file size: 20MB",
+      "accept": "Only .png files are accepted",
+      "changeFile": "Click to choose a different file"
+    },
+    "convert": "Convert!",
+    "url": {
+      "placeholder": "Or paste a spritesheet PNG URL..."
+    },
+    "framesOptions": {
+      "title": "Animation Options",
+      "duration": "Frame Duration (ms)",
+      "durationHint": "Duration of each frame in milliseconds. Min 10, max 10000.",
+      "loop": "Loop Count",
+      "loopHint": "0 = infinite loop.",
+      "fileNameOrder": "Sort by Filename",
+      "fileNameOrderHint": "Sort frames by the _N suffix in filenames (e.g., walk_0.png, walk_1.png) instead of upload order.",
+      "resize": "Dimension Mismatch",
+      "resizeHint": "How to handle frames with different sizes.",
+      "resizeTransparent": "Center on transparent canvas",
+      "resizeFill": "Center on filled canvas",
+      "resizeError": "Return error",
+      "bgFillColor": "Fill Color",
+      "bgFillColorHint": "Canvas fill color when using \"fill\" mode."
+    },
+    "slicingMode": {
+      "title": "Slicing Mode",
+      "grid": "Grid (columns × rows)",
+      "cell": "Cell (pixel size)"
+    },
+    "spritesheetOptions": {
+      "title": "Options",
+      "columns": "Columns",
+      "rows": "Rows",
+      "cellWidth": "Cell Width (px)",
+      "cellHeight": "Cell Height (px)",
+      "frameCount": "Frame Count",
+      "frameCountHint": "Actual number of frames (for incomplete last row). Leave empty for auto.",
+      "padding": "Padding (px)",
+      "paddingHint": "Pixel gap between cells in the spritesheet.",
+      "columnRange": "Column Range",
+      "columnRangeHint": "0-indexed range, e.g. \"0-5\" or \"2\". Leave empty for all.",
+      "rowRange": "Row Range",
+      "rowRangeHint": "0-indexed range, e.g. \"0\" or \"1-3\". Leave empty for all.",
+      "skipEmpty": "Skip Empty Frames",
+      "skipEmptyHint": "Automatically remove fully transparent frames from the output.",
+      "duration": "Frame Duration (ms)",
+      "durationHint": "Duration of each frame in milliseconds.",
+      "loop": "Loop Count",
+      "loopHint": "0 = infinite loop."
+    },
+    "status": {
+      "uploading": "Uploading...",
+      "converting": "Converting...",
+      "error": "Conversion failed",
+      "retry": "Try Again"
+    },
+    "result": {
+      "title": "GIF Preview",
+      "info": "{width} × {height} px • {size}",
+      "download": "Download GIF",
+      "reset": "Convert Another"
+    },
+    "adModal": {
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!",
+      "remaining": "{count} free conversion remaining | {count} free conversions remaining",
+      "watch": "Confirm",
+      "close": "Close"
+    },
+    "seo": {
+      "api": {
+        "title": "Use the PNG to GIF API",
+        "content": "Integrate PNG-to-GIF conversion into your applications with the Easy GIF2Sprite API. Whether you need to assemble individual frames or slice a spritesheet, the API handles both workflows through two dedicated endpoints.",
+        "content2": "Upload PNG frames or a spritesheet via a simple HTTP request and receive an animated GIF in seconds. Perfect for game asset pipelines, automated sprite workflows, and batch processing tools.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": {
+          "title": "API Highlights",
+          "endpoints": "Two endpoints: /from-frames (multi-PNG) and /from-spritesheet (single PNG)",
+          "input": "Upload PNG files or provide a public URL",
+          "params": "Control duration, loop, frame ordering, grid slicing, and more",
+          "limit": "100 files per request or 20MB single file",
+          "formats": "PNG input, GIF output",
+          "response": "Fast response with Cloud Run auto-scaling"
+        }
+      },
+      "whatIsFramesToGif": {
+        "title": "What Is PNG Frames to GIF Conversion?",
+        "content": "PNG frames to GIF conversion takes a series of individual PNG images and assembles them into a single animated GIF file. Each PNG becomes one frame of the animation, played in sequence at a specified speed. The process preserves transparency from the original PNG files, so characters or objects with transparent backgrounds animate cleanly without unwanted white borders or background artifacts.",
+        "content2": "This is the reverse of frame extraction — instead of splitting an animation apart, you're building one from scratch. It's the standard workflow for game developers, animators, and designers who create each frame individually and need to preview or export the final animation as a GIF. The tool supports up to 100 individual PNG files per conversion, with configurable frame duration ranging from 10 milliseconds to 10 seconds per frame, giving you precise control over animation timing.",
+        "content3": "When assembling frames, you can choose how to handle PNG files with mismatched dimensions. The tool offers three approaches: centering smaller frames on a transparent canvas sized to the largest frame, filling the background with a solid color, or flagging the mismatch as an error so you can fix it before converting. You can also enable filename-based ordering, which sorts frames by the numeric suffix in filenames (e.g., walk_0.png, walk_1.png, walk_2.png), ensuring your animation plays in the correct sequence regardless of upload order."
+      },
+      "whatIsSpritesheetToGif": {
+        "title": "What Is Spritesheet to GIF Conversion?",
+        "content": "Spritesheet to GIF conversion slices a single image containing multiple frames arranged in a grid (a spritesheet) and reassembles them into an animated GIF. You specify the grid layout — either by column/row count or pixel cell dimensions — and the tool extracts each cell as a frame. The tool reads frames left-to-right, top-to-bottom, following the standard spritesheet convention used by most game engines and animation tools.",
+        "content2": "This is particularly useful for previewing spritesheet animations without a game engine, sharing sprite animations on platforms that only support GIF, or converting existing game assets into a format suitable for documentation, social media, or design reviews. You can also select specific row and column ranges to extract only a portion of the spritesheet, which is ideal when a single sheet contains multiple animation sequences — such as walk, run, and idle cycles arranged in different rows.",
+        "content3": "The spritesheet slicing mode supports padding between cells, which accounts for the spacing some tools add between frames during export. You can also enable skip-empty mode to automatically detect and discard fully transparent cells, avoiding blank frames at the end of your animation. Whether your spritesheet was created in Aseprite, Photoshop, TexturePacker, or any other tool, the conversion process works with any standard grid-based layout."
+      },
+      "whyConvert": {
+        "title": "Why Convert PNG to GIF?",
+        "content": "GIF remains one of the most universally supported image formats on the internet. Unlike video files or animated PNGs (APNG), GIF animations play automatically in virtually every browser, email client, messaging app, and social media platform without requiring any plugins or JavaScript. This makes GIF the go-to format when you need a lightweight animation that simply works everywhere.",
+        "content2": "Converting PNG frames or spritesheets to GIF is especially valuable when you want to share animations outside of their original context. Game developers can preview character animations without launching a game engine. Designers can embed animated UI mockups directly in documentation or Slack messages. Artists can showcase their pixel art on platforms that don't support spritesheet playback. In each case, GIF serves as a universal preview format that anyone can view instantly.",
+        "content3": "GIF animations are also self-contained — a single file holds every frame, the timing information, and the loop count. There's no need for external players, JavaScript libraries, or CSS animations to make them work. This simplicity makes GIF ideal for README files, wikis, email newsletters, and any context where you need an animation that just plays on its own with zero dependencies."
+      },
+      "formatsExplained": {
+        "title": "Understanding PNG vs GIF",
+        "content": "PNG and GIF are both raster image formats, but they serve different purposes. PNG supports millions of colors (24-bit or 32-bit with alpha transparency), lossless compression, and a single static frame. It's the preferred format for high-quality images, screenshots, and individual animation frames where color accuracy matters. GIF, on the other hand, is limited to a 256-color palette per frame but supports multiple frames in a single file, making it the classic format for simple animations.",
+        "content2": "The 256-color limitation of GIF means that converting from PNG may introduce slight color changes if your source images use a wide color range. For pixel art and illustrations with flat colors, this is rarely noticeable. For photographic or gradient-heavy content, the palette reduction can produce visible banding. The tool handles this conversion automatically, selecting the best 256-color palette for your specific frames.",
+        "content3": "Another key difference is transparency handling. PNG supports full alpha transparency with 256 levels of opacity, allowing smooth semi-transparent edges. GIF transparency is binary — each pixel is either fully transparent or fully opaque. This means soft edges or semi-transparent overlays in your PNG frames will be converted to hard edges in the GIF output. For best results with transparent GIF animations, use PNG source frames that already have clean, hard-edged transparency."
+      },
+      "howTo": {
+        "title": "How to Convert PNG to GIF",
+        "step1": {
+          "title": "1. Choose Your Input Mode",
+          "content": "Select \"From Frames\" if you have individual PNG files for each animation frame — for example, a set of exported frames from Aseprite, Photoshop, or any drawing tool. Select \"From Spritesheet\" if you have a single PNG image with all frames arranged in a grid, which is common for game assets and sprite animations. You can switch between modes at any time using the tabs at the top of the tool."
+        },
+        "step2": {
+          "title": "2. Upload Your Files",
+          "content": "For frames mode, drag and drop multiple PNG files onto the upload area or click to open a file picker. You can upload up to 100 files, with each file up to 5MB and a total combined size of 60MB. The uploaded files are listed with their filenames so you can verify the selection and remove individual files if needed. For spritesheet mode, upload a single PNG file or paste a public URL pointing to the spritesheet image. A preview of the spritesheet will appear so you can confirm it loaded correctly."
+        },
+        "step3": {
+          "title": "3. Configure Animation Settings",
+          "content": "Set the frame duration in milliseconds — this controls how long each frame is displayed. The default of 100ms gives a smooth 10 FPS animation, but you can go as fast as 10ms or as slow as 10,000ms per frame. Set the loop count to 0 for infinite looping, or a specific number to play the animation a fixed number of times. For frames mode, enable filename-based sorting if your files follow a naming convention like walk_0.png, walk_1.png, and choose how to handle frames with different dimensions. For spritesheet mode, specify columns and rows (or cell pixel dimensions), and optionally set column/row ranges to extract only a specific animation from a multi-animation sheet."
+        },
+        "step4": {
+          "title": "4. Convert and Download",
+          "content": "Click Convert to send your files to the server and generate the animated GIF. The conversion typically takes just a few seconds. Once complete, a live preview displays the animation so you can verify the timing, frame order, and overall look before downloading. If the result isn't right, adjust your settings and convert again. When you're satisfied, click Download to save the GIF to your device. Click \"Convert Another\" to clear everything and start a fresh conversion with new files."
+        }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "frames": {
+            "title": "Multi-Frame Assembly",
+            "content": "Upload up to 100 individual PNG files and combine them into a single animated GIF. Frames are assembled in upload order, or optionally sorted by the numeric suffix in filenames. This makes it easy to batch-export frames from any drawing or animation tool and assemble them into a polished GIF without manual reordering."
+          },
+          "spritesheet": {
+            "title": "Spritesheet Slicing",
+            "content": "Automatically slice a spritesheet PNG into individual frames using grid mode (columns × rows) or cell mode (pixel dimensions). The tool supports padding between cells to account for spacing added by export tools like TexturePacker or Aseprite. You can also limit the conversion to specific rows and columns, making it possible to extract a single animation from a sheet that contains many."
+          },
+          "duration": {
+            "title": "Adjustable Frame Duration",
+            "content": "Control animation speed by setting the frame duration from 10ms (very fast) to 10,000ms (10 seconds per frame). The default of 100ms produces a smooth 10 FPS animation suitable for most sprite previews. For cinematic sequences you might increase it to 200ms or more, while fast action animations often look best at 50-80ms per frame."
+          },
+          "fileOrder": {
+            "title": "Filename-Based Ordering",
+            "content": "Enable filename sorting to automatically order frames by the _N numeric suffix in filenames (e.g., walk_0.png, walk_1.png, walk_2.png), regardless of upload order. This is especially helpful when selecting files from a folder where the operating system may not preserve the original sequence, ensuring your animation always plays in the intended order."
+          },
+          "resize": {
+            "title": "Dimension Mismatch Handling",
+            "content": "When frames have different sizes, choose how to handle them: center smaller frames on a transparent canvas sized to the largest frame, fill the extra space with a configurable background color, or return an error so you can standardize dimensions first. This flexibility means you don't need to manually resize every frame before converting — the tool adapts to your workflow."
+          },
+          "rangeSelect": {
+            "title": "Range Selection",
+            "content": "Extract only a portion of a spritesheet by specifying column and row ranges (e.g., columns 0-3, rows 2-4). This is essential for spritesheets that pack multiple animation sequences into a single image. Instead of slicing the entire sheet, you can target exactly the walk cycle, attack animation, or idle loop you need and convert just that section into a GIF."
+          },
+          "privacy": {
+            "title": "Privacy First",
+            "content": "Your files are processed on the server and never stored permanently. Once the GIF is generated and returned to your browser, the original uploads are immediately discarded from server memory. No account registration is required, no cookies are used for tracking, and your image data is never shared with third parties or used for any purpose beyond the conversion you requested."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "gamePreview": {
+            "title": "Game Animation Preview",
+            "content": "Preview spritesheet animations as GIFs without loading them into a game engine. Share character walk cycles, attack sequences, particle effects, or UI transitions with your team in a universally viewable format. For example, an artist can export a spritesheet from Aseprite, convert it to GIF, and drop it into a Slack channel for feedback — no one needs to install any special software to see the animation in action."
+          },
+          "socialMedia": {
+            "title": "Social Media & Portfolio",
+            "content": "Convert your pixel art frames or spritesheet animations into GIFs for sharing on Twitter, Discord, Reddit, or your portfolio website. GIF is universally supported and auto-plays on most platforms, making it the best format for showcasing animated artwork where you want the viewer to see the motion immediately. Many game devs use this workflow to share daily progress — export today's frames, convert to GIF, and post a quick update showing a new character animation or environment effect."
+          },
+          "documentation": {
+            "title": "Technical Documentation",
+            "content": "Create animated diagrams, UI flow demos, or step-by-step visual guides from individual screenshots. Embed the resulting GIF directly in GitHub README files, Confluence pages, Notion docs, or any documentation site. This is particularly effective for showing multi-step workflows, before-and-after comparisons, or interactive UI components where a static screenshot cannot convey the full behavior."
+          },
+          "prototyping": {
+            "title": "Design Prototyping",
+            "content": "Quickly assemble UI mockup frames into animated walkthroughs to test animation timing and transitions before committing to a full implementation in code. Export each screen state as a PNG, arrange them in sequence, and convert to GIF to create a rapid prototype that stakeholders can review. This approach is faster than building interactive prototypes for early-stage feedback, and the resulting GIF can be shared via email or embedded in presentation slides."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "formats": {
+            "q": "What file formats are supported?",
+            "a": "The input must be PNG files — this applies to both modes. In frames mode, every uploaded file must be a PNG image. In spritesheet mode, the input must be a single PNG file (uploaded directly or via a public URL). The output is always an animated GIF. Other image formats like JPEG, WebP, or BMP are not supported as input, so you'll need to convert them to PNG first if necessary."
+          },
+          "maxFiles": {
+            "q": "How many frames can I upload?",
+            "a": "In frames mode, you can upload up to 100 individual PNG files. Each file can be up to 5MB, and the total combined size of all files must not exceed 60MB. In spritesheet mode, the single PNG file can be up to 20MB. These limits ensure fast processing times while accommodating most real-world animation and spritesheet assets."
+          },
+          "frameOrder": {
+            "q": "How are frames ordered?",
+            "a": "By default, frames are ordered by the sequence in which they are uploaded. If you want automatic ordering, enable \"Sort by Filename\" to arrange them by the _N numeric suffix in filenames (e.g., frame_0.png, frame_1.png, frame_2.png). This is helpful when your operating system doesn't preserve file order during selection. For spritesheet mode, frames are always read left-to-right, top-to-bottom, following the standard spritesheet convention."
+          },
+          "differentSizes": {
+            "q": "What happens if my frames have different sizes?",
+            "a": "You have three options for handling dimension mismatches. \"Transparent\" centers each frame on a transparent canvas sized to match the largest frame, which works well for sprites with varying bounding boxes. \"Fill\" does the same centering but fills the extra space with a background color of your choice (configurable via a color picker). \"Error\" rejects the conversion and returns a 400 error, prompting you to standardize frame dimensions before trying again — useful if you want to catch unintentional size differences."
+          },
+          "gridVsCell": {
+            "q": "What's the difference between Grid and Cell slicing mode?",
+            "a": "Grid mode asks for the number of columns and rows in your spritesheet, then calculates the pixel size of each cell by dividing the image dimensions by the column and row counts. Cell mode works the other way — you provide the exact pixel width and height of each frame, and the tool calculates how many columns and rows fit. Use Grid mode when you know your sheet is organized as, say, 8 columns by 4 rows. Use Cell mode when you know each frame is exactly 64×64 pixels but aren't sure about the grid layout."
+          },
+          "transparency": {
+            "q": "Does the output preserve transparency?",
+            "a": "Yes, transparent regions in your PNG frames are preserved as GIF transparency in the output animation. However, note that GIF only supports binary transparency (fully transparent or fully opaque), unlike PNG which supports partial alpha transparency. Semi-transparent pixels in your PNG frames will be converted to either fully transparent or fully opaque in the GIF output."
+          },
+          "free": {
+            "q": "Is this tool free?",
+            "a": "Yes, this tool is completely free to use with no registration or account creation required. You can convert PNG frames or spritesheets to GIF as many times as you need. The tool is supported by occasional non-intrusive prompts and the companion API service on RapidAPI."
+          },
+          "api": {
+            "q": "Is there an API available?",
+            "a": "Yes. This tool is powered by the Easy GIF2Sprite API available on RapidAPI. The API offers two endpoints: /from-frames for assembling multiple PNG files into an animated GIF, and /from-spritesheet for slicing a spritesheet PNG into frames and producing an animated GIF. Both endpoints support the same parameters available in the web tool, making it straightforward to automate conversions in your build pipeline or application."
           }
         }
       }

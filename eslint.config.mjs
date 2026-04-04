@@ -11,6 +11,9 @@ export default withNuxt({
     'vue/first-attribute-linebreak': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-empty': 'off',
-    'vue/no-v-html': 'off'
+    'vue/no-v-html': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/html-closing-bracket-newline': 'off'
   }
 })

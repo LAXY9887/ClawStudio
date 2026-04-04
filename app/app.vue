@@ -64,7 +64,8 @@ const localeItems = computed(() =>
     <UHeader>
       <template #left>
         <NuxtLink to="/" class="flex items-center">
-          <img src="/logo.png" alt="ClawStudiouo" class="h-8">
+          <img src="/logo_light.png" alt="ClawStudiouo" class="h-8 dark:hidden">
+          <img src="/logo_dark.png" alt="ClawStudiouo" class="h-8 hidden dark:block">
         </NuxtLink>
       </template>
 

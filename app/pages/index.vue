@@ -5,8 +5,13 @@ const localePath = useLocalePath()
 const tools = [
   {
     key: 'gifToSprite',
-    icon: 'i-lucide-images',
+    icon: 'i-lucide-grid-3x3',
     to: '/tools/gif-to-sprite'
+  },
+  {
+    key: 'toGif',
+    icon: 'i-lucide-film',
+    to: '/tools/png-to-gif'
   }
 ]
 </script>

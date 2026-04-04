@@ -92,6 +92,10 @@
       "gifToSprite": {
         "title": "GIF to Spritesheet",
         "description": "Convierta animaciones GIF en hojas de sprites o PNGs de fotogramas individuales."
+      },
+      "toGif": {
+        "title": "PNG a GIF",
+        "description": "Convierta fotogramas PNG o una hoja de sprites en un GIF animado."
       }
     }
   },
@@ -291,6 +295,248 @@
           "api": {
             "q": "¿Hay una API disponible?",
             "a": "Sí. Esta herramienta está impulsada por la API Easy GIF2Sprite, que está disponible en RapidAPI para desarrolladores que desean integrar la conversión de GIF a sprites en sus propias aplicaciones y flujos de trabajo."
+          }
+        }
+      }
+    }
+  },
+  "relatedTools": {
+    "label": "Herramientas relacionadas",
+    "gifToSprite": "GIF → Hoja de sprites",
+    "toGif": "PNG → GIF"
+  },
+  "toGif": {
+    "title": "Convertidor de PNG a GIF",
+    "subtitle": "Convierta fotogramas PNG o una hoja de sprites en un GIF animado.",
+    "mode": {
+      "frames": "Desde fotogramas",
+      "spritesheet": "Desde hoja de sprites"
+    },
+    "framesUpload": {
+      "title": "Arrastre sus fotogramas PNG aquí o haga clic para seleccionar",
+      "limit": "Máximo 100 archivos, 5 MB cada uno, 60 MB total",
+      "accept": "Solo se aceptan archivos .png",
+      "changeFiles": "Haga clic para añadir o reemplazar archivos"
+    },
+    "spritesheetUpload": {
+      "title": "Arrastre su hoja de sprites PNG aquí o haga clic para seleccionar",
+      "limit": "Tamaño máximo de archivo: 20 MB",
+      "accept": "Solo se aceptan archivos .png",
+      "changeFile": "Haga clic para elegir un archivo diferente"
+    },
+    "convert": "¡Convertir!",
+    "url": {
+      "placeholder": "O pegue una URL de hoja de sprites PNG..."
+    },
+    "framesOptions": {
+      "title": "Opciones de animación",
+      "duration": "Duración del fotograma (ms)",
+      "durationHint": "Duración de cada fotograma en milisegundos. Mín. 10, máx. 10000.",
+      "loop": "Recuento de bucles",
+      "loopHint": "0 = bucle infinito.",
+      "fileNameOrder": "Ordenar por nombre de archivo",
+      "fileNameOrderHint": "Ordena fotogramas por el sufijo _N en los nombres de archivo (p. ej., walk_0.png, walk_1.png) en lugar del orden de carga.",
+      "resize": "Desajuste de dimensiones",
+      "resizeHint": "Cómo manejar fotogramas con diferentes tamaños.",
+      "resizeTransparent": "Centrar en lienzo transparente",
+      "resizeFill": "Centrar en lienzo relleno",
+      "resizeError": "Devolver error",
+      "bgFillColor": "Color de relleno",
+      "bgFillColorHint": "Color de relleno del lienzo cuando se usa modo \"relleno\"."
+    },
+    "slicingMode": {
+      "title": "Modo de corte",
+      "grid": "Cuadrícula (columnas × filas)",
+      "cell": "Celda (tamaño en píxeles)"
+    },
+    "spritesheetOptions": {
+      "title": "Opciones",
+      "columns": "Columnas",
+      "rows": "Filas",
+      "cellWidth": "Ancho de celda (px)",
+      "cellHeight": "Alto de celda (px)",
+      "frameCount": "Recuento de fotogramas",
+      "frameCountHint": "Número real de fotogramas (para la última fila incompleta). Dejar vacío para automático.",
+      "padding": "Espaciado (px)",
+      "paddingHint": "Espacio de píxeles entre celdas en la hoja de sprites.",
+      "columnRange": "Rango de columnas",
+      "columnRangeHint": "Rango indexado desde 0, p. ej. \"0-5\" o \"2\". Dejar vacío para todas.",
+      "rowRange": "Rango de filas",
+      "rowRangeHint": "Rango indexado desde 0, p. ej. \"0\" o \"1-3\". Dejar vacío para todas.",
+      "skipEmpty": "Omitir fotogramas vacíos",
+      "skipEmptyHint": "Elimina automáticamente fotogramas completamente transparentes de la salida.",
+      "duration": "Duración del fotograma (ms)",
+      "durationHint": "Duración de cada fotograma en milisegundos.",
+      "loop": "Recuento de bucles",
+      "loopHint": "0 = bucle infinito."
+    },
+    "status": {
+      "uploading": "Cargando...",
+      "converting": "Convirtiendo...",
+      "error": "Error en la conversión",
+      "retry": "Reintentar"
+    },
+    "result": {
+      "title": "Vista previa de GIF",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar GIF",
+      "reset": "Convertir otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, apóyenos. 🌸",
+      "description": "Desbloquee 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usar la API de PNG a GIF",
+        "content": "Integre la conversión de PNG a GIF en sus aplicaciones con la API Easy GIF2Sprite. Ya sea que necesite ensamblar fotogramas individuales o cortar una hoja de sprites, la API maneja ambos flujos de trabajo a través de dos puntos finales dedicados.",
+        "content2": "Cargue fotogramas PNG o una hoja de sprites mediante una simple solicitud HTTP y reciba un GIF animado en segundos. Perfecto para pipelines de recursos de juegos, flujos de trabajo automatizados de sprites y herramientas de procesamiento por lotes.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Características de la API",
+          "endpoints": "Dos puntos finales: /from-frames (PNG múltiple) y /from-spritesheet (PNG único)",
+          "input": "Cargue archivos PNG o proporcione una URL pública",
+          "params": "Controle la duración, bucles, orden de fotogramas, corte de cuadrícula y más",
+          "limit": "100 archivos por solicitud o 20 MB archivo único",
+          "formats": "Entrada PNG, salida GIF",
+          "response": "Respuesta rápida con auto-escalado de Cloud Run"
+        }
+      },
+      "whatIsFramesToGif": {
+        "title": "¿Qué es la conversión de fotogramas PNG a GIF?",
+        "content": "La conversión de fotogramas PNG a GIF toma una serie de imágenes PNG individuales y las ensambla en un único archivo GIF animado. Cada PNG se convierte en un fotograma de la animación, reproducido en secuencia a una velocidad especificada. El proceso preserva la transparencia de los archivos PNG originales, por lo que los caracteres u objetos con fondos transparentes se animan limpios sin bordes blancos no deseados o artefactos de fondo.",
+        "content2": "Este es el proceso inverso de la extracción de fotogramas — en lugar de dividir una animación, estás construyendo una desde cero. Es el flujo de trabajo estándar para desarrolladores de juegos, animadores y diseñadores que crean cada fotograma individualmente y necesitan obtener una vista previa o exportar la animación final como GIF. La herramienta soporta hasta 100 archivos PNG individuales por conversión, con duración de fotograma configurable que varía de 10 milisegundos a 10 segundos por fotograma, brindándote control preciso sobre el cronometraje de la animación.",
+        "content3": "Al ensamblar fotogramas, puedes elegir cómo manejar archivos PNG con dimensiones no coincidentes. La herramienta ofrece tres enfoques: centrar fotogramas más pequeños en un lienzo transparente ajustado al fotograma más grande, rellenar el fondo con un color sólido o marcar la discrepancia como un error para que puedas corregirla antes de convertir. También puedes activar la ordenación basada en nombre de archivo, que ordena fotogramas por el sufijo numérico en nombres de archivo (p. ej., walk_0.png, walk_1.png, walk_2.png), asegurando que tu animación se reproduzca en la secuencia correcta independientemente del orden de carga."
+      },
+      "whatIsSpritesheetToGif": {
+        "title": "¿Qué es la conversión de hoja de sprites a GIF?",
+        "content": "La conversión de hoja de sprites a GIF corta una única imagen que contiene múltiples fotogramas dispuestos en una cuadrícula (una hoja de sprites) y los reensambla en un GIF animado. Especificas el diseño de la cuadrícula — ya sea por recuento de columnas/filas o dimensiones de celda en píxeles — y la herramienta extrae cada celda como un fotograma. La herramienta lee fotogramas de izquierda a derecha, de arriba a abajo, siguiendo la convención estándar de hoja de sprites utilizada por la mayoría de motores de juegos y herramientas de animación.",
+        "content2": "Esto es particularmente útil para obtener una vista previa de animaciones de hojas de sprites sin un motor de juegos, compartir animaciones de sprites en plataformas que solo soportan GIF, o convertir recursos de juegos existentes a un formato adecuado para documentación, redes sociales o revisiones de diseño. También puedes seleccionar rangos específicos de filas y columnas para extraer solo una porción de la hoja de sprites, lo cual es ideal cuando una única hoja contiene múltiples secuencias de animación — tales como ciclos de caminar, correr e inactividad dispuestos en diferentes filas.",
+        "content3": "El modo de corte de hoja de sprites soporta espaciado entre celdas, lo que cuenta con el espaciado que algunas herramientas añaden entre fotogramas durante la exportación. También puedes activar el modo saltar-vacío para detectar y descartar automáticamente celdas completamente transparentes, evitando fotogramas en blanco al final de tu animación. Ya sea que tu hoja de sprites fue creada en Aseprite, Photoshop, TexturePacker u otra herramienta, el proceso de conversión funciona con cualquier diseño de cuadrícula estándar."
+      },
+      "whyConvert": {
+        "title": "¿Por qué convertir PNG a GIF?",
+        "content": "GIF sigue siendo uno de los formatos de imagen más ampliamente compatibles en Internet. A diferencia de archivos de video o PNG animados (APNG), las animaciones GIF se reproducen automáticamente en prácticamente todos los navegadores, clientes de correo electrónico, aplicaciones de mensajería y plataformas de redes sociales sin requerir complementos o JavaScript. Esto hace que GIF sea el formato ideal cuando necesitas una animación ligera que simplemente funcione en todas partes.",
+        "content2": "Convertir fotogramas PNG o hojas de sprites a GIF es especialmente valioso cuando quieres compartir animaciones fuera de su contexto original. Los desarrolladores de juegos pueden obtener una vista previa de animaciones de personajes sin lanzar un motor de juegos. Los diseñadores pueden incrustar maquetas de UI animadas directamente en documentación o mensajes de Slack. Los artistas pueden mostrar su pixel art en plataformas que no soportan reproducción de hoja de sprites. En cada caso, GIF sirve como un formato de vista previa universal que cualquiera puede ver instantáneamente.",
+        "content3": "Las animaciones GIF también son autosuficientes — un único archivo contiene cada fotograma, la información de cronometraje y el recuento de bucles. No hay necesidad de reproductores externos, bibliotecas JavaScript o animaciones CSS para hacerlas funcionar. Esta simplicidad hace que GIF sea ideal para archivos README, wikis, boletines de correo electrónico y cualquier contexto donde necesites una animación que simplemente se reproduzca por sí sola sin dependencias."
+      },
+      "formatsExplained": {
+        "title": "Entendiendo PNG vs GIF",
+        "content": "PNG y GIF son ambos formatos de imagen raster, pero sirven para propósitos diferentes. PNG soporta millones de colores (24 bits o 32 bits con transparencia alfa), compresión sin pérdida y un único fotograma estático. Es el formato preferido para imágenes de alta calidad, capturas de pantalla y fotogramas de animación individuales donde la precisión del color importa. GIF, por otro lado, está limitado a una paleta de 256 colores por fotograma pero soporta múltiples fotogramas en un único archivo, lo que la hace el formato clásico para animaciones simples.",
+        "content2": "La limitación de 256 colores de GIF significa que convertir desde PNG puede introducir ligeros cambios de color si tus imágenes de origen usan un rango amplio de colores. Para pixel art e ilustraciones con colores planos, esto es raramente perceptible. Para contenido fotográfico o pesado en gradientes, la reducción de paleta puede producir bandas visibles. La herramienta maneja esta conversión automáticamente, seleccionando la mejor paleta de 256 colores para tus fotogramas específicos.",
+        "content3": "Otra diferencia clave es el manejo de transparencia. PNG soporta transparencia alfa completa con 256 niveles de opacidad, permitiendo bordes semi-transparentes suaves. La transparencia de GIF es binaria — cada píxel es completamente transparente u completamente opaco. Esto significa que bordes suaves u superposiciones semi-transparentes en tus fotogramas PNG se convertirán a bordes duros en la salida GIF. Para mejores resultados con animaciones GIF transparentes, usa fotogramas de origen PNG que ya tengan transparencia limpia de borde duro."
+      },
+      "howTo": {
+        "title": "Cómo convertir PNG a GIF",
+        "step1": {
+          "title": "1. Elige tu modo de entrada",
+          "content": "Selecciona \"Desde fotogramas\" si tienes archivos PNG individuales para cada fotograma de animación — por ejemplo, un conjunto de fotogramas exportados desde Aseprite, Photoshop o cualquier herramienta de dibujo. Selecciona \"Desde hoja de sprites\" si tienes una única imagen PNG con todos los fotogramas dispuestos en una cuadrícula, lo que es común para recursos de juegos y animaciones de sprites. Puedes cambiar entre modos en cualquier momento usando las pestañas en la parte superior de la herramienta."
+        },
+        "step2": {
+          "title": "2. Cargue sus archivos",
+          "content": "Para modo fotogramas, arrastra y suelta múltiples archivos PNG en el área de carga o haz clic para abrir el selector de archivos. Puedes cargar hasta 100 archivos, con cada archivo de hasta 5 MB y un tamaño total combinado de 60 MB. Los archivos cargados se enumeran con sus nombres de archivo para que puedas verificar la selección y eliminar archivos individuales si es necesario. Para modo hoja de sprites, carga un único archivo PNG o pega una URL pública apuntando a la imagen de la hoja de sprites. Aparecerá una vista previa de la hoja de sprites para que puedas confirmar que cargó correctamente."
+        },
+        "step3": {
+          "title": "3. Configura la configuración de animación",
+          "content": "Establece la duración del fotograma en milisegundos — esto controla cuánto tiempo se muestra cada fotograma. El valor predeterminado de 100 ms produce una animación suave de 10 FPS, pero puedes ir tan rápido como 10 ms o tan lento como 10,000 ms por fotograma. Establece el recuento de bucles a 0 para bucle infinito, o a un número específico para reproducir la animación un número fijo de veces. Para modo fotogramas, activa la ordenación basada en nombre de archivo si tus archivos siguen una convención de nombre como walk_0.png, walk_1.png, y elige cómo manejar fotogramas con diferentes dimensiones. Para modo hoja de sprites, especifica columnas y filas (o dimensiones de celda en píxeles), y opcionalmente establece rangos de columna/fila para extraer solo una animación específica de una hoja multi-animación."
+        },
+        "step4": {
+          "title": "4. Convierte y descarga",
+          "content": "Haz clic en Convertir para enviar tus archivos al servidor y generar el GIF animado. La conversión típicamente toma solo unos pocos segundos. Una vez completada, una vista previa en vivo muestra la animación para que puedas verificar el cronometraje, el orden de fotogramas y la apariencia general antes de descargar. Si el resultado no es el correcto, ajusta tu configuración y convierte nuevamente. Cuando estés satisfecho, haz clic en Descargar para guardar el GIF en tu dispositivo. Haz clic en \"Convertir otro\" para borrar todo y comenzar una conversión fresca con nuevos archivos."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "frames": {
+            "title": "Ensamblaje de múltiples fotogramas",
+            "content": "Carga hasta 100 archivos PNG individuales y combínalos en un único GIF animado. Los fotogramas se ensamblan en orden de carga, u opcionalmente se ordenan por el sufijo numérico en nombres de archivo. Esto facilita la exportación por lotes de fotogramas desde cualquier herramienta de dibujo o animación y el ensamblaje en un GIF pulido sin reordenación manual."
+          },
+          "spritesheet": {
+            "title": "Corte de hoja de sprites",
+            "content": "Corta automáticamente un PNG de hoja de sprites en fotogramas individuales usando modo cuadrícula (columnas × filas) o modo celda (dimensiones en píxeles). La herramienta soporta espaciado entre celdas para contar con el espaciado añadido por herramientas de exportación como TexturePacker o Aseprite. También puedes limitar la conversión a filas y columnas específicas, haciendo posible extraer una única animación de una hoja que contiene muchas."
+          },
+          "duration": {
+            "title": "Duración de fotograma ajustable",
+            "content": "Controla la velocidad de animación estableciendo la duración del fotograma de 10 ms (muy rápido) a 10,000 ms (10 segundos por fotograma). El valor predeterminado de 100 ms produce una animación suave de 10 FPS adecuada para la mayoría de vistas previas de sprites. Para secuencias cinematográficas puedes aumentarlo a 200 ms o más, mientras que las animaciones de acción rápida a menudo se ven mejor a 50-80 ms por fotograma."
+          },
+          "fileOrder": {
+            "title": "Ordenación basada en nombre de archivo",
+            "content": "Activa la ordenación de nombre de archivo para ordenar automáticamente fotogramas por el sufijo numérico _N en nombres de archivo (p. ej., walk_0.png, walk_1.png, walk_2.png), independientemente del orden de carga. Esto es especialmente útil al seleccionar archivos de una carpeta donde el sistema operativo puede no preservar la secuencia original, asegurando que tu animación siempre se reproduzca en el orden previsto."
+          },
+          "resize": {
+            "title": "Manejo de desajuste de dimensiones",
+            "content": "Cuando los fotogramas tienen diferentes tamaños, elige cómo manejarlos: centra fotogramas más pequeños en un lienzo transparente ajustado al fotograma más grande, rellena el espacio extra con un color de fondo configurable, o devuelve un error para que puedas estandarizar dimensiones primero. Esta flexibilidad significa que no necesitas redimensionar manualmente cada fotograma antes de convertir — la herramienta se adapta a tu flujo de trabajo."
+          },
+          "rangeSelect": {
+            "title": "Selección de rango",
+            "content": "Extrae solo una porción de una hoja de sprites especificando rangos de columna y fila (p. ej., columnas 0-3, filas 2-4). Esto es esencial para hojas de sprites que empaquetan múltiples secuencias de animación en una única imagen. En lugar de cortar toda la hoja, puedes apuntar exactamente al ciclo de caminata, animación de ataque o bucle de inactividad que necesites y convertir solo esa sección en un GIF."
+          },
+          "privacy": {
+            "title": "Privacidad primero",
+            "content": "Tus archivos se procesan en el servidor y nunca se almacenan permanentemente. Una vez que el GIF se genera y se devuelve a tu navegador, las cargas originales se descartan inmediatamente de la memoria del servidor. No se requiere registro de cuenta, no se usan cookies para seguimiento, y tus datos de imagen nunca se comparten con terceros o se usan para ningún propósito más allá de la conversión que solicitaste."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "gamePreview": {
+            "title": "Vista previa de animación de juegos",
+            "content": "Obtén una vista previa de animaciones de hoja de sprites como GIFs sin cargarlas en un motor de juegos. Comparte ciclos de caminata de personajes, secuencias de ataque, efectos de partículas o transiciones de UI con tu equipo en un formato universalmente visualizable. Por ejemplo, un artista puede exportar una hoja de sprites desde Aseprite, convertirla a GIF y colocarla en un canal de Slack para obtener comentarios — nadie necesita instalar ningún software especial para ver la animación en acción."
+          },
+          "socialMedia": {
+            "title": "Redes sociales y portafolio",
+            "content": "Convierte tus fotogramas de pixel art o animaciones de hoja de sprites a GIFs para compartir en Twitter, Discord, Reddit o tu sitio web de portafolio. GIF es universalmente soportado y se reproduce automáticamente en la mayoría de plataformas, lo que lo hace el mejor formato para mostrar obras de arte animadas donde quieres que el espectador vea el movimiento inmediatamente. Muchos desarrolladores de juegos usan este flujo de trabajo para compartir progreso diario — exporta los fotogramas de hoy, convierte a GIF y publica una actualización rápida mostrando una nueva animación de personaje o efecto de entorno."
+          },
+          "documentation": {
+            "title": "Documentación técnica",
+            "content": "Crea diagramas animados, demostraciones de flujo de UI o guías visuales paso a paso desde capturas de pantalla individuales. Incrusta el GIF resultante directamente en archivos README de GitHub, páginas de Confluence, docs de Notion o cualquier sitio de documentación. Esto es particularmente efectivo para mostrar flujos de trabajo de múltiples pasos, comparaciones antes y después, o componentes de UI interactivos donde una captura de pantalla estática no puede transmitir el comportamiento completo."
+          },
+          "prototyping": {
+            "title": "Prototipado de diseño",
+            "content": "Ensambla rápidamente fotogramas de maqueta de UI en tutoriales animados para probar el cronometraje de animación y transiciones antes de comprometerse con una implementación completa en código. Exporta cada estado de pantalla como PNG, ordénalos en secuencia y convierte a GIF para crear un prototipo rápido que los interesados pueden revisar. Este enfoque es más rápido que construir prototipos interactivos para comentarios en etapa temprana, y el GIF resultante puede compartirse por correo electrónico o incrustarse en diapositivas de presentación."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "formats": {
+            "q": "¿Qué formatos de archivo son compatibles?",
+            "a": "La entrada debe ser archivos PNG — esto se aplica a ambos modos. En modo fotogramas, cada archivo cargado debe ser una imagen PNG. En modo hoja de sprites, la entrada debe ser un único archivo PNG (cargado directamente o a través de una URL pública). La salida siempre es un GIF animado. Otros formatos de imagen como JPEG, WebP o BMP no son soportados como entrada, por lo que necesitarás convertirlos a PNG primero si es necesario."
+          },
+          "maxFiles": {
+            "q": "¿Cuántos fotogramas puedo cargar?",
+            "a": "En modo fotogramas, puedes cargar hasta 100 archivos PNG individuales. Cada archivo puede ser de hasta 5 MB, y el tamaño total combinado de todos los archivos no debe exceder 60 MB. En modo hoja de sprites, el único archivo PNG puede ser de hasta 20 MB. Estos límites aseguran tiempos de procesamiento rápidos mientras se acomodan la mayoría de recursos de animación y hoja de sprites del mundo real."
+          },
+          "frameOrder": {
+            "q": "¿Cómo se ordenan los fotogramas?",
+            "a": "Por defecto, los fotogramas se ordenan por la secuencia en la que se cargan. Si quieres ordenación automática, activa \"Ordenar por nombre de archivo\" para organizarlos por el sufijo numérico _N en nombres de archivo (p. ej., frame_0.png, frame_1.png, frame_2.png). Esto es útil cuando tu sistema operativo no preserva el orden de archivos durante la selección. Para modo hoja de sprites, los fotogramas siempre se leen de izquierda a derecha, de arriba a abajo, siguiendo la convención estándar de hoja de sprites."
+          },
+          "differentSizes": {
+            "q": "¿Qué sucede si mis fotogramas tienen diferentes tamaños?",
+            "a": "Tienes tres opciones para manejar desajustes de dimensiones. \"Transparente\" centra cada fotograma en un lienzo transparente ajustado para coincidir con el fotograma más grande, lo que funciona bien para sprites con cajas de delimitación variables. \"Relleno\" hace el mismo centrado pero rellena el espacio extra con un color de fondo de tu elección (configurable a través de un selector de color). \"Error\" rechaza la conversión y devuelve un error 400, indicándote que estandarices las dimensiones del fotograma antes de intentar nuevamente — útil si quieres detectar diferencias de tamaño no intencionales."
+          },
+          "gridVsCell": {
+            "q": "¿Cuál es la diferencia entre modo Cuadrícula y modo Celda para corte?",
+            "a": "El modo Cuadrícula solicita el número de columnas y filas en tu hoja de sprites, luego calcula el tamaño en píxeles de cada celda dividiendo las dimensiones de la imagen por los recuentos de columna y fila. El modo Celda funciona de la otra manera — proporcionas el ancho y alto exacto en píxeles de cada fotograma, y la herramienta calcula cuántas columnas y filas caben. Usa modo Cuadrícula cuando sabes que tu hoja está organizada como, digamos, 8 columnas por 4 filas. Usa modo Celda cuando sabes que cada fotograma es exactamente 64×64 píxeles pero no estás seguro del diseño de cuadrícula."
+          },
+          "transparency": {
+            "q": "¿La salida preserva la transparencia?",
+            "a": "Sí, las regiones transparentes en tus fotogramas PNG se preservan como transparencia GIF en la animación de salida. Sin embargo, ten en cuenta que GIF solo soporta transparencia binaria (completamente transparente u completamente opaco), a diferencia de PNG que soporta transparencia alfa parcial. Los píxeles semi-transparentes en tus fotogramas PNG se convertirán a completamente transparentes u completamente opacos en la salida GIF."
+          },
+          "free": {
+            "q": "¿Es esta herramienta gratuita?",
+            "a": "Sí, esta herramienta es completamente gratuita sin necesidad de registro o creación de cuenta. Puedes convertir fotogramas PNG u hojas de sprites a GIF tantas veces como necesites. La herramienta es soportada por indicaciones ocasionales no intrusivas y el servicio de API complementario en RapidAPI."
+          },
+          "api": {
+            "q": "¿Hay una API disponible?",
+            "a": "Sí. Esta herramienta está impulsada por la API Easy GIF2Sprite disponible en RapidAPI. La API ofrece dos puntos finales: /from-frames para ensamblar múltiples archivos PNG en un GIF animado, y /from-spritesheet para cortar un PNG de hoja de sprites en fotogramas y producir un GIF animado. Ambos puntos finales soportan los mismos parámetros disponibles en la herramienta web, lo que simplifica la automatización de conversiones en tu pipeline de construcción o aplicación."
           }
         }
       }

@@ -92,6 +92,10 @@
       "gifToSprite": {
         "title": "GIF to Spritesheet",
         "description": "Konvertieren Sie GIF-Animationen in Sprite Sheets oder einzelne Frame-PNGs."
+      },
+      "toGif": {
+        "title": "PNG zu GIF",
+        "description": "Konvertieren Sie PNG-Frames oder ein Sprite Sheet in eine animierte GIF."
       }
     }
   },
@@ -291,6 +295,248 @@
           "api": {
             "q": "Gibt es eine verfügbare API?",
             "a": "Ja. Dieses Tool wird von der Easy GIF2Sprite API angetrieben, die auf RapidAPI für Entwickler verfügbar ist, die die GIF-zu-Sprite-Konvertierung in ihre eigenen Anwendungen und Workflows integrieren möchten."
+          }
+        }
+      }
+    }
+  },
+  "relatedTools": {
+    "label": "Verwandte Tools",
+    "gifToSprite": "GIF → Sprite Sheet",
+    "toGif": "PNG → GIF"
+  },
+  "toGif": {
+    "title": "PNG zu GIF Konverter",
+    "subtitle": "Konvertieren Sie PNG-Frames oder ein Sprite Sheet in eine animierte GIF.",
+    "mode": {
+      "frames": "Aus Frames",
+      "spritesheet": "Aus Sprite Sheet"
+    },
+    "framesUpload": {
+      "title": "Legen Sie Ihre PNG-Frames hier ab oder klicken Sie zum Auswählen",
+      "limit": "Max. 100 Dateien, 5 MB pro Datei, 60 MB insgesamt",
+      "accept": "Nur .png-Dateien werden akzeptiert",
+      "changeFiles": "Klicken, um Dateien hinzuzufügen oder zu ersetzen"
+    },
+    "spritesheetUpload": {
+      "title": "Legen Sie Ihr Sprite-Sheet-PNG hier ab oder klicken Sie zum Auswählen",
+      "limit": "Maximale Dateigröße: 20 MB",
+      "accept": "Nur .png-Dateien werden akzeptiert",
+      "changeFile": "Klicken, um eine andere Datei auszuwählen"
+    },
+    "convert": "Konvertieren!",
+    "url": {
+      "placeholder": "Oder fügen Sie eine Sprite-Sheet-PNG-URL ein..."
+    },
+    "framesOptions": {
+      "title": "Animationsoptionen",
+      "duration": "Frame-Dauer (ms)",
+      "durationHint": "Dauer jedes Frames in Millisekunden. Min. 10, max. 10.000.",
+      "loop": "Schleife zählen",
+      "loopHint": "0 = Endlosschleife.",
+      "fileNameOrder": "Nach Dateiname sortieren",
+      "fileNameOrderHint": "Sortieren Sie Frames nach dem _N-Suffix in Dateinamen (z. B. walk_0.png, walk_1.png) anstelle der Upload-Reihenfolge.",
+      "resize": "Größenkonflikt",
+      "resizeHint": "Wie mit Frames unterschiedlicher Größe umgegangen wird.",
+      "resizeTransparent": "Auf transparentem Canvas zentrieren",
+      "resizeFill": "Auf gefülltem Canvas zentrieren",
+      "resizeError": "Fehler zurückgeben",
+      "bgFillColor": "Füllfarbe",
+      "bgFillColorHint": "Canvas-Füllfarbe bei Verwendung des \"Füllen\"-Modus."
+    },
+    "slicingMode": {
+      "title": "Schnittmodus",
+      "grid": "Raster (Spalten × Zeilen)",
+      "cell": "Zelle (Pixelgröße)"
+    },
+    "spritesheetOptions": {
+      "title": "Optionen",
+      "columns": "Spalten",
+      "rows": "Zeilen",
+      "cellWidth": "Zellenbreite (px)",
+      "cellHeight": "Zellenhöhe (px)",
+      "frameCount": "Frame-Anzahl",
+      "frameCountHint": "Tatsächliche Anzahl von Frames (für unvollständige letzte Zeile). Leer lassen für automatisch.",
+      "padding": "Abstand (px)",
+      "paddingHint": "Pixel-Lücke zwischen Zellen im Sprite Sheet.",
+      "columnRange": "Spaltenbereich",
+      "columnRangeHint": "0-indiziert, z. B. \"0-5\" oder \"2\". Leer lassen für alle.",
+      "rowRange": "Zeilenbereich",
+      "rowRangeHint": "0-indiziert, z. B. \"0\" oder \"1-3\". Leer lassen für alle.",
+      "skipEmpty": "Leere Frames überspringen",
+      "skipEmptyHint": "Entfernt automatisch vollständig transparente Frames aus der Ausgabe.",
+      "duration": "Frame-Dauer (ms)",
+      "durationHint": "Dauer jedes Frames in Millisekunden.",
+      "loop": "Schleife zählen",
+      "loopHint": "0 = Endlosschleife."
+    },
+    "status": {
+      "uploading": "Wird hochgeladen...",
+      "converting": "Wird konvertiert...",
+      "error": "Konvertierung fehlgeschlagen",
+      "retry": "Erneut versuchen"
+    },
+    "result": {
+      "title": "GIF-Vorschau",
+      "info": "{width} × {height} px • {size}",
+      "download": "GIF herunterladen",
+      "reset": "Eine weitere konvertieren"
+    },
+    "adModal": {
+      "title": "🥺 Bitte unterstützen Sie uns. 🌸",
+      "description": "Schalten Sie 3 weitere Konvertierungen frei, indem Sie unsere Artikel lesen. Vielen Dank für die Unterstützung dieses kostenlosen Tools!",
+      "remaining": "{count} kostenlose Konvertierung verbleibend | {count} kostenlose Konvertierungen verbleibend",
+      "watch": "Bestätigen",
+      "close": "Schließen"
+    },
+    "seo": {
+      "api": {
+        "title": "Verwenden Sie die PNG-zu-GIF-API",
+        "content": "Integrieren Sie die PNG-zu-GIF-Konvertierung in Ihre Anwendungen mit der Easy GIF2Sprite API. Unabhängig davon, ob Sie einzelne Frames zusammensetzen oder ein Sprite Sheet teilen müssen, behandelt die API beide Workflows durch zwei dedizierte Endpunkte.",
+        "content2": "Laden Sie PNG-Frames oder ein Sprite Sheet über eine einfache HTTP-Anfrage hoch und erhalten Sie in Sekunden eine animierte GIF. Perfekt für Game-Asset-Pipelines, automatisierte Sprite-Workflows und Stapelverarbeitungstools.",
+        "cta": "API auf RapidAPI ansehen",
+        "tutorial": "Vollständiges Tutorial lesen",
+        "features": {
+          "title": "API-Highlights",
+          "endpoints": "Zwei Endpunkte: /from-frames (mehrere PNGs) und /from-spritesheet (einzelnes PNG)",
+          "input": "Laden Sie PNG-Dateien hoch oder stellen Sie eine öffentliche URL bereit",
+          "params": "Steuern Sie Dauer, Schleife, Frame-Reihenfolge, Rasterschnitt und mehr",
+          "limit": "100 Dateien pro Anfrage oder 20 MB einzelne Datei",
+          "formats": "PNG-Eingabe, GIF-Ausgabe",
+          "response": "Schnelle Antwort mit Cloud Run Auto-Scaling"
+        }
+      },
+      "whatIsFramesToGif": {
+        "title": "Was ist PNG Frames zu GIF Konvertierung?",
+        "content": "Die Konvertierung von PNG-Frames zu GIF nimmt eine Reihe einzelner PNG-Bilder und setzt sie in einer einzelnen animierten GIF-Datei zusammen. Jedes PNG wird zu einem Frame der Animation, das in einer angegebenen Geschwindigkeit abgespielt wird. Der Prozess erhält die Transparenz aus den ursprünglichen PNG-Dateien, sodass Charaktere oder Objekte mit transparenten Hintergründen sauber animiert werden, ohne unerwünschte weiße Ränder oder Hintergrund-Artefakte.",
+        "content2": "Dies ist das Gegenteil der Frame-Extraktion — anstatt eine Animation auseinanderzunehmen, erstellen Sie eine von Grund auf. Dies ist der Standardablauf für Spieleentwickler, Animatoren und Designer, die jeden Frame einzeln erstellen und die endgültige Animation als GIF in der Vorschau ansehen oder exportieren müssen. Das Tool unterstützt bis zu 100 einzelne PNG-Dateien pro Konvertierung, mit konfigurierbarer Frame-Dauer von 10 Millisekunden bis 10 Sekunden pro Frame, was Ihnen präzise Kontrolle über das Animations-Timing gibt.",
+        "content3": "Bei der Zusammensetzung von Frames können Sie wählen, wie mit PNG-Dateien mit nicht übereinstimmenden Abmessungen umgegangen wird. Das Tool bietet drei Ansätze: Zentrieren kleinerer Frames auf einem transparenten Canvas, das auf den größten Frame dimensioniert ist, Ausfüllen des Hintergrunds mit einer Volltonfarbe oder Kennzeichnung der Nichtübereinstimmung als Fehler, damit Sie dies vor der Konvertierung beheben können. Sie können auch dateinamensbasierte Bestellung aktivieren, die Frames nach dem numerischen Suffix in Dateinamen sortiert (z. B. walk_0.png, walk_1.png, walk_2.png), um sicherzustellen, dass Ihre Animation in der richtigen Reihenfolge abgespielt wird, unabhängig von der Upload-Reihenfolge."
+      },
+      "whatIsSpritesheetToGif": {
+        "title": "Was ist Sprite-Sheet zu GIF Konvertierung?",
+        "content": "Die Sprite-Sheet-zu-GIF-Konvertierung schneidet ein einzelnes Bild mit mehreren Frames, die in einem Raster angeordnet sind (ein Sprite Sheet), und setzt sie in einer animierten GIF zusammen. Sie geben das Rasterlayout an — entweder nach Spalten-/Zeilenanzahl oder Zellenpixel-Dimensionen — und das Tool extrahiert jede Zelle als Frame. Das Tool liest Frames von links nach rechts, von oben nach unten und folgt der Standard-Sprite-Sheet-Konvention, die von den meisten Spiel-Engines und Animations-Tools verwendet wird.",
+        "content2": "Dies ist besonders nützlich, um Sprite-Sheet-Animationen ohne Spiel-Engine in der Vorschau anzusehen, Sprite-Animationen auf Plattformen freizugeben, die nur GIF unterstützen, oder bestehende Game-Assets in ein Format zu konvertieren, das für Dokumentation, soziale Medien oder Design-Bewertungen geeignet ist. Sie können auch spezifische Zeilen- und Spaltenbereiche auswählen, um nur einen Teil des Sprite Sheets zu extrahieren, was ideal ist, wenn ein einzelnes Blatt mehrere Animationssequenzen enthält — wie Walk-, Run- und Idle-Zyklen, die in verschiedenen Zeilen angeordnet sind.",
+        "content3": "Der Sprite-Sheet-Schnittmodus unterstützt Abstände zwischen Zellen, um Abstände zu berücksichtigen, die einige Tools beim Export zwischen Frames hinzufügen. Sie können auch den Skip-Empty-Modus aktivieren, um automatisch vollständig transparente Zellen zu erkennen und zu verwerfen, um leere Frames am Ende Ihrer Animation zu vermeiden. Unabhängig davon, ob Ihr Sprite Sheet in Aseprite, Photoshop, TexturePacker oder einem anderen Tool erstellt wurde, funktioniert der Konvertierungsprozess mit jedem Standard-Rasterlayout."
+      },
+      "whyConvert": {
+        "title": "Warum PNG zu GIF konvertieren?",
+        "content": "GIF bleibt eines der am weitesten unterstützten Bildformate im Internet. Im Gegensatz zu Videodateien oder animierten PNGs (APNG) werden GIF-Animationen in praktisch jedem Browser, E-Mail-Client, Messaging-App und Social-Media-Plattform ohne Plugins oder JavaScript automatisch abgespielt. Dies macht GIF zum bevorzugten Format, wenn Sie eine leichtgewichtige Animation benötigen, die einfach überall funktioniert.",
+        "content2": "Die Konvertierung von PNG-Frames oder Sprite Sheets zu GIF ist besonders wertvoll, wenn Sie Animationen außerhalb ihres ursprünglichen Kontexts teilen möchten. Spieleentwickler können Charakteranimationen in der Vorschau ansehen, ohne eine Spiel-Engine zu starten. Designer können animierte UI-Mockups direkt in Dokumentation oder Slack-Nachrichten einbetten. Künstler können ihre Pixel Art auf Plattformen präsentieren, die keine Sprite-Sheet-Wiedergabe unterstützen. In jedem Fall fungiert GIF als universelles Vorschauformat, das jeder sofort anzeigen kann.",
+        "content3": "GIF-Animationen sind auch in sich geschlossen — eine einzelne Datei enthält jeden Frame, die Timing-Informationen und die Schleifenzahl. Es ist nicht erforderlich, externe Player, JavaScript-Bibliotheken oder CSS-Animationen zum Betrieb zu verwenden. Diese Einfachheit macht GIF ideal für README-Dateien, Wikis, E-Mail-Newsletter und jeden Kontext, in dem Sie eine Animation benötigen, die mit null Abhängigkeiten einfach abgespielt wird."
+      },
+      "formatsExplained": {
+        "title": "PNG vs. GIF verstehen",
+        "content": "PNG und GIF sind beide Rasterbildformate, dienen aber unterschiedlichen Zwecken. PNG unterstützt Millionen von Farben (24-Bit oder 32-Bit mit Alpha-Transparenz), verlustfreie Kompression und einen einzelnen statischen Frame. Es ist das bevorzugte Format für hochwertige Bilder, Screenshots und einzelne Animationsframes, bei denen die Farbgenauigkeit wichtig ist. GIF hingegen ist auf eine 256-Farben-Palette pro Frame begrenzt, unterstützt aber mehrere Frames in einer Datei, was es zum klassischen Format für einfache Animationen macht.",
+        "content2": "Die 256-Farben-Einschränkung von GIF bedeutet, dass die Konvertierung von PNG zu leichten Farbveränderungen führen kann, wenn Ihre Quellbilder eine breite Farbpalette verwenden. Für Pixel Art und Illustrationen mit flachen Farben ist dies selten wahrnehmbar. Bei fotorealistischen oder Farbverläufen können die Paletteneinsparungen sichtbare Streifenmuster erzeugen. Das Tool behandelt diese Konvertierung automatisch und wählt die beste 256-Farben-Palette für Ihre spezifischen Frames.",
+        "content3": "Ein weiterer wichtiger Unterschied ist die Transparenzbehandlung. PNG unterstützt vollständige Alpha-Transparenz mit 256 Opazitätsstufen, was glatte halbtransparente Kanten ermöglicht. GIF-Transparenz ist binär — jedes Pixel ist entweder vollständig transparent oder vollständig undurchsichtig. Dies bedeutet, dass weiche Kanten oder halbtransparente Überlagerungen in Ihren PNG-Frames zu harten Kanten in der GIF-Ausgabe konvertiert werden. Verwenden Sie für optimale Ergebnisse mit transparenten GIF-Animationen PNG-Quell-Frames, die bereits saubere, hartkantige Transparenz haben."
+      },
+      "howTo": {
+        "title": "So konvertieren Sie PNG zu GIF",
+        "step1": {
+          "title": "1. Wählen Sie Ihren Eingabemodus",
+          "content": "Wählen Sie \"Aus Frames\", wenn Sie einzelne PNG-Dateien für jeden Animationsframe haben — zum Beispiel einen Satz exportierter Frames aus Aseprite, Photoshop oder einem beliebigen Zeichenwerkzeug. Wählen Sie \"Aus Sprite Sheet\", wenn Sie ein einzelnes PNG-Bild mit allen Frames haben, die in einem Raster angeordnet sind, was bei Game-Assets und Sprite-Animationen üblich ist. Sie können jederzeit zwischen Modi wechseln, indem Sie die Registerkarten oben im Tool verwenden."
+        },
+        "step2": {
+          "title": "2. Dateien hochladen",
+          "content": "Laden Sie für den Frames-Modus mehrere PNG-Dateien per Drag & Drop in den Upload-Bereich, oder klicken Sie, um einen Dateiauswahldialog zu öffnen. Sie können bis zu 100 Dateien hochladen, mit jeder Datei bis zu 5 MB und einer insgesamt kombinierten Größe von 60 MB. Die hochgeladenen Dateien werden mit ihren Dateinamen aufgelistet, damit Sie die Auswahl überprüfen und einzelne Dateien bei Bedarf entfernen können. Laden Sie für den Sprite-Sheet-Modus eine einzelne PNG-Datei hoch oder fügen Sie eine öffentliche URL ein, die auf das Sprite-Sheet-Bild verweist. Eine Vorschau des Sprite Sheets wird angezeigt, damit Sie bestätigen können, dass es korrekt geladen wurde."
+        },
+        "step3": {
+          "title": "3. Animationseinstellungen konfigurieren",
+          "content": "Stellen Sie die Frame-Dauer in Millisekunden ein — dies steuert, wie lange jeder Frame angezeigt wird. Die Standardeinstellung von 100 ms ergibt eine glatte 10-FPS-Animation, aber Sie können so schnell wie 10 ms oder so langsam wie 10.000 ms pro Frame gehen. Stellen Sie die Schleifenzahl auf 0 für unendliches Looping oder eine bestimmte Zahl, um die Animation eine feste Anzahl von Malen abzuspielen. Aktivieren Sie für den Frames-Modus dateinamensbasierte Sortierung, wenn Ihre Dateien einem Benennungsschema wie walk_0.png, walk_1.png entsprechen, und wählen Sie, wie mit Frames unterschiedlicher Dimensionen umgegangen wird. Geben Sie für den Sprite-Sheet-Modus Spalten und Zeilen (oder Zellenpixel-Dimensionen) an und legen Sie optional Spalten-/Zeilenbereiche fest, um nur eine bestimmte Animation aus einem Multi-Animation-Blatt zu extrahieren."
+        },
+        "step4": {
+          "title": "4. Konvertieren und herunterladen",
+          "content": "Klicken Sie auf Konvertieren, um Ihre Dateien an den Server zu senden und die animierte GIF zu erstellen. Die Konvertierung dauert typischerweise nur wenige Sekunden. Nach Abschluss wird eine Live-Vorschau der Animation angezeigt, damit Sie das Timing, die Frame-Reihenfolge und das Gesamterscheinungsbild vor dem Herunterladen überprüfen können. Wenn das Ergebnis nicht richtig ist, passen Sie Ihre Einstellungen an und konvertieren Sie erneut. Wenn Sie zufrieden sind, klicken Sie auf Herunterladen, um das GIF auf Ihrem Gerät zu speichern. Klicken Sie auf \"Weiteres konvertieren\", um alles zu löschen und eine neue Konvertierung mit neuen Dateien zu starten."
+        }
+      },
+      "features": {
+        "title": "Funktionen",
+        "items": {
+          "frames": {
+            "title": "Multi-Frame-Zusammensetzung",
+            "content": "Laden Sie bis zu 100 einzelne PNG-Dateien hoch und kombinieren Sie sie in einer einzelnen animierten GIF. Frames werden in Upload-Reihenfolge zusammengesetzt oder optional nach dem numerischen Suffix in Dateinamen sortiert. Dies macht es einfach, Frames aus einem beliebigen Zeichenwerkzeug per Batch zu exportieren und sie in einem polierten GIF zusammenzusetzen, ohne manuelle Neuordnung."
+          },
+          "spritesheet": {
+            "title": "Sprite-Sheet-Schneiden",
+            "content": "Schneiden Sie automatisch ein Sprite-Sheet-PNG in einzelne Frames, indem Sie den Rastermodus (Spalten × Zeilen) oder den Zellenmodus (Pixeldimensionen) verwenden. Das Tool unterstützt Abstände zwischen Zellen, um Abstände zu berücksichtigen, die von Export-Tools wie TexturePacker oder Aseprite hinzugefügt wurden. Sie können auch die Konvertierung auf spezifische Zeilen und Spalten beschränken, um eine einzelne Animation aus einem Blatt zu extrahieren, das viele enthält."
+          },
+          "duration": {
+            "title": "Einstellbare Frame-Dauer",
+            "content": "Steuern Sie die Animationsgeschwindigkeit, indem Sie die Frame-Dauer von 10 ms (sehr schnell) bis 10.000 ms (10 Sekunden pro Frame) einstellen. Die Standardeinstellung von 100 ms erzeugt eine glatte 10-FPS-Animation, die für die meisten Sprite-Vorschauen geeignet ist. Für Kino-Sequenzen können Sie sie auf 200 ms oder mehr erhöhen, während schnelle Action-Animationen oft am besten bei 50-80 ms pro Frame aussehen."
+          },
+          "fileOrder": {
+            "title": "Dateinamenbasierte Bestellung",
+            "content": "Aktivieren Sie die Dateinamesortierung, um Frames automatisch nach dem _N numerischen Suffix in Dateinamen zu ordnen (z. B. walk_0.png, walk_1.png, walk_2.png), unabhängig von der Upload-Reihenfolge. Dies ist besonders hilfreich, wenn Sie Dateien aus einem Ordner auswählen, in dem das Betriebssystem die ursprüngliche Reihenfolge möglicherweise nicht beibehält, um sicherzustellen, dass Ihre Animation immer in der beabsichtigten Reihenfolge abgespielt wird."
+          },
+          "resize": {
+            "title": "Größenkonfliktverwaltung",
+            "content": "Wenn Frames unterschiedliche Größen haben, wählen Sie, wie diese behandelt werden: Zentrieren Sie kleinere Frames auf einem transparenten Canvas, das auf den größten Frame dimensioniert ist, füllen Sie den zusätzlichen Speicherplatz mit einer konfigurierbaren Hintergrundfarbe aus, oder geben Sie einen Fehler zurück, damit Sie die Dimensionen zuerst standardisieren können. Diese Flexibilität bedeutet, dass Sie nicht jeden Frame manuell ändern müssen, bevor Sie konvertieren — das Tool passt sich Ihrem Workflow an."
+          },
+          "rangeSelect": {
+            "title": "Bereichsauswahl",
+            "content": "Extrahieren Sie nur einen Teil eines Sprite Sheets, indem Sie Spalten- und Zeilenbereiche angeben (z. B. Spalten 0-3, Zeilen 2-4). Dies ist für Sprite Sheets unerlässlich, die mehrere Animationssequenzen in ein einzelnes Bild packen. Anstatt das gesamte Blatt zu schneiden, können Sie genau auf den Walk-Zyklus, die Attack-Animation oder die Idle-Schleife abzielen, die Sie benötigen, und diese Sektion in eine GIF konvertieren."
+          },
+          "privacy": {
+            "title": "Datenschutz zuerst",
+            "content": "Ihre Dateien werden auf dem Server verarbeitet und niemals dauerhaft gespeichert. Sobald das GIF generiert und an Ihren Browser zurückgegeben wird, werden die ursprünglichen Uploads sofort aus dem Serverspeicher verworfen. Keine Registrierung erforderlich, keine Cookies für Tracking, und Ihre Bilddaten werden nicht mit Dritten geteilt oder für andere Zwecke als die angeforderte Konvertierung verwendet."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Anwendungsfälle",
+        "items": {
+          "gamePreview": {
+            "title": "Game-Animationsvorschau",
+            "content": "Zeigen Sie Sprite-Sheet-Animationen als GIFs in der Vorschau an, ohne sie in einer Spiel-Engine zu laden. Teilen Sie Charakterlauf-Zyklen, Attack-Sequenzen, Partikeleffekte oder UI-Übergänge mit Ihrem Team in einem universell anzeigbaren Format. Beispielsweise kann ein Künstler ein Sprite Sheet aus Aseprite exportieren, in GIF konvertieren und in einen Slack-Kanal ablegen, um Feedback zu erhalten — niemand muss spezielle Software installieren, um die Animation in Aktion zu sehen."
+          },
+          "socialMedia": {
+            "title": "Soziale Medien und Portfolio",
+            "content": "Konvertieren Sie Ihre Pixel-Art-Frames oder Sprite-Sheet-Animationen in GIFs zum Teilen auf Twitter, Discord, Reddit oder Ihrer Portfolio-Website. GIF wird universell unterstützt und spielt automatisch auf den meisten Plattformen ab, was es zum besten Format für die Präsentation animierter Kunstwerke macht, bei dem der Betrachter die Bewegung sofort sehen soll. Viele Spieleentwickler verwenden diesen Workflow, um tägliche Fortschritte zu teilen — exportieren Sie die heutigen Frames, konvertieren Sie in GIF und veröffentlichen Sie eine schnelle Aktualisierung, die eine neue Charakteranimation oder einen neuen Umgebungseffekt zeigt."
+          },
+          "documentation": {
+            "title": "Technische Dokumentation",
+            "content": "Erstellen Sie animierte Diagramme, UI-Flow-Demos oder schrittweise visuelle Anleitungen aus einzelnen Screenshots. Betten Sie das resultierende GIF direkt in GitHub README-Dateien, Confluence-Seiten, Notion-Dokumentation oder eine beliebige Dokumentations-Website ein. Dies ist besonders effektiv, um mehrstufige Workflows, Vorher-Nachher-Vergleiche oder interaktive UI-Komponenten zu zeigen, bei denen ein statischer Screenshot das vollständige Verhalten nicht vermitteln kann."
+          },
+          "prototyping": {
+            "title": "Design-Prototyping",
+            "content": "Setzen Sie schnell UI-Mockup-Frames in animierte Walkthroughs zusammen, um Animations-Timing und Übergänge zu testen, bevor Sie sich auf eine vollständige Implementierung im Code festlegen. Exportieren Sie jeden Bildschirmzustand als PNG, ordnen Sie sie in Reihenfolge an und konvertieren Sie in GIF, um einen schnellen Prototyp zu erstellen, den Stakeholder überprüfen können. Dieser Ansatz ist schneller als das Erstellen interaktiver Prototypen für frühzeitiges Feedback, und das resultierende GIF kann per E-Mail geteilt oder in Präsentationsfolien eingebettet werden."
+          }
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "items": {
+          "formats": {
+            "q": "Welche Dateiformate werden unterstützt?",
+            "a": "Die Eingabe muss PNG-Dateien sein — dies gilt für beide Modi. Im Frames-Modus muss jede hochgeladene Datei eine PNG-Bilddatei sein. Im Sprite-Sheet-Modus muss die Eingabe eine einzelne PNG-Datei sein (direkt hochgeladen oder über eine öffentliche URL). Die Ausgabe ist immer eine animierte GIF. Andere Bildformate wie JPEG, WebP oder BMP werden als Eingabe nicht unterstützt. Daher müssen Sie diese zuerst in PNG konvertieren, falls erforderlich."
+          },
+          "maxFiles": {
+            "q": "Wie viele Frames kann ich hochladen?",
+            "a": "Im Frames-Modus können Sie bis zu 100 einzelne PNG-Dateien hochladen. Jede Datei kann bis zu 5 MB sein, und die insgesamt kombinierte Größe aller Dateien darf 60 MB nicht überschreiten. Im Sprite-Sheet-Modus kann die einzelne PNG-Datei bis zu 20 MB groß sein. Diese Limits stellen sicher, dass die Verarbeitung schnell erfolgt und die meisten realen Animation und Sprite-Sheet-Assets berücksichtigt werden."
+          },
+          "frameOrder": {
+            "q": "Wie wird die Frame-Reihenfolge geordnet?",
+            "a": "Standardmäßig werden Frames in der Reihenfolge geordnet, in der sie hochgeladen werden. Wenn Sie eine automatische Ordnung wünschen, aktivieren Sie \"Nach Dateiname sortieren\", um sie nach dem _N numerischen Suffix in Dateinamen zu ordnen (z. B. frame_0.png, frame_1.png, frame_2.png). Dies ist hilfreich, wenn Ihr Betriebssystem die Dateireihenfolge während der Auswahl nicht beibehält. Im Sprite-Sheet-Modus werden Frames immer von links nach rechts, von oben nach unten gelesen und folgen der Standard-Sprite-Sheet-Konvention."
+          },
+          "differentSizes": {
+            "q": "Was passiert, wenn meine Frames unterschiedliche Größen haben?",
+            "a": "Sie haben drei Optionen für die Bewältigung von Größenkonflikten. \"Transparent\" zentriert jeden Frame auf einem transparenten Canvas, der der Größe des größten Frames entspricht, was gut für Sprites mit variierenden Begrenzungskästen funktioniert. \"Füllen\" macht das gleiche Zentrieren, füllt aber den zusätzlichen Speicherplatz mit einer Hintergrundfarbe Ihrer Wahl (konfigurierbar über eine Farbauswahl). \"Fehler\" lehnt die Konvertierung ab und gibt einen 400-Fehler zurück, das Sie auffordert, die Frame-Dimensionen zu standardisieren, bevor Sie es erneut versuchen — nützlich, wenn Sie unbeabsichtigte Größenunterschiede auffangen möchten."
+          },
+          "gridVsCell": {
+            "q": "Was ist der Unterschied zwischen Raster- und Zellenschnittmodus?",
+            "a": "Der Rastermodus erfordert die Anzahl der Spalten und Zeilen in Ihrem Sprite Sheet und berechnet dann die Pixelgröße jeder Zelle, indem die Bilddimensionen durch die Spalten- und Zeilenzahlen geteilt werden. Der Zellenmodus funktioniert anders — Sie stellen die genaue Pixelbreite und -höhe jedes Frames zur Verfügung, und das Tool berechnet, wie viele Spalten und Zeilen passen. Verwenden Sie den Rastermodus, wenn Sie wissen, dass Ihr Blatt als 8 Spalten mal 4 Zeilen organisiert ist. Verwenden Sie den Zellenmodus, wenn Sie wissen, dass jeder Frame genau 64 × 64 Pixel groß ist, aber nicht sicher sind, wie das Rasterlayout aussieht."
+          },
+          "transparency": {
+            "q": "Wird Transparenz in der Ausgabe beibehalten?",
+            "a": "Ja, transparente Regionen in Ihren PNG-Frames werden als GIF-Transparenz in der Ausgabeanimation erhalten. Beachten Sie jedoch, dass GIF nur binäre Transparenz unterstützt (vollständig transparent oder vollständig undurchsichtig), im Gegensatz zu PNG, das Teil-Alpha-Transparenz unterstützt. Halbtransparente Pixel in Ihren PNG-Frames werden in der GIF-Ausgabe entweder vollständig transparent oder vollständig undurchsichtig konvertiert."
+          },
+          "free": {
+            "q": "Ist dieses Tool kostenlos?",
+            "a": "Ja, dieses Tool ist vollständig kostenlos und ohne Registrierung oder Kontoverwaltung nutzbar. Sie können PNG-Frames oder Sprite Sheets so oft in GIF konvertieren, wie Sie möchten. Das Tool wird durch gelegentliche unaufdringliche Eingabeaufforderungen und den begleitenden API-Dienst auf RapidAPI unterstützt."
+          },
+          "api": {
+            "q": "Gibt es eine verfügbare API?",
+            "a": "Ja. Dieses Tool wird von der Easy GIF2Sprite API angetrieben, die auf RapidAPI verfügbar ist. Die API bietet zwei Endpunkte: /from-frames zum Zusammensetzen mehrerer PNG-Dateien in eine animierte GIF und /from-spritesheet zum Schneiden eines Sprite-Sheet-PNGs in Frames und zur Erzeugung einer animierten GIF. Beide Endpunkte unterstützen die gleichen Parameter, die im Web-Tool verfügbar sind, wodurch es einfach ist, Konvertierungen in Ihrer Build-Pipeline oder Anwendung zu automatisieren."
           }
         }
       }
