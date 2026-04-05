@@ -1,6 +1,34 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        'name': 'GIF to PNG Spritesheet Converter',
+        'description': 'Convert GIF animations into PNG sprite sheets or extract individual frames as PNG files.',
+        'url': 'https://clawstudiouo.com/tools/gif-to-sprite',
+        'applicationCategory': 'DesignApplication',
+        'operatingSystem': 'Any',
+        'browserRequirements': 'Requires a modern web browser',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD'
+        },
+        'author': {
+          '@type': 'Organization',
+          'name': 'ClawStudiouo',
+          'url': 'https://clawstudiouo.com'
+        }
+      })
+    }
+  ]
+})
+
 const seoSections = [
   {
     type: 'text' as const,

@@ -3,6 +3,34 @@ import { VueDraggable } from 'vue-draggable-plus'
 
 const { t } = useI18n()
 
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        'name': 'PNG to GIF Converter',
+        'description': 'Convert PNG frames or a spritesheet into an animated GIF.',
+        'url': 'https://clawstudiouo.com/tools/png-to-gif',
+        'applicationCategory': 'DesignApplication',
+        'operatingSystem': 'Any',
+        'browserRequirements': 'Requires a modern web browser',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD'
+        },
+        'author': {
+          '@type': 'Organization',
+          'name': 'ClawStudiouo',
+          'url': 'https://clawstudiouo.com'
+        }
+      })
+    }
+  ]
+})
+
 const seoSections: import('~/types/seo').SeoSection[] = [
   {
     type: 'text' as const,
