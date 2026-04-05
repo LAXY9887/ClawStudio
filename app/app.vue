@@ -34,16 +34,6 @@ useSeoMeta({
   ogDescription: description
 })
 
-const showTerms = ref(false)
-
-const termsItems = computed(() => {
-  const items: string[] = []
-  for (let i = 0; i < 6; i++) {
-    items.push(t(`footer.termsContent.items[${i}]`).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
-  }
-  return items
-})
-
 const allLocales = computed(() => locales.value as Array<{ code: string, name: string }>)
 
 const currentLocaleName = computed(() =>
@@ -115,9 +105,9 @@ const localeItems = computed(() =>
           <NuxtLink to="/privacy" class="text-muted hover:text-primary">
             {{ t('footer.privacy') }}
           </NuxtLink>
-          <button class="text-muted hover:text-primary" @click="showTerms = true">
+          <NuxtLink to="/terms" class="text-muted hover:text-primary">
             {{ t('footer.terms') }}
-          </button>
+          </NuxtLink>
           <NuxtLink to="/about" class="text-muted hover:text-primary">
             {{ t('footer.about') }}
           </NuxtLink>
@@ -131,24 +121,5 @@ const localeItems = computed(() =>
       </div>
     </UFooter>
 
-    <!-- Terms of Service Modal -->
-    <UModal v-model:open="showTerms">
-      <template #content>
-        <div class="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
-          <h2 class="text-xl font-bold">
-            {{ t('footer.terms') }}
-          </h2>
-          <p class="text-muted leading-relaxed">
-            {{ t('footer.termsContent.intro') }}
-          </p>
-          <ol class="space-y-3 text-sm text-muted leading-relaxed list-decimal pl-5">
-            <li v-for="(item, i) in termsItems" :key="i" v-html="item" />
-          </ol>
-          <div class="flex justify-end pt-2">
-            <UButton label="OK" @click="showTerms = false" />
-          </div>
-        </div>
-      </template>
-    </UModal>
   </UApp>
 </template>
