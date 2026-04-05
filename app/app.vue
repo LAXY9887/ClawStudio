@@ -118,6 +118,9 @@ const localeItems = computed(() =>
           <button class="text-muted hover:text-primary" @click="showTerms = true">
             {{ t('footer.terms') }}
           </button>
+          <NuxtLink to="/about" class="text-muted hover:text-primary">
+            {{ t('footer.about') }}
+          </NuxtLink>
           <a href="mailto:angelcemept@gmail.com" class="text-muted hover:text-primary">
             {{ t('footer.contact') }}
           </a>

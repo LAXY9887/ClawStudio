@@ -12,6 +12,7 @@
     "terms": "Terms of Service",
     "privacy": "Privacy Policy",
     "contact": "Contact Us",
+    "about": "About Us",
     "termsContent": {
       "intro": "By using ClawStudiouo, you agree to the following terms:",
       "items": [
@@ -67,6 +68,44 @@
     "section7": {
       "title": "7. Contact Us",
       "content": "If you have any questions about this privacy policy, please email:"
+    }
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "seoTitle": "About Us - ClawStudiouo",
+    "hero": {
+      "title": "Hi, I'm the developer behind ClawStudiouo.",
+      "subtitle": "An indie game and web developer building free tools for creators."
+    },
+    "story": {
+      "title": "Our Story",
+      "content1": "ClawStudiouo started as a personal project born out of a simple frustration: the tools I needed for my daily game development and web development workflow either didn't exist, were locked behind subscriptions, or were cluttered with ads that made them unusable.",
+      "content2": "As an independent game developer, I constantly work with sprite sheets, animation frames, and image conversions. I found myself writing the same scripts over and over — extracting frames from GIFs, assembling sprite sheets, converting between formats. So I decided to build these tools properly, host them for free, and share them with the community.",
+      "content3": "What started as a GIF-to-spritesheet converter has grown into a small but focused collection of developer tools. Every tool on ClawStudiouo is built with the same philosophy: do one thing well, keep it fast, and respect the user's privacy."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content1": "We believe developer tools should be accessible to everyone — whether you're an indie game developer working on your first project, a student learning about sprite animations, or a professional looking for a quick conversion without installing software.",
+      "content2": "Every tool on ClawStudiouo is free to use, requires no registration, and processes your files securely without storing them. We sustain the project through minimal, non-intrusive advertising."
+    },
+    "tech": {
+      "title": "What Powers ClawStudiouo",
+      "content": "All our tools are powered by custom-built APIs running on Google Cloud Platform. The backend processing engines are designed for speed and accuracy, and the same APIs are available on RapidAPI for developers who want to integrate these capabilities into their own applications.",
+      "items": [
+        "Built with Nuxt 4 and deployed on Firebase App Hosting",
+        "Processing engines running on Google Cloud Run for auto-scaling",
+        "APIs available on RapidAPI for developer integration",
+        "Supporting multiple languages to serve a global community"
+      ]
+    },
+    "future": {
+      "title": "What's Next",
+      "content": "ClawStudiouo is actively growing. I'm continuously developing new tools based on real needs from my own workflow and feedback from users. If you have a tool idea or feature request, I'd love to hear from you."
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "content": "Have questions, feedback, or a tool idea? Feel free to reach out:",
+      "email": "Email"
     }
   },
   "waitingRoom": {

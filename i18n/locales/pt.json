@@ -69,6 +69,44 @@
       "content": "Se tiver alguma dúvida sobre esta política de privacidade, envie um e-mail para:"
     }
   },
+  "aboutUs": {
+    "title": "Sobre nós",
+    "seoTitle": "Sobre nós - ClawStudiouo",
+    "hero": {
+      "title": "Olá, eu sou o desenvolvedor por trás do ClawStudiouo.",
+      "subtitle": "Um desenvolvedor indie de jogos e web criando ferramentas gratuitas para criadores."
+    },
+    "story": {
+      "title": "Nossa história",
+      "content1": "O ClawStudiouo começou como um projeto pessoal nascido de uma simples frustração: as ferramentas que eu precisava para meu fluxo de trabalho diário de desenvolvimento de jogos e web não existiam, estavam trancadas atrás de assinaturas, ou estavam cheias de anúncios que as tornavam inutilizáveis.",
+      "content2": "Como desenvolvedor independente de jogos, trabalho constantemente com folhas de sprites, quadros de animação e conversões de imagens. Percebi que estava escrevendo os mesmos scripts repetidamente — extraindo quadros de GIFs, montando folhas de sprites, convertendo entre formatos. Então decidi construir essas ferramentas adequadamente, hospedá-las gratuitamente e compartilhá-las com a comunidade.",
+      "content3": "O que começou como um conversor de GIF para folha de sprites cresceu para uma coleção pequena, mas focada, de ferramentas para desenvolvedores. Cada ferramenta no ClawStudiouo é construída com a mesma filosofia: fazer uma coisa bem, manter rápido e respeitar a privacidade do usuário."
+    },
+    "mission": {
+      "title": "Nossa missão",
+      "content1": "Acreditamos que ferramentas para desenvolvedores devem ser acessíveis a todos — seja você um desenvolvedor indie de jogos trabalhando em seu primeiro projeto, um estudante aprendendo sobre animações de sprites, ou um profissional procurando uma conversão rápida sem instalar software.",
+      "content2": "Cada ferramenta no ClawStudiouo é gratuita, não requer registro e processa seus arquivos com segurança sem armazená-los. Mantemos o projeto através de publicidade mínima e não intrusiva."
+    },
+    "tech": {
+      "title": "A tecnologia por trás do ClawStudiouo",
+      "content": "Todas as nossas ferramentas são alimentadas por APIs personalizadas executadas no Google Cloud Platform. Os motores de processamento do backend são projetados para velocidade e precisão, e as mesmas APIs estão disponíveis no RapidAPI para desenvolvedores que desejam integrar essas capacidades em suas próprias aplicações.",
+      "items": [
+        "Construído com Nuxt 4 e implantado no Firebase App Hosting",
+        "Motores de processamento executando no Google Cloud Run com auto-scaling",
+        "APIs disponíveis no RapidAPI para integração de desenvolvedores",
+        "Suporte a múltiplos idiomas para atender uma comunidade global"
+      ]
+    },
+    "future": {
+      "title": "O que vem a seguir",
+      "content": "O ClawStudiouo está crescendo ativamente. Estou desenvolvendo continuamente novas ferramentas com base em necessidades reais do meu próprio fluxo de trabalho e feedback dos usuários. Se você tem uma ideia de ferramenta ou solicitação de recurso, adoraria ouvir."
+    },
+    "contact": {
+      "title": "Entre em contato",
+      "content": "Tem perguntas, feedback ou uma ideia de ferramenta? Sinta-se à vontade para entrar em contato:",
+      "email": "E-mail"
+    }
+  },
   "waitingRoom": {
     "title": "Seu download",
     "countdown": "Por favor aguarde {seconds} segundos...",

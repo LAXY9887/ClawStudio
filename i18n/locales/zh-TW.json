@@ -12,6 +12,7 @@
     "terms": "服務條款",
     "privacy": "隱私政策",
     "contact": "聯絡我們",
+    "about": "關於我們",
     "termsContent": {
       "intro": "使用 ClawStudiouo 即表示您同意以下條款：",
       "items": [
@@ -67,6 +68,44 @@
     "section7": {
       "title": "7. 聯繫我們",
       "content": "若對本隱私權政策有任何疑問，請致信："
+    }
+  },
+  "aboutUs": {
+    "title": "關於我們",
+    "seoTitle": "關於我們 - ClawStudiouo",
+    "hero": {
+      "title": "嗨，我是 ClawStudiouo 的開發者。",
+      "subtitle": "一位獨立遊戲與網站開發者，致力於為創作者打造免費工具。"
+    },
+    "story": {
+      "title": "我們的故事",
+      "content1": "ClawStudiouo 源自一個簡單的困擾：在日常的遊戲開發和網站開發工作中，我需要的工具不是不存在，就是需要付費訂閱，或是充斥著廣告讓人難以使用。",
+      "content2": "身為獨立遊戲開發者，我經常需要處理 Sprite Sheet、動畫幀和各種圖片轉換。我發現自己不斷重複撰寫相同的腳本 —— 從 GIF 提取幀、組裝 Sprite Sheet、在不同格式之間轉換。於是我決定把這些工具好好做出來，免費託管，分享給社群。",
+      "content3": "從最初的 GIF 轉 Spritesheet 工具開始，ClawStudiouo 已經成長為一個小而精的開發者工具集合。每一個工具都秉持相同的理念：專注做好一件事、保持快速、尊重使用者的隱私。"
+    },
+    "mission": {
+      "title": "我們的理念",
+      "content1": "我們相信開發者工具應該對所有人開放 —— 無論你是正在製作第一款遊戲的獨立開發者、正在學習精靈動畫的學生，還是需要快速轉換格式而不想安裝軟體的專業人士。",
+      "content2": "ClawStudiouo 上的每一個工具都免費使用、無需註冊，且安全處理你的檔案而不做任何儲存。我們透過少量、不干擾的廣告來維持專案的運營。"
+    },
+    "tech": {
+      "title": "技術架構",
+      "content": "所有工具都由運行在 Google Cloud Platform 上的自建 API 驅動。後端處理引擎專為速度和準確性而設計，同時這些 API 也在 RapidAPI 上開放，供開發者整合到自己的應用程式中。",
+      "items": [
+        "使用 Nuxt 4 建構，部署於 Firebase App Hosting",
+        "處理引擎運行在 Google Cloud Run，支援自動擴展",
+        "API 在 RapidAPI 上開放，供開發者整合使用",
+        "支援多國語言，服務全球社群"
+      ]
+    },
+    "future": {
+      "title": "未來展望",
+      "content": "ClawStudiouo 正在持續成長。我不斷根據自身工作流程的實際需求和使用者的回饋來開發新工具。如果你有工具的點子或功能建議，歡迎隨時告訴我。"
+    },
+    "contact": {
+      "title": "聯絡方式",
+      "content": "有任何問題、回饋或工具建議？歡迎聯繫：",
+      "email": "電子郵件"
     }
   },
   "waitingRoom": {
