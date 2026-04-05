@@ -22,7 +22,8 @@
         "**Limitação de responsabilidade.** O provedor não é responsável por quaisquer danos diretos, indiretos ou consequentes decorrentes do uso deste site ou de suas ferramentas.",
         "**Alterações.** Estes termos e a funcionalidade do site podem ser atualizados a qualquer momento. O uso continuado após as alterações constitui aceitação."
       ]
-    }
+    },
+    "about": "Sobre nós"
   },
   "privacy": {
     "title": "Política de privacidade",
@@ -131,7 +132,8 @@
         "Defina **Frame Duration** para controlar a velocidade da animação. 100ms produz uma animação suave de 10 FPS, enquanto 50ms cria um efeito rápido de 20 FPS. A maioria das animações de pixel art fica melhor a 80–120ms.",
         "Ative **Sort by Filename** quando seus quadros usarem uma convenção de nomes como walk_0.png, walk_1.png. A ferramenta ordenará pelo sufixo numérico em vez da ordem de envio.",
         "Se seus quadros tiverem **tamanhos diferentes**, escolha \"Centralizar em tela transparente\" para alinhá-los automaticamente às dimensões do maior quadro sem cortar.",
-        "No **modo Spritesheet**, use a sobreposição de visualização de grade para verificar suas configurações de colunas e linhas antes de converter. As linhas vermelhas mostram exatamente onde a ferramenta irá cortar."
+        "No **modo Spritesheet**, use a sobreposição de visualização de grade para verificar suas configurações de colunas e linhas antes de converter. As linhas vermelhas mostram exatamente onde a ferramenta irá cortar.",
+        "Use **Recortar margens** para cortar bordas extras ao redor do seu spritesheet antes de fatiar. Muitos spritesheets exportados possuem preenchimento externo que não faz parte da grade de frames — recortá-lo garante o alinhamento preciso das células."
       ]
     }
   },
@@ -417,7 +419,13 @@
       "duration": "Duração do quadro (ms)",
       "durationHint": "Duração de cada quadro em milissegundos.",
       "loop": "Contagem de repetições",
-      "loopHint": "0 = repetição infinita."
+      "loopHint": "0 = repetição infinita.",
+      "trim": "Recortar margens (px)",
+      "trimHint": "Recortar espaço extra ao redor do spritesheet antes de fatiar. Aplicado antes de todo o processamento.",
+      "trimTop": "Superior",
+      "trimRight": "Direita",
+      "trimBottom": "Inferior",
+      "trimLeft": "Esquerda"
     },
     "status": {
       "uploading": "Enviando...",

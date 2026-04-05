@@ -14,8 +14,7 @@ const toolKey = computed(() => {
 })
 
 const tipCount = computed(() => {
-  // Both tools currently have 4 tips
-  return 4
+  return toolKey.value === 'toGif' ? 5 : 4
 })
 
 useSeoMeta({

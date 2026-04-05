@@ -22,7 +22,8 @@
         "**Haftungsbeschränkung.** Der Anbieter haftet nicht für direkte, indirekte oder Folgeschäden, die aus der Nutzung dieser Website oder ihrer Tools entstehen.",
         "**Änderungen.** Diese Bedingungen und die Website-Funktionalität können jederzeit aktualisiert werden. Die fortgesetzte Nutzung nach Änderungen gilt als Zustimmung."
       ]
-    }
+    },
+    "about": "Über uns"
   },
   "privacy": {
     "title": "Datenschutzrichtlinie",
@@ -131,7 +132,8 @@
         "Stellen Sie **Frame Duration** ein, um die Animationsgeschwindigkeit zu steuern. 100ms ergibt eine flüssige 10-FPS-Animation, während 50ms einen schnellen 20-FPS-Effekt erzeugt. Die meisten Pixel-Art-Animationen sehen bei 80–120ms am besten aus.",
         "Aktivieren Sie **Sort by Filename**, wenn Ihre Frames eine Namenskonvention wie walk_0.png, walk_1.png verwenden. Das Tool sortiert nach dem numerischen Suffix anstatt nach der Upload-Reihenfolge.",
         "Wenn Ihre Frames **unterschiedliche Größen** haben, wählen Sie \"Auf transparentem Canvas zentrieren\", um sie automatisch an den Abmessungen des größten Frames auszurichten, ohne zu beschneiden.",
-        "Im **Spritesheet-Modus** verwenden Sie das Rastervorschau-Overlay, um Ihre Spalten- und Zeileneinstellungen vor der Konvertierung zu überprüfen. Die roten Linien zeigen genau, wo das Tool schneiden wird."
+        "Im **Spritesheet-Modus** verwenden Sie das Rastervorschau-Overlay, um Ihre Spalten- und Zeileneinstellungen vor der Konvertierung zu überprüfen. Die roten Linien zeigen genau, wo das Tool schneiden wird.",
+        "Verwenden Sie **Ränder beschneiden**, um vor dem Zuschneiden zusätzliche Ränder um Ihr Spritesheet zu entfernen. Viele exportierte Spritesheets haben äußere Abstände, die nicht zum Frame-Raster gehören — das Beschneiden stellt eine genaue Zellenausrichtung sicher."
       ]
     }
   },
@@ -417,7 +419,13 @@
       "duration": "Frame-Dauer (ms)",
       "durationHint": "Dauer jedes Frames in Millisekunden.",
       "loop": "Schleife zählen",
-      "loopHint": "0 = Endlosschleife."
+      "loopHint": "0 = Endlosschleife.",
+      "trim": "Ränder beschneiden (px)",
+      "trimHint": "Zusätzlichen Platz um das Spritesheet vor dem Zuschneiden entfernen. Wird vor allen anderen Verarbeitungsschritten angewendet.",
+      "trimTop": "Oben",
+      "trimRight": "Rechts",
+      "trimBottom": "Unten",
+      "trimLeft": "Links"
     },
     "status": {
       "uploading": "Wird hochgeladen...",

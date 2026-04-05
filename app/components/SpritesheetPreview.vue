@@ -12,18 +12,31 @@ const props = withDefaults(defineProps<{
   columnRange?: string
   rowRange?: string
   frameCount?: number
+  trimTop?: number
+  trimRight?: number
+  trimBottom?: number
+  trimLeft?: number
 }>(), {
-  padding: 0
+  padding: 0,
+  trimTop: 0,
+  trimRight: 0,
+  trimBottom: 0,
+  trimLeft: 0
 })
 
 const containerRef = ref<HTMLDivElement>()
 const canvasRef = ref<HTMLCanvasElement>()
 const imgRef = ref<HTMLImageElement>()
 
-// Calculate grid dimensions
+// Trimmed image dimensions
+const trimmedWidth = computed(() => props.imageWidth - (props.trimLeft || 0) - (props.trimRight || 0))
+const trimmedHeight = computed(() => props.imageHeight - (props.trimTop || 0) - (props.trimBottom || 0))
+
+// Calculate grid dimensions based on trimmed area
 const grid = computed(() => {
-  const imgW = props.imageWidth
-  const imgH = props.imageHeight
+  const imgW = trimmedWidth.value
+  const imgH = trimmedHeight.value
+  if (imgW <= 0 || imgH <= 0) return null
   const pad = props.padding || 0
 
   let cols = 0
@@ -63,7 +76,6 @@ function parseRange(range: string | undefined, max: number): [number, number] {
 function draw() {
   const canvas = canvasRef.value
   const img = imgRef.value
-  const g = grid.value
   if (!canvas || !img) return
 
   const dw = img.clientWidth
@@ -77,13 +89,40 @@ function draw() {
 
   ctx.clearRect(0, 0, dw, dh)
 
-  // No grid to draw
+  const scale = dw / props.imageWidth
+
+  // Draw trim overlay (dimmed areas being cropped)
+  const tl = (props.trimLeft || 0) * scale
+  const tr = (props.trimRight || 0) * scale
+  const tt = (props.trimTop || 0) * scale
+  const tb = (props.trimBottom || 0) * scale
+  const hasTrim = tl > 0 || tr > 0 || tt > 0 || tb > 0
+
+  if (hasTrim) {
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.2)'
+    if (tt > 0) ctx.fillRect(0, 0, dw, tt)
+    if (tb > 0) ctx.fillRect(0, dh - tb, dw, tb)
+    if (tl > 0) ctx.fillRect(0, tt, tl, dh - tt - tb)
+    if (tr > 0) ctx.fillRect(dw - tr, tt, tr, dh - tt - tb)
+
+    // Trim border
+    ctx.strokeStyle = 'rgba(255, 100, 100, 0.8)'
+    ctx.lineWidth = 1
+    ctx.setLineDash([4, 4])
+    ctx.strokeRect(tl, tt, dw - tl - tr, dh - tt - tb)
+    ctx.setLineDash([])
+  }
+
+  const g = grid.value
   if (!g) return
 
-  const scale = dw / props.imageWidth
   const pad = (props.padding || 0) * scale
   const cw = g.cellWidth * scale
   const ch = g.cellHeight * scale
+
+  // Grid offset = trim area
+  const ox = tl
+  const oy = tt
 
   const [colStart, colEnd] = parseRange(props.columnRange, g.cols)
   const [rowStart, rowEnd] = parseRange(props.rowRange, g.rows)
@@ -93,8 +132,8 @@ function draw() {
 
   for (let r = 0; r < g.rows; r++) {
     for (let c = 0; c < g.cols; c++) {
-      const x = c * (cw + pad)
-      const y = r * (ch + pad)
+      const x = ox + c * (cw + pad)
+      const y = oy + r * (ch + pad)
       const inRange = c >= colStart && c <= colEnd && r >= rowStart && r <= rowEnd
 
       if (!inRange) {
@@ -122,40 +161,42 @@ function draw() {
     }
   }
 
-  // Grid lines
+  // Grid lines (offset by trim)
   ctx.strokeStyle = 'rgba(255, 50, 50, 0.8)'
   ctx.lineWidth = 1.5
 
   for (let c = 0; c <= g.cols; c++) {
+    const x = ox + c * (cw + pad)
     ctx.beginPath()
-    ctx.moveTo(c * (cw + pad), 0)
-    ctx.lineTo(c * (cw + pad), dh)
+    ctx.moveTo(x, oy)
+    ctx.lineTo(x, oy + g.rows * (ch + pad) - pad)
     ctx.stroke()
     if (c > 0 && c < g.cols && pad > 1) {
       ctx.beginPath()
-      ctx.moveTo(c * (cw + pad) - pad, 0)
-      ctx.lineTo(c * (cw + pad) - pad, dh)
+      ctx.moveTo(x - pad, oy)
+      ctx.lineTo(x - pad, oy + g.rows * (ch + pad) - pad)
       ctx.stroke()
     }
   }
 
   for (let r = 0; r <= g.rows; r++) {
+    const y = oy + r * (ch + pad)
     ctx.beginPath()
-    ctx.moveTo(0, r * (ch + pad))
-    ctx.lineTo(dw, r * (ch + pad))
+    ctx.moveTo(ox, y)
+    ctx.lineTo(ox + g.cols * (cw + pad) - pad, y)
     ctx.stroke()
     if (r > 0 && r < g.rows && pad > 1) {
       ctx.beginPath()
-      ctx.moveTo(0, r * (ch + pad) - pad)
-      ctx.lineTo(dw, r * (ch + pad) - pad)
+      ctx.moveTo(ox, y - pad)
+      ctx.lineTo(ox + g.cols * (cw + pad) - pad, y - pad)
       ctx.stroke()
     }
   }
 
   // Range highlight border
   if (props.columnRange || props.rowRange) {
-    const rx = colStart * (cw + pad)
-    const ry = rowStart * (ch + pad)
+    const rx = ox + colStart * (cw + pad)
+    const ry = oy + rowStart * (ch + pad)
     const rw = (colEnd - colStart + 1) * (cw + pad) - pad
     const rh = (rowEnd - rowStart + 1) * (ch + pad) - pad
     ctx.strokeStyle = 'rgba(59, 130, 246, 0.9)'
@@ -170,6 +211,7 @@ watch(
     () => props.mode, () => props.columns, () => props.rows,
     () => props.cellWidth, () => props.cellHeight, () => props.padding,
     () => props.columnRange, () => props.rowRange, () => props.frameCount,
+    () => props.trimTop, () => props.trimRight, () => props.trimBottom, () => props.trimLeft,
     () => props.src
   ],
   () => nextTick(draw)

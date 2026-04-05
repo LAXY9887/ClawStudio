@@ -132,7 +132,8 @@
         "Set **Frame Duration** to control animation speed. 100ms gives a smooth 10 FPS animation, while 50ms creates a fast 20 FPS effect. Most pixel art animations look best at 80–120ms.",
         "Enable **Sort by Filename** when your frames use a naming convention like walk_0.png, walk_1.png. The tool will sort by the numeric suffix instead of upload order.",
         "If your frames have **different sizes**, choose \"Center on transparent canvas\" to automatically align them on the largest frame's dimensions without cropping.",
-        "In **Spritesheet mode**, use the grid preview overlay to verify your column and row settings before converting. The red lines show exactly where the tool will slice."
+        "In **Spritesheet mode**, use the grid preview overlay to verify your column and row settings before converting. The red lines show exactly where the tool will slice.",
+        "Use **Trim Margins** to crop extra borders around your spritesheet before slicing. Many exported spritesheets have outer padding that isn't part of the frame grid — trimming it ensures accurate cell alignment."
       ]
     }
   },
@@ -415,6 +416,12 @@
       "rowRangeHint": "0-indexed range, e.g. \"0\" or \"1-3\". Leave empty for all.",
       "skipEmpty": "Skip Empty Frames",
       "skipEmptyHint": "Automatically remove fully transparent frames from the output.",
+      "trim": "Trim Margins (px)",
+      "trimHint": "Crop extra space around the spritesheet before slicing. Applied before all other processing.",
+      "trimTop": "Top",
+      "trimRight": "Right",
+      "trimBottom": "Bottom",
+      "trimLeft": "Left",
       "duration": "Frame Duration (ms)",
       "durationHint": "Duration of each frame in milliseconds.",
       "loop": "Loop Count",
@@ -492,7 +499,7 @@
         },
         "step3": {
           "title": "3. Configure Animation Settings",
-          "content": "Set the frame duration in milliseconds — this controls how long each frame is displayed. The default of 100ms gives a smooth 10 FPS animation, but you can go as fast as 10ms or as slow as 10,000ms per frame. Set the loop count to 0 for infinite looping, or a specific number to play the animation a fixed number of times. For frames mode, enable filename-based sorting if your files follow a naming convention like walk_0.png, walk_1.png, and choose how to handle frames with different dimensions. For spritesheet mode, specify columns and rows (or cell pixel dimensions), and optionally set column/row ranges to extract only a specific animation from a multi-animation sheet."
+          "content": "Set the frame duration in milliseconds — this controls how long each frame is displayed. The default of 100ms gives a smooth 10 FPS animation, but you can go as fast as 10ms or as slow as 10,000ms per frame. Set the loop count to 0 for infinite looping, or a specific number to play the animation a fixed number of times. For frames mode, enable filename-based sorting if your files follow a naming convention like walk_0.png, walk_1.png, and choose how to handle frames with different dimensions. For spritesheet mode, specify columns and rows (or cell pixel dimensions), and optionally set column/row ranges to extract only a specific animation from a multi-animation sheet. If your spritesheet has extra borders or margins around the grid, use the Trim Margins option to crop them before slicing — set the pixel values for top, right, bottom, and left to remove outer padding that isn't part of the frame grid."
         },
         "step4": {
           "title": "4. Convert and Download",
@@ -508,7 +515,7 @@
           },
           "spritesheet": {
             "title": "Spritesheet Slicing",
-            "content": "Automatically slice a spritesheet PNG into individual frames using grid mode (columns × rows) or cell mode (pixel dimensions). The tool supports padding between cells to account for spacing added by export tools like TexturePacker or Aseprite. You can also limit the conversion to specific rows and columns, making it possible to extract a single animation from a sheet that contains many."
+            "content": "Automatically slice a spritesheet PNG into individual frames using grid mode (columns × rows) or cell mode (pixel dimensions). The tool supports padding between cells to account for spacing added by export tools like TexturePacker or Aseprite. Use Trim Margins to crop outer borders before slicing — many spritesheets have extra whitespace or metadata borders around the grid that would otherwise throw off cell alignment. You can also limit the conversion to specific rows and columns, making it possible to extract a single animation from a sheet that contains many."
           },
           "duration": {
             "title": "Adjustable Frame Duration",

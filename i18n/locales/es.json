@@ -22,7 +22,8 @@
         "**Limitación de responsabilidad.** El proveedor no es responsable de ningún daño directo, indirecto o consecuente derivado del uso de este sitio web o sus herramientas.",
         "**Cambios.** Estos términos y la funcionalidad del sitio web pueden actualizarse en cualquier momento. El uso continuado después de los cambios constituye aceptación."
       ]
-    }
+    },
+    "about": "Sobre nosotros"
   },
   "privacy": {
     "title": "Política de privacidad",
@@ -131,7 +132,8 @@
         "Configure **Frame Duration** para controlar la velocidad de animación. 100ms produce una animación fluida de 10 FPS, mientras que 50ms crea un efecto rápido de 20 FPS. La mayoría de las animaciones de pixel art se ven mejor a 80–120ms.",
         "Active **Sort by Filename** cuando sus fotogramas usen una convención de nombres como walk_0.png, walk_1.png. La herramienta ordenará por el sufijo numérico en lugar del orden de carga.",
         "Si sus fotogramas tienen **tamaños diferentes**, elija \"Centrar en lienzo transparente\" para alinearlos automáticamente a las dimensiones del fotograma más grande sin recortar.",
-        "En el **modo Spritesheet**, use la superposición de vista previa de cuadrícula para verificar sus configuraciones de columnas y filas antes de convertir. Las líneas rojas muestran exactamente dónde cortará la herramienta."
+        "En el **modo Spritesheet**, use la superposición de vista previa de cuadrícula para verificar sus configuraciones de columnas y filas antes de convertir. Las líneas rojas muestran exactamente dónde cortará la herramienta.",
+        "Usa **Recortar márgenes** para eliminar los bordes adicionales alrededor de tu spritesheet antes de cortarlo. Muchos spritesheets exportados tienen relleno exterior que no forma parte de la cuadrícula de frames — recortarlo asegura una alineación precisa de las celdas."
       ]
     }
   },
@@ -417,7 +419,13 @@
       "duration": "Duración del fotograma (ms)",
       "durationHint": "Duración de cada fotograma en milisegundos.",
       "loop": "Recuento de bucles",
-      "loopHint": "0 = bucle infinito."
+      "loopHint": "0 = bucle infinito.",
+      "trim": "Recortar márgenes (px)",
+      "trimHint": "Recortar el espacio adicional alrededor del spritesheet antes de cortarlo. Se aplica antes de todo el demás procesamiento.",
+      "trimTop": "Superior",
+      "trimRight": "Derecha",
+      "trimBottom": "Inferior",
+      "trimLeft": "Izquierda"
     },
     "status": {
       "uploading": "Cargando...",

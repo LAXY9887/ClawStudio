@@ -142,6 +142,10 @@ const rowRange = ref('')
 const skipEmpty = ref(true)
 const ssDuration = ref(100)
 const ssLoop = ref(0)
+const trimTop = ref(0)
+const trimRight = ref(0)
+const trimBottom = ref(0)
+const trimLeft = ref(0)
 
 // Usage limiter
 const FREE_LIMIT = 3
@@ -287,6 +291,10 @@ async function convert() {
       if (columnRange.value.trim()) formData.append('column_range', columnRange.value.trim())
       if (rowRange.value.trim()) formData.append('row_range', rowRange.value.trim())
       formData.append('skip_empty', String(skipEmpty.value))
+      if (trimTop.value > 0) formData.append('trim_top', String(trimTop.value))
+      if (trimRight.value > 0) formData.append('trim_right', String(trimRight.value))
+      if (trimBottom.value > 0) formData.append('trim_bottom', String(trimBottom.value))
+      if (trimLeft.value > 0) formData.append('trim_left', String(trimLeft.value))
       formData.append('duration', String(ssDuration.value))
       formData.append('loop', String(ssLoop.value))
     }
@@ -485,6 +493,10 @@ onUnmounted(() => {
               :column-range="columnRange || undefined"
               :row-range="rowRange || undefined"
               :frame-count="frameCount"
+              :trim-top="trimTop"
+              :trim-right="trimRight"
+              :trim-bottom="trimBottom"
+              :trim-left="trimLeft"
             />
             <div class="flex items-center justify-between">
               <p class="text-sm text-muted">{{ spritesheetFile?.name }} · {{ formatSize(spritesheetFile?.size || 0) }} · {{ previewWidth }}×{{ previewHeight }}px</p>
@@ -574,6 +586,24 @@ onUnmounted(() => {
                 </div>
                 <USwitch v-model="skipEmpty" :label="t('toGif.spritesheetOptions.skipEmpty')" />
                 <p class="text-xs text-muted -mt-2 pl-1">{{ t('toGif.spritesheetOptions.skipEmptyHint') }}</p>
+
+                <!-- Trim Margins -->
+                <UFormField :label="t('toGif.spritesheetOptions.trim')" :hint="t('toGif.spritesheetOptions.trimHint')">
+                  <div class="grid grid-cols-4 gap-2">
+                    <UFormField :label="t('toGif.spritesheetOptions.trimTop')">
+                      <UInput v-model.number="trimTop" type="number" :min="0" />
+                    </UFormField>
+                    <UFormField :label="t('toGif.spritesheetOptions.trimRight')">
+                      <UInput v-model.number="trimRight" type="number" :min="0" />
+                    </UFormField>
+                    <UFormField :label="t('toGif.spritesheetOptions.trimBottom')">
+                      <UInput v-model.number="trimBottom" type="number" :min="0" />
+                    </UFormField>
+                    <UFormField :label="t('toGif.spritesheetOptions.trimLeft')">
+                      <UInput v-model.number="trimLeft" type="number" :min="0" />
+                    </UFormField>
+                  </div>
+                </UFormField>
               </div>
             </template>
           </UAccordion>

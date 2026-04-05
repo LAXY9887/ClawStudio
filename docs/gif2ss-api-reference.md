@@ -285,6 +285,10 @@ Slices a SpriteSheet PNG into individual frames and produces an animated GIF.
 | `column_range` | string  | No                      | all      | Column range to extract (0-indexed).`"0-5"` = columns 0 through 5. `"2"` = column 2 only. |
 | `row_range`    | string  | No                      | all      | Row range to extract (0-indexed).`"0"` = first row only. `"1-3"` = rows 1 through 3.      |
 | `skip_empty`   | boolean | No                      | `true` | Automatically remove fully transparent frames from the output.                                |
+| `trim_top`     | integer | No                      | `0`    | Crop pixels from the top of the spritesheet before slicing. Min: `0`.                         |
+| `trim_right`   | integer | No                      | `0`    | Crop pixels from the right of the spritesheet before slicing. Min: `0`.                       |
+| `trim_bottom`  | integer | No                      | `0`    | Crop pixels from the bottom of the spritesheet before slicing. Min: `0`.                      |
+| `trim_left`    | integer | No                      | `0`    | Crop pixels from the left of the spritesheet before slicing. Min: `0`.                        |
 | `duration`     | integer | No                      | `100`  | Frame duration in milliseconds. Min:`10`, Max: `10000`.                                   |
 | `loop`         | integer | No                      | `0`    | Loop count.`0` = infinite loop.                                                             |
 
@@ -300,6 +304,24 @@ Cannot mix modes.
 - Grid mode: `cell_width = (image_width - (columns-1) * padding) / columns`
 - Cell mode: `columns = (image_width + padding) / (cell_width + padding)`
 - Padding is the gap between cells only — not on the outer edges of the spritesheet.
+
+**Trim (outer margins):** Use `trim_top`, `trim_right`, `trim_bottom`, `trim_left` to crop extra space around the entire spritesheet before slicing. This is applied first — before padding, range, or any other processing.
+
+```
+┌──────────────────────────────┐
+│        trim_top              │  ← cropped
+│  ┌────────────────────────┐  │
+│  │  cell │ pad │ cell     │  │
+│t │  ─────┼─────┼─────     │ t│
+│r │  cell │ pad │ cell     │ r│
+│i │                        │ i│
+│m │    actual grid area    │ m│
+│_ │                        │ _│
+│l │                        │ r│
+│  └────────────────────────┘  │
+│        trim_bottom           │  ← cropped
+└──────────────────────────────┘
+```
 
 **Range selection:** Use `column_range` and `row_range` to extract a sub-region of the spritesheet. For example, `column_range="0-5"` + `row_range="0"` extracts only the first 6 cells of row 0. Processing order: range → frame_count → skip_empty.
 
@@ -364,6 +386,21 @@ curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
   -F "columns=4" \
   -F "rows=3" \
   -F "padding=5" \
+  --output animation.gif
+```
+
+**With outer margin trimming:**
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "columns=4" \
+  -F "rows=3" \
+  -F "trim_top=10" \
+  -F "trim_right=10" \
+  -F "trim_bottom=10" \
+  -F "trim_left=10" \
   --output animation.gif
 ```
 
