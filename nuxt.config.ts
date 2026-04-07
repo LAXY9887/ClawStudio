@@ -44,6 +44,10 @@ export default defineNuxtConfig({
     '/': { prerender: true }
   },
 
+  sitemap: {
+    exclude: ['/download']
+  },
+
   compatibilityDate: '2025-01-15',
 
   eslint: {
