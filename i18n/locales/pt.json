@@ -151,8 +151,8 @@
     }
   },
   "gifToSprite": {
-    "title": "Conversor de GIF para folha de sprites PNG",
-    "subtitle": "Converta animações GIF em uma folha de sprites PNG ou extraia quadros individuais como arquivos PNG.",
+    "title": "Conversor gratuito online de GIF para PNG Spritesheet",
+    "subtitle": "Converta animações GIF em spritesheets PNG ou extraia quadros individuais como arquivos PNG — grátis, online, sem cadastro.",
     "mode": {
       "spritesheet": "Folha de sprites",
       "frames": "Quadros"
@@ -357,8 +357,8 @@
     "toGif": "PNG → GIF"
   },
   "toGif": {
-    "title": "Conversor de PNG para GIF",
-    "subtitle": "Converta quadros PNG ou uma folha de sprites em um GIF animado.",
+    "title": "Conversor gratuito online de PNG para GIF",
+    "subtitle": "Converta quadros PNG ou um spritesheet em um GIF animado — grátis, online, sem cadastro.",
     "mode": {
       "frames": "De quadros",
       "spritesheet": "De folha de sprites"

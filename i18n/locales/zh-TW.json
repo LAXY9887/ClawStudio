@@ -156,8 +156,8 @@
     }
   },
   "gifToSprite": {
-    "title": "GIF 轉 PNG Sprite Sheet 工具",
-    "subtitle": "將 GIF 動畫轉換為 PNG Sprite 圖，或逐幀提取為 PNG 圖片。",
+    "title": "免費線上 GIF 轉 PNG Spritesheet 工具",
+    "subtitle": "將 GIF 動畫轉換為 PNG Sprite 圖，或逐幀提取為 PNG 圖片 —— 免費、線上、無需註冊。",
     "mode": {
       "spritesheet": "Sprite Sheet",
       "frames": "逐幀提取"
@@ -357,8 +357,8 @@
     }
   },
   "toGif": {
-    "title": "PNG 轉 GIF 工具",
-    "subtitle": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫。",
+    "title": "免費線上 PNG 轉 GIF 工具",
+    "subtitle": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫 —— 免費、線上、無需註冊。",
     "mode": {
       "frames": "逐幀上傳",
       "spritesheet": "Spritesheet"

@@ -151,8 +151,8 @@
     }
   },
   "gifToSprite": {
-    "title": "GIF 转 PNG 精灵表转换器",
-    "subtitle": "将 GIF 动画转换为 PNG 精灵表或将各帧提取为 PNG 文件。",
+    "title": "免费在线 GIF 转 PNG Spritesheet 工具",
+    "subtitle": "将 GIF 动画转换为 PNG Sprite 图，或逐帧提取为 PNG 图片 —— 免费、在线、无需注册。",
     "mode": {
       "spritesheet": "精灵表",
       "frames": "帧"
@@ -357,8 +357,8 @@
     "toGif": "PNG → GIF"
   },
   "toGif": {
-    "title": "PNG 转 GIF 转换器",
-    "subtitle": "将 PNG 帧或精灵表转换为动画 GIF。",
+    "title": "免费在线 PNG 转 GIF 工具",
+    "subtitle": "将 PNG 逐帧图片或 Spritesheet 转换为 GIF 动画 —— 免费、在线、无需注册。",
     "mode": {
       "frames": "从帧",
       "spritesheet": "从精灵表"

@@ -151,8 +151,8 @@
     }
   },
   "gifToSprite": {
-    "title": "GIF to PNG スプライトシートコンバーター",
-    "subtitle": "GIF アニメーションを PNG スプライトシートに変換、または個別フレームを PNG ファイルとして抽出します。",
+    "title": "無料オンライン GIF→PNG スプライトシート変換ツール",
+    "subtitle": "GIFアニメーションをPNGスプライトシートに変換、またはフレームごとにPNG画像を抽出 — 無料・オンライン・登録不要。",
     "mode": {
       "spritesheet": "スプライトシート",
       "frames": "フレーム"
@@ -357,8 +357,8 @@
     "toGif": "PNG → GIF"
   },
   "toGif": {
-    "title": "PNG to GIF コンバーター",
-    "subtitle": "PNG フレームまたはスプライトシートをアニメーション GIF に変換します。",
+    "title": "無料オンライン PNG→GIF 変換ツール",
+    "subtitle": "PNGフレームまたはスプライトシートをGIFアニメーションに変換 — 無料・オンライン・登録不要。",
     "mode": {
       "frames": "フレームから",
       "spritesheet": "スプライトシートから"

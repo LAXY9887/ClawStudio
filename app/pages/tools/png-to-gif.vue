@@ -10,7 +10,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        'name': 'PNG to GIF Converter',
+        'name': 'Free Online PNG to GIF Converter',
         'description': 'Convert PNG frames or a spritesheet into an animated GIF.',
         'url': 'https://clawstudiouo.com/tools/png-to-gif',
         'applicationCategory': 'DesignApplication',

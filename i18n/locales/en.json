@@ -156,8 +156,8 @@
     }
   },
   "gifToSprite": {
-    "title": "GIF to PNG Sprite Sheet Converter",
-    "subtitle": "Convert GIF animations into a PNG sprite sheet or extract individual frames as PNG files.",
+    "title": "Free Online GIF to PNG Sprite Sheet Converter",
+    "subtitle": "Convert GIF animations into a PNG sprite sheet or extract individual frames as PNG files — free, online, no registration.",
     "mode": {
       "spritesheet": "Sprite Sheet",
       "frames": "Frames"
@@ -357,8 +357,8 @@
     }
   },
   "toGif": {
-    "title": "PNG to GIF Converter",
-    "subtitle": "Convert PNG frames or a spritesheet into an animated GIF.",
+    "title": "Free Online PNG to GIF Converter",
+    "subtitle": "Convert PNG frames or a spritesheet into an animated GIF — free, online, no registration.",
     "mode": {
       "frames": "From Frames",
       "spritesheet": "From Spritesheet"

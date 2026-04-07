@@ -8,7 +8,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        'name': 'GIF to PNG Spritesheet Converter',
+        'name': 'Free Online GIF to PNG Spritesheet Converter',
         'description': 'Convert GIF animations into PNG sprite sheets or extract individual frames as PNG files.',
         'url': 'https://clawstudiouo.com/tools/gif-to-sprite',
         'applicationCategory': 'DesignApplication',
