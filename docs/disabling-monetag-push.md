@@ -15,16 +15,18 @@ Emptying the Push src env var turns off the `<head>` injection **and** switches 
 
 ## The single toggle
 
-To disable Push Notifications, set **one** environment variable to empty:
+To disable Push Notifications, set **one** environment variable to any non-URL string (e.g. `disabled`):
 
 ```
-NUXT_PUBLIC_MONETAG_PUSH_SRC=""
+NUXT_PUBLIC_MONETAG_PUSH_SRC=disabled
 ```
 
 That is the whole toggle. Everything else downstream reacts to it:
 
-- `app.vue` skips injecting the `tag.min.js` script — **new visitors never subscribe**
+- `app.vue` skips injecting the `tag.min.js` script (the `isValidAdScriptSrc()` guard rejects any value that does not start with `http://` or `https://`) — **new visitors never subscribe**
 - `/sw.js` server route returns the tombstone SW — **returning subscribers auto-unregister**
+
+**Note**: Firebase App Hosting's `apphosting.yaml` schema does **not** accept empty string values, so you cannot use `value: ""`. Use a sentinel string like `disabled` instead.
 
 ## Step-by-step: disabling on Firebase App Hosting
 
@@ -35,10 +37,11 @@ That is the whole toggle. Everything else downstream reacts to it:
      # ...existing entries...
 
      # Disable Monetag Push Notifications.
-     # - Empties <head> tag.min.js injection in app.vue (no new subscribers)
+     # - Skips <head> tag.min.js injection in app.vue (no new subscribers)
      # - Flips /sw.js server route to tombstone mode (unregisters old subscribers)
+     # Any non-URL string works as a disable sentinel; "disabled" is idiomatic.
      - variable: NUXT_PUBLIC_MONETAG_PUSH_SRC
-       value: ""
+       value: disabled
        availability:
          - BUILD
          - RUNTIME
