@@ -27,3 +27,11 @@ env:
     secret: NUXT_GIF_SERVICE_URL
   - variable: NUXT_INTERNAL_KEY
     secret: NUXT_INTERNAL_KEY
+  # 廣告供應商覆寫：'adsense' | 'monetag' | 'none'
+  # 設為 none 可完全關閉廣告（AdSense 複查期間或測試用）
+  # 不設此變數時會使用 nuxt.config.ts runtimeConfig 的預設值 'monetag'
+  - variable: NUXT_PUBLIC_AD_PROVIDER
+    value: none
+    availability:
+      - BUILD
+      - RUNTIME
