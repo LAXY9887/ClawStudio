@@ -31,19 +31,24 @@ if (adProvider === 'adsense' && adsenseClient) {
     })
   }
   if (monetagInpagePushSrc && monetagInpagePushZone) {
+    // In-Page Push 的原始 loader 會把 script append 到 <body>，
+    // 腳本內部也會檢查自己的 parent，必須用 tagPosition: 'bodyClose' 放在 body 末端
     adScripts.push({
       'src': monetagInpagePushSrc,
       'data-zone': monetagInpagePushZone,
       'data-cfasync': 'false',
-      'async': true
+      'async': true,
+      'tagPosition': 'bodyClose'
     })
   }
   if (monetagVignetteSrc && monetagVignetteZone) {
+    // Vignette 同樣要求掛在 <body>（見 In-Page Push 說明）
     adScripts.push({
       'src': monetagVignetteSrc,
       'data-zone': monetagVignetteZone,
       'data-cfasync': 'false',
-      'async': true
+      'async': true,
+      'tagPosition': 'bodyClose'
     })
   }
   if (monetagPushSrc) {
