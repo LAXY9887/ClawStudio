@@ -20,6 +20,13 @@ function isValidAdScriptSrc(src: string): boolean {
   return src.startsWith('https://') || src.startsWith('http://')
 }
 
+// Monetag 的 In-Page Push / Vignette 官方 loader 是 inline IIFE，會在 runtime 動態建立
+// 新的 <script> 並 append 到 <body>。驗證器似乎會字面上比對這段 IIFE 模式，所以我們
+// 完全複製它，而不是用 Nuxt 結構化 script 物件渲染成靜態 <script src>。
+function buildMonetagInlineLoader(src: string, zone: string): string {
+  return `(function(s){s.dataset.zone='${zone}',s.src='${src}'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`
+}
+
 const adScripts: Array<Record<string, unknown>> = []
 if (adProvider === 'adsense' && adsenseClient) {
   adScripts.push({
@@ -37,24 +44,18 @@ if (adProvider === 'adsense' && adsenseClient) {
     })
   }
   if (isValidAdScriptSrc(monetagInpagePushSrc) && monetagInpagePushZone) {
-    // In-Page Push 的原始 loader 會把 script append 到 <body>，
-    // 腳本內部也會檢查自己的 parent，必須用 tagPosition: 'bodyClose' 放在 body 末端
+    // 使用 inline IIFE loader（逐字複製 Monetag 官方提供的載入程式碼），
+    // 這樣 Monetag 驗證器能精準匹配到預期的程式碼模式。
     adScripts.push({
-      'src': monetagInpagePushSrc,
-      'data-zone': monetagInpagePushZone,
-      'data-cfasync': 'false',
-      'async': true,
-      'tagPosition': 'bodyClose'
+      innerHTML: buildMonetagInlineLoader(monetagInpagePushSrc, monetagInpagePushZone),
+      tagPosition: 'bodyClose'
     })
   }
   if (isValidAdScriptSrc(monetagVignetteSrc) && monetagVignetteZone) {
-    // Vignette 同樣要求掛在 <body>（見 In-Page Push 說明）
+    // Vignette 同樣使用 inline IIFE loader（見 In-Page Push 說明）
     adScripts.push({
-      'src': monetagVignetteSrc,
-      'data-zone': monetagVignetteZone,
-      'data-cfasync': 'false',
-      'async': true,
-      'tagPosition': 'bodyClose'
+      innerHTML: buildMonetagInlineLoader(monetagVignetteSrc, monetagVignetteZone),
+      tagPosition: 'bodyClose'
     })
   }
   if (isValidAdScriptSrc(monetagPushSrc)) {
