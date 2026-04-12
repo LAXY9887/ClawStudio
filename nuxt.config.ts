@@ -24,6 +24,10 @@ export default defineNuxtConfig({
       // Monetag: Push Notifications（zone 內嵌於 URL 的 ?z= 參數）
       monetagPushSrc: 'https://5gvci.com/act/files/tag.min.js?z=10864789',
       monetagPushZone: '',
+      // Monetag: Push Notifications Service Worker 設定
+      // 由 /sw.js 動態 server route 讀取，空值會自動改送「自我註銷」墓碑 SW
+      monetagPushSwDomain: '3nbf4.com',
+      monetagPushSwZoneId: '10864789',
       // Monetag: Direct Link（等待室下載按鈕並行開啟）
       monetagDirectLink: 'https://omg10.com/4/10864766',
       // Monetag: Direct Link 備用（目前未使用，保留給未來版位）
