@@ -28,10 +28,18 @@ env:
   - variable: NUXT_INTERNAL_KEY
     secret: NUXT_INTERNAL_KEY
   # 廣告供應商覆寫：'adsense' | 'monetag' | 'none'
-  # 設為 none 可完全關閉廣告（AdSense 複查期間或測試用）
   # 不設此變數時會使用 nuxt.config.ts runtimeConfig 的預設值 'monetag'
-  - variable: NUXT_PUBLIC_AD_PROVIDER
-    value: none
+  # - variable: NUXT_PUBLIC_AD_PROVIDER
+  #   value: none
+  #   availability:
+  #     - BUILD
+  #     - RUNTIME
+  #
+  # 暫時關閉 Monetag Multitag（含 onClick popunder，侵略性過強）
+  # 覆寫 src 為空字串，讓 app.vue 的 if (src && zone) 檢查失敗、不注入 script
+  # 要恢復時刪除或註解下方整段即可（nuxt.config.ts 的預設值仍保留完整）
+  - variable: NUXT_PUBLIC_MONETAG_MULTITAG_SRC
+    value: "monetag"
     availability:
       - BUILD
       - RUNTIME
