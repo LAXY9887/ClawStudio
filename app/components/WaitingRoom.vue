@@ -94,9 +94,7 @@ function download() {
     </div>
 
     <!-- Ad Slot -->
-    <div class="ad-slot w-full">
-      <slot name="ad" />
-    </div>
+    <slot name="ad" />
 
     <!-- Content Slot -->
     <div>

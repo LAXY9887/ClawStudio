@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -266,6 +267,8 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
+  openDirectLink()
+
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),

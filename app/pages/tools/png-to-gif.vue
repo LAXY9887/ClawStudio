@@ -2,6 +2,7 @@
 import { VueDraggable } from 'vue-draggable-plus'
 
 const { t } = useI18n()
+const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -368,6 +369,8 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
+  openDirectLink()
+
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),

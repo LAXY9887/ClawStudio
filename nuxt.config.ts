@@ -13,7 +13,22 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     gifServiceUrl: '',
-    internalKey: ''
+    internalKey: '',
+    public: {
+      // 'adsense' | 'monetag' | 'none'
+      adProvider: 'monetag',
+      adsenseClient: 'ca-pub-6385934484512467',
+      // Monetag: Multitag (all-in-one)
+      monetagMultitagSrc: 'https://quge5.com/88/tag.min.js',
+      monetagMultitagZone: '228851',
+      // Monetag: Push Notifications（zone 內嵌於 URL 的 ?z= 參數）
+      monetagPushSrc: 'https://5gvci.com/act/files/tag.min.js?z=10864789',
+      monetagPushZone: '',
+      // Monetag: Direct Link（等待室下載按鈕並行開啟）
+      monetagDirectLink: 'https://omg10.com/4/10864766',
+      // Monetag: Direct Link 備用（目前未使用，保留給未來版位）
+      monetagDirectLinkAlt: 'https://omg10.com/4/10864781'
+    }
   },
 
   i18n: {

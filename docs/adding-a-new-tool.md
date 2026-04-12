@@ -190,8 +190,12 @@ function downloadResult() {
   URL.revokeObjectURL(url)
 }
 
+// Declare near the top of <script setup> alongside other composables:
+// const { openDirectLink } = useMonetagDirectLink()
+
 function onAdConfirm() {
   showAdModal.value = false
+  openDirectLink() // no-op unless ad provider is 'monetag'
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),

@@ -2,6 +2,40 @@
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const i18nHead = useLocaleHead({ addSeoAttributes: true } as any)
+const config = useRuntimeConfig()
+const adProvider = config.public.adProvider as 'adsense' | 'monetag' | 'none'
+const adsenseClient = config.public.adsenseClient as string
+const monetagMultitagSrc = config.public.monetagMultitagSrc as string
+const monetagMultitagZone = config.public.monetagMultitagZone as string
+const monetagPushSrc = config.public.monetagPushSrc as string
+const monetagPushZone = config.public.monetagPushZone as string
+
+const adScripts: Array<Record<string, unknown>> = []
+if (adProvider === 'adsense' && adsenseClient) {
+  adScripts.push({
+    src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`,
+    async: true,
+    crossorigin: 'anonymous'
+  })
+} else if (adProvider === 'monetag') {
+  if (monetagMultitagSrc && monetagMultitagZone) {
+    adScripts.push({
+      'src': monetagMultitagSrc,
+      'data-zone': monetagMultitagZone,
+      'data-cfasync': 'false',
+      'async': true
+    })
+  }
+  if (monetagPushSrc) {
+    const pushScript: Record<string, unknown> = {
+      'src': monetagPushSrc,
+      'data-cfasync': 'false',
+      'async': true
+    }
+    if (monetagPushZone) pushScript['data-zone'] = monetagPushZone
+    adScripts.push(pushScript)
+  }
+}
 
 useHead({
   meta: [
@@ -12,13 +46,7 @@ useHead({
     { rel: 'icon', href: '/favicon.ico' },
     ...(i18nHead.value.link || [])
   ],
-  script: [
-    {
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6385934484512467',
-      async: true,
-      crossorigin: 'anonymous'
-    }
-  ],
+  script: adScripts as never,
   htmlAttrs: {
     ...i18nHead.value.htmlAttrs
   }
@@ -74,8 +102,8 @@ const localeItems = computed(() =>
     </UHeader>
 
     <div class="flex min-h-[calc(100vh-var(--ui-header-height)-60px)]">
-      <!-- Left Ad Sidebar -->
-      <aside class="hidden xl:block w-[160px] shrink-0 p-4">
+      <!-- Left Ad Sidebar (AdSense 專用離散版位) -->
+      <aside v-if="adProvider === 'adsense'" class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
           <AdUnit ad-slot="8882057481" />
         </div>
@@ -86,16 +114,16 @@ const localeItems = computed(() =>
         <NuxtPage />
       </UMain>
 
-      <!-- Right Ad Sidebar -->
-      <aside class="hidden xl:block w-[160px] shrink-0 p-4">
+      <!-- Right Ad Sidebar (AdSense 專用離散版位) -->
+      <aside v-if="adProvider === 'adsense'" class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
           <AdUnit ad-slot="3629730800" />
         </div>
       </aside>
     </div>
 
-    <!-- Ad Slot: Above Footer -->
-    <div class="flex justify-center py-4">
+    <!-- Ad Slot: Above Footer (AdSense 專用離散版位) -->
+    <div v-if="adProvider === 'adsense'" class="flex justify-center py-4">
       <AdUnit ad-slot="1939246744" format="autorelaxed" :responsive="false" />
     </div>
 

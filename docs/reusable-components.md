@@ -318,11 +318,15 @@ if (usageCount.value >= FREE_LIMIT) {
 
 ### 6. Ad Modal -> Waiting Room
 
-The modal contains no ads (AdSense compliance). It is a simple confirmation with "Confirm" and "Close" buttons:
+The modal itself renders no ad markup (AdSense compliance preserved). When ad provider is `monetag`, `openDirectLink()` opens a Monetag Direct Link in a new tab as a synchronous side effect of the user's click. For `adsense` and `none` providers it is a no-op, so no ad markup is ever injected into AdSense-mode pages.
 
 ```ts
+// At the top of <script setup>:
+const { openDirectLink } = useMonetagDirectLink()
+
 function onAdConfirm() {
   showAdModal.value = false
+  openDirectLink() // Monetag only; no-op otherwise
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
@@ -333,6 +337,8 @@ function onAdConfirm() {
   })
 }
 ```
+
+**Important**: `openDirectLink()` must run in the same synchronous call chain as the user click (do not await anything between click and call) or the browser's popup blocker will reject `window.open`.
 
 ### 7. Cookie Reset
 
