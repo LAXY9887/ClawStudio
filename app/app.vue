@@ -14,6 +14,12 @@ const monetagInpagePushZone = config.public.monetagInpagePushZone as string
 const monetagVignetteSrc = config.public.monetagVignetteSrc as string
 const monetagVignetteZone = config.public.monetagVignetteZone as string
 
+// 防禦性檢查：只接受 https:// 開頭的完整 URL，避免誤設的 env var（例如字面字串 "monetag"）
+// 被當成相對路徑解析為 https://domain.com/monetag 造成 404
+function isValidAdScriptSrc(src: string): boolean {
+  return src.startsWith('https://') || src.startsWith('http://')
+}
+
 const adScripts: Array<Record<string, unknown>> = []
 if (adProvider === 'adsense' && adsenseClient) {
   adScripts.push({
@@ -22,7 +28,7 @@ if (adProvider === 'adsense' && adsenseClient) {
     crossorigin: 'anonymous'
   })
 } else if (adProvider === 'monetag') {
-  if (monetagMultitagSrc && monetagMultitagZone) {
+  if (isValidAdScriptSrc(monetagMultitagSrc) && monetagMultitagZone) {
     adScripts.push({
       'src': monetagMultitagSrc,
       'data-zone': monetagMultitagZone,
@@ -30,7 +36,7 @@ if (adProvider === 'adsense' && adsenseClient) {
       'async': true
     })
   }
-  if (monetagInpagePushSrc && monetagInpagePushZone) {
+  if (isValidAdScriptSrc(monetagInpagePushSrc) && monetagInpagePushZone) {
     // In-Page Push 的原始 loader 會把 script append 到 <body>，
     // 腳本內部也會檢查自己的 parent，必須用 tagPosition: 'bodyClose' 放在 body 末端
     adScripts.push({
@@ -41,7 +47,7 @@ if (adProvider === 'adsense' && adsenseClient) {
       'tagPosition': 'bodyClose'
     })
   }
-  if (monetagVignetteSrc && monetagVignetteZone) {
+  if (isValidAdScriptSrc(monetagVignetteSrc) && monetagVignetteZone) {
     // Vignette 同樣要求掛在 <body>（見 In-Page Push 說明）
     adScripts.push({
       'src': monetagVignetteSrc,
@@ -51,7 +57,7 @@ if (adProvider === 'adsense' && adsenseClient) {
       'tagPosition': 'bodyClose'
     })
   }
-  if (monetagPushSrc) {
+  if (isValidAdScriptSrc(monetagPushSrc)) {
     const pushScript: Record<string, unknown> = {
       'src': monetagPushSrc,
       'data-cfasync': 'false',

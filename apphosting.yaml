@@ -36,10 +36,13 @@ env:
   #     - RUNTIME
   #
   # 暫時關閉 Monetag Multitag（含 onClick popunder，侵略性過強）
-  # 覆寫 src 為空字串，讓 app.vue 的 if (src && zone) 檢查失敗、不注入 script
+  # 覆寫 src 為空字串（一定要是空字串""而不是任何字面值），
+  # 讓 app.vue 的 if (src && zone) 檢查失敗、不注入 script。
+  # 如果寫成非空值（例如 "monetag"），瀏覽器會把它當相對路徑
+  # 解析為 https://domain.com/monetag，造成 404 JSON 回應與 MIME 拒絕執行。
   # 要恢復時刪除或註解下方整段即可（nuxt.config.ts 的預設值仍保留完整）
   - variable: NUXT_PUBLIC_MONETAG_MULTITAG_SRC
-    value: "monetag"
+    value: ""
     availability:
       - BUILD
       - RUNTIME
