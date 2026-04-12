@@ -9,6 +9,10 @@ const monetagMultitagSrc = config.public.monetagMultitagSrc as string
 const monetagMultitagZone = config.public.monetagMultitagZone as string
 const monetagPushSrc = config.public.monetagPushSrc as string
 const monetagPushZone = config.public.monetagPushZone as string
+const monetagInpagePushSrc = config.public.monetagInpagePushSrc as string
+const monetagInpagePushZone = config.public.monetagInpagePushZone as string
+const monetagVignetteSrc = config.public.monetagVignetteSrc as string
+const monetagVignetteZone = config.public.monetagVignetteZone as string
 
 const adScripts: Array<Record<string, unknown>> = []
 if (adProvider === 'adsense' && adsenseClient) {
@@ -22,6 +26,22 @@ if (adProvider === 'adsense' && adsenseClient) {
     adScripts.push({
       'src': monetagMultitagSrc,
       'data-zone': monetagMultitagZone,
+      'data-cfasync': 'false',
+      'async': true
+    })
+  }
+  if (monetagInpagePushSrc && monetagInpagePushZone) {
+    adScripts.push({
+      'src': monetagInpagePushSrc,
+      'data-zone': monetagInpagePushZone,
+      'data-cfasync': 'false',
+      'async': true
+    })
+  }
+  if (monetagVignetteSrc && monetagVignetteZone) {
+    adScripts.push({
+      'src': monetagVignetteSrc,
+      'data-zone': monetagVignetteZone,
       'data-cfasync': 'false',
       'async': true
     })

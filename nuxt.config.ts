@@ -28,6 +28,12 @@ export default defineNuxtConfig({
       // 由 /sw.js 動態 server route 讀取，空值會自動改送「自我註銷」墓碑 SW
       monetagPushSwDomain: '3nbf4.com',
       monetagPushSwZoneId: '10864789',
+      // Monetag: In-Page Push（native-style 浮動 banner）
+      monetagInpagePushSrc: 'https://nap5k.com/tag.min.js',
+      monetagInpagePushZone: '10864907',
+      // Monetag: Vignette Banner（插頁式強制顯示，侵略性較高）
+      monetagVignetteSrc: 'https://n6wxm.com/vignette.min.js',
+      monetagVignetteZone: '10864918',
       // Monetag: Direct Link（等待室下載按鈕並行開啟）
       monetagDirectLink: 'https://omg10.com/4/10864766',
       // Monetag: Direct Link 備用（目前未使用，保留給未來版位）
