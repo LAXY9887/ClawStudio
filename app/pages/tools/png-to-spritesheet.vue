@@ -2,6 +2,7 @@
 import { VueDraggable } from 'vue-draggable-plus'
 
 const { t } = useI18n()
+const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -23,7 +24,82 @@ useHead({
   ]
 })
 
-const seoSections: import('~/types/seo').SeoSection[] = [] // TODO: add SEO content later
+const seoSections: import('~/types/seo').SeoSection[] = [
+  {
+    type: 'text' as const,
+    titleKey: 'pngToSpritesheet.seo.whatIs.title',
+    contentKeys: [
+      'pngToSpritesheet.seo.whatIs.content',
+      'pngToSpritesheet.seo.whatIs.content2',
+      'pngToSpritesheet.seo.whatIs.content3'
+    ]
+  },
+  {
+    type: 'text' as const,
+    titleKey: 'pngToSpritesheet.seo.layouts.title',
+    contentKeys: [
+      'pngToSpritesheet.seo.layouts.content',
+      'pngToSpritesheet.seo.layouts.content2',
+      'pngToSpritesheet.seo.layouts.content3'
+    ]
+  },
+  {
+    type: 'text' as const,
+    titleKey: 'pngToSpritesheet.seo.formats.title',
+    contentKeys: [
+      'pngToSpritesheet.seo.formats.content',
+      'pngToSpritesheet.seo.formats.content2',
+      'pngToSpritesheet.seo.formats.content3'
+    ]
+  },
+  {
+    type: 'steps' as const,
+    titleKey: 'pngToSpritesheet.seo.howTo.title',
+    stepKeys: [
+      'pngToSpritesheet.seo.howTo.step1',
+      'pngToSpritesheet.seo.howTo.step2',
+      'pngToSpritesheet.seo.howTo.step3',
+      'pngToSpritesheet.seo.howTo.step4'
+    ]
+  },
+  {
+    type: 'features' as const,
+    titleKey: 'pngToSpritesheet.seo.features.title',
+    itemKeys: [
+      'pngToSpritesheet.seo.features.items.layouts',
+      'pngToSpritesheet.seo.features.items.cellModes',
+      'pngToSpritesheet.seo.features.items.metadata',
+      'pngToSpritesheet.seo.features.items.powerOf2',
+      'pngToSpritesheet.seo.features.items.reorder',
+      'pngToSpritesheet.seo.features.items.alignPadding',
+      'pngToSpritesheet.seo.features.items.privacy'
+    ]
+  },
+  {
+    type: 'useCases' as const,
+    titleKey: 'pngToSpritesheet.seo.useCases.title',
+    itemKeys: [
+      'pngToSpritesheet.seo.useCases.items.gameSprites',
+      'pngToSpritesheet.seo.useCases.items.uiAtlas',
+      'pngToSpritesheet.seo.useCases.items.animationAssembly',
+      'pngToSpritesheet.seo.useCases.items.tilesets'
+    ]
+  },
+  {
+    type: 'faq' as const,
+    titleKey: 'pngToSpritesheet.seo.faq.title',
+    itemKeys: [
+      'pngToSpritesheet.seo.faq.items.whatIsSheet',
+      'pngToSpritesheet.seo.faq.items.whichLayout',
+      'pngToSpritesheet.seo.faq.items.maxFiles',
+      'pngToSpritesheet.seo.faq.items.metadata',
+      'pngToSpritesheet.seo.faq.items.engines',
+      'pngToSpritesheet.seo.faq.items.powerOf2',
+      'pngToSpritesheet.seo.faq.items.transparency',
+      'pngToSpritesheet.seo.faq.items.privacy'
+    ]
+  }
+]
 
 // State
 const files = ref<File[]>([])
@@ -220,6 +296,8 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
+  openDirectLink()
+
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
@@ -239,6 +317,8 @@ onUnmounted(() => {
     subtitle-key="pngToSpritesheet.subtitle"
     prefix="pngToSpritesheet"
     :seo-sections="seoSections"
+    api-url="https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites"
+    tutorial-url="https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites/tutorials/merge-png-into-sprite-sheet-by-easy-png2ss"
   >
     <template #workspace>
       <div v-if="status === 'idle' || status === 'error'">

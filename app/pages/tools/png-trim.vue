@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -21,7 +22,80 @@ useHead({
   ]
 })
 
-const seoSections: import('~/types/seo').SeoSection[] = [] // TODO: add SEO content later
+const seoSections: import('~/types/seo').SeoSection[] = [
+  {
+    type: 'text' as const,
+    titleKey: 'pngTrim.seo.whatIs.title',
+    contentKeys: [
+      'pngTrim.seo.whatIs.content',
+      'pngTrim.seo.whatIs.content2',
+      'pngTrim.seo.whatIs.content3'
+    ]
+  },
+  {
+    type: 'text' as const,
+    titleKey: 'pngTrim.seo.whyTrim.title',
+    contentKeys: [
+      'pngTrim.seo.whyTrim.content',
+      'pngTrim.seo.whyTrim.content2',
+      'pngTrim.seo.whyTrim.content3'
+    ]
+  },
+  {
+    type: 'text' as const,
+    titleKey: 'pngTrim.seo.howItWorks.title',
+    contentKeys: [
+      'pngTrim.seo.howItWorks.content',
+      'pngTrim.seo.howItWorks.content2',
+      'pngTrim.seo.howItWorks.content3'
+    ]
+  },
+  {
+    type: 'steps' as const,
+    titleKey: 'pngTrim.seo.howTo.title',
+    stepKeys: [
+      'pngTrim.seo.howTo.step1',
+      'pngTrim.seo.howTo.step2',
+      'pngTrim.seo.howTo.step3',
+      'pngTrim.seo.howTo.step4'
+    ]
+  },
+  {
+    type: 'features' as const,
+    titleKey: 'pngTrim.seo.features.title',
+    itemKeys: [
+      'pngTrim.seo.features.items.singleBatch',
+      'pngTrim.seo.features.items.threshold',
+      'pngTrim.seo.features.items.padding',
+      'pngTrim.seo.features.items.transparency',
+      'pngTrim.seo.features.items.fast',
+      'pngTrim.seo.features.items.privacy'
+    ]
+  },
+  {
+    type: 'useCases' as const,
+    titleKey: 'pngTrim.seo.useCases.title',
+    itemKeys: [
+      'pngTrim.seo.useCases.items.gameSprites',
+      'pngTrim.seo.useCases.items.uiIcons',
+      'pngTrim.seo.useCases.items.animationFrames',
+      'pngTrim.seo.useCases.items.atlasReduction'
+    ]
+  },
+  {
+    type: 'faq' as const,
+    titleKey: 'pngTrim.seo.faq.title',
+    itemKeys: [
+      'pngTrim.seo.faq.items.threshold',
+      'pngTrim.seo.faq.items.padding',
+      'pngTrim.seo.faq.items.singleVsBatch',
+      'pngTrim.seo.faq.items.compatibility',
+      'pngTrim.seo.faq.items.maxFiles',
+      'pngTrim.seo.faq.items.transparency',
+      'pngTrim.seo.faq.items.privacy'
+    ]
+  }
+]
 
 // State
 const files = ref<File[]>([])
@@ -183,6 +257,8 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
+  openDirectLink()
+
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
@@ -202,6 +278,8 @@ onUnmounted(() => {
     subtitle-key="pngTrim.subtitle"
     prefix="pngTrim"
     :seo-sections="seoSections"
+    api-url="https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites"
+    tutorial-url="https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites/tutorials/merge-png-into-sprite-sheet-by-easy-png2ss"
   >
     <template #workspace>
       <div v-if="status === 'idle' || status === 'error'">
@@ -291,8 +369,10 @@ onUnmounted(() => {
         <!-- Single PNG preview -->
         <div v-if="!resultIsZip && resultUrl">
           <h3 class="font-semibold text-lg mb-2">{{ t('pngTrim.result.singleTitle') }}</h3>
-          <div class="border border-muted rounded-xl overflow-auto bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px]">
-            <img :src="resultUrl" alt="Trimmed preview" class="max-w-full mx-auto">
+          <div class="flex justify-center">
+            <div class="inline-block border border-muted rounded-xl overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px]">
+              <img :src="resultUrl" alt="Trimmed preview" class="block max-w-full h-auto">
+            </div>
           </div>
           <p class="text-sm text-muted mt-2">{{ t('pngTrim.result.singleInfo', resultInfo) }}</p>
         </div>

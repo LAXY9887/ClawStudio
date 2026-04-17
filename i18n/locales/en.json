@@ -694,6 +694,134 @@
           "formats": "PNG input; PNG or ZIP (with JSON) output",
           "response": "Compatible with Phaser 3, PixiJS, Unity, Godot"
         }
+      },
+      "whatIs": {
+        "title": "Why Pack PNG Frames into a Sprite Atlas?",
+        "content": "A sprite atlas is the output of packing many individual PNG assets — exported frames, icon sets, tile variants — into a single texture that an engine can sample from. The PNG to Spritesheet workflow is fundamentally a packing problem: you already have a curated set of source files (perhaps a walk cycle exported from Aseprite, or a UI icon pack from a designer), and you need to flatten them into one atlas that your runtime can load in a single texture upload. This tool is built around that authoring step rather than around any conversion from animated formats.",
+        "content2": "For game projects the pay-off is very concrete. Shipping 200 loose PNG files means 200 filesystem reads (or 200 HTTP fetches on web builds), 200 texture uploads, and a draw batch that breaks every time the renderer switches between them. Pack those same assets into one atlas and the runtime issues a single texture bind — Phaser 3, PixiJS, Unity, and Godot can then draw every sprite that lives on the atlas within the same batched draw call. On mobile and WebGL targets, where texture bandwidth and request overhead are the usual bottlenecks, this is often the single largest win you can make in a 2D renderer.",
+        "content3": "Beyond runtime performance, atlases fit cleanly into asset pipelines. Instead of tracking hundreds of individual files through version control, an atlas gives you a single PNG plus a TexturePacker JSON — two artifacts that can be regenerated from source in a build step, checked by CI, and dropped into the engine as a pair. Indie teams and tool authors use this pattern to keep their repo tidy, reduce import churn in engines like Unity and Godot, and bake final atlases as part of a release pipeline."
+      },
+      "layouts": {
+        "title": "Grid, Strip, or Bin-Packed: Which Layout?",
+        "content": "Unlike tools that force a single layout, the PNG to Spritesheet builder exposes four distinct packing strategies so you can match the output to whatever your engine expects. Grid packing arranges your frames into a rectangular lattice and works well when every input PNG shares the same footprint — classic Aseprite animation exports, character walk cycles, or Godot SpriteFrames sequences all fit this shape. You can pin a specific column count, or leave it empty so the packer reaches for a near-square ceil(sqrt(N)) arrangement that keeps the final texture compact.",
+        "content2": "Horizontal and vertical strip packers lay everything on a single axis. Developers reach for strips when they need to drive a fragment shader flipbook that interpolates along U or V, when an engine's animation component expects linearly indexed frames, or when a CSS sprite animation needs to translate a single offset per frame. Strips also produce the most deterministic frame addressing: once you know the cell size, frame N always lives at N × cell on one axis and zero on the other — useful when you are computing UVs inside build scripts or shader code.",
+        "content3": "The packed mode runs a bin-packing algorithm over frames of varying sizes and produces an irregular atlas with no wasted whitespace — the layout you want when your input set mixes 16×16 icons with 96×48 buttons, or when a tilemap includes both single tiles and 2×2 decoration clusters. Because frame rectangles are no longer predictable, packed output always ships with a TexturePacker-format JSON that maps filenames to atlas coordinates so engines like Phaser 3 (load.atlas) and PixiJS (Assets.load) can look up each frame by its original name."
+      },
+      "formats": {
+        "title": "Engine-Ready Atlas Metadata",
+        "content": "Every run produces a PNG, and — when metadata is enabled — a companion JSON file describing where each source frame lives on the sheet, all wrapped in a single ZIP. The JSON follows the TexturePacker JSON Array schema, which the rest of the 2D ecosystem has quietly converged on over the past decade. Each entry records the original filename, the frame rectangle on the atlas, the source dimensions of the pre-packed image, and a trim rect for sprites that have been cropped during packing. Tool integrators can rely on this schema staying stable across runs, which matters when the output is being fed into a CI job or an asset-baking step.",
+        "content2": "Phaser 3 consumes this JSON directly through scene.load.atlas(key, png, json), after which any frame can be referenced by its original filename in animation definitions. PixiJS expects the same schema via its Spritesheet / Assets.load path — drop in the ZIP contents and every frame becomes a Texture keyed by name. For Unity pipelines, the free TexturePacker Importer slices the PNG back into sub-sprites inside the editor so your prefabs and AnimationClips can reference them individually; Godot users can lean on community importer plugins that materialise the JSON into AtlasTexture resources or SpriteFrames for AnimatedSprite2D nodes.",
+        "content3": "If your engine can infer frame positions from cell dimensions alone — a pure grid in Godot SpriteFrames, for example — you can turn metadata off and collect a lone PNG. Packed mode always includes JSON because the irregular rectangles can't be reconstructed from parameters. The separate power-of-2 toggle pads the final canvas up to 256/512/1024/2048 so it matches GPU sampling alignment requirements on older mobile chipsets and certain texture compression formats; for WebGL 1 contexts that still enforce POT textures for repeat-wrapped samplers, this is the easiest way to stay compatible without touching engine-side settings."
+      },
+      "howTo": {
+        "title": "How to Assemble a Sprite Atlas",
+        "step1": {
+          "title": "1. Upload Your Frame Set",
+          "content": "Drop a curated batch of PNG frames onto the uploader, or pick them from disk — up to 100 files per job at 5 MB each and 60 MB in total. Whether they came from an Aseprite export sequence, a Photoshop layer comp, a Krita animation, or a folder produced by a build script, the files show up as a draggable thumbnail grid. Each thumbnail carries its index badge so you can confirm the order that will be baked into the atlas."
+        },
+        "step2": {
+          "title": "2. Choose Your Packing Layout",
+          "content": "Open Layout & Options and commit to a packing strategy. Grid is the go-to when every frame shares a bounding box; horizontal and vertical strips give you linear frame addressing for shader-driven or CSS flipbooks; packed unlocks bin-packing for heterogeneous sets like UI atlases and tile variant packs. Switching to packed automatically enables TexturePacker JSON output, since engines cannot infer irregular frame rectangles from parameters alone."
+        },
+        "step3": {
+          "title": "3. Fine-Tune Cell Behavior, Padding, and Ordering",
+          "content": "For grid and strip layouts, pick a cell mode — auto-max sizes every cell to the largest frame's bounding box (handy when exports drift by a pixel or two), auto-uniform asserts that every frame is the same size and fails fast if not, and fixed locks an exact cell size with fit_mode choosing between scale-fit, scale-fill, or rejection for oversized inputs. Use align to control how smaller frames sit inside oversized cells, add pixel padding to prevent bilinear bleed between neighbours, and flip power-of-2 on if your target GPU or compression format expects POT textures. Turn on filename ordering when your exporter numbers frames with a _N suffix and you want that order enforced regardless of upload sequence."
+        },
+        "step4": {
+          "title": "4. Export the Atlas",
+          "content": "Hit Convert and the server builds the atlas. You receive either a standalone PNG, or a ZIP bundling the PNG with its TexturePacker JSON when metadata is on. The preview renders the finished sheet inline so you can spot alignment mistakes before committing it to a repo or uploading it to your engine. Download to save the result, or reset the workspace to build the next atlas in your batch."
+        }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "layouts": {
+            "title": "Four Packing Strategies",
+            "content": "Grid for uniform animation exports, horizontal and vertical strips for linear flipbooks and shader-driven sampling, and bin-packed for heterogeneous atlases. Each strategy is tuned to a different runtime consumption pattern, so you can match the output to how your Phaser 3, PixiJS, Unity, or Godot project actually samples the atlas at runtime."
+          },
+          "cellModes": {
+            "title": "Cell Sizing for Pipeline Control",
+            "content": "Auto-max adapts to whichever frame is biggest, which is the forgiving choice for exports that drift by a pixel. Auto-uniform turns an assumption into a guarantee — if two frames disagree on size, the job fails loudly so you catch the mismatch in CI instead of in-game. Fixed mode pins an exact cell size with a fit_mode fallback so older asset sets can be normalised into a new atlas dimension."
+          },
+          "metadata": {
+            "title": "TexturePacker JSON Output",
+            "content": "Optional JSON Array metadata is produced alongside the PNG and packaged in a ZIP. The schema is natively understood by Phaser 3's load.atlas, PixiJS's Assets loader, and — via community importers — Unity and Godot. Because the format is stable and widely supported, the same ZIP can be dropped into different engines without rewriting any glue code."
+          },
+          "powerOf2": {
+            "title": "Power-of-2 Texture Padding",
+            "content": "A single switch rounds the atlas canvas up to 256, 512, 1024, or 2048 px. POT textures are still expected by some compression formats (PVRTC on older iOS, certain WebGL 1 repeat-wrap samplers) and remain the safest default for mipmap-heavy pipelines. Padding pixels respect the configured background color or stay transparent."
+          },
+          "reorder": {
+            "title": "Drag-to-Reorder Workflow",
+            "content": "The upload grid is a draggable surface: grab a thumbnail and drop it into the right slot to fix frame order without renaming anything on disk. Pair it with filename ordering when your exporter emits walk_0.png, walk_1.png, walk_2.png and you want that numeric suffix to win automatically, which is useful when a build script is appending frames in an unpredictable order."
+          },
+          "alignPadding": {
+            "title": "Alignment and Cell Padding",
+            "content": "When frames are smaller than their cells, align controls whether they sit centered or pinned to the top-left — the latter is what Godot's tilemap and many Unity Sprite Editors expect. Cell padding inserts a transparent buffer between neighbours so bilinear filtering cannot sample across cell boundaries, which stops the hairline seams that show up on scaled sprites in shader-heavy scenes."
+          },
+          "privacy": {
+            "title": "Privacy First",
+            "content": "Uploads live in memory only long enough to build the atlas, then get discarded. There is no account, no cookie-based tracking of your asset contents, and no server-side archival — which matters when the frames you're packing belong to an unannounced project or a client deliverable under NDA."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "gameSprites": {
+            "title": "Indie Game Sprite Pipelines",
+            "content": "Feed a folder of Aseprite-exported frames — a full character's walk, run, and attack sheets — directly into the packer and ship the resulting atlas to Phaser 3, PixiJS, Unity, or Godot. Combine grid packing with auto-max cells for tidy per-action atlases, or switch to bin-packed when you want to batch an entire character set across mixed frame sizes. Wire the tool into a build script so every art update regenerates the atlas without manual drag-and-drop work."
+          },
+          "uiAtlas": {
+            "title": "UI and HUD Texture Atlases",
+            "content": "Icon packs, button states, cursor variants, and portrait thumbnails rarely share a consistent size, which makes them a textbook case for bin-packing. Upload the entire UI folder, select packed layout, and the output JSON exposes every element by its filename so PixiJS, Phaser 3, or a custom WebGL UI layer can look frames up by name instead of by hand-authored UV coordinates."
+          },
+          "animationAssembly": {
+            "title": "Assembling Engine Exports into Atlases",
+            "content": "Aseprite, Krita, and Photoshop all happily export timelines as numbered PNG sequences — and then leave you to stitch them together. This tool is the stitching step: drop the sequence, enable filename ordering so walk_0.png through walk_23.png line up, and produce a grid atlas with a TexturePacker JSON ready for AnimatedSprite2D in Godot or Phaser 3's createFromAseprite-equivalent workflow."
+          },
+          "tilesets": {
+            "title": "Tileset and Asset-Baking Pipelines",
+            "content": "Pack ground tiles, wall variants, and prop decorations into a uniform-grid atlas aligned to a 16×16 or 32×32 cell, or drive the packer from a CI/CD job that regenerates the atlas every time raw art changes. Fixed cell mode plus top-left alignment produces sheets that snap cleanly into Godot's TileSet resource and Unity's Tile Palette, making this a natural fit for asset-baking stages of a release pipeline."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "whatIsSheet": {
+            "q": "How is a sprite atlas different from just a folder of PNGs?",
+            "a": "Functionally, an atlas lets your engine perform a single texture bind for every sprite on the sheet, whereas loose PNGs force a separate bind (and often a separate draw call) per file. For a typical 2D scene that is the difference between one batched draw and dozens of unbatched ones. The companion JSON gives you the lookup table so you still reference individual frames by their original filename in code."
+          },
+          "whichLayout": {
+            "q": "Grid, strip, or packed — how do I pick?",
+            "a": "Default to grid when your input PNGs share a bounding box (character animations, tile variants). Pick horizontal or vertical strip when you need predictable linear addressing for a shader flipbook or a CSS animation. Reach for packed when the frame set mixes sizes — UI icon collections, prop sheets, or any folder that a designer curated without regard for uniformity. Packed layouts always bundle JSON metadata because the rectangles are irregular."
+          },
+          "maxFiles": {
+            "q": "How many PNG frames can I pack in one atlas?",
+            "a": "Up to 100 files per job, with a 5 MB per-file cap and a 60 MB combined cap. That limit exists to keep server processing fast; for most indie atlases — a full character's animation set, a tile pack, a UI component library — it's comfortably above what you would ever put on a single sheet in practice."
+          },
+          "metadata": {
+            "q": "Does the JSON work with Phaser 3's load.atlas out of the box?",
+            "a": "Yes. The output is TexturePacker JSON Array, which is exactly what scene.load.atlas(key, pngUrl, jsonUrl) expects. After loading, each frame is addressable by its original PNG filename, so phrases like scene.add.sprite(x, y, 'character', 'walk_0.png') just work. PixiJS's Spritesheet parser and Assets.load accept the same ZIP contents without modification."
+          },
+          "engines": {
+            "q": "Which engines have native support for the output?",
+            "a": "Phaser 3 and PixiJS load the PNG+JSON pair natively. For Unity, the free TexturePacker Importer reads the JSON and slices the PNG into editor sub-sprites so you can drag individual frames into prefabs. Godot users can install a community TexturePacker Importer plugin that produces AtlasTexture resources or SpriteFrames for AnimatedSprite2D. Any other engine that can sample from a PNG will at worst need a thin JSON parser on top."
+          },
+          "powerOf2": {
+            "q": "When does power-of-2 padding actually matter?",
+            "a": "Modern desktop and recent mobile GPUs no longer require POT textures for basic sampling. However, some GPU compression formats (PVRTC on older iOS), WebGL 1 contexts using GL_REPEAT on a non-POT texture, and certain mipmap-generation paths still need power-of-2 dimensions. If you are targeting those environments, or your engine's import settings prefer POT, turn it on — otherwise the smaller, tight-fit atlas is usually the right choice."
+          },
+          "transparency": {
+            "q": "Can I reorder frames after uploading them?",
+            "a": "Yes — the thumbnail grid is draggable, so you can swap positions by grabbing a frame and dropping it into a new slot. This is useful when your file picker hands files back in a different order than your authoring tool used. If the source names encode order as a numeric suffix (walk_0.png, walk_1.png, ...), turn on filename ordering and the packer will enforce that order regardless of upload sequence."
+          },
+          "privacy": {
+            "q": "Are my PNGs stored or shared?",
+            "a": "No. The server holds your PNG frames only long enough to build the atlas, then discards them once the response is sent. There is no account system, no logging of asset contents, and no third-party sharing — relevant if the artwork you are packing belongs to an unreleased project, a client under NDA, or a closed-source pipeline."
+          }
+        }
       }
     }
   },
@@ -751,6 +879,126 @@
           "limit": "5MB per file, 60MB total",
           "formats": "PNG input; PNG (single) or ZIP (batch) output",
           "response": "Fast response with Cloud Run auto-scaling"
+        }
+      },
+      "whatIs": {
+        "title": "What Is PNG Trim?",
+        "content": "PNG trim is the process of automatically cropping away the transparent pixels around the edges of a PNG image, shrinking the canvas down to the smallest rectangle that still contains all the opaque (or partially opaque) content. Most design and animation tools — Photoshop, Aseprite, Spine, game engine exporters — produce PNG files with large transparent margins, because the export canvas is typically sized to the artboard or the largest frame in a sequence rather than to the actual sprite.",
+        "content2": "That extra transparent padding is invisible to the eye but very real on disk and in memory. It inflates file sizes, wastes VRAM when the sprite is uploaded as a texture, and confuses bounding-box logic in game engines that rely on sprite dimensions for collision, layout, or hit-testing. A trim pass fixes all of these issues in one step by recalculating each sprite's true bounding box and exporting only the meaningful pixel region.",
+        "content3": "This tool runs that trim pass for you in your browser. Upload a single PNG or a whole batch, set an optional alpha threshold and padding value, and download either a single trimmed PNG or a ZIP of trimmed files. The original visual content and transparency are preserved exactly — the tool only removes empty margin pixels."
+      },
+      "whyTrim": {
+        "title": "Why Trim Transparent Edges?",
+        "content": "The most immediate benefit of trimming is smaller file sizes. Transparent padding still takes up pixel rows and columns in the PNG, and while compression handles large runs of transparency efficiently, eliminating them outright produces noticeably smaller files — often 30-70% reductions for sprites exported onto oversized canvases. Smaller files load faster, fit more comfortably into mobile memory budgets, and transfer faster over the network.",
+        "content2": "The second benefit is accurate bounding boxes. Game engines typically use a sprite's PNG dimensions as its default hitbox, pivot origin reference, and render extent. A sprite that's 128×128 pixels but contains a 40×60 character in the middle of an otherwise transparent canvas produces collision and alignment bugs because the engine sees a 128×128 hitbox. Trimming the PNG to its true content means your engine sees the real sprite size, and everything downstream — collisions, UI layouts, click targets, tooltip anchoring — works correctly without manual offsets.",
+        "content3": "Trimming also produces cleaner sprite atlases when you later pack sprites into a spritesheet. Bin-packing algorithms can only minimize the final atlas size when each input is already tight. If every sprite carries a 20-pixel transparent border, the packer wastes those pixels in every cell. Trim first, pack second, and you'll get a dramatically smaller and more efficient texture atlas."
+      },
+      "howItWorks": {
+        "title": "How the Alpha Threshold Works",
+        "content": "The trim algorithm scans each PNG pixel by pixel to find the tightest bounding box that encloses all non-empty pixels. The question of what counts as empty is controlled by the alpha threshold parameter. Alpha values range from 0 (fully transparent) to 255 (fully opaque). With a threshold of 0, only fully transparent pixels (alpha = 0) are treated as empty and trimmed; any pixel with alpha ≥ 1 is considered content and preserved.",
+        "content2": "Increasing the threshold makes the algorithm more aggressive. A threshold of 10 treats pixels with alpha 0-10 as empty — useful when your PNG has faint anti-aliasing ghosts or near-invisible noise pixels at the edges that you want stripped. Thresholds of 30-50 are appropriate when sprites have soft fading shadows or glow edges that you consider decorative rather than meaningful content. Going higher than 100 tends to trim visible semi-transparent effects, so use cautiously.",
+        "content3": "After finding the bounding box, the tool optionally adds a configurable padding — a transparent border of N pixels around the trimmed content. Padding is useful when you plan to pack the trimmed sprite into a spritesheet or apply bilinear filtering in-engine, because it prevents texture bleeding at the sprite's edge. A padding of 1-2 pixels is usually sufficient for most rendering pipelines."
+      },
+      "howTo": {
+        "title": "How to Trim PNG Transparent Edges",
+        "step1": {
+          "title": "1. Upload PNG Files",
+          "content": "Drag and drop one or more PNG files onto the upload area, or click to open the file picker. Single-file mode produces a trimmed PNG; batch mode (two or more files) produces a ZIP containing every trimmed file, preserving original filenames. You can upload up to 100 PNGs per batch, with each file up to 5 MB and a combined total of 60 MB."
+        },
+        "step2": {
+          "title": "2. Set Alpha Threshold and Padding",
+          "content": "Open the Trim Options panel to configure the alpha threshold (default 0) and padding (default 0 pixels). Keep the threshold at 0 if your PNGs have clean, fully transparent margins; bump it to 10-30 if anti-aliasing or compression artifacts leave faint ghost pixels at the edges. Set padding to 1-2 pixels if you plan to pack the output into a spritesheet or use bilinear texture filtering in a game engine, otherwise leave it at 0."
+        },
+        "step3": {
+          "title": "3. Run the Trim",
+          "content": "Click the Trim button. The server calculates each PNG's content bounding box, crops the image to that rectangle (plus any padding you requested), and returns the result. Processing is fast — typically under a second for a single file, a few seconds for a full 100-file batch — because the algorithm only reads alpha values and performs a simple rectangular crop."
+        },
+        "step4": {
+          "title": "4. Download the Result",
+          "content": "Single-file uploads return a trimmed PNG with a preview so you can inspect the result before downloading. Batch uploads return a ZIP containing every trimmed file, with filenames preserved from the originals for easy drop-in replacement in your asset folder. Click Download to save the file, or Trim Another to clear the workspace and start over."
+        }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "singleBatch": {
+            "title": "Single and Batch Mode",
+            "content": "Drop in one PNG to get a single trimmed PNG back, or drop in up to 100 PNGs to get a ZIP with every file trimmed. Batch mode preserves original filenames so you can drop the extracted files straight back into your asset folder to replace the originals."
+          },
+          "threshold": {
+            "title": "Configurable Alpha Threshold",
+            "content": "Control exactly which pixels count as empty with an alpha threshold from 0 to 255. Leave it at 0 for strict trimming that only removes fully transparent pixels, or raise it to trim away anti-aliasing ghosts, faint shadows, and compression artifacts that you consider padding rather than content."
+          },
+          "padding": {
+            "title": "Optional Padding Preservation",
+            "content": "Add a configurable pixel border of transparent padding around the trimmed content. This is useful when you plan to atlas-pack the sprite later, or when you want a small safety margin against bilinear filtering artifacts in a game engine. A padding of 1-2 pixels is typical for most rendering pipelines."
+          },
+          "transparency": {
+            "title": "Full Alpha Preservation",
+            "content": "Every alpha level in your source PNG is preserved exactly in the output. The trim operation only removes empty margin pixels — it never re-samples, re-compresses, or alters the visible content of your sprite. Semi-transparent edges, soft shadows, and partially transparent overlays come through untouched."
+          },
+          "fast": {
+            "title": "No Registration, Fast Processing",
+            "content": "No sign-up, no account creation, no tracking. Open the page, upload PNGs, download results. Trimming is algorithmically simple — the server finds the bounding box and crops — so even large batches finish in seconds."
+          },
+          "privacy": {
+            "title": "Privacy First",
+            "content": "Your PNG files are processed on the server and discarded immediately after the response is returned. Nothing is stored, logged, or retained. No account is required, and no cookies are used for tracking your uploads."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "gameSprites": {
+            "title": "Preparing Game Sprites for Packing",
+            "content": "Export your character and prop sprites from Aseprite, Photoshop, or Spine with their full artboards intact, then run this tool to trim every file to its true content size. Trimmed sprites pack into dramatically smaller atlases — bin-packers only minimize space when each input is already tight, so removing transparent borders first can cut your final atlas size in half or more."
+          },
+          "uiIcons": {
+            "title": "Cleaning UI Icon Exports",
+            "content": "Design apps often export icons at fixed canvas sizes (256×256, 512×512) regardless of the actual icon dimensions. Run your icon exports through the trim tool to get crisp, correctly-sized assets where the icon fills the PNG. Bounding-box-driven UI systems will then size and position icons correctly without needing manual padding offsets in code."
+          },
+          "animationFrames": {
+            "title": "Batch Trimming Animation Frames",
+            "content": "Drop in a whole folder of animation frames exported from your animation tool — a walk cycle, an explosion sequence, a spell effect — and get a ZIP of all frames trimmed in one pass. This is the necessary first step before assembling frames into a spritesheet with the packed layout, because packed layouts rely on tight bounding boxes for efficient packing."
+          },
+          "atlasReduction": {
+            "title": "Reducing Sprite Atlas Size",
+            "content": "If your existing sprite atlases are bigger than they should be, trimming the individual source PNGs before re-packing often reveals significant savings. Projects that trim aggressively before atlasing routinely see 40-60% smaller atlas textures, which translates directly to faster asset loads and lower VRAM usage — especially valuable for mobile and web builds."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "threshold": {
+            "q": "What alpha threshold should I use?",
+            "a": "Start with the default of 0, which only trims fully transparent pixels and is safe for every clean PNG. If your source files have faint anti-aliasing ghosts, near-invisible noise pixels, or soft fade effects at the edges that you want removed, try a threshold between 10 and 30. Anything above 100 will start trimming visible semi-transparent content, so raise it carefully and preview the result."
+          },
+          "padding": {
+            "q": "Do I need padding?",
+            "a": "Not usually. Leave padding at 0 for most workflows to get the tightest possible bounding box. Add 1-2 pixels of padding if you plan to pack the trimmed PNG into a spritesheet, or if your game engine uses bilinear texture filtering and you want to avoid edge bleeding artifacts. More than 2 pixels of padding defeats much of the space-saving benefit of trimming."
+          },
+          "singleVsBatch": {
+            "q": "What's the difference between single and batch output?",
+            "a": "If you upload a single PNG, you get back a single trimmed PNG that you can preview and download. If you upload two or more PNGs, you get back a ZIP containing every trimmed file with the original filenames preserved. There's no configuration to switch between the two — it's determined automatically by the number of files you upload."
+          },
+          "compatibility": {
+            "q": "Does the trimmed PNG work in game engines and design tools?",
+            "a": "Yes. The output is a standard PNG with alpha channel preserved, readable by any engine, design app, or browser that handles PNG files — which is essentially all of them. Trimming only crops the canvas; it doesn't change the PNG's color profile, bit depth, or compression format."
+          },
+          "maxFiles": {
+            "q": "How many PNGs can I trim at once?",
+            "a": "Up to 100 PNG files per batch, with each file up to 5 MB and a combined total of 60 MB. These limits are generous for practically any animation sequence or icon set you would batch-trim in one go."
+          },
+          "transparency": {
+            "q": "Does trimming affect transparency or image quality?",
+            "a": "No. The trim operation is purely a crop — it removes empty rows and columns of pixels from the PNG's margins without re-sampling, re-compressing, or altering any content pixel. Semi-transparent pixels, soft edges, and partial alpha values are preserved byte-for-byte in the output."
+          },
+          "privacy": {
+            "q": "Are my files stored on the server?",
+            "a": "No. Your PNG uploads are processed in memory and immediately discarded after the trimmed result is returned. No account is required, no logs are kept of your file contents, and no cookies track your uploads. The trim happens, the result is returned, and every trace of your upload is gone."
+          }
         }
       }
     }
