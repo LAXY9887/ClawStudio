@@ -147,6 +147,14 @@
       "toGif": {
         "title": "PNG zu GIF",
         "description": "Konvertieren Sie PNG-Frames oder ein Sprite Sheet in eine animierte GIF."
+      },
+      "pngToSpritesheet": {
+        "title": "PNG zu Spritesheet",
+        "description": "Mehrere PNG-Dateien zu einem einzelnen Spritesheet zusammenführen — mit Raster-, Streifen- oder Bin-Packing-Layout."
+      },
+      "pngTrim": {
+        "title": "PNG Zuschneiden",
+        "description": "Transparente Ränder von PNG-Bildern zuschneiden — einzeln oder im Stapel."
       }
     }
   },
@@ -354,7 +362,9 @@
   "relatedTools": {
     "label": "Verwandte Tools",
     "gifToSprite": "GIF → Sprite Sheet",
-    "toGif": "PNG → GIF"
+    "toGif": "PNG → GIF",
+    "pngToSpritesheet": "PNG → Spritesheet",
+    "pngTrim": "PNG Zuschneiden"
   },
   "toGif": {
     "title": "Kostenloser Online PNG-zu-GIF Konverter",
@@ -594,6 +604,400 @@
           "api": {
             "q": "Gibt es eine verfügbare API?",
             "a": "Ja. Dieses Tool wird von der Easy GIF2Sprite API angetrieben, die auf RapidAPI verfügbar ist. Die API bietet zwei Endpunkte: /from-frames zum Zusammensetzen mehrerer PNG-Dateien in eine animierte GIF und /from-spritesheet zum Schneiden eines Sprite-Sheet-PNGs in Frames und zur Erzeugung einer animierten GIF. Beide Endpunkte unterstützen die gleichen Parameter, die im Web-Tool verfügbar sind, wodurch es einfach ist, Konvertierungen in Ihrer Build-Pipeline oder Anwendung zu automatisieren."
+          }
+        }
+      }
+    }
+  },
+  "pngToSpritesheet": {
+    "title": "Kostenlos PNG zu Spritesheet Generator online",
+    "subtitle": "Mehrere PNG-Dateien in einem einzigen Spritesheet zusammenführen — kostenlos, online, ohne Registrierung.",
+    "upload": {
+      "title": "Legen Sie Ihre PNG-Frames hier ab oder klicken Sie zum Auswählen",
+      "limit": "Max. 100 Dateien, 5 MB pro Datei, 60 MB insgesamt",
+      "accept": "Nur .png-Dateien werden akzeptiert",
+      "changeFiles": "Klicken, um Dateien hinzuzufügen oder zu ersetzen"
+    },
+    "convert": "Konvertieren!",
+    "options": {
+      "title": "Layout & Optionen",
+      "layout": "Layout",
+      "layoutHint": "Wie Frames auf dem Spritesheet angeordnet sind.",
+      "layoutGrid": "Raster",
+      "layoutHorizontal": "Horizontaler Streifen",
+      "layoutVertical": "Vertikaler Streifen",
+      "layoutPacked": "Bin-Packed (benötigt JSON)",
+      "columns": "Spalten",
+      "columnsHint": "Anzahl der Spalten im Grid-Layout. Leer lassen für automatisch (ceil(sqrt(N))).",
+      "cellMode": "Zellgrößen-Modus",
+      "cellModeHint": "Wie die Zellgröße bestimmt wird.",
+      "cellModeAutoMax": "Automatisch max (größte Frame-Abmessungen)",
+      "cellModeAutoUniform": "Automatisch uniform (alle Frames müssen gleich groß sein)",
+      "cellModeFixed": "Feste Größe",
+      "cellWidth": "Zellenbreite (px)",
+      "cellHeight": "Zellenhöhe (px)",
+      "fitMode": "Anpassungsmodus",
+      "fitModeHint": "Wie Bilder größer als die Zelle behandelt werden (nur fester Modus).",
+      "fitModeScaleFit": "Skalieren zum Anpassen (Letterbox)",
+      "fitModeScaleFill": "Skalieren zum Füllen (Zuschnitt)",
+      "fitModeError": "Fehler zurückgeben",
+      "align": "Ausrichtung",
+      "alignHint": "Ausrichtung, wenn das Bild kleiner als die Zelle ist.",
+      "alignCenter": "Zentriert",
+      "alignTopLeft": "Oben links",
+      "padding": "Abstände (px)",
+      "paddingHint": "Pixel-Lücke zwischen Frames.",
+      "bgColor": "Hintergrundfarbe",
+      "bgColorHint": "Transparent oder eine Hex-Farbe.",
+      "bgColorTransparent": "Transparent",
+      "bgColorCustom": "Benutzerdefinierte Farbe",
+      "powerOf2": "Zweierpotenz",
+      "powerOf2Hint": "Auffüllen der Ausgabedimensionen auf die nächste Zweierpotenz (z. B. 300 → 512). Nützlich für GPU-Texturen.",
+      "fileNameOrder": "Nach Dateiname sortieren",
+      "fileNameOrderHint": "Sortiere Frames nach dem numerischen Suffix _N in Dateinamen statt nach Upload-Reihenfolge.",
+      "metadataFormat": "JSON-Metadaten einschließen",
+      "metadataFormatHint": "Ausgabe eine ZIP, die die PNG-Datei und eine TexturePacker-kompatible JSON-Datei enthält. Erforderlich für Bin-Packed-Layout."
+    },
+    "status": {
+      "uploading": "Wird hochgeladen...",
+      "converting": "Generiere Spritesheet...",
+      "error": "Konvertierung fehlgeschlagen",
+      "retry": "Erneut versuchen"
+    },
+    "result": {
+      "title": "Spritesheet-Vorschau",
+      "info": "{width} × {height} px • {size}",
+      "download": "Spritesheet herunterladen",
+      "downloadZip": "ZIP herunterladen (PNG + JSON)",
+      "reset": "Weiteres konvertieren"
+    },
+    "adModal": {
+      "title": "🥺 Bitte unterstützen Sie uns. 🌸",
+      "description": "Schalten Sie 3 weitere Konvertierungen frei, indem Sie unsere Artikel lesen. Vielen Dank für die Unterstützung dieses kostenlosen Tools!",
+      "remaining": "{count} kostenlose Konvertierung verbleibend | {count} kostenlose Konvertierungen verbleibend",
+      "watch": "Bestätigen",
+      "close": "Schließen"
+    },
+    "seo": {
+      "api": {
+        "title": "Verwenden Sie die PNG zu Spritesheet API",
+        "content": "Integrieren Sie die Spritesheet-Generierung in Ihre Anwendungen mit der Easy PNG to Sprites API.",
+        "content2": "Laden Sie PNG-Frames über eine einfache HTTP-Anfrage hoch und erhalten Sie ein einsatzbereites Spritesheet mit optionaler TexturePacker-kompatibler JSON.",
+        "cta": "API auf RapidAPI ansehen",
+        "tutorial": "Vollständiges Tutorial lesen",
+        "features": {
+          "title": "API-Highlights",
+          "endpoints": "POST /to-spritesheet: mehrere PNGs → Spritesheet PNG oder ZIP",
+          "input": "Laden Sie bis zu 100 PNG-Dateien pro Anfrage hoch",
+          "params": "Grid-, horizontal-, vertikal- oder Bin-Packed-Layouts",
+          "limit": "5 MB pro Datei, 60 MB insgesamt",
+          "formats": "PNG-Eingabe; PNG oder ZIP (mit JSON) Ausgabe",
+          "response": "Kompatibel mit Phaser 3, PixiJS, Unity, Godot"
+        }
+      },
+      "whatIs": {
+        "title": "Warum PNG-Frames in einen Sprite Atlas packen?",
+        "content": "Ein Sprite Atlas ist das Ergebnis des Packens vieler einzelner PNG-Assets — exportierte Frames, Icon-Sets, Tile-Varianten — in eine einzelne Textur, die eine Engine samplen kann. Der PNG zu Spritesheet-Workflow ist grundlegend ein Packproblem: Sie haben bereits einen kuratierten Satz von Quelldateien (vielleicht ein Walk-Zyklus aus Aseprite exportiert, oder ein UI-Icon-Pack von einem Designer), und Sie müssen sie in einen Atlas flachen, den Ihre Runtime in einem einzigen Texture-Upload laden kann. Dieses Tool ist um diesen Authoring-Schritt herum gebaut, nicht um eine Konvertierung von animierten Formaten.",
+        "content2": "Für Spieleprojekte ist der Ertrag sehr konkret. Der Versand von 200 losen PNG-Dateien bedeutet 200 Dateisystem-Lesevorgänge (oder 200 HTTP-Abrufe auf Web-Builds), 200 Texture-Uploads und einen Draw-Batch, der jedes Mal bricht, wenn der Renderer zwischen ihnen wechselt. Packen Sie dieselben Assets in einen Atlas und die Runtime gibt einen einzigen Texture-Bind aus — Phaser 3, PixiJS, Unity und Godot können dann jeden Sprite, der auf dem Atlas lebt, innerhalb desselben Batch-Draw-Aufrufs zeichnen. Auf Mobile- und WebGL-Zielen, wo Texture-Bandbreite und Request-Overhead normalerweise die Engpässe sind, ist dies oft der größte Gewinn, den Sie in einem 2D-Renderer erzielen können.",
+        "content3": "Jenseits der Runtime-Leistung passen Atlanten sauber in Asset-Pipelines. Anstatt Hunderte einzelner Dateien durch die Versionskontrolle zu verfolgen, gibt ein Atlas Ihnen eine einzelne PNG plus eine TexturePacker JSON — zwei Artefakte, die von Quelle in einem Build-Schritt regeneriert, von CI überprüft und als Paar in die Engine gesendet werden können. Indie-Teams und Tool-Autoren nutzen dieses Muster, um ihr Repo ordentlich zu halten, Import-Churn in Engines wie Unity und Godot zu reduzieren und finale Atlanten als Teil einer Release-Pipeline zu backen."
+      },
+      "layouts": {
+        "title": "Grid, Strip oder Bin-Packed: Welches Layout?",
+        "content": "Im Gegensatz zu Tools, die ein einzelnes Layout erzwingen, zeigt der PNG zu Spritesheet Builder vier unterschiedliche Packstrategien auf, sodass Sie die Ausgabe an das anpassen können, was Ihre Engine erwartet. Grid-Packing ordnet Ihre Frames in ein rechteckiges Gitter an und funktioniert gut, wenn jedes Eingabe-PNG denselben Grundriss hat — klassische Aseprite-Animationsexporte, Character Walk Cycles oder Godot SpriteFrames-Sequenzen passen alle in diese Form. Sie können eine bestimmte Spaltenanzahl festlegen oder leer lassen, damit der Packer nach einem nahezu quadratischen ceil(sqrt(N))-Arrangement greift, das die endgültige Textur kompakt hält.",
+        "content2": "Horizontale und vertikale Strip-Packer legen alles auf einer einzelnen Achse aus. Entwickler greifen zu Streifen, wenn sie einen Fragment-Shader-Flipbook fahren müssen, der entlang von U oder V interpoliert, wenn eine Engine-Animationskomponente linear indizierte Frames erwartet, oder wenn eine CSS-Sprite-Animation eine einzelne Verschiebung pro Frame benötigt. Streifen erzeugen auch die deterministischste Frame-Adressierung: Sobald Sie die Zellengröße kennen, lebt Frame N immer bei N × Zelle auf einer Achse und Null auf der anderen — nützlich, wenn Sie UVs innerhalb von Build-Skripten oder Shader-Code berechnen.",
+        "content3": "Der gepackte Modus führt einen Bin-Packing-Algorithmus über Frames unterschiedlicher Größen aus und erzeugt einen unregelmäßigen Atlas ohne verschwendeten Leerraum — das Layout, das Sie wünschen, wenn Ihr Eingabeset 16×16-Icons mit 96×48-Buttons mischt, oder wenn eine Tilemap sowohl einzelne Kacheln als auch 2×2-Dekorationsclustern enthält. Da Frame-Rechtecke nicht mehr vorhersehbar sind, wird die gepackte Ausgabe immer mit einer TexturePacker-Format-JSON ausgeliefert, die Dateinamen den Atlas-Koordinaten zuordnet, damit Engines wie Phaser 3 (load.atlas) und PixiJS (Assets.load) jeden Frame nach seinem ursprünglichen Namen nachschlagen können."
+      },
+      "formats": {
+        "title": "Engine-Ready Atlas Metadaten",
+        "content": "Jeder Lauf erzeugt eine PNG und — wenn Metadaten aktiviert sind — eine begleitende JSON-Datei, die beschreibt, wo jeder Quell-Frame auf dem Blatt lebt, alles in einer einzigen ZIP verpackt. Das JSON folgt dem TexturePacker JSON Array Schema, auf das sich der Rest des 2D-Ökosystems über das letzte Jahrzehnt stillschweigend geeinigt hat. Jeder Eintrag erfasst den ursprünglichen Dateinamen, das Frame-Rechteck auf dem Atlas, die Quelldimensionen des vor dem Packen erstellten Bildes und ein Schnitt-Rechteck für Sprites, die beim Packen beschnitten wurden. Tool-Integratoren können sich darauf verlassen, dass dieses Schema über alle Läufe hinweg stabil bleibt, was wichtig ist, wenn die Ausgabe in einen CI-Job oder einen Asset-Baking-Schritt eingefüttert wird.",
+        "content2": "Phaser 3 verbraucht diese JSON direkt über scene.load.atlas(key, png, json), danach kann auf jeden Frame über seinen ursprünglichen Dateinamen in Animationsdefinitionen verwiesen werden. PixiJS erwartet dasselbe Schema über seinen Spritesheet / Assets.load-Pfad — legen Sie den ZIP-Inhalt ein und jeder Frame wird eine Textur mit Name. Für Unity-Pipelines, der kostenlose TexturePacker Importer zerlegt die PNG zurück in Sub-Sprites in der Editor, sodass Ihre Prefabs und AnimationClips einzeln darauf verweisen können; Godot-Benutzer können sich auf Community-Importer-Plugins stützen, die die JSON in AtlasTexture-Ressourcen oder SpriteFrames für AnimatedSprite2D-Nodes materialisieren.",
+        "content3": "Wenn Ihre Engine Frame-Positionen allein aus Zelldimensionen herleiten kann — ein reines Grid in Godot SpriteFrames, zum Beispiel — können Sie Metadaten ausschalten und eine alleinige PNG sammeln. Packed Mode schließt immer JSON ein, da die unregelmäßigen Rechtecke nicht aus Parametern rekonstruiert werden können. Der separate Zweierpotenz-Toggle polstert die letzte Leinwand bis zu 256/512/1024/2048, sodass sie mit GPU-Sampling-Ausrichtungsanforderungen auf älteren Mobile-Chipsets und bestimmten Textur-Komprimierungsformaten übereinstimmt; für WebGL 1-Kontexte, die immer noch POT-Texturen für wiederholungs-umhüllte Sampler erzwingen, ist dies der einfachste Weg, kompatibel zu bleiben, ohne Engine-seitige Einstellungen zu berühren."
+      },
+      "howTo": {
+        "title": "Wie man einen Sprite Atlas zusammensetzt",
+        "step1": {
+          "title": "1. Laden Sie Ihren Frame-Set hoch",
+          "content": "Legen Sie einen kuratierten Batch von PNG-Frames auf den Uploader ab, oder wählen Sie sie von der Festplatte aus — bis zu 100 Dateien pro Job mit 5 MB je und 60 MB insgesamt. Ob sie aus einer Aseprite-Export-Sequenz, einer Photoshop-Layer-Zusammensetzung, einer Krita-Animation oder einem Ordner aus einem Build-Skript stammen, die Dateien erscheinen als draggable Thumbnail-Gitter. Jedes Thumbnail trägt sein Index-Badge, sodass Sie bestätigen können, dass die Reihenfolge in den Atlas gebacken wird."
+        },
+        "step2": {
+          "title": "2. Wählen Sie Ihre Pack-Layout",
+          "content": "Öffnen Sie Layout & Optionen und legen Sie sich auf eine Pack-Strategie fest. Grid ist die Standardwahl, wenn jeder Frame einen Bounding Box teilt; horizontale und vertikale Streifen geben Ihnen lineare Frame-Adressierung für Shader-betriebene oder CSS-Flipbooks; Packed schaltet Bin-Packing für heterogene Sets wie UI-Atlanten und Tile-Variant-Packs frei. Der Wechsel zu Packed aktiviert automatisch die TexturePacker JSON-Ausgabe, da Engines unregelmäßige Frame-Rechtecke nicht aus Parametern allein herleiten können."
+        },
+        "step3": {
+          "title": "3. Feinabstimmung von Zellverhalten, Abstände und Ordnung",
+          "content": "Für Grid- und Strip-Layouts, wählen Sie einen Zellenmodus — Auto-Max-Größe jede Zelle auf das größte Frame-Bounding-Box (praktisch, wenn Exports um ein Pixel oder zwei abdriften), Auto-Uniform behauptet, dass jeder Frame dieselbe Größe ist und schlägt schnell fehl, wenn nicht, und Fixed sperrt eine exakte Zellengröße mit fit_mode Auswahl zwischen Skalierung-Anpassung, Skalierung-Füllung oder Ablehnung für übermäßig große Eingaben. Verwenden Sie Align, um zu steuern, wie kleinere Frames in übermäßig großen Zellen sitzen, addieren Sie Pixel-Abstände, um bilineare Blutung zwischen Nachbarn zu verhindern, und schalten Sie Zweierpotenz an, wenn Ihre Ziel-GPU oder Kompressionsmformat POT-Texturen erwartet. Aktivieren Sie Dateiname-Ordnung, wenn Ihr Exporter Frames mit einem _N-Suffix nummeriert und Sie diese Ordnung unabhängig von der Upload-Sequenz erzwingen wollen."
+        },
+        "step4": {
+          "title": "4. Exportieren Sie den Atlas",
+          "content": "Treffen Sie Konvertieren und der Server erstellt den Atlas. Sie erhalten entweder eine alleinige PNG oder eine ZIP, die die PNG mit ihrer TexturePacker JSON bündelt, wenn Metadaten an sind. Die Vorschau macht das fertige Blatt inline, sodass Sie Ausrichtungsfehler sehen können, bevor Sie sie zu einem Repo committen oder in Ihre Engine hochladen. Laden Sie herunter, um das Ergebnis zu speichern, oder setzen Sie den Workspace zurück, um den nächsten Atlas in Ihrem Batch zu erstellen."
+        }
+      },
+      "features": {
+        "title": "Funktionen",
+        "items": {
+          "layouts": {
+            "title": "Vier Packstrategien",
+            "content": "Grid für einheitliche Animationsexporte, horizontal und vertikal Streifen für lineare Flipbooks und Shader-betriebenes Sampling, und Bin-Packed für heterogene Atlanten. Jede Strategie ist auf ein anderes Runtime-Verbrauchsmuster abgestimmt, sodass Sie die Ausgabe an Ihre Phaser 3-, PixiJS-, Unity- oder Godot-Projekte anpassen können, wie sie den Atlas zur Runtime tatsächlich samplen."
+          },
+          "cellModes": {
+            "title": "Zellgröße für Pipeline-Kontrolle",
+            "content": "Auto-Max passt sich an den größten Frame an, was die nachsichtige Wahl für Exporte ist, die um ein Pixel abdriften. Auto-Uniform verwandelt eine Annahme in eine Garantie — wenn zwei Frames in der Größe nicht übereinstimmen, schlägt der Job laut fehl, sodass Sie die Nichtübereinstimmung in CI statt im Spiel fangen. Fixed Mode pins eine exakte Zellengröße mit einem fit_mode Fallback, sodass ältere Asset-Sets in eine neue Atlas-Dimension normalisiert werden können."
+          },
+          "metadata": {
+            "title": "TexturePacker JSON-Ausgabe",
+            "content": "Optionale JSON Array Metadaten werden neben der PNG erzeugt und in einer ZIP verpackt. Das Schema wird nativ von Phaser 3 load.atlas, PixiJS Assets Loader und — über Community-Importer — Unity und Godot verstanden. Weil das Format stabil und weit unterstützt ist, kann die gleiche ZIP in verschiedene Engines eingelegt werden, ohne dass irgendwelche Glue-Code umgeschrieben werden muss."
+          },
+          "powerOf2": {
+            "title": "Zweierpotenz-Textur-Polsterung",
+            "content": "Ein einzelner Schalter rundet die Atlas-Leinwand auf 256, 512, 1024 oder 2048 px auf. POT-Texturen werden noch von einigen Kompressionformaten erwartet (PVRTC auf älteren iOS, bestimmte WebGL 1 Repeat-Wrap-Sampler) und bleiben die sicherste Standardeinstellung für Mipmap-schwere Pipelines. Polster-Pixel respektieren die konfigurierte Hintergrundfarbe oder bleiben transparent."
+          },
+          "reorder": {
+            "title": "Drag-to-Reorder-Workflow",
+            "content": "Das Upload-Gitter ist eine draggable Oberfläche: schnappen Sie einen Thumbnail und legen Sie ihn in den richtigen Slot, um die Frame-Ordnung zu beheben, ohne alles auf der Festplatte umzubenennen. Pairen Sie es mit Dateiname-Ordnung, wenn Ihr Exporter walk_0.png, walk_1.png, walk_2.png aussendet und Sie möchten, dass dieser numerische Suffix automatisch gewinnt, was nützlich ist, wenn ein Build-Skript Frames in einer unvorhersehbaren Ordnung anfügt."
+          },
+          "alignPadding": {
+            "title": "Ausrichtung und Zell-Abstand",
+            "content": "Wenn Frames kleiner als ihre Zellen sind, steuert Align, ob sie zentriert oder oben links angeheftet sitzen — letzteres ist das, was Godots Tilemap und viele Unity Sprite Editoren erwarten. Zell-Abstand setzt einen transparenten Puffer zwischen Nachbarn ein, sodass bilineare Filterung nicht über Zellgrenzen samplen kann, was die Haarlinien-Nähte stoppt, die auf skalierten Sprites in Shader-schweren Szenen auftauchen."
+          },
+          "privacy": {
+            "title": "Datenschutz an erster Stelle",
+            "content": "Uploads leben nur im Speicher lange genug, um den Atlas zu erstellen, und werden dann verworfen. Es gibt kein Konto, kein Cookie-basiertes Tracking Ihrer Asset-Inhalte und kein Server-seitiges Archiv — was wichtig ist, wenn die Frames, die Sie packen, zu einem nicht angekündigten Projekt oder einer Client-Leistung unter NDA gehören."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Anwendungsfälle",
+        "items": {
+          "gameSprites": {
+            "title": "Indie Game Sprite Pipelines",
+            "content": "Speisen Sie einen Ordner von Aseprite-exportierten Frames — einen vollständigen Charakter Walk, Run und Attack Sheets — direkt in den Packer und versenden Sie den resultierenden Atlas zu Phaser 3, PixiJS, Unity oder Godot. Kombinieren Sie Grid-Packing mit Auto-Max-Zellen für aufgeräumte Pro-Action-Atlanten oder wechseln Sie zu Bin-Packed, wenn Sie einen ganzen Charaktersatz über gemischte Frame-Größen hinweg batchen möchten. Verdrahten Sie das Tool in ein Build-Skript, sodass jede Art-Update den Atlas ohne manuelle Drag-und-Drop-Arbeit regeneriert."
+          },
+          "uiAtlas": {
+            "title": "UI und HUD Textur Atlanten",
+            "content": "Icon-Packs, Button-Zustände, Cursor-Varianten und Portrait-Thumbnails teilen selten eine konsistente Größe, was sie zu einem Textbook-Fall für Bin-Packing macht. Laden Sie den ganzen UI-Ordner, wählen Sie gepacktes Layout und die Ausgabe JSON zeigt jedes Element über seinen Dateinamen, sodass PixiJS, Phaser 3 oder eine benutzerdefinierte WebGL UI-Schicht Frames nach Name statt nach Hand-autorisierten UV-Koordinaten nachschlagen kann."
+          },
+          "animationAssembly": {
+            "title": "Montage von Engine-Exporten zu Atlanten",
+            "content": "Aseprite, Krita und Photoshop exportieren alle gerne Zeitleisten als nummerigte PNG-Sequenzen — und lassen Sie sie dann zusammen nähen. Dieses Tool ist der Nähschritt: legen Sie die Sequenz ab, aktivieren Sie Dateiname-Ordnung, sodass walk_0.png bis walk_23.png aufgestellt werden, und erzeugen Sie einen Grid-Atlas mit einer TexturePacker JSON bereit für AnimatedSprite2D in Godot oder Phaser 3 createFromAseprite-äquivalent Workflow."
+          },
+          "tilesets": {
+            "title": "Tileset und Asset-Baking Pipelines",
+            "content": "Packen Sie Boden-Kacheln, Wand-Varianten und Prop-Dekorationen in einen einheitlichen Grid-Atlas, der zu 16×16 oder 32×32-Zelle ausgerichtet ist, oder fahren Sie den Packer von einem CI/CD-Job aus, der den Atlas jedes Mal neu generiert, wenn sich rohe Kunst ändert. Fixed-Cell-Modus plus obere linke Ausrichtung erzeugt Blätter, die sauber in Godots TileSet-Ressource und Unitys Tile Palette einfangen, wodurch dies zu einem natürlichen Fit für Asset-Baking-Stufen einer Release-Pipeline wird."
+          }
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "items": {
+          "whatIsSheet": {
+            "q": "Wie unterscheidet sich ein Sprite Atlas von nur einem Ordner mit PNGs?",
+            "a": "Funktional ermöglicht ein Atlas Ihrer Engine, einen einzelnen Texture-Bind für jeden Sprite auf dem Blatt auszuführen, während lose PNGs eine separate Bindung (und oft einen separaten Draw-Aufruf) pro Datei erzwingen. Für eine typische 2D-Szene ist dies der Unterschied zwischen einem Batch-Draw und Dutzenden unbatched. Die begleitende JSON gibt Ihnen die Nachschlag-Tabelle, sodass Sie auf einzelne Frames immer noch über ihren ursprünglichen Dateinamen in Code verweisen können."
+          },
+          "whichLayout": {
+            "q": "Grid, Strip oder Packed — wie wähle ich?",
+            "a": "Standardmäßig auf Grid, wenn Ihre Input-PNGs einen Bounding-Box teilen (Character-Animationen, Tile-Varianten). Wählen Sie horizontal oder vertikal Strip, wenn Sie vorhersagbare lineare Adressierung für einen Shader-Flipbook oder eine CSS-Animation benötigen. Greifen Sie zu gepackt, wenn der Frame-Set Größen mischt — UI-Icon-Sammlungen, Prop-Sheets oder einen Ordner, den ein Designer ohne Rücksicht auf Einheitlichkeit kuratiert hat. Gepackte Layouts bündeln immer JSON-Metadaten, da die Rechtecke unregelmäßig sind."
+          },
+          "maxFiles": {
+            "q": "Wie viele PNG-Frames kann ich in einen Atlas packen?",
+            "a": "Bis zu 100 Dateien pro Job, mit einer Kappe von 5 MB pro Datei und einer kombinierten Kappe von 60 MB. Dieses Limit existiert, um die Server-Verarbeitung schnell zu halten; für die meisten Indie-Atlanten — einen vollständigen Animationssatz eines Charakters, ein Tile-Pack, eine UI-Komponentenbibliothek — ist es bequem über das, was Sie jemals in der Praxis auf einem einzelnen Blatt einlegen würden."
+          },
+          "metadata": {
+            "q": "Funktioniert das JSON mit Phaser 3 load.atlas sofort?",
+            "a": "Ja. Die Ausgabe ist TexturePacker JSON Array, die genau das ist, was scene.load.atlas(key, pngUrl, jsonUrl) erwartet. Nach dem Laden ist jeder Frame über seinen ursprünglichen PNG-Dateinamen adressierbar, sodass Phrasen wie scene.add.sprite(x, y, 'character', 'walk_0.png') einfach funktionieren. PixiJS Spritesheet Parser und Assets.load akzeptieren den gleichen ZIP-Inhalt ohne Änderung."
+          },
+          "engines": {
+            "q": "Welche Engines haben native Unterstützung für die Ausgabe?",
+            "a": "Phaser 3 und PixiJS laden das PNG+JSON-Paar nativ. Für Unity liest der kostenlose TexturePacker Importer das JSON und teilt die PNG in Editor-Sub-Sprites auf, sodass Sie einzelne Frames in Prefabs ziehen können. Godot-Benutzer können ein Community TexturePacker Importer Plugin installieren, das AtlasTexture-Ressourcen oder SpriteFrames für AnimatedSprite2D erzeugt. Jede andere Engine, die von einer PNG sampeln kann, benötigt im schlimmsten Fall einen dünnen JSON-Parser oben drauf."
+          },
+          "powerOf2": {
+            "q": "Wann spielt Zweierpotenz-Polsterung tatsächlich eine Rolle?",
+            "a": "Moderne Desktop- und neuere Mobile-GPUs benötigen nicht mehr POT-Texturen für grundlegendes Sampling. Jedoch einige GPU-Komprimierungsformate (PVRTC auf älteren iOS), WebGL 1-Kontexte unter Verwendung von GL_REPEAT auf einer Non-POT-Textur und bestimmte Mipmap-Generierungspfade benötigen noch Zweierpotenz-Dimensionen. Wenn Sie diese Umgebungen anvisieren oder die Import-Einstellungen Ihrer Engine preferieren POT, schalten Sie an — andernfalls ist der kleinere, dicht-sitzende Atlas normalerweise die richtige Wahl."
+          },
+          "transparency": {
+            "q": "Kann ich Frames nach dem Upload neu ordnen?",
+            "a": "Ja — das Thumbnail-Gitter ist draggable, sodass Sie Positionen austauschen können, indem Sie einen Frame schnappen und ihn in einen neuen Slot legen. Dies ist nützlich, wenn Ihr Dateiauswahl Dateien in einer anderen Reihenfolge zurücksendet als Ihr Authoring-Tool verwendet. Wenn die Quellnamen Ordnung als numerisches Suffix codieren (walk_0.png, walk_1.png, ...), schalten Sie die Dateiname-Ordnung an und der Packer erzwing diese Ordnung unabhängig von der Upload-Sequenz."
+          },
+          "privacy": {
+            "q": "Werden meine PNGs gespeichert oder geteilt?",
+            "a": "Nein. Der Server hält Ihre PNG-Frames nur lange genug, um den Atlas zu erstellen, und verwirft sie dann, sobald die Antwort gesendet wird. Es gibt kein Kontosystem, kein Logging von Asset-Inhalten und kein Drittanbieter-Sharing — relevant, wenn die Grafiken, die Sie packen, zu einem nicht angekündigten Projekt, einem Client unter NDA oder einer geschlossenen Pipeline gehören."
+          }
+        }
+      }
+    }
+  },
+  "pngTrim": {
+    "title": "Kostenlos PNG Trim — Transparente Ränder zuschneiden",
+    "subtitle": "Entfernen Sie transparente Ränder von PNG-Bildern, einzeln oder im Stapel — kostenlos, online, ohne Registrierung.",
+    "upload": {
+      "title": "Legen Sie Ihre PNG-Dateien hier ab oder klicken Sie zum Auswählen",
+      "limit": "Max. 100 Dateien, 5 MB pro Datei, 60 MB insgesamt",
+      "accept": "Nur .png-Dateien werden akzeptiert",
+      "changeFiles": "Klicken, um Dateien hinzuzufügen oder zu ersetzen"
+    },
+    "convert": "Zuschneiden!",
+    "options": {
+      "title": "Zuschnitt-Optionen",
+      "threshold": "Alpha-Schwelle",
+      "thresholdHint": "Pixel mit Alpha ≤ Schwelle werden als leer behandelt und zugeschnitten. 0 schneidet nur vollständig transparente Pixel; höhere Werte schneiden auch halbdurchsichtige Pixel.",
+      "padding": "Abstände (px)",
+      "paddingHint": "Pixel transparente Ränder rund um den zugeschnittenen Inhalt zu bewahren."
+    },
+    "status": {
+      "uploading": "Wird hochgeladen...",
+      "converting": "Zuschneiden...",
+      "error": "Zuschneiden fehlgeschlagen",
+      "retry": "Erneut versuchen"
+    },
+    "result": {
+      "singleTitle": "Zugeschnittene PNG-Vorschau",
+      "batchTitle": "Zugeschnittene Dateien",
+      "singleInfo": "{width} × {height} px • {size}",
+      "batchInfo": "{count} Datei zugeschnitten • {size} | {count} Dateien zugeschnitten • {size}",
+      "download": "PNG herunterladen",
+      "downloadZip": "ZIP herunterladen",
+      "reset": "Weiteres zuschneiden"
+    },
+    "adModal": {
+      "title": "🥺 Bitte unterstützen Sie uns. 🌸",
+      "description": "Schalten Sie 3 weitere Konvertierungen frei, indem Sie unsere Artikel lesen. Vielen Dank für die Unterstützung dieses kostenlosen Tools!",
+      "remaining": "{count} kostenlose Konvertierung verbleibend | {count} kostenlose Konvertierungen verbleibend",
+      "watch": "Bestätigen",
+      "close": "Schließen"
+    },
+    "seo": {
+      "api": {
+        "title": "Verwenden Sie die PNG Trim API",
+        "content": "Integrieren Sie automatisches PNG-Zuschneiden in Ihre Anwendungen mit der Easy PNG to Sprites API.",
+        "content2": "Laden Sie eine oder mehrere PNG-Dateien hoch, um transparente Ränder automatisch zu entfernen, perfekt zum Vorbereiten von Spielsprites und UI-Assets.",
+        "cta": "API auf RapidAPI ansehen",
+        "tutorial": "Vollständiges Tutorial lesen",
+        "features": {
+          "title": "API-Highlights",
+          "endpoints": "POST /trim: einzelnes PNG oder Stapel-ZIP-Ausgabe",
+          "input": "Laden Sie bis zu 100 PNG-Dateien pro Anfrage hoch",
+          "params": "Alpha-Schwelle und Abstands-Kontrolle",
+          "limit": "5 MB pro Datei, 60 MB insgesamt",
+          "formats": "PNG-Eingabe; PNG (einzeln) oder ZIP (Stapel) Ausgabe",
+          "response": "Schnelle Antwort mit Cloud Run Auto-Scaling"
+        }
+      },
+      "whatIs": {
+        "title": "Was ist PNG Trim?",
+        "content": "PNG-Zuschneiden ist der Prozess des automatischen Abschneidens der transparenten Pixel an den Rändern eines PNG-Bildes, wobei die Leinwand auf das kleinste Rechteck verkleinert wird, das immer noch alle undurchsichtigen (oder teilweise undurchsichtigen) Inhalte enthält. Die meisten Design- und Animations-Tools — Photoshop, Aseprite, Spine, Game Engine Exporter — erzeugen PNG-Dateien mit großen transparenten Rändern, da der Export-Canvas typischerweise auf das Kunstbrett oder den größten Frame in einer Sequenz dimensioniert wird, nicht auf den tatsächlichen Sprite.",
+        "content2": "Diese extra transparente Polsterung ist für das Auge unsichtbar, aber sehr real auf der Festplatte und im Speicher. Sie bläht Dateigröße auf, verschwendet VRAM, wenn der Sprite als Textur hochgeladen wird, und verwirrt Bounding-Box-Logik in Spiel-Engines, die auf Sprite-Dimensionen für Kollision, Layout oder Hit-Testing angewiesen sind. Ein Zuschnitt-Pass behebt alle diese Probleme in einem Schritt, indem er für jeden Sprite seinen wahren Bounding-Box neu berechnet und nur die sinnvolle Pixel-Region exportiert.",
+        "content3": "Dieses Tool führt diesen Zuschnitt-Pass für Sie in Ihrem Browser aus. Laden Sie eine einzelne PNG oder einen ganzen Stapel hoch, stellen Sie einen optionalen Alpha-Schwellwert und Abstands-Wert ein, und laden Sie entweder eine einzelne zugeschnittene PNG oder eine ZIP zugeschnittener Dateien herunter. Der ursprüngliche visuelle Inhalt und die Transparenz werden genau bewahrt — das Tool entfernt nur leere Rand-Pixel."
+      },
+      "whyTrim": {
+        "title": "Warum transparente Ränder zuschneiden?",
+        "content": "Der unmittelbare Vorteil des Zuschneidens ist eine kleinere Dateigröße. Transparente Polsterung nimmt immer noch Pixel-Zeilen und -Spalten in der PNG ein, und während Kompression große Bereiche der Transparenz effizient behandelt, bei Elimination erzielen sie merklich kleinere Dateien — oft 30-70% Reduktionen für Sprites auf überdimensionierte Leinwände exportiert. Kleinere Dateien laden schneller, passen bequemer in Mobile-Memory-Budgets und übertragen schneller über das Netzwerk.",
+        "content2": "Der zweite Vorteil ist akkurate Bounding Boxes. Game Engines verwenden typischerweise Sprite-PNG-Dimensionen als ihre Standard-Hitbox, Pivot-Origin-Referenz und Render-Umfang. Ein Sprite, das 128×128 Pixel ist, aber einen 40×60 Charakter in der Mitte einer ansonsten transparenten Leinwand enthält, erzeugt Kollisions- und Ausrichtungs-Bugs, da die Engine ein 128×128 Hitbox sieht. Durch Zuschneiden der PNG auf ihren wahren Inhalt sieht Ihre Engine die echte Sprite-Größe und alles Downstream — Kollisionen, UI-Layouts, Klick-Ziele, Tooltip-Verankerung — funktioniert korrekt ohne manuelle Offsets.",
+        "content3": "Das Zuschneiden erzeugt auch sauberere Sprite-Atlanten, wenn Sie später Sprites in ein Spritesheet packen. Bin-Packing-Algorithmen können nur die endgültige Atlas-Größe minimieren, wenn jede Eingabe bereits eng ist. Wenn jeder Sprite einen 20-Pixel-transparenten Rand trägt, verschwendet der Packer diese Pixel in jeder Zelle. Schneiden Sie zuerst, packen Sie zweitens, und Sie erhalten einen dramatisch kleineren und effizienteren Textur-Atlas."
+      },
+      "howItWorks": {
+        "title": "Wie der Alpha-Schwellwert funktioniert",
+        "content": "Der Zuschnitt-Algorithmus scannt jedes PNG-Pixel für Pixel, um das engste Bounding-Box zu finden, das alle nicht-leeren Pixel umschließt. Die Frage, was als leer zählt, wird durch den Alpha-Schwellwert-Parameter kontrolliert. Alpha-Werte reichen von 0 (vollständig transparent) bis 255 (vollständig undurchsichtig). Mit einer Schwelle von 0 werden nur vollständig transparente Pixel (Alpha = 0) als leer behandelt und zugeschnitten; jedes Pixel mit Alpha ≥ 1 wird als Inhalt angesehen und erhalten.",
+        "content2": "Ein Erhöhen des Schwellwerts macht den Algorithmus aggressiver. Eine Schwelle von 10 behandelt Pixel mit Alpha 0-10 als leer — nützlich, wenn Ihre PNG schwache Anti-Aliasing-Geister oder nahezu unsichtbare Rausch-Pixel an den Rändern hat, die Sie abgezogen sehen möchten. Schwellwerte von 30-50 sind angemessen, wenn Sprites weiche Fading-Schatten oder Glow-Ränder haben, die Sie eher als dekorativ statt sinnvoll betrachten. Höher als 100 gehen tendiert dazu, sichtbare halbtransparente Effekte zu zuschneiden, daher mit Vorsicht verwenden.",
+        "content3": "Nach dem Finden des Bounding-Box addiert das Tool optional einen konfigurierbaren Abstand — einen transparenten Rand von N Pixeln um den zugeschnittenen Inhalt. Abstände sind nützlich, wenn Sie planen, den zugeschnittenen Sprite später in ein Spritesheet zu packen oder bilineare Filterung im Engine anwenden, da es Textur-Blutung am Sprite-Rand verhindert. Ein Abstand von 1-2 Pixeln ist normalerweise für die meisten Rendering-Pipelines ausreichend."
+      },
+      "howTo": {
+        "title": "Wie man PNG-Transparente Ränder zuschneidet",
+        "step1": {
+          "title": "1. PNG-Dateien hochladen",
+          "content": "Ziehen Sie eine oder mehrere PNG-Dateien per Drag & Drop in den Upload-Bereich, oder klicken Sie, um die Datei-Auswahl zu öffnen. Der Single-File-Modus erzeugt eine zugeschnittene PNG; Batch-Modus (zwei oder mehr Dateien) erzeugt eine ZIP mit jeder zugeschnittenen Datei, bei Erhaltung ursprünglicher Dateinamen. Sie können bis zu 100 PNGs pro Batch hochladen, mit jeder Datei bis zu 5 MB und einer kombinierten Gesamtgröße von 60 MB."
+        },
+        "step2": {
+          "title": "2. Alpha-Schwelle und Abstände einstellen",
+          "content": "Öffnen Sie das Trim Options Panel, um den Alpha-Schwellwert (Standard 0) und Abstände (Standard 0 Pixel) zu konfigurieren. Halten Sie die Schwelle bei 0, wenn Ihre PNGs saubere, vollständig transparente Ränder haben; erhöhen Sie sie auf 10-30, wenn Anti-Aliasing oder Kompression-Artefakte schwache Ghost-Pixel an den Rändern hinterlassen. Legen Sie Abstände auf 1-2 Pixel fest, wenn Sie planen, die Ausgabe in ein Spritesheet zu packen oder wenn Ihre Spiel-Engine bilineare Textur-Filterung verwendet und Sie Edge-Blutungs-Artefakte vermeiden möchten, andernfalls lassen Sie es bei 0."
+        },
+        "step3": {
+          "title": "3. Führen Sie den Zuschnitt aus",
+          "content": "Klicken Sie auf die Trim-Schaltfläche. Der Server berechnet für jede PNG den Inhalts-Bounding-Box, schneidet das Bild auf dieses Rechteck zu (plus jeden Abstand, den Sie angefordert haben), und gibt das Ergebnis zurück. Die Verarbeitung ist schnell — typischerweise unter einer Sekunde für eine einzelne Datei, ein paar Sekunden für einen vollständigen 100-Datei-Batch — da der Algorithmus nur Alpha-Werte liest und einen einfachen rechteckigen Zuschnitt durchführt."
+        },
+        "step4": {
+          "title": "4. Laden Sie das Ergebnis herunter",
+          "content": "Single-File-Uploads geben eine zugeschnittene PNG mit Vorschau zurück, sodass Sie das Ergebnis vor dem Herunterladen überprüfen können. Batch-Uploads geben eine ZIP mit jeder zugeschnittenen Datei zurück, mit Dateinamen aus den Originalen erhalten für einfachen Drop-in-Ersatz in Ihrem Asset-Ordner. Klicken Sie Download, um die Datei zu speichern, oder Trim Another, um den Workspace zu löschen und von vorne zu beginnen."
+        }
+      },
+      "features": {
+        "title": "Funktionen",
+        "items": {
+          "singleBatch": {
+            "title": "Single und Batch-Modus",
+            "content": "Legen Sie eine PNG ein, um eine einzelne zugeschnittene PNG zurück zu bekommen, oder legen Sie bis zu 100 PNGs ein, um eine ZIP mit jeder zugeschnittenen Datei zurück zu bekommen. Batch-Modus erhält ursprüngliche Dateinamen, sodass Sie die extrahierten Dateien direkt zurück in Ihren Asset-Ordner legen können, um die Originale zu ersetzen."
+          },
+          "threshold": {
+            "title": "Konfigurierbarer Alpha-Schwellwert",
+            "content": "Kontrollieren Sie genau, welche Pixel als leer zählen, mit einem Alpha-Schwellwert von 0 bis 255. Halten Sie es bei 0 für striktes Zuschneiden, das nur vollständig transparente Pixel entfernt, oder erhöhen Sie es, um Anti-Aliasing-Geister, schwache Schatten und Kompression-Artefakte zu entfernen, die Sie eher als Polsterung statt Inhalt betrachten."
+          },
+          "padding": {
+            "title": "Optionale Abstands-Bewahrung",
+            "content": "Addieren Sie einen konfigurierbaren Pixel-Rand aus transparenter Polsterung um den zugeschnittenen Inhalt. Dies ist nützlich, wenn Sie planen, den Sprite später in einen Atlas zu packen, oder wenn Sie einen kleinen Sicherheitsabstand gegen bilineare Filterungs-Artefakte in einer Spiel-Engine wünschen. Ein Abstand von 1-2 Pixeln ist typisch für die meisten Rendering-Pipelines."
+          },
+          "transparency": {
+            "title": "Vollständige Alpha-Bewahrung",
+            "content": "Jede Alpha-Ebene in Ihrer Quell-PNG wird genau in der Ausgabe erhalten. Der Zuschnitt-Betrieb entfernt nur leere Rand-Pixel — er sampelt nie, komprimiert nicht neu und ändert den sichtbaren Inhalt Ihres Sprites nicht. Halbdurchsichtige Ränder, weiche Schatten und teilweise transparente Overlays kommen unberührt durch."
+          },
+          "fast": {
+            "title": "Keine Registrierung, schnelle Verarbeitung",
+            "content": "Keine Anmeldung, keine Kontoerzeugung, kein Tracking. Öffnen Sie die Seite, laden Sie PNGs hoch, laden Sie Ergebnisse herunter. Das Zuschneiden ist algorithmisch einfach — der Server findet das Bounding-Box und schneidet zu — daher sogar große Batches beenden sich in Sekunden."
+          },
+          "privacy": {
+            "title": "Datenschutz an erster Stelle",
+            "content": "Ihre PNG-Dateien werden auf dem Server verarbeitet und sofort nach der Antwort verworfen. Nichts wird gespeichert, geloggt oder aufbewahrt. Kein Konto ist erforderlich, und keine Cookies werden für Tracking Ihrer Uploads verwendet."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Anwendungsfälle",
+        "items": {
+          "gameSprites": {
+            "title": "Vorbereitung von Spielsprites zum Packen",
+            "content": "Exportieren Sie Ihre Character- und Prop-Sprites aus Aseprite, Photoshop oder Spine mit ihren vollständigen Artboards intakt, dann führen Sie dieses Tool aus, um jede Datei auf ihre wahre Inhaltsgröße zu zuschneiden. Zugeschnittene Sprites packen sich in dramatisch kleinere Atlanten — Bin-Packer können nur Platz minimieren, wenn jede Eingabe bereits eng ist, daher kann die Entfernung von transparenten Rändern zuerst Ihre endgültige Atlas-Größe halbieren oder mehr."
+          },
+          "uiIcons": {
+            "title": "Reinigung UI-Icon-Exporte",
+            "content": "Design-Apps exportieren oft Icons in festen Canvas-Größen (256×256, 512×512) unabhängig von den tatsächlichen Icon-Dimensionen. Führen Sie Ihre Icon-Exporte durch das Zuschneid-Tool aus, um knackige, korrekt große Assets zu bekommen, wo das Icon die PNG füllt. Bounding-Box-betriebene UI-Systeme werden dann Icons korrekt dimensionieren und positionieren, ohne dass manuelle Abstands-Offsets in Code benötigt werden."
+          },
+          "animationFrames": {
+            "title": "Batch-Zuschneiden von Animations-Frames",
+            "content": "Legen Sie einen ganzen Ordner von Animations-Frames, der aus Ihrem Animations-Tool exportiert wurde — ein Walk-Zyklus, eine Explosions-Sequenz, ein Zauber-Effekt — ein und bekommen Sie eine ZIP aller Frames in einem Pass zugeschnitten. Dies ist der notwendige erste Schritt, bevor Sie Frames in ein Spritesheet mit gepacktem Layout zusammenstellen, da gepackte Layouts auf engen Bounding Boxes für effizientes Packen angewiesen sind."
+          },
+          "atlasReduction": {
+            "title": "Reduktion Sprite-Atlas-Größe",
+            "content": "Wenn Ihre bestehenden Sprite-Atlanten größer als sie sollten sind, zuschneiden der einzelnen Quell-PNGs vor erneutem Packen offenbaren oft signifikante Einsparungen. Projekte, die aggressiv vor dem Atlasing zuschneiden, sehen routinemäßig 40-60% kleinere Atlas-Texturen, die direkt in schnellere Asset-Loads und niedrigere VRAM-Nutzung übersetzen — besonders wertvoll für Mobile- und Web-Builds."
+          }
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "items": {
+          "threshold": {
+            "q": "Welchen Alpha-Schwellwert sollte ich verwenden?",
+            "a": "Beginnen Sie mit der Standardeinstellung von 0, die nur vollständig transparente Pixel zuschneidet und für jede saubere PNG sicher ist. Wenn Ihre Quelldateien schwache Anti-Aliasing-Geister, nahezu unsichtbare Rausch-Pixel oder weiche Fade-Effekte an den Rändern haben, die Sie entfernt sehen möchten, versuchen Sie einen Schwellwert zwischen 10 und 30. Alles über 100 wird sichtbare halbdurchsichtige Inhalte zu zuschneiden beginnen, daher erhöhen Sie mit Vorsicht und Vorschau das Ergebnis."
+          },
+          "padding": {
+            "q": "Brauche ich Abstände?",
+            "a": "Normalerweise nicht. Belassen Sie Abstände auf 0 für die meisten Arbeitsabläufe, um das engste mögliche Bounding-Box zu erhalten. Addieren Sie 1-2 Pixel Abstände, wenn Sie planen, die zugeschnittene PNG in ein Spritesheet zu packen, oder wenn Ihre Spiel-Engine bilineare Textur-Filterung verwendet und Sie Edge-Blutungs-Artefakte vermeiden wollen. Mehr als 2 Pixel Abstände besiegt viel des Platz-Sparenden Vorteils des Zuschneidens."
+          },
+          "singleVsBatch": {
+            "q": "Was ist der Unterschied zwischen Single und Batch-Ausgabe?",
+            "a": "Wenn Sie eine einzelne PNG hochladen, bekommen Sie eine einzelne zugeschnittene PNG zurück, die Sie in Vorschau anzeigen und herunterladen können. Wenn Sie zwei oder mehr PNGs hochladen, bekommen Sie eine ZIP mit jeder zugeschnittenen Datei mit ursprünglichen Dateinamen erhalten zurück. Es gibt keine Konfiguration zum Wechsel zwischen den beiden — es wird automatisch durch die Anzahl der hochgeladenen Dateien bestimmt."
+          },
+          "compatibility": {
+            "q": "Funktioniert die zugeschnittene PNG in Spiel-Engines und Design-Tools?",
+            "a": "Ja. Die Ausgabe ist eine Standard-PNG mit Alpha-Kanal erhalten, lesbar von jeder Engine, Design-App oder Browser, der PNG-Dateien behandelt — was im Wesentlichen alle sind. Das Zuschneiden ändert nur die Leinwand; es ändert nicht das PNG-Farbprofil, die Bittiefe oder das Kompressions-Format."
+          },
+          "maxFiles": {
+            "q": "Wie viele PNGs kann ich auf einmal zuschneiden?",
+            "a": "Bis zu 100 PNG-Dateien pro Batch, mit jeder Datei bis zu 5 MB und einer kombinierten Gesamtgröße von 60 MB. Diese Limits sind großzügig für praktisch jede Animations-Sequenz oder Icon-Set, die Sie in einem Durchgang batch-zuschneiden würden."
+          },
+          "transparency": {
+            "q": "Beeinflußt das Zuschneiden die Transparenz oder Bildqualität?",
+            "a": "Nein. Der Zuschneid-Betrieb ist rein ein Zuschnitt — er entfernt leere Zeilen und Spalten von Pixeln aus den PNG-Rändern ohne Neusampling, Neukompression oder Änderung eines Inhalts-Pixels. Halbdurchsichtige Pixel, weiche Ränder und Teilalpha-Werte werden Byte-für-Byte in der Ausgabe erhalten."
+          },
+          "privacy": {
+            "q": "Werden meine Dateien auf dem Server gespeichert?",
+            "a": "Nein. Ihre PNG-Uploads werden im Speicher verarbeitet und sofort nach der Rückgabe des zugeschnittenen Ergebnisses verworfen. Kein Konto ist erforderlich, keine Logs werden von Ihrem Datei-Inhalt aufbewahrt, und keine Cookies verfolgen Ihre Uploads. Das Zuschneiden geschieht, das Ergebnis wird zurückgegeben, und jede Spur Ihres Uploads ist weg."
           }
         }
       }

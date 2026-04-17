@@ -147,6 +147,14 @@
       "toGif": {
         "title": "PNG a GIF",
         "description": "Convierta fotogramas PNG o una hoja de sprites en un GIF animado."
+      },
+      "pngToSpritesheet": {
+        "title": "PNG a Spritesheet",
+        "description": "Combina múltiples archivos PNG en un solo spritesheet con diseños de cuadrícula, tira o empaquetado."
+      },
+      "pngTrim": {
+        "title": "Recortar PNG",
+        "description": "Recorta los bordes transparentes de imágenes PNG — individual o por lotes."
       }
     }
   },
@@ -354,7 +362,9 @@
   "relatedTools": {
     "label": "Herramientas relacionadas",
     "gifToSprite": "GIF → Hoja de sprites",
-    "toGif": "PNG → GIF"
+    "toGif": "PNG → GIF",
+    "pngToSpritesheet": "PNG → Spritesheet",
+    "pngTrim": "Recortar PNG"
   },
   "toGif": {
     "title": "Conversor gratuito en línea de PNG a GIF",
@@ -594,6 +604,400 @@
           "api": {
             "q": "¿Hay una API disponible?",
             "a": "Sí. Esta herramienta está impulsada por la API Easy GIF2Sprite disponible en RapidAPI. La API ofrece dos puntos finales: /from-frames para ensamblar múltiples archivos PNG en un GIF animado, y /from-spritesheet para cortar un PNG de hoja de sprites en fotogramas y producir un GIF animado. Ambos puntos finales soportan los mismos parámetros disponibles en la herramienta web, lo que simplifica la automatización de conversiones en tu pipeline de construcción o aplicación."
+          }
+        }
+      }
+    }
+  },
+  "pngToSpritesheet": {
+    "title": "Generador gratuito en línea de PNG a Spritesheet",
+    "subtitle": "Fusiona múltiples archivos PNG en un único spritesheet — gratuito, en línea, sin registro.",
+    "upload": {
+      "title": "Arrastra tus fotogramas PNG aquí o haz clic para seleccionar",
+      "limit": "Máximo 100 archivos, 5MB cada uno, 60MB total",
+      "accept": "Solo se aceptan archivos .png",
+      "changeFiles": "Haz clic para añadir o reemplazar archivos"
+    },
+    "convert": "¡Convertir!",
+    "options": {
+      "title": "Diseño y opciones",
+      "layout": "Diseño",
+      "layoutHint": "Cómo se disponen los fotogramas en el spritesheet.",
+      "layoutGrid": "Cuadrícula",
+      "layoutHorizontal": "Tira horizontal",
+      "layoutVertical": "Tira vertical",
+      "layoutPacked": "Empaquetado (bin-packed, requiere JSON)",
+      "columns": "Columnas",
+      "columnsHint": "Número de columnas en diseño de cuadrícula. Dejar vacío para auto (ceil(sqrt(N))).",
+      "cellMode": "Modo de tamaño de celda",
+      "cellModeHint": "Cómo se determina el tamaño de la celda.",
+      "cellModeAutoMax": "Auto máx (usar dimensiones del fotograma más grande)",
+      "cellModeAutoUniform": "Auto uniforme (todos los fotogramas deben tener el mismo tamaño)",
+      "cellModeFixed": "Tamaño fijo",
+      "cellWidth": "Ancho de celda (px)",
+      "cellHeight": "Alto de celda (px)",
+      "fitMode": "Modo de ajuste",
+      "fitModeHint": "Cómo manejar imágenes más grandes que la celda (solo modo fijo).",
+      "fitModeScaleFit": "Escalar para ajustar (letterbox)",
+      "fitModeScaleFill": "Escalar para llenar (recortar)",
+      "fitModeError": "Devolver error",
+      "align": "Alineación",
+      "alignHint": "Alineación cuando la imagen es más pequeña que la celda.",
+      "alignCenter": "Centro",
+      "alignTopLeft": "Superior izquierda",
+      "padding": "Espaciado (px)",
+      "paddingHint": "Espacio de píxeles entre fotogramas.",
+      "bgColor": "Color de fondo",
+      "bgColorHint": "Transparente o color hexadecimal.",
+      "bgColorTransparent": "Transparente",
+      "bgColorCustom": "Color personalizado",
+      "powerOf2": "Potencia de 2",
+      "powerOf2Hint": "Rellenar dimensiones de salida a la siguiente potencia de 2 (p. ej. 300 → 512). Útil para texturas de GPU.",
+      "fileNameOrder": "Ordenar por nombre de archivo",
+      "fileNameOrderHint": "Ordenar fotogramas por el sufijo numérico _N en nombres de archivo en lugar del orden de carga.",
+      "metadataFormat": "Incluir metadatos JSON",
+      "metadataFormatHint": "Generar un ZIP que contenga el PNG más un archivo JSON compatible con TexturePacker. Requerido para diseño empaquetado."
+    },
+    "status": {
+      "uploading": "Cargando...",
+      "converting": "Generando spritesheet...",
+      "error": "Conversión fallida",
+      "retry": "Reintentar"
+    },
+    "result": {
+      "title": "Vista previa de Spritesheet",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar Spritesheet",
+      "downloadZip": "Descargar ZIP (PNG + JSON)",
+      "reset": "Convertir otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, apóyenos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de PNG a Spritesheet",
+        "content": "Integra generación de spritesheet en tus aplicaciones con la API Easy PNG to Sprites.",
+        "content2": "Carga fotogramas PNG mediante una solicitud HTTP simple y recibe un spritesheet listo para usar con JSON opcional compatible con TexturePacker.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Características de la API",
+          "endpoints": "POST /to-spritesheet: múltiples PNGs → PNG spritesheet o ZIP",
+          "input": "Carga hasta 100 archivos PNG por solicitud",
+          "params": "Diseños de cuadrícula, horizontal, vertical o bin-packed",
+          "limit": "5MB por archivo, 60MB total",
+          "formats": "Entrada PNG; salida PNG o ZIP (con JSON)",
+          "response": "Compatible con Phaser 3, PixiJS, Unity, Godot"
+        }
+      },
+      "whatIs": {
+        "title": "¿Por qué empaquetar fotogramas PNG en un atlas de sprites?",
+        "content": "Un atlas de sprites es el resultado de empaquetar muchos activos PNG individuales — fotogramas exportados, conjuntos de iconos, variantes de azulejos — en una única textura que un motor puede muestrear. El flujo de trabajo PNG a Spritesheet es fundamentalmente un problema de empaquetamiento: ya tienes un conjunto curado de archivos de origen (quizás un ciclo de caminata exportado desde Aseprite, o un paquete de iconos UI de un diseñador), y necesitas aplanarlos en un atlas que tu motor puede cargar en una única carga de textura. Esta herramienta está construida alrededor de ese paso de autoría en lugar de cualquier conversión desde formatos animados.",
+        "content2": "Para proyectos de juegos, la recompensa es muy concreta. Enviar 200 archivos PNG sueltos significa 200 lecturas del sistema de archivos (o 200 descargas HTTP en compilaciones web), 200 cargas de textura, y un lote de dibujo que se interrumpe cada vez que el renderizador cambia entre ellos. Empaqueta esos mismos activos en un atlas y el motor ejecuta una única vinculación de textura — Phaser 3, PixiJS, Unity y Godot pueden entonces dibujar cada sprite que vive en el atlas dentro de la misma llamada de dibujo por lotes. En objetivos móviles y WebGL, donde el ancho de banda de textura y la sobrecarga de solicitudes son los cuellos de botella habituales, esta suele ser la ganancia más grande que puedes lograr en un renderizador 2D.",
+        "content3": "Más allá del rendimiento en tiempo de ejecución, los atlas se ajustan limpiamente en pipelines de activos. En lugar de rastrear cientos de archivos individuales mediante control de versiones, un atlas te proporciona un PNG único más un JSON TexturePacker — dos artefactos que se pueden regenerar desde la fuente en un paso de compilación, ser comprobados por CI, y ser dejados en el motor como un par. Equipos indie y autores de herramientas usan este patrón para mantener su repositorio ordenado, reducir cambios de importación en motores como Unity y Godot, y hornear atlas finales como parte de un pipeline de lanzamiento."
+      },
+      "layouts": {
+        "title": "Cuadrícula, Tira o Bin-Packed: ¿Qué diseño?",
+        "content": "A diferencia de herramientas que fuerzan un único diseño, el constructor PNG a Spritesheet expone cuatro estrategias de empaquetamiento distintas para que puedas emparejar la salida con lo que tu motor espera. El empaquetamiento de cuadrícula organiza tus fotogramas en una celosía rectangular y funciona bien cuando cada PNG de entrada comparte la misma huella — exportaciones de animación clásicas de Aseprite, ciclos de caminata de personajes, o secuencias de SpriteFrames de Godot, todos se ajustan a esta forma. Puedes fijar un recuento de columnas específico, o dejarlo vacío para que el empaquetador busque un arreglo ceil(sqrt(N)) casi cuadrado que mantiene la textura final compacta.",
+        "content2": "Los empaquetadores de tira horizontal y vertical colocan todo en un único eje. Los desarrolladores alcanzan las tiras cuando necesitan impulsar un flipbook de sombreador de fragmentos que interpola a lo largo de U o V, cuando el componente de animación de un motor espera fotogramas indexados linealmente, o cuando una animación de sprites CSS necesita traducir un único desplazamiento por fotograma. Las tiras también producen el direccionamiento de fotogramas más determinista: una vez que sabes el tamaño de la celda, el fotograma N siempre vive en N × celda en un eje y cero en el otro — útil cuando estás calculando UVs dentro de scripts de compilación o código de sombreador.",
+        "content3": "El modo empaquetado ejecuta un algoritmo de empaquetamiento de contenedores sobre fotogramas de tamaños variados y produce un atlas irregular sin espacio desperdiciado — el diseño que quieres cuando tu conjunto de entrada mezcla iconos de 16×16 con botones de 96×48, o cuando un mapa de azulejos incluye tanto azulejos individuales como clusters de decoración 2×2. Debido a que los rectángulos de fotogramas ya no son predecibles, la salida empaquetada siempre incluye un JSON formato TexturePacker que mapea nombres de archivo a coordenadas del atlas para que motores como Phaser 3 (load.atlas) y PixiJS (Assets.load) puedan buscar cada fotograma por su nombre original."
+      },
+      "formats": {
+        "title": "Metadatos de atlas listos para motor",
+        "content": "Cada ejecución produce un PNG y — cuando los metadatos están habilitados — un archivo JSON complementario describiendo dónde vive cada fotograma de origen en la hoja, todo envuelto en un único ZIP. El JSON sigue el esquema JSON Array TexturePacker, en el que el resto del ecosistema 2D ha convergido silenciosamente durante la última década. Cada entrada registra el nombre de archivo original, el rectángulo del fotograma en el atlas, las dimensiones de origen de la imagen pre-empaquetada, y un rectángulo de recorte para sprites que han sido recortados durante el empaquetamiento. Los integradores de herramientas pueden confiar en que este esquema permanezca estable entre ejecuciones, lo que importa cuando la salida se está alimentando a un trabajo de CI o un paso de horneado de activos.",
+        "content2": "Phaser 3 consume este JSON directamente a través de scene.load.atlas(key, png, json), después del cual cualquier fotograma puede ser referenciado por su nombre de archivo original en definiciones de animación. PixiJS espera el mismo esquema a través de su ruta Spritesheet / Assets.load — deja caer los contenidos del ZIP y cada fotograma se convierte en una Textura codificada por nombre. Para pipelines de Unity, el Importador TexturePacker gratuito corta el PNG de nuevo en sub-sprites dentro del editor para que tus prefabs y AnimationClips puedan referenciarse individualmente; los usuarios de Godot pueden apoyarse en plugins importadores de comunidad que materializan el JSON en recursos AtlasTexture o SpriteFrames para nodos AnimatedSprite2D.",
+        "content3": "Si tu motor puede deducir posiciones de fotogramas solo de dimensiones de celda — una cuadrícula pura en SpriteFrames de Godot, por ejemplo — puedes desactivar los metadatos y recopilar un PNG solitario. El modo empaquetado siempre incluye JSON porque los rectángulos irregulares no pueden ser reconstruidos desde parámetros. El interruptor de potencia de 2 separado rellena el lienzo final hasta 256/512/1024/2048 para que coincida con los requisitos de alineación de muestreo de GPU en chipsets móviles más antiguos y ciertos formatos de compresión de texturas; para contextos WebGL 1 que aún cumplen texturas POT para muestreadores envueltos en repetición, esta es la manera más fácil de permanecer compatible sin tocar configuraciones del lado del motor."
+      },
+      "howTo": {
+        "title": "Cómo montar un atlas de sprites",
+        "step1": {
+          "title": "1. Carga tu conjunto de fotogramas",
+          "content": "Suelta un lote curado de fotogramas PNG en el cargador, o selecciona desde el disco — hasta 100 archivos por trabajo en 5 MB cada uno y 60 MB en total. Ya sea que provengan de una secuencia de exportación de Aseprite, una composición de capa de Photoshop, una animación de Krita, o una carpeta producida por un script de compilación, los archivos se muestran como una cuadrícula de miniaturas arrastrables. Cada miniatura lleva su distintivo de índice para que puedas confirmar el orden que será horneado en el atlas."
+        },
+        "step2": {
+          "title": "2. Elige tu estrategia de empaquetamiento",
+          "content": "Abre Diseño y opciones y comprométete con una estrategia de empaquetamiento. Cuadrícula es el predeterminado cuando cada fotograma comparte una caja delimitadora; las tiras horizontal y vertical te dan direccionamiento de fotogramas lineal para flipbooks impulsados por sombreador o CSS; el empaquetado desbloqueado el empaquetamiento de contenedores para conjuntos heterogéneos como atlas de UI y paquetes de variantes de azulejos. Cambiar a empaquetado habilita automáticamente salida JSON TexturePacker, ya que los motores no pueden deducir rectángulos de fotogramas irregulares de parámetros solos."
+        },
+        "step3": {
+          "title": "3. Ajusta el comportamiento de celdas, espaciado y ordenamiento",
+          "content": "Para diseños de cuadrícula y tira, elige un modo de celda — auto-máx calcula el tamaño de cada celda a la caja delimitadora del fotograma más grande (útil cuando las exportaciones se desvían por un píxel o dos), auto-uniforme afirma que cada fotograma tiene el mismo tamaño y falla rápidamente si no, y fijo bloquea un tamaño de celda exacto con fit_mode eligiendo entre escala-ajuste, escala-llenar, o rechazo para entradas oversized. Usa alineación para controlar cómo fotogramas más pequeños se sientan dentro de celdas oversized, añade espaciado de píxeles para prevenir sangrado bilineal entre vecinos, y cambia potencia de 2 en si tu GPU objetivo o formato de compresión espera texturas POT. Activa ordenamiento por nombre de archivo cuando tu exportador enumera fotogramas con sufijo _N y quieres que se cumpla ese orden independientemente de la secuencia de carga."
+        },
+        "step4": {
+          "title": "4. Exporta el atlas",
+          "content": "Presiona Convertir y el servidor construye el atlas. Recibes ya sea un PNG independiente, o un ZIP que agrupa el PNG con su JSON TexturePacker cuando los metadatos están activos. La vista previa representa la hoja terminada en línea para que puedas detectar errores de alineación antes de asignarlo a un repositorio o cargarlo a tu motor. Descarga para guardar el resultado, o reinicia el espacio de trabajo para construir el próximo atlas en tu lote."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "layouts": {
+            "title": "Cuatro estrategias de empaquetamiento",
+            "content": "Cuadrícula para exportaciones de animación uniforme, tiras horizontal y vertical para flipbooks lineales y muestreo impulsado por sombreador, y bin-packed para atlas heterogéneos. Cada estrategia está optimizada para un patrón de consumo de tiempo de ejecución diferente, para que puedas emparejar la salida con cómo tu proyecto Phaser 3, PixiJS, Unity o Godot realmente muestrea el atlas en tiempo de ejecución."
+          },
+          "cellModes": {
+            "title": "Tamaño de celda para control de pipeline",
+            "content": "Auto-máx se adapta a cualquiera que sea el fotograma más grande, que es la opción indulgente para exportaciones que se desvían por un píxel. Auto-uniforme convierte una suposición en una garantía — si dos fotogramas no concuerdan en tamaño, el trabajo falla ruidosamente para que captures la discrepancia en CI en lugar del juego. Modo fijo fija un tamaño de celda exacto con fallback fit_mode para que conjuntos de activos más antiguos puedan normalizarse a una nueva dimensión de atlas."
+          },
+          "metadata": {
+            "title": "Salida JSON TexturePacker",
+            "content": "Metadatos JSON Array opcionales se producen junto con el PNG y se empaquetan en un ZIP. El esquema es natively entendido por load.atlas de Phaser 3, el cargador Assets de PixiJS, y — mediante importadores de comunidad — Unity y Godot. Debido a que el formato es estable y ampliamente soportado, el mismo ZIP puede ser dejado en diferentes motores sin reescribir ningún código de pegamento."
+          },
+          "powerOf2": {
+            "title": "Relleno de textura de potencia de 2",
+            "content": "Un único interruptor redondea el lienzo del atlas hasta 256, 512, 1024, o 2048 px. Las texturas POT aún son esperadas por algunos formatos de compresión (PVRTC en iOS más antiguo, ciertos muestreadores wrap-repeat de WebGL 1) y permanecen como el predeterminado más seguro para pipelines pesados en mipmaps. Píxeles de relleno respetan el color de fondo configurado o permanecen transparentes."
+          },
+          "reorder": {
+            "title": "Flujo de trabajo de arrastrar para reordenar",
+            "content": "La cuadrícula de carga es una superficie arrastrable: toma una miniatura y suéltala en el slot correcto para corregir el orden del fotograma sin renombrar nada en el disco. Emparéjalo con ordenamiento de nombre de archivo cuando tu exportador emite walk_0.png, walk_1.png, walk_2.png y quieres que ese sufijo numérico gane automáticamente, lo que es útil cuando un script de compilación está añadiendo fotogramas en orden impredecible."
+          },
+          "alignPadding": {
+            "title": "Alineación y espaciado de celda",
+            "content": "Cuando los fotogramas son más pequeños que sus celdas, alineación controla si están centrados o fijados a la esquina superior izquierda — el último es lo que Godot's tilemap y muchos editores de sprites de Unity esperan. Espaciado de celda inserta un búfer transparente entre vecinos para que el filtrado bilineal no pueda muestrear a través de límites de celda, lo que detiene las costuras de línea fina que aparecen en sprites escalados en escenas pesadas en sombreador."
+          },
+          "privacy": {
+            "title": "Privacidad primero",
+            "content": "Las cargas viven en memoria solo lo suficiente para construir el atlas, luego son descartadas. No hay cuenta, no hay seguimiento basado en cookies de los contenidos de tus activos, y no hay archivado del lado del servidor — lo que importa cuando los fotogramas que estás empaquetando pertenecen a un proyecto no anunciado o un entregable del cliente bajo NDA."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "gameSprites": {
+            "title": "Pipelines de sprites de videojuegos indie",
+            "content": "Alimenta una carpeta de fotogramas exportados de Aseprite — caminata, carrera y conjuntos de ataque de un personaje completo — directamente al empaquetador y envía el atlas resultante a Phaser 3, PixiJS, Unity o Godot. Combina empaquetamiento de cuadrícula con celdas auto-máx para atlas por acción ordenados, o cambia a bin-packed cuando quieras procesar un conjunto de personajes completo a través de tamaños de fotograma mixtos. Conecta la herramienta a un script de compilación para que cada actualización de arte regenere el atlas sin trabajo de arrastrar y soltar manual."
+          },
+          "uiAtlas": {
+            "title": "UI y atlas de texturas de HUD",
+            "content": "Paquetes de iconos, estados de botones, variantes de cursor y miniaturas de retrato raramente comparten un tamaño consistente, lo que los hace un caso de libro de texto para empaquetamiento bin. Carga la carpeta de UI completa, selecciona diseño empaquetado, y el JSON de salida expone cada elemento por su nombre de archivo para que PixiJS, Phaser 3, o una capa de UI personalizada de WebGL puedan buscar fotogramas por nombre en lugar de coordenadas UV escritas a mano."
+          },
+          "animationAssembly": {
+            "title": "Montaje de exportaciones de motor en atlas",
+            "content": "Aseprite, Krita y Photoshop felizmente exportan cronogramas como secuencias PNG numeradas — y luego te dejan para que las cosas juntas. Esta herramienta es el paso de costura: suelta la secuencia, habilita ordenamiento de nombre de archivo para que walk_0.png a través de walk_23.png se alineen, y produce un atlas de cuadrícula con un JSON TexturePacker listo para AnimatedSprite2D en Godot o el flujo de trabajo equivalente a createFromAseprite de Phaser 3."
+          },
+          "tilesets": {
+            "title": "Pipelines de horneado de tileset y activos",
+            "content": "Empaqueta azulejos de tierra, variantes de pared, y decoraciones de prop en un atlas de cuadrícula uniforme alineado a una celda de 16×16 o 32×32, o impulsa el empaquetador desde un trabajo de CI/CD que regenera el atlas cada vez que el arte bruto cambia. Modo de celda fijo más alineación superior izquierda produce hojas que se ajustan limpiamente en el recurso TileSet de Godot y la paleta de azulejos de Unity, haciendo esto un ajuste natural para etapas de horneado de activos de un pipeline de lanzamiento."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "whatIsSheet": {
+            "q": "¿Cómo es un atlas de sprites diferente de solo una carpeta de PNGs?",
+            "a": "Funcionalmente, un atlas permite que tu motor realice una única vinculación de textura para cada sprite en la hoja, mientras que PNGs sueltos fuerzan una vinculación separada (y a menudo una llamada de dibujo separada) por archivo. Para una escena 2D típica, esa es la diferencia entre un dibujo por lotes y docenas de no por lotes. El JSON complementario te proporciona la tabla de búsqueda para que aún referenciar fotogramas individuales por su nombre de archivo original en código."
+          },
+          "whichLayout": {
+            "q": "Cuadrícula, tira o empaquetado — ¿cómo elijo?",
+            "a": "Opta por la cuadrícula cuando tus PNGs de entrada comparten una caja delimitadora (animaciones de personajes, variantes de azulejos). Elige tira horizontal o vertical cuando necesites direccionamiento lineal predecible para un flipbook de sombreador o una animación CSS. Alcanza el empaquetado cuando el conjunto de fotogramas mezcla tamaños — colecciones de iconos de UI, hojas de prop, o cualquier carpeta que un diseñador curó sin consideración de uniformidad. Los diseños empaquetados siempre agrupan metadatos JSON porque los rectángulos son irregulares."
+          },
+          "maxFiles": {
+            "q": "¿Cuántos fotogramas PNG puedo empaquetar en un atlas?",
+            "a": "Hasta 100 archivos por trabajo, con un límite de 5 MB por archivo y un límite combinado de 60 MB. Ese límite existe para mantener el procesamiento del servidor rápido; para la mayoría de los atlas indie — un conjunto completo de animación de personaje, un paquete de azulejos, una biblioteca de componentes UI — está cómodamente por encima de lo que alguna vez pondrías en una única hoja en la práctica."
+          },
+          "metadata": {
+            "q": "¿Funciona el JSON con load.atlas de Phaser 3 fuera de la caja?",
+            "a": "Sí. La salida es JSON Array TexturePacker, que es exactamente lo que scene.load.atlas(key, pngUrl, jsonUrl) espera. Después de cargar, cada fotograma es direccionable por su nombre de archivo PNG original, así que frases como scene.add.sprite(x, y, 'character', 'walk_0.png') simplemente funcionan. El parseador Spritesheet de PixiJS y Assets.load aceptan los mismos contenidos ZIP sin modificación."
+          },
+          "engines": {
+            "q": "¿Qué motores tienen soporte nativo para la salida?",
+            "a": "Phaser 3 y PixiJS cargan el par PNG+JSON nativamente. Para Unity, el Importador TexturePacker gratuito lee el JSON y corta el PNG en sub-sprites del editor para que puedas arrastrar fotogramas individuales a los prefabs. Los usuarios de Godot pueden instalar un plugin Importador TexturePacker de comunidad que produce recursos AtlasTexture o SpriteFrames para AnimatedSprite2D. Cualquier otro motor que pueda muestrear desde un PNG en el peor de los casos necesitará un analizador JSON fino en la parte superior."
+          },
+          "powerOf2": {
+            "q": "¿Cuándo importa realmente el relleno de potencia de 2?",
+            "a": "GPUs de escritorio modernas y recientes dispositivos móviles ya no requieren texturas POT para muestreo básico. Sin embargo, algunos formatos de compresión de GPU (PVRTC en iOS más antiguo), contextos de WebGL 1 usando GL_REPEAT en una textura no POT, y ciertos caminos de generación de mipmaps aún necesitan dimensiones de potencia de 2. Si estás apuntando a esos entornos, o la configuración de importación de tu motor prefiere POT, actívalo — de otra manera el atlas más pequeño y ajustado es usualmente la opción correcta."
+          },
+          "transparency": {
+            "q": "¿Puedo reordenar fotogramas después de cargarlos?",
+            "a": "Sí — la cuadrícula de miniatura es arrastrable, para que puedas intercambiar posiciones agarrando un fotograma y soltándolo en un slot nuevo. Esto es útil cuando tu selector de archivos devuelve archivos en un orden diferente al que usó tu herramienta de autoría. Si los nombres de origen codifican orden como sufijo numérico (walk_0.png, walk_1.png, ...), activa ordenamiento de nombre de archivo y el empaquetador cumpla ese orden independientemente de la secuencia de carga."
+          },
+          "privacy": {
+            "q": "¿Se almacenan o comparten mis PNGs?",
+            "a": "No. El servidor mantiene tus fotogramas PNG solo lo suficiente para construir el atlas, luego los descarta una vez enviada la respuesta. No hay sistema de cuentas, no hay registro de contenidos de activos, y no hay intercambio de terceros — relevante si la obra de arte que estás empaquetando pertenece a un proyecto no lanzado, un cliente bajo NDA, o un pipeline de código cerrado."
+          }
+        }
+      }
+    }
+  },
+  "pngTrim": {
+    "title": "Recortador PNG gratuito en línea — Recortar bordes transparentes",
+    "subtitle": "Elimina bordes transparentes de imágenes PNG, individuales o por lotes — gratuito, en línea, sin registro.",
+    "upload": {
+      "title": "Arrastra tus archivos PNG aquí o haz clic para seleccionar",
+      "limit": "Máximo 100 archivos, 5MB cada uno, 60MB total",
+      "accept": "Solo se aceptan archivos .png",
+      "changeFiles": "Haz clic para añadir o reemplazar archivos"
+    },
+    "convert": "¡Recortar!",
+    "options": {
+      "title": "Opciones de recorte",
+      "threshold": "Umbral de alfa",
+      "thresholdHint": "Los píxeles con alfa ≤ umbral se tratan como vacíos y se recortan. 0 recorta solo píxeles completamente transparentes; valores más altos recortan píxeles semi-transparentes también.",
+      "padding": "Espaciado (px)",
+      "paddingHint": "Píxeles de margen transparente a preservar alrededor del contenido recortado."
+    },
+    "status": {
+      "uploading": "Cargando...",
+      "converting": "Recortando...",
+      "error": "Recorte fallido",
+      "retry": "Reintentar"
+    },
+    "result": {
+      "singleTitle": "Vista previa de PNG recortado",
+      "batchTitle": "Archivos recortados",
+      "singleInfo": "{width} × {height} px • {size}",
+      "batchInfo": "{count} archivo recortado • {size} | {count} archivos recortados • {size}",
+      "download": "Descargar PNG",
+      "downloadZip": "Descargar ZIP",
+      "reset": "Recortar otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, apóyenos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de recorte PNG",
+        "content": "Integra recorte PNG automático en tus aplicaciones con la API Easy PNG to Sprites.",
+        "content2": "Carga uno o más archivos PNG para eliminar bordes transparentes automáticamente, perfecto para preparar sprites de juegos y activos de UI.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Características de la API",
+          "endpoints": "POST /trim: PNG único o salida ZIP en lotes",
+          "input": "Carga hasta 100 archivos PNG por solicitud",
+          "params": "Control de umbral alfa y espaciado",
+          "limit": "5MB por archivo, 60MB total",
+          "formats": "Entrada PNG; salida PNG (único) o ZIP (lotes)",
+          "response": "Respuesta rápida con auto-escalado de Cloud Run"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es el recorte PNG?",
+        "content": "El recorte PNG es el proceso de recortar automáticamente los píxeles transparentes alrededor de los bordes de una imagen PNG, reduciendo el lienzo a la más pequeña rectángulo que aún contiene todo el contenido opaco (o parcialmente opaco). La mayoría de las herramientas de diseño y animación — Photoshop, Aseprite, Spine, exportadores de motores de juegos — producen archivos PNG con márgenes transparentes grandes, porque el lienzo de exportación generalmente tiene tamaño al artboard o al fotograma más grande en una secuencia en lugar del sprite real.",
+        "content2": "Ese relleno transparente extra es invisible al ojo pero muy real en el disco y en memoria. Inflama tamaños de archivo, desperdicia VRAM cuando el sprite se carga como textura, y confunde la lógica de caja delimitadora en motores de juegos que se basan en dimensiones de sprite para colisión, diseño, o prueba de golpe. Un paso de recorte arregla todos estos problemas en un paso al recalcular la caja delimitadora verdadera de cada sprite y exportar solo la región de píxeles significativa.",
+        "content3": "Esta herramienta ejecuta ese paso de recorte para ti en tu navegador. Carga un único PNG o un lote completo, establece un umbral alfa opcional y valor de espaciado, y descarga ya sea un único PNG recortado o un ZIP de archivos recortados. El contenido visual original y la transparencia se preservan exactamente — la herramienta solo elimina píxeles de margen vacío."
+      },
+      "whyTrim": {
+        "title": "¿Por qué recortar bordes transparentes?",
+        "content": "El beneficio más inmediato del recorte es tamaños de archivo más pequeños. El relleno transparente aún ocupa filas y columnas de píxeles en el PNG, y mientras la compresión maneja grandes series de transparencia eficientemente, eliminándolos directamente produce archivos notablemente más pequeños — a menudo reducciones de 30-70% para sprites exportados a lienzos oversized. Los archivos más pequeños se cargan más rápido, caben más cómodamente en presupuestos de memoria móvil, y se transfieren más rápido sobre la red.",
+        "content2": "El segundo beneficio es cajas delimitadoras precisas. Los motores de juegos típicamente usan dimensiones PNG de un sprite como su caja de colisión predeterminada, referencia de origen de pivot, y extensión de renderizado. Un sprite que es 128×128 píxeles pero contiene un personaje 40×60 en el medio de un lienzo completamente transparente produce bugs de colisión y alineación porque el motor ve una caja delimitadora 128×128. Recortar el PNG a su contenido verdadero significa tu motor ve el tamaño verdadero de sprite, y todo corriente abajo — colisiones, diseños de UI, objetivos de clic, anclaje de tooltip — funciona correctamente sin desplazamientos manuales.",
+        "content3": "El recorte también produce atlas de sprites más limpios cuando luego emaquetas sprites en un spritesheet. Los algoritmos de empaquetamiento de contenedores solo pueden minimizar el tamaño final del atlas cuando cada entrada ya es apretada. Si cada sprite lleva un borde transparente de 20 píxeles, el empaquetador desperdicia esos píxeles en cada celda. Recorta primero, empaqueta segundo, y obtendrás un atlas de textura dramáticamente más pequeño y eficiente."
+      },
+      "howItWorks": {
+        "title": "Cómo funciona el umbral alfa",
+        "content": "El algoritmo de recorte escanea cada píxel PNG para encontrar la caja delimitadora más apretada que encierre todos los píxeles no vacíos. La pregunta de qué cuenta como vacío está controlada por el parámetro de umbral alfa. Los valores alfa van de 0 (completamente transparente) a 255 (completamente opaco). Con un umbral de 0, solo píxeles completamente transparentes (alfa = 0) se tratan como vacíos y recortados; cualquier píxel con alfa ≥ 1 se considera contenido y se preserva.",
+        "content2": "Aumentar el umbral hace el algoritmo más agresivo. Un umbral de 10 trata píxeles con alfa 0-10 como vacíos — útil cuando tu PNG tiene fantasmas de anti-aliasing débiles o píxeles de ruido casi invisibles en los bordes que quieres removidos. Umbrales de 30-50 son apropiados cuando sprites tienen sombras de desvanecimiento suave o bordes de brillo que consideras decorativos en lugar de contenido significativo. Ir más alto que 100 tiende a recortar efectos semi-transparentes visibles, así que úsalo con cuidado.",
+        "content3": "Después de encontrar la caja delimitadora, la herramienta opcionalmente añade espaciado configurable — un borde transparente de N píxeles alrededor del contenido recortado. El espaciado es útil cuando planeas empaquetar el sprite recortado en un spritesheet o aplicar filtrado bilineal en motor, porque previene sangrado de textura en el borde del sprite. Un espaciado de 1-2 píxeles es usualmente suficiente para la mayoría de los pipelines de renderizado."
+      },
+      "howTo": {
+        "title": "Cómo recortar bordes transparentes PNG",
+        "step1": {
+          "title": "1. Carga archivos PNG",
+          "content": "Arrastra y suelta uno o más archivos PNG en el área de carga, o haz clic para abrir el selector de archivos. El modo de archivo único produce un PNG recortado; el modo de lotes (dos o más archivos) produce un ZIP que contiene cada archivo recortado, preservando nombres de archivo originales. Puedes cargar hasta 100 PNGs por lote, con cada archivo hasta 5 MB y un total combinado de 60 MB."
+        },
+        "step2": {
+          "title": "2. Establece umbral alfa y espaciado",
+          "content": "Abre el panel de Opciones de recorte para configurar el umbral alfa (predeterminado 0) y espaciado (predeterminado 0 píxeles). Mantén el umbral en 0 si tus PNGs tienen márgenes transparentes limpios; aumenta a 10-30 si anti-aliasing o artefactos de compresión dejan píxeles fantasma débiles en los bordes. Establece espaciado a 1-2 píxeles si planeas empaquetar la salida en un spritesheet o usar filtrado de textura bilineal en un motor de juegos, de lo contrario déjalo en 0."
+        },
+        "step3": {
+          "title": "3. Ejecuta el recorte",
+          "content": "Haz clic en el botón Recortar. El servidor calcula la caja de contenido de cada PNG, recorta la imagen a ese rectángulo (más cualquier espaciado que solicitaste), y devuelve el resultado. El procesamiento es rápido — típicamente menos de un segundo para un archivo único, pocos segundos para un lote completo de 100 archivos — porque el algoritmo solo lee valores alfa y realiza un recorte rectangular simple."
+        },
+        "step4": {
+          "title": "4. Descarga el resultado",
+          "content": "Las cargas de archivo único devuelven un PNG recortado con una vista previa para que puedas inspeccionar el resultado antes de descargar. Las cargas de lotes devuelven un ZIP que contiene cada archivo recortado, con nombres de archivo preservados de los originales para fácil reemplazo drop-in en tu carpeta de activos. Haz clic en Descargar para guardar el archivo, o Recortar otro para limpiar el espacio de trabajo e iniciar de nuevo."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "singleBatch": {
+            "title": "Modo único y por lotes",
+            "content": "Suelta en un PNG para obtener un único PNG recortado de vuelta, o suelta en hasta 100 PNGs para obtener un ZIP con cada archivo recortado. El modo de lotes preserva nombres de archivo originales para que puedas soltar los archivos extraídos directamente de nuevo en tu carpeta de activos para reemplazar los originales."
+          },
+          "threshold": {
+            "title": "Umbral alfa configurable",
+            "content": "Controla exactamente qué píxeles cuentan como vacíos con un umbral alfa de 0 a 255. Déjalo en 0 para recorte estricto que solo elimine píxeles completamente transparentes, o auméntalo para eliminar fantasmas de anti-aliasing, sombras débiles, y artefactos de compresión que consideres relleno en lugar de contenido."
+          },
+          "padding": {
+            "title": "Preservación de espaciado opcional",
+            "content": "Añade un borde de píxeles configurable de espaciado transparente alrededor del contenido recortado. Esto es útil cuando planeas atlas-empaquetar el sprite más tarde, o cuando quieres un pequeño margen de seguridad contra artefactos de filtrado bilineal en un motor de juegos. Un espaciado de 1-2 píxeles es típico para la mayoría de los pipelines de renderizado."
+          },
+          "transparency": {
+            "title": "Preservación de alfa completa",
+            "content": "Cada nivel alfa en tu PNG de origen se preserva exactamente en la salida. La operación de recorte solo elimina píxeles de margen vacío — nunca re-muestrea, re-comprime, o altera el contenido visible de tu sprite. Bordes semi-transparentes, sombras suaves, y superposiciones parcialmente transparentes se presentan intactas."
+          },
+          "fast": {
+            "title": "Sin registro, procesamiento rápido",
+            "content": "Sin registro, sin creación de cuenta, sin seguimiento. Abre la página, carga PNGs, descarga resultados. El recorte es algorítmicamente simple — el servidor encuentra la caja delimitadora y recorta — así que incluso lotes grandes terminan en segundos."
+          },
+          "privacy": {
+            "title": "Privacidad primero",
+            "content": "Tus archivos PNG se procesan en el servidor y se descartan inmediatamente después de devolver la respuesta. Nada se almacena, se registra o se retiene. No se requiere cuenta, y no se usan cookies para seguimiento de tus cargas."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "gameSprites": {
+            "title": "Preparación de sprites de juegos para empaquetamiento",
+            "content": "Exporta tus sprites de personaje y prop desde Aseprite, Photoshop, o Spine con sus artboards completos intactos, luego ejecuta esta herramienta para recortar cada archivo a su tamaño de contenido verdadero. Los sprites recortados se emaquetan en atlas dramáticamente más pequeños — los algoritmos de empaquetamiento de contenedores solo minimizan el espacio cuando cada entrada ya es apretada, así que eliminar bordes transparentes primero puede cortar el tamaño de tu atlas final a la mitad o más."
+          },
+          "uiIcons": {
+            "title": "Limpieza de exportaciones de iconos de UI",
+            "content": "Las aplicaciones de diseño a menudo exportan iconos a tamaños de lienzo fijos (256×256, 512×512) independientemente de las dimensiones de icono reales. Ejecuta tus exportaciones de icono a través de la herramienta de recorte para obtener activos crujientes y de tamaño correcto donde el icono llena el PNG. Los sistemas de UI impulsados por caja delimitadora entonces tamaño y posicionarán iconos correctamente sin necesidad de desplazamientos de espaciado manual en código."
+          },
+          "animationFrames": {
+            "title": "Recorte de lotes de fotogramas de animación",
+            "content": "Suelta en una carpeta completa de fotogramas de animación exportados desde tu herramienta de animación — un ciclo de caminata, una secuencia de explosión, un efecto de hechizo — y obtén un ZIP de todos los fotogramas recortados en un paso. Este es el paso necesario primero antes de montar fotogramas en un spritesheet con el diseño empaquetado, porque los diseños empaquetados dependen de cajas delimitadoras apretadas para empaquetamiento eficiente."
+          },
+          "atlasReduction": {
+            "title": "Reducción del tamaño del atlas de sprites",
+            "content": "Si tus atlas de sprites existentes son más grandes de lo que deberían ser, recortar los PNGs de origen individual antes de re-empaquetar a menudo revela ahorros significativos. Los proyectos que recortan agresivamente antes de atlasing rutinariamente ven atlas de texturas 40-60% más pequeños, que se traduce directamente a cargas de activos más rápidas y menor uso de VRAM — especialmente valioso para compilaciones móviles y web."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "threshold": {
+            "q": "¿Qué umbral alfa debería usar?",
+            "a": "Comienza con el predeterminado de 0, que solo recorta píxeles completamente transparentes y es seguro para cada PNG limpio. Si tus archivos de origen tienen fantasmas de anti-aliasing débiles, píxeles de ruido casi invisibles, o efectos de desvanecimiento suave en los bordes que quieres removidos, intenta un umbral entre 10 y 30. Cualquier cosa por encima de 100 comenzará a recortar contenido semi-transparente visible, así que auméntalo cuidadosamente y vista previa el resultado."
+          },
+          "padding": {
+            "q": "¿Necesito espaciado?",
+            "a": "No usualmente. Deja el espaciado en 0 para la mayoría de flujos de trabajo para obtener la caja delimitadora más apretada. Añade 1-2 píxeles de espaciado si planeas empaquetar el PNG recortado en un spritesheet, o si tu motor de juegos usa filtrado de textura bilineal y quieres evitar artefactos de sangrado de borde. Más de 2 píxeles de espaciado derrota mucho del beneficio de ahorro de espacio del recorte."
+          },
+          "singleVsBatch": {
+            "q": "¿Cuál es la diferencia entre salida única y por lotes?",
+            "a": "Si cargas un único PNG, obtienes de vuelta un PNG recortado único que puedes vista previa y descargar. Si cargas dos o más PNGs, obtienes de vuelta un ZIP que contiene cada archivo recortado con los nombres de archivo originales preservados. No hay configuración para cambiar entre los dos — se determina automáticamente por el número de archivos que cargas."
+          },
+          "compatibility": {
+            "q": "¿Funciona el PNG recortado en motores de juegos y herramientas de diseño?",
+            "a": "Sí. La salida es un PNG estándar con canal alfa preservado, legible por cualquier motor, aplicación de diseño, o navegador que maneje archivos PNG — que es esencialmente todo. El recorte solo recorta el lienzo; no cambia el perfil de color, la profundidad de bits, o el formato de compresión del PNG."
+          },
+          "maxFiles": {
+            "q": "¿Cuántos PNGs puedo recortar a la vez?",
+            "a": "Hasta 100 archivos PNG por lote, con cada archivo hasta 5 MB y un total combinado de 60 MB. Estos límites son generosos para prácticamente cualquier secuencia de animación o conjunto de iconos que recortarías en lote en un paso."
+          },
+          "transparency": {
+            "q": "¿Afecta el recorte la transparencia o la calidad de imagen?",
+            "a": "No. La operación de recorte es puramente un recorte — elimina filas y columnas vacías de píxeles de los márgenes del PNG sin re-muestrear, re-comprimir, o alterar ningún píxel de contenido. Píxeles semi-transparentes, bordes suaves, y valores alfa parciales se preservan byte por byte en la salida."
+          },
+          "privacy": {
+            "q": "¿Se almacenan mis archivos en el servidor?",
+            "a": "No. Tus cargas PNG se procesan en memoria y se descartan inmediatamente después de devolver el resultado recortado. No se requiere cuenta, no se mantienen registros de los contenidos de tu archivo, y no se usan cookies para seguimiento de tus cargas. El recorte sucede, el resultado se devuelve, y cada rastro de tu carga se ha ido."
           }
         }
       }
