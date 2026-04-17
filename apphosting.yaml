@@ -25,6 +25,8 @@ runConfig:
 env:
   - variable: NUXT_GIF_SERVICE_URL
     secret: NUXT_GIF_SERVICE_URL
+  - variable: NUXT_PNG2SS_SERVICE_URL
+    secret: NUXT_PNG2SS_SERVICE_URL
   - variable: NUXT_INTERNAL_KEY
     secret: NUXT_INTERNAL_KEY
   # 廣告供應商覆寫：'adsense' | 'monetag' | 'none'

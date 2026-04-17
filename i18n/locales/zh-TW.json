@@ -140,7 +140,9 @@
   "relatedTools": {
     "label": "相關工具",
     "gifToSprite": "GIF → Spritesheet",
-    "toGif": "PNG → GIF"
+    "toGif": "PNG → GIF",
+    "pngToSpritesheet": "PNG → Spritesheet",
+    "pngTrim": "PNG 裁切"
   },
   "home": {
     "title": "免費線上開發工具",
@@ -152,6 +154,14 @@
       "toGif": {
         "title": "PNG 轉 GIF",
         "description": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫。"
+      },
+      "pngToSpritesheet": {
+        "title": "PNG 轉 Spritesheet",
+        "description": "將多張 PNG 合併為單一 Spritesheet，支援網格、條狀、bin-packed 等佈局。"
+      },
+      "pngTrim": {
+        "title": "PNG 裁切",
+        "description": "裁除 PNG 圖片的透明邊緣 —— 支援單檔或批次處理。"
       }
     }
   },
@@ -595,6 +605,152 @@
             "q": "有提供 API 嗎？",
             "a": "有。本工具由 RapidAPI 上的 Easy GIF2Sprite API 驅動，提供兩個端點：/from-frames 用於將多張 PNG 組裝成 GIF 動畫，/from-spritesheet 用於切割 Spritesheet PNG 並產生 GIF 動畫。兩個端點都支援與網頁工具相同的參數，方便你在建構流程或應用程式中自動化轉換。"
           }
+        }
+      }
+    }
+  },
+  "pngToSpritesheet": {
+    "title": "免費線上 PNG 轉 Spritesheet 工具",
+    "subtitle": "將多張 PNG 合併為單一 Spritesheet —— 免費、線上、無需註冊。",
+    "upload": {
+      "title": "拖放 PNG 檔案至此，或點擊選擇",
+      "limit": "最多 100 張，單檔 5MB，總計 60MB",
+      "accept": "僅接受 .png 檔案",
+      "changeFiles": "點擊新增或替換檔案"
+    },
+    "convert": "Convert!",
+    "options": {
+      "title": "佈局與選項",
+      "layout": "佈局方式",
+      "layoutHint": "幀如何排列於 Spritesheet。",
+      "layoutGrid": "網格",
+      "layoutHorizontal": "水平條狀",
+      "layoutVertical": "垂直條狀",
+      "layoutPacked": "Packed 裝箱（需要 JSON）",
+      "columns": "欄數",
+      "columnsHint": "網格佈局的欄數。留空則自動（ceil(sqrt(N))）。",
+      "cellMode": "格子尺寸模式",
+      "cellModeHint": "格子尺寸如何決定。",
+      "cellModeAutoMax": "自動最大（以最大幀尺寸為準）",
+      "cellModeAutoUniform": "自動統一（所有幀尺寸必須相同）",
+      "cellModeFixed": "固定尺寸",
+      "cellWidth": "格寬 (px)",
+      "cellHeight": "格高 (px)",
+      "fitMode": "縮放模式",
+      "fitModeHint": "圖片大於格子時的處理方式（僅固定尺寸模式）。",
+      "fitModeScaleFit": "縮放以適應（留白）",
+      "fitModeScaleFill": "縮放以填滿（裁切）",
+      "fitModeError": "回傳錯誤",
+      "align": "對齊方式",
+      "alignHint": "圖片小於格子時的對齊。",
+      "alignCenter": "置中",
+      "alignTopLeft": "左上",
+      "padding": "間距 (px)",
+      "paddingHint": "幀之間的像素間距。",
+      "bgColor": "背景色",
+      "bgColorHint": "透明或 Hex 色碼。",
+      "bgColorTransparent": "透明",
+      "bgColorCustom": "自訂顏色",
+      "powerOf2": "2 的次方",
+      "powerOf2Hint": "將輸出尺寸填充至 2 的次方（例如 300 → 512），適合 GPU 材質。",
+      "fileNameOrder": "依檔名排序",
+      "fileNameOrderHint": "依照檔名中的 _N 數字後綴排序，而非上傳順序。",
+      "metadataFormat": "包含 JSON 元數據",
+      "metadataFormatHint": "輸出 ZIP，內含 PNG 與相容 TexturePacker 的 JSON 檔案。Packed 佈局必選。"
+    },
+    "status": {
+      "uploading": "上傳中...",
+      "converting": "產生 Spritesheet 中...",
+      "error": "轉換失敗",
+      "retry": "重試"
+    },
+    "result": {
+      "title": "Spritesheet 預覽",
+      "info": "{width} × {height} px・{size}",
+      "download": "下載 Spritesheet",
+      "downloadZip": "下載 ZIP（PNG + JSON）",
+      "reset": "轉換另一組"
+    },
+    "adModal": {
+      "title": "🥺 請支持我們 🌸",
+      "description": "閱讀一篇文章以取得 3 次轉換。感謝你支持這個免費工具！",
+      "remaining": "剩餘 {count} 次免費轉換",
+      "watch": "確認",
+      "close": "關閉"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 PNG 轉 Spritesheet API",
+        "content": "透過 Easy PNG to Sprites API 將 Spritesheet 生成功能整合到你的應用程式中。",
+        "content2": "上傳 PNG 檔案，即可透過簡單的 HTTP 請求取得可直接使用的 Spritesheet，還可選擇輸出相容 TexturePacker 的 JSON 元數據。",
+        "cta": "在 RapidAPI 上查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /to-spritesheet：多張 PNG → Spritesheet PNG 或 ZIP",
+          "input": "每次請求最多上傳 100 張 PNG",
+          "params": "網格、水平、垂直、Packed 裝箱等多種佈局",
+          "limit": "單檔 5MB，總計 60MB",
+          "formats": "PNG 輸入；PNG 或 ZIP（含 JSON）輸出",
+          "response": "相容 Phaser 3、PixiJS、Unity、Godot"
+        }
+      }
+    }
+  },
+  "pngTrim": {
+    "title": "免費線上 PNG 裁切工具 —— 去除透明邊緣",
+    "subtitle": "移除 PNG 圖片的透明邊緣，支援單檔或批次 —— 免費、線上、無需註冊。",
+    "upload": {
+      "title": "拖放 PNG 檔案至此，或點擊選擇",
+      "limit": "最多 100 張，單檔 5MB，總計 60MB",
+      "accept": "僅接受 .png 檔案",
+      "changeFiles": "點擊新增或替換檔案"
+    },
+    "convert": "裁切!",
+    "options": {
+      "title": "裁切選項",
+      "threshold": "Alpha 門檻",
+      "thresholdHint": "Alpha ≤ 門檻值的像素會被視為空白並裁掉。0 只裁完全透明的像素；較高的值也會裁掉半透明像素。",
+      "padding": "邊距 (px)",
+      "paddingHint": "在裁切後的內容周圍保留的透明邊距像素數。"
+    },
+    "status": {
+      "uploading": "上傳中...",
+      "converting": "裁切中...",
+      "error": "裁切失敗",
+      "retry": "重試"
+    },
+    "result": {
+      "singleTitle": "裁切結果預覽",
+      "batchTitle": "已裁切的檔案",
+      "singleInfo": "{width} × {height} px・{size}",
+      "batchInfo": "已裁切 {count} 個檔案・{size}",
+      "download": "下載 PNG",
+      "downloadZip": "下載 ZIP",
+      "reset": "裁切另一組"
+    },
+    "adModal": {
+      "title": "🥺 請支持我們 🌸",
+      "description": "閱讀一篇文章以取得 3 次轉換。感謝你支持這個免費工具！",
+      "remaining": "剩餘 {count} 次免費轉換",
+      "watch": "確認",
+      "close": "關閉"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 PNG 裁切 API",
+        "content": "透過 Easy PNG to Sprites API 將自動裁切 PNG 的功能整合到你的應用程式中。",
+        "content2": "上傳一張或多張 PNG 即可自動移除透明邊緣，非常適合用於準備遊戲精靈和 UI 素材。",
+        "cta": "在 RapidAPI 上查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /trim：單檔 PNG 或批次 ZIP 輸出",
+          "input": "每次請求最多上傳 100 張 PNG",
+          "params": "可控制 Alpha 門檻和邊距",
+          "limit": "單檔 5MB，總計 60MB",
+          "formats": "PNG 輸入；PNG（單檔）或 ZIP（批次）輸出",
+          "response": "Cloud Run 自動擴展，回應速度快"
         }
       }
     }

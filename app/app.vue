@@ -178,6 +178,18 @@ const localeItems = computed(() =>
         <p class="text-sm text-muted w-full text-center">
           {{ t('footer.copyright', { year: new Date().getFullYear() }) }}
         </p>
+        <!-- Language quick links for crawlers (native <a>, no JS needed) -->
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-muted pt-2">
+          <a
+            v-for="loc in (locales as Array<{ code: string, name: string }>)"
+            :key="loc.code"
+            :href="switchLocalePath(loc.code as 'en' | 'zh-TW' | 'zh-CN' | 'ja' | 'ko' | 'de' | 'es' | 'pt' | 'ru')"
+            :hreflang="loc.code"
+            class="hover:text-primary"
+          >
+            {{ loc.name }}
+          </a>
+        </div>
       </div>
     </UFooter>
 

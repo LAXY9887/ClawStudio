@@ -12,6 +12,16 @@ const tools = [
     key: 'toGif',
     icon: 'i-lucide-film',
     to: '/tools/png-to-gif'
+  },
+  {
+    key: 'pngToSpritesheet',
+    icon: 'i-lucide-layout-grid',
+    to: '/tools/png-to-spritesheet'
+  },
+  {
+    key: 'pngTrim',
+    icon: 'i-lucide-scissors',
+    to: '/tools/png-trim'
   }
 ]
 </script>

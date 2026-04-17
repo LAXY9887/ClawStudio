@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     gifServiceUrl: '',
+    png2ssServiceUrl: '',
     internalKey: '',
     public: {
       // 'adsense' | 'monetag' | 'none'

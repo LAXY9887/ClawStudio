@@ -140,7 +140,9 @@
   "relatedTools": {
     "label": "Related Tools",
     "gifToSprite": "GIF → Spritesheet",
-    "toGif": "PNG → GIF"
+    "toGif": "PNG → GIF",
+    "pngToSpritesheet": "PNG → Spritesheet",
+    "pngTrim": "PNG Trim"
   },
   "home": {
     "title": "Free Online Dev Tools",
@@ -152,6 +154,14 @@
       "toGif": {
         "title": "PNG to GIF",
         "description": "Convert PNG frames or a spritesheet into an animated GIF."
+      },
+      "pngToSpritesheet": {
+        "title": "PNG to Spritesheet",
+        "description": "Merge multiple PNG files into a single spritesheet with grid, strip, or bin-packed layouts."
+      },
+      "pngTrim": {
+        "title": "PNG Trim",
+        "description": "Crop transparent edges from PNG images — single or batch."
       }
     }
   },
@@ -595,6 +605,152 @@
             "q": "Is there an API available?",
             "a": "Yes. This tool is powered by the Easy GIF2Sprite API available on RapidAPI. The API offers two endpoints: /from-frames for assembling multiple PNG files into an animated GIF, and /from-spritesheet for slicing a spritesheet PNG into frames and producing an animated GIF. Both endpoints support the same parameters available in the web tool, making it straightforward to automate conversions in your build pipeline or application."
           }
+        }
+      }
+    }
+  },
+  "pngToSpritesheet": {
+    "title": "Free Online PNG to Spritesheet Generator",
+    "subtitle": "Merge multiple PNG files into a single spritesheet — free, online, no registration.",
+    "upload": {
+      "title": "Drop your PNG frames here or click to select",
+      "limit": "Max 100 files, 5MB each, 60MB total",
+      "accept": "Only .png files are accepted",
+      "changeFiles": "Click to add or replace files"
+    },
+    "convert": "Convert!",
+    "options": {
+      "title": "Layout & Options",
+      "layout": "Layout",
+      "layoutHint": "How frames are arranged on the spritesheet.",
+      "layoutGrid": "Grid",
+      "layoutHorizontal": "Horizontal strip",
+      "layoutVertical": "Vertical strip",
+      "layoutPacked": "Packed (bin-packed, requires JSON)",
+      "columns": "Columns",
+      "columnsHint": "Number of columns in grid layout. Leave empty for auto (ceil(sqrt(N))).",
+      "cellMode": "Cell Size Mode",
+      "cellModeHint": "How cell size is determined.",
+      "cellModeAutoMax": "Auto max (use largest frame dimensions)",
+      "cellModeAutoUniform": "Auto uniform (all frames must be same size)",
+      "cellModeFixed": "Fixed size",
+      "cellWidth": "Cell Width (px)",
+      "cellHeight": "Cell Height (px)",
+      "fitMode": "Fit Mode",
+      "fitModeHint": "How to handle images larger than the cell (fixed mode only).",
+      "fitModeScaleFit": "Scale to fit (letterbox)",
+      "fitModeScaleFill": "Scale to fill (crop)",
+      "fitModeError": "Return error",
+      "align": "Alignment",
+      "alignHint": "Alignment when image is smaller than the cell.",
+      "alignCenter": "Center",
+      "alignTopLeft": "Top-left",
+      "padding": "Padding (px)",
+      "paddingHint": "Pixel gap between frames.",
+      "bgColor": "Background Color",
+      "bgColorHint": "Transparent or a hex color.",
+      "bgColorTransparent": "Transparent",
+      "bgColorCustom": "Custom color",
+      "powerOf2": "Power of 2",
+      "powerOf2Hint": "Pad output dimensions to the next power of 2 (e.g. 300 → 512). Useful for GPU textures.",
+      "fileNameOrder": "Sort by Filename",
+      "fileNameOrderHint": "Sort frames by the _N numeric suffix in filenames instead of upload order.",
+      "metadataFormat": "Include JSON Metadata",
+      "metadataFormatHint": "Output a ZIP containing the PNG plus a TexturePacker-compatible JSON file. Required for packed layout."
+    },
+    "status": {
+      "uploading": "Uploading...",
+      "converting": "Generating spritesheet...",
+      "error": "Conversion failed",
+      "retry": "Try Again"
+    },
+    "result": {
+      "title": "Spritesheet Preview",
+      "info": "{width} × {height} px • {size}",
+      "download": "Download Spritesheet",
+      "downloadZip": "Download ZIP (PNG + JSON)",
+      "reset": "Convert Another"
+    },
+    "adModal": {
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!",
+      "remaining": "{count} free conversion remaining | {count} free conversions remaining",
+      "watch": "Confirm",
+      "close": "Close"
+    },
+    "seo": {
+      "api": {
+        "title": "Use the PNG to Spritesheet API",
+        "content": "Integrate spritesheet generation into your applications with the Easy PNG to Sprites API.",
+        "content2": "Upload PNG frames via a simple HTTP request and receive a ready-to-use spritesheet with optional TexturePacker-compatible JSON.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": {
+          "title": "API Highlights",
+          "endpoints": "POST /to-spritesheet: multiple PNGs → spritesheet PNG or ZIP",
+          "input": "Upload up to 100 PNG files per request",
+          "params": "Grid, horizontal, vertical, or bin-packed layouts",
+          "limit": "5MB per file, 60MB total",
+          "formats": "PNG input; PNG or ZIP (with JSON) output",
+          "response": "Compatible with Phaser 3, PixiJS, Unity, Godot"
+        }
+      }
+    }
+  },
+  "pngTrim": {
+    "title": "Free Online PNG Trim — Crop Transparent Edges",
+    "subtitle": "Remove transparent borders from PNG images, single or batch — free, online, no registration.",
+    "upload": {
+      "title": "Drop your PNG files here or click to select",
+      "limit": "Max 100 files, 5MB each, 60MB total",
+      "accept": "Only .png files are accepted",
+      "changeFiles": "Click to add or replace files"
+    },
+    "convert": "Trim!",
+    "options": {
+      "title": "Trim Options",
+      "threshold": "Alpha Threshold",
+      "thresholdHint": "Pixels with alpha ≤ threshold are treated as empty and trimmed. 0 trims only fully transparent pixels; higher values trim semi-transparent pixels too.",
+      "padding": "Padding (px)",
+      "paddingHint": "Pixels of transparent margin to preserve around the trimmed content."
+    },
+    "status": {
+      "uploading": "Uploading...",
+      "converting": "Trimming...",
+      "error": "Trim failed",
+      "retry": "Try Again"
+    },
+    "result": {
+      "singleTitle": "Trimmed PNG Preview",
+      "batchTitle": "Trimmed Files",
+      "singleInfo": "{width} × {height} px • {size}",
+      "batchInfo": "{count} file trimmed • {size} | {count} files trimmed • {size}",
+      "download": "Download PNG",
+      "downloadZip": "Download ZIP",
+      "reset": "Trim Another"
+    },
+    "adModal": {
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!",
+      "remaining": "{count} free conversion remaining | {count} free conversions remaining",
+      "watch": "Confirm",
+      "close": "Close"
+    },
+    "seo": {
+      "api": {
+        "title": "Use the PNG Trim API",
+        "content": "Integrate automatic PNG trimming into your applications with the Easy PNG to Sprites API.",
+        "content2": "Upload one or more PNG files to remove transparent edges automatically, perfect for preparing game sprites and UI assets.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": {
+          "title": "API Highlights",
+          "endpoints": "POST /trim: single PNG or batch ZIP output",
+          "input": "Upload up to 100 PNG files per request",
+          "params": "Alpha threshold and padding control",
+          "limit": "5MB per file, 60MB total",
+          "formats": "PNG input; PNG (single) or ZIP (batch) output",
+          "response": "Fast response with Cloud Run auto-scaling"
         }
       }
     }
