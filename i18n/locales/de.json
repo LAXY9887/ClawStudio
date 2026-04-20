@@ -154,6 +154,16 @@
         "Laden Sie mehrere PNG-Dateien gleichzeitig hoch — alle zugeschnittenen Dateien werden in einem einzelnen ZIP-Archiv mit beibehaltenen Originaldateinamen zurueckgegeben, bereit zum Einfuegen in Ihr Projekt.",
         "Verwenden Sie nach dem Zuschneiden unser **PNG zu Spritesheet**-Tool, um alle bereinigten Frames in einen einzelnen Texturatlas zu packen — in einem Schritt bereit fuer Phaser 3, PixiJS, Unity oder Godot."
       ]
+    },
+    "splitSpritesheet": {
+      "tipsTitle": "Wussten Sie? Tipps zum Spritesheet-Teiler",
+      "tips": [
+        "Verwenden Sie **Spaltenbereich** und **Zeilenbereich**, um nur eine bestimmte Animation aus einem Mehrfachsequenz-Sheet zu extrahieren — zum Beispiel extrahiert Zeilenbereich \"2-3\" nur die Zeilen 2 und 3, ohne den gesamten Atlas zu extrahieren.",
+        "**Leere überspringen** ist standardmässig aktiviert und verwirft automatisch vollständig transparente Zellen — deaktivieren Sie es nur, wenn Ihre Animation absichtlich leere Frames verwendet (z. B. eine Pause in einem Blinzelzyklus).",
+        "**JSON Array-Metadaten** werden von Phaser 3 (`scene.load.atlas`) und PixiJS (`Assets.load`) nativ ohne zusätzliche Einrichtung verstanden — laden Sie den ZIP-Inhalt und jeder Frame ist über seinen Namen ansprechbar.",
+        "Setzen Sie **Zellenabstand** passend zum Abstand zwischen Frames in Ihrem Quell-Spritesheet — viele TexturePacker- oder Aseprite-Exporte enthalten 1–2px Abstände, die vor dem Zuschneiden berücksichtigt werden müssen.",
+        "Müssen Sie die extrahierten Frames bereinigen? Lassen Sie sie durch unser **PNG Zuschneiden**-Tool laufen, um transparente Ränder zu entfernen, und packen Sie sie dann mit **PNG zu Spritesheet** in ein neues Spritesheet um."
+      ]
     }
   },
   "home": {
@@ -174,6 +184,10 @@
       "pngTrim": {
         "title": "PNG Zuschneiden",
         "description": "Transparente Ränder von PNG-Bildern zuschneiden — einzeln oder im Stapel."
+      },
+      "splitSpritesheet": {
+        "title": "Spritesheet-Teiler",
+        "description": "Ein Spritesheet-PNG in einzelne Frames aufteilen oder TexturePacker-kompatibles Atlas-JSON generieren."
       }
     }
   },
@@ -383,7 +397,8 @@
     "gifToSprite": "GIF → Sprite Sheet",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
-    "pngTrim": "PNG Zuschneiden"
+    "pngTrim": "PNG Zuschneiden",
+    "splitSpritesheet": "Spritesheet-Teiler"
   },
   "toGif": {
     "title": "Kostenloser Online PNG-zu-GIF Konverter",
@@ -675,7 +690,15 @@
       "fileNameOrder": "Nach Dateiname sortieren",
       "fileNameOrderHint": "Sortiere Frames nach dem numerischen Suffix _N in Dateinamen statt nach Upload-Reihenfolge.",
       "metadataFormat": "JSON-Metadaten einschließen",
-      "metadataFormatHint": "Ausgabe eine ZIP, die die PNG-Datei und eine TexturePacker-kompatible JSON-Datei enthält. Erforderlich für Bin-Packed-Layout."
+      "metadataFormatHint": "Ausgabe eine ZIP, die die PNG-Datei und eine TexturePacker-kompatible JSON-Datei enthält. Erforderlich für Bin-Packed-Layout.",
+      "trimInput": "Eingabe automatisch zuschneiden",
+      "trimInputHint": "Transparente Ränder jeder Eingabe-PNG vor dem Zusammensetzen entfernen. Nützlich für Assets, die mit zusätzlichem Abstand exportiert wurden.",
+      "extrude": "Extrudieren (px)",
+      "extrudeHint": "Die äusserste Zeile/Spalte der Pixel jedes Frames um N px nach aussen duplizieren. Verhindert Textur-Bleeding bei WebGL-bilinearer Filterung. Kombinieren Sie mit Abstand, um Platz zu reservieren.",
+      "metadataFormatNone": "Keine (nur PNG)",
+      "metadataFormatJsonArray": "JSON Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS-Sprites"
     },
     "status": {
       "uploading": "Wird hochgeladen...",
@@ -1017,6 +1040,224 @@
           "privacy": {
             "q": "Werden meine Dateien auf dem Server gespeichert?",
             "a": "Nein. Ihre PNG-Uploads werden im Speicher verarbeitet und sofort nach der Rückgabe des zugeschnittenen Ergebnisses verworfen. Kein Konto ist erforderlich, keine Logs werden von Ihrem Datei-Inhalt aufbewahrt, und keine Cookies verfolgen Ihre Uploads. Das Zuschneiden geschieht, das Ergebnis wird zurückgegeben, und jede Spur Ihres Uploads ist weg."
+          }
+        }
+      }
+    }
+  },
+  "splitSpritesheet": {
+    "title": "Kostenloses Online-Spritesheet-Splitter — Frames extrahieren & Atlas JSON generieren",
+    "subtitle": "Zerlegen Sie ein Spritesheet-PNG in einzelne Frames, generieren Sie TexturePacker-kompatible Atlas-JSON oder beides — kostenlos, online, keine Registrierung.",
+    "upload": {
+      "title": "Ziehen Sie Ihr Spritesheet-PNG hierher oder klicken Sie zum Auswählen",
+      "limit": "Max. Dateigröße: 20 MB",
+      "accept": "Nur .png-Dateien werden akzeptiert",
+      "changeFile": "Klicken Sie, um eine andere Datei auszuwählen"
+    },
+    "convert": "Splitten!",
+    "slicingMode": {
+      "title": "Schneidmodus",
+      "grid": "Raster (Spalten × Zeilen)",
+      "cell": "Zelle (Pixel-Abmessungen)"
+    },
+    "options": {
+      "title": "Optionen",
+      "columns": "Spalten",
+      "rows": "Zeilen",
+      "cellWidth": "Zellenbreite (px)",
+      "cellHeight": "Zellenhoehe (px)",
+      "padding": "Zellen-Abstand (px)",
+      "paddingHint": "Pixelabstand zwischen Zellen im Quell-Spritesheet. Stellen Sie dies ein, wenn Ihr Sheet mit Raendern zwischen Frames exportiert wurde.",
+      "trimTitle": "Raender zuschneiden (px)",
+      "trimHint": "Schneiden Sie zusaetzliche Bereiche rund um das Spritesheet vor dem Schneiden zu. Verwenden Sie dies, wenn das Sheet Aussenraender oder Leerraum hat, die nicht Teil des Frame-Rasters sind.",
+      "trimTop": "Oben",
+      "trimRight": "Rechts",
+      "trimBottom": "Unten",
+      "trimLeft": "Links",
+      "frameCount": "Frame-Anzahl",
+      "frameCountHint": "Begrenzen Sie die Ausgabe auf die ersten N Frames nach Bereichsfilterung. Leer lassen fuer alle Frames.",
+      "columnRange": "Spaltenbereich",
+      "columnRangeHint": "0-indizierte Spalten zum Extrahieren, z.B. '0-5' oder '2'. Leer lassen fuer alle Spalten.",
+      "rowRange": "Zeilenbereich",
+      "rowRangeHint": "0-indizierte Zeilen zum Extrahieren, z.B. '0' oder '1-3'. Leer lassen fuer alle Zeilen.",
+      "skipEmpty": "Leere Frames ueberspringen",
+      "skipEmptyHint": "Entfernen Sie vollstaendig transparente Zellen aus der Ausgabe. Sinnvoll, wenn die letzte Zeile eines Spritesheets unvollstaendig ist.",
+      "output": "Ausgabe",
+      "outputFrames": "Frames (ZIP von PNGs)",
+      "outputMetadata": "Nur Atlas-Metadaten",
+      "outputBoth": "Frames + Metadaten (ZIP)",
+      "metadataFormat": "Metadatenformat",
+      "metadataFormatJsonArray": "JSON-Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON-Hash",
+      "metadataFormatCss": "CSS Sprites"
+    },
+    "status": {
+      "uploading": "Wird hochgeladen...",
+      "converting": "Wird geteilt...",
+      "error": "Split fehlgeschlagen",
+      "retry": "Erneut versuchen"
+    },
+    "result": {
+      "framesTitle": "Frames bereit",
+      "metadataTitle": "Atlas-Metadaten bereit",
+      "bothTitle": "Frames & Metadaten bereit",
+      "info": "{size}",
+      "download": "Herunterladen",
+      "reset": "Anderes splitten"
+    },
+    "adModal": {
+      "title": "Bitte unterstuetzen Sie uns.",
+      "description": "Entsperren Sie 3 weitere Splits durch das Lesen unserer Artikel. Danke, dass Sie dieses kostenlose Tool unterstuetzen!",
+      "remaining": "{count} kostenloser Split verbleibend | {count} kostenlose Splits verbleibend",
+      "watch": "Bestaetigen",
+      "close": "Schliessen"
+    },
+    "seo": {
+      "api": {
+        "title": "Verwenden Sie die Spritesheet-Splitter-API",
+        "content": "Integrieren Sie das Splitten von Spritesheets in Ihre Anwendungen mit der Easy PNG to Sprites API. Laden Sie ein Spritesheet-PNG hoch und erhalten Sie einzelne Frames, TexturePacker-kompatible JSON, CSS-Sprite-Definitionen oder all dies — in einer einzigen HTTP-Anfrage.",
+        "content2": "Der Endpunkt /split-spritesheet unterstuetzt Grid- und Cell-Schneidmodi, Zeilen- und Spaltenbereichsfilterung, Raender zuschneiden, Skip-Empty-Erkennung und drei Metadatenformate. Er wurde fuer Game-Asset-Pipelines, CI/CD-Atlas-Generierung und jeden Workflow entwickelt, der programmgesteuert Daten aus einem Spritesheet extrahieren muss.",
+        "cta": "API auf RapidAPI anzeigen",
+        "tutorial": "Lesen Sie das vollstaendige Tutorial",
+        "features": {
+          "title": "API-Hoehepunkte",
+          "endpoints": "POST /split-spritesheet: ein Spritesheet-PNG → Frames, Atlas-JSON, CSS oder ZIP",
+          "input": "Laden Sie ein einzelnes PNG bis zu 20 MB hoch",
+          "params": "Grid- oder Cell-Schneiden, Bereichsfilterung, Skip-Empty, Raender zuschneiden, drei Metadatenformate",
+          "limit": "20 MB Eingabe; Ausgabegroesse haengt von Frame-Anzahl und Abmessungen ab",
+          "formats": "PNG-Eingabe; ZIP (Frames), JSON (Array oder Hash) oder CSS-Ausgabe",
+          "response": "Schnelle Antwort mit Cloud Run Auto-Scaling"
+        }
+      },
+      "whatIs": {
+        "title": "Was ist Spritesheet-Splitting?",
+        "content": "Spritesheet-Splitting (auch Atlas-Extraktion oder Spritesheet-Slicing genannt) ist das Gegenteil von Spritesheet-Generierung: Anstatt einzelne PNG-Frames zu einem einzigen Texture-Atlas zusammenzufuehren, wird ein vorhandenes Spritesheet wieder in seine Bestandteile aufgeteilt. Das Tool liest ein gitterbasiertes PNG, extrahiert jede Zelle als separaten Frame und generiert optional eine TexturePacker-kompatible JSON- oder CSS-Metadatendatei, die Frame-Namen ihren Pixelkoordinaten auf dem Original-Sheet zuordnet.",
+        "content2": "Spritesheet-Splitting ist ein haeufiger Schritt in Game-Development-Pipelines, wenn Sie vorgefertigte Atlas-Assets erhalten — gekauft aus einem Asset-Store, aus einer Game-Engine exportiert oder von einem Designer bereitgestellt — und mit einzelnen Frames arbeiten muessen. Anstatt jede Zelle manuell in Photoshop oder Aseprite zuzuschneiden, liest ein Splitter die Rasterdimensionen und produziert in Sekunden einen sauberen, numerierten Satz von PNG-Dateien. Derselbe Vorgang kann Atlas-Metadaten produzieren, mit denen Sie das Original-Spritesheet direkt in Phaser 3, PixiJS, Unity oder Godot laden koennen, ohne etwas neu zusammenzusetzen.",
+        "content3": "Dieses Tool ist ein Begleiter zu unserem PNG-to-Spritesheet-Generator. Verwenden Sie den Packer, wenn Sie lose Frames haben und diese kombinieren muessen; verwenden Sie den Splitter, wenn Sie einen Atlas haben und dessen Inhalte extrahieren oder dokumentieren muessen. Beide Tools teilen sich dieselbe Easy PNG to Sprites API, die eine der beiden Richtungen des Spritesheet-Authoring-Workflows in einem einzigen Service antreibt."
+      },
+      "outputs": {
+        "title": "Drei Ausgabemodi: Frames, Metadaten oder beide",
+        "content": "Der Frames-Modus extrahiert jede Zelle des Spritesheets als einzelne PNG-Datei, verpackt sie in einem ZIP-Archiv mit Null-gefuellten sequenziellen Dateinamen (frame_0.png, frame_1.png, ...) und gibt dieses Archiv zum Herunterladen zurueck. Dies ist der Modus zum Verwenden, wenn Sie die Quellbilder selbst benoetigen — um bestimmte Frames zu bearbeiten, eine Animation neu zu planen oder die Frames mit einem anderen Layout mit dem PNG-to-Spritesheet-Tool neu zu verpacken.",
+        "content2": "Der Modus nur Metadaten ueberspringt die Pixelextraktion vollstaendig. Er liest die Gitterkoordinaten jeder Zelle und produziert eine maschinenlesbare Atlas-Beschreibung — JSON-Array, JSON-Hash oder CSS-Sprites — die genau beschreibt, wo jeder Frame auf dem Spritesheet sitzt. Dieser Modus ist ideal, wenn Sie das Spritesheet-PNG bereits in Ihrem Projekt haben und nur die Koordinatendatei benoetigen, um es in einer Engine zu laden. Es werden keine Bilddaten extrahiert, was schnellere Verarbeitung und einen kleineren Download bedeutet.",
+        "content3": "Der Modus Beide produziert ein einzelnes ZIP mit allen extrahierten Frame-PNGs plus der Atlas-Metadatendatei. Dies ist die vollstaendigste Ausgabe: Sie erhalten die Spritesheet-Daten in einem Engine-bereiten Format neben den einzelnen Frames, die Sie moeglicherweise zur weiteren Bearbeitung benoetigen. Verwenden Sie diesen Modus, wenn Sie auf ein unbekanntes Spritesheet zum ersten Mal treffen und vor der Integration ein vollstaendiges Bild seiner Struktur wuenschen."
+      },
+      "metadataFormats": {
+        "title": "Waehlen eines Metadatenformats",
+        "content": "JSON-Array ist das Standardformat und das mit der breitesten Engine-Unterstuetzung. Es folgt dem TexturePacker JSON-Array-Schema — dem de-facto-Standard im 2D-Game-Oekosystem — wobei jeder Frame durch einen Dateinamen, ein Frame-Rechteck und Quellgroeße-Felder beschrieben wird. Phaser 3 laeuft dieses Format nativ mit scene.load.atlas(), und PixiJS akzeptiert es ueber Assets.load(). Jeder extrahierte Frame ist durch seinen generierten Dateinamen (frame_0.png, frame_1.png, ...) adressierbar, daher bleibt der Engine-Code sauber, ohne Pixelkoordinaten hartcodiert zu haben.",
+        "content2": "JSON-Hash verwendet das gleiche TexturePacker-Schema, strukturiert aber das Frames-Feld als Objekt mit Dateinamen als Schluessel statt als Array. Einige Engines und Community-Importer verwenden standardmaessig das Hash-Format — beispielsweise bestimmte Unity TexturePacker Importer-Konfigurationen. Wenn Ihr Lade-Code oder Engine-Plugin explizit ein Hash-gekluengeltes Frames-Objekt erwartet, verwenden Sie diese Option. Andernfalls ist JSON-Array die sicherere Standardeinstellung, da sie breitere First-Party-Unterstuetzung in Phaser 3, PixiJS und den meisten Community-Tools hat.",
+        "content3": "CSS Sprites generiert ein Stylesheet, bei dem jeder Frame zu einer CSS-Klasse mit background-position, width und height-Werten wird, die auf seine Koordinaten auf dem Quell-Spritesheet abzielen. Legen Sie das Spritesheet-PNG und die generierte CSS-Datei in ein Web-Projekt, referenzieren Sie das Sheet als background-image und verwenden Sie die Klassennamen, um einzelne Sprites anzuzeigen. Dies ist die klassische Technik fuer CSS-Sprite-Animationen und Icon-Sheets und ist ideal fuer Web-UI-Projekte, die keine JavaScript-Game-Engine verwenden."
+      },
+      "howTo": {
+        "title": "So spalten Sie ein Spritesheet",
+        "step1": {
+          "title": "1. Laden Sie Ihr Spritesheet hoch",
+          "content": "Ziehen Sie ein einzelnes Spritesheet-PNG in den Upload-Bereich oder klicken Sie, um den Datei-Picker zu oeffnen. Die Datei kann bis zu 20 MB groß sein. Eine Miniaturvorschau wird sofort geladen, damit Sie bestaetigen koennen, dass Sie die richtige Datei haben, bevor Sie die Split-Parameter konfigurieren."
+        },
+        "step2": {
+          "title": "2. Legen Sie Schneidmodus und Raster fest",
+          "content": "Waehlen Sie Raster-Modus, wenn Sie die Anzahl der Spalten und Zeilen in Ihrem Spritesheet kennen — z.B. ein 4-Spalten-x-3-Zeilen-Sheet. Waehlen Sie Zellen-Modus, wenn Sie die Pixel-Abmessungen jedes Frames kennen — z.B. 64x64 Pixel pro Zelle. Wenn das Spritesheet Außenleerraum rund um das Raster hat, verwenden Sie Raender zuschneiden, um es vor dem Schneiden zuzuschneiden. Wenn zwischen Zellen Pixel-Luecken vorhanden sind (Raender), stellen Sie Zellen-Abstand entsprechend ein."
+        },
+        "step3": {
+          "title": "3. Konfigurieren Sie Ausgabe und Filter",
+          "content": "Waehlen Sie einen Ausgabemodus: Frames extrahiert einzelne PNGs in ein ZIP, Metadaten generiert eine Atlas-Beschreibungsdatei ohne Pixelextraktion, und Beide erhalten Sie alles in einem ZIP. Wenn Metadaten ausgewaehlt sind, waehlen Sie das Format: JSON-Array fuer Phaser 3 und PixiJS, JSON-Hash fuer einige Unity-Importer-Plugins und CSS-Sprites fuer Web-Projekte. Verwenden Sie Spaltenbereich und Zeilenbereich, um eine bestimmte Animationssequenz innerhalb des Sheets anzuzielen, und Frame-Anzahl, um die Gesamtzahl der extrahierten Frames zu begrenzen."
+        },
+        "step4": {
+          "title": "4. Laden Sie das Ergebnis herunter",
+          "content": "Klicken Sie auf Split, um das Spritesheet zu verarbeiten. Der Server teilt die PNG auf, wendet Ihre Filter an und gibt das Ergebnis zurueck — typischerweise unter einer Sekunde fuer die meisten Sheets. Laden Sie das ZIP-, JSON- oder CSS-File herunter und legen Sie es in Ihr Projekt. Klicken Sie auf 'Anderes splitten', um den Arbeitsbereich zu leeren und einen neuen Split mit einer neuen Datei zu starten."
+        }
+      },
+      "features": {
+        "title": "Merkmale",
+        "items": {
+          "gridAndCell": {
+            "title": "Grid- und Cell-Schneidmodi",
+            "content": "Zwei Moeglichkeiten zum Definieren des Schnittgitters: Geben Sie Spalten- und Zeilenzahl an, wenn Sie die Layout-Struktur kennen, oder geben Sie die Pixel-Breite und -Hoehe jeder Zelle an, wenn Sie die Frame-Groesse kennen. Der Raster-Modus teilt die Bilddimensionen durch die Spalten- und Zeilenzahl, um die Zellengroesse zu bestimmen. Der Zellen-Modus teilt die Bilddimensionen durch die Zellengroesse, um das Raster-Layout zu bestimmen. Beide Modi produzieren die gleiche Ausgabe fuer ein gegebenes Spritesheet — die Wahl haengt davon ab, welche Informationen Sie haben."
+          },
+          "allOutputModes": {
+            "title": "Alle drei Ausgabemodi",
+            "content": "Extrahieren Sie einzelne PNG-Frames, generieren Sie Atlas-Metadaten, ohne Pixel zu beruehren, oder produzieren Sie beide in einer einzigen Anfrage. Passen Sie die Ausgabe an Ihren Workflow an: nur Frames zum Bearbeiten und Neu-Verpacken, nur Metadaten fuer Engine-Integration, wenn Sie das PNG bereits haben, und beide fuer ein vollstaendiges Bild eines unbekannten Atlas. Der Modus nur Metadaten ist deutlich schneller, weil alle Pixel-Level-Bildverarbeitung uebersprungen wird."
+          },
+          "metadataFormats": {
+            "title": "Drei Atlas-Metadatenformate",
+            "content": "JSON-Array (TexturePacker-Standard, nativ unterstuetzt von Phaser 3 und PixiJS), JSON-Hash (Hash-Variante fuer Importer, die ein Objekt-strukturiertes Frames-Feld erwarten), und CSS-Sprites (einsatzbereit Stylesheet fuer Web-Background-Position-Animationen). Alle drei Formate werden aus demselben Schneidpass generiert — waehlen Sie dasjenige, das Ihre Ziel-Laufzeit oder Engine erwartet, und laden Sie es in derselben Anfrage herunter."
+          },
+          "rangeSelection": {
+            "title": "Teilweise Extraktion mit Bereichsfiltern",
+            "content": "Verwenden Sie Spalten- und Zeilenbereichsfilter (z.B. Spalten '2-5', Zeilen '1-3'), um nur bestimmte Zellen aus einem groesseren Spritesheet zu extrahieren. Dies ist wichtig fuer Spritesheets, die mehrere Animationssequenzen in einer einzigen Textur verpacken — Gehbewegungen, Angriffssequenzen und Leerlauf-Animationen in verschiedenen Zeilen. Zielen Sie genau auf die Sequenz ab, die Sie benoetigen, ohne den gesamten Atlas zu splitten, und kombinieren Sie mit Frame-Anzahl, um die Ausgabe auf eine genaue Anzahl von Frames zu begrenzen."
+          },
+          "trimAndPadding": {
+            "title": "Raender zuschneiden und Zellen-Abstand",
+            "content": "Entfernen Sie Außenkanten vom Spritesheet, bevor Sie mit vier unabhaengigen Schneidausgaben (oben, rechts, unten, links) schneiden, und beruecksichtigen Sie Inter-Zellen-Raender mit Zellen-Abstand. Viele Spritesheets, die aus TexturePacker, Aseprite, Photoshop oder Game-Engines exportiert werden, enthalten Außenleerraum und Inter-Frame-Luecken, die ansonsten das Schnittgitter fehlausrichten wuerden. Das Einstellen dieser Parameter ist die haeufigste Loesung, wenn Frames verschoben oder falsch geschnitten erscheinen."
+          },
+          "skipEmpty": {
+            "title": "Skip Empty Frame-Erkennung",
+            "content": "Wenn aktiviert, scannt das Tool jede extrahierte Zelle auf Pixelinhalt und verwirft vollstaendig transparente. Dies behandelt den haeufigen Fall, bei dem die letzte Zeile eines Spritesheets unvollstaendig ist — z.B. 14 Frames, die in einem 4-Spalten-Raster angeordnet sind, produzieren eine letzte Zeile mit 2 leeren Zellen. Skip Empty entfernt diese leeren Frames automatisch, sodass Ihre Ausgabe nur aussagekraeftige Bilder ohne Platzhalter-Dateien am Ende der Sequenz enthaelt."
+          },
+          "singleFile": {
+            "title": "Bis zu 20 MB Spritesheet-Eingabe",
+            "content": "Akzeptiert eine einzelne PNG-Datei bis zu 20 MB. Dies deckt bequem Produktions-Spritesheets ab, einschließlich hochaufloesender 4096x4096 und 8192x8192 Atlanten, die haeufig fuer Spielzeugen und Tilesets verwendet werden. Die Datei wird serverseitig verarbeitet, daher beeinflussen die verfuegbaren Speicherressourcen Ihres Browsers die Aufteilung nicht."
+          },
+          "privacy": {
+            "title": "Privatsphaere an erster Stelle",
+            "content": "Ihr Spritesheet wird im Speicher auf dem Server verarbeitet und sofort nach Rueckgabe der Antwort verworfen. Keine Registrierung erforderlich, kein perspetueller Speicher, keine Protokollierung von Dateiinhalten oder Pixeldaten. Relevant, wenn die Artwork, die Sie splitten, zu einem unangekuendigten Projekt, einem Client-Asset unter NDA oder einer Closed-Source-Pipeline gehoert."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Anwendungsbeispiele",
+        "items": {
+          "engineIntegration": {
+            "title": "Generierung von Atlas-JSON fuer vorhandene Spritesheets",
+            "content": "Wenn Sie ein Spritesheet-PNG ohne zugehoerige JSON-Datei haben — heruntergeladen aus einem Asset-Store, von einem Designer gesendet oder ohne Metadaten exportiert — verwenden Sie den Modus nur Metadaten, um die Atlas-Beschreibung neu zu generieren. Waehlen Sie JSON-Array fuer Phaser 3 oder PixiJS, JSON-Hash fuer bestimmte Unity-Importer-Plugins oder CSS-Sprites fuer Web-Animationen. Die Ausgabe ist eine einsatzbereit Atlas-Datei, die direkt mit Ihrem vorhandenen PNG gekoppelt werden kann, sodass Sie das Spritesheet sofort in Ihre Engine laden koennen, ohne neu zu verpacken oder neu zu exportieren."
+          },
+          "frameExtraction": {
+            "title": "Extraktion von Frames zur Neubearbeitung",
+            "content": "Wenn ein Game-Asset aktualisiert werden muss, Sie aber nur das letzte Spritesheet haben — nicht die einzelnen Quelldateien — gibt Ihnen die Frame-Extraktion die urspruenglichen Zellen als einzelne PNGs zurueck. Extrahieren Sie die Frames, bearbeiten Sie die benoetigen in Aseprite, Photoshop oder einem beliebigen Pixel-Editor, dann verpacken Sie die aktualisierte Serie mit dem PNG-to-Spritesheet-Tool neu. Dies ist ein haeufiger Recovery-Workflow in Game-Jam-Projekten, Asset-Store-Updates und Team-Handoffs, bei denen die urspruenglichen Quelldateien nicht verfuegbar sind."
+          },
+          "partialExtraction": {
+            "title": "Extrahieren einer Animation aus einem Multi-Sequence-Sheet",
+            "content": "Produktions-Spritesheets verpacken oft mehrere Animationssequenzen in einer einzigen Textur — eine Figuren-Gehbewegung in Zeilen 0-1, Angriff in Zeilen 2-3 und Leerlauf in Zeilen 4-5. Verwenden Sie Zeilen- und Spaltenbereichsfilter, um genau die Sequenz anzuzielen, die Sie benoetigen. Das Ergebnis ist ein sauberer, isolierter Frame-Satz oder Teil-Spritesheet fuer diese spezifische Animation, ohne Sie zu zwingen, den gesamten Atlas zu extrahieren und zu durchsuchen. Kombinieren Sie mit Frame-Anzahl, um Sequenzen zu behandeln, deren letzte Zeile unvollstaendig ist."
+          },
+          "cssAnimations": {
+            "title": "Erstellen von CSS-Sprite-Animationen",
+            "content": "Laden Sie ein Spritesheet hoch, stellen Sie das Metadatenformat auf CSS-Sprites ein und laden Sie ein Stylesheet herunter, in dem jeder Frame eine einsatzbereite CSS-Klasse mit background-position, width und height traegt. Koppeln Sie es mit dem Spritesheet-PNG in Ihrem Web-Projekt, referenzieren Sie das Sheet als Background-Image auf einem div, wenden Sie die Frame-Klassen an und durchlaufen Sie sie mit einer CSS-Keyframe-Animation mit steps(). Keine JavaScript erforderlich — nur ein Background-Image und eine CSS-Animationssequenz. Diese Technik wird haeufig fuer Icon-Sprites, Lade-Indikatoren und leichte Figuren-Animationen im Web verwendet."
+          }
+        }
+      },
+      "faq": {
+        "title": "Haeufig gestellte Fragen",
+        "items": {
+          "gridVsCell": {
+            "q": "Was ist der Unterschied zwischen Grid- und Cell-Modus?",
+            "a": "Der Raster-Modus fragt nach der Anzahl der Spalten und Zeilen, dann berechnet die Zellengroesse, indem die Bilddimensionen durch diese Zaehler geteilt werden. Der Zellen-Modus fragt nach der Pixel-Breite und -Hoehe jeder Zelle, dann berechnet, wie viele Spalten und Zeilen passen. Verwenden Sie Raster-Modus, wenn Sie die Layout-Struktur kennen (z.B. 'das ist ein 4x3-Raster'). Verwenden Sie Zellen-Modus, wenn Sie die Frame-Groesse kennen (z.B. 'jeder Frame ist 64x64 Pixel'). Beide produzieren identische Ausgabe fuer das gleiche Spritesheet — die Wahl haengt davon ab, welche Informationen Sie ueber das Quell-Asset haben."
+          },
+          "rangeFormat": {
+            "q": "Wie formatiere ich Spalten- und Zeilenbereich?",
+            "a": "Bereich sind 0-indiziert. Schreiben Sie eine einzelne Zahl, um eine Spalte oder Zeile zu extrahieren (z.B. '2' extrahiert nur die dritte Spalte), oder ein Bindestrich-getrenntes Paar, um eine Spanne zu extrahieren (z.B. '1-3' extrahiert Spalten 1, 2 und 3). Spaltenbereich und Zeilenbereich filtern unabhaengig — kombinieren Sie sie, um eine rechteckige Region zu extrahieren. Lassen Sie eines dieser Felder leer, um alle Spalten oder alle Zeilen einzubeziehen. Beispiel: Spaltenbereich '0-3' und Zeilenbereich '2' extrahiert einen 4-Spalten-, 1-Zeilen-Streifen aus der dritten Zeile des Sheets."
+          },
+          "skipEmpty": {
+            "q": "Wann sollte ich Skip Empty ausschalten?",
+            "a": "Skip Empty ist standardmaessig aktiviert und behandelt unvollstaendige letzte Zeilen sauber. Schalten Sie es aus, wenn Ihre Animation absichtlich leere Frames enthaelt — z.B. einen Augenzwinker-Zyklus, bei dem ein transparenter Frame eine absichtliche Pause erzeugt, oder einen Flash-Effekt, der eine leere Zelle als Halte-Frame verwendet. Mit Skip Empty deaktiviert wird jede Zelle extrahiert, unabhaengig vom Inhalt, was Ihnen eine Frame-Anzahl gibt, die genau den Raster-Dimensionen entspricht."
+          },
+          "padding": {
+            "q": "Meine Frames sehen verschoben oder ueberlappend aus — was sollte ich ueberpruefen?",
+            "a": "Die haeufigste Ursache sind nicht angewendete Zellen-Abstands- oder Außenrander. Wenn das Quell-Spritesheet Pixel-Luecken zwischen Zellen hat (Raender aus TexturePacker oder Aseprite-Exporten), stellen Sie Zellen-Abstand auf diese Luecke ein. Wenn das Sheet Außenleerraum rund um das Raster hat, verwenden Sie Raender zuschneiden, um es vor dem Schneiden zuzuschneiden. Eine schnelle Ueberprueung: Multiplizieren Sie Ihre erwartete Zellenabmessung mit der Spalten- und Zeilenzahl, addieren Sie Abstand und Raender und vergleichen Sie die Summe mit den tatsaechlichen Bilddimensionen. Jede Abweichung deutet auf nicht konfigurierte Abstands- oder Schneidwerte hin."
+          },
+          "metadataFormat": {
+            "q": "Welches Metadatenformat sollte ich verwenden?",
+            "a": "JSON-Array ist die sichere Standardeinstellung: Sie wird nativ von Phaser 3 (scene.load.atlas) und PixiJS (Assets.load) unterstuetzt und von den meisten Unity-TexturePacker-Importer-Plugins akzeptiert. Verwenden Sie JSON-Hash, wenn Ihr spezifischer Engine-Importer oder Laed-Bibliothek explizit ein Hash-gekluengeltes Frames-Objekt erwartet. Verwenden Sie CSS-Sprites, wenn Sie ein Web-Projekt erstellen, das CSS-Background-Position-Animationen ohne eine JavaScript-Game-Engine verwendet."
+          },
+          "outputFormats": {
+            "q": "Welche Dateitypen gibt das Tool zurueck?",
+            "a": "Der Frames-Modus gibt ein ZIP mit einzelnen PNG-Dateien zurueck. Der Modus nur Metadaten gibt eine eigenstaendige JSON-Datei (fuer JSON-Array oder JSON-Hash) oder eine CSS-Datei (fuer CSS-Sprites) zurueck — kein ZIP-Wrapper fuer diese. Der Modus Beide gibt ein ZIP mit allen Frame-PNGs plus die Metadatendatei zurueck. ZIPs sind einsatzbereit zum Entpacken und Ablegen in Ihrem Projekt. Eigenstaendige JSON- und CSS-Dateien sind einsatzbereit, um neben Ihrem Spritesheet-PNG platziert zu werden."
+          },
+          "maxSize": {
+            "q": "Welche Groesse ist die maximale Spritesheet-Groesse?",
+            "a": "Das Eingabe-Spritesheet-PNG kann bis zu 20 MB groß sein. Es gibt keine harte Grenze fuer Pixel-Abmessungen, aber sehr große Sheets (8192x8192 und darueber) koennen ein paar zusaetzliche Sekunden zum Verarbeiten benoetigen. Die gesamte Verarbeitung erfolgt serverseitig, daher beeinflussen die verfuegbaren Ressourcen oder GPU Ihres Geraetes die Aufteilung nicht."
+          },
+          "privacy": {
+            "q": "Wird mein Spritesheet auf dem Server gespeichert?",
+            "a": "Nein. Das hochgeladene PNG wird nur fuer die Dauer der Verarbeitung im Server-Speicher gespeichert und sofort nach Rueckgabe der Antwort verworfen. Keine Datei wird auf die Festplatte geschrieben, kein Pixelinhalt wird protokolliert und kein Konto ist erforderlich. Relevant, wenn das Spritesheet nicht freigegebenes Artwork, Client-Assets unter NDA oder proprietaeres Spiel-Content enthaelt."
           }
         }
       }

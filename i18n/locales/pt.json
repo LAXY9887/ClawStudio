@@ -154,6 +154,16 @@
         "Envie vários arquivos PNG de uma vez — todos os arquivos recortados são retornados em um único arquivo ZIP com os nomes originais preservados, prontos para adicionar ao seu projeto.",
         "Após recortar, use nossa ferramenta **PNG para Spritesheet** para empacotar todos os frames limpos em um único atlas de texturas — pronto para Phaser 3, PixiJS, Unity ou Godot em um passo."
       ]
+    },
+    "splitSpritesheet": {
+      "tipsTitle": "Você sabia? Dicas do Divisor de Spritesheet",
+      "tips": [
+        "Use **Intervalo de colunas** e **Intervalo de linhas** para extrair apenas uma animação específica de uma folha multi-sequência — por exemplo, Intervalo de linhas \"2-3\" extrai apenas as linhas 2 e 3 sem extrair todo o atlas.",
+        "**Pular vazios** está ativado por padrão e descarta automaticamente células completamente transparentes — desative apenas se sua animação usa deliberadamente frames vazios (por exemplo, uma pausa em um ciclo de piscada).",
+        "Os **metadados JSON Array** são compreendidos nativamente pelo Phaser 3 (`scene.load.atlas`) e PixiJS (`Assets.load`) sem configuração adicional — carregue o conteúdo do ZIP e cada frame é acessível pelo nome.",
+        "Defina o **Espaçamento de células** para corresponder ao intervalo entre frames no seu spritesheet de origem — muitas exportações do TexturePacker ou Aseprite incluem margens de 1–2px que devem ser consideradas antes do fatiamento.",
+        "Precisa limpar os frames extraídos? Passe-os pela nossa ferramenta **Recortar PNG** para cortar bordas transparentes, depois re-empacote em um novo spritesheet com **PNG para Spritesheet**."
+      ]
     }
   },
   "home": {
@@ -174,6 +184,10 @@
       "pngTrim": {
         "title": "Recortar PNG",
         "description": "Recorte as bordas transparentes de imagens PNG — individual ou em lote."
+      },
+      "splitSpritesheet": {
+        "title": "Divisor de Spritesheet",
+        "description": "Divida um spritesheet PNG em frames individuais ou gere JSON de atlas compatível com TexturePacker."
       }
     }
   },
@@ -383,7 +397,8 @@
     "gifToSprite": "GIF → Folha de sprites",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
-    "pngTrim": "Recortar PNG"
+    "pngTrim": "Recortar PNG",
+    "splitSpritesheet": "Divisor de Spritesheet"
   },
   "toGif": {
     "title": "Conversor gratuito online de PNG para GIF",
@@ -675,7 +690,15 @@
       "fileNameOrder": "Ordenar por nome de arquivo",
       "fileNameOrderHint": "Ordena quadros pelo sufixo numérico _N em nomes de arquivo em vez da ordem de envio.",
       "metadataFormat": "Incluir metadados JSON",
-      "metadataFormatHint": "Saída um ZIP contendo o PNG mais um arquivo JSON compatível com TexturePacker. Necessário para layout empacotado."
+      "metadataFormatHint": "Saída um ZIP contendo o PNG mais um arquivo JSON compatível com TexturePacker. Necessário para layout empacotado.",
+      "trimInput": "Recortar entrada automaticamente",
+      "trimInputHint": "Remover bordas transparentes de cada PNG de entrada antes da composição. Útil para recursos exportados com preenchimento adicional.",
+      "extrude": "Extrudar (px)",
+      "extrudeHint": "Duplicar a linha/coluna de pixels mais externa para fora em N px em todos os lados de cada frame. Previne o sangramento de texturas na filtragem bilinear do WebGL. Combine com Espaçamento para reservar espaço.",
+      "metadataFormatNone": "Nenhum (apenas PNG)",
+      "metadataFormatJsonArray": "JSON Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites"
     },
     "status": {
       "uploading": "Enviando...",
@@ -1017,6 +1040,224 @@
           "privacy": {
             "q": "Meus arquivos são armazenados no servidor?",
             "a": "Não. Seus envios PNG são processados na memória e imediatamente descartados após o resultado recortado ser retornado. Nenhuma conta é obrigatória, nenhum log é mantido do conteúdo do arquivo e nenhum cookie rastreia seus envios. O recorte acontece, o resultado é retornado e cada traço de seu envio desaparece."
+          }
+        }
+      }
+    }
+  },
+  "splitSpritesheet": {
+    "title": "Divisor gratuito de spritesheet online — Extrair quadros e gerar JSON de atlas",
+    "subtitle": "Divida um spritesheet PNG em quadros individuais, gere um JSON de atlas compatível com TexturePacker, ou ambos — grátis, online, sem cadastro.",
+    "upload": {
+      "title": "Arraste seu spritesheet PNG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 20 MB",
+      "accept": "Apenas arquivos .png são aceitos",
+      "changeFile": "Clique para escolher um arquivo diferente"
+    },
+    "convert": "Dividir!",
+    "slicingMode": {
+      "title": "Modo de fatiamento",
+      "grid": "Grade (colunas × linhas)",
+      "cell": "Célula (dimensões em pixels)"
+    },
+    "options": {
+      "title": "Opções",
+      "columns": "Colunas",
+      "rows": "Linhas",
+      "cellWidth": "Largura da célula (px)",
+      "cellHeight": "Altura da célula (px)",
+      "padding": "Espaçamento da célula (px)",
+      "paddingHint": "Espaço em pixels entre células no spritesheet original. Defina isso se sua folha foi exportada com canaletas entre quadros.",
+      "trimTitle": "Aparar margens (px)",
+      "trimHint": "Recorte espaço extra ao redor do spritesheet antes de fatiar. Use isto quando a folha tem bordas externas ou espaço em branco que não faz parte da grade de quadros.",
+      "trimTop": "Superior",
+      "trimRight": "Direita",
+      "trimBottom": "Inferior",
+      "trimLeft": "Esquerda",
+      "frameCount": "Contagem de quadros",
+      "frameCountHint": "Truncar saída para os primeiros N quadros após filtragem de intervalo. Deixe em branco para todos os quadros.",
+      "columnRange": "Intervalo de colunas",
+      "columnRangeHint": "Colunas com índice 0 para extrair, por exemplo \"0-5\" ou \"2\". Deixe em branco para todas as colunas.",
+      "rowRange": "Intervalo de linhas",
+      "rowRangeHint": "Linhas com índice 0 para extrair, por exemplo \"0\" ou \"1-3\". Deixe em branco para todas as linhas.",
+      "skipEmpty": "Pular quadros vazios",
+      "skipEmptyHint": "Remove células completamente transparentes da saída. Útil quando a última linha de um spritesheet está incompleta.",
+      "output": "Saída",
+      "outputFrames": "Quadros (ZIP de PNGs)",
+      "outputMetadata": "Apenas metadados de atlas",
+      "outputBoth": "Quadros + metadados (ZIP)",
+      "metadataFormat": "Formato de metadados",
+      "metadataFormatJsonArray": "JSON Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites"
+    },
+    "status": {
+      "uploading": "Enviando...",
+      "converting": "Dividindo...",
+      "error": "Falha na divisão",
+      "retry": "Tente novamente"
+    },
+    "result": {
+      "framesTitle": "Quadros prontos",
+      "metadataTitle": "Metadados de atlas prontos",
+      "bothTitle": "Quadros e metadados prontos",
+      "info": "{size}",
+      "download": "Baixar",
+      "reset": "Dividir outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais divisões lendo nossos artigos. Obrigado pelo apoio nesta ferramenta gratuita!",
+      "remaining": "{count} divisão grátis restante | {count} divisões grátis restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API do divisor de spritesheet",
+        "content": "Integre divisão de spritesheet em suas aplicações com a Easy PNG to Sprites API. Envie um spritesheet PNG e receba quadros individuais, JSON compatível com TexturePacker, definições CSS sprite, ou tudo junto — em uma única solicitação HTTP.",
+        "content2": "O endpoint /split-spritesheet suporta modos de fatiamento em grade e célula, filtragem de intervalo de linha e coluna, aparagem de margens, detecção de pular-vazio e três formatos de metadados. É projetado para pipelines de ativos de jogos, geração de atlas de CI/CD e qualquer fluxo de trabalho que precise extrair dados de um spritesheet programaticamente.",
+        "cta": "Visualizar API no RapidAPI",
+        "tutorial": "Ler o tutorial completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /split-spritesheet: um spritesheet PNG → quadros, JSON de atlas, CSS, ou ZIP",
+          "input": "Envie um único PNG até 20 MB",
+          "params": "Fatiamento em grade ou célula, filtragem de intervalo, pular-vazio, aparagem de margens, três formatos de metadados",
+          "limit": "Entrada de 20 MB; tamanho de saída depende da contagem e dimensões dos quadros",
+          "formats": "Entrada PNG; saída ZIP (quadros), JSON (array ou hash), ou CSS",
+          "response": "Resposta rápida com auto-scaling do Cloud Run"
+        }
+      },
+      "whatIs": {
+        "title": "O que é divisão de spritesheet?",
+        "content": "A divisão de spritesheet (também chamada extração de atlas ou fatiamento de spritesheet) é o inverso da geração de spritesheet: em vez de mesclar quadros PNG individuais em um único atlas de textura, ela fatia um spritesheet existente em suas partes constituintes. A ferramenta lê um PNG baseado em grade, extrai cada célula como um quadro separado e, opcionalmente, gera um arquivo JSON compatível com TexturePacker ou arquivo de metadados CSS que mapeia nomes de quadros para suas coordenadas de pixel na folha original.",
+        "content2": "A divisão de spritesheet é uma etapa comum em pipelines de desenvolvimento de jogos quando você recebe ativos de atlas pré-construídos — comprados de uma loja de ativos, exportados de um motor de jogos ou fornecidos por um designer — e precisa trabalhar com quadros individuais. Em vez de recortar manualmente cada célula no Photoshop ou Aseprite, um divisor lê as dimensões da grade e produz um conjunto limpo e numerado de arquivos PNG em segundos. A mesma operação pode produzir metadados de atlas que permitem carregar o spritesheet original diretamente no Phaser 3, PixiJS, Unity ou Godot sem precisar remontar nada.",
+        "content3": "Esta ferramenta é a companheira do nosso gerador PNG para Spritesheet. Use o empacotador quando você tiver quadros soltos e precisar combiná-los; use o divisor quando tiver um atlas e precisar extrair ou documentar seu conteúdo. Ambas as ferramentas compartilham a mesma Easy PNG to Sprites API, que capacita qualquer direção do fluxo de trabalho de autoria de spritesheet em um único serviço."
+      },
+      "outputs": {
+        "title": "Três modos de saída: quadros, metadados ou ambos",
+        "content": "O modo Quadros extrai cada célula do spritesheet como um arquivo PNG individual, os empacota em um arquivo ZIP com nomes de arquivo sequenciais com zero preenchimento (frame_0.png, frame_1.png, ...) e retorna esse arquivo para download. Este é o modo para usar quando você precisa das imagens originais — para editar quadros específicos, retemporizar uma animação ou re-empacotar os quadros em um layout diferente usando a ferramenta PNG para Spritesheet.",
+        "content2": "O modo metadados apenas ignora completamente a extração de pixels. Ele lê as coordenadas de grade de cada célula e produz uma descrição de atlas legível por máquina — JSON Array, JSON Hash ou CSS Sprites — descrevendo exatamente onde cada quadro fica no spritesheet. Este modo é ideal quando você já tem o PNG do spritesheet em seu projeto e apenas precisa do arquivo de coordenadas para carregá-lo em um motor. Nenhum dado de imagem é extraído, o que significa processamento mais rápido e download menor.",
+        "content3": "O modo Ambos produz um único ZIP contendo todos os PNGs de quadro extraídos mais o arquivo de metadados de atlas. Esta é a saída mais completa: fornece dados de spritesheet em formato pronto para motor junto com os quadros individuais que você pode precisar para edição adicional. Use este modo quando você está encontrando um spritesheet desconhecido pela primeira vez e quer uma visão completa de sua estrutura antes de decidir como integrá-lo."
+      },
+      "metadataFormats": {
+        "title": "Escolhendo um formato de metadados",
+        "content": "JSON Array é o formato padrão e o com suporte de motor mais amplo. Ele segue o esquema JSON Array do TexturePacker — o padrão de facto no ecossistema de jogos 2D — onde cada quadro é descrito por um nome de arquivo, um retângulo de quadro e campos de tamanho de origem. O Phaser 3 carrega este formato nativamente com scene.load.atlas(), e o PixiJS o aceita através de Assets.load(). Cada quadro extraído é endereçável pelo seu nome de arquivo gerado (frame_0.png, frame_1.png, ...) para que o código do motor permaneça limpo sem codificar coordenadas de pixel.",
+        "content2": "JSON Hash usa o mesmo esquema do TexturePacker mas estrutura o campo frames como um objeto com chave de nome de arquivo em vez de um array. Alguns motores e importadores da comunidade usam formato hash por padrão — por exemplo, certas configurações do Unity TexturePacker Importer. Se seu código de carregamento ou plugin de motor espera explicitamente um objeto frames com chave de hash, use esta opção. Caso contrário, JSON Array é o padrão mais seguro, pois tem suporte de primeira parte mais amplo no Phaser 3, PixiJS e na maioria das ferramentas da comunidade.",
+        "content3": "CSS Sprites gera uma folha de estilos onde cada quadro se torna uma classe CSS com valores de background-position, width e height direcionando suas coordenadas no spritesheet de origem. Coloque o PNG do spritesheet e o arquivo CSS gerado em um projeto web, referencie a folha como uma background-image e use os nomes de classe para exibir sprites individuais. Esta é a técnica clássica para animações de sprite CSS e folhas de ícones, e é ideal para projetos de UI web que não usam um motor de jogos JavaScript."
+      },
+      "howTo": {
+        "title": "Como dividir um spritesheet",
+        "step1": {
+          "title": "1. Envie seu spritesheet",
+          "content": "Arraste e solte um único spritesheet PNG na área de upload ou clique para abrir o seletor de arquivo. O arquivo pode ter até 20 MB. Uma pré-visualização em miniatura carrega imediatamente para você confirmar que tem o arquivo correto antes de configurar os parâmetros de divisão."
+        },
+        "step2": {
+          "title": "2. Defina o modo de fatiamento e a grade",
+          "content": "Escolha o modo Grade se você souber o número de colunas e linhas no seu spritesheet — por exemplo, uma folha de 4 colunas por 3 linhas. Escolha o modo Célula se você souber as dimensões em pixels de cada quadro — por exemplo, 64×64 pixels por célula. Se o spritesheet tiver espaço em branco externo ao redor da grade, use Aparar margens para recortá-lo antes de fatiar. Se há espaços em pixels entre células (canaletas), defina Espaçamento de célula para corresponder."
+        },
+        "step3": {
+          "title": "3. Configure saída e filtros",
+          "content": "Escolha um modo de saída: Quadros extrai PNGs individuais em um ZIP, Metadados gera um arquivo de descrição de atlas sem extrair pixels, e Ambos fornece tudo em um ZIP. Quando metadados é selecionado, escolha o formato: JSON Array para Phaser 3 e PixiJS, JSON Hash para alguns plugins de importador Unity, e CSS Sprites para projetos web. Use Intervalo de coluna e Intervalo de linha para direcionar uma sequência de animação específica dentro da folha, e Contagem de quadros para limitar o número total de quadros extraídos."
+        },
+        "step4": {
+          "title": "4. Baixe o resultado",
+          "content": "Clique em Dividir para processar o spritesheet. O servidor fatia o PNG, aplica seus filtros e retorna o resultado — normalmente em menos de um segundo para a maioria das folhas. Baixe o ZIP, JSON ou arquivo CSS e coloque-o em seu projeto. Clique em \"Dividir outro\" para limpar o espaço de trabalho e iniciar uma nova divisão com um novo arquivo."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "gridAndCell": {
+            "title": "Modos de fatiamento em grade e célula",
+            "content": "Duas maneiras de definir a grade de fatiamento: especifique contagens de coluna e linha quando você souber a estrutura do layout, ou especifique a largura e altura em pixels de cada célula quando você souber o tamanho do quadro. O modo Grade divide dimensões de imagem pela contagem de coluna e linha para determinar o tamanho da célula. O modo Célula divide dimensões de imagem pelo tamanho da célula para determinar o layout de grade. Ambos os modos produzem a mesma saída para um determinado spritesheet — a escolha depende de qual informação você tem."
+          },
+          "allOutputModes": {
+            "title": "Todos os três modos de saída",
+            "content": "Extraia quadros PNG individuais, gere metadados de atlas sem tocar em pixels, ou produza ambos em uma única solicitação. Corresponda a saída ao seu fluxo de trabalho: somente-quadros para edição e re-empacotamento, somente-metadados para integração de motor quando você já tem o PNG, e ambos para uma visão completa de um atlas desconhecido. O modo somente-metadados é significativamente mais rápido porque ignora todo o processamento de imagem em nível de pixel."
+          },
+          "metadataFormats": {
+            "title": "Três formatos de metadados de atlas",
+            "content": "JSON Array (padrão TexturePacker, suportado nativamente pelo Phaser 3 e PixiJS), JSON Hash (variante com chave de hash para importadores que esperam frames estruturado por objeto), e CSS Sprites (folha de estilos pronta para uso para animações de background-position web). Todos os três formatos são gerados a partir do mesmo passe de fatiamento — escolha o que seu tempo de execução ou motor de destino espera e baixe-o na mesma solicitação."
+          },
+          "rangeSelection": {
+            "title": "Extração parcial com filtros de intervalo",
+            "content": "Use filtros de intervalo de coluna e linha (por exemplo, colunas \"2-5\", linhas \"1-3\") para extrair apenas células específicas de um spritesheet maior. Isto é essencial para spritesheets que empacotem várias sequências de animação em uma única textura — ciclos de marcha, sequências de ataque e animações inativas em diferentes faixas de linha. Direcione exatamente a sequência que você precisa sem dividir o atlas inteiro e combine com Contagem de quadros para limitar a saída a um número preciso de quadros."
+          },
+          "trimAndPadding": {
+            "title": "Aparar margens e espaçamento de célula",
+            "content": "Remova bordas externas do spritesheet antes de fatiar com quatro entradas de aparagem independentes (superior, direita, inferior, esquerda) e considere canaletas entre células com Espaçamento de célula. Muitos spritesheets exportados do TexturePacker, Aseprite, Photoshop ou motores de jogos incluem espaço em branco externo e lacunas entre quadros que de outra forma desalinharia a grade de fatiamento. Definir esses parâmetros corretamente é o ajuste mais comum quando quadros aparecem deslocados ou cortados incorretamente."
+          },
+          "skipEmpty": {
+            "title": "Detecção de fatiamento de quadros vazios",
+            "content": "Quando ativada, a ferramenta examina cada célula extraída para conteúdo de pixel e descarta as completamente transparentes. Isto lida com o caso comum em que a última linha de um spritesheet é incompleta — por exemplo, 14 quadros organizados em uma grade de 4 colunas produz uma linha final com 2 células em branco. Pular vazio remove esses quadros em branco automaticamente para que sua saída contenha apenas imagens significativas sem arquivos de placeholder no final da sequência."
+          },
+          "singleFile": {
+            "title": "Entrada de spritesheet de até 20 MB",
+            "content": "Aceita um único arquivo PNG de até 20 MB. Isto cobre confortavelmente spritesheets de qualidade de produção, incluindo atlases de alta resolução 4096×4096 e 8192×8192 comumente usados para personagens de jogos e conjuntos de tiles. O arquivo é processado no servidor, portanto a memória disponível do seu navegador não afeta a divisão."
+          },
+          "privacy": {
+            "title": "Privacidade em primeiro lugar",
+            "content": "Seu spritesheet é processado na memória do servidor e descartado imediatamente após a resposta ser retornada. Sem conta necessária, sem armazenamento persistente, sem registro de conteúdo de arquivo ou dados de pixel. Relevante quando a arte que você está dividindo pertence a um projeto não anunciado, um ativo de cliente sob NDA ou um pipeline fechado."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "engineIntegration": {
+            "title": "Gerando JSON de atlas para spritesheets existentes",
+            "content": "Se você tem um spritesheet PNG sem seu arquivo JSON complementar — baixado de uma loja de ativos, enviado por um designer ou exportado sem metadados — use o modo somente-metadados para regenerar a descrição de atlas. Escolha JSON Array para Phaser 3 ou PixiJS, JSON Hash para certos plugins de importador Unity, ou CSS Sprites para animação web. A saída é um arquivo de atlas pronto para uso que funciona diretamente com seu PNG existente, para que você possa carregar o spritesheet em seu motor imediatamente sem re-empacotar ou re-exportar."
+          },
+          "frameExtraction": {
+            "title": "Extraindo quadros para re-edição",
+            "content": "Quando um ativo de jogo precisa ser atualizado mas você só tem o spritesheet final — não os arquivos de origem individual — a extração de quadros fornece de volta as células originais como PNGs individuais. Extraia os quadros, edite os específicos que você precisa no Aseprite, Photoshop ou qualquer editor de pixels, e depois re-empacote o conjunto atualizado com a ferramenta PNG para Spritesheet. Este é um fluxo de trabalho de recuperação comum em projetos de game jam, atualizações de lojas de ativos e transferências de equipe onde os arquivos de origem originais não estão disponíveis."
+          },
+          "partialExtraction": {
+            "title": "Extraindo uma animação de uma folha multi-sequência",
+            "content": "Spritesheets de produção frequentemente empacotem várias sequências de animação em uma única textura — um ciclo de marcha de personagem nas linhas 0–1, ataque nas linhas 2–3 e inativa nas linhas 4–5. Use filtros de intervalo de coluna e linha para direcionar exatamente a sequência que você precisa. O resultado é um conjunto de quadros limpo e isolado ou sub-spritesheet para essa animação específica, sem forçá-lo a extrair e verificar todo o atlas. Combine com Contagem de quadros para lidar com sequências cuja última linha é incompleta."
+          },
+          "cssAnimations": {
+            "title": "Construindo animações de sprite CSS",
+            "content": "Envie um spritesheet, defina o formato de metadados para CSS Sprites e baixe uma folha de estilos onde cada quadro é uma classe CSS pronta com background-position, width e height. Emparelhe-a com o spritesheet PNG em seu projeto web, referencie a folha como uma imagem de fundo em um div, aplique as classes de quadro e percorra-as com uma animação CSS keyframe usando steps(). Sem JavaScript necessário — apenas uma background-image e uma sequência de animação CSS. Esta técnica é amplamente usada para sprites de ícones, indicadores de carregamento e animações de personagens leves na web."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas frequentes",
+        "items": {
+          "gridVsCell": {
+            "q": "Qual é a diferença entre o modo Grade e o modo Célula?",
+            "a": "O modo Grade pede o número de colunas e linhas, depois calcula o tamanho da célula dividindo dimensões de imagem por essas contagens. O modo Célula pede a largura e altura em pixels de cada célula, depois calcula quantas colunas e linhas se encaixam. Use o modo Grade quando você souber a estrutura do layout (por exemplo, \"isto é uma grade 4×3\"). Use o modo Célula quando você souber o tamanho do quadro (por exemplo, \"cada quadro é 64×64 pixels\"). Ambos produzem saída idêntica para o mesmo spritesheet — a escolha depende do que você sabe sobre o ativo de origem."
+          },
+          "rangeFormat": {
+            "q": "Como formato intervalos de coluna e linha?",
+            "a": "Intervalos têm índice 0. Escreva um número único para extrair uma coluna ou linha (por exemplo, \"2\" extrai apenas a terceira coluna), ou um par separado por hífen para extrair um intervalo (por exemplo, \"1-3\" extrai colunas 1, 2 e 3). Tanto o intervalo de coluna quanto o intervalo de linha filtram independentemente — combine-os para extrair uma região retangular. Deixe qualquer campo em branco para incluir todas as colunas ou todas as linhas. Por exemplo, Intervalo de coluna \"0-3\" e Intervalo de linha \"2\" extrai uma faixa de 4 colunas por 1 linha da terceira linha da folha."
+          },
+          "skipEmpty": {
+            "q": "Quando devo desativar Pular vazios?",
+            "a": "Pular vazios está ativado por padrão e lida com linhas incompletas de forma limpa. Desative se sua animação intencionalmente inclui quadros em branco — por exemplo, um ciclo de piscada onde um quadro transparente cria uma pausa deliberada, ou um efeito de flash que usa uma célula vazia como quadro de retenção. Com Pular vazios desativado, cada célula é extraída independentemente do conteúdo, fornecendo uma contagem de quadros que corresponde exatamente às dimensões da grade."
+          },
+          "padding": {
+            "q": "Meus quadros parecem deslocados ou sobrepostos — o que devo verificar?",
+            "a": "A causa mais provável é espaçamento de célula não aplicado ou margens externas. Se o spritesheet de origem tem lacunas de pixels entre células (canaletas de exportações TexturePacker ou Aseprite), defina Espaçamento de célula para corresponder a essa lacuna. Se a folha tem espaço em branco externo ao redor da grade, use Aparar margens para recortá-lo antes de fatiar. Uma verificação rápida: multiplique suas dimensões de célula esperadas pela contagem de coluna e linha, adicione espaçamento e margens, e compare o total contra as dimensões reais de imagem. Qualquer discrepância aponta para espaçamento de célula ou valores de aparagem não configurados."
+          },
+          "metadataFormat": {
+            "q": "Qual formato de metadados devo usar?",
+            "a": "JSON Array é o padrão seguro: é nativamente suportado pelo Phaser 3 (scene.load.atlas) e PixiJS (Assets.load), e aceito por muitos plugins de importador TexturePacker do Unity. Use JSON Hash se seu importador de motor específico ou biblioteca de carregamento explicitamente espera um objeto frames com chave de hash. Use CSS Sprites se você está construindo um projeto web que usa animações de background-position CSS sem um motor de jogos JavaScript."
+          },
+          "outputFormats": {
+            "q": "Que tipos de arquivo a ferramenta retorna?",
+            "a": "O modo Quadros retorna um ZIP contendo arquivos PNG individuais. O modo somente-metadados retorna um arquivo JSON autônomo (para JSON Array ou JSON Hash) ou um arquivo CSS (para CSS Sprites) — sem invólucro ZIP para estes. O modo Ambos retorna um ZIP contendo todos os PNGs de quadro mais o arquivo de metadados. ZIPs estão prontos para extrair e soltar em seu projeto. Arquivos JSON e CSS autônomos estão prontos para colocar junto ao seu spritesheet PNG."
+          },
+          "maxSize": {
+            "q": "Qual é o tamanho máximo de spritesheet?",
+            "a": "O spritesheet PNG de entrada pode ter até 20 MB. Não há limite fixo nas dimensões de pixel, mas spritesheets muito grandes (8192×8192 e acima) podem levar alguns segundos extras para processar. Todo o processamento acontece no servidor, portanto a memória disponível ou GPU do seu dispositivo não afeta a divisão."
+          },
+          "privacy": {
+            "q": "Meu spritesheet é armazenado no servidor?",
+            "a": "Não. O PNG enviado é mantido na memória do servidor apenas durante o processamento e descartado imediatamente após a resposta ser retornada. Nenhum arquivo é escrito em disco, nenhum conteúdo de pixel é registrado e nenhuma conta é necessária. Relevante quando o spritesheet contém arte não lançada, ativos de cliente sob NDA ou conteúdo de jogo proprietário."
           }
         }
       }

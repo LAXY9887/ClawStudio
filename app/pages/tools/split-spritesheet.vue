@@ -430,10 +430,10 @@ onUnmounted(() => {
               <!-- Column / Row Range -->
               <div class="grid grid-cols-2 gap-4">
                 <UFormField :label="t('splitSpritesheet.options.columnRange')" :hint="t('splitSpritesheet.options.columnRangeHint')">
-                  <UInput v-model="columnRange" placeholder='e.g. "0-3"' />
+                  <UInput v-model="columnRange" placeholder="e.g. 0-3" />
                 </UFormField>
                 <UFormField :label="t('splitSpritesheet.options.rowRange')" :hint="t('splitSpritesheet.options.rowRangeHint')">
-                  <UInput v-model="rowRange" placeholder='e.g. "1-2"' />
+                  <UInput v-model="rowRange" placeholder="e.g. 1-2" />
                 </UFormField>
               </div>
 

@@ -154,6 +154,16 @@
         "Sube múltiples archivos PNG a la vez — todos los archivos recortados se devuelven en un único archivo ZIP con los nombres originales preservados, listos para colocar en tu proyecto.",
         "Después de recortar, usa nuestra herramienta **PNG a Spritesheet** para empaquetar todos los frames limpios en un único atlas de texturas — listo para Phaser 3, PixiJS, Unity o Godot en un solo paso."
       ]
+    },
+    "splitSpritesheet": {
+      "tipsTitle": "¿Sabías? Consejos del Divisor de Spritesheet",
+      "tips": [
+        "Usa **Rango de columnas** y **Rango de filas** para extraer solo una animación específica de una hoja multi-secuencia — por ejemplo, Rango de filas \"2-3\" extrae solo las filas 2 y 3 sin extraer todo el atlas.",
+        "**Omitir vacíos** está activado por defecto y descarta automáticamente las celdas completamente transparentes — desactívalo solo si tu animación usa deliberadamente frames vacíos (por ejemplo, una pausa en un ciclo de parpadeo).",
+        "Los **metadatos JSON Array** son entendidos nativamente por Phaser 3 (`scene.load.atlas`) y PixiJS (`Assets.load`) sin configuración adicional — carga el contenido del ZIP y cada frame es accesible por nombre.",
+        "Establece el **Espaciado de celdas** para que coincida con el espacio entre frames en tu spritesheet fuente — muchas exportaciones de TexturePacker o Aseprite incluyen márgenes de 1–2px que deben considerarse antes del corte.",
+        "¿Necesitas limpiar los frames extraídos? Pásalos por nuestra herramienta **Recortar PNG** para recortar bordes transparentes, luego re-empaquétalos en un nuevo spritesheet con **PNG a Spritesheet**."
+      ]
     }
   },
   "home": {
@@ -174,6 +184,10 @@
       "pngTrim": {
         "title": "Recortar PNG",
         "description": "Recorta los bordes transparentes de imágenes PNG — individual o por lotes."
+      },
+      "splitSpritesheet": {
+        "title": "Divisor de Spritesheet",
+        "description": "Divide un spritesheet PNG en frames individuales o genera JSON de atlas compatible con TexturePacker."
       }
     }
   },
@@ -383,7 +397,8 @@
     "gifToSprite": "GIF → Hoja de sprites",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
-    "pngTrim": "Recortar PNG"
+    "pngTrim": "Recortar PNG",
+    "splitSpritesheet": "Divisor de Spritesheet"
   },
   "toGif": {
     "title": "Conversor gratuito en línea de PNG a GIF",
@@ -675,7 +690,15 @@
       "fileNameOrder": "Ordenar por nombre de archivo",
       "fileNameOrderHint": "Ordenar fotogramas por el sufijo numérico _N en nombres de archivo en lugar del orden de carga.",
       "metadataFormat": "Incluir metadatos JSON",
-      "metadataFormatHint": "Generar un ZIP que contenga el PNG más un archivo JSON compatible con TexturePacker. Requerido para diseño empaquetado."
+      "metadataFormatHint": "Generar un ZIP que contenga el PNG más un archivo JSON compatible con TexturePacker. Requerido para diseño empaquetado.",
+      "trimInput": "Recortar entrada automáticamente",
+      "trimInputHint": "Eliminar los bordes transparentes de cada PNG de entrada antes de la composición. Útil para recursos exportados con relleno adicional.",
+      "extrude": "Extruir (px)",
+      "extrudeHint": "Duplicar la fila/columna de píxeles más externa hacia afuera N px en todos los lados de cada frame. Previene el sangrado de texturas en el filtrado bilineal de WebGL. Combinar con Espaciado para reservar espacio.",
+      "metadataFormatNone": "Ninguno (solo PNG)",
+      "metadataFormatJsonArray": "JSON Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites"
     },
     "status": {
       "uploading": "Cargando...",
@@ -1017,6 +1040,224 @@
           "privacy": {
             "q": "¿Se almacenan mis archivos en el servidor?",
             "a": "No. Tus cargas PNG se procesan en memoria y se descartan inmediatamente después de devolver el resultado recortado. No se requiere cuenta, no se mantienen registros de los contenidos de tu archivo, y no se usan cookies para seguimiento de tus cargas. El recorte sucede, el resultado se devuelve, y cada rastro de tu carga se ha ido."
+          }
+        }
+      }
+    }
+  },
+  "splitSpritesheet": {
+    "title": "Divisor de Hojas de Sprites en Línea Gratuito — Extrae Fotogramas y Genera JSON de Atlas",
+    "subtitle": "Divide un PNG de hoja de sprites en fotogramas individuales, genera JSON de atlas compatible con TexturePacker, o ambos — gratuito, en línea, sin registro.",
+    "upload": {
+      "title": "Suelta tu PNG de hoja de sprites aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo de archivo: 20 MB",
+      "accept": "Solo se aceptan archivos .png",
+      "changeFile": "Haz clic para elegir un archivo diferente"
+    },
+    "convert": "¡Dividir!",
+    "slicingMode": {
+      "title": "Modo de Corte",
+      "grid": "Cuadrícula (columnas × filas)",
+      "cell": "Celda (dimensiones en píxeles)"
+    },
+    "options": {
+      "title": "Opciones",
+      "columns": "Columnas",
+      "rows": "Filas",
+      "cellWidth": "Ancho de Celda (px)",
+      "cellHeight": "Alto de Celda (px)",
+      "padding": "Relleno de Celda (px)",
+      "paddingHint": "Brecha en píxeles entre celdas en la hoja de sprites de origen. Establece esto si tu hoja fue exportada con espacios entre fotogramas.",
+      "trimTitle": "Recortar Márgenes (px)",
+      "trimHint": "Recorta el espacio extra alrededor de la hoja de sprites antes de dividir. Úsalo cuando la hoja tiene bordes exteriores o espacios en blanco que no son parte de la cuadrícula de fotogramas.",
+      "trimTop": "Superior",
+      "trimRight": "Derecha",
+      "trimBottom": "Inferior",
+      "trimLeft": "Izquierda",
+      "frameCount": "Cantidad de Fotogramas",
+      "frameCountHint": "Trunca la salida a los primeros N fotogramas después del filtrado de rango. Deja en blanco para todos los fotogramas.",
+      "columnRange": "Rango de Columnas",
+      "columnRangeHint": "Columnas indexadas en 0 a extraer, por ejemplo \"0-5\" o \"2\". Deja en blanco para todas las columnas.",
+      "rowRange": "Rango de Filas",
+      "rowRangeHint": "Filas indexadas en 0 a extraer, por ejemplo \"0\" o \"1-3\". Deja en blanco para todas las filas.",
+      "skipEmpty": "Omitir Fotogramas Vacíos",
+      "skipEmptyHint": "Elimina celdas completamente transparentes de la salida. Útil cuando la última fila de una hoja de sprites está incompleta.",
+      "output": "Salida",
+      "outputFrames": "Fotogramas (ZIP de PNGs)",
+      "outputMetadata": "Solo metadatos de atlas",
+      "outputBoth": "Fotogramas + metadatos (ZIP)",
+      "metadataFormat": "Formato de Metadatos",
+      "metadataFormatJsonArray": "Array JSON (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "Hash JSON",
+      "metadataFormatCss": "CSS Sprites"
+    },
+    "status": {
+      "uploading": "Cargando...",
+      "converting": "Dividiendo...",
+      "error": "La división falló",
+      "retry": "Intentar de Nuevo"
+    },
+    "result": {
+      "framesTitle": "Fotogramas listos",
+      "metadataTitle": "Metadatos de atlas listos",
+      "bothTitle": "Fotogramas y metadatos listos",
+      "info": "{size}",
+      "download": "Descargar",
+      "reset": "Dividir Otro"
+    },
+    "adModal": {
+      "title": "🥺 Apóyanos, por favor. 🌸",
+      "description": "Desbloquea 3 divisiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} división gratuita restante | {count} divisiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API del Divisor de Hojas de Sprites",
+        "content": "Integra la división de hojas de sprites en tus aplicaciones con la API Easy PNG to Sprites. Carga un PNG de hoja de sprites y recibe fotogramas individuales, JSON compatible con TexturePacker, definiciones de CSS sprites, o todo lo anterior — en una única solicitud HTTP.",
+        "content2": "El endpoint /split-spritesheet admite modos de corte de cuadrícula y celda, filtrado de rango de filas y columnas, recorte de márgenes, detección de omisión de vacíos, y tres formatos de metadatos. Está diseñado para pipelines de activos de juegos, generación de atlas CI/CD, y cualquier flujo de trabajo que necesite extraer datos de una hoja de sprites de forma programática.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Lee el Tutorial Completo",
+        "features": {
+          "title": "Características Destacadas de la API",
+          "endpoints": "POST /split-spritesheet: un PNG de hoja de sprites → fotogramas, atlas JSON, CSS, o ZIP",
+          "input": "Carga un único PNG de hasta 20 MB",
+          "params": "Corte de cuadrícula o celda, filtrado de rango, omitir vacíos, recorte de márgenes, tres formatos de metadatos",
+          "limit": "Entrada de 20 MB; el tamaño de salida depende del número y dimensiones de fotogramas",
+          "formats": "Entrada PNG; salida ZIP (fotogramas), JSON (array o hash), o CSS",
+          "response": "Respuesta rápida con auto-escalado de Cloud Run"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la División de Hojas de Sprites?",
+        "content": "La división de hojas de sprites (también llamada extracción de atlas o corte de hojas de sprites) es lo opuesto a la generación de hojas de sprites: en lugar de fusionar fotogramas PNG individuales en un único atlas de texturas, divide una hoja de sprites existente en sus partes constituyentes. La herramienta lee un PNG basado en cuadrícula, extrae cada celda como un fotograma separado, y opcionalmente genera un archivo JSON compatible con TexturePacker o archivo de metadatos CSS que mapea nombres de fotogramas a sus coordenadas de píxeles en la hoja original.",
+        "content2": "La división de hojas de sprites es un paso común en pipelines de desarrollo de juegos cuando recibes activos de atlas pre-construidos — comprados de una tienda de activos, exportados de un motor de juegos, o proporcionados por un diseñador — y necesitas trabajar con fotogramas individuales. En lugar de recortar manualmente cada celda en Photoshop o Aseprite, un divisor lee las dimensiones de la cuadrícula y produce un conjunto limpio y numerado de archivos PNG en segundos. La misma operación puede producir metadatos de atlas que te permitan cargar la hoja de sprites original directamente en Phaser 3, PixiJS, Unity, o Godot sin necesidad de reensamblaje.",
+        "content3": "Esta herramienta es la compañera de nuestro generador de PNG a Hoja de Sprites. Usa el empacador cuando tienes fotogramas sueltos y necesitas combinarlos; usa el divisor cuando tienes un atlas y necesitas extraer o documentar su contenido. Ambas herramientas comparten la misma API Easy PNG to Sprites, que alimenta cualquiera de las direcciones del flujo de trabajo de autoría de hojas de sprites en un único servicio."
+      },
+      "outputs": {
+        "title": "Tres Modos de Salida: Fotogramas, Metadatos, o Ambos",
+        "content": "El modo Fotogramas extrae cada celda de la hoja de sprites como un archivo PNG individual, los empaqueta en un archivo ZIP con nombres de archivo secuenciales rellenados con ceros (frame_0.png, frame_1.png, ...), y devuelve ese archivo para descargar. Este es el modo a elegir cuando necesitas las imágenes de origen en sí — para editar fotogramas específicos, re-sincronizar una animación, o re-empacar los fotogramas en un diseño diferente usando la herramienta PNG a Hoja de Sprites.",
+        "content2": "El modo solo de metadatos omite la extracción de píxeles por completo. Lee las coordenadas de cuadrícula de cada celda y produce una descripción de atlas legible por máquina — JSON Array, JSON Hash, o CSS Sprites — describiendo exactamente dónde se encuentra cada fotograma en la hoja de sprites. Este modo es ideal cuando ya tienes el PNG de la hoja de sprites en tu proyecto y solo necesitas el archivo de coordenadas para cargarlo en un motor. No se extrae ningún dato de imagen, lo que significa procesamiento más rápido y una descarga más pequeña.",
+        "content3": "El modo Ambos produce un único ZIP que contiene todos los PNGs de fotogramas extraídos más el archivo de metadatos del atlas. Esta es la salida más completa: te da los datos de la hoja de sprites en un formato listo para motor junto con los fotogramas individuales que podrías necesitar para edición adicional. Usa este modo cuando te encuentres con una hoja de sprites desconocida por primera vez y desees una imagen completa de su estructura antes de decidir cómo integrarlo."
+      },
+      "metadataFormats": {
+        "title": "Elegir un Formato de Metadatos",
+        "content": "JSON Array es el formato predeterminado y el que tiene el soporte de motor más amplio. Sigue el esquema JSON Array de TexturePacker — el estándar de facto en el ecosistema de juegos 2D — donde cada fotograma se describe por un nombre de archivo, un rectángulo de fotograma, y campos de tamaño de origen. Phaser 3 carga este formato de forma nativa con scene.load.atlas(), y PixiJS lo acepta a través de Assets.load(). Cada fotograma extraído es direccionable por su nombre de archivo generado (frame_0.png, frame_1.png, ...) por lo que el código del motor se mantiene limpio sin codificar coordenadas de píxeles.",
+        "content2": "JSON Hash usa el mismo esquema de TexturePacker pero estructura el campo de fotogramas como un objeto con clave de nombre de archivo en lugar de un array. Algunos motores e importadores de comunidad por defecto usan formato hash — por ejemplo, ciertas configuraciones del Importador de TexturePacker de Unity. Si tu código de carga o plugin del motor explícitamente espera un objeto de fotogramas con clave hash, usa esta opción. De lo contrario, JSON Array es el predeterminado más seguro, ya que tiene un soporte de primera parte más amplio en Phaser 3, PixiJS, y la mayoría de herramientas comunitarias.",
+        "content3": "CSS Sprites genera una hoja de estilos donde cada fotograma se convierte en una clase CSS con valores de background-position, width, y height dirigidos a sus coordenadas en la hoja de sprites de origen. Suelta el PNG de la hoja de sprites y el archivo CSS generado en un proyecto web, referencia la hoja como una background-image, y usa los nombres de las clases para mostrar sprites individuales. Esta es la técnica clásica para animaciones de sprites CSS y hojas de iconos, e ideal para proyectos web de IU que no usan un motor de juegos JavaScript."
+      },
+      "howTo": {
+        "title": "Cómo Dividir una Hoja de Sprites",
+        "step1": {
+          "title": "1. Carga Tu Hoja de Sprites",
+          "content": "Arrastra y suelta un único PNG de hoja de sprites en el área de carga, o haz clic para abrir el selector de archivos. El archivo puede ser de hasta 20 MB. Una vista previa en miniatura se carga inmediatamente para que puedas confirmar que tienes el archivo correcto antes de configurar los parámetros de división."
+        },
+        "step2": {
+          "title": "2. Establece el Modo de Corte y la Cuadrícula",
+          "content": "Elige el modo Cuadrícula si conoces el número de columnas y filas en tu hoja de sprites — por ejemplo, una hoja de 4 columnas por 3 filas. Elige el modo Celda si conoces las dimensiones en píxeles de cada fotograma — por ejemplo, 64×64 píxeles por celda. Si la hoja de sprites tiene espacio en blanco exterior alrededor de la cuadrícula, usa Recortar Márgenes para cortarlo antes de dividir. Si hay espacios en píxeles entre celdas (espacios), establece Relleno de Celda para coincidir."
+        },
+        "step3": {
+          "title": "3. Configura la Salida y Filtros",
+          "content": "Elige un modo de salida: Fotogramas extrae PNGs individuales en un ZIP, Metadatos genera un archivo de descripción de atlas sin extraer píxeles, y Ambos te da todo en un ZIP. Cuando se selecciona metadatos, elige el formato: JSON Array para Phaser 3 y PixiJS, JSON Hash para algunos plugins de importador de Unity, y CSS Sprites para proyectos web. Usa Rango de Columnas y Rango de Filas para dirigirse a una secuencia de animación específica dentro de la hoja, y Cantidad de Fotogramas para limitar el número total de fotogramas extraídos."
+        },
+        "step4": {
+          "title": "4. Descarga el Resultado",
+          "content": "Haz clic en Dividir para procesar la hoja de sprites. El servidor divide el PNG, aplica tus filtros, y devuelve el resultado — típicamente en menos de un segundo para la mayoría de hojas. Descarga el ZIP, JSON, o archivo CSS y suéltalo en tu proyecto. Haz clic en \"Dividir Otro\" para limpiar el espacio de trabajo y comenzar una nueva división con un archivo nuevo."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "gridAndCell": {
+            "title": "Modos de Corte de Cuadrícula y Celda",
+            "content": "Dos formas de definir la cuadrícula de corte: especifica los números de columnas y filas cuando conoces la estructura del diseño, o especifica el ancho y alto en píxeles de cada celda cuando conoces el tamaño del fotograma. El modo Cuadrícula divide las dimensiones de la imagen por los números de columnas y filas para determinar el tamaño de la celda. El modo Celda divide las dimensiones de la imagen por el tamaño de la celda para determinar cuántas columnas y filas caben. Ambos modos producen la misma salida para una hoja de sprites dada — la elección depende de qué información tengas."
+          },
+          "allOutputModes": {
+            "title": "Los Tres Modos de Salida",
+            "content": "Extrae fotogramas PNG individuales, genera metadatos de atlas sin tocar píxeles, o produce ambos en una única solicitud. Ajusta la salida a tu flujo de trabajo: solo fotogramas para edición y re-empaque, solo metadatos para integración de motor cuando ya tienes el PNG, y ambos para una imagen completa de un atlas desconocido. El modo solo de metadatos es significativamente más rápido porque omite todo el procesamiento de imágenes a nivel de píxel."
+          },
+          "metadataFormats": {
+            "title": "Tres Formatos de Metadatos de Atlas",
+            "content": "JSON Array (estándar de TexturePacker, soportado de forma nativa por Phaser 3 y PixiJS), JSON Hash (variante con clave hash para importadores que esperan fotogramas estructurados como objeto), y CSS Sprites (hoja de estilos lista para usar para animaciones de background-position web). Los tres formatos se generan desde el mismo paso de corte — elige el que tu motor de ejecución o motor objetivo espera y descárgalo en la misma solicitud."
+          },
+          "rangeSelection": {
+            "title": "Extracción Parcial con Filtros de Rango",
+            "content": "Usa filtros de rango de columnas y filas (por ejemplo, columnas \"2-5\", filas \"1-3\") para extraer solo celdas específicas de una hoja de sprites más grande. Esto es esencial para hojas de sprites que empacan múltiples secuencias de animación en una única textura — ciclos de caminar, secuencias de ataque, e animaciones inactivas en diferentes bandas de filas. Apunta exactamente a la secuencia que necesitas sin dividir todo el atlas, y combina con Cantidad de Fotogramas para limitar la salida a un número preciso de fotogramas."
+          },
+          "trimAndPadding": {
+            "title": "Recortar Márgenes y Relleno de Celda",
+            "content": "Elimina bordes exteriores de la hoja de sprites antes de dividir con cuatro entradas de recorte independientes (superior, derecha, inferior, izquierda), y contabiliza espacios entre celdas con Relleno de Celda. Muchas hojas de sprites exportadas desde TexturePacker, Aseprite, Photoshop, o motores de juegos incluyen espacio en blanco exterior y espacios entre fotogramas que de otro modo desalinearían la cuadrícula de corte. Establecer estos parámetros correctamente es la corrección más común cuando los fotogramas parecen desplazados o cortados incorrectamente."
+          },
+          "skipEmpty": {
+            "title": "Detección de Omisión de Fotogramas Vacíos",
+            "content": "Cuando está habilitado, la herramienta escanea cada celda extraída en busca de contenido de píxeles y descarta las completamente transparentes. Esto maneja el caso común donde la última fila de una hoja de sprites está incompleta — por ejemplo, 14 fotogramas dispuestos en una cuadrícula de 4 columnas produce una fila final con 2 celdas en blanco. Omitir Vacíos elimina esos fotogramas en blanco automáticamente para que tu salida contenga solo imágenes significativas sin archivos de marcador de posición al final de la secuencia."
+          },
+          "singleFile": {
+            "title": "Entrada de Hoja de Sprites de hasta 20 MB",
+            "content": "Acepta un único archivo PNG de hasta 20 MB. Esto cubre cómodamente hojas de sprites de grado de producción, incluyendo atlas de alta resolución 4096×4096 y 8192×8192 comúnmente utilizados para caracteres y tilesets de juegos. El archivo se procesa en el lado del servidor, por lo que la memoria disponible de tu navegador no afecta la división."
+          },
+          "privacy": {
+            "title": "Privacidad Primero",
+            "content": "Tu hoja de sprites se procesa en memoria en el servidor y se descarta inmediatamente después de que se devuelva la respuesta. Sin cuenta requerida, sin almacenamiento persistente, sin registro de contenido de archivo o datos de píxeles. Relevante cuando la obra de arte que estás dividiendo pertenece a un proyecto no anunciado, un activo de cliente bajo NDA, o una pipeline de código cerrado."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "engineIntegration": {
+            "title": "Generando Atlas JSON para Hojas de Sprites Existentes",
+            "content": "Si tienes un PNG de hoja de sprites sin su archivo JSON complementario — descargado de una tienda de activos, enviado por un diseñador, o exportado sin metadatos — usa el modo solo de metadatos para regenerar la descripción del atlas. Elige JSON Array para Phaser 3 o PixiJS, JSON Hash para ciertos plugins de importador de Unity, o CSS Sprites para animación web. La salida es un archivo de atlas listo para usar que se empareja directamente con tu PNG existente, para que puedas cargar la hoja de sprites en tu motor inmediatamente sin necesidad de re-empacar o re-exportar."
+          },
+          "frameExtraction": {
+            "title": "Extrayendo Fotogramas para Re-edición",
+            "content": "Cuando un activo de juego necesita ser actualizado pero solo tienes la hoja de sprites final — no los archivos de origen individuales — la extracción de fotogramas te devuelve las celdas originales como PNGs individuales. Extrae los fotogramas, edita los específicos que necesitas en Aseprite, Photoshop, o cualquier editor de píxeles, luego re-empaca el conjunto actualizado con la herramienta PNG a Hoja de Sprites. Este es un flujo de trabajo de recuperación común en proyectos de game jam, actualizaciones de tienda de activos, y entregas de equipo donde los archivos de origen original no están disponibles."
+          },
+          "partialExtraction": {
+            "title": "Extrayendo Una Animación de una Hoja Multi-Secuencia",
+            "content": "Las hojas de sprites de producción a menudo empacan múltiples secuencias de animación en una única textura — un ciclo de caminata de un personaje en las filas 0–1, ataque en las filas 2–3, e inactivo en las filas 4–5. Usa filtros de rango de filas y columnas para dirigirse exactamente a la secuencia que necesitas. El resultado es un conjunto de fotogramas limpio e aislado o sub-hoja de sprites para esa animación específica, sin forzarte a extraer y examinar todo el atlas. Combina con Cantidad de Fotogramas para manejar secuencias cuya última fila está incompleta."
+          },
+          "cssAnimations": {
+            "title": "Construyendo Animaciones CSS Sprite",
+            "content": "Carga una hoja de sprites, establece el formato de metadatos en CSS Sprites, y descarga una hoja de estilos donde cada fotograma es una clase CSS lista para usar llevando background-position, width, y height. Empareja con el PNG de la hoja de sprites en tu proyecto web, referencia la hoja como una background-image en un div, aplica las clases de fotogramas, y avanza a través de ellas con una animación CSS keyframe usando steps(). Sin JavaScript requerido — solo una background-image y una secuencia de animación CSS. Esta técnica es ampliamente utilizada para sprites de iconos, indicadores de carga, e animaciones de personajes ligeros en la web."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas Frecuentes",
+        "items": {
+          "gridVsCell": {
+            "q": "¿Cuál es la diferencia entre el modo Cuadrícula y Celda?",
+            "a": "El modo Cuadrícula pide el número de columnas y filas, luego calcula el tamaño de la celda dividiendo las dimensiones de la imagen por esos números. El modo Celda pide el ancho y alto en píxeles de cada celda, luego calcula cuántas columnas y filas caben. Usa el modo Cuadrícula cuando conoces la estructura del diseño (por ejemplo, \"esto es una cuadrícula de 4×3\"). Usa el modo Celda cuando conoces el tamaño del fotograma (por ejemplo, \"cada fotograma es 64×64 píxeles\"). Ambos producen salida idéntica para la misma hoja de sprites — la elección depende de qué información tengas sobre el activo de origen."
+          },
+          "rangeFormat": {
+            "q": "¿Cómo formateo los rangos de columnas y filas?",
+            "a": "Los rangos están indexados en 0. Escribe un único número para extraer una columna o fila (por ejemplo, \"2\" extrae solo la tercera columna), o un par separado por guiones para extraer un rango (por ejemplo, \"1-3\" extrae columnas 1, 2, y 3). Tanto el rango de columnas como el rango de filas filtran independientemente — combínalos para extraer una región rectangular. Deja cualquiera de los campos en blanco para incluir todas las columnas o todas las filas. Por ejemplo, Rango de Columnas \"0-3\" y Rango de Filas \"2\" extrae una tira de 4 columnas, 1 fila de la tercera fila de la hoja."
+          },
+          "skipEmpty": {
+            "q": "¿Cuándo debo desactivar Omitir Vacíos?",
+            "a": "Omitir Vacíos está activado de forma predeterminada y maneja filas incompletas limpiamente. Desactívalo si tu animación intencionalmente incluye fotogramas en blanco — por ejemplo, un ciclo de parpadeo donde un fotograma transparente crea una pausa deliberada, o un efecto flash que usa una celda vacía como fotograma de retención. Con Omitir Vacíos desactivado, cada celda se extrae independientemente del contenido, dándote un recuento de fotogramas que coincida exactamente con las dimensiones de la cuadrícula."
+          },
+          "padding": {
+            "q": "Mis fotogramas se ven desplazados o superpuestos — ¿qué debo verificar?",
+            "a": "La causa más probable es relleno de celda o márgenes exteriores no aplicados. Si la hoja de sprites de origen tiene espacios en píxeles entre celdas (espacios de TexturePacker o exportaciones de Aseprite), establece Relleno de Celda para coincidir con ese espacio. Si la hoja tiene espacio en blanco exterior alrededor de la cuadrícula, usa Recortar Márgenes para cortarlo antes de dividir. Una verificación rápida: multiplica tus dimensiones de celda esperadas por los números de columnas y filas, suma el relleno y márgenes, y compara el total contra las dimensiones reales de la imagen. Cualquier discrepancia señala valores de relleno o recorte no configurados."
+          },
+          "metadataFormat": {
+            "q": "¿Qué formato de metadatos debo usar?",
+            "a": "JSON Array es el predeterminado seguro: está soportado de forma nativa por Phaser 3 (scene.load.atlas()) y PixiJS (Assets.load()), y aceptado por la mayoría de plugins del Importador de TexturePacker de Unity. Usa JSON Hash si tu importador específico del motor o biblioteca de carga explícitamente espera un objeto de fotogramas con clave hash. Usa CSS Sprites si estás construyendo un proyecto web que usa animaciones de background-position en CSS sin un motor de juegos JavaScript."
+          },
+          "outputFormats": {
+            "q": "¿Qué tipos de archivo devuelve la herramienta?",
+            "a": "El modo Fotogramas devuelve un ZIP que contiene archivos PNG individuales. El modo solo de metadatos devuelve un archivo JSON independiente (para JSON Array o JSON Hash) o un archivo CSS (para CSS Sprites) — sin contenedor ZIP para estos. El modo Ambos devuelve un ZIP que contiene todos los PNGs de fotogramas más el archivo de metadatos. Los ZIPs están listos para extraer y soltar en tu proyecto. Los archivos JSON y CSS independientes están listos para colocar junto a tu PNG de hoja de sprites."
+          },
+          "maxSize": {
+            "q": "¿Cuál es el tamaño máximo de la hoja de sprites?",
+            "a": "El PNG de hoja de sprites de entrada puede ser de hasta 20 MB. No hay límite duro en las dimensiones de píxeles, pero hojas muy grandes (8192×8192 y superiores) pueden tomar algunos segundos adicionales para procesar. Todo el procesamiento ocurre en el lado del servidor, por lo que la memoria disponible de tu dispositivo o GPU no afecta la división."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi hoja de sprites en el servidor?",
+            "a": "No. El PNG cargado se mantiene en la memoria del servidor solo durante la duración del procesamiento y se descarta inmediatamente después de que se devuelva la respuesta. Ningún archivo se escribe en disco, ningún contenido de píxeles se registra, y ninguna cuenta es requerida. Relevante cuando la hoja de sprites contiene obra de arte no publicada, activos de cliente bajo NDA, o contenido de juego propietario."
           }
         }
       }
