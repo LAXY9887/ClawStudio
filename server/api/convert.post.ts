@@ -1,6 +1,7 @@
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const formData = await readFormData(event)
+  validateRemoteUrl(formData.get('url') as string | null)
 
   const response = await $fetch.raw(`${config.gifServiceUrl}/to-spritesheet`, {
     method: 'POST',
