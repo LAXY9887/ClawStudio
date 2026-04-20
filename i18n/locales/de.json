@@ -135,6 +135,25 @@
         "Im **Spritesheet-Modus** verwenden Sie das Rastervorschau-Overlay, um Ihre Spalten- und Zeileneinstellungen vor der Konvertierung zu überprüfen. Die roten Linien zeigen genau, wo das Tool schneiden wird.",
         "Verwenden Sie **Ränder beschneiden**, um vor dem Zuschneiden zusätzliche Ränder um Ihr Spritesheet zu entfernen. Viele exportierte Spritesheets haben äußere Abstände, die nicht zum Frame-Raster gehören — das Beschneiden stellt eine genaue Zellenausrichtung sicher."
       ]
+    },
+    "pngToSpritesheet": {
+      "tipsTitle": "Wussten Sie? Tipps zu PNG zu Spritesheet",
+      "tips": [
+        "Ziehen Sie Frames im Upload-Raster, um sie neu anzuordnen — die angezeigte Reihenfolge ist die Frame-Reihenfolge im endgültigen Atlas.",
+        "Verwenden Sie das **gepackte Layout** für Assets unterschiedlicher Groesse wie UI-Icons — Bin-Packing platziert unregelmässige Formen etwa 2x effizienter als ein festes Raster.",
+        "Aktivieren Sie **JSON-Metadaten**, um eine TexturePacker-kompatible JSON-Datei zu exportieren — laden Sie sie direkt in Phaser 3 mit `scene.load.atlas()` oder in PixiJS mit `Assets.load()`.",
+        "Aktivieren Sie **Zweierpotenz**, wenn Ihre Engine GPU-freundliche Texturdimensionen erfordert — erforderlich fuer WebGL 1 `GL_REPEAT`-Sampler und aeltere mobile GPUs.",
+        "Haben Ihre Frames transparente Raender? Probieren Sie zuerst unser **PNG Zuschneiden**-Tool — das Zuschneiden leerer Raender vor dem Packen erzeugt einen dichteren, effizienteren Atlas."
+      ]
+    },
+    "pngTrim": {
+      "tipsTitle": "Wussten Sie? Tipps zum PNG Zuschneiden",
+      "tips": [
+        "Der **Alpha-Schwellenwert** steuert, welche Pixel als transparent gelten — 0 entfernt nur vollstaendig leere Pixel, waehrend hoehere Werte (z. B. 10–30) auch halbtransparente Halos und Antialiasing-Raender entfernen.",
+        "Fuegen Sie einen **Abstand**-Wert hinzu, um einen duennen transparenten Rand um jeden Sprite zu erhalten — ein 1–2px-Puffer verhindert Textur-Bleeding, wenn benachbarte Sprites in einem Game-Engine-Atlas eine Zelle teilen.",
+        "Laden Sie mehrere PNG-Dateien gleichzeitig hoch — alle zugeschnittenen Dateien werden in einem einzelnen ZIP-Archiv mit beibehaltenen Originaldateinamen zurueckgegeben, bereit zum Einfuegen in Ihr Projekt.",
+        "Verwenden Sie nach dem Zuschneiden unser **PNG zu Spritesheet**-Tool, um alle bereinigten Frames in einen einzelnen Texturatlas zu packen — in einem Schritt bereit fuer Phaser 3, PixiJS, Unity oder Godot."
+      ]
     }
   },
   "home": {

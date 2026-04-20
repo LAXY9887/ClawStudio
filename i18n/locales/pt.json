@@ -135,6 +135,25 @@
         "No **modo Spritesheet**, use a sobreposição de visualização de grade para verificar suas configurações de colunas e linhas antes de converter. As linhas vermelhas mostram exatamente onde a ferramenta irá cortar.",
         "Use **Recortar margens** para cortar bordas extras ao redor do seu spritesheet antes de fatiar. Muitos spritesheets exportados possuem preenchimento externo que não faz parte da grade de frames — recortá-lo garante o alinhamento preciso das células."
       ]
+    },
+    "pngToSpritesheet": {
+      "tipsTitle": "Você sabia? Dicas de PNG para Spritesheet",
+      "tips": [
+        "Arraste os frames na grade de upload para reordená-los — a ordem que você vê é a ordem dos frames no atlas final.",
+        "Use o **layout empacotado** para recursos de tamanhos variados como ícones de UI — o empacotamento acomoda formas irregulares ~2x mais eficientemente do que uma grade fixa.",
+        "Ative **Metadados JSON** para exportar um arquivo JSON compatível com TexturePacker — carregue-o diretamente no Phaser 3 com `scene.load.atlas()` ou no PixiJS com `Assets.load()`.",
+        "Ative **Potência de 2** se o seu motor requer dimensões de textura compatíveis com GPU — necessário para os samplers `GL_REPEAT` do WebGL 1 e GPUs móveis mais antigas.",
+        "Seus frames têm bordas transparentes? Experimente primeiro nossa ferramenta **Recortar PNG** — cortar bordas vazias antes de empacotar produz um atlas mais compacto e eficiente."
+      ]
+    },
+    "pngTrim": {
+      "tipsTitle": "Você sabia? Dicas de Recortar PNG",
+      "tips": [
+        "O **Limiar alfa** controla quais pixels são considerados transparentes — 0 remove apenas pixels completamente vazios, enquanto valores mais altos (ex. 10–30) também recortam halos semitransparentes e bordas de anti-aliasing.",
+        "Adicione um valor de **Preenchimento** para manter uma margem transparente fina ao redor de cada sprite — um buffer de 1–2px previne o sangramento de texturas quando sprites adjacentes compartilham uma célula em um atlas de motor de jogos.",
+        "Envie vários arquivos PNG de uma vez — todos os arquivos recortados são retornados em um único arquivo ZIP com os nomes originais preservados, prontos para adicionar ao seu projeto.",
+        "Após recortar, use nossa ferramenta **PNG para Spritesheet** para empacotar todos os frames limpos em um único atlas de texturas — pronto para Phaser 3, PixiJS, Unity ou Godot em um passo."
+      ]
     }
   },
   "home": {
