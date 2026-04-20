@@ -154,6 +154,16 @@
         "Upload multiple PNG files at once — all trimmed files are returned in a single ZIP archive with original filenames preserved, ready to drop into your project.",
         "After trimming, use our **PNG to Spritesheet** tool to pack all cleaned frames into a single texture atlas — ready for Phaser 3, PixiJS, Unity, or Godot in one step."
       ]
+    },
+    "splitSpritesheet": {
+      "tipsTitle": "Did You Know? Spritesheet Splitter Tips",
+      "tips": [
+        "Use **Column Range** and **Row Range** to extract only a specific animation from a multi-sequence sheet — for example, Row Range \"2-3\" pulls just rows 2 and 3 without extracting the whole atlas.",
+        "**Skip Empty** is on by default and automatically discards fully transparent cells — turn it off only if your animation deliberately uses blank frames (e.g., a pause in a blink cycle).",
+        "**JSON Array metadata** is natively understood by Phaser 3 (`scene.load.atlas`) and PixiJS (`Assets.load`) with no extra setup — load the ZIP contents and every frame is addressable by name.",
+        "Set **Cell Padding** to match the gap between frames in your source spritesheet — many TexturePacker or Aseprite exports include 1–2px gutters that must be accounted for before slicing.",
+        "Need to clean up the extracted frames? Run them through our **PNG Trim** tool to crop transparent edges, then re-pack into a new spritesheet with **PNG to Spritesheet**."
+      ]
     }
   },
   "relatedTools": {
@@ -161,7 +171,8 @@
     "gifToSprite": "GIF → Spritesheet",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
-    "pngTrim": "PNG Trim"
+    "pngTrim": "PNG Trim",
+    "splitSpritesheet": "Spritesheet Splitter"
   },
   "home": {
     "title": "Free Online Dev Tools",
@@ -181,6 +192,10 @@
       "pngTrim": {
         "title": "PNG Trim",
         "description": "Crop transparent edges from PNG images — single or batch."
+      },
+      "splitSpritesheet": {
+        "title": "Spritesheet Splitter",
+        "description": "Slice a spritesheet PNG into individual frames or generate TexturePacker-compatible atlas JSON."
       }
     }
   },
@@ -1025,6 +1040,224 @@
           "privacy": {
             "q": "Are my files stored on the server?",
             "a": "No. Your PNG uploads are processed in memory and immediately discarded after the trimmed result is returned. No account is required, no logs are kept of your file contents, and no cookies track your uploads. The trim happens, the result is returned, and every trace of your upload is gone."
+          }
+        }
+      }
+    }
+  },
+  "splitSpritesheet": {
+    "title": "Free Online Spritesheet Splitter — Extract Frames & Generate Atlas JSON",
+    "subtitle": "Slice a spritesheet PNG into individual frames, generate TexturePacker-compatible atlas JSON, or both — free, online, no registration.",
+    "upload": {
+      "title": "Drop your spritesheet PNG here or click to select",
+      "limit": "Max file size: 20 MB",
+      "accept": "Only .png files are accepted",
+      "changeFile": "Click to choose a different file"
+    },
+    "convert": "Split!",
+    "slicingMode": {
+      "title": "Slicing Mode",
+      "grid": "Grid (columns × rows)",
+      "cell": "Cell (pixel dimensions)"
+    },
+    "options": {
+      "title": "Options",
+      "columns": "Columns",
+      "rows": "Rows",
+      "cellWidth": "Cell Width (px)",
+      "cellHeight": "Cell Height (px)",
+      "padding": "Cell Padding (px)",
+      "paddingHint": "Pixel gap between cells in the source spritesheet. Set this if your sheet was exported with gutters between frames.",
+      "trimTitle": "Trim Margins (px)",
+      "trimHint": "Crop extra space around the spritesheet before slicing. Use this when the sheet has outer borders or whitespace that isn't part of the frame grid.",
+      "trimTop": "Top",
+      "trimRight": "Right",
+      "trimBottom": "Bottom",
+      "trimLeft": "Left",
+      "frameCount": "Frame Count",
+      "frameCountHint": "Truncate output to the first N frames after range filtering. Leave empty for all frames.",
+      "columnRange": "Column Range",
+      "columnRangeHint": "0-indexed columns to extract, e.g. \"0-5\" or \"2\". Leave empty for all columns.",
+      "rowRange": "Row Range",
+      "rowRangeHint": "0-indexed rows to extract, e.g. \"0\" or \"1-3\". Leave empty for all rows.",
+      "skipEmpty": "Skip Empty Frames",
+      "skipEmptyHint": "Remove fully transparent cells from the output. Useful when the last row of a spritesheet is incomplete.",
+      "output": "Output",
+      "outputFrames": "Frames (ZIP of PNGs)",
+      "outputMetadata": "Atlas metadata only",
+      "outputBoth": "Frames + metadata (ZIP)",
+      "metadataFormat": "Metadata Format",
+      "metadataFormatJsonArray": "JSON Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites"
+    },
+    "status": {
+      "uploading": "Uploading...",
+      "converting": "Splitting...",
+      "error": "Split failed",
+      "retry": "Try Again"
+    },
+    "result": {
+      "framesTitle": "Frames ready",
+      "metadataTitle": "Atlas metadata ready",
+      "bothTitle": "Frames & metadata ready",
+      "info": "{size}",
+      "download": "Download",
+      "reset": "Split Another"
+    },
+    "adModal": {
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more splits by reading our articles. Thank you for supporting this free tool!",
+      "remaining": "{count} free split remaining | {count} free splits remaining",
+      "watch": "Confirm",
+      "close": "Close"
+    },
+    "seo": {
+      "api": {
+        "title": "Use the Spritesheet Splitter API",
+        "content": "Integrate spritesheet splitting into your applications with the Easy PNG to Sprites API. Upload a spritesheet PNG and receive individual frames, TexturePacker-compatible JSON, CSS sprite definitions, or all of the above — in a single HTTP request.",
+        "content2": "The /split-spritesheet endpoint supports grid and cell slicing modes, row and column range filtering, trim margins, skip-empty detection, and three metadata formats. It's designed for game asset pipelines, CI/CD atlas generation, and any workflow that needs to programmatically extract data from a spritesheet.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": {
+          "title": "API Highlights",
+          "endpoints": "POST /split-spritesheet: one spritesheet PNG → frames, atlas JSON, CSS, or ZIP",
+          "input": "Upload a single PNG up to 20 MB",
+          "params": "Grid or cell slicing, range filtering, skip-empty, trim margins, three metadata formats",
+          "limit": "20 MB input; output size depends on frame count and dimensions",
+          "formats": "PNG input; ZIP (frames), JSON (array or hash), or CSS output",
+          "response": "Fast response with Cloud Run auto-scaling"
+        }
+      },
+      "whatIs": {
+        "title": "What Is Spritesheet Splitting?",
+        "content": "Spritesheet splitting (also called atlas extraction or spritesheet slicing) is the reverse of spritesheet generation: instead of merging individual PNG frames into a single texture atlas, it slices an existing spritesheet back into its constituent parts. The tool reads a grid-based PNG, extracts each cell as a separate frame, and optionally generates a TexturePacker-compatible JSON or CSS metadata file that maps frame names to their pixel coordinates on the original sheet.",
+        "content2": "Spritesheet splitting is a common step in game development pipelines when you receive pre-built atlas assets — purchased from an asset store, exported from a game engine, or provided by a designer — and need to work with individual frames. Instead of manually cropping every cell in Photoshop or Aseprite, a splitter reads the grid dimensions and produces a clean, numbered set of PNG files in seconds. The same operation can produce atlas metadata that lets you load the original spritesheet directly in Phaser 3, PixiJS, Unity, or Godot without re-assembling anything.",
+        "content3": "This tool is the companion to our PNG to Spritesheet generator. Use the packer when you have loose frames and need to combine them; use the splitter when you have an atlas and need to extract or document its contents. Both tools share the same Easy PNG to Sprites API, which powers either direction of the spritesheet authoring workflow in a single service."
+      },
+      "outputs": {
+        "title": "Three Output Modes: Frames, Metadata, or Both",
+        "content": "Frames mode extracts every cell from the spritesheet as an individual PNG file, packages them in a ZIP archive with zero-padded sequential filenames (frame_0.png, frame_1.png, ...), and returns that archive for download. This is the mode to reach for when you need the source images themselves — to edit specific frames, re-time an animation, or re-pack the frames in a different layout using the PNG to Spritesheet tool.",
+        "content2": "Metadata-only mode skips pixel extraction entirely. It reads the grid coordinates of each cell and produces a machine-readable atlas description — JSON Array, JSON Hash, or CSS Sprites — describing exactly where each frame sits on the spritesheet. This mode is ideal when you already have the spritesheet PNG in your project and just need the coordinate file to load it in an engine. No image data is extracted, which means faster processing and a smaller download.",
+        "content3": "Both mode produces a single ZIP containing all extracted frame PNGs plus the atlas metadata file. This is the most complete output: it gives you the spritesheet data in an engine-ready format alongside the individual frames you might need for further editing. Use this mode when you're encountering an unknown spritesheet for the first time and want a full picture of its structure before deciding how to integrate it."
+      },
+      "metadataFormats": {
+        "title": "Choosing a Metadata Format",
+        "content": "JSON Array is the default format and the one with the broadest engine support. It follows the TexturePacker JSON Array schema — the de facto standard in the 2D game ecosystem — where each frame is described by a filename, a frame rectangle, and source size fields. Phaser 3 loads this format natively with scene.load.atlas(), and PixiJS accepts it through Assets.load(). Every extracted frame is addressable by its generated filename (frame_0.png, frame_1.png, ...) so engine code stays clean without hardcoding pixel coordinates.",
+        "content2": "JSON Hash uses the same TexturePacker schema but structures the frames field as an object keyed by filename rather than an array. Some engines and community importers default to hash format — for example, certain Unity TexturePacker Importer configurations. If your loading code or engine plugin explicitly expects a hash-keyed frames object, use this option. Otherwise JSON Array is the safer default, as it has wider first-party support across Phaser 3, PixiJS, and most community tools.",
+        "content3": "CSS Sprites generates a stylesheet where each frame becomes a CSS class with background-position, width, and height values targeting its coordinates on the source spritesheet. Drop the spritesheet PNG and the generated CSS file into a web project, reference the sheet as a background-image, and use the class names to display individual sprites. This is the classic technique for CSS sprite animations and icon sheets, and is ideal for web UI projects that don't use a JavaScript game engine."
+      },
+      "howTo": {
+        "title": "How to Split a Spritesheet",
+        "step1": {
+          "title": "1. Upload Your Spritesheet",
+          "content": "Drag and drop a single spritesheet PNG onto the upload area, or click to open the file picker. The file can be up to 20 MB. A thumbnail preview loads immediately so you can confirm you have the right file before configuring the split parameters."
+        },
+        "step2": {
+          "title": "2. Set the Slicing Mode and Grid",
+          "content": "Choose Grid mode if you know the number of columns and rows in your spritesheet — for example, a 4-column by 3-row sheet. Choose Cell mode if you know the pixel dimensions of each frame — for example, 64×64 pixels per cell. If the spritesheet has outer whitespace around the grid, use Trim Margins to crop it before slicing. If there are pixel gaps between cells (gutters), set Cell Padding to match."
+        },
+        "step3": {
+          "title": "3. Configure Output and Filters",
+          "content": "Choose an output mode: Frames extracts individual PNGs into a ZIP, Metadata generates an atlas description file without extracting pixels, and Both gives you everything in one ZIP. When metadata is selected, pick the format: JSON Array for Phaser 3 and PixiJS, JSON Hash for some Unity importer plugins, and CSS Sprites for web projects. Use Column Range and Row Range to target a specific animation sequence within the sheet, and Frame Count to cap the total number of frames extracted."
+        },
+        "step4": {
+          "title": "4. Download the Result",
+          "content": "Click Split to process the spritesheet. The server slices the PNG, applies your filters, and returns the result — typically under a second for most sheets. Download the ZIP, JSON, or CSS file and drop it into your project. Click \"Split Another\" to clear the workspace and start a fresh split with a new file."
+        }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "gridAndCell": {
+            "title": "Grid and Cell Slicing Modes",
+            "content": "Two ways to define the slice grid: specify column and row counts when you know the layout structure, or specify the pixel width and height of each cell when you know the frame size. Grid mode divides image dimensions by the column and row counts to determine cell size. Cell mode divides image dimensions by the cell size to determine the grid layout. Both modes produce the same output for a given spritesheet — the choice depends on what information you have."
+          },
+          "allOutputModes": {
+            "title": "All Three Output Modes",
+            "content": "Extract individual PNG frames, generate atlas metadata without touching pixels, or produce both in a single request. Match the output to your workflow: frames-only for editing and re-packing, metadata-only for engine integration when you already have the PNG, and both for a complete picture of an unfamiliar atlas. The metadata-only mode is significantly faster because it skips all pixel-level image processing."
+          },
+          "metadataFormats": {
+            "title": "Three Atlas Metadata Formats",
+            "content": "JSON Array (TexturePacker standard, natively supported by Phaser 3 and PixiJS), JSON Hash (hash-keyed variant for importers that expect object-structured frames), and CSS Sprites (ready-to-use stylesheet for web background-position animations). All three formats are generated from the same slicing pass — pick the one your target runtime or engine expects and download it in the same request."
+          },
+          "rangeSelection": {
+            "title": "Partial Extraction with Range Filters",
+            "content": "Use column and row range filters (e.g., columns \"2-5\", rows \"1-3\") to extract only specific cells from a larger spritesheet. This is essential for spritesheets that pack multiple animation sequences into a single texture — walk cycles, attack sequences, and idle animations in different row bands. Target exactly the sequence you need without splitting the whole atlas, and combine with Frame Count to cap the output to a precise number of frames."
+          },
+          "trimAndPadding": {
+            "title": "Trim Margins and Cell Padding",
+            "content": "Strip outer borders from the spritesheet before slicing with four independent trim inputs (top, right, bottom, left), and account for inter-cell gutters with Cell Padding. Many spritesheets exported from TexturePacker, Aseprite, Photoshop, or game engines include outer whitespace and inter-frame gaps that would otherwise misalign the slice grid. Setting these parameters correctly is the most common fix when frames appear shifted or incorrectly cut."
+          },
+          "skipEmpty": {
+            "title": "Skip Empty Frame Detection",
+            "content": "When enabled, the tool scans each extracted cell for pixel content and discards fully transparent ones. This handles the common case where a spritesheet's last row is incomplete — for example, 14 frames arranged in a 4-column grid produces a final row with 2 blank cells. Skip Empty removes those blank frames automatically so your output contains only meaningful images with no placeholder files at the end of the sequence."
+          },
+          "singleFile": {
+            "title": "Up to 20 MB Spritesheet Input",
+            "content": "Accepts a single PNG file up to 20 MB. This comfortably covers production-grade spritesheets, including high-resolution 4096×4096 and 8192×8192 atlases commonly used for game characters and tilesets. The file is processed server-side, so your browser's available memory does not affect the split."
+          },
+          "privacy": {
+            "title": "Privacy First",
+            "content": "Your spritesheet is processed in memory on the server and discarded immediately after the response is returned. No account required, no persistent storage, no logging of file contents or pixel data. Relevant when the artwork you are splitting belongs to an unannounced project, a client asset under NDA, or a closed-source pipeline."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "engineIntegration": {
+            "title": "Generating Atlas JSON for Existing Spritesheets",
+            "content": "If you have a spritesheet PNG without its companion JSON file — downloaded from an asset store, sent by a designer, or exported without metadata — use metadata-only mode to regenerate the atlas description. Choose JSON Array for Phaser 3 or PixiJS, JSON Hash for certain Unity importer plugins, or CSS Sprites for web animation. The output is a ready-to-use atlas file that pairs directly with your existing PNG, so you can load the spritesheet into your engine immediately without re-packing or re-exporting."
+          },
+          "frameExtraction": {
+            "title": "Extracting Frames for Re-editing",
+            "content": "When a game asset needs to be updated but you only have the final spritesheet — not the individual source files — frame extraction gives you back the original cells as individual PNGs. Extract the frames, edit the specific ones you need in Aseprite, Photoshop, or any pixel editor, then re-pack the updated set with the PNG to Spritesheet tool. This is a common recovery workflow in game jam projects, asset-store updates, and team handoffs where the original source files are unavailable."
+          },
+          "partialExtraction": {
+            "title": "Pulling One Animation from a Multi-Sequence Sheet",
+            "content": "Production spritesheets often pack multiple animation sequences into a single texture — a character's walk cycle in rows 0–1, attack in rows 2–3, and idle in rows 4–5. Use row and column range filters to target exactly the sequence you need. The result is a clean, isolated frame set or sub-spritesheet for that specific animation, without forcing you to extract and sift through the entire atlas. Combine with Frame Count to handle sequences whose last row is incomplete."
+          },
+          "cssAnimations": {
+            "title": "Building CSS Sprite Animations",
+            "content": "Upload a spritesheet, set metadata format to CSS Sprites, and download a stylesheet where every frame is a ready-made CSS class carrying background-position, width, and height. Pair it with the spritesheet PNG in your web project, reference the sheet as a background image on a div, apply the frame classes, and step through them with a CSS keyframe animation using steps(). No JavaScript required — just a background-image and a CSS animation sequence. This technique is widely used for icon sprites, loading indicators, and lightweight character animations on the web."
+          }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "gridVsCell": {
+            "q": "What's the difference between Grid and Cell mode?",
+            "a": "Grid mode asks for the number of columns and rows, then calculates cell size by dividing image dimensions by those counts. Cell mode asks for the pixel width and height of each cell, then calculates how many columns and rows fit. Use Grid mode when you know the layout structure (e.g., \"this is a 4×3 grid\"). Use Cell mode when you know the frame size (e.g., \"each frame is 64×64 pixels\"). Both produce identical output for the same spritesheet — the choice depends on what you know about the source asset."
+          },
+          "rangeFormat": {
+            "q": "How do I format column and row ranges?",
+            "a": "Ranges are 0-indexed. Write a single number to extract one column or row (e.g., \"2\" extracts only the third column), or a hyphen-separated pair to extract a span (e.g., \"1-3\" extracts columns 1, 2, and 3). Both column range and row range filter independently — combine them to extract a rectangular region. Leave either field empty to include all columns or all rows. For example, Column Range \"0-3\" and Row Range \"2\" extracts a 4-column, 1-row strip from the third row of the sheet."
+          },
+          "skipEmpty": {
+            "q": "When should I turn off Skip Empty?",
+            "a": "Skip Empty is on by default and handles incomplete last rows cleanly. Turn it off if your animation intentionally includes blank frames — for example, a blink cycle where a transparent frame creates a deliberate pause, or a flash effect that uses an empty cell as a hold frame. With Skip Empty disabled, every cell is extracted regardless of content, giving you a frame count that exactly matches the grid dimensions."
+          },
+          "padding": {
+            "q": "My frames look shifted or overlapping — what should I check?",
+            "a": "The most likely cause is unapplied cell padding or outer margins. If the source spritesheet has pixel gaps between cells (gutters from TexturePacker or Aseprite exports), set Cell Padding to match that gap. If the sheet has outer whitespace around the grid, use Trim Margins to crop it before slicing. A quick check: multiply your expected cell dimensions by the column and row counts, add padding and margins, and compare the total against the actual image dimensions. Any discrepancy points to unconfigured padding or trim values."
+          },
+          "metadataFormat": {
+            "q": "Which metadata format should I use?",
+            "a": "JSON Array is the safe default: it's natively supported by Phaser 3 (scene.load.atlas) and PixiJS (Assets.load), and accepted by most Unity TexturePacker importer plugins. Use JSON Hash if your specific engine importer or loading library explicitly expects a hash-keyed frames object. Use CSS Sprites if you're building a web project that uses CSS background-position animations without a JavaScript game engine."
+          },
+          "outputFormats": {
+            "q": "What file types does the tool return?",
+            "a": "Frames mode returns a ZIP containing individual PNG files. Metadata-only mode returns a standalone JSON file (for JSON Array or JSON Hash) or a CSS file (for CSS Sprites) — no ZIP wrapper for these. Both mode returns a ZIP containing all frame PNGs plus the metadata file. ZIPs are ready to extract and drop into your project. Standalone JSON and CSS files are ready to place alongside your spritesheet PNG."
+          },
+          "maxSize": {
+            "q": "What is the maximum spritesheet size?",
+            "a": "The input spritesheet PNG can be up to 20 MB. There is no hard limit on pixel dimensions, but very large sheets (8192×8192 and above) may take a few extra seconds to process. All processing happens server-side, so your device's available memory or GPU does not affect the split."
+          },
+          "privacy": {
+            "q": "Is my spritesheet stored on the server?",
+            "a": "No. The uploaded PNG is held in server memory only for the duration of processing and discarded immediately after the response is returned. No file is written to disk, no pixel content is logged, and no account is required. Relevant when the spritesheet contains unreleased artwork, client assets under NDA, or proprietary game content."
           }
         }
       }

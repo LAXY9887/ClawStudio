@@ -154,6 +154,16 @@
         "可一次上傳多個 PNG 檔 —— 所有裁切後的檔案會打包成單一 ZIP，保留原始檔名，直接拖入專案即可使用。",
         "裁切完成後，用我們的 **PNG 轉 Spritesheet** 工具將所有乾淨的幀打包成單一材質 Atlas —— 一步到位，適用於 Phaser 3、PixiJS、Unity 或 Godot。"
       ]
+    },
+    "splitSpritesheet": {
+      "tipsTitle": "你知道嗎？Spritesheet 分割小技巧",
+      "tips": [
+        "使用 **欄範圍** 與 **列範圍** 只提取特定動畫 —— 例如「列範圍 2-3」可只取出第 3、4 列，而不必分割整個 Atlas。",
+        "**跳過空白幀** 預設啟用，會自動丟棄全透明格子；只有當動畫刻意包含空白幀（例如眨眼循環的停頓）時才需要關閉。",
+        "**JSON Array 元資料** 是 Phaser 3（`scene.load.atlas()`）與 PixiJS（`Assets.load()`）的原生格式 —— 無需額外設定即可直接載入。",
+        "若來源 Spritesheet 的格子之間有像素間距（例如 TexturePacker 或 Aseprite 匯出時加入的間隔），請設定 **格子間距** 以對齊切割。",
+        "提取出幀後，可用 **PNG Trim** 裁掉透明邊緣，再用 **PNG 轉 Spritesheet** 重新打包成更緊湊的 Atlas。"
+      ]
     }
   },
   "relatedTools": {
@@ -161,7 +171,8 @@
     "gifToSprite": "GIF → Spritesheet",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
-    "pngTrim": "PNG 裁切"
+    "pngTrim": "PNG 裁切",
+    "splitSpritesheet": "Spritesheet 分割"
   },
   "home": {
     "title": "免費線上開發工具",
@@ -181,6 +192,10 @@
       "pngTrim": {
         "title": "PNG 裁切",
         "description": "裁除 PNG 圖片的透明邊緣 —— 支援單檔或批次處理。"
+      },
+      "splitSpritesheet": {
+        "title": "Spritesheet 分割",
+        "description": "將 Spritesheet PNG 切割回個別幀，或產生 TexturePacker 相容的 Atlas JSON。"
       }
     }
   },
@@ -1025,6 +1040,224 @@
           "privacy": {
             "q": "我的檔案會被儲存到伺服器嗎？",
             "a": "不會。你上傳的 PNG 僅在記憶體中處理，裁切結果回傳後立即丟棄。不需要註冊、不會記錄檔案內容、也不會以 cookie 追蹤你的上傳行為。完成裁切、回傳結果，然後所有上傳的痕跡都會消失。"
+          }
+        }
+      }
+    }
+  },
+  "splitSpritesheet": {
+    "title": "免費線上 Spritesheet 分割工具 — 提取幀 & 產生 Atlas JSON",
+    "subtitle": "將 Spritesheet PNG 切割回個別幀，或產生 TexturePacker 相容的 Atlas JSON —— 免費、線上、無需註冊。",
+    "upload": {
+      "title": "將 Spritesheet PNG 拖曳至此，或點擊選擇",
+      "limit": "最大檔案大小：20 MB",
+      "accept": "僅接受 .png 檔案",
+      "changeFile": "點擊重新選擇檔案"
+    },
+    "convert": "分割！",
+    "slicingMode": {
+      "title": "切割模式",
+      "grid": "網格（欄數 × 列數）",
+      "cell": "格子（像素尺寸）"
+    },
+    "options": {
+      "title": "選項",
+      "columns": "欄數",
+      "rows": "列數",
+      "cellWidth": "格寬 (px)",
+      "cellHeight": "格高 (px)",
+      "padding": "格子間距 (px)",
+      "paddingHint": "來源 Spritesheet 格子之間的像素間距。若 Spritesheet 匯出時有加入間隔，請在此設定。",
+      "trimTitle": "裁切邊距 (px)",
+      "trimHint": "切割前裁掉 Spritesheet 周圍的多餘空間。若圖片有外框或空白邊距不屬於幀格，請在此設定。",
+      "trimTop": "上",
+      "trimRight": "右",
+      "trimBottom": "下",
+      "trimLeft": "左",
+      "frameCount": "幀數上限",
+      "frameCountHint": "套用範圍篩選後，只輸出前 N 幀。留空表示輸出全部。",
+      "columnRange": "欄範圍",
+      "columnRangeHint": "0-indexed 欄位範圍，例如「0-5」或「2」。留空表示全部欄位。",
+      "rowRange": "列範圍",
+      "rowRangeHint": "0-indexed 列位範圍，例如「0」或「1-3」。留空表示全部列位。",
+      "skipEmpty": "跳過空白幀",
+      "skipEmptyHint": "從輸出中移除全透明格子，適合最後一列不完整的 Spritesheet。",
+      "output": "輸出內容",
+      "outputFrames": "幀圖（ZIP 內含 PNG）",
+      "outputMetadata": "僅 Atlas 元數據",
+      "outputBoth": "幀圖 + 元數據（ZIP）",
+      "metadataFormat": "元數據格式",
+      "metadataFormatJsonArray": "JSON Array（Phaser 3 / PixiJS）",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites"
+    },
+    "status": {
+      "uploading": "上傳中...",
+      "converting": "分割中...",
+      "error": "分割失敗",
+      "retry": "重試"
+    },
+    "result": {
+      "framesTitle": "幀圖已準備好",
+      "metadataTitle": "Atlas 元數據已準備好",
+      "bothTitle": "幀圖與元數據已準備好",
+      "info": "{size}",
+      "download": "下載",
+      "reset": "再分割一個"
+    },
+    "adModal": {
+      "title": "🥺 請支持我們。🌸",
+      "description": "閱讀我們的文章解鎖 3 次分割機會。感謝你支持這個免費工具！",
+      "remaining": "{count} 次免費分割剩餘 | {count} 次免費分割剩餘",
+      "watch": "確認",
+      "close": "關閉"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 Spritesheet 分割 API",
+        "content": "透過 Easy PNG to Sprites API 將 Spritesheet 分割整合進你的應用程式。上傳一張 Spritesheet PNG，即可取得個別幀圖、TexturePacker 相容 JSON、CSS Sprites 定義，或三者全包 —— 只需一個 HTTP 端點。",
+        "content2": "/split-spritesheet 端點支援網格與格子切割模式、欄列範圍篩選、邊距裁切、跳過空白幀，以及三種元數據格式，專為遊戲素材流水線、CI/CD Atlas 產生，以及任何需要程式化提取 Spritesheet 資料的工作流程而設計。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 重點",
+          "endpoints": "POST /split-spritesheet：單張 PNG → 幀圖 ZIP、Atlas JSON 或 CSS",
+          "input": "上傳單張 PNG，最大 20 MB",
+          "params": "網格或格子切割、範圍篩選、跳過空白、邊距裁切、三種元數據格式",
+          "limit": "輸入 20 MB；輸出大小依幀數與尺寸而定",
+          "formats": "PNG 輸入；ZIP（幀圖）、JSON 或 CSS 輸出",
+          "response": "Cloud Run 自動擴展，快速回應"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 Spritesheet 分割？",
+        "content": "Spritesheet 分割（也稱為 Atlas 提取或 Spritesheet 切割）是 Spritesheet 生成的逆向操作：它不是將個別 PNG 幀合併成單一材質 Atlas，而是將既有的 Spritesheet 切割回各組成幀。工具讀取一張基於網格的 PNG，提取每個格子為獨立幀圖，並可選擇性地產生 TexturePacker 相容的 JSON 或 CSS 元數據檔，記錄每個幀在原始圖上的像素座標。",
+        "content2": "當你收到預建的 Atlas 素材 —— 從素材商店購買、由遊戲引擎匯出，或由設計師提供 —— 卻需要單獨處理個別幀時，Spritesheet 分割是遊戲開發流水線中的常見步驟。相比在 Photoshop 或 Aseprite 中手動裁切每個格子，分割工具只需讀取網格尺寸，幾秒鐘即可產出乾淨且編號有序的 PNG 檔案。同一操作也能產生 Atlas 元數據，讓你無需重新打包，就能在 Phaser 3、PixiJS、Unity 或 Godot 中直接載入原始 Spritesheet。",
+        "content3": "本工具是我們 PNG 轉 Spritesheet 產生器的配套工具。需要將散幀打包時用產生器；需要提取或分析 Atlas 內容時用分割器。兩個工具共用同一個 Easy PNG to Sprites API，在單一服務內支援 Spritesheet 工作流程的雙向操作。"
+      },
+      "outputs": {
+        "title": "三種輸出模式：幀圖、元數據，或兩者皆要",
+        "content": "幀圖模式將 Spritesheet 的每個格子提取為獨立 PNG 檔案，打包進一個 ZIP 壓縮檔（檔名為零填充的序號：frame_0.png、frame_1.png...），供下載使用。當你需要原始圖片本身 —— 用來編輯特定幀、重新調整動畫時序，或用 PNG 轉 Spritesheet 工具以不同佈局重新打包 —— 就使用這個模式。",
+        "content2": "僅元數據模式完全跳過像素提取。它讀取每個格子的座標，產生一份機器可讀的 Atlas 描述檔 —— JSON Array、JSON Hash 或 CSS Sprites —— 記錄每個幀在 Spritesheet 上的精確位置。當你的專案已有 Spritesheet PNG，只需要座標檔以便在引擎中載入時，這個模式最合適。由於不提取圖片資料，處理速度更快、下載量更小。",
+        "content3": "兩者皆要模式輸出一個 ZIP，內含所有提取的幀圖 PNG 加上 Atlas 元數據檔，是最完整的輸出：讓你同時擁有引擎可直接載入的格式，以及可能需要進一步編輯的個別幀圖。初次接觸陌生 Spritesheet、想要全面了解其結構再決定如何整合時，這個模式最實用。"
+      },
+      "metadataFormats": {
+        "title": "選擇元數據格式",
+        "content": "JSON Array 是預設格式，也是引擎支援最廣泛的格式。它遵循 TexturePacker JSON Array 規格 —— 2D 遊戲生態圈事實上的標準 —— 每個幀由 filename、frame 矩形以及原始尺寸欄位描述。Phaser 3 透過 scene.load.atlas() 原生支援此格式，PixiJS 透過 Assets.load() 接受相同格式。每個提取的幀以自動生成的檔名（frame_0.png、frame_1.png...）定址，引擎程式碼無需硬編碼像素偏移。",
+        "content2": "JSON Hash 使用相同的 TexturePacker 規格，但將 frames 欄位改為以檔名為 key 的物件，而非陣列。某些引擎和社群 Importer 預設使用 Hash 格式 —— 例如部分 Unity TexturePacker Importer 設定。如果你的程式碼或引擎外掛明確需要以 Hash 索引的 frames 物件，請選擇此選項；否則 JSON Array 是更安全的預設，因為 Phaser 3、PixiJS 及大多數社群工具對它的支援是第一優先。",
+        "content3": "CSS Sprites 產生一個樣式表，每個幀對應一個 CSS class，包含指向來源 Spritesheet 座標的 background-position、width 和 height 值。將 Spritesheet PNG 與產生的 CSS 檔放入網頁專案，以 background-image 引用圖片，並用 class 名稱顯示各個精靈。這是 CSS 精靈動畫和圖示圖集的經典技術，最適合不使用 JavaScript 遊戲引擎的網頁 UI 專案。"
+      },
+      "howTo": {
+        "title": "如何分割 Spritesheet",
+        "step1": {
+          "title": "1. 上傳你的 Spritesheet",
+          "content": "將單張 Spritesheet PNG 拖曳至上傳區，或點擊開啟檔案選擇器。檔案最大 20 MB。縮圖預覽會立即顯示，讓你在設定分割參數前確認選取的檔案正確。"
+        },
+        "step2": {
+          "title": "2. 設定切割模式與網格",
+          "content": "若你知道 Spritesheet 的欄數與列數（例如 4 欄 × 3 列），選擇網格模式。若你知道每個幀的像素尺寸（例如每格 64×64 px），選擇格子模式。若 Spritesheet 在網格外有額外留白，用「裁切邊距」先裁掉。若格子之間有像素間距，用「格子間距」配對。"
+        },
+        "step3": {
+          "title": "3. 設定輸出與篩選",
+          "content": "選擇輸出模式：幀圖模式將個別 PNG 打包成 ZIP，元數據模式產生 Atlas 描述檔而不提取像素，兩者皆要模式在一個 ZIP 中提供所有內容。若需要元數據，選擇對應格式：Phaser 3 / PixiJS 用 JSON Array，部分 Unity Importer 外掛用 JSON Hash，網頁專案用 CSS Sprites。使用欄範圍和列範圍只提取特定動畫序列，用幀數上限限制輸出總幀數。"
+        },
+        "step4": {
+          "title": "4. 下載結果",
+          "content": "點擊「分割！」開始處理。伺服器切割 PNG、套用篩選設定並回傳結果 —— 大多數 Spritesheet 通常在一秒內完成。下載 ZIP、JSON 或 CSS 檔，拖入專案即可使用。點擊「再分割一個」清除工作區，開始處理新的 Spritesheet。"
+        }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "gridAndCell": {
+            "title": "網格與格子兩種切割模式",
+            "content": "兩種方式定義切割網格：當你知道佈局結構時（例如 4 欄 × 3 列）使用網格模式；當你知道幀的像素尺寸時（例如每格 64×64 px）使用格子模式。網格模式將圖片尺寸除以欄列數計算格子大小；格子模式反之。兩種模式對同一張 Spritesheet 產生相同的輸出 —— 選哪種取決於你掌握的資訊。"
+          },
+          "allOutputModes": {
+            "title": "全面覆蓋三種輸出模式",
+            "content": "提取個別 PNG 幀、在不觸碰像素的情況下產生 Atlas 元數據，或一次請求同時輸出兩者。依照工作流程選擇：幀圖模式用於編輯與重新打包，元數據模式用於當你已有 PNG 時的引擎整合，兩者皆要模式用於完整了解陌生 Atlas 的結構。元數據模式因跳過所有像素處理而速度顯著更快。"
+          },
+          "metadataFormats": {
+            "title": "三種 Atlas 元數據格式",
+            "content": "JSON Array（TexturePacker 標準，Phaser 3 和 PixiJS 原生支援）、JSON Hash（以 Hash 索引的變體，適用於特定 Importer）、CSS Sprites（即用型樣式表，適合網頁 background-position 動畫）。三種格式均從同一次切割過程產生 —— 選擇你的目標執行環境或引擎所期待的格式。"
+          },
+          "rangeSelection": {
+            "title": "範圍篩選，部分提取",
+            "content": "使用欄範圍和列範圍篩選（例如欄「2-5」、列「1-3」）只提取大型 Spritesheet 中的特定格子。這對於在單張材質中打包多個動畫序列的 Spritesheet 至關重要 —— 步行循環、攻擊動作、待機動畫分別排列在不同列帶。精準鎖定你需要的序列，無需切割整個 Atlas；再搭配「幀數上限」限制輸出幀數。"
+          },
+          "trimAndPadding": {
+            "title": "邊距裁切與格子間距",
+            "content": "用四個獨立的裁切輸入（上、右、下、左）去除 Spritesheet 外框，用「格子間距」處理格子之間的留白。TexturePacker、Aseprite、Photoshop 或遊戲引擎匯出的許多 Spritesheet 都包含外框留白和格間間距，若不設定這些參數，切割網格就會偏移。正確設定是解決幀圖被切到或偏移最常見的方法。"
+          },
+          "skipEmpty": {
+            "title": "跳過空白幀自動偵測",
+            "content": "啟用後，工具會掃描每個提取的格子是否有像素內容，並丟棄全透明的格子。這解決了 Spritesheet 最後一列不完整的常見情況 —— 例如 4 欄網格中的 14 個幀，最後一列會有 2 個空白格子。跳過空白幀自動移除這些空白，讓輸出只包含有實際內容的圖片，序列末尾不會出現佔位空檔。"
+          },
+          "singleFile": {
+            "title": "支援最大 20 MB 的 Spritesheet 輸入",
+            "content": "接受最大 20 MB 的單張 PNG 檔案，可輕鬆應對生產規格的 Spritesheet，包括遊戲角色和圖磚集常用的高解析度 4096×4096 和 8192×8192 Atlas。所有處理在伺服器端進行，不受瀏覽器可用記憶體影響。"
+          },
+          "privacy": {
+            "title": "隱私優先",
+            "content": "你的 Spritesheet 在伺服器記憶體中處理，結果回傳後立即丟棄。不需要帳號、不做持久化儲存、不記錄任何檔案內容或像素資料。當你分割的圖稿屬於未公開專案、保密協議下的客戶素材或封閉原始碼流水線時，這一點尤其重要。"
+          }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "engineIntegration": {
+            "title": "為現有 Spritesheet 產生 Atlas JSON",
+            "content": "如果你有一張 Spritesheet PNG 但缺少配套的 JSON 檔 —— 從素材商店下載、由設計師提供，或匯出時未帶元數據 —— 使用僅元數據模式重新產生 Atlas 描述。選擇 Phaser 3 或 PixiJS 用的 JSON Array、某些 Unity Importer 外掛用的 JSON Hash，或網頁動畫用的 CSS Sprites。輸出結果可直接與你現有的 PNG 配對，立即在引擎中載入，無需重新打包或重新匯出。"
+          },
+          "frameExtraction": {
+            "title": "提取幀圖以重新編輯",
+            "content": "當遊戲素材需要更新但你只有最終的 Spritesheet 而沒有個別源檔時，幀圖提取功能能還原每個格子為獨立 PNG。提取幀圖後，在 Aseprite、Photoshop 或任何像素編輯器中修改需要的幀，再用 PNG 轉 Spritesheet 工具重新打包更新後的集合。這是遊戲開發競賽、素材商店更新和團隊交接中的常見恢復流程，尤其適用於原始源檔不可得的情況。"
+          },
+          "partialExtraction": {
+            "title": "從多序列圖集提取單一動畫",
+            "content": "生產規格的 Spritesheet 通常將多個動畫序列打包在單一材質中 —— 步行循環在第 0–1 列、攻擊在第 2–3 列、待機在第 4–5 列。使用列範圍篩選精準定位你需要的序列，輸出乾淨且獨立的幀集或子 Spritesheet，無需提取並翻找整個 Atlas。搭配幀數上限處理最後一列不完整的序列。"
+          },
+          "cssAnimations": {
+            "title": "建立 CSS 精靈動畫",
+            "content": "上傳 Spritesheet，將元數據格式設為 CSS Sprites，下載一個樣式表 —— 每個幀都是一個現成的 CSS class，帶有 background-position、width 和 height 值。將樣式表與 Spritesheet PNG 放入網頁專案，以 background-image 引用圖片，套用 class 名稱，再用 CSS steps() 關鍵幀動畫循環播放。完全不需要 JavaScript —— 只需 background-image 和 CSS 動畫序列，適用於圖示精靈、載入動畫和輕量角色動畫。"
+          }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "gridVsCell": {
+            "q": "網格模式和格子模式有什麼差別？",
+            "a": "網格模式要求提供欄數和列數，再以圖片尺寸除以這些數字計算格子大小。格子模式要求提供每格的像素寬高，再計算網格有多少欄列。當你知道佈局結構（例如「這是 4×3 的網格」）時用網格模式；當你知道幀的大小（例如「每格 64×64 像素」）時用格子模式。兩種模式對同一張 Spritesheet 產生相同的輸出。"
+          },
+          "rangeFormat": {
+            "q": "欄範圍和列範圍的格式是什麼？",
+            "a": "範圍使用 0-indexed。單一數字提取一欄或一列（例如「2」只提取第三欄），連字號分隔的範圍提取一段（例如「1-3」提取第 2、3、4 欄）。欄範圍和列範圍彼此獨立過濾 —— 可組合提取任意矩形區域。任一欄位留空表示包含全部欄位或全部列位。例如欄範圍「0-3」加列範圍「2」，可提取第三列的 4 欄 1 列帶狀區域。"
+          },
+          "skipEmpty": {
+            "q": "什麼時候應該關閉跳過空白幀？",
+            "a": "跳過空白幀預設開啟，能乾淨地處理最後一列不完整的情況。只有當動畫刻意包含空白幀時才需要關閉 —— 例如眨眼循環中透明幀製造的刻意停頓，或閃光效果中用空格子作為停留幀。關閉後，每個格子都會提取，無論內容是否為空，輸出幀數將完全符合網格尺寸。"
+          },
+          "padding": {
+            "q": "幀圖看起來偏移或重疊 —— 該怎麼排查？",
+            "a": "最可能的原因是未設定格子間距或外框裁切。若來源 Spritesheet 格子之間有像素間距（TexturePacker 或 Aseprite 匯出的間隔），請設定「格子間距」配對。若圖片在網格外有留白，用「裁切邊距」先裁掉。快速驗證方法：用預期的格子尺寸乘以欄列數，加上間距和邊距，再與實際圖片尺寸比較。任何差異都指向未設定的間距或裁切值。"
+          },
+          "metadataFormat": {
+            "q": "應該選擇哪種元數據格式？",
+            "a": "JSON Array 是安全的預設選項：Phaser 3（scene.load.atlas）和 PixiJS（Assets.load）原生支援，大多數 Unity TexturePacker Importer 外掛也接受。若你的引擎 Importer 或載入程式庫明確需要以 Hash 索引的 frames 物件，選 JSON Hash。若你在建置使用 CSS background-position 動畫而不使用 JavaScript 遊戲引擎的網頁專案，選 CSS Sprites。"
+          },
+          "outputFormats": {
+            "q": "工具回傳什麼檔案格式？",
+            "a": "幀圖模式回傳包含個別 PNG 檔案的 ZIP。僅元數據模式回傳獨立的 JSON 檔（JSON Array 或 JSON Hash）或 CSS 檔，不包 ZIP。兩者皆要模式回傳包含所有幀圖 PNG 加上元數據檔的 ZIP。ZIP 解壓後可直接拖入專案；獨立的 JSON 和 CSS 檔可直接與 Spritesheet PNG 並排放置。"
+          },
+          "maxSize": {
+            "q": "Spritesheet 最大可以多大？",
+            "a": "輸入 Spritesheet PNG 最大 20 MB，像素尺寸沒有明確上限，但非常大的圖（8192×8192 以上）可能需要多幾秒處理。所有處理在伺服器端進行，不受你裝置的記憶體或 GPU 影響。"
+          },
+          "privacy": {
+            "q": "我的 Spritesheet 會被儲存到伺服器嗎？",
+            "a": "不會。上傳的 PNG 只在伺服器記憶體中保留處理期間，結果回傳後立即丟棄。不會寫入磁碟、不記錄任何像素內容、不需要帳號。當 Spritesheet 包含未公開圖稿、保密協議下的客戶素材或專有遊戲內容時，這一點特別重要。"
           }
         }
       }

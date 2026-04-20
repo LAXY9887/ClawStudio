@@ -12,16 +12,18 @@ const toolKey = computed(() => {
   if (from.includes('png-to-gif') || from.includes('to-gif')) return 'toGif'
   if (from.includes('png-to-spritesheet')) return 'pngToSpritesheet'
   if (from.includes('png-trim')) return 'pngTrim'
+  if (from.includes('split-spritesheet')) return 'splitSpritesheet'
   return 'gifToSprite'
 })
 
 const tipCount = computed(() => {
-  const counts: Record<string, number> = { gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4 }
+  const counts: Record<string, number> = { gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4, splitSpritesheet: 5 }
   return counts[toolKey.value] ?? 4
 })
 
 const apiUrl = computed(() => {
-  return (toolKey.value === 'pngToSpritesheet' || toolKey.value === 'pngTrim')
+  const pngTools = ['pngToSpritesheet', 'pngTrim', 'splitSpritesheet']
+  return pngTools.includes(toolKey.value)
     ? 'https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites'
     : 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'
 })

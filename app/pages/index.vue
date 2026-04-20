@@ -22,6 +22,11 @@ const tools = [
     key: 'pngTrim',
     icon: 'i-lucide-scissors',
     to: '/tools/png-trim'
+  },
+  {
+    key: 'splitSpritesheet',
+    icon: 'i-lucide-split',
+    to: '/tools/split-spritesheet'
   }
 ]
 </script>
