@@ -175,7 +175,7 @@ function formatSize(bytes: number): string {
 
 function onFileSelect(e: Event) {
   const target = e.target as HTMLInputElement
-  if (target.files?.length) handleFile(target.files[0])
+  if (target.files?.length) handleFile(target.files[0]!)
 }
 
 function onDrop(e: DragEvent) {
