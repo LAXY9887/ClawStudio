@@ -135,6 +135,25 @@
         "在 **Spritesheet 模式** 下，上傳圖片後可利用格線預覽覆蓋層來確認欄數和列數設定是否正確。紅線會精確顯示工具將如何切割。",
         "使用 **裁切邊距** 可以在切割前裁掉 Spritesheet 周圍的多餘邊框。許多匯出的 Spritesheet 在網格外有額外留白，裁掉後才能確保格子對位精確。"
       ]
+    },
+    "pngToSpritesheet": {
+      "tipsTitle": "你知道嗎？PNG 轉 Spritesheet 小技巧",
+      "tips": [
+        "在上傳格線中拖曳縮圖可調整順序 —— 你看到的排列順序就是最終 Atlas 的幀序。",
+        "使用 **Packed（bin-packed）佈局** 處理尺寸不一的素材（例如 UI 圖示）—— 不規則形狀的打包效率比固定格線高約 2 倍。",
+        "啟用 **JSON 元資料** 可匯出 TexturePacker 相容的 JSON 檔 —— 在 Phaser 3 用 `scene.load.atlas()` 或在 PixiJS 用 `Assets.load()` 直接載入。",
+        "若你的引擎需要 GPU 相容的材質尺寸，請啟用 **2 的次方** —— WebGL 1 的 `GL_REPEAT` 取樣器及舊款行動裝置 GPU 都有此需求。",
+        "幀的邊緣有透明空白？先用我們的 **PNG Trim** 工具裁掉空白邊緣，再打包就能產生更緊湊、更有效率的 Atlas。"
+      ]
+    },
+    "pngTrim": {
+      "tipsTitle": "你知道嗎？PNG Trim 小技巧",
+      "tips": [
+        "**Alpha 閾值** 決定哪些像素視為透明 —— 0 只移除完全透明的像素，較高的數值（如 10–30）也會裁掉半透明的光暈和鋸齒邊緣。",
+        "設定 **邊距（Padding）** 可在精靈周圍保留一圈透明邊框 —— 1–2px 的緩衝可防止材質溢出，避免在遊戲引擎 Atlas 中相鄰格子互相滲色。",
+        "可一次上傳多個 PNG 檔 —— 所有裁切後的檔案會打包成單一 ZIP，保留原始檔名，直接拖入專案即可使用。",
+        "裁切完成後，用我們的 **PNG 轉 Spritesheet** 工具將所有乾淨的幀打包成單一材質 Atlas —— 一步到位，適用於 Phaser 3、PixiJS、Unity 或 Godot。"
+      ]
     }
   },
   "relatedTools": {

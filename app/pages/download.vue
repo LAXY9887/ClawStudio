@@ -10,11 +10,20 @@ const returnPath = computed(() => (route.query.from as string) || localePath('/'
 const toolKey = computed(() => {
   const from = returnPath.value
   if (from.includes('png-to-gif') || from.includes('to-gif')) return 'toGif'
+  if (from.includes('png-to-spritesheet')) return 'pngToSpritesheet'
+  if (from.includes('png-trim')) return 'pngTrim'
   return 'gifToSprite'
 })
 
 const tipCount = computed(() => {
-  return toolKey.value === 'toGif' ? 5 : 4
+  const counts: Record<string, number> = { gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4 }
+  return counts[toolKey.value] ?? 4
+})
+
+const apiUrl = computed(() => {
+  return (toolKey.value === 'pngToSpritesheet' || toolKey.value === 'pngTrim')
+    ? 'https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites'
+    : 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'
 })
 
 useSeoMeta({
@@ -64,7 +73,7 @@ onMounted(() => {
           <UButton
             :label="t('waitingRoom.apiCta')"
             icon="i-lucide-external-link"
-            to="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites"
+            :to="apiUrl"
             target="_blank"
             variant="outline"
             color="neutral"

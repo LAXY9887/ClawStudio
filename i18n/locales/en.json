@@ -135,6 +135,25 @@
         "In **Spritesheet mode**, use the grid preview overlay to verify your column and row settings before converting. The red lines show exactly where the tool will slice.",
         "Use **Trim Margins** to crop extra borders around your spritesheet before slicing. Many exported spritesheets have outer padding that isn't part of the frame grid — trimming it ensures accurate cell alignment."
       ]
+    },
+    "pngToSpritesheet": {
+      "tipsTitle": "Did You Know? PNG to Spritesheet Tips",
+      "tips": [
+        "Drag frames in the upload grid to reorder them — the order you see is the frame order in the final atlas.",
+        "Use the **Packed layout** for mixed-size assets like UI icons — bin-packing fits irregular shapes ~2× more efficiently than a fixed grid.",
+        "Enable **JSON Metadata** to export a TexturePacker-compatible JSON file — load it directly in Phaser 3 with `scene.load.atlas()` or in PixiJS with `Assets.load()`.",
+        "Enable **Power of 2** if your engine requires GPU-friendly texture dimensions — required for WebGL 1 `GL_REPEAT` samplers and older mobile GPUs.",
+        "Have frames with transparent borders? Try our **PNG Trim** tool first — cropping empty edges before packing produces a tighter, more efficient atlas."
+      ]
+    },
+    "pngTrim": {
+      "tipsTitle": "Did You Know? PNG Trim Tips",
+      "tips": [
+        "The **Alpha Threshold** controls which pixels count as transparent — 0 removes only fully empty pixels, while higher values (e.g., 10–30) also trim semi-transparent halos and anti-aliasing fringes.",
+        "Add a **Padding** value to keep a thin transparent margin around each sprite — a 1–2px buffer prevents texture bleeding when adjacent sprites share a cell in a game engine atlas.",
+        "Upload multiple PNG files at once — all trimmed files are returned in a single ZIP archive with original filenames preserved, ready to drop into your project.",
+        "After trimming, use our **PNG to Spritesheet** tool to pack all cleaned frames into a single texture atlas — ready for Phaser 3, PixiJS, Unity, or Godot in one step."
+      ]
     }
   },
   "relatedTools": {
