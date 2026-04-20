@@ -129,11 +129,13 @@ const bgColorMode = ref<'transparent' | 'custom'>('transparent')
 const bgColorHex = ref('#000000')
 const powerOf2 = ref(false)
 const fileNameOrder = ref(false)
-const metadataFormat = ref(false)
+const trimInput = ref(false)
+const extrude = ref(0)
+const metadataFormat = ref<'none' | 'json_array' | 'json_hash' | 'css'>('none')
 
-// When layout=packed, metadata is required
+// When layout=packed, JSON Array metadata is required
 watch(layout, (v) => {
-  if (v === 'packed') metadataFormat.value = true
+  if (v === 'packed') metadataFormat.value = 'json_array'
 })
 
 // Usage limiter
@@ -224,8 +226,10 @@ async function convert() {
     formData.append('bg_color', bgColorMode.value === 'transparent' ? 'transparent' : bgColorHex.value)
     if (powerOf2.value) formData.append('power_of_2', 'true')
     if (fileNameOrder.value) formData.append('file_name_order', 'true')
-    if (metadataFormat.value || layout.value === 'packed') {
-      formData.append('metadata_format', 'json_array')
+    if (trimInput.value) formData.append('trim_input', 'true')
+    if (extrude.value > 0) formData.append('extrude', String(extrude.value))
+    if (metadataFormat.value !== 'none') {
+      formData.append('metadata_format', metadataFormat.value)
     }
 
     const response = await $fetch.raw('/api/png-to-spritesheet', {
@@ -482,9 +486,28 @@ onUnmounted(() => {
               <USwitch v-model="fileNameOrder" :label="t('pngToSpritesheet.options.fileNameOrder')" />
               <p v-if="fileNameOrder" class="text-xs text-muted -mt-2 pl-1">{{ t('pngToSpritesheet.options.fileNameOrderHint') }}</p>
 
+              <!-- Auto-trim input -->
+              <USwitch v-model="trimInput" :label="t('pngToSpritesheet.options.trimInput')" />
+              <p v-if="trimInput" class="text-xs text-muted -mt-2 pl-1">{{ t('pngToSpritesheet.options.trimInputHint') }}</p>
+
+              <!-- Extrude -->
+              <UFormField :label="t('pngToSpritesheet.options.extrude')" :hint="t('pngToSpritesheet.options.extrudeHint')">
+                <UInput v-model.number="extrude" type="number" :min="0" />
+              </UFormField>
+
               <!-- Metadata format -->
-              <USwitch v-model="metadataFormat" :label="t('pngToSpritesheet.options.metadataFormat')" :disabled="layout === 'packed'" />
-              <p class="text-xs text-muted -mt-2 pl-1">{{ t('pngToSpritesheet.options.metadataFormatHint') }}</p>
+              <UFormField :label="t('pngToSpritesheet.options.metadataFormat')" :hint="t('pngToSpritesheet.options.metadataFormatHint')">
+                <URadioGroup
+                  v-model="metadataFormat"
+                  :disabled="layout === 'packed'"
+                  :items="[
+                    { label: t('pngToSpritesheet.options.metadataFormatNone'), value: 'none' },
+                    { label: t('pngToSpritesheet.options.metadataFormatJsonArray'), value: 'json_array' },
+                    { label: t('pngToSpritesheet.options.metadataFormatJsonHash'), value: 'json_hash' },
+                    { label: t('pngToSpritesheet.options.metadataFormatCss'), value: 'css' }
+                  ]"
+                />
+              </UFormField>
             </div>
           </template>
         </UAccordion>

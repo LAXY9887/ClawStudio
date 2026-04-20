@@ -674,8 +674,16 @@
       "powerOf2Hint": "Pad output dimensions to the next power of 2 (e.g. 300 → 512). Useful for GPU textures.",
       "fileNameOrder": "Sort by Filename",
       "fileNameOrderHint": "Sort frames by the _N numeric suffix in filenames instead of upload order.",
-      "metadataFormat": "Include JSON Metadata",
-      "metadataFormatHint": "Output a ZIP containing the PNG plus a TexturePacker-compatible JSON file. Required for packed layout."
+      "trimInput": "Auto-trim Input",
+      "trimInputHint": "Remove transparent edges from each input PNG before compositing. Useful for assets exported with extra padding.",
+      "extrude": "Extrude (px)",
+      "extrudeHint": "Duplicate the outermost row/column of pixels outward by N px on all sides of each frame. Prevents texture bleeding in WebGL bilinear filtering. Pair with Padding to reserve space.",
+      "metadataFormat": "Atlas Metadata",
+      "metadataFormatNone": "None (PNG only)",
+      "metadataFormatJsonArray": "JSON Array (Phaser 3 / PixiJS)",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites",
+      "metadataFormatHint": "Output a ZIP containing the PNG plus a metadata file. Required (JSON Array) for packed layout."
     },
     "status": {
       "uploading": "Uploading...",

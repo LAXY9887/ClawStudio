@@ -674,8 +674,16 @@
       "powerOf2Hint": "將輸出尺寸填充至 2 的次方（例如 300 → 512），適合 GPU 材質。",
       "fileNameOrder": "依檔名排序",
       "fileNameOrderHint": "依照檔名中的 _N 數字後綴排序，而非上傳順序。",
-      "metadataFormat": "包含 JSON 元數據",
-      "metadataFormatHint": "輸出 ZIP，內含 PNG 與相容 TexturePacker 的 JSON 檔案。Packed 佈局必選。"
+      "trimInput": "自動裁切輸入",
+      "trimInputHint": "合成前自動裁掉每張輸入 PNG 的透明邊緣，適合帶有多餘留白的素材。",
+      "extrude": "像素延伸 (px)",
+      "extrudeHint": "將每幀最外圍的像素向外複製 N px，防止 WebGL bilinear 材質溢出。請搭配「間距」參數預留空間。",
+      "metadataFormat": "Atlas 元數據",
+      "metadataFormatNone": "不輸出（僅 PNG）",
+      "metadataFormatJsonArray": "JSON Array（Phaser 3 / PixiJS）",
+      "metadataFormatJsonHash": "JSON Hash",
+      "metadataFormatCss": "CSS Sprites",
+      "metadataFormatHint": "輸出 ZIP，內含 PNG 與元數據檔案。Packed 佈局必選 JSON Array。"
     },
     "status": {
       "uploading": "上傳中...",
