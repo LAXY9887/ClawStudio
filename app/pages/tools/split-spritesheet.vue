@@ -113,6 +113,8 @@ const resultSize = ref('')
 const fileInput = ref<HTMLInputElement>()
 const isDragging = ref(false)
 const previewUrl = ref('')
+const previewWidth = ref(0)
+const previewHeight = ref(0)
 
 // Slicing mode
 const slicingMode = ref<'grid' | 'cell'>('grid')
@@ -195,6 +197,12 @@ function handleFile(f: File) {
   previewUrl.value = URL.createObjectURL(f)
   errorMessage.value = ''
   status.value = 'idle'
+  const img = new Image()
+  img.onload = () => {
+    previewWidth.value = img.naturalWidth
+    previewHeight.value = img.naturalHeight
+  }
+  img.src = previewUrl.value
 }
 
 async function convert() {
@@ -264,6 +272,8 @@ function reset() {
   if (previewUrl.value) URL.revokeObjectURL(previewUrl.value)
   file.value = null
   previewUrl.value = ''
+  previewWidth.value = 0
+  previewHeight.value = 0
   status.value = 'idle'
   errorMessage.value = ''
   resultBlob.value = null
@@ -308,31 +318,47 @@ onUnmounted(() => {
   >
     <template #workspace>
       <div v-if="status === 'idle' || status === 'error'">
-        <!-- Upload Zone -->
+        <!-- Preview with grid overlay (when file selected) -->
+        <div v-if="previewUrl && previewWidth > 0" class="space-y-2">
+          <SpritesheetPreview
+            :src="previewUrl"
+            :image-width="previewWidth"
+            :image-height="previewHeight"
+            :mode="slicingMode"
+            :columns="columns"
+            :rows="rows"
+            :cell-width="cellWidth"
+            :cell-height="cellHeight"
+            :padding="padding"
+            :column-range="columnRange || undefined"
+            :row-range="rowRange || undefined"
+            :frame-count="frameCount"
+            :trim-top="trimTop"
+            :trim-right="trimRight"
+            :trim-bottom="trimBottom"
+            :trim-left="trimLeft"
+          />
+          <div class="flex items-center justify-between">
+            <p class="text-sm text-muted">{{ file?.name }} · {{ formatSize(file?.size || 0) }} · {{ previewWidth }}×{{ previewHeight }}px</p>
+            <UButton :label="t('splitSpritesheet.upload.changeFile')" size="xs" color="neutral" variant="ghost" @click="fileInput?.click()" />
+          </div>
+          <input ref="fileInput" type="file" accept=".png" class="hidden" @change="onFileSelect">
+        </div>
+
+        <!-- Drop zone (no file yet) -->
         <div
-          class="relative border-2 border-dashed rounded-xl text-center cursor-pointer transition-colors"
-          :class="[
-            isDragging ? 'border-primary bg-primary/5' : 'border-muted hover:border-primary/50',
-            file ? 'p-4' : 'p-16'
-          ]"
+          v-else
+          class="relative border-2 border-dashed rounded-xl p-16 text-center cursor-pointer transition-colors"
+          :class="isDragging ? 'border-primary bg-primary/5' : 'border-muted hover:border-primary/50'"
           @click="fileInput?.click()"
           @dragover.prevent="isDragging = true"
           @dragleave.prevent="isDragging = false"
           @drop.prevent="onDrop"
         >
           <input ref="fileInput" type="file" accept=".png" class="hidden" @change="onFileSelect">
-          <template v-if="file && previewUrl">
-            <div class="border border-muted rounded-lg overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:10px_10px] max-h-48 flex items-center justify-center mb-3">
-              <img :src="previewUrl" :alt="file.name" class="max-h-48 max-w-full object-contain pointer-events-none">
-            </div>
-            <p class="text-sm font-medium">{{ file.name }}</p>
-            <p class="text-xs text-muted mt-1">{{ t('splitSpritesheet.upload.changeFile') }}</p>
-          </template>
-          <template v-else>
-            <UIcon name="i-lucide-upload" class="text-4xl text-muted mx-auto mb-4" />
-            <p class="font-medium text-lg">{{ t('splitSpritesheet.upload.title') }}</p>
-            <p class="text-sm text-muted mt-2">{{ t('splitSpritesheet.upload.limit') }}</p>
-          </template>
+          <UIcon name="i-lucide-upload" class="text-4xl text-muted mx-auto mb-4" />
+          <p class="font-medium text-lg">{{ t('splitSpritesheet.upload.title') }}</p>
+          <p class="text-sm text-muted mt-2">{{ t('splitSpritesheet.upload.limit') }}</p>
         </div>
 
         <!-- Slicing Mode Toggle -->
@@ -368,6 +394,46 @@ onUnmounted(() => {
             <UInput v-model.number="cellHeight" type="number" :min="1" placeholder="e.g. 64" />
           </UFormField>
         </div>
+
+        <!-- Output mode -->
+        <UFormField :label="t('splitSpritesheet.options.output')" class="mt-4">
+          <div class="flex gap-2">
+            <UButton
+              v-for="opt in [
+                { value: 'frames', label: t('splitSpritesheet.options.outputFrames') },
+                { value: 'metadata', label: t('splitSpritesheet.options.outputMetadata') },
+                { value: 'both', label: t('splitSpritesheet.options.outputBoth') }
+              ]"
+              :key="opt.value"
+              :variant="output === opt.value ? 'solid' : 'outline'"
+              color="neutral"
+              size="sm"
+              @click="output = opt.value as 'frames' | 'metadata' | 'both'"
+            >
+              {{ opt.label }}
+            </UButton>
+          </div>
+        </UFormField>
+
+        <!-- Metadata format (only when output includes metadata) -->
+        <UFormField v-if="showMetadataFormat" :label="t('splitSpritesheet.options.metadataFormat')" class="mt-3">
+          <div class="flex gap-2">
+            <UButton
+              v-for="fmt in [
+                { value: 'json_array', label: t('splitSpritesheet.options.metadataFormatJsonArray') },
+                { value: 'json_hash', label: t('splitSpritesheet.options.metadataFormatJsonHash') },
+                { value: 'css', label: t('splitSpritesheet.options.metadataFormatCss') }
+              ]"
+              :key="fmt.value"
+              :variant="metadataFormat === fmt.value ? 'solid' : 'outline'"
+              color="neutral"
+              size="sm"
+              @click="metadataFormat = fmt.value as 'json_array' | 'json_hash' | 'css'"
+            >
+              {{ fmt.label }}
+            </UButton>
+          </div>
+        </UFormField>
 
         <!-- Convert Button -->
         <div class="flex justify-end mt-4">
@@ -440,30 +506,6 @@ onUnmounted(() => {
               <!-- Skip Empty -->
               <USwitch v-model="skipEmpty" :label="t('splitSpritesheet.options.skipEmpty')" />
               <p class="text-xs text-muted -mt-2 pl-1">{{ t('splitSpritesheet.options.skipEmptyHint') }}</p>
-
-              <!-- Output mode -->
-              <UFormField :label="t('splitSpritesheet.options.output')">
-                <URadioGroup
-                  v-model="output"
-                  :items="[
-                    { label: t('splitSpritesheet.options.outputFrames'), value: 'frames' },
-                    { label: t('splitSpritesheet.options.outputMetadata'), value: 'metadata' },
-                    { label: t('splitSpritesheet.options.outputBoth'), value: 'both' }
-                  ]"
-                />
-              </UFormField>
-
-              <!-- Metadata format (only when output includes metadata) -->
-              <UFormField v-if="showMetadataFormat" :label="t('splitSpritesheet.options.metadataFormat')">
-                <URadioGroup
-                  v-model="metadataFormat"
-                  :items="[
-                    { label: t('splitSpritesheet.options.metadataFormatJsonArray'), value: 'json_array' },
-                    { label: t('splitSpritesheet.options.metadataFormatJsonHash'), value: 'json_hash' },
-                    { label: t('splitSpritesheet.options.metadataFormatCss'), value: 'css' }
-                  ]"
-                />
-              </UFormField>
 
             </div>
           </template>
