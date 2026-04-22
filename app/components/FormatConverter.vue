@@ -37,6 +37,25 @@ const showAdModal = ref(false)
 const remainingUses = computed(() => FREE_LIMIT - usageCount.value)
 const limitExceeded = computed(() => usageCount.value >= FREE_LIMIT)
 
+const EXT_TO_MIME: Record<string, string> = {
+  '.heic': 'image/heic',
+  '.heif': 'image/heif',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp',
+  '.avif': 'image/avif',
+  '.tiff': 'image/tiff',
+  '.svg': 'image/svg+xml',
+}
+
+// Includes MIME types so iOS Safari doesn't auto-convert HEIC to JPEG
+const acceptAttr = computed(() => {
+  const exts = props.acceptExt.split(',').map(s => s.trim().toLowerCase())
+  const mimes = [...new Set(exts.map(e => EXT_TO_MIME[e]).filter(Boolean))]
+  return mimes.length ? `${props.acceptExt},${mimes.join(',')}` : props.acceptExt
+})
+
 const outputFilename = computed(() => {
   if (!file.value) return `converted.${props.outputExt}`
   const base = file.value.name.replace(/\.[^.]+$/, '')
@@ -62,7 +81,10 @@ function onDrop(e: DragEvent) {
 function handleFile(f: File) {
   const accepted = props.acceptExt.split(',').map(s => s.trim().toLowerCase())
   const name = f.name.toLowerCase()
-  if (!accepted.some(ext => name.endsWith(ext))) {
+  const acceptedMimes = [...new Set(accepted.map(e => EXT_TO_MIME[e]).filter(Boolean))]
+  const extOk = accepted.some(ext => name.endsWith(ext))
+  const mimeOk = acceptedMimes.includes(f.type)
+  if (!extOk && !mimeOk) {
     errorMessage.value = t(`${props.toolKey}.upload.accept`)
     status.value = 'error'
     return
@@ -186,7 +208,7 @@ onUnmounted(() => {
           <p class="text-sm text-muted">{{ file?.name }} · {{ formatSize(file?.size || 0) }}</p>
           <UButton :label="t(`${toolKey}.upload.changeFile`)" size="xs" color="neutral" variant="ghost" @click="fileInput?.click()" />
         </div>
-        <input ref="fileInput" type="file" :accept="acceptExt" class="hidden" @change="onFileSelect">
+        <input ref="fileInput" type="file" :accept="acceptAttr" class="hidden" @change="onFileSelect">
       </div>
 
       <!-- Drop zone (no file) -->
@@ -199,7 +221,7 @@ onUnmounted(() => {
         @dragleave.prevent="isDragging = false"
         @drop.prevent="onDrop"
       >
-        <input ref="fileInput" type="file" :accept="acceptExt" class="hidden" @change="onFileSelect">
+        <input ref="fileInput" type="file" :accept="acceptAttr" class="hidden" @change="onFileSelect">
         <UIcon name="i-lucide-upload" class="text-4xl text-muted mx-auto mb-4" />
         <p class="font-medium text-lg">{{ t(`${toolKey}.upload.title`) }}</p>
         <p class="text-sm text-muted mt-2">{{ t(`${toolKey}.upload.limit`) }}</p>
