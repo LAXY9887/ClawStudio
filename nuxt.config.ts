@@ -72,7 +72,7 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    exclude: ['/download']
+    exclude: ['/download', '/*/download']
   },
 
   compatibilityDate: '2025-01-15',

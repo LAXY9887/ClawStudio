@@ -192,6 +192,42 @@
         "WebP is Google's preferred format for Core Web Vitals — using it can directly improve your Largest Contentful Paint (LCP) scores."
       ]
     },
+    "jpgToWebp": {
+      "tipsTitle": "Did You Know? JPG to WebP Tips",
+      "tips": [
+        "WebP typically shrinks JPG files by another **25–35%** at the same perceived quality — a free win for page load times.",
+        "Enable **Lossless mode** only if you want pixel-perfect output. For photos already in JPG, lossy WebP at quality 80–85 is almost always the right choice.",
+        "Unlike JPG, WebP supports **alpha transparency**. Converting to WebP lets you later add transparency in any editor without re-encoding.",
+        "Google's Core Web Vitals reward smaller images. Replacing JPG hero images with WebP often gives an **instant LCP improvement**."
+      ]
+    },
+    "webpToJpg": {
+      "tipsTitle": "Did You Know? WebP to JPG Tips",
+      "tips": [
+        "Convert when you need to email, print, or paste into a **legacy application** (older Office, Windows tools, print pipelines) that doesn't support WebP.",
+        "JPG at **quality 85–92** is practically indistinguishable from the WebP original, making it a safe universal format.",
+        "**Transparent pixels** in the source WebP are flattened to white — if you need transparency, convert to PNG instead.",
+        "Expect JPG to be slightly larger than the WebP source (~10–30% typically), since JPG's compression is less aggressive."
+      ]
+    },
+    "jpgToHeic": {
+      "tipsTitle": "Did You Know? JPG to HEIC Tips",
+      "tips": [
+        "HEIC files are typically **40–50% smaller** than JPG at the same visual quality — great for reclaiming storage on your iPhone or Mac.",
+        "HEIC works seamlessly across **Apple devices** (iOS 11+, macOS High Sierra+, iCloud). Avoid HEIC if you share files with Windows or Android users without converters.",
+        "Use quality **85–95** for best results. Below 80, HEIC's aggressive compression can introduce visible artifacts on high-detail photos.",
+        "Before batch-converting large JPG archives, test with a few samples to verify the quality-size tradeoff matches your expectations."
+      ]
+    },
+    "pngToHeic": {
+      "tipsTitle": "Did You Know? PNG to HEIC Tips",
+      "tips": [
+        "HEIC can produce files **5–10× smaller** than the source PNG for photographic content — but at the cost of lossy compression. Don't use for logos or line art.",
+        "For UI graphics, icons, and screenshots with sharp edges, **keep them as PNG** — HEIC's aggressive compression can blur crisp details.",
+        "HEIC has limited support outside Apple devices. If you need the file to open on Windows, Android, or the web, convert to WebP or JPG instead.",
+        "PNG transparency is **flattened** during conversion — HEIC technically supports alpha but many iOS apps don't handle it. Safer to composite onto a background first."
+      ]
+    },
     "pngToJpg": {
       "tipsTitle": "Did You Know? PNG to JPG Tips",
       "tips": [
@@ -249,6 +285,18 @@
       ]
     }
   },
+  "error": {
+    "title": "Page Not Found — ClawStudiouo",
+    "description": "The page you're looking for doesn't exist. Try one of our free image tools instead.",
+    "notFoundTitle": "Page Not Found",
+    "notFoundDescription": "The page you're looking for doesn't exist or may have been moved. Try one of our tools below, or return to the homepage.",
+    "genericTitle": "Something Went Wrong",
+    "genericDescription": "An unexpected error occurred. Please try again, or return to the homepage.",
+    "backHome": "Back to Home",
+    "goBack": "Go Back",
+    "tryTools": "Or try one of our tool categories:",
+    "toolsCount": "tools"
+  },
   "relatedTools": {
     "label": "Related Tools",
     "groups": {
@@ -263,10 +311,15 @@
     "splitSpritesheet": "Spritesheet Splitter",
     "heicToJpg": "HEIC → JPG",
     "heicToPng": "HEIC → PNG",
+    "heicToWebp": "HEIC → WebP",
     "pngToJpg": "PNG → JPG",
     "jpgToPng": "JPG → PNG",
     "pngToWebp": "PNG → WebP",
     "webpToPng": "WebP → PNG",
+    "jpgToWebp": "JPG → WebP",
+    "webpToJpg": "WebP → JPG",
+    "jpgToHeic": "JPG → HEIC",
+    "pngToHeic": "PNG → HEIC",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Favicon Generator"
   },
@@ -316,6 +369,26 @@
       "webpToPng": {
         "title": "WebP to PNG",
         "description": "Decode WebP back to universally compatible PNG with transparency preserved."
+      },
+      "heicToWebp": {
+        "title": "HEIC to WebP",
+        "description": "Convert iPhone HEIC photos directly to WebP — smaller than JPG with alpha support."
+      },
+      "jpgToWebp": {
+        "title": "JPG to WebP",
+        "description": "Shrink JPG files further by converting to modern WebP — perfect for web delivery."
+      },
+      "webpToJpg": {
+        "title": "WebP to JPG",
+        "description": "Convert WebP to universally compatible JPG for email, print, and legacy apps."
+      },
+      "jpgToHeic": {
+        "title": "JPG to HEIC",
+        "description": "Convert JPG photos to Apple HEIC format for efficient storage on iPhone and Mac."
+      },
+      "pngToHeic": {
+        "title": "PNG to HEIC",
+        "description": "Convert PNG images to Apple HEIC format for ~50% smaller files on Apple devices."
       },
       "svgToPng": {
         "title": "SVG to PNG",
@@ -2046,6 +2119,351 @@
           "customize": { "q": "Can I customize the web manifest?", "a": "The generated `site.webmanifest` is a functional stub with placeholder `name` and `short_name` fields. Open it in a text editor and set those to your actual brand names before deploying." },
           "privacy": { "q": "Is my source image stored?", "a": "No. Your upload is held in memory only during generation and discarded instantly after the ZIP is returned." },
           "free": { "q": "Is it free?", "a": "Yes — three free generations per session. Use our API for CI/CD integration or bulk client work." }
+        }
+      }
+    }
+  },
+  "jpgToWebp": {
+    "title": "Free Online JPG to WebP Converter",
+    "subtitle": "Shrink JPG files by another 25–35% by converting to WebP — modern format with full transparency support.",
+    "upload": { "title": "Drop your JPG file here or click to select", "limit": "Max file size: 50 MB · .jpg or .jpeg", "accept": "Only .jpg or .jpeg files are accepted", "tooLarge": "File exceeds the 50 MB limit", "changeFile": "Change file" },
+    "convert": "Convert to WebP",
+    "options": { "quality": "WebP Quality", "qualityHint": "Ignored when Lossless is enabled. 75–85 is the sweet spot for most web images.", "lossless": "Lossless Encoding", "losslessHint": "Perfect pixel preservation — rarely worthwhile for JPG sources since the original is already lossy." },
+    "status": { "converting": "Converting...", "error": "Conversion failed", "retry": "Try Again" },
+    "result": { "title": "Converted WebP", "info": "{width} × {height} px • {size}", "download": "Download WebP", "reset": "Convert Another" },
+    "adModal": { "title": "🥺 Please support us. 🌸", "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!", "remaining": "{count} free conversion remaining | {count} free conversions remaining", "watch": "Confirm", "close": "Close" },
+    "seo": {
+      "api": {
+        "title": "Use the JPG to WebP Conversion API",
+        "content": "Automate WebP delivery for your CDN. The /webp endpoint auto-detects input direction — send a JPG and receive WebP, optionally tuning quality or enabling lossless mode.",
+        "content2": "Perfect for build pipelines, on-upload SaaS conversion, and bulk CDN preprocessing that produces Core Web Vitals-friendly image variants at scale.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": { "title": "API Highlights", "endpoints": "POST /webp: any → WebP (auto-detected)", "input": "Multipart JPG upload, up to 50 MB", "params": "quality (0–100), lossless (bool)", "limit": "50 MB per request, ~89 MP resolution", "formats": "JPG / PNG input; WebP output", "response": "Binary image/webp stream" }
+      },
+      "whatIs": {
+        "title": "What Is JPG to WebP Conversion?",
+        "content": "WebP is Google's modern image format that compresses ~25–35% better than JPG at the same perceived quality. Converting existing JPG assets to WebP is a pure win for bandwidth, page speed, and Core Web Vitals scores.",
+        "content2": "Unlike JPG, WebP supports full alpha transparency and both lossy and lossless modes. For photos, lossy WebP at quality 80–85 gives the best balance; for lossless workflows, the WebP lossless codec still beats PNG by a wide margin.",
+        "content3": "This tool runs server-side: upload a JPG, pick a quality (or enable lossless), and stream back a WebP ready for the web. No signup, no watermark, no file retention."
+      },
+      "whyWebp": {
+        "title": "Why Convert JPG to WebP?",
+        "content": "Google's Core Web Vitals heavily weight image size — specifically Largest Contentful Paint (LCP). Replacing JPG hero images with WebP often gives an instant LCP boost without any code changes beyond the image URL.",
+        "content2": "WebP also reduces bandwidth for your CDN, speeds up mobile page loads on slow networks, and saves data for users on capped plans. For e-commerce and content-heavy sites, the upgrade is nearly always worth it."
+      },
+      "howTo": {
+        "title": "How to Convert JPG to WebP",
+        "step1": { "title": "1. Upload Your JPG", "content": "Drag or click to select. Files up to 50 MB accepted." },
+        "step2": { "title": "2. Choose Lossy or Lossless", "content": "Leave Lossless off for maximum compression on photos. Turn it on only if you need pixel-perfect output." },
+        "step3": { "title": "3. Pick a Quality (Lossy Only)", "content": "Default is 80. 75–85 is a strong balance for most web images." },
+        "step4": { "title": "4. Download", "content": "Your WebP file is ready — drop it into your site's image tags." }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "compression": { "title": "25–35% Smaller Files", "content": "Typical JPG → WebP savings at equivalent quality, with no visible difference." },
+          "photo": { "title": "Photo-Optimized", "content": "WebP's compression is tuned for photographic content — handles gradients, skin tones, and low-contrast areas cleanly." },
+          "quality": { "title": "Quality Slider", "content": "Fine-grained control from 1 to 100 — dial in your size vs fidelity tradeoff." },
+          "privacy": { "title": "No File Retention", "content": "Your JPG is processed in memory and discarded immediately." },
+          "fast": { "title": "Sub-Second Conversion", "content": "Typical web-sized JPGs convert in under 300 ms." },
+          "free": { "title": "Free for Casual Use", "content": "Three free conversions per session. API for higher volumes." }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "web": { "title": "Web Performance & SEO", "content": "Smaller images mean faster pages, better Core Web Vitals, and improved SEO rankings." },
+          "mobile": { "title": "Mobile Apps & PWAs", "content": "WebP is natively supported in Android WebViews and PWAs — lighter, faster UX." },
+          "ecommerce": { "title": "E-commerce Product Images", "content": "Convert product catalogs to WebP for faster listings and smaller CDN bills." },
+          "cdn": { "title": "CDN Preprocessing", "content": "Batch convert JPG archives to WebP as a one-time migration to reduce origin storage and egress costs." }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "browserSupport": { "q": "Which browsers support WebP?", "a": "Every evergreen browser: Chrome, Edge, Firefox, Opera, and Safari 14+. For older Safari and IE, use a picture element with JPG fallback." },
+          "qualityLoss": { "q": "Will quality drop during conversion?", "a": "Converting JPG → WebP at quality 85+ is essentially imperceptible. Both formats are lossy, but WebP's compression is more efficient so you can pick a higher quality for similar file size." },
+          "sizeSavings": { "q": "How much smaller will WebP be?", "a": "Typical lossy WebP: 25–35% smaller than the JPG for photos. Lossless WebP: ~10–20% larger than the lossy JPG but pixel-perfect." },
+          "lossless": { "q": "Should I enable Lossless mode?", "a": "Rarely for JPG sources — since the JPG is already lossy, lossless WebP just preserves the JPG's artifacts at a larger file size. Use lossless only for pristine PNG sources." },
+          "privacy": { "q": "Is my JPG stored anywhere?", "a": "No. It's held in memory during conversion and discarded on response. Nothing is logged, no account required." },
+          "free": { "q": "Is this free?", "a": "Yes — three free conversions per session. API for unlimited usage." }
+        }
+      }
+    }
+  },
+  "webpToJpg": {
+    "title": "Free Online WebP to JPG Converter",
+    "subtitle": "Convert WebP images to JPG for universal compatibility with email, print, and legacy applications.",
+    "upload": { "title": "Drop your WebP file here or click to select", "limit": "Max file size: 50 MB · .webp only", "accept": "Only .webp files are accepted", "tooLarge": "File exceeds the 50 MB limit", "changeFile": "Change file" },
+    "convert": "Convert to JPG",
+    "options": { "quality": "JPG Quality", "qualityHint": "Higher = larger file, better fidelity. 85–92 is the practical sweet spot." },
+    "status": { "converting": "Converting...", "error": "Conversion failed", "retry": "Try Again" },
+    "result": { "title": "Converted JPG", "info": "{width} × {height} px • {size}", "download": "Download JPG", "reset": "Convert Another" },
+    "adModal": { "title": "🥺 Please support us. 🌸", "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!", "remaining": "{count} free conversion remaining | {count} free conversions remaining", "watch": "Confirm", "close": "Close" },
+    "seo": {
+      "api": {
+        "title": "Use the WebP to JPG Conversion API",
+        "content": "Serve JPG fallbacks for legacy clients programmatically. The /webp endpoint detects WebP direction automatically — supply target_format=jpg and the API returns a JPG decoded at the source's native resolution.",
+        "content2": "Useful for services that need to send JPG to email recipients, print pipelines that require JPG input, and asset-management systems normalizing incoming WebP to widely supported JPG.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": { "title": "API Highlights", "endpoints": "POST /webp: WebP → PNG / JPG", "input": "Multipart WebP upload, up to 50 MB", "params": "target_format=jpg, quality (0–100)", "limit": "50 MB per request, ~89 MP resolution", "formats": "WebP input; JPG output", "response": "Binary image/jpeg stream" }
+      },
+      "whatIs": {
+        "title": "What Is WebP to JPG Conversion?",
+        "content": "WebP to JPG conversion decodes a WebP image and re-encodes it as JPG. Since JPG is universally supported — every email client, legacy app, print pipeline, and older browser reads it — this conversion is often the last step before sharing.",
+        "content2": "JPG has no alpha channel, so transparent pixels in the WebP are flattened onto a white background during conversion. If you need to preserve transparency, convert to PNG instead.",
+        "content3": "This tool runs server-side through libvips, producing clean JPG output at the source's native resolution with your chosen quality. No signup, no watermark, no retention."
+      },
+      "whyConvert": {
+        "title": "When Should I Convert WebP to JPG?",
+        "content": "Convert when your destination doesn't support WebP. Common cases: emailing to recipients on old Outlook, uploading to legacy CMS systems, sending to print shops with old RIP software, or integrating with APIs that haven't caught up.",
+        "content2": "Also convert when file size matters less than compatibility — JPG is slightly larger than WebP at equivalent quality, but it opens everywhere with zero friction. For one-off shares or small batches, simplicity often beats optimization."
+      },
+      "howTo": {
+        "title": "How to Convert WebP to JPG",
+        "step1": { "title": "1. Upload Your WebP", "content": "Drag and drop or click to open the file picker. Up to 50 MB accepted." },
+        "step2": { "title": "2. Pick a Quality", "content": "Default is 90 — nearly imperceptible vs the source. 80 saves more space with slight softening." },
+        "step3": { "title": "3. Click Convert", "content": "The server decodes your WebP, flattens any transparency onto white, and re-encodes as JPG." },
+        "step4": { "title": "4. Download", "content": "Save the JPG. Ready for email, print, or any application that doesn't read WebP." }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "quality": { "title": "Quality Slider", "content": "Fine-grained control from 1 to 100." },
+          "compatibility": { "title": "Universal Output", "content": "JPG opens everywhere — no plugins, no codecs, no compatibility worries." },
+          "smaller": { "title": "Efficient JPG Encoding", "content": "Modern JPEG encoder produces small files even at high quality settings." },
+          "privacy": { "title": "No Retention", "content": "WebP is processed in memory and discarded immediately." },
+          "fast": { "title": "Fast Conversion", "content": "Under 500 ms for typical web-sized WebPs." },
+          "free": { "title": "Free", "content": "Three free conversions per session, no account." }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "email": { "title": "Email Attachments", "content": "Some corporate mail clients reject WebP attachments. JPG is always safe." },
+          "legacy": { "title": "Legacy Applications", "content": "Old Photoshop, MS Office (pre-365), and Windows Paint all fail on WebP but open JPG cleanly." },
+          "printing": { "title": "Print Production", "content": "Many print RIPs and photo labs only accept JPG for submission." },
+          "social": { "title": "Older Social Platforms", "content": "Some niche platforms and forum software still reject WebP uploads." }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "whyConvert": { "q": "Why convert WebP back to JPG?", "a": "For compatibility — JPG opens in every email client, OS, and app, while WebP is still sometimes rejected by legacy systems." },
+          "transparency": { "q": "What happens to transparent pixels?", "a": "Flattened to white, because JPG has no alpha channel. If you need transparency, convert to PNG instead." },
+          "quality": { "q": "What quality should I pick?", "a": "90 is safe for photos — nearly indistinguishable from the source. 80 gives more savings with slight softening." },
+          "fileSize": { "q": "Will JPG be smaller or larger than the WebP?", "a": "Typically 10–30% larger for equivalent quality, since WebP's compression is more efficient." },
+          "privacy": { "q": "Is my file stored?", "a": "No — held in memory only during conversion." },
+          "free": { "q": "Is it free?", "a": "Yes — three free conversions per session." }
+        }
+      }
+    }
+  },
+  "heicToWebp": {
+    "title": "Free Online HEIC to WebP Converter",
+    "subtitle": "Convert iPhone HEIC photos directly to WebP — smaller than JPG, with transparency support and broad modern browser support.",
+    "upload": { "title": "Drop your HEIC file here or click to select", "limit": "Max file size: 50 MB · .heic or .heif", "accept": "Only .heic or .heif files are accepted", "tooLarge": "File exceeds the 50 MB limit", "changeFile": "Change file" },
+    "convert": "Convert to WebP",
+    "options": { "quality": "WebP Quality", "qualityHint": "Higher = larger file, better fidelity. 80–88 is the sweet spot for most web photos." },
+    "status": { "converting": "Converting...", "error": "Conversion failed", "retry": "Try Again" },
+    "result": { "title": "Converted WebP", "info": "{width} × {height} px • {size}", "download": "Download WebP", "reset": "Convert Another" },
+    "adModal": { "title": "🥺 Please support us. 🌸", "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!", "remaining": "{count} free conversion remaining | {count} free conversions remaining", "watch": "Confirm", "close": "Close" },
+    "seo": {
+      "api": {
+        "title": "Use the HEIC to WebP Conversion API",
+        "content": "Automate modern-web-ready HEIC conversion. The /heic endpoint accepts multipart HEIC uploads with source_format=heic and target_format=webp, returning optimized WebP in one request.",
+        "content2": "Perfect for mobile app backends normalizing iPhone uploads for web delivery, SaaS platforms that want to store Apple-source photos in a web-friendly format, and CMS plugins producing web-ready variants automatically.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": { "title": "API Highlights", "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP", "input": "Multipart HEIC upload, up to 50 MB", "params": "source_format, target_format, quality (0–100)", "limit": "50 MB per request, ~89 MP resolution", "formats": "HEIC / HEIF input; WebP output with alpha", "response": "Binary image/webp stream" }
+      },
+      "whatIs": {
+        "title": "Why Convert HEIC Directly to WebP?",
+        "content": "Converting HEIC directly to WebP skips an intermediate JPG step that would introduce unnecessary compression artifacts. The tool decodes the HEIC's HEVC-compressed pixels once and re-encodes them as WebP — one round of compression instead of two.",
+        "content2": "Both HEIC and WebP are modern codecs designed for efficient delivery. The combination is particularly useful when you want iPhone-quality photos on a web page with file sizes smaller than JPG and better browser support than HEIC.",
+        "content3": "Our tool runs the full pipeline in a single server-side request — no local HEIC decoder needed, no ImageMagick setup, no multi-step scripting. Upload HEIC, get WebP."
+      },
+      "whyWebp": {
+        "title": "When Should I Convert HEIC to WebP?",
+        "content": "Convert when shipping iPhone photos to a modern website: blogs, portfolios, e-commerce, social feeds. WebP is supported in every evergreen browser and delivers smaller files than JPG at equivalent quality.",
+        "content2": "Skip WebP if your audience is on very old devices (iOS < 14, IE, Safari < 14) — use HEIC → JPG instead. Skip it if you need the full alpha channel at lossless quality — use HEIC → PNG."
+      },
+      "howTo": {
+        "title": "How to Convert HEIC to WebP",
+        "step1": { "title": "1. Upload Your HEIC File", "content": "Drag your .heic or .heif file to the upload area. Up to 50 MB accepted." },
+        "step2": { "title": "2. Pick a WebP Quality", "content": "Default is 85 — balanced for photographic content. Below 75 compression artifacts become visible on high-detail images." },
+        "step3": { "title": "3. Click Convert", "content": "The server decodes HEIC, applies EXIF orientation, and encodes as WebP. Under 1 second for typical iPhone photos." },
+        "step4": { "title": "4. Download", "content": "Your WebP is ready to drop into web pages, CMS uploads, or CDN buckets." }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "compression": { "title": "Excellent Compression", "content": "Typical iPhone HEIC → WebP at quality 85 is ~30% smaller than the equivalent JPG." },
+          "lossless": { "title": "Alpha Preserved", "content": "If your HEIC has transparency (e.g., Portrait Mode depth), WebP preserves it." },
+          "alpha": { "title": "Modern Format", "content": "WebP is universally supported by modern browsers — a true upgrade over JPG for the web." },
+          "privacy": { "title": "No File Retention", "content": "HEIC is decoded in memory and discarded immediately." },
+          "fast": { "title": "One-Step Pipeline", "content": "Single request, no intermediate JPG — avoids double compression artifacts." },
+          "free": { "title": "Free for Casual Use", "content": "Three free conversions per session, no account." }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "web": { "title": "Web Publishing", "content": "Take iPhone photos straight to your blog, portfolio, or e-commerce site at optimized sizes." },
+          "mobile": { "title": "Mobile App Content", "content": "Backends that accept iPhone uploads can store and serve WebP for efficient mobile delivery." },
+          "cms": { "title": "CMS Media Libraries", "content": "WordPress, Ghost, Strapi, and Contentful all serve WebP natively — feed them directly from HEIC." },
+          "cdn": { "title": "CDN Pre-processing", "content": "Batch HEIC archives to WebP for one-time migration to a modern web format." }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "whyWebp": { "q": "Why convert HEIC to WebP instead of JPG?", "a": "WebP is ~25–35% smaller than JPG at equivalent quality, supports transparency, and is natively supported by every modern browser. It's the better choice for web delivery." },
+          "browserSupport": { "q": "Will WebP work in all browsers?", "a": "Every evergreen browser supports WebP natively (Chrome, Edge, Firefox, Opera, Safari 14+). For Safari < 14, use a picture element with a JPG fallback." },
+          "lossless": { "q": "Can I get lossless WebP from HEIC?", "a": "This tool defaults to lossy WebP for efficient file sizes. For lossless output, convert HEIC → PNG first, then PNG → lossless WebP." },
+          "sizeSavings": { "q": "How much smaller is WebP vs the HEIC source?", "a": "WebP output is typically 1.5–2× larger than the HEIC, because HEIC's HEVC compression is still more aggressive. But WebP is ~25% smaller than the equivalent JPG, with broader browser support than HEIC." },
+          "privacy": { "q": "Is my photo stored?", "a": "No — held in memory during conversion only, discarded after response." },
+          "free": { "q": "Is it free?", "a": "Yes — three free conversions per session. API for unlimited usage." }
+        }
+      }
+    }
+  },
+  "jpgToHeic": {
+    "title": "Free Online JPG to HEIC Converter",
+    "subtitle": "Convert JPG photos to Apple HEIC format for 40–50% smaller file sizes and efficient storage on iPhone and Mac.",
+    "upload": { "title": "Drop your JPG file here or click to select", "limit": "Max file size: 50 MB · .jpg or .jpeg", "accept": "Only .jpg or .jpeg files are accepted", "tooLarge": "File exceeds the 50 MB limit", "changeFile": "Change file" },
+    "convert": "Convert to HEIC",
+    "options": { "quality": "HEIC Quality", "qualityHint": "Higher = larger file, better fidelity. 85–95 is the practical sweet spot for photos." },
+    "status": { "converting": "Converting...", "error": "Conversion failed", "retry": "Try Again" },
+    "result": { "title": "Converted HEIC", "info": "{width} × {height} px • {size}", "download": "Download HEIC", "reset": "Convert Another" },
+    "adModal": { "title": "🥺 Please support us. 🌸", "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!", "remaining": "{count} free conversion remaining | {count} free conversions remaining", "watch": "Confirm", "close": "Close" },
+    "seo": {
+      "api": {
+        "title": "Use the JPG to HEIC Conversion API",
+        "content": "Archive JPG photos in HEIC format programmatically. The /heic endpoint accepts multipart JPG uploads with source_format=jpg and target_format=heic, returning efficiently compressed HEIC files.",
+        "content2": "Useful for photo archival pipelines, bulk migration of JPG libraries to Apple-optimized storage, and cloud services that want to offer iPhone-native photo formats alongside JPG.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": { "title": "API Highlights", "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP", "input": "Multipart JPG upload, up to 50 MB", "params": "source_format, target_format, quality (0–100)", "limit": "50 MB per request, ~89 MP resolution", "formats": "JPG input; HEIC output with HEVC compression", "response": "Binary image/heic stream" }
+      },
+      "whatIs": {
+        "title": "What Is JPG to HEIC Conversion?",
+        "content": "HEIC (High Efficiency Image Container) is Apple's modern photo format that uses HEVC video-style compression to achieve roughly 40–50% smaller files than JPG at the same visual quality.",
+        "content2": "Converting JPG photos to HEIC is useful when your target audience uses Apple devices — iPhone, iPad, Mac — and storage efficiency matters. iCloud Photo Library, Apple Photos, and Messages all handle HEIC natively and benefit from the smaller file sizes.",
+        "content3": "Our tool runs the conversion server-side through libvips with libheif, producing standard HEIC files that open natively on iOS 11+ and macOS High Sierra+. No signup, no watermark, no retention."
+      },
+      "whyConvert": {
+        "title": "When Should I Convert JPG to HEIC?",
+        "content": "Convert when archiving photo libraries on Apple devices — HEIC's smaller footprint reclaims significant storage space without visible quality loss. A 10 GB JPG archive typically becomes 5–6 GB in HEIC.",
+        "content2": "Skip HEIC if your photos need to be shared with Windows, Android, or web users who lack HEIC support. Outside the Apple ecosystem, JPG remains the universal choice."
+      },
+      "howTo": {
+        "title": "How to Convert JPG to HEIC",
+        "step1": { "title": "1. Upload Your JPG", "content": "Drag or click to select. Files up to 50 MB accepted." },
+        "step2": { "title": "2. Pick a HEIC Quality", "content": "Default is 90 — excellent quality with 40–50% space savings. Below 80 compression artifacts may become visible." },
+        "step3": { "title": "3. Click Convert", "content": "The server decodes your JPG and re-encodes with HEVC compression in an HEIF container. Typical conversion under 1 second." },
+        "step4": { "title": "4. Download and Store", "content": "Your HEIC file is ready. Import it into Photos on Mac or transfer to iPhone via AirDrop." }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "compression": { "title": "40–50% Smaller Files", "content": "Typical photo JPG → HEIC savings at equivalent quality — ideal for storage-efficient archives." },
+          "quality": { "title": "Quality Slider", "content": "Fine-grained control from 1 to 100 — pick your size vs fidelity tradeoff." },
+          "apple": { "title": "Apple-Native Format", "content": "Opens natively on iPhone, iPad, and Mac — no plugins or converters needed." },
+          "privacy": { "title": "No File Retention", "content": "Your JPG is processed in memory and discarded immediately." },
+          "fast": { "title": "Sub-Second Conversion", "content": "Typical web-sized JPGs convert in under 600 ms." },
+          "free": { "title": "Free for Casual Use", "content": "Three free conversions per session, no account." }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "iphone": { "title": "iPhone Photo Sync", "content": "Convert before AirDropping or iCloud syncing to reduce storage use on mobile." },
+          "storage": { "title": "Storage Optimization", "content": "Shrink large photo archives on Mac by converting JPG libraries to HEIC." },
+          "icloud": { "title": "iCloud Photo Library", "content": "Store photos more efficiently — iCloud supports HEIC natively and preserves it between devices." },
+          "archival": { "title": "Long-Term Archival", "content": "HEIC is the future-proof choice for Apple-centric archives — supported by current and upcoming iOS versions." }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "whyHeic": { "q": "Why would I convert JPG to HEIC?", "a": "To save storage space on Apple devices. HEIC is 40–50% smaller than JPG at the same visual quality, which adds up quickly for large photo libraries." },
+          "compatibility": { "q": "Where can HEIC files open?", "a": "iPhone (iOS 11+), iPad, Mac (High Sierra+), Windows 10+ with the free HEVC codec, Android 10+ on most devices. Older Windows machines and the web generally need a converter." },
+          "quality": { "q": "Will quality drop?", "a": "Both JPG and HEIC are lossy, so some re-encoding loss is inevitable. At quality 90+ it's essentially invisible on screens." },
+          "sizeSavings": { "q": "How much space will I save?", "a": "Typical 40–50% file size reduction at equivalent quality. A 5 MB JPG becomes roughly a 2.5–3 MB HEIC." },
+          "privacy": { "q": "Is my file stored?", "a": "No — held in memory only during conversion, discarded on response." },
+          "free": { "q": "Is it free?", "a": "Yes — three free conversions per session. API for higher volumes." }
+        }
+      }
+    }
+  },
+  "pngToHeic": {
+    "title": "Free Online PNG to HEIC Converter",
+    "subtitle": "Convert PNG images to Apple HEIC format for efficient storage on iPhone and Mac — up to 5–10× smaller for photographic content.",
+    "upload": { "title": "Drop your PNG file here or click to select", "limit": "Max file size: 50 MB · .png only", "accept": "Only .png files are accepted", "tooLarge": "File exceeds the 50 MB limit", "changeFile": "Change file" },
+    "convert": "Convert to HEIC",
+    "options": { "quality": "HEIC Quality", "qualityHint": "Higher = larger file, better fidelity. 90–95 recommended since source PNG is lossless." },
+    "status": { "converting": "Converting...", "error": "Conversion failed", "retry": "Try Again" },
+    "result": { "title": "Converted HEIC", "info": "{width} × {height} px • {size}", "download": "Download HEIC", "reset": "Convert Another" },
+    "adModal": { "title": "🥺 Please support us. 🌸", "description": "Unlock 3 more conversions by reading our articles. Thank you for supporting this free tool!", "remaining": "{count} free conversion remaining | {count} free conversions remaining", "watch": "Confirm", "close": "Close" },
+    "seo": {
+      "api": {
+        "title": "Use the PNG to HEIC Conversion API",
+        "content": "Compress PNG archives to HEIC programmatically. The /heic endpoint accepts multipart PNG uploads with source_format=png and target_format=heic, returning HEVC-compressed HEIC files at a fraction of the original size.",
+        "content2": "Useful for photo archival pipelines, bulk migration of PNG libraries where lossless quality isn't required, and storage-efficient photo backups for Apple-centric workflows.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": { "title": "API Highlights", "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP", "input": "Multipart PNG upload, up to 50 MB", "params": "source_format, target_format, quality (0–100)", "limit": "50 MB per request, ~89 MP resolution", "formats": "PNG input; HEIC output with HEVC compression", "response": "Binary image/heic stream" }
+      },
+      "whatIs": {
+        "title": "What Is PNG to HEIC Conversion?",
+        "content": "PNG is a lossless format — every pixel is preserved exactly, which makes it excellent for editing but bloated for storage. HEIC uses lossy HEVC compression to shrink photographic content by 5–10× with minimal visible quality loss.",
+        "content2": "Converting PNG to HEIC is a trade: you give up pixel-perfect preservation in exchange for dramatically smaller files. For photos, this is almost always a win. For logos, line art, or UI graphics with sharp edges and solid colors, PNG remains the better choice.",
+        "content3": "Our tool uses libheif with a tuned HEVC encoder to produce HEIC files compatible with iOS 11+ and macOS High Sierra+. Upload PNG, pick a quality, download optimized HEIC — all in memory, no retention."
+      },
+      "whyConvert": {
+        "title": "When Should I Convert PNG to HEIC?",
+        "content": "Convert for photographic PNG archives that are destined for Apple devices. If you have folders of PNG photos syncing to iCloud or living on your Mac, HEIC reclaims massive amounts of space.",
+        "content2": "Don't convert PNG screenshots, UI graphics, icons, or anything with sharp edges — HEIC's compression blurs these. For lossless Apple-friendly storage, keep PNG or use HEIC only for photographic content."
+      },
+      "howTo": {
+        "title": "How to Convert PNG to HEIC",
+        "step1": { "title": "1. Upload Your PNG", "content": "Drag or click to select. Files up to 50 MB accepted." },
+        "step2": { "title": "2. Pick a HEIC Quality", "content": "Default is 90 — suitable for most photographic content. Since PNG is lossless, use higher quality (90–95) to minimize artifacts in the transition." },
+        "step3": { "title": "3. Click Convert", "content": "The server decodes your PNG and re-encodes as HEIC with HEVC compression." },
+        "step4": { "title": "4. Download", "content": "HEIC is ready to import into Apple Photos or transfer to iPhone." }
+      },
+      "features": {
+        "title": "Features",
+        "items": {
+          "compression": { "title": "5–10× Smaller for Photos", "content": "Typical photographic PNG → HEIC savings — perfect for archival." },
+          "quality": { "title": "Quality Slider", "content": "Fine-grained control from 1 to 100." },
+          "apple": { "title": "Apple-Native", "content": "Opens natively on iPhone, iPad, and Mac." },
+          "privacy": { "title": "No File Retention", "content": "PNG is processed in memory and discarded immediately." },
+          "fast": { "title": "Sub-Second Conversion", "content": "Typical photo PNGs convert in under 1 second." },
+          "free": { "title": "Free for Casual Use", "content": "Three free conversions per session, no account." }
+        }
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": {
+          "iphone": { "title": "iPhone Storage Savings", "content": "Convert PNG photos before transferring to iPhone via AirDrop or iCloud." },
+          "storage": { "title": "Mac Photo Archives", "content": "Shrink large folders of PNG photos on Mac by converting to HEIC — 5–10× savings for photos." },
+          "icloud": { "title": "iCloud Efficiency", "content": "Store more photos in iCloud without upgrading storage plans." },
+          "screenshots": { "title": "Photo vs Screenshot Sorting", "content": "Use PNG for screenshots and UI (preserve sharp details), HEIC for photos (save space). This tool handles the conversion for the photo side." }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "whyHeic": { "q": "Why convert PNG to HEIC?", "a": "To dramatically reduce storage use for photographic PNGs — HEIC is 5–10× smaller at equivalent perceived quality. Only worthwhile for Apple-centric workflows." },
+          "transparency": { "q": "Is transparency preserved?", "a": "Flattened to black background during conversion. HEIC technically supports alpha, but compatibility is inconsistent across iOS apps, so safer to composite first." },
+          "quality": { "q": "Will I lose quality?", "a": "Yes, since HEIC is lossy. At quality 90+ the loss is practically invisible for photographic content. For line art or UI graphics, skip this conversion — use PNG." },
+          "compatibility": { "q": "Where does HEIC open?", "a": "iPhone (iOS 11+), iPad, Mac (High Sierra+), Windows 10+ with the HEVC codec. Not natively supported on Android < 10 or most web browsers." },
+          "privacy": { "q": "Is my PNG stored?", "a": "No — held in memory only during conversion." },
+          "free": { "q": "Is it free?", "a": "Yes — three free conversions per session. API for higher volumes." }
         }
       }
     }

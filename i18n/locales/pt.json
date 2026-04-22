@@ -247,7 +247,55 @@
         "A opção de **cantos arredondados** adiciona arredondamento ao seu ícone — muitos navegadores e sistemas operacionais modernos exibem ícones de sites com cantos arredondados.",
         "Suporte a entrada SVG e PNG — se você tem um logo vetorial, envie o SVG diretamente para os resultados de escalonamento mais nítidos."
       ]
+    },
+    "jpgToWebp": {
+      "tipsTitle": "Voce sabia? Dicas de JPG para WebP",
+      "tips": [
+        "WebP e tipicamente 25–35% menor que JPG com qualidade visual equivalente — ideal para acelerar o carregamento do site.",
+        "O **controle de qualidade** ajusta a intensidade da compressao com perdas — 80 e adequado para a maioria das imagens web, 90+ para cenarios que exigem alta fidelidade.",
+        "Envie varios arquivos JPG de uma vez para conversao em lote — todos os arquivos WebP sao retornados em um unico ZIP.",
+        "Todos os navegadores modernos suportam WebP nativamente. Recorra ao JPG apenas se precisar de compatibilidade com IE ou sistemas muito antigos."
+      ]
+    },
+    "webpToJpg": {
+      "tipsTitle": "Voce sabia? Dicas de WebP para JPG",
+      "tips": [
+        "O **controle de qualidade** ajusta a compressao do JPG de saida — 85 e o equilibrio ideal entre tamanho de arquivo e nitidez para a maioria das fotos.",
+        "Areas transparentes em WebP sao preenchidas com **fundo branco** ao converter para JPG — se precisar de outra cor de fundo, processe a imagem primeiro em um editor.",
+        "Envie varios arquivos WebP de uma vez para conversao em lote — todos os arquivos JPG sao retornados em um unico ZIP.",
+        "Quando precisar usar imagens em ambientes sem suporte a WebP (anexos de e-mail, servicos de impressao, CMS legados), converter para JPG e a opcao mais segura."
+      ]
+    },
+    "jpgToHeic": {
+      "tipsTitle": "Voce sabia? Dicas de JPG para HEIC",
+      "tips": [
+        "HEIC e tipicamente 40–50% menor que JPG com qualidade equivalente — ideal para economizar espaco no iPhone e Mac.",
+        "O **controle de qualidade** ajusta a intensidade da compressao HEIC — 85 e adequado para a maioria das fotos, 90+ para cenarios que exigem alta fidelidade.",
+        "Envie varios arquivos JPG de uma vez para conversao em lote — todos os arquivos HEIC sao retornados em um unico ZIP.",
+        "HEIC e o formato nativo dos dispositivos Apple. Fotos convertidas podem ser importadas diretamente para a fototeca do iPhone ou usadas no Mac sem instalar software adicional."
+      ]
+    },
+    "pngToHeic": {
+      "tipsTitle": "Voce sabia? Dicas de PNG para HEIC",
+      "tips": [
+        "HEIC suporta compressao com e sem perdas — mesmo no modo sem perdas, os arquivos sao tipicamente 30–50% menores que PNG.",
+        "O **controle de qualidade** ajusta a intensidade da compressao com perdas. Para uma conversao completamente sem perdas, selecione a configuracao de qualidade maxima.",
+        "Envie varios arquivos PNG de uma vez para conversao em lote — todos os arquivos HEIC sao retornados em um unico ZIP.",
+        "Converter capturas de tela PNG ou materiais de design para HEIC economiza significativamente espaco de armazenamento em dispositivos Apple, mantendo excelente qualidade visual."
+      ]
     }
+  },
+  "error": {
+    "title": "Pagina nao encontrada — ClawStudiouo",
+    "description": "A pagina que voce procura nao existe. Experimente uma de nossas ferramentas de imagem gratuitas.",
+    "notFoundTitle": "Pagina nao encontrada",
+    "notFoundDescription": "A pagina que voce procura nao existe ou pode ter sido movida. Experimente uma das ferramentas abaixo ou volte para a pagina inicial.",
+    "genericTitle": "Algo deu errado",
+    "genericDescription": "Ocorreu um erro inesperado. Tente novamente ou volte para a pagina inicial.",
+    "backHome": "Voltar ao inicio",
+    "goBack": "Voltar",
+    "tryTools": "Ou experimente uma de nossas categorias de ferramentas:",
+    "toolsCount": "ferramentas"
   },
   "relatedTools": {
     "label": "Ferramentas relacionadas",
@@ -268,7 +316,12 @@
       "sprite": "Ferramentas de Sprites e Frames",
       "imageFormat": "Conversores de Formato de Imagem",
       "vector": "Ferramentas de Vetores e Ícones"
-    }
+    },
+    "jpgToWebp": "JPG → WebP",
+    "webpToJpg": "WebP → JPG",
+    "heicToWebp": "HEIC → WebP",
+    "jpgToHeic": "JPG → HEIC",
+    "pngToHeic": "PNG → HEIC"
   },
   "home": {
     "title": "Ferramentas de desenvolvimento online gratuitas",
@@ -324,6 +377,26 @@
       "faviconGenerator": {
         "title": "Gerador de Favicon",
         "description": "Gere um pacote completo de 7 arquivos favicon com ICO, Apple Touch, Android e manifesto web."
+      },
+      "jpgToWebp": {
+        "title": "JPG para WebP",
+        "description": "Reduza ainda mais arquivos JPG convertendo para o moderno WebP — perfeito para distribuicao web."
+      },
+      "webpToJpg": {
+        "title": "WebP para JPG",
+        "description": "Converta WebP para JPG universalmente compativel para e-mail, impressao e apps legados."
+      },
+      "heicToWebp": {
+        "title": "HEIC para WebP",
+        "description": "Converta fotos HEIC do iPhone diretamente para WebP — menor que JPG com suporte a alfa."
+      },
+      "jpgToHeic": {
+        "title": "JPG para HEIC",
+        "description": "Converta fotos JPG para o formato Apple HEIC para armazenamento eficiente no iPhone e Mac."
+      },
+      "pngToHeic": {
+        "title": "PNG para HEIC",
+        "description": "Converta imagens PNG para o formato Apple HEIC para arquivos ~50% menores em dispositivos Apple."
       }
     }
   },
@@ -2681,6 +2754,813 @@
           "free": {
             "q": "É gratuito?",
             "a": "Sim — três gerações gratuitas por sessão. Use nossa API para integração CI/CD ou trabalho em cliente em massa."
+          }
+        }
+      }
+    }
+  },
+  "jpgToWebp": {
+    "title": "Conversor Online Gratuito de JPG para WebP",
+    "subtitle": "Reduza arquivos JPG em mais 25–35% convertendo para WebP — formato moderno com suporte completo a transparência.",
+    "upload": {
+      "title": "Solte seu arquivo JPG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 50 MB · .jpg ou .jpeg",
+      "accept": "Apenas arquivos .jpg ou .jpeg são aceitos",
+      "tooLarge": "Arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para WebP",
+    "options": {
+      "quality": "Qualidade WebP",
+      "qualityHint": "Ignorado quando Codificação Sem Perda está ativada. 75–85 é o ponto ideal para a maioria das imagens web.",
+      "lossless": "Codificação Sem Perda",
+      "losslessHint": "Preservação perfeita de pixels — raramente vale a pena para fontes JPG, já que o original já é com perda."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Conversão falhou",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "WebP Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar WebP",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie mais 3 conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de JPG para WebP",
+        "content": "Automatize a entrega de WebP para seu CDN. O endpoint /webp detecta automaticamente a direção de entrada — envie um JPG e receba WebP, opcionalmente ajustando qualidade ou ativando modo sem perda.",
+        "content2": "Perfeito para pipelines de compilação, conversão SaaS no upload e pré-processamento de CDN em massa que produz variantes de imagem compatíveis com Core Web Vitals em escala.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /webp: qualquer → WebP (detectado automaticamente)",
+          "input": "Upload de JPG multiparte, até 50 MB",
+          "params": "quality (0–100), lossless (bool)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada JPG / PNG; saída WebP",
+          "response": "Fluxo binário image/webp"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de JPG para WebP?",
+        "content": "WebP é o formato moderno do Google que comprime ~25–35% melhor que JPG com a mesma qualidade percebida. Converter ativos JPG existentes para WebP é uma vitória pura para largura de banda, velocidade da página e pontuações de Core Web Vitals.",
+        "content2": "Ao contrário do JPG, WebP suporta transparência alfa completa e modos com e sem perda. Para fotos, WebP com perda em qualidade 80–85 oferece o melhor equilíbrio; para fluxos sem perda, o codec WebP sem perda ainda supera PNG em margem significativa.",
+        "content3": "Esta ferramenta é executada no servidor: envie um JPG, escolha uma qualidade (ou ative sem perda) e receba de volta um WebP pronto para a web. Sem inscrição, sem marca d'água, sem retenção de arquivo."
+      },
+      "whyWebp": {
+        "title": "Por Que Converter JPG para WebP?",
+        "content": "Core Web Vitals do Google pesam bastante o tamanho da imagem — especificamente Largest Contentful Paint (LCP). Substituir imagens JPG do herói por WebP geralmente oferece um aumento instantâneo de LCP sem qualquer alteração de código além da URL da imagem.",
+        "content2": "WebP também reduz largura de banda para seu CDN, acelera carregamentos de página móvel em redes lentas e economiza dados para usuários em planos limitados. Para sites de e-commerce e ricos em conteúdo, a atualização quase sempre vale a pena."
+      },
+      "howTo": {
+        "title": "Como Converter JPG para WebP",
+        "step1": {
+          "title": "1. Envie Seu JPG",
+          "content": "Arraste ou clique para selecionar. Arquivos até 50 MB aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha Com Perda ou Sem Perda",
+          "content": "Deixe Sem Perda desativado para máxima compressão em fotos. Ative apenas se precisar de saída perfeita em pixels."
+        },
+        "step3": {
+          "title": "3. Escolha uma Qualidade (Apenas Com Perda)",
+          "content": "O padrão é 80. 75–85 é um equilíbrio forte para a maioria das imagens web."
+        },
+        "step4": {
+          "title": "4. Baixar",
+          "content": "Seu arquivo WebP está pronto — solte-o nas tags de imagem do seu site."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "compression": {
+            "title": "Arquivos 25–35% Menores",
+            "content": "Economias típicas de JPG → WebP em qualidade equivalente, sem diferença visível."
+          },
+          "photo": {
+            "title": "Otimizado para Fotos",
+            "content": "A compressão WebP é ajustada para conteúdo fotográfico — trata gradientes, tons de pele e áreas de baixo contraste com limpeza."
+          },
+          "quality": {
+            "title": "Controle Deslizante de Qualidade",
+            "content": "Controle granular de 1 a 100 — ajuste seu trade-off de tamanho versus fidelidade."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "Seu JPG é processado na memória e descartado imediatamente."
+          },
+          "fast": {
+            "title": "Conversão em Sub-segundo",
+            "content": "JPGs de tamanho web típicos são convertidos em menos de 300 ms."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão. API para volumes maiores."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Desempenho Web e SEO",
+            "content": "Imagens menores significam páginas mais rápidas, melhores Core Web Vitals e classificações de SEO aprimoradas."
+          },
+          "mobile": {
+            "title": "Aplicativos Móveis e PWAs",
+            "content": "WebP é nativamente suportado em WebViews Android e PWAs — UX mais leve e rápida."
+          },
+          "ecommerce": {
+            "title": "Imagens de Produtos de E-commerce",
+            "content": "Converta catálogos de produtos para WebP para listagens mais rápidas e faturas de CDN menores."
+          },
+          "cdn": {
+            "title": "Pré-processamento de CDN",
+            "content": "Converta em lote arquivos JPG para WebP como migração única para reduzir armazenamento de origem e custos de egresso."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "browserSupport": {
+            "q": "Quais navegadores suportam WebP?",
+            "a": "Todo navegador em desenvolvimento contínuo: Chrome, Edge, Firefox, Opera e Safari 14+. Para Safari mais antigo e IE, use um elemento picture com fallback JPG."
+          },
+          "qualityLoss": {
+            "q": "A qualidade cai durante a conversão?",
+            "a": "Converter JPG → WebP em qualidade 85+ é essencialmente imperceptível. Ambos os formatos têm perda, mas a compressão WebP é mais eficiente para que você possa escolher uma qualidade mais alta com tamanho de arquivo semelhante."
+          },
+          "sizeSavings": {
+            "q": "Qual será o tamanho do WebP?",
+            "a": "WebP com perda típico: 25–35% menor que o JPG para fotos. WebP sem perda: ~10–20% maior que o JPG com perda, mas perfeito em pixels."
+          },
+          "lossless": {
+            "q": "Devo ativar o modo Sem Perda?",
+            "a": "Raramente para fontes JPG — como o JPG já tem perda, WebP sem perda apenas preserva os artefatos do JPG em um tamanho de arquivo maior. Use sem perda apenas para fontes PNG pristinas."
+          },
+          "privacy": {
+            "q": "Meu JPG é armazenado em algum lugar?",
+            "a": "Não. Ele é mantido na memória durante a conversão e descartado na resposta. Nada é registrado, nenhuma conta necessária."
+          },
+          "free": {
+            "q": "Isto é gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. API para uso ilimitado."
+          }
+        }
+      }
+    }
+  },
+  "webpToJpg": {
+    "title": "Conversor Online Gratuito de WebP para JPG",
+    "subtitle": "Converta imagens WebP para JPG para compatibilidade universal com e-mail, impressão e aplicativos legados.",
+    "upload": {
+      "title": "Solte seu arquivo WebP aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 50 MB · .webp apenas",
+      "accept": "Apenas arquivos .webp são aceitos",
+      "tooLarge": "Arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para JPG",
+    "options": {
+      "quality": "Qualidade JPG",
+      "qualityHint": "Maior = arquivo maior, melhor fidelidade. 85–92 é o ponto ideal prático."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Conversão falhou",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "JPG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar JPG",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie mais 3 conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de WebP para JPG",
+        "content": "Forneça fallbacks JPG para clientes legados programaticamente. O endpoint /webp detecta a direção WebP automaticamente — forneça target_format=jpg e a API retorna um JPG decodificado na resolução nativa da fonte.",
+        "content2": "Útil para serviços que precisam enviar JPG para destinatários de e-mail, pipelines de impressão que exigem entrada JPG e sistemas de gerenciamento de ativos que normalizam WebP recebido para JPG amplamente suportado.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /webp: WebP → PNG / JPG",
+          "input": "Upload de WebP multiparte, até 50 MB",
+          "params": "target_format=jpg, quality (0–100)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada WebP; saída JPG",
+          "response": "Fluxo binário image/jpeg"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de WebP para JPG?",
+        "content": "A conversão de WebP para JPG decodifica uma imagem WebP e a recodifica como JPG. Como JPG é universalmente suportado — cada cliente de e-mail, aplicativo legado, pipeline de impressão e navegador mais antigo o lê — essa conversão é frequentemente a última etapa antes de compartilhar.",
+        "content2": "JPG não possui canal alfa, portanto pixels transparentes no WebP são achatados em um fundo branco durante a conversão. Se precisar preservar transparência, converta para PNG.",
+        "content3": "Esta ferramenta é executada no servidor através de libvips, produzindo saída JPG limpa na resolução nativa da fonte com sua qualidade escolhida. Sem inscrição, sem marca d'água, sem retenção."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter WebP para JPG?",
+        "content": "Converta quando seu destino não suporta WebP. Casos comuns: enviar para destinatários em Outlook antigo, enviar para sistemas CMS legados, enviar para lojas de impressão com software RIP antigo ou integrar com APIs que não foram atualizadas.",
+        "content2": "Também converta quando o tamanho do arquivo importa menos que compatibilidade — JPG é ligeiramente maior que WebP em qualidade equivalente, mas abre em qualquer lugar com zero atrito. Para compartilhamentos únicos ou lotes pequenos, simplicidade geralmente supera otimização."
+      },
+      "howTo": {
+        "title": "Como Converter WebP para JPG",
+        "step1": {
+          "title": "1. Envie Seu WebP",
+          "content": "Arraste e solte ou clique para abrir o seletor de arquivo. Até 50 MB aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha uma Qualidade",
+          "content": "O padrão é 90 — quase imperceptível da fonte. 80 economiza mais espaço com suavização leve."
+        },
+        "step3": {
+          "title": "3. Clique em Converter",
+          "content": "O servidor decodifica seu WebP, achata qualquer transparência em branco e recodifica como JPG."
+        },
+        "step4": {
+          "title": "4. Baixar",
+          "content": "Salve o JPG. Pronto para e-mail, impressão ou qualquer aplicativo que não leia WebP."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "quality": {
+            "title": "Controle Deslizante de Qualidade",
+            "content": "Controle granular de 1 a 100."
+          },
+          "compatibility": {
+            "title": "Saída Universal",
+            "content": "JPG abre em qualquer lugar — sem plugins, sem codecs, sem preocupações de compatibilidade."
+          },
+          "smaller": {
+            "title": "Codificação JPG Eficiente",
+            "content": "Codificador JPEG moderno produz arquivos pequenos mesmo com configurações de alta qualidade."
+          },
+          "privacy": {
+            "title": "Sem Retenção",
+            "content": "WebP é processado na memória e descartado imediatamente."
+          },
+          "fast": {
+            "title": "Conversão Rápida",
+            "content": "Menos de 500 ms para WebPs de tamanho web típico."
+          },
+          "free": {
+            "title": "Gratuito",
+            "content": "Três conversões gratuitas por sessão, sem conta."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "email": {
+            "title": "Anexos de E-mail",
+            "content": "Alguns clientes de e-mail corporativos rejeitam anexos WebP. JPG sempre é seguro."
+          },
+          "legacy": {
+            "title": "Aplicativos Legados",
+            "content": "Photoshop antigo, MS Office (pré-365) e Windows Paint falham em WebP mas abrem JPG perfeitamente."
+          },
+          "printing": {
+            "title": "Produção de Impressão",
+            "content": "Muitos RIPs de impressão e laboratórios de fotos aceitam apenas JPG para submissão."
+          },
+          "social": {
+            "title": "Plataformas Sociais Antigas",
+            "content": "Algumas plataformas de nicho e software de fórum ainda rejeitam uploads WebP."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whyConvert": {
+            "q": "Por que converter WebP de volta para JPG?",
+            "a": "Para compatibilidade — JPG abre em cada cliente de e-mail, SO e aplicativo, enquanto WebP ainda é às vezes rejeitado por sistemas legados."
+          },
+          "transparency": {
+            "q": "O que acontece com pixels transparentes?",
+            "a": "Achatados em branco, porque JPG não possui canal alfa. Se precisar de transparência, converta para PNG."
+          },
+          "quality": {
+            "q": "Qual qualidade devo escolher?",
+            "a": "90 é seguro para fotos — quase indistinguível da fonte. 80 oferece mais economia com suavização leve."
+          },
+          "fileSize": {
+            "q": "JPG será menor ou maior que o WebP?",
+            "a": "Normalmente 10–30% maior para qualidade equivalente, já que a compressão WebP é mais eficiente."
+          },
+          "privacy": {
+            "q": "Meu arquivo é armazenado?",
+            "a": "Não — mantido apenas na memória durante a conversão."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão."
+          }
+        }
+      }
+    }
+  },
+  "heicToWebp": {
+    "title": "Conversor Online Gratuito de HEIC para WebP",
+    "subtitle": "Converta fotos HEIC do iPhone diretamente para WebP — menor que JPG, com suporte a transparência e suporte amplo de navegadores modernos.",
+    "upload": {
+      "title": "Solte seu arquivo HEIC aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 50 MB · .heic ou .heif",
+      "accept": "Apenas arquivos .heic ou .heif são aceitos",
+      "tooLarge": "Arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para WebP",
+    "options": {
+      "quality": "Qualidade WebP",
+      "qualityHint": "Maior = arquivo maior, melhor fidelidade. 80–88 é o ponto ideal para a maioria das fotos web."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Conversão falhou",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "WebP Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar WebP",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie mais 3 conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de HEIC para WebP",
+        "content": "Automatize conversão HEIC pronta para a web moderna. O endpoint /heic aceita uploads HEIC multiparte com source_format=heic e target_format=webp, retornando WebP otimizado em uma solicitação.",
+        "content2": "Perfeito para backends de aplicativos móveis normalizando uploads do iPhone para entrega na web, plataformas SaaS que desejam armazenar fotos de origem Apple em formato amigável à web e plugins CMS produzindo variantes prontas para a web automaticamente.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Upload de HEIC multiparte, até 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada HEIC / HEIF; saída WebP com alfa",
+          "response": "Fluxo binário image/webp"
+        }
+      },
+      "whatIs": {
+        "title": "Por Que Converter HEIC Diretamente para WebP?",
+        "content": "Converter HEIC diretamente para WebP pula uma etapa JPG intermediária que introduziria artefatos de compressão desnecessários. A ferramenta decodifica os pixels comprimidos HEVC do HEIC uma vez e os recodifica como WebP — uma rodada de compressão em vez de duas.",
+        "content2": "Tanto HEIC quanto WebP são codecs modernos projetados para entrega eficiente. A combinação é particularmente útil quando você quer fotos de qualidade iPhone em uma página web com tamanhos de arquivo menores que JPG e melhor suporte de navegador que HEIC.",
+        "content3": "Nossa ferramenta executa o pipeline completo em uma única solicitação do lado do servidor — nenhum decodificador HEIC local necessário, nenhuma configuração ImageMagick, nenhum script de múltiplas etapas. Envie HEIC, obtenha WebP."
+      },
+      "whyWebp": {
+        "title": "Quando Devo Converter HEIC para WebP?",
+        "content": "Converta ao enviar fotos do iPhone para um site moderno: blogs, portfólios, e-commerce, feeds sociais. WebP é suportado em cada navegador em desenvolvimento contínuo e oferece arquivos menores que JPG com qualidade equivalente.",
+        "content2": "Pule WebP se seu público estiver em dispositivos muito antigos (iOS < 14, IE, Safari < 14) — use HEIC → JPG em vez disso. Pule se precisar do canal alfa completo em qualidade sem perda — use HEIC → PNG."
+      },
+      "howTo": {
+        "title": "Como Converter HEIC para WebP",
+        "step1": {
+          "title": "1. Envie Seu Arquivo HEIC",
+          "content": "Arraste seu arquivo .heic ou .heif para a área de upload. Até 50 MB aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha uma Qualidade WebP",
+          "content": "O padrão é 85 — equilibrado para conteúdo fotográfico. Abaixo de 75, artefatos de compressão ficam visíveis em imagens de alto detalhe."
+        },
+        "step3": {
+          "title": "3. Clique em Converter",
+          "content": "O servidor decodifica HEIC, aplica orientação EXIF e codifica como WebP. Menos de 1 segundo para fotos típicas do iPhone."
+        },
+        "step4": {
+          "title": "4. Baixar",
+          "content": "Seu WebP está pronto para soltar em páginas web, uploads de CMS ou buckets CDN."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "compression": {
+            "title": "Excelente Compressão",
+            "content": "HEIC → WebP típico do iPhone em qualidade 85 é ~30% menor que o JPG equivalente."
+          },
+          "lossless": {
+            "title": "Alfa Preservado",
+            "content": "Se seu HEIC tiver transparência (p. ex., profundidade do Modo Retrato), WebP a preserva."
+          },
+          "alpha": {
+            "title": "Formato Moderno",
+            "content": "WebP é universalmente suportado por navegadores modernos — uma atualização verdadeira sobre JPG para a web."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "HEIC é decodificado na memória e descartado imediatamente."
+          },
+          "fast": {
+            "title": "Pipeline de Uma Etapa",
+            "content": "Solicitação única, sem JPG intermediário — evita artefatos de compressão dupla."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão, sem conta."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Publicação Web",
+            "content": "Leve fotos do iPhone direto para seu blog, portfólio ou site de e-commerce em tamanhos otimizados."
+          },
+          "mobile": {
+            "title": "Conteúdo de Aplicativos Móveis",
+            "content": "Backends que aceitam uploads do iPhone podem armazenar e servir WebP para entrega móvel eficiente."
+          },
+          "cms": {
+            "title": "Bibliotecas de Mídia CMS",
+            "content": "WordPress, Ghost, Strapi e Contentful todos servem WebP nativamente — alimente-os diretamente do HEIC."
+          },
+          "cdn": {
+            "title": "Pré-processamento de CDN",
+            "content": "Converta em lote arquivos HEIC para WebP como migração única para um formato web moderno."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whyWebp": {
+            "q": "Por que converter HEIC para WebP em vez de JPG?",
+            "a": "WebP é ~25–35% menor que JPG em qualidade equivalente, suporta transparência e é nativamente suportado por cada navegador moderno. É a melhor escolha para entrega na web."
+          },
+          "browserSupport": {
+            "q": "WebP funcionará em todos os navegadores?",
+            "a": "Cada navegador em desenvolvimento contínuo suporta WebP nativamente (Chrome, Edge, Firefox, Opera, Safari 14+). Para Safari < 14, use um elemento picture com fallback JPG."
+          },
+          "lossless": {
+            "q": "Posso obter WebP sem perda do HEIC?",
+            "a": "Esta ferramenta usa como padrão WebP com perda para tamanhos de arquivo eficientes. Para saída sem perda, converta HEIC → PNG primeiro, depois PNG → WebP sem perda."
+          },
+          "sizeSavings": {
+            "q": "Qual é o tamanho do WebP em relação à fonte HEIC?",
+            "a": "A saída WebP é normalmente 1.5–2× maior que o HEIC, porque a compressão HEVC do HEIC ainda é mais agressiva. Mas WebP é ~25% menor que o JPG equivalente, com suporte de navegador mais amplo que HEIC."
+          },
+          "privacy": {
+            "q": "Minha foto é armazenada?",
+            "a": "Não — mantida na memória apenas durante a conversão, descartada após resposta."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. API para uso ilimitado."
+          }
+        }
+      }
+    }
+  },
+  "jpgToHeic": {
+    "title": "Conversor Online Gratuito de JPG para HEIC",
+    "subtitle": "Converta fotos JPG para formato HEIC da Apple para tamanhos de arquivo 40–50% menores e armazenamento eficiente no iPhone e Mac.",
+    "upload": {
+      "title": "Solte seu arquivo JPG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 50 MB · .jpg ou .jpeg",
+      "accept": "Apenas arquivos .jpg ou .jpeg são aceitos",
+      "tooLarge": "Arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para HEIC",
+    "options": {
+      "quality": "Qualidade HEIC",
+      "qualityHint": "Maior = arquivo maior, melhor fidelidade. 85–95 é o ponto ideal prático para fotos."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Conversão falhou",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "HEIC Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar HEIC",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie mais 3 conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de JPG para HEIC",
+        "content": "Arquive fotos JPG em formato HEIC programaticamente. O endpoint /heic aceita uploads JPG multiparte com source_format=jpg e target_format=heic, retornando arquivos HEIC comprimidos eficientemente.",
+        "content2": "Útil para pipelines de arquivamento de fotos, migração em massa de bibliotecas JPG para armazenamento otimizado por Apple e serviços em nuvem que desejam oferecer formatos de foto nativos do iPhone junto com JPG.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Upload de JPG multiparte, até 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada JPG; saída HEIC com compressão HEVC",
+          "response": "Fluxo binário image/heic"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de JPG para HEIC?",
+        "content": "HEIC (Recipiente de Imagem de Alta Eficiência) é o formato de foto moderno da Apple que usa compressão de estilo de vídeo HEVC para alcançar arquivos aproximadamente 40–50% menores que JPG com a mesma qualidade visual.",
+        "content2": "Converter fotos JPG para HEIC é útil quando seu público-alvo usa dispositivos Apple — iPhone, iPad, Mac — e eficiência de armazenamento importa. iCloud Photo Library, Apple Photos e Messages todos tratam HEIC nativamente e se beneficiam dos tamanhos de arquivo menores.",
+        "content3": "Nossa ferramenta executa a conversão no servidor através de libvips com libheif, produzindo arquivos HEIC padrão que abrem nativamente no iOS 11+ e macOS High Sierra+. Sem inscrição, sem marca d'água, sem retenção."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter JPG para HEIC?",
+        "content": "Converta ao arquivar bibliotecas de fotos em dispositivos Apple — a menor pegada do HEIC recupera espaço de armazenamento significativo sem perda de qualidade visível. Um arquivo JPG de 10 GB normalmente se torna 5–6 GB em HEIC.",
+        "content2": "Pule HEIC se suas fotos precisam ser compartilhadas com usuários Windows, Android ou web que carecem de suporte HEIC. Fora do ecossistema Apple, JPG permanece a escolha universal."
+      },
+      "howTo": {
+        "title": "Como Converter JPG para HEIC",
+        "step1": {
+          "title": "1. Envie Seu JPG",
+          "content": "Arraste ou clique para selecionar. Arquivos até 50 MB aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha uma Qualidade HEIC",
+          "content": "O padrão é 90 — qualidade excelente com economia de 40–50% de espaço. Abaixo de 80, artefatos de compressão podem ficar visíveis."
+        },
+        "step3": {
+          "title": "3. Clique em Converter",
+          "content": "O servidor decodifica seu JPG e recodifica com compressão HEVC em um recipiente HEIF. Conversão típica menos de 1 segundo."
+        },
+        "step4": {
+          "title": "4. Baixar e Armazenar",
+          "content": "Seu arquivo HEIC está pronto. Importe-o em Fotos no Mac ou transfira para iPhone via AirDrop."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "compression": {
+            "title": "Arquivos 40–50% Menores",
+            "content": "Economias típicas de JPG → HEIC em qualidade equivalente — ideal para arquivos com eficiência de armazenamento."
+          },
+          "quality": {
+            "title": "Controle Deslizante de Qualidade",
+            "content": "Controle granular de 1 a 100 — escolha seu trade-off de tamanho versus fidelidade."
+          },
+          "apple": {
+            "title": "Formato Nativo da Apple",
+            "content": "Abre nativamente no iPhone, iPad e Mac — sem plugins ou conversores necessários."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "Seu JPG é processado na memória e descartado imediatamente."
+          },
+          "fast": {
+            "title": "Conversão em Sub-segundo",
+            "content": "JPGs de tamanho web típicos são convertidos em menos de 600 ms."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão, sem conta."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "iphone": {
+            "title": "Sincronização de Fotos do iPhone",
+            "content": "Converta antes de AirDrop ou sincronizar iCloud para reduzir o uso de armazenamento móvel."
+          },
+          "storage": {
+            "title": "Otimização de Armazenamento",
+            "content": "Encolha grandes arquivos de fotos no Mac convertendo bibliotecas JPG para HEIC."
+          },
+          "icloud": {
+            "title": "Biblioteca de Fotos iCloud",
+            "content": "Armazene fotos de forma mais eficiente — iCloud suporta HEIC nativamente e o preserva entre dispositivos."
+          },
+          "archival": {
+            "title": "Arquivamento de Longo Prazo",
+            "content": "HEIC é a escolha à prova de futuro para arquivos centrados em Apple — suportado por versões iOS atuais e futuras."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whyHeic": {
+            "q": "Por que eu converteria JPG para HEIC?",
+            "a": "Para economizar espaço de armazenamento em dispositivos Apple. HEIC é 40–50% menor que JPG com a mesma qualidade visual, o que se acumula rapidamente em grandes bibliotecas de fotos."
+          },
+          "compatibility": {
+            "q": "Onde os arquivos HEIC podem abrir?",
+            "a": "iPhone (iOS 11+), iPad, Mac (High Sierra+), Windows 10+ com o codec HEVC gratuito, Android 10+ na maioria dos dispositivos. Máquinas Windows mais antigas e a web geralmente precisam de um conversor."
+          },
+          "quality": {
+            "q": "A qualidade cai?",
+            "a": "Tanto JPG quanto HEIC têm perda, portanto alguma perda de recodificação é inevitável. Em qualidade 90+ é essencialmente invisível em telas."
+          },
+          "sizeSavings": {
+            "q": "Quanto espaço vou economizar?",
+            "a": "Redução típica de 40–50% do tamanho do arquivo em qualidade equivalente. Um JPG de 5 MB se torna aproximadamente um HEIC de 2.5–3 MB."
+          },
+          "privacy": {
+            "q": "Meu arquivo é armazenado?",
+            "a": "Não — mantido apenas na memória durante a conversão, descartado na resposta."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. API para volumes maiores."
+          }
+        }
+      }
+    }
+  },
+  "pngToHeic": {
+    "title": "Conversor Online Gratuito de PNG para HEIC",
+    "subtitle": "Converta imagens PNG para formato HEIC da Apple para armazenamento eficiente no iPhone e Mac — até 5–10× menor para conteúdo fotográfico.",
+    "upload": {
+      "title": "Solte seu arquivo PNG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo do arquivo: 50 MB · .png apenas",
+      "accept": "Apenas arquivos .png são aceitos",
+      "tooLarge": "Arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para HEIC",
+    "options": {
+      "quality": "Qualidade HEIC",
+      "qualityHint": "Maior = arquivo maior, melhor fidelidade. 90–95 recomendado, já que o PNG de origem é sem perda."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Conversão falhou",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "HEIC Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar HEIC",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie mais 3 conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de PNG para HEIC",
+        "content": "Comprima arquivos PNG para HEIC programaticamente. O endpoint /heic aceita uploads PNG multiparte com source_format=png e target_format=heic, retornando arquivos HEIC comprimidos com HEVC em uma fração do tamanho original.",
+        "content2": "Útil para pipelines de arquivamento de fotos, migração em massa de bibliotecas PNG onde qualidade sem perda não é necessária e backups de fotos com eficiência de armazenamento para fluxos de trabalho centrados em Apple.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Upload de PNG multiparte, até 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada PNG; saída HEIC com compressão HEVC",
+          "response": "Fluxo binário image/heic"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de PNG para HEIC?",
+        "content": "PNG é um formato sem perda — cada pixel é preservado exatamente, o que o torna excelente para edição, mas inchado para armazenamento. HEIC usa compressão HEVC com perda para encolher conteúdo fotográfico por 5–10× com perda de qualidade visível mínima.",
+        "content2": "Converter PNG para HEIC é um trade-off: você abre mão da preservação perfeita de pixels em troca de arquivos dramaticamente menores. Para fotos, isso quase sempre é uma vitória. Para logos, arte vetorial ou gráficos de UI com bordas nítidas e cores sólidas, PNG permanece a melhor escolha.",
+        "content3": "Nossa ferramenta usa libheif com um codificador HEVC ajustado para produzir arquivos HEIC compatíveis com iOS 11+ e macOS High Sierra+. Envie PNG, escolha uma qualidade, baixe HEIC otimizado — tudo na memória, sem retenção."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter PNG para HEIC?",
+        "content": "Converta para arquivos PNG fotográficos destinados a dispositivos Apple. Se você tiver pastas de fotos PNG sincronizando com iCloud ou vivendo em seu Mac, HEIC recupera quantidades massivas de espaço.",
+        "content2": "Não converta capturas de tela PNG, gráficos de UI, ícones ou qualquer coisa com bordas nítidas — a compressão HEIC borra essas. Para armazenamento Apple amigável sem perda, mantenha PNG ou use HEIC apenas para conteúdo fotográfico."
+      },
+      "howTo": {
+        "title": "Como Converter PNG para HEIC",
+        "step1": {
+          "title": "1. Envie Seu PNG",
+          "content": "Arraste ou clique para selecionar. Arquivos até 50 MB aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha uma Qualidade HEIC",
+          "content": "O padrão é 90 — adequado para a maioria do conteúdo fotográfico. Como PNG é sem perda, use qualidade mais alta (90–95) para minimizar artefatos na transição."
+        },
+        "step3": {
+          "title": "3. Clique em Converter",
+          "content": "O servidor decodifica seu PNG e recodifica como HEIC com compressão HEVC."
+        },
+        "step4": {
+          "title": "4. Baixar",
+          "content": "HEIC está pronto para importar em Apple Fotos ou transferir para iPhone."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "compression": {
+            "title": "5–10× Menor para Fotos",
+            "content": "Economias típicas de PNG → HEIC fotográfico — perfeito para arquivamento."
+          },
+          "quality": {
+            "title": "Controle Deslizante de Qualidade",
+            "content": "Controle granular de 1 a 100."
+          },
+          "apple": {
+            "title": "Nativo da Apple",
+            "content": "Abre nativamente no iPhone, iPad e Mac."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "PNG é processado na memória e descartado imediatamente."
+          },
+          "fast": {
+            "title": "Conversão em Sub-segundo",
+            "content": "PNGs de fotos típicos são convertidos em menos de 1 segundo."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão, sem conta."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "iphone": {
+            "title": "Economias de Armazenamento do iPhone",
+            "content": "Converta fotos PNG antes de transferir para iPhone via AirDrop ou iCloud."
+          },
+          "storage": {
+            "title": "Arquivos de Fotos do Mac",
+            "content": "Encolha grandes pastas de fotos PNG no Mac convertendo para HEIC — economia de 5–10× para fotos."
+          },
+          "icloud": {
+            "title": "Eficiência iCloud",
+            "content": "Armazene mais fotos em iCloud sem atualizar planos de armazenamento."
+          },
+          "screenshots": {
+            "title": "Classificação de Foto vs Captura de Tela",
+            "content": "Use PNG para capturas de tela e UI (preservar detalhes nítidos), HEIC para fotos (economizar espaço). Esta ferramenta trata a conversão do lado da foto."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whyHeic": {
+            "q": "Por que converter PNG para HEIC?",
+            "a": "Para reduzir dramaticamente o uso de armazenamento para PNGs fotográficos — HEIC é 5–10× menor em qualidade percebida equivalente. Apenas válido para fluxos de trabalho centrados em Apple."
+          },
+          "transparency": {
+            "q": "A transparência é preservada?",
+            "a": "Achatada em fundo preto durante a conversão. HEIC tecnicamente suporta alfa, mas compatibilidade é inconsistente em aplicativos iOS, portanto mais seguro compor primeiro."
+          },
+          "quality": {
+            "q": "Vou perder qualidade?",
+            "a": "Sim, já que HEIC tem perda. Em qualidade 90+ a perda é praticamente invisível para conteúdo fotográfico. Para arte vetorial ou gráficos de UI, pule esta conversão — use PNG."
+          },
+          "compatibility": {
+            "q": "Onde HEIC abre?",
+            "a": "iPhone (iOS 11+), iPad, Mac (High Sierra+), Windows 10+ com codec HEVC. Não nativamente suportado no Android < 10 ou na maioria dos navegadores web."
+          },
+          "privacy": {
+            "q": "Meu PNG é armazenado?",
+            "a": "Não — mantido apenas na memória durante a conversão."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. API para volumes maiores."
           }
         }
       }

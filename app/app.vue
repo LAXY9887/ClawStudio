@@ -1,8 +1,11 @@
 <script setup lang="ts">
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const route = useRoute()
 const i18nHead = useLocaleHead({ addSeoAttributes: true } as any)
 const config = useRuntimeConfig()
+
+const canonicalUrl = computed(() => `https://clawstudiouo.com${route.path}`)
 const adProvider = config.public.adProvider as 'adsense' | 'monetag' | 'none'
 const adsenseClient = config.public.adsenseClient as string
 const monetagMultitagSrc = config.public.monetagMultitagSrc as string
@@ -76,7 +79,8 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
-    ...(i18nHead.value.link || [])
+    { rel: 'canonical', href: canonicalUrl },
+    ...((i18nHead.value.link || []).filter(l => (l as { rel?: string }).rel !== 'canonical'))
   ],
   script: adScripts as never,
   htmlAttrs: {

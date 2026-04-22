@@ -11,10 +11,15 @@ const toolKey = computed(() => {
   const from = returnPath.value
   if (from.includes('heic-to-jpg')) return 'heicToJpg'
   if (from.includes('heic-to-png')) return 'heicToPng'
+  if (from.includes('heic-to-webp')) return 'heicToWebp'
+  if (from.includes('jpg-to-heic')) return 'jpgToHeic'
+  if (from.includes('png-to-heic')) return 'pngToHeic'
   if (from.includes('favicon-generator')) return 'faviconGenerator'
   if (from.includes('svg-to-png')) return 'svgToPng'
   if (from.includes('png-to-webp')) return 'pngToWebp'
   if (from.includes('webp-to-png')) return 'webpToPng'
+  if (from.includes('jpg-to-webp')) return 'jpgToWebp'
+  if (from.includes('webp-to-jpg')) return 'webpToJpg'
   if (from.includes('png-to-jpg')) return 'pngToJpg'
   if (from.includes('jpg-to-png')) return 'jpgToPng'
   if (from.includes('png-to-gif') || from.includes('to-gif')) return 'toGif'
@@ -27,15 +32,20 @@ const toolKey = computed(() => {
 const tipCount = computed(() => {
   const counts: Record<string, number> = {
     gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4, splitSpritesheet: 5,
-    heicToJpg: 4, heicToPng: 4, pngToJpg: 4, jpgToPng: 4,
-    pngToWebp: 4, webpToPng: 4, svgToPng: 5, faviconGenerator: 5
+    heicToJpg: 4, heicToPng: 4, heicToWebp: 4, jpgToHeic: 4, pngToHeic: 4,
+    pngToJpg: 4, jpgToPng: 4, pngToWebp: 4, webpToPng: 4, jpgToWebp: 4, webpToJpg: 4,
+    svgToPng: 5, faviconGenerator: 5
   }
   return counts[toolKey.value] ?? 4
 })
 
 const apiUrl = computed(() => {
   const pngTools = ['pngToSpritesheet', 'pngTrim', 'splitSpritesheet']
-  const uniimgcTools = ['heicToJpg', 'heicToPng', 'pngToJpg', 'jpgToPng', 'pngToWebp', 'webpToPng', 'svgToPng', 'faviconGenerator']
+  const uniimgcTools = [
+    'heicToJpg', 'heicToPng', 'heicToWebp', 'jpgToHeic', 'pngToHeic',
+    'pngToJpg', 'jpgToPng', 'pngToWebp', 'webpToPng', 'jpgToWebp', 'webpToJpg',
+    'svgToPng', 'faviconGenerator'
+  ]
   if (uniimgcTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'
   if (pngTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites'
   return 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'

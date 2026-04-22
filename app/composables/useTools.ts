@@ -28,10 +28,15 @@ const GROUPS: ToolGroup[] = [
     tools: [
       { key: 'heicToJpg', icon: 'i-lucide-smartphone', to: '/tools/heic-to-jpg' },
       { key: 'heicToPng', icon: 'i-lucide-smartphone', to: '/tools/heic-to-png' },
+      { key: 'heicToWebp', icon: 'i-lucide-smartphone', to: '/tools/heic-to-webp' },
+      { key: 'jpgToHeic', icon: 'i-lucide-smartphone', to: '/tools/jpg-to-heic' },
+      { key: 'pngToHeic', icon: 'i-lucide-smartphone', to: '/tools/png-to-heic' },
       { key: 'pngToJpg', icon: 'i-lucide-image', to: '/tools/png-to-jpg' },
       { key: 'jpgToPng', icon: 'i-lucide-image', to: '/tools/jpg-to-png' },
       { key: 'pngToWebp', icon: 'i-lucide-image', to: '/tools/png-to-webp' },
-      { key: 'webpToPng', icon: 'i-lucide-image', to: '/tools/webp-to-png' }
+      { key: 'webpToPng', icon: 'i-lucide-image', to: '/tools/webp-to-png' },
+      { key: 'jpgToWebp', icon: 'i-lucide-image', to: '/tools/jpg-to-webp' },
+      { key: 'webpToJpg', icon: 'i-lucide-image', to: '/tools/webp-to-jpg' }
     ]
   },
   {

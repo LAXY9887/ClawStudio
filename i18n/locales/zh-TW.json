@@ -192,6 +192,42 @@
         "WebP 是 Google Core Web Vitals 推薦格式 —— 使用它能直接提升 Largest Contentful Paint（LCP）分數。"
       ]
     },
+    "jpgToWebp": {
+      "tipsTitle": "你知道嗎？JPG 轉 WebP 小技巧",
+      "tips": [
+        "在相同視覺品質下，WebP 比 JPG 通常再小 **25–35%** —— 頁面載入速度直接提升，免費的效能收穫。",
+        "**無損模式** 僅當需要像素完美輸出時啟用。原始已是有損 JPG 的情況下，品質 80–85 的有損 WebP 幾乎永遠是對的選擇。",
+        "與 JPG 不同，WebP 支援 **alpha 透明度**。轉成 WebP 後日後可在編輯器加入透明區域、不必重新編碼。",
+        "Google Core Web Vitals 獎勵較小的圖片。將 JPG 主視覺換成 WebP 通常能立即提升 LCP。"
+      ]
+    },
+    "webpToJpg": {
+      "tipsTitle": "你知道嗎？WebP 轉 JPG 小技巧",
+      "tips": [
+        "需要寄送電子郵件、印刷、或貼到 **不支援 WebP 的老舊應用**（舊版 Office、Windows 工具、印刷管線）時請轉換。",
+        "JPG 品質 **85–92** 與原始 WebP 幾乎無可辨識差異，是通用格式的安全選擇。",
+        "來源 WebP 中的 **透明像素** 會被平展為白色 —— 需要透明請改用 PNG。",
+        "預期 JPG 會比 WebP 來源略大（通常 ~10–30%），因為 JPG 的壓縮沒有那麼高效率。"
+      ]
+    },
+    "jpgToHeic": {
+      "tipsTitle": "你知道嗎？JPG 轉 HEIC 小技巧",
+      "tips": [
+        "HEIC 檔案通常比 JPG 小 **40–50%**（相同視覺品質）—— 適合在 iPhone 或 Mac 上節省儲存空間。",
+        "HEIC 在 **Apple 裝置**（iOS 11+、macOS High Sierra+、iCloud）間無縫運作。若會與 Windows 或 Android 用戶分享，請避免 HEIC。",
+        "建議使用品質 **85–95** 取得最佳結果。低於 80 時 HEIC 的高效壓縮可能在高細節照片上產生可見失真。",
+        "在大規模批次轉換 JPG 檔案前，先用幾張樣本測試，確認品質／大小的權衡符合預期。"
+      ]
+    },
+    "pngToHeic": {
+      "tipsTitle": "你知道嗎？PNG 轉 HEIC 小技巧",
+      "tips": [
+        "HEIC 可讓照片內容的檔案比 PNG 小 **5–10 倍** —— 但代價是有損壓縮。Logo 或線稿請勿使用。",
+        "UI 圖形、圖示、含銳利邊緣的截圖 **請保留 PNG** —— HEIC 的高效壓縮會模糊銳利細節。",
+        "HEIC 在 Apple 以外的支援度有限。若需在 Windows、Android 或網頁上開啟，請改轉 WebP 或 JPG。",
+        "PNG 的透明會在轉換時被 **平展** —— HEIC 雖支援 alpha 但許多 iOS App 不支援。先合成到背景上更安全。"
+      ]
+    },
     "pngToJpg": {
       "tipsTitle": "你知道嗎？PNG 轉 JPG 小技巧",
       "tips": [
@@ -249,6 +285,18 @@
       ]
     }
   },
+  "error": {
+    "title": "找不到頁面 — ClawStudiouo",
+    "description": "您要找的頁面不存在，不妨試試我們的免費圖片工具。",
+    "notFoundTitle": "找不到頁面",
+    "notFoundDescription": "您要找的頁面不存在，或可能已被移除。請試試下方的工具，或返回首頁。",
+    "genericTitle": "發生錯誤",
+    "genericDescription": "發生未預期的錯誤，請稍後再試或返回首頁。",
+    "backHome": "返回首頁",
+    "goBack": "回到上一頁",
+    "tryTools": "或試試以下工具分類：",
+    "toolsCount": "個工具"
+  },
   "relatedTools": {
     "label": "相關工具",
     "groups": {
@@ -263,10 +311,15 @@
     "splitSpritesheet": "Spritesheet 分割",
     "heicToJpg": "HEIC → JPG",
     "heicToPng": "HEIC → PNG",
+    "heicToWebp": "HEIC → WebP",
     "pngToJpg": "PNG → JPG",
     "jpgToPng": "JPG → PNG",
     "pngToWebp": "PNG → WebP",
     "webpToPng": "WebP → PNG",
+    "jpgToWebp": "JPG → WebP",
+    "webpToJpg": "WebP → JPG",
+    "jpgToHeic": "JPG → HEIC",
+    "pngToHeic": "PNG → HEIC",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Favicon 產生器"
   },
@@ -316,6 +369,26 @@
       "webpToPng": {
         "title": "WebP 轉 PNG",
         "description": "將 WebP 解碼回通用的 PNG 格式，完整保留透明度。"
+      },
+      "heicToWebp": {
+        "title": "HEIC 轉 WebP",
+        "description": "將 iPhone HEIC 照片直接轉為 WebP —— 比 JPG 更小且支援 alpha。"
+      },
+      "jpgToWebp": {
+        "title": "JPG 轉 WebP",
+        "description": "將 JPG 轉為現代 WebP 格式再縮小檔案 —— 適合網頁交付。"
+      },
+      "webpToJpg": {
+        "title": "WebP 轉 JPG",
+        "description": "將 WebP 轉為通用的 JPG 格式，適合電子郵件、印刷與老舊應用。"
+      },
+      "jpgToHeic": {
+        "title": "JPG 轉 HEIC",
+        "description": "將 JPG 照片轉為 Apple HEIC 格式，以在 iPhone 與 Mac 上高效儲存。"
+      },
+      "pngToHeic": {
+        "title": "PNG 轉 HEIC",
+        "description": "將 PNG 圖片轉為 Apple HEIC 格式，在 Apple 裝置上可減少約 50% 檔案大小。"
       },
       "svgToPng": {
         "title": "SVG 轉 PNG",
@@ -2046,6 +2119,351 @@
           "customize": { "q": "可以客製化 web manifest 嗎？", "a": "產生的 `site.webmanifest` 是可用範本，帶有佔位 `name` 與 `short_name`。部署前請用文字編輯器改為你的實際品牌名稱。" },
           "privacy": { "q": "來源圖片會被保存嗎？", "a": "不會。上傳僅在產生期間存於記憶體，回傳 ZIP 後立即丟棄。" },
           "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。CI/CD 整合或批次客戶工作請使用 API。" }
+        }
+      }
+    }
+  },
+  "jpgToWebp": {
+    "title": "免費線上 JPG 轉 WebP 工具",
+    "subtitle": "將 JPG 再縮小 25–35% —— 透過轉為 WebP，現代格式並完整支援透明度。",
+    "upload": { "title": "拖放你的 JPG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · .jpg / .jpeg", "accept": "僅接受 .jpg 或 .jpeg 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 WebP",
+    "options": { "quality": "WebP 品質", "qualityHint": "啟用無損模式時忽略此值。75–85 是多數網頁圖片的平衡點。", "lossless": "無損編碼", "losslessHint": "完全保留像素 —— 對已是有損的 JPG 來源幾乎沒有意義。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 WebP", "info": "{width} × {height} 像素 • {size}", "download": "下載 WebP", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 JPG 轉 WebP API",
+        "content": "為你的 CDN 自動化 WebP 交付。/webp 端點會自動偵測輸入方向 —— 送出 JPG 即可取回 WebP，可調整品質或啟用無損模式。",
+        "content2": "適合：build 管線、SaaS 應用上傳時即時轉換、以及規模化產生對 Core Web Vitals 友善之影像變體的 CDN 預處理。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": { "title": "API 亮點", "endpoints": "POST /webp：任何格式 → WebP（自動偵測）", "input": "Multipart JPG 上傳，上限 50 MB", "params": "quality（0–100）、lossless（bool）", "limit": "單次請求 50 MB、約 89 百萬像素", "formats": "JPG / PNG 輸入；WebP 輸出", "response": "image/webp 二進位串流" }
+      },
+      "whatIs": {
+        "title": "什麼是 JPG 轉 WebP？",
+        "content": "WebP 是 Google 的現代圖片格式，在相同視覺品質下壓縮效率比 JPG 好 25–35%。將現有 JPG 素材轉為 WebP 是對頻寬、頁面速度與 Core Web Vitals 分數的純獲利。",
+        "content2": "與 JPG 不同，WebP 支援完整 alpha 透明，且有有損與無損兩種模式。照片使用品質 80–85 的有損 WebP 是最佳平衡；若需無損流程，WebP 無損仍比 PNG 小得多。",
+        "content3": "本工具在伺服器端執行：上傳 JPG、選擇品質（或啟用無損）、串流回可供網頁使用的 WebP。無需註冊、無浮水印、不保留檔案。"
+      },
+      "whyWebp": {
+        "title": "為什麼要把 JPG 轉為 WebP？",
+        "content": "Google Core Web Vitals 高度重視圖片大小 —— 特別是 Largest Contentful Paint（LCP）。將 JPG 主視覺換成 WebP 通常能立即提升 LCP，不需改任何程式碼。",
+        "content2": "WebP 也能降低 CDN 頻寬、加速慢速網路下的行動載入、並為流量管制用戶節省資料。對電商與內容量大的網站，幾乎永遠值得升級。"
+      },
+      "howTo": {
+        "title": "如何將 JPG 轉為 WebP",
+        "step1": { "title": "1. 上傳你的 JPG", "content": "拖曳或點擊選取，最大 50 MB。" },
+        "step2": { "title": "2. 選擇有損或無損", "content": "照片保持關閉無損以最大化縮小。只有在需要像素完美時才開啟。" },
+        "step3": { "title": "3. 選擇品質（僅有損）", "content": "預設 80，75–85 是多數網頁圖片的平衡點。" },
+        "step4": { "title": "4. 下載", "content": "WebP 檔可直接用於網站的影像標籤。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "compression": { "title": "縮小 25–35%", "content": "相同品質下典型的 JPG → WebP 節省量，視覺無差異。" },
+          "photo": { "title": "照片最佳化", "content": "WebP 的壓縮為照片內容調校 —— 漸層、膚色、低對比度區域都處理得乾淨。" },
+          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制 —— 拿捏大小與畫質的平衡。" },
+          "privacy": { "title": "不保留檔案", "content": "JPG 在記憶體中處理後立即丟棄。" },
+          "fast": { "title": "秒速轉換", "content": "一般網頁用 JPG 低於 300 毫秒。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費。大量使用請用 API。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "web": { "title": "網頁效能與 SEO", "content": "較小圖片帶來更快頁面、更好的 Core Web Vitals、更佳的 SEO 排名。" },
+          "mobile": { "title": "行動 App 與 PWA", "content": "Android WebView 與 PWA 原生支援 WebP —— 更輕、更快。" },
+          "ecommerce": { "title": "電商商品圖", "content": "將商品目錄轉為 WebP 可加速列表頁並降低 CDN 成本。" },
+          "cdn": { "title": "CDN 預處理", "content": "一次性將 JPG 封存批次轉為 WebP，降低原站儲存與流量成本。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "browserSupport": { "q": "哪些瀏覽器支援 WebP？", "a": "所有常青瀏覽器：Chrome、Edge、Firefox、Opera、Safari 14+。舊版 Safari 與 IE 請使用 picture 元素搭配 JPG fallback。" },
+          "qualityLoss": { "q": "轉換會損失畫質嗎？", "a": "在品質 85+ 下 JPG → WebP 轉換幾乎無法辨識。兩者都是有損格式，但 WebP 壓縮更有效率，因此可用較高品質取得相似檔案大小。" },
+          "sizeSavings": { "q": "WebP 會小多少？", "a": "典型有損 WebP：照片比 JPG 小 25–35%。無損 WebP：比有損 JPG 大 ~10–20% 但像素完美。" },
+          "lossless": { "q": "該啟用無損模式嗎？", "a": "JPG 來源很少需要 —— 既然 JPG 已經是有損，無損 WebP 只會以較大檔案保留 JPG 的失真。無損模式保留給原始 PNG 來源使用。" },
+          "privacy": { "q": "JPG 會被儲存嗎？", "a": "不會。只在轉換期間存於記憶體，回應後立即丟棄。不記錄、無帳號。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 付費方案支援無限使用。" }
+        }
+      }
+    }
+  },
+  "webpToJpg": {
+    "title": "免費線上 WebP 轉 JPG 工具",
+    "subtitle": "將 WebP 轉為 JPG 以與電子郵件、印刷與老舊應用相容。",
+    "upload": { "title": "拖放你的 WebP 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 僅限 .webp", "accept": "僅接受 .webp 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 JPG",
+    "options": { "quality": "JPG 品質", "qualityHint": "數值越高檔案越大、畫質越好。85–92 是實用的平衡點。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 JPG", "info": "{width} × {height} 像素 • {size}", "download": "下載 JPG", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 WebP 轉 JPG API",
+        "content": "以程式方式為老舊用戶端提供 JPG fallback。/webp 端點會自動偵測 WebP 方向 —— 指定 target_format=jpg 即可取回以原生解析度解碼的 JPG。",
+        "content2": "適合：需要寄送 JPG 給電子郵件收件者的服務、需要 JPG 輸入的印刷管線、以及規範化送入之 WebP 為廣泛支援之 JPG 的素材管理系統。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": { "title": "API 亮點", "endpoints": "POST /webp：WebP → PNG / JPG", "input": "Multipart WebP 上傳，上限 50 MB", "params": "target_format=jpg、quality（0–100）", "limit": "單次請求 50 MB、約 89 百萬像素", "formats": "WebP 輸入；JPG 輸出", "response": "image/jpeg 二進位串流" }
+      },
+      "whatIs": {
+        "title": "什麼是 WebP 轉 JPG？",
+        "content": "WebP 轉 JPG 是把 WebP 解碼後以 JPG 重新編碼。由於 JPG 通用支援 —— 每個電子郵件客戶端、老舊應用、印刷管線、舊瀏覽器都能讀 —— 這個轉換通常是分享前的最後一步。",
+        "content2": "JPG 沒有 alpha 通道，因此 WebP 中的透明像素會在轉換時被平展到白色背景。若需保留透明，請改用 PNG。",
+        "content3": "本工具透過 libvips 在伺服器端執行，以原生解析度與你選擇的品質產出乾淨的 JPG。無需註冊、無浮水印、不保留。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 WebP 轉 JPG？",
+        "content": "當目的地不支援 WebP 時。常見情境：寄給用舊版 Outlook 的收件者、上傳到老舊 CMS 系統、送印到使用老舊 RIP 軟體的印刷廠、或整合還沒跟上的 API。",
+        "content2": "也適用於檔案大小不如相容性重要的情況 —— JPG 在相同品質下略大於 WebP，但到處都能開、無摩擦。一次性分享或小批次通常簡潔比最佳化更重要。"
+      },
+      "howTo": {
+        "title": "如何將 WebP 轉為 JPG",
+        "step1": { "title": "1. 上傳你的 WebP", "content": "拖曳或點擊開啟檔案選擇器，最大 50 MB。" },
+        "step2": { "title": "2. 選擇品質", "content": "預設 90 —— 與來源幾乎無差異。80 能再省點空間但略微變軟。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 WebP、將透明平展到白色、重新編碼為 JPG。" },
+        "step4": { "title": "4. 下載", "content": "儲存 JPG。可用於電子郵件、印刷或任何不支援 WebP 的應用。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制。" },
+          "compatibility": { "title": "通用輸出", "content": "JPG 到處都能開 —— 無需外掛、無需解碼器、無相容性問題。" },
+          "smaller": { "title": "高效 JPG 編碼", "content": "現代 JPEG 編碼器在高品質設定下也能產生小檔案。" },
+          "privacy": { "title": "不保留檔案", "content": "WebP 在記憶體中處理後立即丟棄。" },
+          "fast": { "title": "快速轉換", "content": "一般網頁用 WebP 低於 500 毫秒。" },
+          "free": { "title": "免費", "content": "每個工作階段三次免費，無需帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "email": { "title": "電子郵件附件", "content": "部分企業郵件客戶端拒絕 WebP 附件，JPG 永遠安全。" },
+          "legacy": { "title": "老舊應用", "content": "舊版 Photoshop、MS Office（非 365）、Windows 小畫家都無法讀 WebP，但能乾淨開啟 JPG。" },
+          "printing": { "title": "印刷生產", "content": "許多印刷 RIP 與相片沖印店只接受 JPG 送件。" },
+          "social": { "title": "較舊的社群平台", "content": "部分小眾平台與論壇軟體仍拒絕 WebP 上傳。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whyConvert": { "q": "為什麼要把 WebP 再轉回 JPG？", "a": "為了相容性 —— JPG 在所有電子郵件客戶端、作業系統、應用程式中都能開啟，而 WebP 仍有時會被老舊系統拒絕。" },
+          "transparency": { "q": "透明像素怎麼處理？", "a": "平展到白色，因為 JPG 沒有 alpha 通道。若需透明請改用 PNG。" },
+          "quality": { "q": "品質該選多少？", "a": "照片預設 90 最安全 —— 與來源幾乎無差異。80 能再省點空間但略微變軟。" },
+          "fileSize": { "q": "JPG 會比 WebP 大還小？", "a": "相同品質下通常大 10–30%，因為 WebP 的壓縮效率較高。" },
+          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。" }
+        }
+      }
+    }
+  },
+  "heicToWebp": {
+    "title": "免費線上 HEIC 轉 WebP 工具",
+    "subtitle": "將 iPhone HEIC 照片直接轉為 WebP —— 比 JPG 更小、支援透明、現代瀏覽器普遍支援。",
+    "upload": { "title": "拖放你的 HEIC 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 支援 .heic / .heif", "accept": "僅接受 .heic 或 .heif 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 WebP",
+    "options": { "quality": "WebP 品質", "qualityHint": "數值越高檔案越大、畫質越好。80–88 是多數網頁照片的甜蜜點。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 WebP", "info": "{width} × {height} 像素 • {size}", "download": "下載 WebP", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 HEIC 轉 WebP API",
+        "content": "自動化「網頁就緒」的 HEIC 轉換。/heic 端點接受含 source_format=heic、target_format=webp 的 multipart HEIC 上傳，以單一請求回傳最佳化的 WebP。",
+        "content2": "適合：規範化 iPhone 上傳以供網頁交付的行動 App 後端、希望以網頁友善格式儲存 Apple 來源照片的 SaaS 平台、以及自動產出網頁就緒變體的 CMS 外掛。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": { "title": "API 亮點", "endpoints": "POST /heic：HEIC ↔ JPG / PNG / WebP", "input": "Multipart HEIC 上傳，上限 50 MB", "params": "source_format、target_format、quality（0–100）", "limit": "單次請求 50 MB、約 89 百萬像素", "formats": "HEIC / HEIF 輸入；含 alpha 的 WebP 輸出", "response": "image/webp 二進位串流" }
+      },
+      "whatIs": {
+        "title": "為什麼要直接把 HEIC 轉為 WebP？",
+        "content": "直接把 HEIC 轉為 WebP 可跳過會產生不必要壓縮失真的中間 JPG 步驟。本工具一次解碼 HEIC 的 HEVC 壓縮像素並重新編碼為 WebP —— 一輪壓縮而非兩輪。",
+        "content2": "HEIC 與 WebP 都是為高效交付而設計的現代編碼器。當你希望在網頁上呈現 iPhone 品質的照片，同時檔案比 JPG 小、瀏覽器支援比 HEIC 廣時，這個組合特別有用。",
+        "content3": "本工具在單一伺服器端請求中執行完整管線 —— 不需本地 HEIC 解碼器、不需 ImageMagick、不需多步驟腳本。上傳 HEIC，取得 WebP。"
+      },
+      "whyWebp": {
+        "title": "什麼時候該把 HEIC 轉為 WebP？",
+        "content": "當要把 iPhone 照片放到現代網站時：部落格、作品集、電商、社群貼文。WebP 在每個常青瀏覽器中都支援，且在相同品質下比 JPG 更小。",
+        "content2": "若觀眾使用非常老舊的裝置（iOS < 14、IE、Safari < 14）請跳過 WebP —— 改用 HEIC → JPG。若需要完整 alpha 通道的無損品質，請用 HEIC → PNG。"
+      },
+      "howTo": {
+        "title": "如何將 HEIC 轉為 WebP",
+        "step1": { "title": "1. 上傳 HEIC 檔案", "content": "將 .heic 或 .heif 拖曳至上傳區，最大 50 MB。" },
+        "step2": { "title": "2. 選擇 WebP 品質", "content": "預設 85 —— 對照片平衡。低於 75 時壓縮失真可能在高細節圖上可見。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 HEIC、套用 EXIF 旋轉、編碼為 WebP。一般 iPhone 照片低於 1 秒完成。" },
+        "step4": { "title": "4. 下載", "content": "WebP 可直接用於網頁、CMS 上傳或 CDN bucket。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "compression": { "title": "優異壓縮", "content": "一般 iPhone HEIC → WebP（品質 85）比對應 JPG 小約 30%。" },
+          "lossless": { "title": "保留 alpha", "content": "HEIC 若含透明（例如人像模式深度），WebP 會保留。" },
+          "alpha": { "title": "現代格式", "content": "WebP 在現代瀏覽器中普遍支援 —— 網頁使用上是 JPG 的真正升級。" },
+          "privacy": { "title": "不保留檔案", "content": "HEIC 在記憶體中解碼後立即丟棄。" },
+          "fast": { "title": "一步到位管線", "content": "單一請求，無中間 JPG —— 避免雙重壓縮失真。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "web": { "title": "網頁發布", "content": "iPhone 照片直接到你的部落格、作品集、電商網站，並以最佳尺寸交付。" },
+          "mobile": { "title": "行動 App 內容", "content": "接收 iPhone 上傳的後端可儲存並交付 WebP，提供高效的行動傳輸。" },
+          "cms": { "title": "CMS 媒體庫", "content": "WordPress、Ghost、Strapi、Contentful 都原生送出 WebP —— 直接從 HEIC 餵給它們。" },
+          "cdn": { "title": "CDN 預處理", "content": "批次把 HEIC 封存轉為 WebP，一次性遷移到現代網頁格式。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whyWebp": { "q": "為什麼選 WebP 而不選 JPG？", "a": "WebP 在相同品質下比 JPG 小 25–35%、支援透明、且所有現代瀏覽器原生支援。網頁交付的更好選擇。" },
+          "browserSupport": { "q": "WebP 所有瀏覽器都能用嗎？", "a": "每個常青瀏覽器都原生支援 WebP（Chrome、Edge、Firefox、Opera、Safari 14+）。Safari < 14 請使用 picture 元素搭配 JPG fallback。" },
+          "lossless": { "q": "HEIC 可以轉成無損 WebP 嗎？", "a": "本工具預設為有損 WebP 以取得高效檔案大小。若要無損輸出，先將 HEIC → PNG，再將 PNG → 無損 WebP。" },
+          "sizeSavings": { "q": "WebP 比 HEIC 來源小多少？", "a": "WebP 輸出通常比 HEIC 大 1.5–2 倍，因為 HEIC 的 HEVC 壓縮仍更激進。但 WebP 比對應 JPG 小約 25%、且瀏覽器支援比 HEIC 廣。" },
+          "privacy": { "q": "照片會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體，回應後丟棄。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援無限使用。" }
+        }
+      }
+    }
+  },
+  "jpgToHeic": {
+    "title": "免費線上 JPG 轉 HEIC 工具",
+    "subtitle": "將 JPG 照片轉為 Apple HEIC 格式，縮小 40–50% 檔案大小，在 iPhone 與 Mac 上高效儲存。",
+    "upload": { "title": "拖放你的 JPG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · .jpg / .jpeg", "accept": "僅接受 .jpg 或 .jpeg 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 HEIC",
+    "options": { "quality": "HEIC 品質", "qualityHint": "數值越高檔案越大、畫質越好。照片建議 85–95 為實用平衡點。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 HEIC", "info": "{width} × {height} 像素 • {size}", "download": "下載 HEIC", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 JPG 轉 HEIC API",
+        "content": "以程式方式將 JPG 照片封存為 HEIC 格式。/heic 端點接受含 source_format=jpg、target_format=heic 的 multipart JPG 上傳，回傳高效壓縮的 HEIC 檔案。",
+        "content2": "適合：照片歸檔管線、將 JPG 函式庫批次遷移到 Apple 最佳化儲存、以及希望在 JPG 之外提供 iPhone 原生照片格式的雲端服務。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": { "title": "API 亮點", "endpoints": "POST /heic：HEIC ↔ JPG / PNG / WebP", "input": "Multipart JPG 上傳，上限 50 MB", "params": "source_format、target_format、quality（0–100）", "limit": "單次請求 50 MB、約 89 百萬像素", "formats": "JPG 輸入；採 HEVC 壓縮的 HEIC 輸出", "response": "image/heic 二進位串流" }
+      },
+      "whatIs": {
+        "title": "什麼是 JPG 轉 HEIC？",
+        "content": "HEIC（High Efficiency Image Container）是 Apple 的現代照片格式，使用 HEVC 視訊式壓縮，在相同視覺品質下檔案比 JPG 小約 40–50%。",
+        "content2": "當目標觀眾使用 Apple 裝置 —— iPhone、iPad、Mac —— 且儲存效率很重要時，將 JPG 轉為 HEIC 有意義。iCloud 照片、Apple 照片、Messages 都原生處理 HEIC，並受益於較小的檔案。",
+        "content3": "本工具在伺服器端透過 libvips + libheif 執行轉換，產出可在 iOS 11+ 與 macOS High Sierra+ 上原生開啟的標準 HEIC 檔。無需註冊、無浮水印、不保留。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 JPG 轉為 HEIC？",
+        "content": "在 Apple 裝置上歸檔照片函式庫時 —— HEIC 較小的足跡可在無明顯畫質損失下回收顯著儲存空間。一份 10 GB 的 JPG 封存通常變成 5–6 GB 的 HEIC。",
+        "content2": "若照片需與缺少 HEIC 支援的 Windows、Android 或網頁用戶分享，請跳過 HEIC。在 Apple 生態系外，JPG 仍是通用選擇。"
+      },
+      "howTo": {
+        "title": "如何將 JPG 轉為 HEIC",
+        "step1": { "title": "1. 上傳你的 JPG", "content": "拖曳或點擊選取，最大 50 MB。" },
+        "step2": { "title": "2. 選擇 HEIC 品質", "content": "預設 90 —— 極佳品質 + 節省 40–50% 空間。低於 80 時可能出現可見壓縮失真。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 JPG 並以 HEVC 壓縮於 HEIF 容器中重新編碼。一般低於 1 秒完成。" },
+        "step4": { "title": "4. 下載並儲存", "content": "HEIC 檔可匯入 Mac 的照片，或透過 AirDrop 傳至 iPhone。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "compression": { "title": "縮小 40–50%", "content": "相同品質下一般照片 JPG → HEIC 的節省量 —— 適合儲存高效的封存。" },
+          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制。" },
+          "apple": { "title": "Apple 原生格式", "content": "在 iPhone、iPad、Mac 上原生開啟 —— 無需外掛或轉換器。" },
+          "privacy": { "title": "不保留檔案", "content": "JPG 在記憶體中處理後立即丟棄。" },
+          "fast": { "title": "秒速轉換", "content": "一般網頁用 JPG 低於 600 毫秒完成。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "iphone": { "title": "iPhone 照片同步", "content": "AirDrop 或 iCloud 同步前轉換，減少行動端儲存使用。" },
+          "storage": { "title": "儲存最佳化", "content": "把 Mac 上的 JPG 函式庫轉為 HEIC 以縮小大型照片封存。" },
+          "icloud": { "title": "iCloud 照片", "content": "更高效儲存照片 —— iCloud 原生支援 HEIC，在裝置間保留。" },
+          "archival": { "title": "長期歸檔", "content": "HEIC 是 Apple 中心封存的未來保險選擇 —— 目前與未來 iOS 版本都支援。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whyHeic": { "q": "為什麼要把 JPG 轉為 HEIC？", "a": "為了在 Apple 裝置上節省儲存空間。HEIC 在相同視覺品質下比 JPG 小 40–50%，大型照片函式庫累積下來的節省量很可觀。" },
+          "compatibility": { "q": "HEIC 檔在哪裡能開？", "a": "iPhone（iOS 11+）、iPad、Mac（High Sierra+）、Windows 10+（需裝免費 HEVC 解碼器）、Android 10+ 多數裝置。舊 Windows 與網頁通常需要轉換器。" },
+          "quality": { "q": "畫質會下降嗎？", "a": "JPG 與 HEIC 都是有損格式，重新編碼必然有些許損失。品質 90+ 在螢幕上幾乎看不出。" },
+          "sizeSavings": { "q": "會省多少空間？", "a": "相同品質下通常可縮小 40–50%。5 MB 的 JPG 大約變成 2.5–3 MB 的 HEIC。" },
+          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體，回應後丟棄。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援更大量。" }
+        }
+      }
+    }
+  },
+  "pngToHeic": {
+    "title": "免費線上 PNG 轉 HEIC 工具",
+    "subtitle": "將 PNG 圖片轉為 Apple HEIC 格式，在 iPhone 與 Mac 上高效儲存 —— 照片內容可小 5–10 倍。",
+    "upload": { "title": "拖放你的 PNG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 僅限 .png", "accept": "僅接受 .png 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 HEIC",
+    "options": { "quality": "HEIC 品質", "qualityHint": "數值越高檔案越大、畫質越好。建議 90–95，因為來源 PNG 是無損的。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 HEIC", "info": "{width} × {height} 像素 • {size}", "download": "下載 HEIC", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 PNG 轉 HEIC API",
+        "content": "以程式方式將 PNG 封存壓縮為 HEIC。/heic 端點接受含 source_format=png、target_format=heic 的 multipart PNG 上傳，回傳以 HEVC 壓縮、僅原始大小一小部分的 HEIC 檔案。",
+        "content2": "適合：照片歸檔管線、不需要無損品質的 PNG 函式庫批次遷移、以及 Apple 中心工作流程的儲存高效照片備份。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": { "title": "API 亮點", "endpoints": "POST /heic：HEIC ↔ JPG / PNG / WebP", "input": "Multipart PNG 上傳，上限 50 MB", "params": "source_format、target_format、quality（0–100）", "limit": "單次請求 50 MB、約 89 百萬像素", "formats": "PNG 輸入；採 HEVC 壓縮的 HEIC 輸出", "response": "image/heic 二進位串流" }
+      },
+      "whatIs": {
+        "title": "什麼是 PNG 轉 HEIC？",
+        "content": "PNG 是無損格式 —— 每個像素完整保留，適合編輯但儲存肥大。HEIC 使用有損 HEVC 壓縮，可將照片內容縮小 5–10 倍，視覺品質損失極少。",
+        "content2": "將 PNG 轉為 HEIC 是一種交換：放棄像素完美保留，以換取大幅縮小的檔案。對照片這幾乎永遠是勝利；對 logo、線稿或含銳利邊緣與純色的 UI 圖形，PNG 仍是較好的選擇。",
+        "content3": "本工具使用 libheif 搭配調校過的 HEVC 編碼器，產出與 iOS 11+ 及 macOS High Sierra+ 相容的 HEIC 檔案。上傳 PNG、選擇品質、下載最佳化 HEIC —— 全部在記憶體中、不保留。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 PNG 轉為 HEIC？",
+        "content": "為目的地是 Apple 裝置的照片 PNG 封存而轉換。若你有大量 PNG 照片同步到 iCloud 或存放在 Mac 上，HEIC 能回收大量空間。",
+        "content2": "不要轉截圖、UI 圖形、圖示、或任何含銳利邊緣的內容 —— HEIC 的壓縮會模糊這些。無損的 Apple 友善儲存請保留 PNG，HEIC 僅用於照片內容。"
+      },
+      "howTo": {
+        "title": "如何將 PNG 轉為 HEIC",
+        "step1": { "title": "1. 上傳你的 PNG", "content": "拖曳或點擊選取，最大 50 MB。" },
+        "step2": { "title": "2. 選擇 HEIC 品質", "content": "預設 90 —— 適合多數照片內容。因 PNG 是無損的，使用較高品質（90–95）以減少轉換時的失真。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 PNG 並以 HEVC 壓縮重新編碼為 HEIC。" },
+        "step4": { "title": "4. 下載", "content": "HEIC 可匯入 Apple 照片或傳至 iPhone。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "compression": { "title": "照片小 5–10 倍", "content": "典型照片 PNG → HEIC 節省量 —— 封存最佳選擇。" },
+          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制。" },
+          "apple": { "title": "Apple 原生", "content": "在 iPhone、iPad、Mac 上原生開啟。" },
+          "privacy": { "title": "不保留檔案", "content": "PNG 在記憶體中處理後立即丟棄。" },
+          "fast": { "title": "秒速轉換", "content": "一般照片 PNG 低於 1 秒完成。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "iphone": { "title": "iPhone 儲存節省", "content": "透過 AirDrop 或 iCloud 傳到 iPhone 前先轉為 HEIC。" },
+          "storage": { "title": "Mac 照片封存", "content": "把 Mac 上大型 PNG 照片資料夾轉為 HEIC —— 照片節省 5–10 倍。" },
+          "icloud": { "title": "iCloud 效率", "content": "不需升級儲存方案即可在 iCloud 存放更多照片。" },
+          "screenshots": { "title": "照片 vs 截圖分類", "content": "截圖與 UI 用 PNG（保留銳利細節），照片用 HEIC（節省空間）。本工具處理照片端的轉換。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whyHeic": { "q": "為什麼要把 PNG 轉為 HEIC？", "a": "為了大幅減少照片 PNG 的儲存使用 —— HEIC 在相同感知品質下小 5–10 倍。僅對 Apple 中心工作流程有意義。" },
+          "transparency": { "q": "透明會保留嗎？", "a": "轉換時會平展到黑色背景。HEIC 技術上支援 alpha，但 iOS App 的相容性不一致，先合成更安全。" },
+          "quality": { "q": "會損失畫質嗎？", "a": "會，因為 HEIC 是有損。品質 90+ 時照片內容的損失實際上看不見。線稿或 UI 圖形請跳過此轉換 —— 用 PNG。" },
+          "compatibility": { "q": "HEIC 在哪能開？", "a": "iPhone（iOS 11+）、iPad、Mac（High Sierra+）、Windows 10+（需 HEVC 解碼器）。Android < 10 與多數網頁瀏覽器不原生支援。" },
+          "privacy": { "q": "PNG 會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援更大量。" }
         }
       }
     }

@@ -247,7 +247,55 @@
         "**둥근 모서리** 옵션으로 아이콘에 둥근 효과를 추가할 수 있습니다 — 많은 최신 브라우저와 OS는 웹사이트 아이콘을 둥근 모서리로 표시합니다.",
         "SVG와 PNG 입력 모두 지원 — 벡터 로고가 있다면 SVG를 직접 업로드하면 가장 선명한 스케일링 결과를 얻을 수 있습니다."
       ]
+    },
+    "jpgToWebp": {
+      "tipsTitle": "알고 계셨나요? JPG를 WebP로 변환 팁",
+      "tips": [
+        "WebP는 동일한 시각적 품질에서 보통 JPG보다 25–35% 작습니다 — 웹사이트 로딩 속도 향상에 최적입니다.",
+        "**화질 슬라이더** 로 손실 압축 강도를 조절하세요 — 80은 대부분의 웹 이미지에 적합하고, 90+는 높은 충실도가 필요한 경우에 적합합니다.",
+        "여러 JPG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 WebP 파일은 단일 ZIP으로 반환됩니다.",
+        "모든 최신 브라우저는 WebP를 기본 지원합니다. IE나 매우 오래된 시스템과의 호환이 필요한 경우에만 JPG로 대체하세요."
+      ]
+    },
+    "webpToJpg": {
+      "tipsTitle": "알고 계셨나요? WebP를 JPG로 변환 팁",
+      "tips": [
+        "**화질 슬라이더** 로 출력 JPG의 압축을 조절하세요 — 85가 대부분의 사진에서 파일 크기와 선명도의 최적 균형점입니다.",
+        "WebP의 투명 영역은 JPG 변환 시 **흰색 배경** 으로 채워집니다 — 다른 배경색이 필요한 경우 이미지 편집기에서 먼저 처리하세요.",
+        "여러 WebP 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 JPG 파일은 단일 ZIP으로 반환됩니다.",
+        "WebP를 지원하지 않는 환경(이메일 첨부, 인쇄 서비스, 레거시 CMS 등)에서 이미지를 사용해야 할 때 JPG로 변환하는 것이 가장 안전합니다."
+      ]
+    },
+    "jpgToHeic": {
+      "tipsTitle": "알고 계셨나요? JPG를 HEIC로 변환 팁",
+      "tips": [
+        "HEIC는 동일 품질에서 보통 JPG보다 40–50% 작습니다 — iPhone과 Mac에서 저장 공간 절약에 최적입니다.",
+        "**화질 슬라이더** 로 HEIC 압축 강도를 조절하세요 — 85가 대부분의 사진에 적합하고, 90+는 높은 충실도가 필요한 경우에 적합합니다.",
+        "여러 JPG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 HEIC 파일은 단일 ZIP으로 반환됩니다.",
+        "HEIC는 Apple 기기의 네이티브 형식입니다. 변환된 사진은 iPhone 사진 라이브러리에 직접 가져오거나 Mac에서 바로 사용할 수 있으며, 추가 소프트웨어 설치가 필요 없습니다."
+      ]
+    },
+    "pngToHeic": {
+      "tipsTitle": "알고 계셨나요? PNG를 HEIC로 변환 팁",
+      "tips": [
+        "HEIC는 손실 및 무손실 압축을 모두 지원합니다 — 무손실 모드에서도 보통 PNG보다 30–50% 작습니다.",
+        "**화질 슬라이더** 로 손실 압축 강도를 조절하세요. 완전한 무손실 변환이 필요하면 최고 화질 설정을 선택하세요.",
+        "여러 PNG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 HEIC 파일은 단일 ZIP으로 반환됩니다.",
+        "PNG 스크린샷이나 디자인 소재를 HEIC로 변환하면 Apple 기기에서 저장 공간을 크게 절약하면서 뛰어난 시각적 품질을 유지할 수 있습니다."
+      ]
     }
+  },
+  "error": {
+    "title": "페이지를 찾을 수 없습니다 — ClawStudiouo",
+    "description": "찾고 있는 페이지가 존재하지 않습니다. 대신 무료 이미지 도구를 사용해 보세요.",
+    "notFoundTitle": "페이지를 찾을 수 없습니다",
+    "notFoundDescription": "찾고 있는 페이지가 존재하지 않거나 이동되었을 수 있습니다. 아래 도구를 사용해 보시거나 홈페이지로 돌아가세요.",
+    "genericTitle": "문제가 발생했습니다",
+    "genericDescription": "예기치 않은 오류가 발생했습니다. 다시 시도하거나 홈페이지로 돌아가세요.",
+    "backHome": "홈으로 돌아가기",
+    "goBack": "뒤로 가기",
+    "tryTools": "또는 도구 카테고리를 둘러보세요:",
+    "toolsCount": "개 도구"
   },
   "relatedTools": {
     "label": "관련 도구",
@@ -268,7 +316,12 @@
       "sprite": "스프라이트 & 프레임 도구",
       "imageFormat": "이미지 형식 변환기",
       "vector": "벡터 & 아이콘 도구"
-    }
+    },
+    "jpgToWebp": "JPG → WebP",
+    "webpToJpg": "WebP → JPG",
+    "heicToWebp": "HEIC → WebP",
+    "jpgToHeic": "JPG → HEIC",
+    "pngToHeic": "PNG → HEIC"
   },
   "home": {
     "title": "무료 온라인 개발 도구",
@@ -324,6 +377,26 @@
       "faviconGenerator": {
         "title": "Favicon 생성기",
         "description": "ICO, Apple Touch, Android 및 Web Manifest를 포함한 완전한 7파일 favicon 팩을 생성."
+      },
+      "jpgToWebp": {
+        "title": "JPG를 WebP로",
+        "description": "JPG 파일을 최신 WebP로 변환하여 추가 압축 — 웹 배포에 최적."
+      },
+      "webpToJpg": {
+        "title": "WebP를 JPG로",
+        "description": "WebP를 범용 호환 JPG로 변환, 이메일, 인쇄 및 레거시 앱용."
+      },
+      "heicToWebp": {
+        "title": "HEIC를 WebP로",
+        "description": "iPhone HEIC 사진을 직접 WebP로 변환 — JPG보다 작고 알파를 지원."
+      },
+      "jpgToHeic": {
+        "title": "JPG를 HEIC로",
+        "description": "JPG 사진을 Apple HEIC 형식으로 변환하여 iPhone과 Mac에서 효율적으로 저장."
+      },
+      "pngToHeic": {
+        "title": "PNG를 HEIC로",
+        "description": "PNG 이미지를 Apple HEIC 형식으로 변환하여 Apple 기기에서 약 50% 작은 파일."
       }
     }
   },
@@ -2685,5 +2758,812 @@
       }
     },
     "options": {}
+  },
+  "jpgToWebp": {
+    "title": "무료 온라인 JPG to WebP 컨버터",
+    "subtitle": "JPG 파일을 WebP로 변환하여 25–35% 추가 축소 — 완전한 투명도 지원이 있는 현대 포맷.",
+    "upload": {
+      "title": "JPG 파일을 여기에 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .jpg 또는 .jpeg",
+      "accept": ".jpg 또는 .jpeg 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "WebP로 변환",
+    "options": {
+      "quality": "WebP 품질",
+      "qualityHint": "무손실이 활성화되면 무시됩니다. 대부분의 웹 이미지에 75–85가 최적입니다.",
+      "lossless": "무손실 인코딩",
+      "losslessHint": "완벽한 픽셀 보존 — JPG 소스가 이미 손실이므로 JPG에서는 거의 가치가 없습니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 WebP",
+      "info": "{width} × {height} px • {size}",
+      "download": "WebP 다운로드",
+      "reset": "다른 이미지 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해 주세요. 🌸",
+      "description": "기사를 읽으면 3회의 추가 변환을 잠금 해제할 수 있습니다. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회 무료 변환 남음 | {count}회 무료 변환 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "JPG to WebP 변환 API 사용",
+        "content": "CDN을 위한 WebP 전달을 자동화합니다. /webp 끝점은 입력 방향을 자동으로 감지합니다 — JPG를 보내면 WebP를 받으며, 품질을 조정하거나 무손실 모드를 활성화할 수 있습니다.",
+        "content2": "빌드 파이프라인, 온라인 업로드 SaaS 변환, Core Web Vitals 친화적 이미지 변형을 대규모로 생성하는 대량 CDN 전처리에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /webp: 임의 → WebP (자동 감지)",
+          "input": "다중파트 JPG 업로드, 최대 50 MB",
+          "params": "quality (0–100), lossless (bool)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "JPG / PNG 입력; WebP 출력",
+          "response": "Binary image/webp 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "JPG to WebP 변환이란?",
+        "content": "WebP는 Google의 현대 이미지 포맷으로, 동일한 인지 품질에서 JPG보다 약 25–35% 더 잘 압축합니다. 기존 JPG 자산을 WebP로 변환하는 것은 대역폭, 페이지 속도, Core Web Vitals 점수에서 순수한 승리입니다.",
+        "content2": "JPG와 달리 WebP는 완전한 알파 투명도 및 손실 및 무손실 모드를 모두 지원합니다. 사진의 경우, 품질 80–85의 손실 WebP가 최적의 균형을 제공합니다. 무손실 워크플로우의 경우, WebP 무손실 코덱은 여전히 PNG를 크게 이깁니다.",
+        "content3": "이 도구는 서버 측에서 실행됩니다: JPG를 업로드하고 품질을 선택하거나 무손실을 활성화하면 웹 준비가 된 WebP를 다시 스트리밍합니다. 가입, 워터마크, 파일 보관 없음."
+      },
+      "whyWebp": {
+        "title": "JPG를 WebP로 변환해야 하는 이유는?",
+        "content": "Google의 Core Web Vitals는 이미지 크기, 특히 Largest Contentful Paint (LCP)를 크게 가중치 있게 평가합니다. JPG 대표 이미지를 WebP로 바꾸는 것은 이미지 URL 이외의 코드 변경 없이 즉각적인 LCP 상승을 제공하는 경우가 많습니다.",
+        "content2": "WebP는 또한 CDN의 대역폭을 줄이고, 느린 네트워크에서 모바일 페이지 로드 속도를 높이며, 제한된 요금제의 사용자를 위한 데이터를 절약합니다. 전자상거래 및 콘텐츠 중심 사이트의 경우 업그레이드가 거의 항상 가치가 있습니다."
+      },
+      "howTo": {
+        "title": "JPG를 WebP로 변환하는 방법",
+        "step1": {
+          "title": "1. JPG 업로드",
+          "content": "드래그하거나 클릭하여 선택합니다. 최대 50 MB의 파일이 허용됩니다."
+        },
+        "step2": {
+          "title": "2. 손실 또는 무손실 선택",
+          "content": "사진에서 최대 압축을 위해 무손실을 끈 상태로 유지합니다. 픽셀 완벽한 출력이 필요한 경우에만 켭니다."
+        },
+        "step3": {
+          "title": "3. 품질 선택 (손실만)",
+          "content": "기본값은 80입니다. 대부분의 웹 이미지에 75–85가 강력한 균형입니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "WebP 파일이 준비되었습니다 — 사이트의 이미지 태그에 드롭하세요."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "25–35% 더 작은 파일",
+            "content": "동등한 품질의 일반적인 JPG → WebP 절약, 눈에 띄는 차이 없음."
+          },
+          "photo": {
+            "title": "사진 최적화",
+            "content": "WebP의 압축은 사진 콘텐츠를 위해 조정됩니다 — 그래디언트, 피부톤, 저명도 영역을 깔끔하게 처리합니다."
+          },
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "1부터 100까지 세밀한 제어 — 크기 대 충실도 트레이드오프를 조정합니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "JPG는 메모리에서 처리되고 즉시 폐기됩니다."
+          },
+          "fast": {
+            "title": "1초 이내 변환",
+            "content": "일반적인 웹 크기의 JPG는 300ms 미만에 변환됩니다."
+          },
+          "free": {
+            "title": "일반적 사용 무료",
+            "content": "세션당 3회 무료 변환. 더 높은 볼륨을 위한 API."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "웹 성능 및 SEO",
+            "content": "더 작은 이미지는 더 빠른 페이지, 더 나은 Core Web Vitals, 향상된 SEO 순위를 의미합니다."
+          },
+          "mobile": {
+            "title": "모바일 앱 및 PWA",
+            "content": "WebP는 Android WebViews 및 PWA에서 기본 지원됩니다 — 더 가볍고 빠른 UX."
+          },
+          "ecommerce": {
+            "title": "전자상거래 제품 이미지",
+            "content": "제품 카탈로그를 WebP로 변환하여 더 빠른 목록과 더 작은 CDN 청구서를 받으세요."
+          },
+          "cdn": {
+            "title": "CDN 전처리",
+            "content": "JPG 아카이브를 WebP로 대량 변환하여 원본 스토리지 및 유출 비용을 줄이는 일회성 마이그레이션으로 사용합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "browserSupport": {
+            "q": "어느 브라우저가 WebP를 지원합니까?",
+            "a": "모든 에버그린 브라우저: Chrome, Edge, Firefox, Opera, Safari 14+. 더 오래된 Safari 및 IE의 경우 JPG 폴백이 있는 picture 요소를 사용하세요."
+          },
+          "qualityLoss": {
+            "q": "변환 중에 품질이 떨어질까요?",
+            "a": "품질 85 이상에서 JPG → WebP로 변환하는 것은 본질적으로 감지할 수 없습니다. 두 포맷 모두 손실이지만 WebP의 압축이 더 효율적이므로 유사한 파일 크기로 더 높은 품질을 선택할 수 있습니다."
+          },
+          "sizeSavings": {
+            "q": "WebP가 얼마나 더 작을까요?",
+            "a": "일반적인 손실 WebP: 사진의 경우 JPG보다 25–35% 작습니다. 무손실 WebP: 손실 JPG보다 약 10–20% 크지만 픽셀 완벽합니다."
+          },
+          "lossless": {
+            "q": "무손실 모드를 활성화해야 하나요?",
+            "a": "JPG 소스의 경우 거의 없습니다 — JPG가 이미 손실이므로 무손실 WebP는 JPG의 아티팩트를 더 큰 파일 크기로 보존할 뿐입니다. 깨끗한 PNG 소스에만 무손실을 사용하세요."
+          },
+          "privacy": {
+            "q": "내 JPG가 어딘가에 저장되어 있나요?",
+            "a": "아니요. 변환 중 메모리에 보관되고 응답에서 폐기됩니다. 기록되지 않으며 계정이 필요하지 않습니다."
+          },
+          "free": {
+            "q": "이것이 무료인가요?",
+            "a": "네 — 세션당 3회 무료 변환. 무제한 사용을 위한 API."
+          }
+        }
+      }
+    }
+  },
+  "webpToJpg": {
+    "title": "무료 온라인 WebP to JPG 컨버터",
+    "subtitle": "WebP 이미지를 JPG로 변환하여 이메일, 인쇄, 레거시 애플리케이션과의 범용 호환성을 확보합니다.",
+    "upload": {
+      "title": "WebP 파일을 여기에 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .webp만",
+      "accept": ".webp 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "JPG로 변환",
+    "options": {
+      "quality": "JPG 품질",
+      "qualityHint": "높음 = 더 큰 파일, 더 나은 충실도. 85–92가 실질적 최적점입니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 JPG",
+      "info": "{width} × {height} px • {size}",
+      "download": "JPG 다운로드",
+      "reset": "다른 이미지 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해 주세요. 🌸",
+      "description": "기사를 읽으면 3회의 추가 변환을 잠금 해제할 수 있습니다. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회 무료 변환 남음 | {count}회 무료 변환 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "WebP to JPG 변환 API 사용",
+        "content": "레거시 클라이언트를 위해 JPG 폴백을 프로그래밍 방식으로 제공합니다. /webp 끝점은 WebP 방향을 자동으로 감지합니다 — target_format=jpg를 공급하면 API는 소스의 기본 해상도에서 디코딩된 JPG를 반환합니다.",
+        "content2": "이메일 수신자에게 JPG를 보내야 하는 서비스, JPG 입력이 필요한 인쇄 파이프라인, 들어오는 WebP를 널리 지원되는 JPG로 정규화하는 자산 관리 시스템에 유용합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /webp: WebP → PNG / JPG",
+          "input": "다중파트 WebP 업로드, 최대 50 MB",
+          "params": "target_format=jpg, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "WebP 입력; JPG 출력",
+          "response": "Binary image/jpeg 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "WebP to JPG 변환이란?",
+        "content": "WebP to JPG 변환은 WebP 이미지를 디코딩하고 JPG로 다시 인코딩합니다. JPG는 범용적으로 지원되기 때문에 — 모든 이메일 클라이언트, 레거시 앱, 인쇄 파이프라인, 더 오래된 브라우저가 이를 읽습니다 — 이 변환은 종종 공유 전의 마지막 단계입니다.",
+        "content2": "JPG에는 알파 채널이 없으므로 변환 중에 WebP의 투명 픽셀이 흰색 배경으로 병합됩니다. 투명도를 보존해야 하면 대신 PNG로 변환하세요.",
+        "content3": "이 도구는 서버 측에서 libvips를 통해 실행되어 소스의 기본 해상도에서 선택한 품질로 깨끗한 JPG 출력을 생성합니다. 가입, 워터마크, 보관 없음."
+      },
+      "whyConvert": {
+        "title": "WebP를 JPG로 변환해야 할 때는?",
+        "content": "대상이 WebP를 지원하지 않을 때 변환하세요. 일반적인 경우: 구형 Outlook의 수신자에게 이메일 발송, 레거시 CMS 시스템에 업로드, 구형 RIP 소프트웨어가 있는 인쇄소에 전송, 아직 업데이트되지 않은 API와 통합.",
+        "content2": "또한 파일 크기가 호환성보다 덜 중요할 때 변환하세요 — JPG는 동등한 품질에서 WebP보다 약간 더 크지만 마찰 없이 모든 곳에서 열립니다. 일회성 공유 또는 작은 배치의 경우 단순성이 최적화를 이깁니다."
+      },
+      "howTo": {
+        "title": "WebP를 JPG로 변환하는 방법",
+        "step1": {
+          "title": "1. WebP 업로드",
+          "content": "드래그 앤 드롭하거나 클릭하여 파일 선택기를 엽니다. 최대 50 MB 허용."
+        },
+        "step2": {
+          "title": "2. 품질 선택",
+          "content": "기본값은 90입니다 — 소스와 거의 같습니다. 80은 약간의 부드러움으로 더 많은 공간을 절약합니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버가 WebP를 디코딩하고 투명도를 흰색으로 병합한 후 JPG로 다시 인코딩합니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "JPG를 저장합니다. 이메일, 인쇄 또는 WebP를 읽지 않는 모든 애플리케이션에 준비됩니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "1부터 100까지 세밀한 제어."
+          },
+          "compatibility": {
+            "title": "범용 출력",
+            "content": "JPG는 모든 곳에서 열립니다 — 플러그인, 코덱, 호환성 걱정 없음."
+          },
+          "smaller": {
+            "title": "효율적인 JPG 인코딩",
+            "content": "현대식 JPEG 인코더는 높은 품질 설정에서도 작은 파일을 생성합니다."
+          },
+          "privacy": {
+            "title": "보관 없음",
+            "content": "WebP는 메모리에서 처리되고 즉시 폐기됩니다."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "일반적인 웹 크기의 WebP의 경우 500ms 미만."
+          },
+          "free": {
+            "title": "무료",
+            "content": "세션당 3회 무료 변환, 계정 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "email": {
+            "title": "이메일 첨부파일",
+            "content": "일부 회사 메일 클라이언트는 WebP 첨부파일을 거부합니다. JPG는 항상 안전합니다."
+          },
+          "legacy": {
+            "title": "레거시 애플리케이션",
+            "content": "구형 Photoshop, MS Office (365 전), Windows Paint는 모두 WebP에서 실패하지만 JPG를 깔끔하게 열 수 있습니다."
+          },
+          "printing": {
+            "title": "인쇄 생산",
+            "content": "많은 인쇄 RIP 및 사진 실험실은 제출을 위해 JPG만 허용합니다."
+          },
+          "social": {
+            "title": "더 오래된 소셜 플랫폼",
+            "content": "일부 틈새 플랫폼 및 포럼 소프트웨어는 여전히 WebP 업로드를 거부합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyConvert": {
+            "q": "WebP를 왜 JPG로 변환하나요?",
+            "a": "호환성을 위해 — JPG는 모든 이메일 클라이언트, OS, 앱에서 열리지만 WebP는 여전히 레거시 시스템에서 거부되는 경우가 있습니다."
+          },
+          "transparency": {
+            "q": "투명 픽셀은 어떻게 됩니까?",
+            "a": "JPG에는 알파 채널이 없으므로 흰색으로 병합됩니다. 투명도가 필요한 경우 대신 PNG로 변환하세요."
+          },
+          "quality": {
+            "q": "어느 품질을 선택해야 합니까?",
+            "a": "90은 사진에 안전합니다 — 소스와 거의 구별할 수 없습니다. 80은 약간의 부드러움으로 더 많은 절약을 제공합니다."
+          },
+          "fileSize": {
+            "q": "JPG가 WebP보다 더 작거나 더 클까요?",
+            "a": "일반적으로 동등한 품질에서 10–30% 더 크며, WebP의 압축이 더 효율적이기 때문입니다."
+          },
+          "privacy": {
+            "q": "내 파일이 저장됩니까?",
+            "a": "아니요 — 변환 중에만 메모리에 보관됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 세션당 3회 무료 변환."
+          }
+        }
+      }
+    }
+  },
+  "heicToWebp": {
+    "title": "무료 온라인 HEIC to WebP 컨버터",
+    "subtitle": "iPhone HEIC 사진을 WebP로 직접 변환 — JPG보다 작으며, 투명도 지원 및 광범위한 현대 브라우저 지원.",
+    "upload": {
+      "title": "HEIC 파일을 여기에 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .heic 또는 .heif",
+      "accept": ".heic 또는 .heif 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "WebP로 변환",
+    "options": {
+      "quality": "WebP 품질",
+      "qualityHint": "높음 = 더 큰 파일, 더 나은 충실도. 대부분의 웹 사진에 80–88이 최적입니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 WebP",
+      "info": "{width} × {height} px • {size}",
+      "download": "WebP 다운로드",
+      "reset": "다른 이미지 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해 주세요. 🌸",
+      "description": "기사를 읽으면 3회의 추가 변환을 잠금 해제할 수 있습니다. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회 무료 변환 남음 | {count}회 무료 변환 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "HEIC to WebP 변환 API 사용",
+        "content": "현대식 웹 준비 HEIC 변환을 자동화합니다. /heic 끝점은 source_format=heic 및 target_format=webp를 사용한 다중파트 HEIC 업로드를 수락하고 한 요청에서 최적화된 WebP를 반환합니다.",
+        "content2": "웹 전달을 위해 iPhone 업로드를 정규화하는 모바일 앱 백엔드, Apple 소스 사진을 웹 친화적 형식으로 저장하려는 SaaS 플랫폼, 웹 준비 변형을 자동으로 생성하는 CMS 플러그인에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "다중파트 HEIC 업로드, 최대 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "HEIC / HEIF 입력; 알파가 있는 WebP 출력",
+          "response": "Binary image/webp 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "HEIC를 WebP로 직접 변환해야 하는 이유는?",
+        "content": "HEIC를 WebP로 직접 변환하면 불필요한 압축 아티팩트를 도입할 중간 JPG 단계를 건너뜁니다. 도구는 HEIC의 HEVC 압축 픽셀을 한 번 디코딩하고 WebP로 다시 인코딩합니다 — 두 개 대신 한 번의 압축입니다.",
+        "content2": "HEIC 및 WebP 모두 효율적인 전달을 위해 설계된 현대식 코덱입니다. 이 조합은 iPhone 품질 사진을 웹 페이지에 원하지만 파일 크기는 JPG보다 작고 HEIC보다 더 나은 브라우저 지원을 원할 때 특히 유용합니다.",
+        "content3": "우리의 도구는 단일 서버 측 요청에서 전체 파이프라인을 실행합니다 — 로컬 HEIC 디코더가 필요 없고, ImageMagick 설정이 없으며, 다중 단계 스크립팅이 없습니다. HEIC를 업로드하고 WebP를 받으세요."
+      },
+      "whyWebp": {
+        "title": "HEIC를 WebP로 언제 변환해야 합니까?",
+        "content": "iPhone 사진을 현대식 웹사이트로 보낼 때 변환하세요: 블로그, 포트폴리오, 전자상거래, 소셜 피드. WebP는 모든 에버그린 브라우저에서 지원되며 동등한 품질에서 JPG보다 더 작은 파일을 제공합니다.",
+        "content2": "청중이 매우 구형 장치에 있으면 WebP를 건너뛰세요 (iOS < 14, IE, Safari < 14) — 대신 HEIC → JPG를 사용하세요. 무손실 품질로 전체 알파 채널이 필요하면 건너뛰세요 — HEIC → PNG를 사용하세요."
+      },
+      "howTo": {
+        "title": "HEIC를 WebP로 변환하는 방법",
+        "step1": {
+          "title": "1. HEIC 파일 업로드",
+          "content": ".heic 또는 .heif 파일을 업로드 영역으로 드래그합니다. 최대 50 MB 허용."
+        },
+        "step2": {
+          "title": "2. WebP 품질 선택",
+          "content": "기본값은 85입니다 — 사진 콘텐츠를 위해 균형잡혀 있습니다. 75 아래에서 압축 아티팩트는 고세부 이미지에서 명시적이 됩니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버가 HEIC를 디코딩하고 EXIF 방향을 적용하며 WebP로 인코딩합니다. 일반적인 iPhone 사진의 경우 1초 미만."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "WebP가 웹 페이지, CMS 업로드 또는 CDN 버킷으로 드롭할 준비가 되었습니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "우수한 압축",
+            "content": "일반적인 iPhone HEIC → 품질 85의 WebP는 동등한 JPG보다 약 30% 더 작습니다."
+          },
+          "lossless": {
+            "title": "알파 보존됨",
+            "content": "HEIC에 투명도가 있으면 (예: Portrait Mode 깊이) WebP가 이를 보존합니다."
+          },
+          "alpha": {
+            "title": "현대식 포맷",
+            "content": "WebP는 현대 브라우저에 범용적으로 지원됩니다 — 웹을 위한 JPG의 진정한 업그레이드."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "HEIC는 메모리에서 디코딩되고 즉시 폐기됩니다."
+          },
+          "fast": {
+            "title": "원스텝 파이프라인",
+            "content": "단일 요청, 중간 JPG 없음 — 이중 압축 아티팩트를 피합니다."
+          },
+          "free": {
+            "title": "일반적 사용 무료",
+            "content": "세션당 3회 무료 변환, 계정 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "웹 게시",
+            "content": "iPhone 사진을 최적화된 크기로 블로그, 포트폴리오 또는 전자상거래 사이트로 바로 가져가세요."
+          },
+          "mobile": {
+            "title": "모바일 앱 콘텐츠",
+            "content": "iPhone 업로드를 수락하는 백엔드는 효율적인 모바일 전달을 위해 WebP를 저장하고 제공할 수 있습니다."
+          },
+          "cms": {
+            "title": "CMS 미디어 라이브러리",
+            "content": "WordPress, Ghost, Strapi, Contentful은 모두 WebP를 기본 지원합니다 — HEIC에서 직접 공급합니다."
+          },
+          "cdn": {
+            "title": "CDN 전처리",
+            "content": "HEIC 아카이브를 WebP로 대량으로 변환하여 현대식 웹 포맷으로 일회성 마이그레이션합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyWebp": {
+            "q": "HEIC를 JPG 대신 WebP로 변환해야 이유는?",
+            "a": "WebP는 동등한 품질에서 JPG보다 약 25–35% 더 작고, 투명도를 지원하며, 모든 현대 브라우저에서 기본 지원됩니다. 웹 전달에 더 나은 선택입니다."
+          },
+          "browserSupport": {
+            "q": "WebP가 모든 브라우저에서 작동할까요?",
+            "a": "모든 에버그린 브라우저는 WebP를 기본 지원합니다 (Chrome, Edge, Firefox, Opera, Safari 14+). Safari < 14의 경우 JPG 폴백이 있는 picture 요소를 사용하세요."
+          },
+          "lossless": {
+            "q": "HEIC에서 무손실 WebP를 얻을 수 있습니까?",
+            "a": "이 도구는 기본적으로 효율적인 파일 크기를 위해 손실 WebP로 설정됩니다. 무손실 출력의 경우 먼저 HEIC → PNG로 변환한 후 PNG → 무손실 WebP로 변환하세요."
+          },
+          "sizeSavings": {
+            "q": "HEIC 소스에 비해 WebP가 얼마나 더 작습니까?",
+            "a": "WebP 출력은 일반적으로 HEIC보다 1.5–2배 더 크며, HEIC의 HEVC 압축이 여전히 더 적극적이기 때문입니다. 하지만 WebP는 동등한 JPG보다 약 25% 더 작으며 HEIC보다 더 나은 브라우저 지원을 제공합니다."
+          },
+          "privacy": {
+            "q": "내 사진이 저장됩니까?",
+            "a": "아니요 — 변환 중에만 메모리에 보관되고 응답 후 폐기됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 세션당 3회 무료 변환. 무제한 사용을 위한 API."
+          }
+        }
+      }
+    }
+  },
+  "jpgToHeic": {
+    "title": "무료 온라인 JPG to HEIC 컨버터",
+    "subtitle": "JPG 사진을 Apple HEIC 포맷으로 변환하여 40–50% 더 작은 파일 크기 및 iPhone과 Mac에서의 효율적인 저장.",
+    "upload": {
+      "title": "JPG 파일을 여기에 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .jpg 또는 .jpeg",
+      "accept": ".jpg 또는 .jpeg 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "HEIC로 변환",
+    "options": {
+      "quality": "HEIC 품질",
+      "qualityHint": "높음 = 더 큰 파일, 더 나은 충실도. 사진의 경우 85–95가 실질적 최적점입니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 HEIC",
+      "info": "{width} × {height} px • {size}",
+      "download": "HEIC 다운로드",
+      "reset": "다른 이미지 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해 주세요. 🌸",
+      "description": "기사를 읽으면 3회의 추가 변환을 잠금 해제할 수 있습니다. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회 무료 변환 남음 | {count}회 무료 변환 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "JPG to HEIC 변환 API 사용",
+        "content": "JPG 사진을 HEIC 포맷으로 프로그래밍 방식으로 아카이브합니다. /heic 끝점은 source_format=jpg 및 target_format=heic를 사용한 다중파트 JPG 업로드를 수락하고 효율적으로 압축된 HEIC 파일을 반환합니다.",
+        "content2": "사진 아카이브 파이프라인, JPG 라이브러리의 대량 마이그레이션을 Apple 최적화 저장소로, JPG와 함께 iPhone 기본 사진 포맷을 제공하려는 클라우드 서비스에 유용합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "다중파트 JPG 업로드, 최대 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "JPG 입력; HEVC 압축이 있는 HEIC 출력",
+          "response": "Binary image/heic 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "JPG to HEIC 변환이란?",
+        "content": "HEIC (High Efficiency Image Container)는 HEVC 비디오 스타일 압축을 사용하여 대략 40–50% 더 작은 JPG 파일을 동일한 시각 품질로 달성하는 Apple의 현대식 사진 포맷입니다.",
+        "content2": "JPG 사진을 HEIC로 변환하는 것은 대상 청중이 Apple 기기를 사용할 때 유용합니다 — iPhone, iPad, Mac — 그리고 저장 효율성이 중요합니다. iCloud Photo Library, Apple Photos, Messages는 모두 HEIC를 기본 처리하며 더 작은 파일 크기의 이점을 얻습니다.",
+        "content3": "우리의 도구는 libvips 및 libheif를 통해 서버 측에서 변환을 실행하여 iOS 11+ 및 macOS High Sierra+에서 기본 열기가 가능한 표준 HEIC 파일을 생성합니다. 가입, 워터마크, 보관 없음."
+      },
+      "whyConvert": {
+        "title": "JPG를 HEIC로 언제 변환해야 합니까?",
+        "content": "Apple 기기에서 사진 라이브러리를 아카이브할 때 변환하세요 — HEIC의 더 작은 발자국은 눈에 띄는 품질 손실 없이 상당한 저장 공간을 되찾습니다. 10 GB JPG 아카이브는 일반적으로 HEIC에서 5–6 GB가 됩니다.",
+        "content2": "사진을 Windows, Android 또는 HEIC 지원이 없는 웹 사용자와 공유해야 하는 경우 HEIC를 건너뛰세요. Apple 에코시스템 외에서는 JPG가 범용 선택으로 남아 있습니다."
+      },
+      "howTo": {
+        "title": "JPG를 HEIC로 변환하는 방법",
+        "step1": {
+          "title": "1. JPG 업로드",
+          "content": "드래그하거나 클릭하여 선택합니다. 최대 50 MB의 파일이 허용됩니다."
+        },
+        "step2": {
+          "title": "2. HEIC 품질 선택",
+          "content": "기본값은 90입니다 — 40–50% 공간 절약으로 우수한 품질. 80 아래에서 압축 아티팩트가 명시적이 될 수 있습니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버가 JPG를 디코딩하고 HEIF 컨테이너에서 HEVC 압축으로 다시 인코딩합니다. 일반적인 변환은 1초 미만입니다."
+        },
+        "step4": {
+          "title": "4. 다운로드 및 저장",
+          "content": "HEIC 파일이 준비되었습니다. Mac의 Photos로 가져오거나 AirDrop을 통해 iPhone으로 전송하세요."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "40–50% 더 작은 파일",
+            "content": "동등한 품질의 일반적인 사진 JPG → HEIC 절약 — 저장 효율적 아카이브에 이상적."
+          },
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "1부터 100까지 세밀한 제어 — 크기 대 충실도 트레이드오프를 선택합니다."
+          },
+          "apple": {
+            "title": "Apple 기본 포맷",
+            "content": "iPhone, iPad, Mac에서 기본 열기 — 플러그인이나 컨버터가 필요 없습니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "JPG는 메모리에서 처리되고 즉시 폐기됩니다."
+          },
+          "fast": {
+            "title": "1초 이내 변환",
+            "content": "일반적인 웹 크기의 JPG는 600ms 미만에 변환됩니다."
+          },
+          "free": {
+            "title": "일반적 사용 무료",
+            "content": "세션당 3회 무료 변환, 계정 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "iphone": {
+            "title": "iPhone 사진 동기화",
+            "content": "모바일의 저장 공간 사용을 줄이기 위해 AirDrop 또는 iCloud 동기화 전에 변환합니다."
+          },
+          "storage": {
+            "title": "저장소 최적화",
+            "content": "JPG 라이브러리를 HEIC로 변환하여 Mac의 대용량 사진 아카이브를 축소합니다."
+          },
+          "icloud": {
+            "title": "iCloud Photo Library",
+            "content": "더 효율적으로 사진을 저장합니다 — iCloud는 HEIC를 기본 지원하고 기기 간에 보존합니다."
+          },
+          "archival": {
+            "title": "장기 아카이브",
+            "content": "HEIC는 Apple 중심 아카이브의 미래 증명 선택 — 현재 및 향후 iOS 버전에서 지원됩니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyHeic": {
+            "q": "JPG를 왜 HEIC로 변환합니까?",
+            "a": "Apple 기기에서 저장 공간을 절약하기 위해. HEIC는 동일한 시각 품질에서 JPG보다 40–50% 더 작으며, 이는 대용량 사진 라이브러리에 빠르게 누적됩니다."
+          },
+          "compatibility": {
+            "q": "HEIC 파일은 어디에서 열 수 있습니까?",
+            "a": "iPhone (iOS 11+), iPad, Mac (High Sierra+), Windows 10+ (무료 HEVC 코덱 포함), Android 10+ (대부분의 기기). 구형 Windows 머신과 웹은 일반적으로 컨버터가 필요합니다."
+          },
+          "quality": {
+            "q": "품질이 떨어질까요?",
+            "a": "JPG 및 HEIC 모두 손실이므로 일부 재인코딩 손실은 불가피합니다. 품질 90+ 이상에서는 화면에서 본질적으로 보이지 않습니다."
+          },
+          "sizeSavings": {
+            "q": "얼마나 많은 공간을 절약할까요?",
+            "a": "동등한 품질에서 일반적인 40–50% 파일 크기 감소. 5 MB JPG는 대략 2.5–3 MB HEIC가 됩니다."
+          },
+          "privacy": {
+            "q": "내 파일이 저장됩니까?",
+            "a": "아니요 — 변환 중에만 메모리에 보관되고 응답에서 폐기됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 세션당 3회 무료 변환. 더 높은 볼륨을 위한 API."
+          }
+        }
+      }
+    }
+  },
+  "pngToHeic": {
+    "title": "무료 온라인 PNG to HEIC 컨버터",
+    "subtitle": "PNG 이미지를 Apple HEIC 포맷으로 변환하여 iPhone 및 Mac에서의 효율적인 저장 — 사진 콘텐츠의 경우 5–10배 더 작음.",
+    "upload": {
+      "title": "PNG 파일을 여기에 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .png만",
+      "accept": ".png 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "HEIC로 변환",
+    "options": {
+      "quality": "HEIC 품질",
+      "qualityHint": "높음 = 더 큰 파일, 더 나은 충실도. 소스 PNG가 무손실이므로 90–95 권장."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 HEIC",
+      "info": "{width} × {height} px • {size}",
+      "download": "HEIC 다운로드",
+      "reset": "다른 이미지 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해 주세요. 🌸",
+      "description": "기사를 읽으면 3회의 추가 변환을 잠금 해제할 수 있습니다. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회 무료 변환 남음 | {count}회 무료 변환 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "PNG to HEIC 변환 API 사용",
+        "content": "PNG 아카이브를 HEIC로 프로그래밍 방식으로 압축합니다. /heic 끝점은 source_format=png 및 target_format=heic를 사용한 다중파트 PNG 업로드를 수락하고 원본 크기의 일부에 HEVC 압축 HEIC 파일을 반환합니다.",
+        "content2": "사진 아카이브 파이프라인, PNG 라이브러리의 대량 마이그레이션 (무손실 품질이 필요하지 않은 경우), Apple 중심 워크플로우를 위한 저장소 효율적 사진 백업에 유용합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "다중파트 PNG 업로드, 최대 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "PNG 입력; HEVC 압축이 있는 HEIC 출력",
+          "response": "Binary image/heic 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "PNG to HEIC 변환이란?",
+        "content": "PNG는 무손실 포맷입니다 — 모든 픽셀이 정확히 보존되어 편집에는 훌륭하지만 저장소는 비트입니다. HEIC는 손실 HEVC 압축을 사용하여 사진 콘텐츠를 최소한의 눈에 띄는 품질 손실로 5–10배 축소합니다.",
+        "content2": "PNG를 HEIC로 변환하는 것은 거래입니다: 픽셀 완벽한 보존을 극적으로 더 작은 파일로 교환합니다. 사진의 경우 이것은 거의 항상 승리입니다. 로고, 라인 아트, 또는 날카로운 모서리와 단색의 UI 그래픽의 경우 PNG가 더 나은 선택으로 남아 있습니다.",
+        "content3": "우리의 도구는 libheif를 조정된 HEVC 인코더와 함께 사용하여 iOS 11+ 및 macOS High Sierra+와 호환되는 HEIC 파일을 생성합니다. PNG를 업로드하고 품질을 선택한 후 최적화된 HEIC를 다운로드합니다 — 모두 메모리에서, 보관 없음."
+      },
+      "whyConvert": {
+        "title": "PNG를 HEIC로 언제 변환해야 합니까?",
+        "content": "Apple 기기로 가는 사진 PNG 아카이브를 위해 변환하세요. iCloud로 동기화되거나 Mac에 있는 PNG 사진 폴더가 있으면 HEIC는 대량의 공간을 되찾습니다.",
+        "content2": "PNG 스크린샷, UI 그래픽, 아이콘 또는 날카로운 모서리가 있는 것은 변환하지 마세요 — HEIC의 압축이 이를 흐리게 합니다. 무손실 Apple 친화적 저장소의 경우 PNG를 유지하거나 HEIC를 사진 콘텐츠에만 사용하세요."
+      },
+      "howTo": {
+        "title": "PNG를 HEIC로 변환하는 방법",
+        "step1": {
+          "title": "1. PNG 업로드",
+          "content": "드래그하거나 클릭하여 선택합니다. 최대 50 MB의 파일이 허용됩니다."
+        },
+        "step2": {
+          "title": "2. HEIC 품질 선택",
+          "content": "기본값은 90입니다 — 대부분의 사진 콘텐츠에 적합합니다. PNG가 무손실이므로 더 높은 품질 (90–95)을 사용하여 전환 시 아티팩트를 최소화합니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버가 PNG를 디코딩하고 HEVC 압축으로 HEIC로 다시 인코딩합니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "HEIC는 Apple Photos로 가져오거나 iPhone으로 전송할 준비가 되었습니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "사진의 경우 5–10배 더 작음",
+            "content": "일반적인 사진 PNG → HEIC 절약 — 아카이브에 완벽함."
+          },
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "1부터 100까지 세밀한 제어."
+          },
+          "apple": {
+            "title": "Apple 기본",
+            "content": "iPhone, iPad, Mac에서 기본 열기."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "PNG는 메모리에서 처리되고 즉시 폐기됩니다."
+          },
+          "fast": {
+            "title": "1초 이내 변환",
+            "content": "일반적인 사진 PNG는 1초 미만에 변환됩니다."
+          },
+          "free": {
+            "title": "일반적 사용 무료",
+            "content": "세션당 3회 무료 변환, 계정 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "iphone": {
+            "title": "iPhone 저장소 절약",
+            "content": "AirDrop 또는 iCloud를 통해 iPhone으로 전송하기 전에 PNG 사진을 변환합니다."
+          },
+          "storage": {
+            "title": "Mac 사진 아카이브",
+            "content": "PNG 사진의 대형 폴더를 HEIC로 변환하여 Mac에서 축소 — 사진의 경우 5–10배 절약."
+          },
+          "icloud": {
+            "title": "iCloud 효율성",
+            "content": "저장소 계획을 업그레이드하지 않고도 iCloud에 더 많은 사진을 저장합니다."
+          },
+          "screenshots": {
+            "title": "사진 대 스크린샷 분류",
+            "content": "스크린샷 및 UI (날카로운 세부 정보 보존)의 경우 PNG를 사용하고 사진의 경우 HEIC를 사용합니다. 이 도구는 사진 쪽의 변환을 처리합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyHeic": {
+            "q": "PNG를 왜 HEIC로 변환합니까?",
+            "a": "사진 PNG의 저장 공간 사용을 크게 줄이기 위해 — HEIC는 동등한 인지 품질에서 5–10배 더 작습니다. Apple 중심 워크플로우에만 가치가 있습니다."
+          },
+          "transparency": {
+            "q": "투명도가 보존됩니까?",
+            "a": "변환 중에 검은색 배경으로 병합됩니다. HEIC는 기술적으로 알파를 지원하지만 iOS 앱 간 호환성이 불일치하므로 먼저 합성하는 것이 더 안전합니다."
+          },
+          "quality": {
+            "q": "품질이 손실됩니까?",
+            "a": "네, HEIC가 손실이기 때문입니다. 품질 90+ 이상에서 손실은 사진 콘텐츠에 거의 보이지 않습니다. 라인 아트 또는 UI 그래픽의 경우 이 변환을 건너뛰세요 — PNG를 사용합니다."
+          },
+          "compatibility": {
+            "q": "HEIC는 어디에서 열 수 있습니까?",
+            "a": "iPhone (iOS 11+), iPad, Mac (High Sierra+), Windows 10+ (HEVC 코덱 포함). Android < 10 또는 대부분의 웹 브라우저에서 기본 지원되지 않습니다."
+          },
+          "privacy": {
+            "q": "내 PNG가 저장됩니까?",
+            "a": "아니요 — 변환 중에만 메모리에 보관됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 세션당 3회 무료 변환. 더 높은 볼륨을 위한 API."
+          }
+        }
+      }
+    }
   }
 }
