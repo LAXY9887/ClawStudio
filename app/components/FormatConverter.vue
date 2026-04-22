@@ -46,7 +46,7 @@ const EXT_TO_MIME: Record<string, string> = {
   '.webp': 'image/webp',
   '.avif': 'image/avif',
   '.tiff': 'image/tiff',
-  '.svg': 'image/svg+xml',
+  '.svg': 'image/svg+xml'
 }
 
 // Includes MIME types so iOS Safari doesn't auto-convert HEIC to JPEG
