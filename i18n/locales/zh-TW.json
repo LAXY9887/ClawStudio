@@ -164,15 +164,111 @@
         "若來源 Spritesheet 的格子之間有像素間距（例如 TexturePacker 或 Aseprite 匯出時加入的間隔），請設定 **格子間距** 以對齊切割。",
         "提取出幀後，可用 **PNG Trim** 裁掉透明邊緣，再用 **PNG 轉 Spritesheet** 重新打包成更緊湊的 Atlas。"
       ]
+    },
+    "heicToJpg": {
+      "tipsTitle": "你知道嗎？HEIC 轉 JPG 小技巧",
+      "tips": [
+        "**HEIC** 是 Apple iPhone 的預設照片格式 —— 壓縮率極佳，但在蘋果生態系以外的支援度不足。JPG 則是通用格式，從 Windows、網路郵件到相片沖印店全部吃得下。",
+        "建議使用 **品質 85–92** 輸出照片：肉眼幾乎看不出與原始差異，但檔案比品質 100 小 30–50%。",
+        "本工具會讀取 EXIF 旋轉資訊並將像素實際旋轉至正確方向，照片不會再出現側躺顯示的問題。",
+        "要批次處理嗎？同一個轉換引擎也有 RapidAPI 版本 —— 送出 multipart POST 即可串流取回 JPG，無需使用者互動。"
+      ]
+    },
+    "heicToPng": {
+      "tipsTitle": "你知道嗎？HEIC 轉 PNG 小技巧",
+      "tips": [
+        "需要 **無損** 品質時使用 **HEIC → PNG**：無壓縮失真、像素完整保留，適合後製流程中會多次重新編碼的情況。",
+        "若原始 HEIC 包含透明資訊（例如 iPhone 人像模式的深度遮罩），PNG 會完整保留 alpha 通道。",
+        "PNG 檔案通常比 HEIC 大 3–5 倍 —— 只有在後續編輯真的需要時才轉換；要做網頁使用請選 WebP 或 JPG。",
+        "轉成 PNG 後，可使用我們的 **PNG Trim** 工具裁掉透明邊緣，或用 **PNG 轉 WebP** 再壓小檔案方便上網使用。"
+      ]
+    },
+    "heicToWebp": {
+      "tipsTitle": "你知道嗎？HEIC 轉 WebP 小技巧",
+      "tips": [
+        "WebP 在相同視覺品質下，壓縮效率比 JPG 好 25–35%，而且支援透明 —— 現代網頁照片的首選格式。",
+        "**無損模式** 請謹慎使用：WebP 無損通常比有損大 2–5 倍，一般照片不需要；保留給截圖或 UI 圖示使用。",
+        "所有現代瀏覽器（Chrome、Edge、Firefox、Safari 14+）都原生支援 WebP。若要支援 iOS < 14，請改轉 JPG。",
+        "WebP 是 Google Core Web Vitals 推薦格式 —— 使用它能直接提升 Largest Contentful Paint（LCP）分數。"
+      ]
+    },
+    "pngToJpg": {
+      "tipsTitle": "你知道嗎？PNG 轉 JPG 小技巧",
+      "tips": [
+        "PNG 轉 JPG 是 **不可逆** 的 —— JPG 會丟棄像素資訊並產生壓縮失真。若日後可能再編輯，請保留 PNG 備份。",
+        "透明區域會被平展為 **白色背景**，因為 JPG 沒有 alpha 通道。若需要保留透明，請改用 WebP。",
+        "**品質 90** 的 JPG 通常比相同照片的 PNG 小 70–85%，一般觀看距離下看不出差異。",
+        "含大量純色、文字的截圖，PNG 通常比 JPG 更省空間 —— 兩種格式都試試再決定。"
+      ]
+    },
+    "jpgToPng": {
+      "tipsTitle": "你知道嗎？JPG 轉 PNG 小技巧",
+      "tips": [
+        "將 JPG 轉成 PNG **不會還原** 失去的品質 —— JPG 的壓縮失真（區塊邊緣、文字周圍的振鈴）依舊存在於 PNG 中。",
+        "適用場景：在偏好 PNG 的應用程式中編輯照片、或要將原本不透明的 JPG 加入透明區域時。",
+        "PNG 永遠是 **無損** 的 —— 沒有品質滑桿。檔案大小取決於圖片複雜度，照片通常會膨脹 3–10 倍。",
+        "搭配 **PNG 轉 WebP** 使用：先用 PNG 保留編輯彈性，交付時再壓成 WebP 減小檔案。"
+      ]
+    },
+    "pngToWebp": {
+      "tipsTitle": "你知道嗎？PNG 轉 WebP 小技巧",
+      "tips": [
+        "PNG → WebP 通常可將檔案縮小 **50–80%** 且肉眼看不出差異。若需要像素完整保留，開啟 **無損模式** 仍可縮小 20–40%。",
+        "WebP 完整保留 **透明度**（alpha 通道）—— 網頁使用時可作為 PNG 的直接替代品，同時擁有更好的壓縮。",
+        "所有常青瀏覽器（Chrome、Edge、Firefox、Safari 14+）都支援 WebP；若需向後相容，使用 `picture` 元素 搭配 PNG fallback。",
+        "Google Core Web Vitals 獎勵較小的圖片。將主視覺 PNG 改為 WebP 通常能立即改善 LCP，不需要改任何程式碼。"
+      ]
+    },
+    "webpToPng": {
+      "tipsTitle": "你知道嗎？WebP 轉 PNG 小技巧",
+      "tips": [
+        "**WebP → PNG** 適用於要在老舊工具（舊版 Photoshop、MS Office、某些印刷軟體）開啟 WebP 但它們不支援的情境。",
+        "輸出為 **無損** PNG —— 不會再加入新的壓縮失真。若原始是有損 WebP，PNG 會完整保留當下的視覺狀態。",
+        "PNG 通常比原始 WebP 大 **2–4 倍** —— 這是為了通用相容性付出的代價。",
+        "完整保留 alpha 通道 —— WebP 若有透明，PNG 也會有。適合分離 logo 與 UI 元素。"
+      ]
+    },
+    "svgToPng": {
+      "tipsTitle": "你知道嗎？SVG 轉 PNG 小技巧",
+      "tips": [
+        "**倍率模式** 適合做 retina 資源（例如 2× 或 3×），當你的 SVG 比例已正確、只需要更高 DPI 的點陣版本。",
+        "**僅指定寬度** 或 **僅指定高度** 會保持等比例縮放 —— 適合以特定尺寸產出圖示。",
+        "**精確指定寬高** 適合需要特定輸出規格的情境（如 **1200×630 Open Graph** 或 **512×512 App 圖示**），即使 SVG 會被拉伸。",
+        "我們的伺服器已內建 **Noto CJK 與 emoji 字型** —— SVG 文字包含中日韓字元或 emoji 時都能正確渲染。",
+        "要得到最銳利的圖示，請確保 SVG 的 `viewBox` 從 0 0 開始、沒有外圍留白，然後以目標尺寸光柵化。"
+      ]
+    },
+    "faviconGenerator": {
+      "tipsTitle": "你知道嗎？Favicon 產生器小技巧",
+      "tips": [
+        "建議上傳 **512×512 以上的正方形 PNG**：所有較小尺寸都由此清晰縮小，但從小尺寸放大會模糊。",
+        "本工具一次產出 **7 個檔案**：`favicon.ico`、16×16 與 32×32 PNG、`apple-touch-icon.png`（180×180）、Android 192×192 與 512×512，以及 `site.webmanifest` 範本。",
+        "將我們提供的 **HTML 片段** 直接貼到 `head` 區段 中 —— 一鍵為所有平台設定好 7 個檔案的連結。",
+        "解壓後請編輯 `site.webmanifest`，將 `name` 與 `short_name` 改為你的 App 名稱（給 Android 加到主畫面/PWA 使用）。",
+        "來源是 SVG？先用我們的 **SVG 轉 PNG** 工具以 512×512 光柵化，再餵給此工具即可。"
+      ]
     }
   },
   "relatedTools": {
     "label": "相關工具",
+    "groups": {
+      "sprite": "Sprite 與幀工具",
+      "imageFormat": "圖片格式轉換",
+      "vector": "向量與圖示工具"
+    },
     "gifToSprite": "GIF → Spritesheet",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
     "pngTrim": "PNG 裁切",
-    "splitSpritesheet": "Spritesheet 分割"
+    "splitSpritesheet": "Spritesheet 分割",
+    "heicToJpg": "HEIC → JPG",
+    "heicToPng": "HEIC → PNG",
+    "pngToJpg": "PNG → JPG",
+    "jpgToPng": "JPG → PNG",
+    "pngToWebp": "PNG → WebP",
+    "webpToPng": "WebP → PNG",
+    "svgToPng": "SVG → PNG",
+    "faviconGenerator": "Favicon 產生器"
   },
   "home": {
     "title": "免費線上開發工具",
@@ -196,6 +292,38 @@
       "splitSpritesheet": {
         "title": "Spritesheet 分割",
         "description": "將 Spritesheet PNG 切割回個別幀，或產生 TexturePacker 相容的 Atlas JSON。"
+      },
+      "heicToJpg": {
+        "title": "HEIC 轉 JPG",
+        "description": "將 iPhone 的 HEIC 照片轉換為通用的 JPG 格式，品質可調。"
+      },
+      "heicToPng": {
+        "title": "HEIC 轉 PNG",
+        "description": "將 HEIC 照片轉換為無損 PNG，完整保留透明度。"
+      },
+      "pngToJpg": {
+        "title": "PNG 轉 JPG",
+        "description": "將 PNG 轉為 JPG 以縮小檔案 —— 透明區域會平展為白色。"
+      },
+      "jpgToPng": {
+        "title": "JPG 轉 PNG",
+        "description": "將 JPG 轉為無損 PNG，方便後續編輯、支援 alpha 通道。"
+      },
+      "pngToWebp": {
+        "title": "PNG 轉 WebP",
+        "description": "將 PNG 轉換為現代 WebP 格式以大幅縮小檔案 —— 可選無損模式。"
+      },
+      "webpToPng": {
+        "title": "WebP 轉 PNG",
+        "description": "將 WebP 解碼回通用的 PNG 格式，完整保留透明度。"
+      },
+      "svgToPng": {
+        "title": "SVG 轉 PNG",
+        "description": "將 SVG 向量圖光柵化為任意尺寸的 PNG —— 支援倍率、精確尺寸或保持比例。"
+      },
+      "faviconGenerator": {
+        "title": "Favicon 產生器",
+        "description": "從單一圖片產生完整 7 檔 Favicon 組合，包含 ICO、Apple Touch、Android 圖示與 web manifest。"
       }
     }
   },
@@ -1259,6 +1387,665 @@
             "q": "我的 Spritesheet 會被儲存到伺服器嗎？",
             "a": "不會。上傳的 PNG 只在伺服器記憶體中保留處理期間，結果回傳後立即丟棄。不會寫入磁碟、不記錄任何像素內容、不需要帳號。當 Spritesheet 包含未公開圖稿、保密協議下的客戶素材或專有遊戲內容時，這一點特別重要。"
           }
+        }
+      }
+    }
+  },
+  "heicToJpg": {
+    "title": "免費線上 HEIC 轉 JPG 工具",
+    "subtitle": "將 iPhone HEIC 照片轉換為通用的 JPG 格式 —— 免費、線上、無需註冊、無浮水印。",
+    "upload": {
+      "title": "拖放你的 HEIC 檔案至此，或點擊選取",
+      "limit": "最大檔案大小：50 MB · 支援 .heic / .heif",
+      "accept": "僅接受 .heic 或 .heif 檔案",
+      "tooLarge": "檔案超過 50 MB 上限",
+      "changeFile": "更換檔案"
+    },
+    "convert": "轉換為 JPG",
+    "options": {
+      "quality": "JPG 品質",
+      "qualityHint": "數值越高檔案越大、畫質越好。85–92 是肉眼幾乎無差異的甜蜜點。"
+    },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": {
+      "title": "已轉換的 JPG",
+      "info": "{width} × {height} 像素 • {size}",
+      "download": "下載 JPG",
+      "reset": "再轉一張"
+    },
+    "adModal": {
+      "title": "🥺 請支持我們 🌸",
+      "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！",
+      "remaining": "剩餘 {count} 次免費轉換",
+      "watch": "確認",
+      "close": "關閉"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 HEIC 轉 JPG API",
+        "content": "需要大規模轉換 HEIC 檔案？支撐這個網頁工具的引擎也以 RESTful API 形式在 RapidAPI 上提供。只要送出包含 .heic 檔、source_format=heic、target_format=jpg 的 multipart POST，就能取回 JPG 串流，直接寫入磁碟或上傳到 S3。",
+        "content2": "適合：接收 iPhone 照片的行動 App 後端、批次遷移腳本、需要規範化使用者上傳的 SaaS 平台、以及匯入時自動轉換 HEIC 的 CMS 外掛。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /heic：HEIC ↔ JPG / PNG / WebP",
+          "input": "Multipart 檔案上傳，上限 50 MB",
+          "params": "source_format、target_format、quality（0–100）",
+          "limit": "單次請求 50 MB、約 89 百萬像素",
+          "formats": "HEIC / HEIF 輸入；JPG / PNG / WebP 輸出",
+          "response": "二進位影像串流，含標準 image/* Content-Type"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 HEIC？為什麼要轉 JPG？",
+        "content": "HEIC（High Efficiency Image Container）是 iPhone 與 iPad 自 iOS 11 起的預設照片格式，底層使用 HEVC 壓縮，在相同視覺品質下檔案比 JPG 小約 50%。代價是：在蘋果生態系之外支援度不足 —— 許多 Windows 應用程式、舊版 Android 裝置、內容管理系統、網頁工具都無法開啟 HEIC。",
+        "content2": "JPG（亦稱 JPEG）則是通用的照片格式。所有瀏覽器、作業系統、社群平台、電子郵件客戶端、相片沖印服務都支援 JPG。將 iPhone 照片轉為 JPG 可立即解決相容性問題 —— 圖片到處都能開，不需要外掛、解碼器或特殊軟體。",
+        "content3": "本工具在伺服器端以 libvips + libheif 管線執行 HEIC 解碼與 JPG 編碼。上傳一次即可取得乾淨的 JPG，無需註冊、無浮水印、無需安裝。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 HEIC 轉成 JPG？",
+        "content": "當你需要把照片分享或發布到非 Apple 裝置時，就該轉 JPG。典型情境：把 iPhone 照片寄給 Windows PC、上傳到 WordPress 或 Shopify、附在公司信件中、在相片沖印店或照片亭列印、或是嵌入可能在非 Mac 機器上打開的 Word／PowerPoint 文件。",
+        "content2": "當你完全在 Apple 生態系中作業時則保留 HEIC —— iPhone、iPad、Mac、iCloud 都原生支援 HEIC，並享有較小的檔案大小。只有在確知目的地無法讀取 HEIC 時才需要轉換。"
+      },
+      "howTo": {
+        "title": "如何將 HEIC 轉為 JPG",
+        "step1": { "title": "1. 上傳你的 HEIC 檔案", "content": "將 .heic 或 .heif 檔案拖曳至上傳區，或點擊開啟檔案選擇器。iPhone 拍攝的照片可直接上傳，無需改名或改副檔名。檔案上限 50 MB。" },
+        "step2": { "title": "2. 選擇 JPG 品質", "content": "移動品質滑桿以在檔案大小與畫質間取得平衡。85–92 與原始幾乎無可辨識差異；95 以上只有在要再編輯時才有意義。預設為 90。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器會解碼你的 HEIC、套用正確的 EXIF 旋轉、並重新編碼為 JPG。一般 2–5 MB 的 iPhone 照片通常不到一秒即可完成。" },
+        "step4": { "title": "4. 下載使用", "content": "轉換後的 JPG 會顯示預覽與尺寸，點擊下載即可儲存。檔名與原始相同，只是副檔名變為 `.jpg`。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "quality": { "title": "可調品質", "content": "滑桿控制 JPG 品質 1–100，依用途選擇檔案大小與畫質的平衡點。" },
+          "privacy": { "title": "僅在伺服器記憶體中處理", "content": "你的 HEIC 只在轉換期間暫存於記憶體，完成後立即丟棄。不保留、無帳號、不記錄圖片內容。" },
+          "fast": { "title": "秒速轉換", "content": "一般 iPhone 照片（3024×4032、1–3 MB HEIC）通常 500 毫秒內完成。Cloud Run 自動擴容以因應流量高峰。" },
+          "compatible": { "title": "通用輸出", "content": "標準 JPG 可開啟於 Windows、Android、Linux、瀏覽器、印刷、Office、各種社群平台 —— 無一例外。" },
+          "free": { "title": "免費與升級方案", "content": "無需註冊即可每個工作階段免費轉換三次；同一引擎提供 API 供自動化與更大量使用。" },
+          "noSignup": { "title": "免安裝、免註冊", "content": "完全在你的瀏覽器與我們的轉換服務中執行。無需桌面應用、瀏覽器擴充或任何帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "windows": { "title": "傳照片給 Windows 用戶", "content": "先轉再寄 —— 沒有 HEIC 解碼器的 Windows 10/11 用戶也能立即開啟 JPG。" },
+          "social": { "title": "上傳到社群媒體", "content": "有些平台對 HEIC 支援不完整，或會悄悄拒絕上傳。JPG 可乾淨地上傳到每個服務。" },
+          "email": { "title": "附加在公司信件", "content": "企業信箱與網路郵件通常內嵌顯示 JPG，但會把 HEIC 留成壞掉的附件。JPG 確保你的照片能正常顯示。" },
+          "editing": { "title": "在老舊工具中編輯", "content": "舊版 Photoshop、MS Office、免費編輯器常缺 HEIC 支援。JPG 到處都能開，無須安裝。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whatIsHeic": { "q": "HEIC 檔案到底是什麼？", "a": "HEIC 是 Apple 為以 HEVC（H.265）編碼、以 HEIF 容器封裝的圖片所取的名稱。iPhone 自 iOS 11 起預設使用它，因為在相同品質下檔案比 JPG 小一半。" },
+          "quality": { "q": "轉換後會降低品質嗎？", "a": "JPG 是有損格式，重新編碼必然有些許失真。品質 90 以上在螢幕上幾乎看不出差異；80 左右可能會覺得細節略微變軟。" },
+          "metadata": { "q": "EXIF 資訊會保留嗎？", "a": "我們會依 EXIF 將像素實際旋轉至正確方向，照片始終正向顯示。其他 EXIF 標籤（日期、相機型號、GPS）在本工具中不會寫入輸出 JPG —— 若需保留 EXIF 請使用 API 版本。" },
+          "batchSize": { "q": "可以一次轉多張 HEIC 嗎？", "a": "本網頁工具為簡潔與安全考量，一次處理一張。若需批次處理，請使用我們的 API —— 可並行腳本化處理上千張。" },
+          "privacy": { "q": "我的照片會被上傳到雲端嗎？", "a": "HEIC 會送到我們的 Cloud Run 轉換服務中解碼、編碼、回傳 —— 全部在記憶體中。不會寫入磁碟、不記錄、回應後不保留。" },
+          "free": { "q": "有費用嗎？", "a": "網頁工具免費供一般使用（每個工作階段三次）。需要大量使用或 API 整合，請至 RapidAPI 查看我們的方案。" }
+        }
+      }
+    }
+  },
+  "heicToPng": {
+    "title": "免費線上 HEIC 轉 PNG 工具",
+    "subtitle": "將 iPhone HEIC 照片轉換為無損 PNG —— 適合編輯、歸檔與需要透明度的工作流程。",
+    "upload": { "title": "拖放你的 HEIC 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 支援 .heic / .heif", "accept": "僅接受 .heic 或 .heif 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 PNG",
+    "options": {},
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 PNG", "info": "{width} × {height} 像素 • {size}", "download": "下載 PNG", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 HEIC 轉 PNG API",
+        "content": "在素材管線中自動化 HEIC 轉 PNG。RapidAPI 上的 /heic 端點接受含 source_format=heic、target_format=png 的 multipart POST，回傳無損 PNG，可立即用於編輯流程、CDN 吸入或長期歸檔。",
+        "content2": "適合：需要 PNG 輸入的照片編輯 App、規範化 iPhone 上傳的後端服務、以及在送入下游影像編輯器前預處理照片的自動化流程。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /heic：HEIC ↔ JPG / PNG / WebP",
+          "input": "Multipart 檔案上傳，上限 50 MB",
+          "params": "source_format、target_format —— PNG 不需 quality",
+          "limit": "單次請求 50 MB、約 89 百萬像素",
+          "formats": "HEIC / HEIF 輸入；無損 PNG 輸出",
+          "response": "以原始解析度回傳 image/png 二進位串流"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 HEIC？為什麼要轉 PNG？",
+        "content": "HEIC 是 iPhone 自 iOS 11 起的預設照片格式 —— 效率高但在 Apple 生態系之外支援度不足。PNG（Portable Network Graphics）則是通用的無損圖片格式，所有編輯器、瀏覽器、作業系統都原生支援，無需任何外掛。",
+        "content2": "將 HEIC 轉為 PNG 可完整保留每個像素 —— 沒有壓縮失真、沒有品質滑桿、未來再編輯也不會進一步劣化。這在打算潤色、調色、合成、放大影像時特別重要。",
+        "content3": "我們的工具以 libheif 解碼 HEIC，再用 libvips 重新編碼為 PNG，完整保留原始解析度與可用時的 alpha 通道。轉換在伺服器端數秒內完成，不留任何檔案。"
+      },
+      "whyConvert": {
+        "title": "何時該選擇 PNG 而非 JPG？",
+        "content": "當需要 **無損** 品質時請選 PNG —— 典型用途：影像編輯、歸檔、截圖、UI 圖片，或任何會再重新編碼的工作流程。反覆儲存 JPG 會每次累積壓縮失真；PNG 則不會。",
+        "content2": "當來源有透明資訊（例如 iPhone 人像模式的深度遮罩）時也該選 PNG。JPG 沒有 alpha 通道，會把透明區域平展為白色背景。"
+      },
+      "howTo": {
+        "title": "如何將 HEIC 轉為 PNG",
+        "step1": { "title": "1. 上傳 HEIC 檔案", "content": "拖曳或點擊選取，最大 50 MB。裝置本地不做轉換，原始 bytes 會直接送到我們的伺服器。" },
+        "step2": { "title": "2. 點擊轉換", "content": "伺服器解碼你的 HEIC、保留 alpha 通道、並以原始解析度輸出 PNG。PNG 永遠是無損的，沒有品質選項。" },
+        "step3": { "title": "3. 檢視預覽", "content": "轉換後 PNG 會顯示尺寸與檔案大小。PNG 通常比原始 HEIC 大 3–5 倍，這是無壓縮像素資料的代價。" },
+        "step4": { "title": "4. 下載使用", "content": "點擊下載按鈕即可儲存。PNG 可立即用於 Photoshop、GIMP、Affinity、Figma 或任何支援標準 PNG 的工具。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "lossless": { "title": "完全無損", "content": "不減損畫質 —— HEIC 的每個像素都完整保留在輸出 PNG 中。" },
+          "privacy": { "title": "伺服器不保留檔案", "content": "照片僅在記憶體中處理，完成後立即丟棄。不保留、不記錄、無帳號。" },
+          "fast": { "title": "快速轉換", "content": "典型 3024×4032 iPhone 照片在我們的 Cloud Run 服務上約 800 毫秒完成。" },
+          "compatible": { "title": "通用 PNG 格式", "content": "在所有瀏覽器、作業系統、影像編輯器中都能開啟 —— 無需任何解碼器安裝。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段免費三次轉換，無需帳號。更大量使用請用 API。" },
+          "noSignup": { "title": "免安裝、免註冊", "content": "100% 瀏覽器完成 —— 無 Mac 專屬工具、無擴充功能、無帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "editing": { "title": "照片編輯流程", "content": "將 HEIC 轉為 PNG 後匯入 Photoshop、Affinity Photo、GIMP 進行修圖，不必擔心 HEIC 外掛相容性。" },
+          "archival": { "title": "長期歸檔", "content": "PNG 的無損壓縮適合保存日後可能再編輯的照片。" },
+          "design": { "title": "設計工作流", "content": "把 PNG 參考圖丟進 Figma、Sketch、Adobe XD —— 它們都原生支援 PNG，但不見得支援 HEIC。" },
+          "documentation": { "title": "截圖與 UI 擷取", "content": "當 HEIC 其實是截圖（是的，iPhone 截圖也可能是 HEIC），PNG 輸出能完整保留銳利的文字與 UI 邊緣。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whyPng": { "q": "為什麼選 PNG 而不選 JPG？", "a": "PNG 無損 —— 每個像素完整保留。JPG 有損，每次儲存都會加入新的壓縮失真。要再編輯請用 PNG；要最終交付可用 JPG。" },
+          "fileSize": { "q": "為什麼 PNG 比 HEIC 大這麼多？", "a": "HEIC 使用 HEVC 視訊式壓縮達到 10–20 倍壓縮率；PNG 使用較溫和的無損 DEFLATE 壓縮。一般照片 PNG 通常比 HEIC 大 3–5 倍。" },
+          "quality": { "q": "能比 JPG 畫質更好嗎？", "a": "PNG 完整保留每個像素 —— 無任何失真。對於歸檔、編輯來源或含透明度的影像，PNG 品質嚴格優於任何 JPG。" },
+          "privacy": { "q": "我的照片會被上傳到外部伺服器嗎？", "a": "HEIC 會送到我們的 Cloud Run 轉換服務，在記憶體中處理後回傳。不保留、不記錄、無需帳號。" },
+          "maxSize": { "q": "大小上限？", "a": "上傳 50 MB、解析度約 89 百萬像素。一般 iPhone 照片（3024×4032、約 3 MB HEIC）都遠遠在範圍內。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費，無需註冊。大量使用或自動化請透過 RapidAPI 服務。" }
+        }
+      }
+    }
+  },
+  "pngToJpg": {
+    "title": "免費線上 PNG 轉 JPG 工具",
+    "subtitle": "將 PNG 轉為 JPG 可縮小 70–85% 檔案大小，可調品質，透明區域平展為白色背景。",
+    "upload": { "title": "拖放你的 PNG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 僅限 .png", "accept": "僅接受 .png 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 JPG",
+    "options": { "quality": "JPG 品質", "qualityHint": "數值越高檔案越大、畫質越好。85–92 通常與原始無可辨識差異。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 JPG", "info": "{width} × {height} 像素 • {size}", "download": "下載 JPG", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 PNG 轉 JPG API",
+        "content": "以單一 HTTP 呼叫在伺服器端縮小 PNG 上傳。/png-to-jpg 端點會把透明平展為白色、以你指定的品質重新編碼，並串流回 JPG —— 無需前端解碼、不保留檔案。",
+        "content2": "典型用途：電商商品圖匯入、電子郵件附件規範化、社群媒體上傳前處理、以及從 PNG 封存批次遷移到節省空間的 JPG 交付。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /png-to-jpg：PNG → JPG",
+          "input": "Multipart PNG 上傳，上限 50 MB",
+          "params": "quality（0–100），預設 90",
+          "limit": "單次請求 50 MB、約 89 百萬像素",
+          "formats": "PNG 輸入；JPEG 輸出",
+          "response": "以白色平展透明的 image/jpeg 二進位串流"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 PNG 轉 JPG？",
+        "content": "PNG（Portable Network Graphics）以無損方式儲存像素 —— 每個像素值都完整保留。JPG 則採用依人類視覺調校的有損壓縮，丟棄人眼較難察覺的資訊，以換取大幅縮小的檔案。",
+        "content2": "在品質 90 下，照片類 PNG 轉為 JPG 通常可縮小 70–85%，一般觀看距離下視覺差異幾乎看不出。但對於包含大量平坦色塊與銳利邊緣的截圖、插畫、圖表，JPG 會產生明顯失真 —— 這類內容通常保留 PNG 更合適。",
+        "content3": "本工具在伺服器端執行：你上傳 PNG，伺服器將任何 alpha 通道平展到白色背景（因為 JPG 沒有透明度）、以你選擇的品質重新編碼、並回傳 JPG。無浮水印、無註冊、不保留檔案。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 PNG 轉 JPG？",
+        "content": "當 **檔案大小比像素完美更重要** 時轉換 —— 網頁縮圖、電子郵件附件、社群媒體上傳、或批次儲存已另外歸檔的照片。",
+        "content2": "有大量文字、圖表、線稿或純色邊界的截圖不要轉 —— JPG 的 8×8 DCT 區塊壓縮會讓這些過渡出現可見塗抹。這類圖片請保留 PNG，或轉為無損 WebP 兼得小檔案與高品質。"
+      },
+      "howTo": {
+        "title": "如何將 PNG 轉為 JPG",
+        "step1": { "title": "1. 上傳你的 PNG", "content": "拖曳至上傳區或點擊選取，最大 50 MB。" },
+        "step2": { "title": "2. 選擇品質等級", "content": "預設 90。一般照片 85–92 是通用甜蜜點；若可接受稍微失真以換取更小檔案，可試 75–80。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器將透明平展為白色、以你選的品質套用 JPEG 壓縮、並回傳 JPG。" },
+        "step4": { "title": "4. 下載", "content": "預覽尺寸與檔案大小後即可下載。檔名保留原始名稱，只是副檔名改為 `.jpg`。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制 —— 精確拿捏檔案大小與畫質的平衡。" },
+          "sizeReduction": { "title": "縮小 70–85%", "content": "典型照片 PNG：4 MB 的 PNG 在品質 90 下轉為約 500 KB 的 JPG，視覺上無差異。" },
+          "privacy": { "title": "僅記憶體處理", "content": "PNG 在伺服器端處理後立即丟棄。不保留、不記錄、無帳號。" },
+          "fast": { "title": "秒速轉換", "content": "一般網頁用 PNG 低於 300 毫秒；高解析度照片低於 1 秒。" },
+          "free": { "title": "免費", "content": "每個瀏覽器工作階段三次免費轉換，無需信用卡或註冊。" },
+          "noSignup": { "title": "免註冊", "content": "立即開始轉換，無帳號、無 Email 驗證。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "web": { "title": "網頁效能優化", "content": "把大型主視覺 PNG 轉為 JPG 可加速網頁載入 —— 對 Core Web Vitals 與行動用戶特別關鍵。" },
+          "email": { "title": "電子郵件附件", "content": "許多郵件伺服器限制附件在 10–25 MB，轉為 JPG 可讓你在限制內塞下更多照片。" },
+          "social": { "title": "社群媒體上傳", "content": "平台上傳時反正會把 PNG 再轉成 JPG —— 不如先自己轉以控制品質。" },
+          "storage": { "title": "大量照片儲存", "content": "把相簿從 PNG 轉為品質 88 的 JPG 通常可節省 ~80% 儲存空間，視覺無差異。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "transparency": { "q": "透明像素怎麼處理？", "a": "會被平展到 **白色** 背景，因為 JPG 沒有 alpha 通道。需要保留透明請改用 WebP（有損或無損）。" },
+          "quality": { "q": "品質該選多少？", "a": "照片預設 90 最安全 —— 與來源幾乎無差異。80 能再省點空間但細節略軟。75 以下高細節圖會看出失真。" },
+          "sizeSavings": { "q": "JPG 會小多少？", "a": "典型 24-bit RGB 照片 PNG 在品質 90 下可縮小 70–85%。截圖或簡單圖形可能省較少、失真較明顯。" },
+          "reversible": { "q": "能無損轉回 PNG 嗎？", "a": "不能 —— JPG 壓縮會永久丟棄資訊。把 JPG 再轉回 PNG 只會得到帶有 JPG 失真的 PNG。需要重新編輯請保留原始 PNG。" },
+          "privacy": { "q": "PNG 會被儲存嗎？", "a": "不會。僅在轉換期間暫存於伺服器記憶體，回應後立即丟棄。不記錄、無帳號。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費轉換。RapidAPI 付費方案支援無限使用。" }
+        }
+      }
+    }
+  },
+  "jpgToPng": {
+    "title": "免費線上 JPG 轉 PNG 工具",
+    "subtitle": "將 JPG 轉為無損 PNG 格式，方便後續編輯，並支援 alpha 通道。",
+    "upload": { "title": "拖放你的 JPG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · .jpg / .jpeg", "accept": "僅接受 .jpg 或 .jpeg 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 PNG",
+    "options": {},
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 PNG", "info": "{width} × {height} 像素 • {size}", "download": "下載 PNG", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 JPG 轉 PNG API",
+        "content": "以程式方式將 JPG 重新編碼為無損 PNG。/jpg-to-png 端點接受 multipart JPG 上傳並回傳全解析度 PNG —— 無品質參數，只是一次乾淨的格式轉換，交付可編輯的素材。",
+        "content2": "適合：把 JPG 送進只接受 PNG 的編輯器的管線、需要 alpha 相容格式供下游合成使用的服務、或為設計工具準備素材的自動化流程。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /jpg-to-png：JPG → PNG",
+          "input": "Multipart JPG 上傳，上限 50 MB",
+          "params": "無可設定參數 —— 永遠無損",
+          "limit": "單次請求 50 MB、約 89 百萬像素",
+          "formats": "JPG / JPEG 輸入；無損 PNG 輸出",
+          "response": "以原始解析度回傳 image/png 二進位串流"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 JPG 轉 PNG？",
+        "content": "JPG 轉 PNG 就是將 JPG 影像以無損的 PNG 格式重新儲存。JPG 中看得到的像素會以相同值保留在 PNG 中 —— 不再壓縮、不再失真、未來編輯不再累積劣化。",
+        "content2": "重要觀念：轉換 **無法還原** 原始 JPG 編碼時已失去的品質。區塊邊界、文字周圍的振鈴、色帶等失真仍會在 PNG 中看得到。轉換只是把當下狀態「凍結」為無損格式，避免日後編輯再度累積損失。",
+        "content3": "本工具上傳你的 JPG 到我們的轉換服務，解碼後以相同解析度輸出 PNG。PNG 永遠是無損的，所以沒有品質滑桿。若需要透明區域，取得 PNG 後可在任何編輯器中加入。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 JPG 轉 PNG？",
+        "content": "當你要在會多次儲存的流程中編輯 JPG 時請先轉 PNG。每次重新儲存 JPG 都會累積新的壓縮失真；編輯期間使用 PNG 可避免這種代代遞損。",
+        "content2": "需要加入透明度（用於 logo 疊圖、去背、合成）或下游工具要求 PNG 輸入時也該轉 —— 許多印刷流程、投影片工具、老舊設計軟體都偏好或只接受 PNG。"
+      },
+      "howTo": {
+        "title": "如何將 JPG 轉為 PNG",
+        "step1": { "title": "1. 上傳你的 JPG", "content": "拖曳至上傳區或點擊選取。接受 .jpg 與 .jpeg，最大 50 MB。" },
+        "step2": { "title": "2. 點擊轉換", "content": "無需設定選項 —— PNG 天生無損。伺服器以原始解析度將 JPG 像素重新編碼為 PNG。" },
+        "step3": { "title": "3. 檢視預覽", "content": "檢視結果，顯示尺寸與檔案大小。一般照片 PNG 通常比原始 JPG 大 3–10 倍。" },
+        "step4": { "title": "4. 下載", "content": "將 PNG 儲存到電腦，即可在不累積劣化的前提下反覆編輯。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "lossless": { "title": "無損輸出", "content": "轉換過程不加入任何新失真 —— PNG 精確對應 JPG 當下的像素。" },
+          "alpha": { "title": "可加入透明度", "content": "轉成 PNG 後即可在任何影像編輯器中加入 alpha 通道 —— 這是 JPG 做不到的。" },
+          "privacy": { "title": "完全不保留檔案", "content": "JPG 在記憶體中處理後立即丟棄，回應後不留痕跡。" },
+          "fast": { "title": "快速轉換", "content": "一般網頁用 JPG 低於 500 毫秒；多數 iPhone 照片低於 1 秒。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" },
+          "noSignup": { "title": "即刻開始", "content": "免註冊、免 Email 驗證、免安裝 —— 拖曳 JPG 即可轉換。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "editing": { "title": "多步驟照片編輯", "content": "以 PNG 儲存編輯結果可避免每次儲存時疊加 JPG 壓縮失真。" },
+          "design": { "title": "設計工作流程", "content": "大多數設計工具（Figma、Sketch、Photoshop）以 PNG 為一等公民 —— 把 JPG 轉為 PNG 以順暢整合。" },
+          "transparency": { "title": "準備去背", "content": "先轉為 PNG，再在你慣用的編輯器中去背或加入 alpha 通道。" },
+          "archival": { "title": "保存原檔", "content": "以 PNG 保存未動過的原檔作為母檔，每次交付時再從母檔輸出 JPG，而不是反覆編輯 JPG。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "qualityGain": { "q": "JPG 轉 PNG 能提升畫質嗎？", "a": "不能。PNG 只能保留 JPG 現有的品質 —— 無法還原 JPG 壓縮已丟失的資訊。PNG 是 JPG 現狀的無損快照。" },
+          "fileSize": { "q": "為什麼 PNG 變大很多？", "a": "PNG 使用無損 DEFLATE 壓縮；JPG 使用針對人類視覺調校的高壓縮有損編碼。照片轉為 PNG 通常膨脹 3–10 倍。" },
+          "transparency": { "q": "PNG 會自動有透明嗎？", "a": "不會 —— JPG 沒有 alpha 通道，所以輸出的 PNG 完全不透明。之後可在任何影像編輯器中加入透明度。" },
+          "privacy": { "q": "檔案會被送到第三方嗎？", "a": "你的 JPG 只會送到我們自家的 Cloud Run 服務，在記憶體中處理後回應。無第三方儲存、不保留、不記錄圖片內容。" },
+          "maxSize": { "q": "最大檔案大小？", "a": "上傳 50 MB、解析度約 89 百萬像素。任何現代相機或手機拍的照片都在範圍內。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。自動化或大量使用請透過 API。" }
+        }
+      }
+    }
+  },
+  "pngToWebp": {
+    "title": "免費線上 PNG 轉 WebP 工具",
+    "subtitle": "將 PNG 轉為 WebP 可縮小 50–80% 檔案 —— 現代網頁圖片格式，完整支援透明度。",
+    "upload": { "title": "拖放你的 PNG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 僅限 .png", "accept": "僅接受 .png 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 WebP",
+    "options": { "quality": "WebP 品質", "qualityHint": "啟用無損模式時忽略此值。75–85 是多數網頁圖片的平衡點。", "lossless": "無損編碼", "losslessHint": "完全保留像素 —— 通常比 PNG 小 20–40%；有損 WebP 則可再小 50–80%。" },
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 WebP", "info": "{width} × {height} 像素 • {size}", "download": "下載 WebP", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 PNG 轉 WebP API",
+        "content": "為你的 CDN 或 build 管線自動化 WebP 產生。/webp 端點會自動偵測輸入方向 —— 送出 PNG 即可取回 WebP，並可調整品質或啟用無損模式以取得像素完美的輸出。",
+        "content2": "適合：靜態網站產生器的影像 build 步驟、SaaS 應用上傳時即時轉換、以及規模化產生對 Core Web Vitals 友善之影像變體的 CDN 預處理。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /webp：任何格式 → WebP（自動偵測方向）",
+          "input": "Multipart PNG 上傳，上限 50 MB",
+          "params": "quality（0–100）、lossless（bool）",
+          "limit": "單次請求 50 MB、約 89 百萬像素",
+          "formats": "PNG / JPG 輸入；含 alpha 的 WebP 輸出",
+          "response": "image/webp 二進位串流"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 WebP？為什麼要從 PNG 轉？",
+        "content": "WebP 是 Google 開發的圖片格式，結合了 JPG、PNG、GIF 各自的優點。它同時支援有損與無損壓縮、完整 alpha 透明度，且在相同視覺品質下比 PNG 產生的檔案小得多。",
+        "content2": "實際數字：2 MB 的主視覺 PNG 在有損模式下通常變成 300–500 KB WebP（縮小 75–85%），無損模式下則是 1.2–1.6 MB（縮小 20–40%）。兩種模式都保留原始透明度。",
+        "content3": "所有常青瀏覽器（Chrome、Edge、Firefox、Safari 14+、Opera）都原生解碼 WebP。若需支援老舊瀏覽器，使用 `picture` 元素 並加入 PNG 作為 fallback 即可。"
+      },
+      "whyWebp": {
+        "title": "為什麼網頁該用 WebP？",
+        "content": "Google 的 Core Web Vitals 高度重視圖片大小 —— 特別是 **Largest Contentful Paint（LCP）** 指標。將 PNG 主視覺換成 WebP 通常能立即提升 LCP，除了 `img src` 屬性外不需改任何程式碼。",
+        "content2": "WebP 也能降低 CDN 或主機頻寬成本、加速慢速網路下的行動載入、並提升流量管制用戶的體驗。對 SaaS 儀表板、電商商品列表、內容量大的行銷頁面，升級幾乎永遠值得。"
+      },
+      "howTo": {
+        "title": "如何將 PNG 轉為 WebP",
+        "step1": { "title": "1. 上傳你的 PNG", "content": "拖曳或點擊選取，最大 50 MB。" },
+        "step2": { "title": "2. 選擇有損或無損", "content": "照片與複雜圖片保持關閉無損以最大化縮小；圖示、UI、需要像素完美的圖片請開啟無損。" },
+        "step3": { "title": "3. 選擇品質（僅有損）", "content": "預設 80。數值越高檔案越大、畫質越好；越低則省頻寬、畫質略減。75–85 是多數網頁圖片的平衡點。" },
+        "step4": { "title": "4. 下載", "content": "WebP 檔可直接用於 `img` 標籤（或搭配 `picture` 元素 做 fallback）。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "compression": { "title": "縮小 50–80%", "content": "相對 PNG 的大幅節省，在建議設定下無可辨識畫質差異。" },
+          "lossless": { "title": "可選無損模式", "content": "需要像素完美時也可縮小 20–40%。" },
+          "alpha": { "title": "完整透明支援", "content": "有損與無損模式都保留 alpha 通道 —— 真正的 PNG 替代品。" },
+          "privacy": { "title": "不保留檔案", "content": "PNG 在伺服器端處理後立即丟棄。不記錄、無帳號。" },
+          "fast": { "title": "秒速轉換", "content": "一般網頁用 PNG 低於 300 毫秒完成。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費轉換，無需註冊。大量使用請用 API。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "web": { "title": "網頁效能與 SEO", "content": "較小圖片帶來更快頁面、更好的 Core Web Vitals、更佳的 SEO 排名 —— 特別是行動端。" },
+          "mobile": { "title": "行動 App 與 PWA", "content": "Android WebView 與 PWA 原生支援 WebP —— 更輕的包、更快載入、更順的體驗。" },
+          "ecommerce": { "title": "電商商品圖", "content": "將商品目錄轉為 WebP 可加速列表頁並在規模化時降低 CDN 成本。" },
+          "cms": { "title": "內容管理系統", "content": "多數現代 CMS（WordPress、Ghost、Strapi、Contentful）會自動送出 WebP —— 但前提是你給它們 WebP 來源。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "browserSupport": { "q": "哪些瀏覽器支援 WebP？", "a": "所有常青瀏覽器：Chrome、Edge、Firefox、Opera、Safari 14+。舊版 Safari 與 IE 請使用 `picture` 元素 並加入 PNG fallback。" },
+          "lossless": { "q": "該選有損還是無損？", "a": "照片與複雜圖片用有損（最在意檔案大小）；圖示、UI、含文字截圖、之後可能再編輯的圖片用無損。" },
+          "sizeSavings": { "q": "WebP 會小多少？", "a": "有損 WebP：一般照片比 PNG 小 50–80%。無損 WebP：比 PNG 小 20–40%。實際視圖片內容而定。" },
+          "transparency": { "q": "WebP 支援 alpha 透明嗎？", "a": "支援 —— 有損與無損 WebP 都完整支援 alpha 通道，可直接取代 PNG。" },
+          "privacy": { "q": "PNG 會被儲存嗎？", "a": "不會。只在轉換期間存於記憶體；不寫入磁碟、不記錄內容、不需帳號。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。RapidAPI 付費方案支援無限使用與 API 存取。" }
+        }
+      }
+    }
+  },
+  "webpToPng": {
+    "title": "免費線上 WebP 轉 PNG 工具",
+    "subtitle": "將 WebP 轉回通用的 PNG 格式 —— 無損輸出，完整保留透明度。",
+    "upload": { "title": "拖放你的 WebP 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 僅限 .webp", "accept": "僅接受 .webp 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "轉換為 PNG",
+    "options": {},
+    "status": { "converting": "轉換中...", "error": "轉換失敗", "retry": "重試" },
+    "result": { "title": "已轉換的 PNG", "info": "{width} × {height} 像素 • {size}", "download": "下載 PNG", "reset": "再轉一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 WebP 轉 PNG API",
+        "content": "在伺服器端把 WebP 解碼回 PNG 以相容老舊環境。/webp 端點會自動偵測 WebP 方向 —— 指定 target_format=png 即可取回以原生解析度解碼的無損 PNG。",
+        "content2": "適合：需要為舊瀏覽器提供 PNG fallback 的服務、需要 PNG 輸入的印刷生產管線、以及規範化送入之 WebP 為通用格式的素材管理系統。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /webp：WebP → PNG / JPG（需附 target_format）",
+          "input": "Multipart WebP 上傳，上限 50 MB",
+          "params": "target_format=png（WebP 輸入時必填）",
+          "limit": "單次請求 50 MB、約 89 百萬像素",
+          "formats": "WebP 輸入；無損 PNG 輸出",
+          "response": "保留 alpha 的 image/png 二進位串流"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 WebP 轉 PNG？",
+        "content": "WebP 轉 PNG 就是把 WebP 解碼後以無損 PNG 重新編碼。WebP 當下的像素狀態會完整保留在 PNG 中 —— 不再壓縮、不再失去畫質。",
+        "content2": "這適用於需要在不支援 WebP 的工具中開啟圖片、與老舊裝置用戶分享，或整合進要求 PNG 的流程。老舊印刷軟體、舊版 MS Office、許多嵌入式系統都屬於這一類。",
+        "content3": "本工具在伺服器端透過 libvips 執行轉換，完整保留 alpha 通道與色彩描述檔。輸出永遠以 WebP 來源原始解析度交付，即可使用的 PNG 檔。"
+      },
+      "whyConvert": {
+        "title": "什麼時候該把 WebP 轉 PNG？",
+        "content": "當目的地讀不懂 WebP 時。常見情境：舊版 Photoshop、Microsoft PowerPoint（非 365）、使用老舊 RIP 軟體的印刷廠、尚未跟上的第三方工具、或依賴古老影像庫的 Windows 應用程式。",
+        "content2": "也適用於需要在會多次儲存的流程中編輯 WebP —— 與 PNG 一樣無損（有損 WebP 的初次解碼結果已定，但後續以 PNG 儲存不會再劣化）。"
+      },
+      "howTo": {
+        "title": "如何將 WebP 轉為 PNG",
+        "step1": { "title": "1. 上傳你的 WebP", "content": "拖曳或點擊選取任何 `.webp` 檔（最大 50 MB）—— 有損或無損都行，靜態或動畫皆可（動畫取第一幀）。" },
+        "step2": { "title": "2. 點擊轉換", "content": "無需設定 —— PNG 永遠無損。伺服器解碼你的 WebP 並以來源原生尺寸輸出 PNG。" },
+        "step3": { "title": "3. 檢視預覽", "content": "PNG 會顯示尺寸與檔案大小。預期 PNG 比原始 WebP 大 2–4 倍。" },
+        "step4": { "title": "4. 下載", "content": "儲存 PNG，現在可在任何應用程式中使用，包括不支援 WebP 的老舊工具。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "lossless": { "title": "無損輸出", "content": "不再劣化 —— PNG 精確捕捉 WebP 的解碼像素。" },
+          "alpha": { "title": "保留透明度", "content": "完整 alpha 通道從 WebP 帶入 PNG，透明 logo、圖示、UI 素材都保留完整。" },
+          "compatibility": { "title": "通用相容", "content": "PNG 可在所有瀏覽器、作業系統、編輯器、印刷工具、文件格式中開啟 —— 無一例外。" },
+          "privacy": { "title": "不保留檔案", "content": "WebP 在記憶體中處理後立即丟棄。不記錄、無帳號。" },
+          "fast": { "title": "快速轉換", "content": "一般網頁用 WebP 低於 500 毫秒；多數圖片秒內完成。" },
+          "free": { "title": "免費且無限制", "content": "每個工作階段三次免費轉換。大量使用請用 API。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "editing": { "title": "在老舊工具中編輯", "content": "舊版 Photoshop、Illustrator、GIMP 缺 WebP 支援 —— 先轉 PNG 以相容。" },
+          "legacy": { "title": "老舊 Windows 應用", "content": "小畫家、許多 IDE 預覽、舊工具仍讀不了 WebP —— PNG 解決這個問題。" },
+          "printing": { "title": "印刷生產", "content": "部分印刷 RIP 不支援 WebP。先轉為 PNG 可安全送印。" },
+          "design": { "title": "匯入設計工具", "content": "把 PNG 丟進 Figma、Sketch、Adobe XD 以獲得跨設計流程一致的行為。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "whyConvert": { "q": "為什麼要把 WebP 再轉回 PNG？", "a": "當目的地不支援 WebP 時。許多老舊工具、印刷流程、老舊作業系統只接受 PNG。" },
+          "qualityLoss": { "q": "會損失畫質嗎？", "a": "不會。PNG 無損 —— 完整保留 WebP 當下的像素。若來源 WebP 是有損，PNG 反映該狀態但不再新增失真。" },
+          "fileSize": { "q": "為什麼 PNG 比較大？", "a": "WebP 使用高壓縮；PNG 使用無損 DEFLATE。預期 PNG 比原始 WebP 大 2–4 倍。" },
+          "transparency": { "q": "透明度會保留嗎？", "a": "會 —— 完整 alpha 通道從 WebP 原封不動帶入 PNG。" },
+          "privacy": { "q": "檔案會被存在伺服器嗎？", "a": "不會 —— WebP 只在記憶體中處理，回應後立即丟棄。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。大量使用請用 API。" }
+        }
+      }
+    }
+  },
+  "svgToPng": {
+    "title": "免費線上 SVG 轉 PNG 工具",
+    "subtitle": "將 SVG 向量圖光柵化為任意尺寸的 PNG —— 精確像素尺寸、保持比例的寬/高、或用於 retina 資源的倍率模式。",
+    "upload": { "title": "拖放你的 SVG 檔案至此，或點擊選取", "limit": "最大檔案大小：50 MB · 僅限 .svg", "accept": "僅接受 .svg 檔案", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "光柵化為 PNG",
+    "options": {
+      "sizeMode": "尺寸模式",
+      "sizeMode_scale": "倍率 (×)",
+      "sizeMode_width": "僅指定寬度",
+      "sizeMode_height": "僅指定高度",
+      "sizeMode_exact": "精確 W × H",
+      "scale": "倍率",
+      "scaleHint": "乘以 SVG 原始 viewBox。2× 為 retina 標準；3× 或 4× 用於列印輸出。",
+      "width": "寬度（像素）",
+      "widthHint": "保持原始比例，最大 8192 像素。",
+      "height": "高度（像素）",
+      "heightHint": "保持原始比例，最大 8192 像素。"
+    },
+    "status": { "converting": "光柵化中...", "error": "光柵化失敗", "retry": "重試" },
+    "result": { "title": "已光柵化 PNG", "info": "{width} × {height} 像素 • {size}", "download": "下載 PNG", "reset": "再光柵化一張" },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費轉換", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 SVG 轉 PNG 光柵化 API",
+        "content": "以程式方式將 SVG 光柵化為任意輸出尺寸。/svg-to-png 端點接受 multipart SVG 上傳，尺寸由 width、height 或 scale 控制 —— 在伺服器端以內建的 Noto CJK 與 emoji 字型渲染。",
+        "content2": "適合：Open Graph 圖產生器、自動化 favicon 管線、動態社群卡片產生、以及 build 時期以特定解析度光柵化向量素材。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /svg-to-png：SVG → 任意尺寸 PNG",
+          "input": "Multipart SVG 上傳，上限 50 MB",
+          "params": "width、height、scale（0.1–10.0）可混搭",
+          "limit": "輸出最大 8192 × 8192 像素",
+          "formats": "SVG 1.1 / 2.0 輸入；無損 PNG 輸出",
+          "response": "支援 Noto CJK 字型的 image/png RGBA 二進位串流"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 SVG 轉 PNG 光柵化？",
+        "content": "SVG（Scalable Vector Graphics）是一種以 XML 描述幾何指令（路徑、圖形、文字、填色）的圖片格式，而不是像素。這讓 SVG 可在任意尺寸下保持清晰，非常適合 logo、圖示、圖表。",
+        "content2": "PNG 則是以像素（點陣）為基礎。光柵化就是把 SVG 的指令在特定解析度下實際轉換成像素。光柵化後的圖像尺寸固定 —— 放大 PNG 會失去畫質，不像 SVG。",
+        "content3": "當你需要特定尺寸的 PNG 給不接受 SVG 的平台時就要光柵化：Open Graph 社群預覽、favicon、App Store 圖示、Slack 表情符號、印刷素材、Word/PowerPoint 嵌入等。"
+      },
+      "sizing": {
+        "title": "三種輸出尺寸設定方式",
+        "content": "**倍率** —— 乘以 SVG 的原生 viewBox。當 SVG 比例正確、只需 retina（2×）或列印級（4×）點陣版本時使用。",
+        "content2": "**僅指定寬度** 或 **僅指定高度** —— 設定其中一邊，另一邊依 SVG 比例自動計算。適合以特定寬度產出圖示而不擔心高度的場合。",
+        "content3": "**精確寬 × 高** —— 強制輸出為此尺寸。若比例與 SVG 不同則會拉伸。適用於固定尺寸需求，例如 Open Graph（1200×630）。"
+      },
+      "howTo": {
+        "title": "如何光柵化 SVG",
+        "step1": { "title": "1. 上傳 SVG", "content": "拖曳或點擊選取 `.svg` 檔，最大 50 MB。符合 SVG 1.1 / 2.0 的檔案皆可。" },
+        "step2": { "title": "2. 選擇尺寸模式", "content": "倍率用於 retina；僅寬/僅高用於保持比例的縮放；精確用於像素完美的尺寸需求。" },
+        "step3": { "title": "3. 設定尺寸", "content": "倍率滑桿從 0.1× 到 10×。寬高接受 1 到 8192 像素的任意整數。" },
+        "step4": { "title": "4. 光柵化並下載", "content": "伺服器以 libvips + librsvg 渲染你的 SVG，內建 Noto CJK 與 emoji 字型。下載 PNG 即可放入專案使用。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "sizing": { "title": "靈活尺寸控制", "content": "倍率、僅寬度、僅高度、或精確尺寸 —— 涵蓋所有輸出需求。" },
+          "retina": { "title": "Retina 就緒", "content": "可放大到 10×，用於印刷品質或超高 DPI 顯示器，不失去畫質。" },
+          "transparency": { "title": "保留 alpha 通道", "content": "SVG 的透明度（包含半透明描邊與漸層）完整保留在 PNG 的 alpha 通道中。" },
+          "fonts": { "title": "內建 Noto CJK 字型", "content": "伺服器已預裝 Noto Sans CJK 與 emoji 字型 —— 中、日、韓字元與 emoji 都能正確渲染，不會出現豆腐字。" },
+          "privacy": { "title": "不保留檔案", "content": "SVG 在記憶體中處理後立即丟棄。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費光柵化，無需帳號。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "ogImages": { "title": "Open Graph 社群預覽", "content": "從 SVG 模板產出 1200×630 PNG，用於 Twitter、LinkedIn、Facebook 連結預覽。" },
+          "appIcons": { "title": "App 圖示", "content": "以單一 SVG 母檔光柵化為 1024×1024（iOS）、512×512（Android）及中間任何尺寸。" },
+          "print": { "title": "印刷素材", "content": "從 SVG 來源產出 4×–10× 縮放的 PNG，用於傳單、海報、高 DPI 印刷。" },
+          "presentations": { "title": "投影片與文件", "content": "許多簡報工具渲染 SVG 不正確 —— 光柵化為 PNG 以確保嵌入圖片一致。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "sizeModes": { "q": "該用哪個尺寸模式？", "a": "倍率用於 retina 或印刷放大；僅寬/僅高用於保持比例的縮放；精確用於固定尺寸需求（例如 1200×630 的 Open Graph 圖）。" },
+          "fonts": { "q": "SVG 裡的文字會正確渲染嗎？", "a": "伺服器已預裝 Noto CJK 與 emoji 字型，中日韓與 emoji 都能正確渲染。其他字型請在 SVG 中以 font-face CSS 規則的 base64 方式嵌入，或在上傳前將文字轉為路徑。" },
+          "transparency": { "q": "透明度會保留嗎？", "a": "會 —— SVG 的完整 alpha 通道（包含半透明描邊、漸層、濾鏡）都保留於 PNG 的 alpha 通道中。" },
+          "maxSize": { "q": "最大輸出尺寸？", "a": "8192 × 8192 像素。更大尺寸請拆分 SVG 或直接使用 API。" },
+          "privacy": { "q": "SVG 會被儲存嗎？", "a": "不會。SVG 只在記憶體中處理，回應後立即丟棄。不記錄、無帳號。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 付費方案支援無限使用。" }
+        }
+      }
+    }
+  },
+  "faviconGenerator": {
+    "title": "免費線上 Favicon 產生器",
+    "subtitle": "從單一來源圖片產生完整 Favicon 組合 —— 包含 ICO、Apple Touch、Android Chrome、web manifest，一次打包成 ZIP。",
+    "upload": { "title": "拖放你的來源圖片至此，或點擊選取", "limit": "最大檔案大小：50 MB · PNG / JPG / WebP · 建議 512×512", "accept": "僅接受 PNG / JPG / WebP —— 不支援 SVG（請先光柵化）", "tooLarge": "檔案超過 50 MB 上限", "changeFile": "更換檔案" },
+    "convert": "產生 Favicon 組合",
+    "options": {},
+    "preview": { "title": "Favicon 尺寸預覽" },
+    "status": { "converting": "產生中...", "error": "產生失敗", "retry": "重試" },
+    "result": {
+      "title": "Favicon 組合已準備完成",
+      "info": "7 檔 ZIP • {size}",
+      "filesTitle": "包含檔案",
+      "snippetTitle": "HTML 片段 —— 貼到你的 HTML Head",
+      "copy": "複製片段",
+      "copied": "已複製！",
+      "download": "下載 ZIP",
+      "reset": "再產一組"
+    },
+    "adModal": { "title": "🥺 請支持我們 🌸", "description": "閱讀我們的文章即可解鎖 3 次額外轉換。感謝你支持這個免費工具！", "remaining": "剩餘 {count} 次免費產生", "watch": "確認", "close": "關閉" },
+    "seo": {
+      "api": {
+        "title": "使用 Favicon 產生器 API",
+        "content": "在 CI/CD 管線中產生完整的 Favicon 組合。/favicon 端點接受單一正方形圖片上傳，回傳包含全部 7 個 Favicon 檔案與 web manifest 範本的 ZIP —— 無需設定、無需分支邏輯、一次請求搞定。",
+        "content2": "適合：網站產生器產品、每個客戶自動品牌化的白牌部署管線、以及每次部署都重新產生圖示的開發／預覽工具。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 亮點",
+          "endpoints": "POST /favicon：圖片 → 7 檔 ZIP",
+          "input": "Multipart PNG / JPG / WebP，上限 50 MB",
+          "params": "無參數 —— 完全自動化",
+          "limit": "建議 512×512 來源以取得最銳利輸出",
+          "formats": "輸出含 favicon.ico、6 個 PNG 與 site.webmanifest",
+          "response": "application/zip 二進位串流，解壓即用"
+        }
+      },
+      "whatIs": {
+        "title": "什麼是 Favicon？為什麼需要完整組合？",
+        "content": "Favicon 是代表你網站的小圖示，出現在瀏覽器分頁、書籤、行動主畫面與搜尋結果中。2025 年要完整支援各裝置，不只要一個 `favicon.ico`，還需要一組協調的圖片：經典 ICO、現代瀏覽器用的高 DPI PNG、iOS 主畫面的 Apple Touch Icon、以及 Android Chrome 的 Progressive Web App 圖示。",
+        "content2": "手動做對這些很繁瑣：要把 logo 匯出 7 種不同尺寸、組合出多解析度 ICO、建立 web manifest、並記得每個平台正確的 HTML link 標籤。漏掉或設錯一個，就會出現從錯誤母檔縮小的模糊 16×16、iOS 上的預設佔位圖、或壞掉的 PWA 安裝提示。",
+        "content3": "本工具從單一來源圖片數秒內產出整組 7 檔，並提供可直接貼上的 HTML 片段 —— 一次把所有平台的連線都設對。"
+      },
+      "contents": {
+        "title": "ZIP 內容",
+        "content": "**`favicon.ico`** —— 包含 16×16、32×32、48×48 的多解析度 ICO，供廣泛瀏覽器相容（含舊版 IE 與 Edge）。",
+        "content2": "**`favicon-16x16.png` / `favicon-32x32.png`** —— 偏好 PNG favicon 的現代瀏覽器專用高 DPI PNG。**`apple-touch-icon.png`** —— 180×180，iOS 主畫面圖示。**`android-chrome-192x192.png` / `android-chrome-512x512.png`** —— Android 安裝與啟動頁的 PWA 圖示。**`site.webmanifest`** —— PWA manifest 範本（下載後再編輯 `name` 與 `short_name`）。"
+      },
+      "howTo": {
+        "title": "如何產生 Favicon 組合",
+        "step1": { "title": "1. 上傳正方形 PNG / JPG / WebP", "content": "建議最小 512×512 以在各尺寸都銳利。工具接受任何比例，但正方形效果最好。不支援 SVG —— 請先用我們的 SVG 轉 PNG 工具光柵化。" },
+        "step2": { "title": "2. 預覽 Favicon 尺寸", "content": "檢查你的來源圖片在 16、32、48、180、192、512 像素下的外觀 —— 確認在 16×16（最嚴苛的測試）仍可辨識。簡潔、高對比的 logo 效果最好。" },
+        "step3": { "title": "3. 點擊產生", "content": "伺服器將你的來源重新取樣為 7 種目標尺寸、組合多解析度 ICO、建立 web manifest 範本、並打包為 ZIP。" },
+        "step4": { "title": "4. 下載部署", "content": "解壓 ZIP 到網站公開根目錄（Nuxt 的 `/static`、Next.js 的 `/public`）。將我們提供的 HTML 片段貼到 `head` 區段，並編輯 `site.webmanifest` 的 `name` 與 `short_name` 對應你的品牌。" }
+      },
+      "features": {
+        "title": "功能特色",
+        "items": {
+          "completeSet": { "title": "7 個檔案一次到位", "content": "ICO、瀏覽器 PNG、Apple Touch、Android Chrome、web manifest —— 一應俱全，不會漏掉。" },
+          "pwa": { "title": "PWA 就緒", "content": "包含 192×192 與 512×512 Android Chrome 圖示與 web manifest 範本 —— 連結 `manifest.json` 即可安裝。" },
+          "htmlSnippet": { "title": "可複製貼上 HTML 片段", "content": "我們提供正確的 link 標籤可直接貼到 `head` 區段 —— 不用查資料、不會猜錯。" },
+          "privacy": { "title": "不保留檔案", "content": "來源圖片在記憶體中處理後立即丟棄。無帳號、不記錄。" },
+          "fast": { "title": "一次性產出", "content": "7 個輸出在一次請求中完成，約 500 毫秒。" },
+          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。大量使用請用 API。" }
+        }
+      },
+      "useCases": {
+        "title": "使用情境",
+        "items": {
+          "newSite": { "title": "新網站上線", "content": "第一天就把 Favicon 做對 —— 每個瀏覽器、每個裝置，無遺漏。" },
+          "pwa": { "title": "Progressive Web App", "content": "產出加入主畫面（Add-to-Home-Screen）所需的 Android 192/512 圖示與 web manifest。" },
+          "rebrand": { "title": "品牌更新", "content": "品牌識別變更時一次從新 logo 重新產出所有 Favicon。" },
+          "dev": { "title": "開發與預覽環境", "content": "為 staging URL、內部工具、客戶預覽網站快速做 Favicon —— 不用再開設計單。" }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "sourceSize": { "q": "該上傳多大的來源？", "a": "512×512 以上、正方形、PNG 或 WebP（以妥善處理透明度）。較小的來源（如 256×256）可以用，但 16×16 與 32×32 可能因為從已偏小的母檔縮小而略模糊。" },
+          "svg": { "q": "可以上傳 SVG 嗎？", "a": "不直接支援 —— 我們的 Favicon 服務使用點陣管線無法解析 SVG。請先用 `SVG 轉 PNG` 工具光柵化為 512×512 或 1024×1024，再餵進來。" },
+          "transparency": { "q": "支援透明嗎？", "a": "支援 —— PNG 或 WebP 來源的透明背景會完整保留於所有輸出，除了 ICO（ICO 使用 PNG 壓縮的框架，仍支援透明）。" },
+          "customize": { "q": "可以客製化 web manifest 嗎？", "a": "產生的 `site.webmanifest` 是可用範本，帶有佔位 `name` 與 `short_name`。部署前請用文字編輯器改為你的實際品牌名稱。" },
+          "privacy": { "q": "來源圖片會被保存嗎？", "a": "不會。上傳僅在產生期間存於記憶體，回傳 ZIP 後立即丟棄。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。CI/CD 整合或批次客戶工作請使用 API。" }
         }
       }
     }

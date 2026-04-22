@@ -164,6 +164,110 @@
         "**셀 패딩** 을 소스 스프라이트시트의 프레임 간 간격에 맞게 설정하세요 — 많은 TexturePacker 또는 Aseprite 내보내기에는 슬라이싱 전에 고려해야 할 1–2px 여백이 포함됩니다.",
         "추출한 프레임을 정리해야 하나요? **PNG 자르기** 도구로 투명한 가장자리를 잘라낸 후, **PNG를 스프라이트시트로** 를 사용하여 새로운 스프라이트시트로 다시 패킹하세요."
       ]
+    },
+    "heicToJpg": {
+      "tipsTitle": "알고 계셨나요? HEIC를 JPG로 변환 팁",
+      "tips": [
+        "**화질 슬라이더** 로 JPG 압축 강도를 조절하세요 — 90 이상은 사진 인쇄용, 70–85는 웹용으로 시각적 품질을 유지하면서 파일 크기를 크게 줄일 수 있습니다.",
+        "HEIC는 iOS 11부터 iPhone의 기본 사진 형식입니다. JPG로 변환하면 Windows, 구형 Android 및 HEIC를 지원하지 않는 앱에서 바로 열 수 있습니다.",
+        "여러 HEIC 사진을 한 번에 업로드하세요 — 변환된 모든 JPG 파일은 원본 파일명이 유지된 단일 ZIP으로 반환됩니다.",
+        "대부분의 소셜 미디어 플랫폼과 전자상거래 사이트는 여전히 JPG 형식을 요구합니다. 업로드 전에 HEIC를 JPG로 변환하여 호환성 문제를 피하세요."
+      ]
+    },
+    "heicToPng": {
+      "tipsTitle": "알고 계셨나요? HEIC를 PNG로 변환 팁",
+      "tips": [
+        "사진을 추가 편집해야 하는 경우(예: Photoshop 또는 GIMP) PNG를 선택하세요 — 무손실 형식이므로 저장할 때마다 품질이 저하되지 않습니다.",
+        "PNG는 완전한 알파 투명 채널을 지원합니다. HEIC에 잘라낸 피사체나 마스크가 포함되어 있으면 투명도가 보존됩니다.",
+        "여러 HEIC 사진을 한 번에 업로드하여 일괄 변환하세요 — 모든 PNG 파일은 단일 ZIP으로 반환됩니다.",
+        "PNG 파일은 보통 JPG보다 훨씬 큽니다. 투명도나 무손실 품질이 필요하지 않다면 HEIC를 JPG로 변환하여 더 작은 파일을 얻으세요."
+      ]
+    },
+    "heicToWebp": {
+      "tipsTitle": "알고 계셨나요? HEIC를 WebP로 변환 팁",
+      "tips": [
+        "WebP는 보통 동일 품질의 JPG보다 25–35% 작습니다 — 빠른 로딩이 필요한 웹 이미지에 최적입니다.",
+        "**무손실 모드** 를 활성화하면 픽셀 수준의 완벽한 재현(PNG 수준)이 가능하며, 파일 크기는 PNG보다 훨씬 작습니다.",
+        "모든 최신 브라우저(Chrome, Firefox, Safari, Edge)는 WebP를 기본 지원합니다. IE나 매우 오래된 시스템과의 호환이 필요한 경우에만 JPG/PNG로 대체하세요.",
+        "여러 HEIC 사진을 한 번에 업로드하세요 — 변환된 모든 WebP 파일은 단일 ZIP으로 반환되어 바로 웹사이트에 배포할 수 있습니다."
+      ]
+    },
+    "pngToJpg": {
+      "tipsTitle": "알고 계셨나요? PNG를 JPG로 변환 팁",
+      "tips": [
+        "PNG의 투명 영역은 JPG 변환 시 **흰색 배경** 으로 채워집니다 — 다른 배경색이 필요한 경우 이미지 편집기에서 미리 배경 레이어를 추가하세요.",
+        "**화질 슬라이더** 로 파일 크기와 시각적 선명도의 균형을 조절하세요 — 85가 대부분의 사진에 최적의 출발점으로, 거의 차이를 느끼지 못하면서 60–70%의 파일 크기 절감이 가능합니다.",
+        "여러 PNG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 JPG 파일은 단일 ZIP으로 반환됩니다.",
+        "JPG는 사진과 그라데이션이 풍부한 이미지에 가장 적합합니다. 선화, 스크린샷 또는 텍스트가 많은 이미지는 변환 후 눈에 띄는 압축 아티팩트가 나타날 수 있습니다."
+      ]
+    },
+    "jpgToPng": {
+      "tipsTitle": "알고 계셨나요? JPG를 PNG로 변환 팁",
+      "tips": [
+        "PNG로 변환해도 JPG 압축으로 손실된 디테일은 복원되지 않습니다 — 하지만 이후 편집 및 저장 시 추가적인 품질 저하를 방지합니다.",
+        "PNG는 알파 투명 채널을 지원합니다. 변환 후 이미지 편집기에서 투명도를 추가할 수 있습니다 — JPG 형식에서는 불가능합니다.",
+        "여러 JPG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 PNG 파일은 단일 ZIP으로 반환됩니다.",
+        "PNG 파일은 보통 원본 JPG의 3–5배 크기입니다. 투명도나 무손실 편집이 필요하지 않다면 JPG 형식을 유지하는 것이 더 적합할 수 있습니다."
+      ]
+    },
+    "pngToWebp": {
+      "tipsTitle": "알고 계셨나요? PNG를 WebP로 변환 팁",
+      "tips": [
+        "손실 WebP는 보통 PNG보다 80–90% 작으면서 뛰어난 시각적 품질을 유지합니다 — 웹 이미지 최적화에 최적입니다.",
+        "**무손실 모드** 를 활성화하면 픽셀 수준의 완벽한 재현이 가능하며, 파일 크기는 원본 PNG보다 약 25% 작습니다.",
+        "WebP는 알파 투명 채널을 지원합니다 — 변환 시 PNG의 투명도는 완전히 보존됩니다.",
+        "여러 PNG 파일을 한 번에 업로드하세요 — 변환된 모든 WebP 파일은 단일 ZIP으로 반환되어 바로 웹사이트 배포에 사용할 수 있습니다."
+      ]
+    },
+    "webpToPng": {
+      "tipsTitle": "알고 계셨나요? WebP를 PNG로 변환 팁",
+      "tips": [
+        "WebP를 지원하지 않는 구형 소프트웨어(일부 버전의 Photoshop 또는 Illustrator 등)에서 이미지를 편집해야 하는 경우 먼저 PNG로 변환하는 것이 가장 안전합니다.",
+        "WebP의 투명도는 PNG 변환 후에도 완전히 보존됩니다 — 추가 합성이나 편집이 필요한 소재에 최적입니다.",
+        "여러 WebP 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 PNG 파일은 단일 ZIP으로 반환됩니다.",
+        "PNG로 변환해도 손실 WebP 압축으로 잃어버린 디테일은 복원되지 않습니다 — 하지만 이후 편집에서 추가적인 품질 손실이 없음을 보장합니다."
+      ]
+    },
+    "svgToPng": {
+      "tipsTitle": "ご存知ですか？SVG를 PNG로 변환 팁",
+      "tips": [
+        "**배율** 로 고해상도 버전을 빠르게 생성하세요 — 2x는 Retina 디스플레이용, 4x는 인쇄 소재용입니다.",
+        "정확한 픽셀 크기가 필요하신가요? **정확한 크기 모드** 로 전환하여 너비와 높이를 입력하세요 — 특정 규격의 아이콘이나 썸네일 생성에 최적입니다.",
+        "**종횡비 유지** 를 활성화하면 한 차원만 지정해도 다른 차원이 자동 계산되어 이미지 왜곡을 방지합니다.",
+        "SVG의 투명 배경은 변환 후 PNG의 알파 채널로 보존됩니다 — 추가 처리 없이 투명 배경의 래스터 이미지를 얻을 수 있습니다.",
+        "여러 SVG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 PNG 파일은 단일 ZIP으로 반환됩니다."
+      ]
+    },
+    "faviconGenerator": {
+      "tipsTitle": "알고 계셨나요? Favicon 생성기 팁",
+      "tips": [
+        "**512×512 픽셀 이상** 의 정사각형 PNG를 업로드하면 최상의 결과를 얻을 수 있습니다 — 도구가 자동으로 필요한 모든 크기로 스케일링합니다.",
+        "생성되는 ZIP에는 **7개의 파일** 이 포함됩니다: favicon.ico(멀티사이즈), 16×16, 32×32, 48×48 PNG, 180×180 Apple Touch Icon, 192×192 Android 아이콘, 그리고 site.webmanifest.",
+        "ZIP 내용을 웹사이트 루트 디렉토리에 압축 해제하고 생성된 HTML 태그를 `head` 섹션에 복사하세요 — 5분 이내에 전 플랫폼 favicon 배포가 완료됩니다.",
+        "**둥근 모서리** 옵션으로 아이콘에 둥근 효과를 추가할 수 있습니다 — 많은 최신 브라우저와 OS는 웹사이트 아이콘을 둥근 모서리로 표시합니다.",
+        "SVG와 PNG 입력 모두 지원 — 벡터 로고가 있다면 SVG를 직접 업로드하면 가장 선명한 스케일링 결과를 얻을 수 있습니다."
+      ]
+    }
+  },
+  "relatedTools": {
+    "label": "관련 도구",
+    "gifToSprite": "GIF → 스프라이트시트",
+    "toGif": "PNG → GIF",
+    "pngToSpritesheet": "PNG → 스프라이트시트",
+    "pngTrim": "PNG 자르기",
+    "splitSpritesheet": "스프라이트시트 분할기",
+    "heicToJpg": "HEIC → JPG",
+    "heicToPng": "HEIC → PNG",
+    "pngToJpg": "PNG → JPG",
+    "jpgToPng": "JPG → PNG",
+    "pngToWebp": "PNG → WebP",
+    "webpToPng": "WebP → PNG",
+    "svgToPng": "SVG → PNG",
+    "faviconGenerator": "Favicon 생성기",
+    "groups": {
+      "sprite": "스프라이트 & 프레임 도구",
+      "imageFormat": "이미지 형식 변환기",
+      "vector": "벡터 & 아이콘 도구"
     }
   },
   "home": {
@@ -188,6 +292,38 @@
       "splitSpritesheet": {
         "title": "스프라이트시트 분할기",
         "description": "스프라이트시트 PNG를 개별 프레임으로 분할하거나 TexturePacker 호환 아틀라스 JSON을 생성합니다."
+      },
+      "heicToJpg": {
+        "title": "HEIC를 JPG로",
+        "description": "iPhone HEIC 사진을 범용 호환 JPG로 변환 — 화질 조절 가능."
+      },
+      "heicToPng": {
+        "title": "HEIC를 PNG로",
+        "description": "HEIC 사진을 투명도를 완벽 지원하는 무손실 PNG로 변환."
+      },
+      "pngToJpg": {
+        "title": "PNG를 JPG로",
+        "description": "PNG를 JPG로 변환하여 파일 크기 축소 — 투명 영역은 흰색으로 채워집니다."
+      },
+      "jpgToPng": {
+        "title": "JPG를 PNG로",
+        "description": "JPG를 무손실 PNG로 변환 — 알파 채널을 지원하여 편집 준비 완료."
+      },
+      "pngToWebp": {
+        "title": "PNG를 WebP로",
+        "description": "PNG를 최신 WebP로 변환하여 대폭 압축 — 무손실 모드 선택 가능."
+      },
+      "webpToPng": {
+        "title": "WebP를 PNG로",
+        "description": "WebP를 범용 호환 PNG로 디코딩, 투명도 보존."
+      },
+      "svgToPng": {
+        "title": "SVG를 PNG로",
+        "description": "SVG 벡터를 원하는 크기의 PNG로 래스터화 — 배율, 정확한 크기 또는 종횡비 유지 지원."
+      },
+      "faviconGenerator": {
+        "title": "Favicon 생성기",
+        "description": "ICO, Apple Touch, Android 및 Web Manifest를 포함한 완전한 7파일 favicon 팩을 생성."
       }
     }
   },
@@ -391,14 +527,6 @@
         }
       }
     }
-  },
-  "relatedTools": {
-    "label": "관련 도구",
-    "gifToSprite": "GIF → 스프라이트시트",
-    "toGif": "PNG → GIF",
-    "pngToSpritesheet": "PNG → 스프라이트시트",
-    "pngTrim": "PNG 자르기",
-    "splitSpritesheet": "스프라이트시트 분할기"
   },
   "toGif": {
     "title": "무료 온라인 PNG→GIF 변환기",
@@ -1262,5 +1390,1300 @@
         }
       }
     }
+  },
+  "heicToJpg": {
+    "title": "무료 온라인 HEIC to JPG 변환기",
+    "subtitle": "iPhone HEIC 사진을 범용 호환성이 뛰어난 JPG 형식으로 변환 — 무료, 온라인, 가입 불필요, 워터마크 없음.",
+    "upload": {
+      "title": "여기에 HEIC 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .heic 또는 .heif",
+      "accept": ".heic 또는 .heif 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "JPG로 변환",
+    "options": {
+      "quality": "JPG 품질",
+      "qualityHint": "값이 높을수록 파일 크기는 커지지만 더 나은 충실도를 제공합니다. 85–92가 눈에 띄지 않는 품질의 최적값입니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 JPG",
+      "info": "{width} × {height} px • {size}",
+      "download": "JPG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "HEIC to JPG 변환 API 사용",
+        "content": "HEIC 파일을 대규모로 변환해야 하나요? 이 도구를 구동하는 동일한 엔진을 RapidAPI의 RESTful API로 사용할 수 있습니다. source_format=heic 및 target_format=jpg로 multipart POST를 보내면 JPG 스트림이 반환되어 디스크 또는 S3 버킷으로 파이프할 준비가 됩니다.",
+        "content2": "iPhone 사진을 수집하는 모바일 앱 백엔드, 배치 마이그레이션 스크립트, 사용자 업로드를 정규화해야 하는 SaaS 플랫폼, 가져오기 시 HEIC를 자동 변환하는 CMS 플러그인에 이상적입니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Multipart 파일 업로드, 최대 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "HEIC / HEIF 입력; JPG / PNG / WebP 출력",
+          "response": "표준 image/* Content-Type의 이진 이미지 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "HEIC란 무엇이고 JPG로 변환해야 하는 이유는?",
+        "content": "HEIC(High Efficiency Image Container)는 iOS 11 이후 iPhone과 iPad의 기본 사진 형식입니다. 기본 HEVC 압축 덕분에 같은 시각 품질에서 JPG보다 파일 크기가 약 50% 작습니다. 트레이드오프: Apple 생태계 외에서는 지원이 부족합니다. 많은 Windows 앱, 구형 Android 기기, 콘텐츠 관리 시스템 및 웹 도구는 단순히 HEIC 파일을 열 수 없습니다.",
+        "content2": "JPG(JPEG라고도 함)는 범용 사진 형식입니다. 모든 브라우저, 모든 운영 체제, 모든 소셜 네트워크, 모든 이메일 클라이언트, 모든 사진 프린터가 JPG를 허용합니다. iPhone 사진을 JPG로 변환하면 호환성 문제가 즉시 해결됩니다. 플러그인, 코덱 또는 특수 소프트웨어 없이 어디서나 이미지를 열 수 있습니다.",
+        "content3": "이 도구는 튜닝된 libvips + libheif 파이프라인을 통해 서버 측에서 HEIC 디코딩 및 JPG 인코딩을 실행합니다. 파일을 한 번 업로드하고 깔끔한 JPG를 받으면 계정, 워터마크 또는 설치가 필요하지 않습니다."
+      },
+      "whyConvert": {
+        "title": "HEIC를 JPG로 변환해야 할 때는?",
+        "content": "Apple 기기 외부에서 사진을 공유하거나 게시해야 할 때마다 JPG로 변환하세요. 일반적인 경우: iPhone 사진을 Windows PC로 보내기, WordPress 또는 Shopify에 업로드, 작업 이메일에 첨부, 키오스크 또는 사진 인화소에서 인쇄, Word/PowerPoint 문서에 포함(비 Mac 기계에서 열림).",
+        "content2": "Apple 생태계(iPhone, iPad, Mac 및 최신 iCloud 공유) 내에서만 작업 중인 경우 HEIC를 유지하세요. 더 작은 파일 크기의 이점을 누릴 수 있습니다. 대상에서 읽을 수 없다는 것을 알 때만 변환하세요."
+      },
+      "howTo": {
+        "title": "HEIC를 JPG로 변환하는 방법",
+        "step1": {
+          "title": "1. HEIC 파일 업로드",
+          "content": ".heic 또는 .heif 파일을 업로드 영역으로 드래그하거나 클릭하여 파일 선택기를 열세요. iPhone 사진은 그대로 허용됩니다. 확장자를 바꿀 필요가 없습니다. 최대 파일 크기는 50 MB입니다."
+        },
+        "step2": {
+          "title": "2. JPG 품질 선택",
+          "content": "품질 슬라이더를 움직여 파일 크기와 시각 충실도 사이의 균형을 맞추세요. 85–92는 원본과 구별할 수 없습니다. 95 이상은 JPG를 추가로 편집할 계획이 있을 때만 최고입니다. 기본값은 90입니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버가 HEIC를 디코딩하고 올바른 EXIF 방향을 적용한 다음 JPG로 재인코딩합니다. 2–5 MB iPhone 사진의 일반적인 변환 시간은 1초 미만입니다."
+        },
+        "step4": {
+          "title": "4. 다운로드 및 사용",
+          "content": "변환된 JPG가 미리 보기 및 치수와 함께 나타납니다. 다운로드를 클릭하여 저장하세요. 파일 이름은 새로운 `.jpg` 확장자를 사용하여 원본 파일명을 반영합니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "quality": {
+            "title": "조정 가능한 품질",
+            "content": "1에서 100까지 슬라이더로 조절되는 JPG 품질 - 파일 크기와 충실도 사이의 트레이드오프를 선택하세요."
+          },
+          "privacy": {
+            "title": "서버 측만",
+            "content": "HEIC 파일은 변환 실행 중 메모리에 보관되었다가 즉시 폐기됩니다. 보관, 계정, 이미지 콘텐츠 로깅 없음."
+          },
+          "fast": {
+            "title": "1초 미만의 변환",
+            "content": "일반적인 iPhone 사진(3024×4032, 1–3 MB HEIC)은 500ms 미만에 변환됩니다. Cloud Run은 급증에 대해 자동 확장됩니다."
+          },
+          "compatible": {
+            "title": "범용 출력",
+            "content": "표준 JPG는 Windows, Android, Linux, 웹 브라우저, 인화소, Office 앱 및 모든 소셜 플랫폼에서 열립니다."
+          },
+          "free": {
+            "title": "무료 & 무제한 계층",
+            "content": "세션당 3회의 무료 변환, 가입 필요 없음. 동일한 엔진을 우리의 API를 통해 자동화 및 더 높은 볼륨을 위해 사용할 수 있습니다."
+          },
+          "noSignup": {
+            "title": "설치 없음, 가입 없음",
+            "content": "브라우저와 변환기 서비스에서 완전히 실행됩니다. 데스크톱 앱, 브라우저 확장, 계정 불필요."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "windows": {
+            "title": "Windows 사용자에게 사진 전송",
+            "content": "HEIC 코덱이 없는 Windows 10/11 사용자에게 첨부하기 전에 변환하면 JPG를 즉시 열 수 있습니다."
+          },
+          "social": {
+            "title": "소셜 미디어에 업로드",
+            "content": "일부 플랫폼은 여전히 HEIC를 자동으로 거부하거나 메타데이터를 제거합니다. JPG는 모든 서비스에 깔끔하게 업로드되고 예측 가능한 결과를 제공합니다."
+          },
+          "email": {
+            "title": "직장 이메일에 첨부",
+            "content": "기업 이메일 및 웹메일은 종종 JPG를 인라인으로 표시하지만 HEIC를 손상된 첨부 파일로 남겨둡니다. JPG는 사진이 표시되도록 합니다."
+          },
+          "editing": {
+            "title": "레거시 도구에서 편집",
+            "content": "구형 Photoshop, MS Office 및 무료 편집기는 종종 HEIC 지원이 없습니다. JPG는 설치 없이 어디서나 열립니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whatIsHeic": {
+            "q": "HEIC 파일이 정확히 무엇입니까?",
+            "a": "HEIC는 HEVC(H.265) 내에 인코딩된 이미지에 대한 Apple의 브랜드명입니다. iOS 11 이후 iPhone은 같은 품질의 JPG 대비 파일 크기를 절반으로 줄이기 때문에 기본적으로 사용합니다."
+          },
+          "quality": {
+            "q": "변환 중 품질이 떨어집니까?",
+            "a": "JPG는 손실 형식이므로 일부 재인코딩 손실은 피할 수 없습니다. 품질 90 이상에서는 화면에서 손실이 거의 보이지 않으며 80에서는 미세한 세부 사항의 약간의 부드러움이 보일 수 있습니다."
+          },
+          "metadata": {
+            "q": "EXIF 메타데이터가 보존됩니까?",
+            "a": "올바른 회전을 픽셀에 적용하여 이미지를 다시 작성하므로 사진이 항상 올바른 방향으로 표시됩니다. 다른 EXIF 태그(날짜, 카메라 모델, GPS)는 이 도구의 출력 JPG에 복사되지 않습니다. EXIF 보존 변환의 경우 API를 사용하세요."
+          },
+          "batchSize": {
+            "q": "한 번에 여러 HEIC 파일을 변환할 수 있습니까?",
+            "a": "이 웹 도구는 단순성과 안전을 위해 한 번에 한 파일을 처리합니다. 배치 처리의 경우 우리의 API 엔드포인트를 사용하세요. 수천 개의 변환을 병렬로 스크립트할 수 있습니다."
+          },
+          "privacy": {
+            "q": "내 사진이 클라우드에 업로드되나요?",
+            "a": "HEIC는 디코딩, 재인코딩 및 반환되는 우리의 Cloud Run 변환기로 이동합니다. 모두 메모리에 있습니다. 디스크에 기록되지 않으며, 기록되지 않으며, 응답 후 보관되지 않습니다."
+          },
+          "free": {
+            "q": "비용이 드나요?",
+            "a": "웹 도구는 일상적인 사용으로 무료입니다(세션당 3회 변환). 더 높은 볼륨 또는 API 통합의 경우 우리의 RapidAPI 목록에는 관대한 무료 계층과 종량제 요금 계획이 있습니다."
+          }
+        }
+      }
+    }
+  },
+  "heicToPng": {
+    "title": "무료 온라인 HEIC to PNG 변환기",
+    "subtitle": "iPhone HEIC 사진을 손실 없는 PNG로 변환 - 편집, 아카이브 및 투명도 인식 워크플로우에 완벽합니다.",
+    "upload": {
+      "title": "여기에 HEIC 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .heic 또는 .heif",
+      "accept": ".heic 또는 .heif 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "PNG로 변환",
+    "options": {},
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 PNG",
+      "info": "{width} × {height} px • {size}",
+      "download": "PNG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "HEIC to PNG 변환 API 사용",
+        "content": "자산 파이프라인에서 HEIC to PNG 변환을 자동화하세요. RapidAPI의 /heic 엔드포인트는 source_format=heic 및 target_format=png를 사용하여 multipart POST를 수락하고 편집 워크플로우, CDN 수집 또는 아카이브 저장소에 준비된 손실 없는 PNG를 반환합니다.",
+        "content2": "PNG 전용 입력이 필요한 사진 편집 앱, iPhone 업로드를 정규화하는 백엔드 서비스, 다운스트림 이미지 편집기를 위해 사진을 사전 처리하는 자동화된 워크플로우에 적합합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Multipart 파일 업로드, 최대 50 MB",
+          "params": "source_format, target_format — PNG에는 품질이 필요하지 않음",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "HEIC / HEIF 입력; 손실 없는 PNG 출력",
+          "response": "소스 해상도에서 image/png 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "HEIC란 무엇이고 PNG로 변환해야 하는 이유는?",
+        "content": "HEIC는 iOS 11 이후 기본 iPhone 사진 형식입니다. Apple 기기 외부에서는 지원이 부족합니다. PNG(Portable Network Graphics)는 플러그인 없이 모든 편집기, 모든 브라우저, 모든 운영 체제에서 지원되는 범용 손실 없는 이미지 형식입니다.",
+        "content2": "HEIC를 PNG로 변환하면 캡처된 모든 픽셀이 정확히 유지됩니다. 압축 아티팩트 없음, 품질 슬라이더 없음, 향후 편집 중 추가 저하 없음. 이는 레터칭, 색상 등급 지정, 합성 또는 이미지 업스케일링을 계획할 때 중요합니다.",
+        "content3": "우리의 도구는 libheif를 통해 HEIC를 디코딩하고 libvips를 사용하여 PNG로 재인코딩하며 전체 이미지 해상도 및 사용 가능한 알파 채널을 보존합니다. 변환은 몇 초 내에 서버 측에서 발생하며 0% 보관입니다."
+      },
+      "whyConvert": {
+        "title": "PNG를 JPG 대신 사용해야 할 때는?",
+        "content": "**손실 없는** 품질이 필요할 때 PNG를 선택하세요 - 일반적으로 이미지 편집, 아카이브, 스크린샷, UI 그래픽 또는 나중에 이미지를 재인코딩할 모든 워크플로우에 해당합니다. JPG를 반복적으로 저장하면 매번 품질이 저하됩니다. PNG는 그렇지 않습니다.",
+        "content2": "또한 소스에 투명도가 있을 때(예: iPhone Portrait Mode 깊이 마스크) PNG를 선호하세요. JPG에는 알파 채널이 없으므로 투명 영역을 흰색 배경으로 평탄화합니다."
+      },
+      "howTo": {
+        "title": "HEIC를 PNG로 변환하는 방법",
+        "step1": {
+          "title": "1. HEIC 파일 업로드",
+          "content": "드래그 앤 드롭 또는 클릭하여 선택합니다. 50 MB까지의 파일을 허용합니다. 기기에서 형식 변환 없음 - 원본 바이트가 서버로 전송됩니다."
+        },
+        "step2": {
+          "title": "2. 변환 클릭",
+          "content": "서버가 HEIC를 디코딩하고 알파 채널을 보존한 후 전체 네이티브 해상도에서 PNG를 내보냅니다. 품질 설정이 없습니다. PNG는 항상 손실 없습니다."
+        },
+        "step3": {
+          "title": "3. 미리 보기 검토",
+          "content": "변환된 PNG는 치수 및 파일 크기와 함께 나타납니다. PNG는 일반적으로 원본 HEIC보다 3–5배 크다. 이는 압축되지 않은 픽셀 데이터이기 때문입니다."
+        },
+        "step4": {
+          "title": "4. 다운로드 및 사용",
+          "content": "다운로드 버튼을 클릭하여 저장하세요. PNG는 Photoshop, GIMP, Affinity, Figma 또는 표준 PNG를 여는 다른 도구에서 편집할 준비가 되어 있습니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "lossless": {
+            "title": "완전히 손실 없음",
+            "content": "품질 손실 없음 - HEIC의 모든 픽셀이 PNG 출력에 정확히 보존됩니다."
+          },
+          "privacy": {
+            "title": "서버는 파일을 저장하지 않습니다",
+            "content": "사진은 메모리에서 처리되고 즉시 폐기됩니다. 보관 없음, 로깅 없음, 계정 필요 없음."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "일반적인 3024×4032 iPhone 사진은 Cloud Run 서비스에서 약 800ms가 소요됩니다."
+          },
+          "compatible": {
+            "title": "범용 PNG",
+            "content": "모든 브라우저, 모든 OS, 모든 이미지 편집기에서 열립니다. 어디서든 코덱 설치가 필요하지 않습니다."
+          },
+          "free": {
+            "title": "일상적인 사용은 무료입니다",
+            "content": "계정 없이 세션당 3회의 무료 변환. 더 높은 볼륨의 경우 API를 사용하세요."
+          },
+          "noSignup": {
+            "title": "설치 없음, 가입 없음",
+            "content": "100% 브라우저 기반 - Mac 전용 유틸리티, 확장, 계정 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "editing": {
+            "title": "사진 편집 파이프라인",
+            "content": "HEIC를 PNG로 Photoshop, Affinity Photo 또는 GIMP로 가져와 HEIC 플러그인 지원을 걱정하지 않고 레터칭하세요."
+          },
+          "archival": {
+            "title": "아카이브 저장소",
+            "content": "PNG의 손실 없는 압축으로 인해 향후 재편집할 수 있는 사진을 보존하는 데 이상적입니다."
+          },
+          "design": {
+            "title": "디자인 워크플로우",
+            "content": "PNG 참조를 Figma, Sketch 또는 Adobe XD에 드롭하세요. 모두 PNG를 기본으로 허용하며 모두 HEIC를 지원하지는 않습니다."
+          },
+          "documentation": {
+            "title": "스크린샷 & UI 캡처",
+            "content": "HEIC가 실제로 스크린샷일 때(네, iPhone 스크린샷은 HEIC일 수 있음) PNG 출력은 날카로운 텍스트와 UI 모서리를 완벽하게 보존합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyPng": {
+            "q": "JPG 대신 PNG로 변환하는 이유는?",
+            "a": "PNG는 손실 없습니다. 모든 픽셀이 정확히 보존됩니다. JPG는 손실이므로 각 저장이 압축 아티팩트를 도입합니다. 이미지를 재편집할 때 PNG를 사용하세요. 최종 배포를 위해 JPG를 사용하세요."
+          },
+          "fileSize": {
+            "q": "PNG 파일이 HEIC보다 훨씬 큰 이유는?",
+            "a": "HEIC는 HEVC 비디오 스타일 압축을 사용하여 10–20배 더 작은 파일을 달성합니다. PNG는 덜 공격적인 손실 없는 DEFLATE 압축을 사용합니다. 일반적인 사진의 경우 PNG가 HEIC보다 3–5배 더 클 것으로 예상하세요."
+          },
+          "quality": {
+            "q": "JPG보다 더 나은 품질을 얻을 수 있습니까?",
+            "a": "PNG는 모든 픽셀을 완벽하게 보존합니다. 아티팩트 없음, 절대 안 됨. 아카이브, 편집 소스 또는 투명도 이미지의 경우 PNG 품질이 모든 JPG보다 엄격하게 더 좋습니다."
+          },
+          "privacy": {
+            "q": "내 사진이 외부 서버에 업로드되나요?",
+            "a": "HEIC는 우리의 Cloud Run 변환기로 전송되어 메모리에서 처리되고 응답이 반환됩니다. 아무것도 보관되지 않으며, 기록되지 않으며, 계정이 필요하지 않습니다."
+          },
+          "maxSize": {
+            "q": "크기 제한은 무엇입니까?",
+            "a": "50 MB 업로드 크기, ~89 메가픽셀 해상도. 표준 iPhone 사진(3024×4032, ~3 MB HEIC)은 제한 내입니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 - 세션당 3회의 무료 변환, 가입 없음. 우리의 RapidAPI 목록을 통한 더 높은 볼륨 및 자동화."
+          }
+        }
+      }
+    }
+  },
+  "pngToJpg": {
+    "title": "무료 온라인 PNG to JPG 변환기",
+    "subtitle": "PNG 이미지를 70–85%로 축소하여 JPG로 변환하세요. 조정 가능한 품질, 투명한 배경이 흰색으로 평탄화됩니다.",
+    "upload": {
+      "title": "여기에 PNG 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .png만",
+      "accept": ".png 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "JPG로 변환",
+    "options": {
+      "quality": "JPG 품질",
+      "qualityHint": "높을수록 파일은 커지지만 충실도는 더 높습니다. 85–92는 일반적으로 원본과 구별할 수 없습니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 JPG",
+      "info": "{width} × {height} px • {size}",
+      "download": "JPG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "PNG to JPG 변환 API 사용",
+        "content": "단일 HTTP 호출로 서버 측 PNG 업로드를 축소하세요. /png-to-jpg 엔드포인트는 투명도를 흰색으로 평탄화하고 선택한 품질로 재인코딩한 후 JPG를 스트리밍합니다. 클라이언트 측 이미지 디코딩, 파일 보관 없음.",
+        "content2": "일반적인 용도: 전자상거래 제품 이미지 수집, 이메일 첨부 정규화, 소셜 미디어 업로드 사전 처리, PNG 아카이브에서 공간 효율적인 JPG 배송으로의 대량 사진 마이그레이션.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /png-to-jpg: PNG → JPG",
+          "input": "Multipart PNG 업로드, 최대 50 MB",
+          "params": "quality (0–100), 기본값 90",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "PNG 입력; JPEG 출력",
+          "response": "흰색 평탄화 알파를 사용하는 image/jpeg 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "PNG to JPG 변환이란?",
+        "content": "PNG(Portable Network Graphics)는 픽셀을 손실 없이 저장합니다. 모든 단일 픽셀 값이 정확히 보존됩니다. JPG(JPEG)는 인간이 거의 눈치채지 못하는 정보를 버리는 지각적으로 조정된 손실 압축을 적용하는 대신 극적으로 더 작은 파일을 얻습니다.",
+        "content2": "PNG를 JPG로 변환하면 일반적으로 품질 90에서 사진 콘텐츠의 파일 크기가 70–85% 축소됩니다. 시각적 차이는 일반적으로 정상적인 보기 거리에서 거의 감지할 수 없습니다. 그러나 스크린샷, 일러스트레이션 및 평면 색상과 날카로운 모서리가 있는 다이어그램의 경우 JPG는 눈에 띄는 아티팩트를 도입할 수 있습니다. PNG가 더 나은 선택인 경우가 많습니다.",
+        "content3": "이 도구는 서버 측에서 실행됩니다. PNG를 업로드하면 서버는 알파 채널을 흰색 배경으로 평탄화하고(JPG에는 투명도가 없음) 선택한 품질로 재인코딩하고 JPG를 다시 스트리밍합니다. 워터마크, 가입, 파일 보관 없음."
+      },
+      "whyConvert": {
+        "title": "PNG를 JPG로 변환해야 할 때는?",
+        "content": "**파일 크기가 픽셀 완벽한 충실도보다 중요할 때** 변환하세요. 웹 페이지 썸네일, 이메일 첨부, 소셜 미디어 업로드 또는 원본이 안전하게 아카이브되어 있는 곳에 사진을 대량 저장합니다.",
+        "content2": "많은 텍스트, 다이어그램, 라인 아트가 있거나 실선 색상 사이에 단단한 모서리가 있는 스크린샷을 변환하지 마세요. JPG의 8×8 DCT 블록 압축은 이러한 전환을 명확하게 번지게 합니다. 이를 PNG로 유지하거나 웹P 손실 없는 것으로 변환하여 두 가지 장점을 모두 얻으세요."
+      },
+      "howTo": {
+        "title": "PNG를 JPG로 변환하는 방법",
+        "step1": {
+          "title": "1. PNG 업로드",
+          "content": "업로드 영역으로 드래그하거나 클릭하여 선택하세요. 최대 50 MB의 파일이 허용됩니다."
+        },
+        "step2": {
+          "title": "2. 품질 수준 선택",
+          "content": "기본값은 90입니다. 사진의 경우 85–92는 범용 최적값입니다. 간단한 이미지에 대한 최대 크기 절감을 위해 75–80을 시도하십시오."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버는 투명도를 흰색으로 평탄화하고 선택한 품질에서 JPEG 압축을 적용하고 JPG를 반환합니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "미리 보기 치수 및 파일 크기를 보고 다운로드하세요. 파일 이름은 새로운 `.jpg` 확장자를 사용하여 원본 기본값을 유지합니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "1에서 100까지의 미세한 제어 - 필요한 파일 크기 대 충실도의 트레이드오프를 정확하게 조정합니다."
+          },
+          "sizeReduction": {
+            "title": "70–85% 더 작음",
+            "content": "일반적인 사진 PNG 감소: 품질 90에서 4 MB PNG는 500 KB JPG가 되어 눈에 띄는 차이가 없습니다."
+          },
+          "privacy": {
+            "title": "메모리 전용",
+            "content": "PNG는 서버 측에서 처리되고 즉시 폐기됩니다. 보관, 로깅, 계정 없음."
+          },
+          "fast": {
+            "title": "1초 미만의 변환",
+            "content": "일반적인 웹 크기의 PNG의 경우 300ms 미만. 고해상도 사진의 경우 1초 미만."
+          },
+          "free": {
+            "title": "무료",
+            "content": "브라우저 세션당 3회의 무료 변환. 신용 카드, 가입 없음."
+          },
+          "noSignup": {
+            "title": "등록 없음",
+            "content": "지금 바로 변환을 시작하세요. 계정, 이메일 필요 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "웹 성능 최적화",
+            "content": "빠른 페이지 로드를 위해 큰 hero PNG를 JPG로 변환하세요. Core Web Vitals 및 느린 네트워크의 모바일 사용자에게 중요합니다."
+          },
+          "email": {
+            "title": "이메일 첨부",
+            "content": "많은 메일 서버는 첨부를 10–25 MB로 제한합니다. JPG 변환은 더 많은 사진을 제한 범위에 맞추는 데 도움이 됩니다."
+          },
+          "social": {
+            "title": "소셜 미디어 업로드",
+            "content": "플랫폼은 어차피 PNG를 JPG로 재인코딩합니다. 플랫폼이 하게 할 대신 먼저 변환하여 품질을 제어하세요."
+          },
+          "storage": {
+            "title": "대량 사진 저장소",
+            "content": "품질 88에서 PNG에서 JPG로 앨범을 변환하면 일반적으로 눈에 띄는 변화 없이 저장소 사용을 ~80%로 줄입니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "transparency": {
+            "q": "투명한 픽셀에는 어떻게 되나요?",
+            "a": "JPG에는 알파 채널이 없으므로 **흰색** 배경으로 평탄화됩니다. 투명도가 필요하면 대신 WebP(손실 또는 손실 없음)로 변환하세요."
+          },
+          "quality": {
+            "q": "어떤 품질을 선택해야 합니까?",
+            "a": "90은 사진의 안전한 기본값입니다. 원본과 거의 구별할 수 없습니다. 80은 약간의 절감 효과가 있으며 약간의 소프트닝 효과가 있습니다. 75 미만에서는 고화질 이미지에서 아티팩트가 눈에 띄게 됩니다."
+          },
+          "sizeSavings": {
+            "q": "JPG는 얼마나 더 작을 것입니까?",
+            "a": "품질 90에서 일반적인 24비트 RGB 사진 PNG의 경우 70–85% 크기 축소를 예상하세요. 스크린샷 또는 간단한 그래픽의 경우 절감액이 더 작을 수 있고 아티팩트가 더 눈에 띌 수 있습니다."
+          },
+          "reversible": {
+            "q": "손실 없이 PNG로 다시 변환할 수 있습니까?",
+            "a": "아니요. JPG 압축은 정보를 영구적으로 버립니다. JPG를 PNG로 다시 변환하면 JPG 아티팩트가 구워진 PNG가 생성됩니다. 재편집이 필요하면 원본 PNG를 보관하세요."
+          },
+          "privacy": {
+            "q": "내 PNG가 어디든 저장되나요?",
+            "a": "아니요. 변환 중에 서버 메모리에 보관되고 응답 시 폐기됩니다. 기록되거나 계정이 필요하지 않습니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 - 세션당 3회의 무료 변환. 우리의 RapidAPI 목록은 유료 계층에 대해 무제한 사용을 지원합니다."
+          }
+        }
+      }
+    }
+  },
+  "jpgToPng": {
+    "title": "무료 온라인 JPG to PNG 변환기",
+    "subtitle": "JPG 이미지를 손실 없는 PNG 형식으로 변환하여 알파 채널 지원으로 편집할 준비가 됩니다.",
+    "upload": {
+      "title": "여기에 JPG 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .jpg 또는 .jpeg",
+      "accept": ".jpg 또는 .jpeg 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "PNG로 변환",
+    "options": {},
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 PNG",
+      "info": "{width} × {height} px • {size}",
+      "download": "PNG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "JPG to PNG 변환 API 사용",
+        "content": "JPG를 프로그래밍 방식으로 손실 없는 PNG로 재인코딩합니다. /jpg-to-png 엔드포인트는 multipart JPG 업로드를 가져와 전체 해상도 PNG를 반환합니다. 품질 매개변수 없음. 편집 준비 자산의 깔끔한 형식 스왑입니다.",
+        "content2": "JPG를 PNG 전용 편집기에 공급하는 파이프라인, 다운스트림 합성을 위해 알파 기능 형식이 필요한 서비스 또는 디자인 도구를 위해 자산을 준비하는 자동화된 워크플로우에 적합합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /jpg-to-png: JPG → PNG",
+          "input": "Multipart JPG 업로드, 최대 50 MB",
+          "params": "구성 가능한 매개변수 없음 - 항상 손실 없음",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "JPG / JPEG 입력; 손실 없는 PNG 출력",
+          "response": "소스 해상도에서 image/png 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "JPG to PNG 변환이란?",
+        "content": "JPG to PNG 변환은 JPG 이미지를 손실 없는 PNG로 재저장합니다. JPG에서 보는 픽셀이 PNG에서 정확한 픽셀 값이 됩니다. 추가 압축, 추가 아티팩트, 추가 생성 손실 없음.",
+        "content2": "변환이 할 수 없는 것을 이해하는 것이 중요합니다. 이미지가 원래 JPG 인코딩될 때 손실된 품질은 복원되지 않습니다. 블록 경계, 텍스트 주위의 울림, 색상 밴딩은 PNG에서 계속 보입니다. 변환은 단순히 현재 상태를 손실 없이 \"고정\"하므로 향후 편집이 손상을 복합하지 않습니다.",
+        "content3": "이 도구는 JPG를 변환기로 업로드하고 디코딩하고 동일한 해상도에서 PNG를 내보냅니다. PNG는 항상 손실 없으므로 품질 슬라이더가 필요하지 않습니다. 투명도는 PNG를 사용하면 나중에 편집기에서 추가할 수 있습니다."
+      },
+      "whyConvert": {
+        "title": "JPG를 PNG로 변환해야 할 때는?",
+        "content": "여러 번 저장할 워크플로우에서 JPG를 편집하기 전에 변환하세요. JPG를 다시 저장할 때마다 새 압축 아티팩트가 추가됩니다. 파일을 PNG로 유지하면 편집 중 이 누적된 품질 손실을 방지합니다.",
+        "content2": "또한 투명도를 추가해야 할 때(로고 오버레이, 컷아웃, 합성) 또는 다운스트림 도구에 PNG 입력이 필요할 때 변환하세요. 많은 인쇄 파이프라인, 슬라이드 덱 및 레거시 디자인 도구는 PNG를 선호하거나 요구합니다."
+      },
+      "howTo": {
+        "title": "JPG를 PNG로 변환하는 방법",
+        "step1": {
+          "title": "1. JPG 업로드",
+          "content": "업로드 영역으로 드래그하거나 클릭하여 파일 선택기를 열세요. .jpg 및 .jpeg 확장자가 허용되며 최대 50 MB입니다."
+        },
+        "step2": {
+          "title": "2. 변환 클릭",
+          "content": "구성할 옵션이 없습니다. PNG는 기본적으로 손실 없습니다. 서버는 JPG의 픽셀을 전체 네이티브 해상도에서 PNG로 재인코딩합니다."
+        },
+        "step3": {
+          "title": "3. 미리 보기 검토",
+          "content": "결과를 검사합니다. 치수 및 파일 크기가 표시됩니다. PNG 파일은 일반적으로 사진의 소스 JPG보다 3–10배 더 큽니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "PNG를 컴퓨터에 저장하세요. 이제 세대별 품질 손실 없이 반복 편집에 안전합니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "lossless": {
+            "title": "완전히 손실 없는 출력",
+            "content": "변환으로 도입된 품질 손실 없음 - PNG는 JPG의 현재 픽셀과 정확히 일치합니다."
+          },
+          "alpha": {
+            "title": "투명도 준비",
+            "content": "PNG에 있으면 모든 이미지 편집기에서 알파 채널 투명도를 추가할 수 있습니다. JPG의 순수 RGB 형식으로는 불가능합니다."
+          },
+          "privacy": {
+            "title": "0 파일 보관",
+            "content": "JPG는 메모리에서 처리되고 응답 전송 후 즉시 폐기됩니다."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "일반적인 웹 크기 JPG의 경우 500ms 미만. 대부분의 iPhone 사진은 1초 미만에 완료됩니다."
+          },
+          "free": {
+            "title": "일상적인 사용은 무료입니다",
+            "content": "세션당 3회의 무료 변환, 계정 필요 없음."
+          },
+          "noSignup": {
+            "title": "즉시 시작",
+            "content": "가입, 이메일 확인, 설치 없음 - JPG를 드롭하고 변환하세요."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "editing": {
+            "title": "다단계 사진 편집",
+            "content": "JPG 압축 아티팩트가 각 저장 주기와 함께 복합되는 것을 방지하려면 편집을 PNG로 저장하세요."
+          },
+          "design": {
+            "title": "디자인 워크플로우",
+            "content": "대부분의 디자인 도구(Figma, Sketch, Photoshop)는 PNG를 1급 시민으로 처리합니다. JPG를 PNG로 가져와 깔끔하게 통합하세요."
+          },
+          "transparency": {
+            "title": "컷아웃 준비",
+            "content": "먼저 PNG로 변환한 후 편집기 선택에서 배경을 자르거나 알파 채널을 추가합니다."
+          },
+          "archival": {
+            "title": "보존 사본",
+            "content": "건드리지 않은 PNG를 보관 마스터로 유지합니다. 각 배송에 대해 JPG에서 내보내는 대신 JPG 자체에서 반복하세요."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "qualityGain": {
+            "q": "JPG를 PNG로 변환하면 품질이 개선되나요?",
+            "a": "아니요. PNG는 JPG에 있는 모든 품질을 보존합니다. JPG 압축 중에 손실된 정보는 복원할 수 없습니다. PNG는 JPG의 현재 픽셀의 손실 없는 스냅샷입니다."
+          },
+          "fileSize": {
+            "q": "PNG가 훨씬 큰 이유는?",
+            "a": "PNG는 손실 없는 DEFLATE 압축을 사용합니다. JPG는 인간의 시각을 위해 조정된 공격적인 손실 압축을 사용합니다. 사진은 일반적으로 JPG에서 PNG로 변환할 때 3–10배로 팽창합니다."
+          },
+          "transparency": {
+            "q": "내 PNG에 투명도가 있을까요?",
+            "a": "아니요 자동으로. JPG에는 알파 채널이 없으므로 출력 PNG는 완전히 불투명합니다. 나중에 이미지 편집기에서 투명도를 추가할 수 있습니다."
+          },
+          "privacy": {
+            "q": "내 파일이 제3자에게 업로드되나요?",
+            "a": "JPG는 우리의 Cloud Run 서비스로 이동하며 메모리에서 처리되고 응답이 반환됩니다. 제3자 저장소, 보관, 이미지 콘텐츠 로깅 없음."
+          },
+          "maxSize": {
+            "q": "최대 파일 크기는?",
+            "a": "50 MB 업로드, ~89 메가픽셀 해상도. 현대 카메라 또는 휴대폰이 생산할 수 있는 모든 사진에 적합합니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 - 세션당 3회의 무료 변환. 자동화 및 대량 사용을 위한 우리의 API."
+          }
+        }
+      }
+    }
+  },
+  "pngToWebp": {
+    "title": "무료 온라인 PNG to WebP 변환기",
+    "subtitle": "PNG 파일을 50–80%로 축소하여 WebP로 변환하세요. 완전한 투명도 지원이 있는 최신 웹 이미지 형식입니다.",
+    "upload": {
+      "title": "여기에 PNG 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .png만",
+      "accept": ".png 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "WebP로 변환",
+    "options": {
+      "quality": "WebP 품질",
+      "qualityHint": "손실 없음이 활성화되면 무시됩니다. 75–85는 대부분의 웹 이미지에 강한 균형입니다.",
+      "lossless": "손실 없는 인코딩",
+      "losslessHint": "완벽한 픽셀 보존 - 일반적으로 PNG보다 20–40% 더 작으며 손실 WebP의 50–80% 더 작습니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 WebP",
+      "info": "{width} × {height} px • {size}",
+      "download": "WebP 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "PNG to WebP 변환 API 사용",
+        "content": "CDN 또는 빌드 파이프라인에 대한 WebP 생성을 자동화합니다. /webp 엔드포인트는 입력 방향을 자동 감지합니다. PNG를 보내고 WebP를 수신하여 선택적으로 품질을 조정하거나 픽셀 완벽한 출력을 위해 손실 없음을 활성화합니다.",
+        "content2": "정적 사이트 생성기의 이미지 빌드 단계, SaaS 앱의 업로드 변환, Core Web Vitals 친화적인 이미지 변형을 대규모로 생성하는 대량 CDN 사전 처리에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /webp: 모든 → WebP (자동 감지 방향)",
+          "input": "Multipart PNG 업로드, 최대 50 MB",
+          "params": "quality (0–100), lossless (bool)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "PNG / JPG 입력; 알파를 사용한 WebP 출력",
+          "response": "image/webp 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "WebP란 무엇이고 PNG에서 변환하는 이유는?",
+        "content": "WebP는 Google이 개발한 이미지 형식으로 JPG, PNG 및 GIF의 최고 기능을 결합합니다. 손실 및 손실 없는 압축, 완전한 알파 투명도를 지원하며 동일한 인지된 품질에서 PNG보다 극적으로 더 작은 파일을 생성합니다.",
+        "content2": "실제 결과: 2 MB PNG hero 배너는 일반적으로 손실 모드에서 300–500 KB WebP(75–85% 감소)가 되거나 손실 없음 모드에서 1.2–1.6 MB WebP(20–40% 감소)가 됩니다. 둘 다 소스에 있는 경우 완전한 투명도를 보존합니다.",
+        "content3": "브라우저 지원은 항상 녹색 브라우저(Chrome, Edge, Firefox, Safari 14+ 및 Opera) 사이에서 범용입니다. 레거시 폴백의 경우 PNG 소스를 백업으로 사용하여 `picture`를 사용합니다."
+      },
+      "whyWebp": {
+        "title": "웹 이미지에 WebP를 사용하는 이유는?",
+        "content": "Google의 Core Web Vitals은 이미지 크기(특히 **Largest Contentful Paint(LCP)** 메트릭)를 많이 가중치 부여합니다. PNG hero 이미지를 WebP로 교체하면 종종 `img src` 속성을 넘어서는 코드 변경 없이 즉시 LCP 부스트를 제공합니다.",
+        "content2": "WebP는 또한 CDN 또는 호스팅 청구서의 대역폭 비용을 줄이고 느린 네트워크에서 모바일 페이지 로드 속도를 높이며 데이터 한정 요금제의 사용자에게 더 나은 환경을 제공합니다. SaaS 대시보드, 전자상거래 제품 목록 및 콘텐츠 집약적인 마케팅 페이지의 경우 업그레이드는 거의 항상 가치가 있습니다."
+      },
+      "howTo": {
+        "title": "PNG를 WebP로 변환하는 방법",
+        "step1": {
+          "title": "1. PNG 업로드",
+          "content": "드래그하거나 클릭하여 선택합니다. 최대 50 MB의 파일이 허용됩니다."
+        },
+        "step2": {
+          "title": "2. 손실 또는 손실 없음 선택",
+          "content": "사진 및 복잡한 이미지에 대한 최대 크기 축소를 위해 손실 없음을 해제합니다. 아이콘, UI 그래픽 및 픽셀 충실도가 크기보다 중요한 모든 이미지에 대해 손실 없음을 켜세요."
+        },
+        "step3": {
+          "title": "3. 품질 선택(손실만)",
+          "content": "기본값은 80입니다. 더 높은 값은 더 큰, 더 나은 품질의 파일을 생성합니다. 더 낮은 값은 일부 시각적 비용으로 더 많은 대역폭을 절약합니다. 75–85는 대부분의 웹 이미지에 최적입니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "WebP 파일이 준비되었습니다. 사이트의 `img` 태그(또는 레거시 폴백을 위해 `picture` 요소)에 드롭하세요."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "50–80% 더 작은 파일",
+            "content": "소스 PNG 대비 극적인 크기 절감, 권장 설정에서 눈에 띄는 품질 손실 없음."
+          },
+          "lossless": {
+            "title": "손실 없음 모드 사용 가능",
+            "content": "필요할 때 완벽한 픽셀 보존 - 소스 PNG보다 20–40% 더 작습니다."
+          },
+          "alpha": {
+            "title": "완전한 투명도",
+            "content": "알파 채널은 손실 및 손실 없는 모드에서 보존됩니다. PNG의 실제 교체입니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "PNG는 메모리에서 처리되고 응답 후 폐기됩니다. 로깅, 계정 없음."
+          },
+          "fast": {
+            "title": "1초 미만의 변환",
+            "content": "일반적인 웹 크기의 PNG는 우리의 서비스에서 300ms 미만으로 변환됩니다."
+          },
+          "free": {
+            "title": "일상적인 사용은 무료입니다",
+            "content": "세션당 3회의 무료 변환, 가입 없음. 더 높은 볼륨을 위해 API를 사용할 수 있습니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "웹 성능 & SEO",
+            "content": "더 작은 이미지는 더 빠른 페이지, 더 나은 Core Web Vitals 및 개선된 SEO 순위를 의미합니다. 특히 모바일에서."
+          },
+          "mobile": {
+            "title": "모바일 앱 & PWA",
+            "content": "WebP는 Android WebViews 및 PWA에서 기본으로 지원됩니다. 가벼운 번들, 더 빠른 로드, 더 부드러운 UX."
+          },
+          "ecommerce": {
+            "title": "전자상거래 제품 이미지",
+            "content": "제품 카탈로그를 WebP로 변환하여 더 빠른 목록 페이지와 대규모 더 작은 CDN 청구서를 제공합니다."
+          },
+          "cms": {
+            "title": "콘텐츠 관리 시스템",
+            "content": "대부분의 현대 CMS 플랫폼(WordPress, Ghost, Strapi, Contentful)은 이제 WebP를 자동으로 제공합니다. 하지만 WebP 소스를 공급할 경우에만."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "browserSupport": {
+            "q": "어떤 브라우저가 WebP를 지원합니까?",
+            "a": "모든 항상 녹색 브라우저: Chrome, Edge, Firefox, Opera, Safari 14+. 더 오래된 Safari 및 IE의 경우 PNG 폴백과 함께 `picture` 요소를 사용합니다."
+          },
+          "lossless": {
+            "q": "손실 없는 대 손실 - 어느 것을 사용해야 합니까?",
+            "a": "크기가 가장 중요한 사진 및 복잡한 이미지의 경우 손실입니다. 아이콘, UI 그래픽, 텍스트가 있는 스크린샷 또는 추가로 편집할 수 있는 모든 이미지의 경우 손실 없음."
+          },
+          "sizeSavings": {
+            "q": "WebP는 얼마나 더 작을 것입니까?",
+            "a": "손실 WebP: 일반적인 사진의 경우 PNG보다 50–80% 더 작습니다. 손실 없음 WebP: 20–40% 더 작습니다. 결과는 이미지 콘텐츠에 따라 다릅니다."
+          },
+          "transparency": {
+            "q": "WebP가 알파 투명도를 지원합니까?",
+            "a": "네 - 손실 및 손실 없는 WebP 모두 완전한 알파 채널을 지원합니다. PNG의 직접 교체입니다."
+          },
+          "privacy": {
+            "q": "내 PNG가 어디든 저장되나요?",
+            "a": "아니요. 변환 중에만 메모리에서 보관됩니다. 디스크에 파일이 작성되지 않으며, 콘텐츠가 기록되지 않으며, 계정이 필요하지 않습니다."
+          },
+          "free": {
+            "q": "이것이 무료인가요?",
+            "a": "네 - 세션당 3회의 무료 변환. 무제한 사용을 위해 유료 계층 및 API 액세스는 RapidAPI를 통해 가능합니다."
+          }
+        }
+      }
+    }
+  },
+  "webpToPng": {
+    "title": "무료 온라인 WebP to PNG 변환기",
+    "subtitle": "WebP 이미지를 범용 호환 PNG 형식으로 다시 변환합니다. 손실 없으며 투명도가 보존됩니다.",
+    "upload": {
+      "title": "여기에 WebP 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .webp만",
+      "accept": ".webp 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "PNG로 변환",
+    "options": {},
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 PNG",
+      "info": "{width} × {height} px • {size}",
+      "download": "PNG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "WebP to PNG 변환 API 사용",
+        "content": "레거시 호환성을 위해 WebP를 서버 측에서 PNG로 디코딩합니다. /webp 엔드포인트는 WebP 방향을 자동으로 감지합니다. target_format=png를 제공하면 API는 소스의 네이티브 해상도로 디코딩된 손실 없는 PNG를 반환합니다.",
+        "content2": "구형 브라우저에 PNG 폴백을 제공해야 하는 서비스, PNG 입력이 필요한 인쇄 프로덕션 파이프라인, WebP를 범용 형식으로 정규화하는 자산 관리 시스템에 유용합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /webp: WebP → PNG / JPG (target_format 사용)",
+          "input": "Multipart WebP 업로드, 최대 50 MB",
+          "params": "target_format=png (WebP 입력일 때 필수)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "WebP 입력; 손실 없는 PNG 출력",
+          "response": "알파 보존이 포함된 Binary image/png 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "WebP to PNG 변환이란?",
+        "content": "WebP to PNG 변환은 WebP 이미지를 디코딩하고 손실 없는 PNG로 재인코딩합니다. WebP의 현재 픽셀 상태는 PNG에서 정확히 보존됩니다. 추가 압축, 추가 품질 손실 없음.",
+        "content2": "이는 형식을 지원하지 않는 도구에서 WebP를 열어야 할 때, 구형 기기의 사용자와 공유하거나 PNG가 필요한 워크플로우에 통합할 때 유용합니다. 레거시 인쇄 소프트웨어, 구형 Microsoft Office 버전 및 많은 임베드 시스템이 이 범주에 해당합니다.",
+        "content3": "우리의 도구는 libvips를 통해 서버 측에서 변환을 실행하여 알파 채널 및 색상 프로필을 보존합니다. 출력은 항상 전체 WebP 소스 해상도에 있으며 사용할 준비가 된 PNG 파일로 배달됩니다."
+      },
+      "whyConvert": {
+        "title": "WebP를 PNG로 변환해야 할 때는?",
+        "content": "대상에서 WebP를 읽을 수 없을 때 변환하세요. 일반적인 경우: 구형 Photoshop 버전, Microsoft PowerPoint 365 이전, 레거시 RIP 소프트웨어를 사용하는 인쇄소, 아직 따라잡지 못한 제3자 도구 또는 고대 이미지 라이브러리에 의존하는 Windows 응용 프로그램.",
+        "content2": "또한 여러 번 저장할 파이프라인에서 WebP를 편집해야 할 때 변환하세요. PNG와 마찬가지로 생성별 품질 손실을 방지합니다(손실 WebP의 경우 초기 디코딩이 무엇인지이지만 PNG로의 추가 저장은 더 이상 저하되지 않습니다)."
+      },
+      "howTo": {
+        "title": "WebP를 PNG로 변환하는 방법",
+        "step1": {
+          "title": "1. WebP 업로드",
+          "content": "드래그 앤 드롭 또는 클릭하여 파일 선택기를 열세요. 50 MB까지의 `.webp`를 허용합니다. 손실 또는 손실 없는 소스, 정지 또는 애니메이션(첫 번째 프레임 사용)."
+        },
+        "step2": {
+          "title": "2. 변환 클릭",
+          "content": "옵션이 필요하지 않습니다. PNG는 항상 손실 없습니다. 서버는 WebP를 디코딩하고 소스의 네이티브 치수에서 PNG로 재발급합니다."
+        },
+        "step3": {
+          "title": "3. 미리 보기 확인",
+          "content": "PNG는 치수 및 크기와 함께 나타납니다. PNG가 소스 WebP보다 2–4배 더 클 것으로 예상하세요."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "PNG를 저장하세요. 이제 WebP를 이해하지 않는 레거시 도구를 포함하여 모든 응용 프로그램에서 열 수 있습니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "lossless": {
+            "title": "손실 없는 출력",
+            "content": "추가 품질 손실 없음 - PNG는 WebP의 정확히 디코딩된 픽셀을 캡처합니다."
+          },
+          "alpha": {
+            "title": "투명도 보존",
+            "content": "전체 알파 채널은 WebP에서 PNG로 변경되지 않으며 투명한 로고, 아이콘 및 UI 자산에 전달됩니다."
+          },
+          "compatibility": {
+            "title": "범용 호환성",
+            "content": "PNG는 모든 브라우저, OS, 편집기, 인쇄 도구 및 문서 형식에서 열립니다. 예외 없음."
+          },
+          "privacy": {
+            "title": "보관 없음",
+            "content": "WebP는 메모리에서 처리되고 즉시 폐기됩니다. 로깅, 계정 없음."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "일반적인 웹 크기 WebP의 경우 500ms 미만. 대부분의 이미지의 경우 1초 미만."
+          },
+          "free": {
+            "title": "무료 & 무제한",
+            "content": "세션당 3회의 무료 변환. 더 높은 볼륨을 위한 API."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "editing": {
+            "title": "레거시 도구에서 편집",
+            "content": "Photoshop, Illustrator 및 GIMP의 구형 버전은 WebP 지원이 없습니다. 호환성을 위해 먼저 PNG로 변환하세요."
+          },
+          "legacy": {
+            "title": "레거시 Windows 앱",
+            "content": "Paint, 많은 IDE 미리 보기 도구 및 오래된 유틸리티는 여전히 WebP를 읽을 수 없습니다. PNG는 당신을 차단 해제합니다."
+          },
+          "printing": {
+            "title": "인쇄 프로덕션",
+            "content": "일부 인쇄 RIP는 WebP를 지원하지 않습니다. 인쇄소에 안전하게 제출하기 위해 PNG로 변환하세요."
+          },
+          "design": {
+            "title": "디자인 도구 가져오기",
+            "content": "PNG를 Figma, Sketch 또는 Adobe XD로 드롭하여 디자인 파이프라인 전체에서 일관된 동작을 수행하세요."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyConvert": {
+            "q": "WebP를 PNG로 다시 변환하는 이유는?",
+            "a": "대상이 WebP를 지원하지 않을 때. 많은 레거시 도구, 인쇄 파이프라인 및 구형 운영 체제는 PNG만 허용합니다."
+          },
+          "qualityLoss": {
+            "q": "품질이 손실되나요?",
+            "a": "아니요. PNG는 손실 없습니다. WebP의 현재 픽셀을 정확히 캡처합니다. 소스 WebP가 손실이었다면 PNG는 해당 상태를 반영하지만 더 많은 아티팩트는 추가하지 않습니다."
+          },
+          "fileSize": {
+            "q": "PNG가 왜 더 큽니까?",
+            "a": "WebP는 공격적인 압축을 사용합니다. PNG는 손실 없는 DEFLATE를 사용합니다. 소스 WebP보다 PNG가 2–4배 더 클 것으로 예상하세요."
+          },
+          "transparency": {
+            "q": "투명도가 보존되나요?",
+            "a": "네 - 완전한 알파 채널이 WebP에서 PNG로 변경되지 않습니다."
+          },
+          "privacy": {
+            "q": "내 파일이 서버에 저장되나요?",
+            "a": "아니요. WebP는 메모리에만서만 처리되고 응답 후 폐기됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 - 세션당 3회의 무료 변환. 무제한 사용을 위한 API."
+          }
+        }
+      }
+    }
+  },
+  "svgToPng": {
+    "title": "무료 온라인 SVG to PNG 변환기",
+    "subtitle": "SVG 벡터 그래픽을 모든 크기로 PNG로 래스터화하세요. 정확한 픽셀 치수, 종횡비 보존 너비/높이 또는 망막 자산의 배율 배수를 사용합니다.",
+    "upload": {
+      "title": "여기에 SVG 파일을 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · .svg만",
+      "accept": ".svg 파일만 허용됩니다",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "PNG로 래스터화",
+    "options": {
+      "sizeMode": "크기 모드",
+      "sizeMode_scale": "배율 (×)",
+      "sizeMode_width": "너비만",
+      "sizeMode_height": "높이만",
+      "sizeMode_exact": "정확한 W × H",
+      "scale": "배율 배수",
+      "scaleHint": "SVG의 네이티브 viewBox에 곱합니다. 망막의 경우 2×가 표준이며 인쇄 출력의 경우 3× 또는 4×.",
+      "width": "너비 (px)",
+      "widthHint": "종횡비 보존됨. 최대 8192px.",
+      "height": "높이 (px)",
+      "heightHint": "종횡비 보존됨. 최대 8192px."
+    },
+    "status": {
+      "converting": "래스터화 중...",
+      "error": "래스터화 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "래스터화된 PNG",
+      "info": "{width} × {height} px • {size}",
+      "download": "PNG 다운로드",
+      "reset": "다른 파일 래스터화"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 변환을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 래스터화가 남음 | {count}회의 무료 래스터화가 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "SVG to PNG 래스터화 API 사용",
+        "content": "모든 출력 크기에 대해 SVG를 프로그래밍 방식으로 래스터화합니다. /svg-to-png 엔드포인트는 multipart SVG 업로드를 허용하며 너비, 높이 또는 배율을 통해 제어되는 크기 조정을 통해 번들된 Noto CJK 및 이모지 글꼴을 포함하는 서버 측으로 렌더링됩니다.",
+        "content2": "Open Graph 이미지 생성기, 자동화된 favicon 파이프라인, 동적 소셜 카드 생성 및 특정 해상도에서 벡터 자산의 빌드 타임 래스터화에 이상적입니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /svg-to-png: 모든 크기에서 SVG → PNG",
+          "input": "Multipart SVG 업로드, 최대 50 MB",
+          "params": "너비, 높이, 배율 (0.1–10.0) — 조합 가능",
+          "limit": "최대 8192 × 8192 px 출력",
+          "formats": "SVG 1.1 / 2.0 입력; 손실 없는 PNG 출력",
+          "response": "Noto CJK 폰트 지원이 포함된 Binary image/png RGBA 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "SVG to PNG 래스터화란?",
+        "content": "SVG(Scalable Vector Graphics)는 이미지를 픽셀이 아닌 기하 명령(경로, 모양, 텍스트 및 채우기)으로 설명하는 XML 기반 형식입니다. 이를 통해 SVG는 로고, 아이콘 및 다이어그램에 완벽한 품질 손실 없이 모든 크기로 렌더링할 수 있습니다.",
+        "content2": "PNG는 픽셀 기반(래스터)입니다. 래스터화는 SVG의 명령을 특정 해상도의 실제 픽셀로 변환합니다. 래스터화되면 이미지는 해당 크기로 고정됩니다. PNG를 업스케일링하면 SVG와 달리 품질이 손실됩니다.",
+        "content3": "SVG를 허용하지 않는 플랫폼에 대한 특정 PNG 출력이 필요할 때 래스터화합니다. Open Graph 소셜 미리 보기, favicon, 앱 스토어 아이콘, Slack 이모지, 인쇄 자산 또는 Word/PowerPoint 임베드."
+      },
+      "sizing": {
+        "title": "출력을 크기 조정하는 3가지 방법",
+        "content": "**배율 배수** - SVG의 네이티브 viewBox에 곱합니다. SVG가 이미 올바른 비율을 가지고 있고 망막(2×) 또는 인쇄 준비(4×) 비트맵만 필요할 때 이를 사용합니다.",
+        "content2": "**너비만** 또는 **높이만** - 한 치수를 설정하고 다른 치수는 SVG의 종횡비에서 계산됩니다. 높이 수학을 걱정하지 않고 특정 너비에서 아이콘을 생성하는 것이 좋습니다.",
+        "content3": "**정확한 너비 × 높이** - 출력을 정확히 이 치수로 강제합니다. 종횡비가 SVG의 종횡비와 다르면 이미지가 늘어날 것입니다. Open Graph(1200×630)와 같은 고정 크기 요구 사항에 유용합니다."
+      },
+      "howTo": {
+        "title": "SVG를 래스터화하는 방법",
+        "step1": {
+          "title": "1. SVG 업로드",
+          "content": "드래그하거나 클릭하여 `.svg` 파일을 선택하세요. 최대 50 MB를 수락합니다. SVG 1.1 / 2.0 호환 파일은 작동합니다."
+        },
+        "step2": {
+          "title": "2. 크기 모드 선택",
+          "content": "망막 자산의 경우 배율, 종횡비 보존 크기 조정을 위한 너비 또는 높이, 픽셀 완벽한 치수의 경우 정확함."
+        },
+        "step3": {
+          "title": "3. 치수 설정",
+          "content": "배율 슬라이더는 0.1× ~ 10×입니다. 너비와 높이는 1에서 8192픽셀 사이의 정수를 허용합니다."
+        },
+        "step4": {
+          "title": "4. 래스터화 및 다운로드",
+          "content": "서버는 번들된 Noto CJK 및 이모지 글꼴을 사용하여 libvips + librsvg를 통해 SVG를 렌더링합니다. PNG를 다운로드하여 프로젝트에 드롭하세요."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "sizing": {
+            "title": "유연한 크기 조정",
+            "content": "배율, 너비만, 높이만 또는 정확한 치수 - 모든 출력 요구 사항을 포함합니다."
+          },
+          "retina": {
+            "title": "망막 준비",
+            "content": "품질 손실 없이 인쇄 품질 또는 초고 DPI 디스플레이를 위해 10배까지 업스케일하세요."
+          },
+          "transparency": {
+            "title": "알파 채널 보존",
+            "content": "SVG 투명도(반투명 획 및 그래디언트 포함)는 PNG의 알파 채널에 캡처됩니다."
+          },
+          "fonts": {
+            "title": "Noto CJK 글꼴 포함",
+            "content": "우리의 서버에는 Noto Sans CJK 및 이모지 글꼴이 사전 설치되어 있습니다. 중국어, 일본어, 한국어 및 이모지 텍스트는 누락된 글리프 두부 없이 올바르게 렌더링됩니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "SVG는 메모리에서 처리되고 응답 후 즉시 폐기됩니다."
+          },
+          "free": {
+            "title": "일상적인 사용은 무료입니다",
+            "content": "세션당 3회의 무료 래스터화, 계정 필요 없음."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "ogImages": {
+            "title": "Open Graph 소셜 미리 보기",
+            "content": "Twitter, LinkedIn 및 Facebook 링크 미리 보기를 위해 SVG 템플릿에서 1200×630 PNG를 생성합니다."
+          },
+          "appIcons": {
+            "title": "앱 아이콘",
+            "content": "iOS 앱 스토어의 경우 1024×1024, Android의 경우 512×512에서 단일 SVG 마스터를 래스터화하고 그 사이의 모든 크기를 래스터화합니다."
+          },
+          "print": {
+            "title": "인쇄 자산",
+            "content": "전단, 포스터 및 고 DPI 인쇄 출력을 위해 SVG 소스에서 4× -10× 확장 PNG를 생성합니다."
+          },
+          "presentations": {
+            "title": "슬라이드 덱 & 문서",
+            "content": "많은 프레젠테이션 도구는 SVG를 올바르게 렌더링하지 않습니다. 일관된 포함 그래픽의 경우 PNG로 래스터화하세요."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "sizeModes": {
+            "q": "어떤 크기 모드를 사용해야 합니까?",
+            "a": "망막 또는 인쇄 배수의 경우 배율; 종횡비 보존 크기 조정을 위한 너비/높이; Open Graph 이미지(1200×630)와 같은 고정 치수 요구 사항을 위한 정확함."
+          },
+          "fonts": {
+            "q": "내 SVG 텍스트가 올바르게 렌더링되나요?",
+            "a": "우리의 서버에는 Noto CJK 및 이모지 글꼴이 사전 설치되어 있으므로 중국어, 일본어, 한국어 및 이모지 텍스트가 올바르게 렌더링됩니다. 다른 글꼴의 경우 SVG의 font-face CSS 규칙을 통해 base64로 포함하거나 업로드하기 전에 텍스트를 경로로 변환하세요."
+          },
+          "transparency": {
+            "q": "투명도가 보존되나요?",
+            "a": "네 - SVG의 전체 알파 채널(반투명 획, 그래디언트 및 필터 포함)이 PNG의 알파 채널에 캡처됩니다."
+          },
+          "maxSize": {
+            "q": "최대 출력 크기는?",
+            "a": "8192 × 8192 픽셀. 더 큰 출력의 경우 SVG를 분할하거나 API를 직접 사용합니다."
+          },
+          "privacy": {
+            "q": "내 SVG가 서버에 저장되나요?",
+            "a": "아니요. SVG는 메모리에서 처리되고 응답 후 즉시 폐기됩니다. 로깅, 계정 없음."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 - 세션당 3회의 무료 래스터화. 우리의 API는 유료 계층으로 무제한 사용을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "faviconGenerator": {
+    "title": "무료 온라인 Favicon 생성기",
+    "subtitle": "한 소스 이미지에서 완전한 favicon 팩을 생성합니다 — ICO, Apple Touch, Android Chrome 및 웹 매니페스트, 모두 하나의 ZIP에.",
+    "upload": {
+      "title": "여기에 소스 이미지를 드롭하거나 클릭하여 선택",
+      "limit": "최대 파일 크기: 50 MB · PNG, JPG 또는 WebP · 512×512 권장",
+      "accept": "PNG, JPG 또는 WebP만 - SVG는 지원되지 않음(먼저 래스터화)",
+      "tooLarge": "파일이 50 MB 제한을 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "Favicon 팩 생성",
+    "preview": {
+      "title": "Favicon 크기에서 미리 보기"
+    },
+    "status": {
+      "converting": "팩 생성 중...",
+      "error": "생성 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "Favicon 팩이 준비되었습니다",
+      "info": "7-파일 ZIP • {size}",
+      "filesTitle": "포함된 파일",
+      "snippetTitle": "HTML 스니펫 — HTML Head에 붙여넣기",
+      "copy": "스니펫 복사",
+      "copied": "복사됨!",
+      "download": "ZIP 다운로드",
+      "reset": "다른 파일 생성"
+    },
+    "adModal": {
+      "title": "🥺 저희를 지원해주세요. 🌸",
+      "description": "기사를 읽고 3회의 추가 생성을 해제하세요. 이 무료 도구를 지원해주셔서 감사합니다!",
+      "remaining": "{count}회의 무료 생성이 남음 | {count}회의 무료 생성이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "Favicon 생성기 API 사용",
+        "content": "CI/CD 파이프라인에서 완전한 favicon 팩을 생성합니다. /favicon 엔드포인트는 단일 정사각형 이미지 업로드를 가져와 모든 7개 favicon 파일과 웹 매니페스트 스텁을 포함하는 ZIP을 반환합니다. 설정 없음, 분기 논리 없음, 한 요청.",
+        "content2": "사이트 빌더 제품, 고객별 브랜딩하는 화이트 라벨 배포 파이프라인 및 모든 배포 시 아이콘을 재생성하는 개발/스테이징 도구에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /favicon: 이미지 → 7개 파일 ZIP",
+          "input": "Multipart PNG / JPG / WebP, 최대 50 MB",
+          "params": "매개변수 없음 — 완전 자동화",
+          "limit": "가장 선명한 출력을 위해 512×512 소스 권장",
+          "formats": "favicon.ico + 6개 PNG + site.webmanifest 포함",
+          "response": "추출할 준비가 된 Binary application/zip 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "Favicon이란 무엇이고 완전한 팩이 필요한 이유는?",
+        "content": "Favicon은 브라우저 탭, 북마크, 모바일 홈 화면 및 검색 결과에서 웹사이트를 나타내는 작은 아이콘입니다. 2025년에 모든 기기를 올바르게 지원하려면 단순한 `favicon.ico` 하나가 아니라 특정 크기의 조정된 이미지 집합이 필요합니다. 클래식 ICO, 최신 브라우저를 위한 고 DPI PNG, iOS 홈 화면용 Apple Touch Icon 및 Progressive Web App용 Android Chrome 아이콘.",
+        "content2": "이를 수동으로 올바르게 수행하는 것은 번거롭습니다. 7가지 다른 크기로 로고를 내보내고 다중 해상도 ICO를 생성하고 웹 매니페스트를 생성하고 각 기기에 대한 정확한 HTML 링크 태그를 기억해야 합니다. 하나를 건너뛰거나 잘못 구성하면 blurry 16×16이 잘못된 마스터에서 확장되거나 iOS의 일반 자리 표시자 또는 끊어진 PWA 설치 프롬프트가 발생합니다.",
+        "content3": "이 도구는 초 단위에 한 소스 이미지에서 완전한 팩을 생성합니다. 모든 7개 파일이 올바른 크기에 있으며 모든 플랫폼에 대한 올바른 순서로 모든 것을 연결하는 준비된 HTML 스니펫이 있습니다."
+      },
+      "contents": {
+        "title": "팩의 내용",
+        "content": "**`favicon.ico`** — 16×16, 32×32 및 48×48 프레임을 포함하는 다중 해상도 ICO, 구형 IE 및 Edge를 포함한 광범위한 브라우저 호환성.",
+        "content2": "**`favicon-16x16.png` / `favicon-32x32.png`** — PNG favicon을 선호하는 최신 브라우저를 위한 고 DPI PNG. **`apple-touch-icon.png`** — 180×180, iOS 홈 화면 아이콘. **`android-chrome-192x192.png` / `android-chrome-512x512.png`** — Android 설치 및 스플래시를 위한 PWA 아이콘. **`site.webmanifest`** — PWA 매니페스트 스텁(다운로드 후 `name` 및 `short_name`을 편집하세요)."
+      },
+      "howTo": {
+        "title": "Favicon 팩을 생성하는 방법",
+        "step1": {
+          "title": "1. 정사각형 PNG, JPG 또는 WebP 업로드",
+          "content": "모든 크기에서 가장 선명한 결과를 위해 최소 512×512를 권장합니다. 도구는 모든 종횡비를 허용하지만 완벽한 정사각형에서 가장 잘 작동합니다. SVG는 지원되지 않습니다. 먼저 우리의 SVG to PNG 도구를 사용하여 PNG로 래스터화하세요."
+        },
+        "step2": {
+          "title": "2. Favicon 크기에서 미리 보기",
+          "content": "소스 이미지를 16, 32, 48, 180, 192 및 512 픽셀에서 검사하세요. 16×16에서 읽기 가능한지 확인하세요(가장 어려운 테스트). 단순하고 고대비 로고가 가장 잘 작동합니다."
+        },
+        "step3": {
+          "title": "3. 생성 클릭",
+          "content": "서버는 소스를 모든 7개 대상 크기로 재샘플링하고 다중 해상도 ICO를 조립하고 웹 매니페스트 스텁을 생성하고 ZIP에 모든 것을 패키징합니다."
+        },
+        "step4": {
+          "title": "4. 다운로드 및 배포",
+          "content": "ZIP을 사이트의 공개 루트(또는 Nuxt의 `/static`, Next.js의 `/public`)로 추출하세요. 제공하는 HTML 스니펫을 `head`에 복사하세요. `site.webmanifest` `name` 및 `short_name`을 브랜드와 일치하도록 편집하세요."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "completeSet": {
+            "title": "한 팩에 7개 파일 모두",
+            "content": "ICO, 브라우저 PNG, Apple Touch, Android Chrome 및 웹 매니페스트 — 필요한 모든 것, 누락된 부분 없음."
+          },
+          "pwa": {
+            "title": "PWA 준비",
+            "content": "192×192 및 512×512 Android Chrome 아이콘과 웹 매니페스트 스텁을 포함합니다. `manifest.json`을 연결하면 설치할 수 있습니다."
+          },
+          "htmlSnippet": {
+            "title": "복사-붙여넣기 HTML 스니펫",
+            "content": "`head`에 붙여넣을 정확한 링크 태그를 제공합니다. 연구 없음, 추측 없음."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "소스 이미지는 메모리에서 처리되고 즉시 폐기됩니다. 계정, 로깅 없음."
+          },
+          "fast": {
+            "title": "원샷 생성",
+            "content": "모든 7개 출력이 약 500ms 단일 요청으로 생성됩니다."
+          },
+          "free": {
+            "title": "일상적인 사용은 무료입니다",
+            "content": "세션당 3회의 무료 생성, 계정 없음. 더 높은 볼륨을 위해 API를 사용할 수 있습니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "newSite": {
+            "title": "새 웹사이트 시작",
+            "content": "첫날부터 favicon을 올바르게 가져옵니다. 모든 브라우저, 모든 기기, 간과된 플랫폼 없음."
+          },
+          "pwa": {
+            "title": "Progressive Web App",
+            "content": "Add-to-Home-Screen 설치에 필요한 192/512 Android 아이콘 및 웹 매니페스트를 제공합니다."
+          },
+          "rebrand": {
+            "title": "브랜드 새로고침",
+            "content": "시각 정체성이 변경될 때 새 로고에서 한 번에 모든 favicon을 재생성합니다."
+          },
+          "dev": {
+            "title": "개발 & 스테이징 환경",
+            "content": "스테이징 URL, 내부 도구 및 클라이언트 미리 보기 사이트를 위한 빠른 favicon — 디자인 팀 티켓 필요 없음."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "sourceSize": {
+            "q": "어떤 소스 크기를 업로드해야 합니까?",
+            "a": "512×512 이상, 정사각형 종횡비, PNG 또는 WebP는 최고의 투명도 처리를 위해. 더 작은 소스(256×256 등)는 작동하지만 이미 작은 마스터에서 다운스케일하기 때문에 16×16 및 32×32는 약간 부드러울 수 있습니다."
+          },
+          "svg": {
+            "q": "SVG를 업로드할 수 있습니까?",
+            "a": "직접 아닙니다. 우리의 favicon 서비스는 SVG를 구문 분석할 수 없는 래스터 파이프라인을 사용합니다. 먼저 우리의 `SVG to PNG` 도구를 사용하여 512×512 또는 1024×1024에서 변환한 다음 여기에 PNG를 공급합니다."
+          },
+          "transparency": {
+            "q": "투명도가 지원됩니까?",
+            "a": "네 - 소스 PNG 또는 WebP의 투명한 배경은 ICO를 제외한 모든 출력에서 보존됩니다(PNG 압축 프레임에는 투명도가 있음)."
+          },
+          "customize": {
+            "q": "웹 매니페스트를 사용자 정의할 수 있습니까?",
+            "a": "생성된 `site.webmanifest`는 자리 표시자 `name` 및 `short_name` 필드가 있는 기능적인 스텁입니다. 배포하기 전에 텍스트 편집기에서 열고 실제 브랜드 이름으로 설정합니다."
+          },
+          "privacy": {
+            "q": "내 소스 이미지가 저장되나요?",
+            "a": "아니요. 업로드는 생성 중에만 메모리에 보관되고 ZIP이 반환된 후 즉시 폐기됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 - 세션당 3회의 무료 생성. CI/CD 통합 또는 대량 클라이언트 작업을 위해 우리의 API를 사용하세요."
+          }
+        }
+      }
+    },
+    "options": {}
   }
 }

@@ -2,32 +2,53 @@
 const { t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-
-const tools = [
-  { key: 'gifToSprite', icon: 'i-lucide-grid-3x3', to: '/tools/gif-to-sprite' },
-  { key: 'toGif', icon: 'i-lucide-film', to: '/tools/png-to-gif' },
-  { key: 'pngToSpritesheet', icon: 'i-lucide-layout-grid', to: '/tools/png-to-spritesheet' },
-  { key: 'pngTrim', icon: 'i-lucide-scissors', to: '/tools/png-trim' },
-  { key: 'splitSpritesheet', icon: 'i-lucide-split', to: '/tools/split-spritesheet' }
-]
+const { groups, totalCount, findByPath } = useTools()
 
 const currentPath = computed(() => route.path)
+const currentTool = computed(() => findByPath(currentPath.value))
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center gap-2">
-    <span class="text-xs text-muted mr-1">{{ t('relatedTools.label') }}:</span>
-    <NuxtLink
-      v-for="tool in tools"
-      :key="tool.key"
-      :to="localePath(tool.to)"
-      class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-colors"
-      :class="currentPath.includes(tool.to)
-        ? 'border-primary bg-primary/10 text-primary font-medium'
-        : 'border-muted text-muted hover:border-primary/50 hover:text-primary'"
+  <UPopover :content="{ align: 'start', sideOffset: 4 }">
+    <UButton
+      variant="outline"
+      color="neutral"
+      size="sm"
+      trailing-icon="i-lucide-chevron-down"
     >
-      <UIcon :name="tool.icon" class="text-sm" />
-      {{ t(`relatedTools.${tool.key}`) }}
-    </NuxtLink>
-  </div>
+      <UIcon name="i-lucide-wrench" class="text-sm" />
+      <span class="text-xs">{{ t('relatedTools.label') }}</span>
+      <span v-if="currentTool" class="text-xs text-primary font-medium">
+        · {{ t(`relatedTools.${currentTool.tool.key}`) }}
+      </span>
+      <span v-else class="text-xs text-muted">· {{ totalCount }}</span>
+    </UButton>
+
+    <template #content>
+      <div class="p-3 space-y-4 min-w-72 max-w-sm">
+        <div v-for="group in groups" :key="group.key">
+          <div class="flex items-center gap-1.5 mb-1.5 px-1">
+            <UIcon :name="group.icon" class="text-xs text-muted" />
+            <p class="text-xs font-semibold text-muted uppercase tracking-wide">
+              {{ t(`relatedTools.groups.${group.key}`) }}
+            </p>
+          </div>
+          <div class="flex flex-col">
+            <NuxtLink
+              v-for="tool in group.tools"
+              :key="tool.key"
+              :to="localePath(tool.to)"
+              class="flex items-center gap-2 px-2 py-1.5 text-sm rounded-md transition-colors"
+              :class="currentPath.includes(tool.to)
+                ? 'bg-primary/10 text-primary font-medium'
+                : 'text-default hover:bg-elevated'"
+            >
+              <UIcon :name="tool.icon" class="text-sm shrink-0" />
+              <span>{{ t(`relatedTools.${tool.key}`) }}</span>
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </template>
+  </UPopover>
 </template>

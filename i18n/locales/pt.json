@@ -164,6 +164,110 @@
         "Defina o **Espaçamento de células** para corresponder ao intervalo entre frames no seu spritesheet de origem — muitas exportações do TexturePacker ou Aseprite incluem margens de 1–2px que devem ser consideradas antes do fatiamento.",
         "Precisa limpar os frames extraídos? Passe-os pela nossa ferramenta **Recortar PNG** para cortar bordas transparentes, depois re-empacote em um novo spritesheet com **PNG para Spritesheet**."
       ]
+    },
+    "heicToJpg": {
+      "tipsTitle": "Você sabia? Dicas de HEIC para JPG",
+      "tips": [
+        "O **controle de qualidade** ajusta a intensidade da compressão JPG — 90+ para impressão de fotos, 70–85 para uso na web, reduzindo significativamente o tamanho mantendo a qualidade visual.",
+        "HEIC é o formato de foto padrão do iPhone desde o iOS 11. Converter para JPG permite abrir os arquivos no Windows, Android antigo e qualquer app sem suporte a HEIC.",
+        "Envie várias fotos HEIC de uma vez — todos os arquivos JPG convertidos são retornados em um único ZIP com os nomes originais preservados.",
+        "A maioria das plataformas de redes sociais e sites de comércio eletrônico ainda exigem formato JPG. Converta HEIC para JPG antes de enviar para evitar problemas de compatibilidade."
+      ]
+    },
+    "heicToPng": {
+      "tipsTitle": "Você sabia? Dicas de HEIC para PNG",
+      "tips": [
+        "Escolha PNG quando precisar editar a foto depois (por exemplo, no Photoshop ou GIMP) — o formato sem perdas significa que não há degradação de qualidade a cada salvamento.",
+        "PNG suporta canal alfa de transparência completo. Se seu HEIC contém um sujeito recortado ou máscara, a transparência será preservada.",
+        "Envie várias fotos HEIC de uma vez para conversão em lote — todos os arquivos PNG são retornados em um único ZIP.",
+        "Arquivos PNG geralmente são muito maiores que JPG. Se não precisar de transparência ou qualidade sem perdas, considere usar a conversão HEIC para JPG para arquivos menores."
+      ]
+    },
+    "heicToWebp": {
+      "tipsTitle": "Você sabia? Dicas de HEIC para WebP",
+      "tips": [
+        "WebP é tipicamente 25–35% menor que JPG com qualidade equivalente — ideal para imagens web que precisam de carregamento rápido.",
+        "Ative o **modo sem perdas** para reprodução pixel a pixel perfeita (semelhante a PNG), com tamanho de arquivo muito menor que PNG.",
+        "Todos os navegadores modernos (Chrome, Firefox, Safari, Edge) suportam WebP nativamente. Recorra a JPG/PNG apenas se precisar de compatibilidade com IE ou sistemas muito antigos.",
+        "Envie várias fotos HEIC de uma vez — todos os arquivos WebP convertidos são retornados em um único ZIP, prontos para deploy no seu site."
+      ]
+    },
+    "pngToJpg": {
+      "tipsTitle": "Você sabia? Dicas de PNG para JPG",
+      "tips": [
+        "Áreas transparentes em PNG são preenchidas com **fundo branco** ao converter para JPG — se seu design precisa de outra cor de fundo, adicione uma camada de fundo no editor de imagens primeiro.",
+        "O **controle de qualidade** ajusta o equilíbrio entre tamanho de arquivo e nitidez visual — 85 é o ponto de partida ideal para a maioria das fotos, com redução de 60–70% no tamanho sem diferença perceptível.",
+        "Envie vários arquivos PNG de uma vez para conversão em lote — todos os arquivos JPG são retornados em um único ZIP.",
+        "JPG é melhor para fotografias e imagens ricas em gradientes. Para desenhos em linha, capturas de tela ou imagens com muito texto, artefatos de compressão perceptíveis podem aparecer após a conversão."
+      ]
+    },
+    "jpgToPng": {
+      "tipsTitle": "Você sabia? Dicas de JPG para PNG",
+      "tips": [
+        "Converter para PNG não restaurará detalhes perdidos pela compressão JPG — mas evitará mais perda de qualidade em edições e salvamentos posteriores.",
+        "PNG suporta canal alfa de transparência. Após a conversão, você pode adicionar transparência no editor de imagens — algo impossível no formato JPG.",
+        "Envie vários arquivos JPG de uma vez para conversão em lote — todos os arquivos PNG são retornados em um único ZIP.",
+        "Arquivos PNG geralmente são 3–5 vezes maiores que o JPG de origem. Se não precisar de transparência ou edição sem perdas, manter o formato JPG pode ser mais adequado."
+      ]
+    },
+    "pngToWebp": {
+      "tipsTitle": "Você sabia? Dicas de PNG para WebP",
+      "tips": [
+        "WebP com perdas é tipicamente 80–90% menor que PNG mantendo excelente qualidade visual — ideal para otimização de imagens web.",
+        "Ative o **modo sem perdas** para reprodução pixel a pixel perfeita, com tamanho de arquivo aproximadamente 25% menor que o PNG original.",
+        "WebP suporta canal alfa de transparência — ao converter, a transparência do PNG é completamente preservada.",
+        "Envie vários arquivos PNG de uma vez — todos os arquivos WebP convertidos são retornados em um único ZIP, prontos para deploy no seu site."
+      ]
+    },
+    "webpToPng": {
+      "tipsTitle": "Você sabia? Dicas de WebP para PNG",
+      "tips": [
+        "Se precisar editar a imagem em software antigo sem suporte a WebP (como certas versões do Photoshop ou Illustrator), converter para PNG primeiro é a opção mais segura.",
+        "A transparência do WebP é completamente preservada após a conversão para PNG — ideal para material que requer mais composição ou edição.",
+        "Envie vários arquivos WebP de uma vez para conversão em lote — todos os arquivos PNG são retornados em um único ZIP.",
+        "Converter para PNG não restaurará detalhes perdidos pela compressão WebP com perdas — mas garante que não haverá perda de qualidade adicional em edições posteriores."
+      ]
+    },
+    "svgToPng": {
+      "tipsTitle": "Você sabia? Dicas de SVG para PNG",
+      "tips": [
+        "Use o **fator de escala** para gerar rapidamente versões de alta resolução — 2x para telas Retina, 4x para material de impressão.",
+        "Precisa de dimensões exatas em pixels? Mude para o **modo de dimensões exatas** e insira largura e altura — ideal para gerar ícones ou miniaturas de especificações específicas.",
+        "Ative **manter proporção** para que ao especificar uma dimensão a outra seja calculada automaticamente, evitando distorção da imagem.",
+        "O fundo transparente do SVG é preservado como canal alfa do PNG após a conversão — sem processamento adicional você obtém uma imagem rasterizada com fundo transparente.",
+        "Envie vários arquivos SVG de uma vez para conversão em lote — todos os arquivos PNG são retornados em um único ZIP."
+      ]
+    },
+    "faviconGenerator": {
+      "tipsTitle": "Você sabia? Dicas do Gerador de Favicon",
+      "tips": [
+        "Envie um PNG quadrado de **512×512 pixels ou maior** para melhores resultados — a ferramenta escala automaticamente para todos os tamanhos necessários.",
+        "O ZIP gerado contém **7 arquivos**: favicon.ico (multi-tamanho), PNGs de 16×16, 32×32, 48×48, Apple Touch Icon de 180×180, ícone Android de 192×192, e site.webmanifest.",
+        "Extraia o conteúdo do ZIP no diretório raiz do seu site e copie as tags HTML geradas na seção `head` — o deploy do favicon para todas as plataformas é concluído em cinco minutos.",
+        "A opção de **cantos arredondados** adiciona arredondamento ao seu ícone — muitos navegadores e sistemas operacionais modernos exibem ícones de sites com cantos arredondados.",
+        "Suporte a entrada SVG e PNG — se você tem um logo vetorial, envie o SVG diretamente para os resultados de escalonamento mais nítidos."
+      ]
+    }
+  },
+  "relatedTools": {
+    "label": "Ferramentas relacionadas",
+    "gifToSprite": "GIF → Folha de sprites",
+    "toGif": "PNG → GIF",
+    "pngToSpritesheet": "PNG → Spritesheet",
+    "pngTrim": "Recortar PNG",
+    "splitSpritesheet": "Divisor de Spritesheet",
+    "heicToJpg": "HEIC → JPG",
+    "heicToPng": "HEIC → PNG",
+    "pngToJpg": "PNG → JPG",
+    "jpgToPng": "JPG → PNG",
+    "pngToWebp": "PNG → WebP",
+    "webpToPng": "WebP → PNG",
+    "svgToPng": "SVG → PNG",
+    "faviconGenerator": "Gerador de Favicon",
+    "groups": {
+      "sprite": "Ferramentas de Sprites e Frames",
+      "imageFormat": "Conversores de Formato de Imagem",
+      "vector": "Ferramentas de Vetores e Ícones"
     }
   },
   "home": {
@@ -188,6 +292,38 @@
       "splitSpritesheet": {
         "title": "Divisor de Spritesheet",
         "description": "Divida um spritesheet PNG em frames individuais ou gere JSON de atlas compatível com TexturePacker."
+      },
+      "heicToJpg": {
+        "title": "HEIC para JPG",
+        "description": "Converta fotos HEIC do iPhone para JPG universalmente compatível — qualidade ajustável."
+      },
+      "heicToPng": {
+        "title": "HEIC para PNG",
+        "description": "Converta fotos HEIC para PNG sem perdas com suporte completo a transparência."
+      },
+      "pngToJpg": {
+        "title": "PNG para JPG",
+        "description": "Reduza imagens PNG convertendo para JPG — áreas transparentes são preenchidas com branco."
+      },
+      "jpgToPng": {
+        "title": "JPG para PNG",
+        "description": "Converta JPG para PNG sem perdas — pronto para edição com suporte a canal alfa."
+      },
+      "pngToWebp": {
+        "title": "PNG para WebP",
+        "description": "Reduza PNGs drasticamente convertendo para o moderno WebP — com modo sem perdas opcional."
+      },
+      "webpToPng": {
+        "title": "WebP para PNG",
+        "description": "Decodifique WebP de volta para PNG universalmente compatível com transparência preservada."
+      },
+      "svgToPng": {
+        "title": "SVG para PNG",
+        "description": "Rasterize vetores SVG para PNG em qualquer tamanho — escala, dimensões exatas ou preservação de proporção."
+      },
+      "faviconGenerator": {
+        "title": "Gerador de Favicon",
+        "description": "Gere um pacote completo de 7 arquivos favicon com ICO, Apple Touch, Android e manifesto web."
       }
     }
   },
@@ -391,14 +527,6 @@
         }
       }
     }
-  },
-  "relatedTools": {
-    "label": "Ferramentas relacionadas",
-    "gifToSprite": "GIF → Folha de sprites",
-    "toGif": "PNG → GIF",
-    "pngToSpritesheet": "PNG → Spritesheet",
-    "pngTrim": "Recortar PNG",
-    "splitSpritesheet": "Divisor de Spritesheet"
   },
   "toGif": {
     "title": "Conversor gratuito online de PNG para GIF",
@@ -1258,6 +1386,1301 @@
           "privacy": {
             "q": "Meu spritesheet é armazenado no servidor?",
             "a": "Não. O PNG enviado é mantido na memória do servidor apenas durante o processamento e descartado imediatamente após a resposta ser retornada. Nenhum arquivo é escrito em disco, nenhum conteúdo de pixel é registrado e nenhuma conta é necessária. Relevante quando o spritesheet contém arte não lançada, ativos de cliente sob NDA ou conteúdo de jogo proprietário."
+          }
+        }
+      }
+    }
+  },
+  "heicToJpg": {
+    "title": "Conversor Gratuito de HEIC para JPG Online",
+    "subtitle": "Converta fotos HEIC de iPhone para formato JPG universalmente compatível — gratuito, online, sem registro, sem marcas d'água.",
+    "upload": {
+      "title": "Solte seu arquivo HEIC aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · .heic ou .heif",
+      "accept": "Apenas arquivos .heic ou .heif são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para JPG",
+    "options": {
+      "quality": "Qualidade JPG",
+      "qualityHint": "Valores maiores produzem arquivos maiores com melhor fidelidade. 85–92 é um ponto ideal de qualidade invisível."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "JPG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar JPG",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de HEIC para JPG",
+        "content": "Precisa converter arquivos HEIC em escala? O mesmo mecanismo que alimenta essa ferramenta está disponível como uma API RESTful no RapidAPI. Envie um POST multipart com seu arquivo .heic, source_format=heic e target_format=jpg — receba um stream JPG de volta, pronto para enviar para disco ou um bucket S3.",
+        "content2": "Ideal para backends de aplicativos móveis ingerindo fotos de iPhone, scripts de migração em lote, plataformas SaaS que precisam normalizar uploads de usuários e plugins CMS que convertem HEIC automaticamente na importação.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Upload de arquivo multipart, até 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada HEIC / HEIF; saída JPG / PNG / WebP",
+          "response": "Stream de imagem binária com Content-Type image/* padrão"
+        }
+      },
+      "whatIs": {
+        "title": "O que é HEIC e por que converter para JPG?",
+        "content": "HEIC (High Efficiency Image Container) é o formato de foto padrão em iPhone e iPad desde iOS 11. Oferece aproximadamente 50% de arquivos menores que JPG com a mesma qualidade visual, graças à compressão HEVC subjacente. A desvantagem: fora do ecossistema Apple, o suporte é irregular — muitos aplicativos Windows, dispositivos Android mais antigos, sistemas de gerenciamento de conteúdo e ferramentas web simplesmente não conseguem abrir arquivos HEIC.",
+        "content2": "JPG (também chamado JPEG) é o formato de foto universal. Todo navegador, todo sistema operacional, toda rede social, todo cliente de email e toda impressora de fotos aceita JPG. Converter suas fotos de iPhone para JPG resolve problemas de compatibilidade instantaneamente — suas imagens abrem em qualquer lugar sem plugins, codecs ou software especial.",
+        "content3": "Essa ferramenta executa decodificação HEIC e codificação JPG no lado do servidor através de um pipeline libvips + libheif ajustado. Você faz upload uma vez, recebe um JPG limpo de volta, e nenhuma conta, marca d'água ou instalação é necessária."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter HEIC para JPG?",
+        "content": "Converta para JPG sempre que precisar compartilhar ou publicar fotos fora de um dispositivo Apple. Casos típicos: enviar fotos de iPhone para um PC Windows, carregar no WordPress ou Shopify, anexar a um email de trabalho, imprimir em uma quiosque ou laboratório de fotos, ou incorporar em um documento Word / PowerPoint que será aberto em máquinas não-Mac.",
+        "content2": "Mantenha HEIC quando estiver trabalhando inteiramente dentro do ecossistema Apple — iPhone, iPad, Mac e compartilhamento iCloud moderno lidam com HEIC nativamente e se beneficiam do tamanho de arquivo menor. Converta apenas quando souber que o destino não consegue lê-lo."
+      },
+      "howTo": {
+        "title": "Como Converter HEIC para JPG",
+        "step1": {
+          "title": "1. Carregue Seu Arquivo HEIC",
+          "content": "Arraste seu arquivo .heic ou .heif para a área de upload, ou clique para abrir o seletor de arquivo. As fotos do iPhone são aceitas como estão — sem necessidade de renomear ou alterar extensão. O tamanho máximo de arquivo é 50 MB."
+        },
+        "step2": {
+          "title": "2. Escolha uma Qualidade JPG",
+          "content": "Mova o controle deslizante de qualidade para equilibrar o tamanho do arquivo contra a fidelidade visual. 85–92 é praticamente indistinguível do original; 95+ é melhor apenas se você planeja editar o JPG posteriormente. O padrão é 90."
+        },
+        "step3": {
+          "title": "3. Clique em Converter",
+          "content": "O servidor decodifica seu HEIC, aplica a orientação EXIF correta e recodifica como JPG. O tempo de conversão típico é menos de um segundo para uma foto de iPhone de 2–5 MB."
+        },
+        "step4": {
+          "title": "4. Baixe e Use",
+          "content": "Seu JPG convertido aparece com uma visualização e dimensões. Clique em baixar para salvá-lo — o nome do arquivo espelha o original com a nova extensão `.jpg`."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "quality": {
+            "title": "Qualidade Ajustável",
+            "content": "Qualidade JPG controlada por controle deslizante de 1 a 100 — escolha o equilíbrio entre tamanho do arquivo e fidelidade que se adequa ao seu caso de uso."
+          },
+          "privacy": {
+            "title": "Apenas no Lado do Servidor",
+            "content": "Seu arquivo HEIC é mantido na memória enquanto a conversão é executada e descartado instantaneamente depois. Sem retenção, sem conta, sem registro do conteúdo da imagem."
+          },
+          "fast": {
+            "title": "Conversões em Menos de um Segundo",
+            "content": "As fotos típicas do iPhone (3024×4032, 1–3 MB HEIC) são convertidas em menos de 500 ms. O Cloud Run é redimensionado automaticamente para rajadas."
+          },
+          "compatible": {
+            "title": "Saída Universal",
+            "content": "JPG padrão abre em qualquer lugar — Windows, Android, Linux, navegadores web, laboratórios de impressão, aplicativos do Office e todas as plataformas sociais."
+          },
+          "free": {
+            "title": "Camadas Gratuitas e Ilimitadas",
+            "content": "Três conversões gratuitas por sessão sem qualquer inscrição; o mesmo mecanismo está disponível através de nossa API para automação e volumes maiores."
+          },
+          "noSignup": {
+            "title": "Sem Instalação, Sem Inscrição",
+            "content": "Executa inteiramente no seu navegador e nosso serviço conversor. Sem aplicativo de desktop, sem extensão do navegador, sem conta necessária."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "windows": {
+            "title": "Enviando Fotos para Usuários do Windows",
+            "content": "Converta antes de anexar — destinatários no Windows 10 / 11 sem o codec HEIC podem abrir o JPG instantaneamente."
+          },
+          "social": {
+            "title": "Carregando em Redes Sociais",
+            "content": "Algumas plataformas ainda rejeitam HEIC silenciosamente ou removem metadados. JPG é carregado sem problemas em todos os serviços com resultados previsíveis."
+          },
+          "email": {
+            "title": "Anexando ao Email de Trabalho",
+            "content": "Email corporativo e webmail frequentemente exibem JPG inline mas deixam HEIC como anexos quebrados. JPG garante que sua foto apareça."
+          },
+          "editing": {
+            "title": "Edição em Ferramentas Legadas",
+            "content": "Photoshop mais antigo, MS Office e editores gratuitos frequentemente carecem de suporte HEIC. JPG abre em qualquer lugar sem instalações."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whatIsHeic": {
+            "q": "O que exatamente é um arquivo HEIC?",
+            "a": "HEIC é o nome da marca da Apple para imagens codificadas com HEVC (H.265) dentro de um contêiner HEIF. iPhones o usam por padrão desde iOS 11 porque reduz o tamanho do arquivo pela metade em comparação com JPG na mesma qualidade."
+          },
+          "quality": {
+            "q": "A qualidade cairá durante a conversão?",
+            "a": "JPG é um formato com perda, então alguma perda de recodificação é inevitável. Na qualidade 90+ a perda é praticamente invisível em telas; em 80 você pode notar suavização muito sutil em detalhes finos."
+          },
+          "metadata": {
+            "q": "Os metadados EXIF são preservados?",
+            "a": "Reescrevemos a imagem com rotação correta aplicada aos pixels, para que sua foto sempre seja exibida corretamente. Outras tags EXIF (data, modelo de câmera, GPS) não são copiadas para o JPG de saída nessa ferramenta — use a API para conversões que preservam EXIF."
+          },
+          "batchSize": {
+            "q": "Posso converter vários arquivos HEIC de uma vez?",
+            "a": "Essa ferramenta web lida com um arquivo de cada vez para simplicidade e segurança. Para processamento em lote, use nosso endpoint de API — você pode executar milhares de conversões em paralelo."
+          },
+          "privacy": {
+            "q": "Minha foto é carregada na nuvem?",
+            "a": "Seu HEIC vai para nosso conversor Cloud Run onde é decodificado, recodificado e retornado — tudo na memória. Nada é escrito em disco, nada é registrado, nada é retido após a resposta."
+          },
+          "free": {
+            "q": "Há um custo?",
+            "a": "A ferramenta web é gratuita para uso casual (3 conversões por sessão). Para volumes maiores ou integração de API, nossa listagem RapidAPI possui um nível gratuito generoso e planos de pagamento conforme você cresce."
+          }
+        }
+      }
+    }
+  },
+  "heicToPng": {
+    "title": "Conversor Gratuito de HEIC para PNG Online",
+    "subtitle": "Converta fotos HEIC de iPhone para PNG sem perda — perfeito para edição, arquivamento e fluxos de trabalho com reconhecimento de transparência.",
+    "upload": {
+      "title": "Solte seu arquivo HEIC aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · .heic ou .heif",
+      "accept": "Apenas arquivos .heic ou .heif são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para PNG",
+    "options": {},
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "PNG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar PNG",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de HEIC para PNG",
+        "content": "Automatize a conversão de HEIC para PNG em seu pipeline de ativos. O endpoint /heic no RapidAPI aceita um POST multipart com source_format=heic e target_format=png, retornando PNG sem perda pronto para fluxos de trabalho de edição, ingestão de CDN ou armazenamento de arquivo.",
+        "content2": "Bem adequado para aplicativos de edição de fotos que precisam de entrada apenas em PNG, serviços backend normalizando uploads de iPhone e fluxos de trabalho automatizados que pré-processam fotos para editores de imagem downstream.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Upload de arquivo multipart, até 50 MB",
+          "params": "source_format, target_format — nenhuma qualidade necessária para PNG",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada HEIC / HEIF; saída PNG sem perda",
+          "response": "Stream image/png binário na resolução de origem"
+        }
+      },
+      "whatIs": {
+        "title": "O que é HEIC e por que converter para PNG?",
+        "content": "HEIC é o formato padrão de foto do iPhone desde iOS 11 — eficiente mas mal suportado fora de dispositivos Apple. PNG (Portable Network Graphics) é o formato de imagem sem perda universal, suportado por todos os editores, todos os navegadores e todos os sistemas operacionais sem plugins.",
+        "content2": "Converter HEIC para PNG preserva cada pixel exatamente como capturado — sem artefatos de compressão, sem controle deslizante de qualidade, sem degradação adicional durante futuras edições. Isso importa quando você planeja retocar, calibrar cores, compor ou aumentar a escala da imagem.",
+        "content3": "Nossa ferramenta decodifica HEIC via libheif e recodifica como PNG usando libvips, preservando resolução de imagem completa e canal alfa onde disponível. A conversão acontece em segundos, no lado do servidor, sem retenção."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Usar PNG em Vez de JPG?",
+        "content": "Escolha PNG quando precisar de qualidade **sem perda** — tipicamente para edição de imagem, arquivamento, capturas de tela, gráficos de UI ou qualquer fluxo de trabalho onde você recodificará a imagem posteriormente. Salvar um JPG repetidamente degrada a qualidade cada vez; PNG não.",
+        "content2": "Também prefira PNG quando sua origem tiver transparência (por exemplo, máscara de profundidade do iPhone Portrait Mode). JPG não possui canal alfa e deixaria regiões transparentes em branco."
+      },
+      "howTo": {
+        "title": "Como Converter HEIC para PNG",
+        "step1": {
+          "title": "1. Carregue Seu Arquivo HEIC",
+          "content": "Arraste e solte ou clique para selecionar. Arquivos até 50 MB são aceitos. Sem conversão de formato no seu dispositivo — os bytes originais são enviados para nosso servidor."
+        },
+        "step2": {
+          "title": "2. Clique em Converter",
+          "content": "O servidor decodifica seu HEIC, preserva qualquer canal alfa e emite um arquivo PNG na resolução nativa completa. Não há configurações de qualidade — PNG é sempre sem perda."
+        },
+        "step3": {
+          "title": "3. Revise a Visualização",
+          "content": "Seu PNG convertido aparece com dimensões e tamanho do arquivo. PNGs são tipicamente 3–5× maiores que o HEIC original porque são dados de pixel descompactados."
+        },
+        "step4": {
+          "title": "4. Baixe e Use",
+          "content": "Clique no botão de download para salvar. O PNG está pronto para editar no Photoshop, GIMP, Affinity, Figma ou qualquer outra ferramenta que abra PNG padrão."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "lossless": {
+            "title": "Completamente Sem Perda",
+            "content": "Sem perda de qualidade — cada pixel do seu HEIC é preservado exatamente na saída PNG."
+          },
+          "privacy": {
+            "title": "Servidor Nunca Armazena Seu Arquivo",
+            "content": "Sua foto é processada na memória e descartada imediatamente. Sem retenção, sem registro, sem conta necessária."
+          },
+          "fast": {
+            "title": "Conversão Rápida",
+            "content": "Uma foto típica de iPhone 3024×4032 leva aproximadamente 800 ms de ponta a ponta em nosso serviço Cloud Run."
+          },
+          "compatible": {
+            "title": "PNG Universal",
+            "content": "Abre em todos os navegadores, todos os SOs, todos os editores de imagem — sem instalação de codec necessária em qualquer lugar."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão sem conta. Use a API para volumes maiores."
+          },
+          "noSignup": {
+            "title": "Sem Instalação, Sem Inscrição",
+            "content": "100% baseado em navegador — sem utilitário exclusivo do Mac, sem extensão, sem conta."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "editing": {
+            "title": "Pipelines de Edição de Fotos",
+            "content": "Importe HEIC como PNG no Photoshop, Affinity Photo ou GIMP para retoque sem se preocupar com suporte de plugin HEIC."
+          },
+          "archival": {
+            "title": "Armazenamento de Arquivo",
+            "content": "A compressão sem perda do PNG a torna ideal para preservar fotos que você pode querer editar anos depois."
+          },
+          "design": {
+            "title": "Fluxos de Trabalho de Design",
+            "content": "Solte referências PNG em Figma, Sketch ou Adobe XD — todos aceitam PNG nativamente, nem todos suportam HEIC."
+          },
+          "documentation": {
+            "title": "Captura de Tela e Interface do Usuário",
+            "content": "Quando seu HEIC é na verdade uma captura de tela (sim, capturas de tela do iPhone podem ser HEIC), a saída PNG preserva texto nítido e bordas de UI perfeitamente."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whyPng": {
+            "q": "Por que converter para PNG em vez de JPG?",
+            "a": "PNG é sem perda — cada pixel é preservado exatamente. JPG é com perda, então cada salvamento introduz artefatos de compressão. Use PNG quando você editará a imagem novamente; use JPG para entrega final."
+          },
+          "fileSize": {
+            "q": "Por que o arquivo PNG é tão maior que o HEIC?",
+            "a": "HEIC usa compressão ao estilo de vídeo HEVC para alcançar arquivos 10–20× menores. PNG usa compressão DEFLATE sem perda que é menos agressiva. Espere PNG ser 3–5× maior que o HEIC para fotos típicas."
+          },
+          "quality": {
+            "q": "Posso obter melhor qualidade que JPG?",
+            "a": "PNG preserva cada pixel perfeitamente — sem artefatos, nunca. Para arquivamento, edição de origem ou imagens com transparência, a qualidade PNG é estritamente melhor que qualquer JPG."
+          },
+          "privacy": {
+            "q": "Meu arquivo é carregado em servidores externos?",
+            "a": "Seu HEIC é enviado para nosso conversor Cloud Run, processado na memória e a resposta é retornada. Nada é retido, nada é registrado, sem conta necessária."
+          },
+          "maxSize": {
+            "q": "Qual é o limite de tamanho?",
+            "a": "Tamanho de upload de 50 MB, ~89 megapixels de resolução. Uma foto padrão do iPhone (3024×4032, ~3 MB HEIC) está bem dentro do limite."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão, sem inscrição. Volumes maiores e automação via nossa listagem RapidAPI."
+          }
+        }
+      }
+    }
+  },
+  "pngToJpg": {
+    "title": "Conversor Gratuito de PNG para JPG Online",
+    "subtitle": "Encolha imagens PNG em 70–85% convertendo para JPG. Qualidade ajustável, fundos transparentes nivelados ao branco.",
+    "upload": {
+      "title": "Solte seu arquivo PNG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · apenas .png",
+      "accept": "Apenas arquivos .png são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para JPG",
+    "options": {
+      "quality": "Qualidade JPG",
+      "qualityHint": "Maior = arquivo maior, melhor fidelidade. 85–92 é geralmente indistinguível do original."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "JPG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar JPG",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de PNG para JPG",
+        "content": "Encolha uploads PNG no lado do servidor com uma única chamada HTTP. O endpoint /png-to-jpg nivela transparência ao branco, recodifica com sua qualidade escolhida e transmite JPG de volta — sem decodificação de imagem no cliente, sem retenção de arquivo.",
+        "content2": "Usos típicos: ingestão de imagem de produto de e-commerce, normalização de anexo de email, pré-processamento de upload de mídia social e migração em lote de arquivos PNG para entrega eficiente em JPG.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /png-to-jpg: PNG → JPG",
+          "input": "Upload PNG multipart, até 50 MB",
+          "params": "quality (0–100), padrão 90",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada PNG; saída JPEG",
+          "response": "Stream image/jpeg binário com alfa nivelado ao branco"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de PNG para JPG?",
+        "content": "PNG (Portable Network Graphics) armazena pixels sem perda — cada valor de pixel exato é preservado. JPG (JPEG) aplica compressão com perda sintonizada perceptualmente que descarta informações que os humanos raramente notam, em troca de arquivos dramaticamente menores.",
+        "content2": "Converter PNG para JPG tipicamente encolhe o tamanho do arquivo em 70–85% para conteúdo fotográfico na qualidade 90. A diferença visual é geralmente imperceptível em distâncias normais de visualização. Para capturas de tela, ilustrações e diagramas com cores planas e bordas nítidas, no entanto, JPG pode introduzir artefatos visíveis — PNG é frequentemente a melhor escolha lá.",
+        "content3": "Essa ferramenta executa no lado do servidor: você carrega um PNG, o servidor nivela qualquer canal alfa para um fundo branco (porque JPG não possui transparência), recodifica com sua qualidade escolhida e transmite o JPG de volta. Sem marca d'água, sem inscrição, sem retenção de arquivo."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter PNG para JPG?",
+        "content": "Converta quando **o tamanho do arquivo importa mais que fidelidade perfeita de pixel** — miniaturas de página da web, anexos de email, uploads de mídia social ou armazenamento em massa de fotos onde os originais estão com segurança arquivados em outro lugar.",
+        "content2": "Não converta capturas de tela com muito texto, diagramas, arte em linhas ou qualquer coisa com bordas duras entre cores sólidas — a compressão DCT de bloco 8×8 de JPG borrava visivelmente essas transições. Mantenha-os como PNG, ou converta para WebP sem perda para o melhor dos dois mundos."
+      },
+      "howTo": {
+        "title": "Como Converter PNG para JPG",
+        "step1": {
+          "title": "1. Carregue Seu PNG",
+          "content": "Arraste para a área de upload ou clique para selecionar. Arquivos até 50 MB aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha um Nível de Qualidade",
+          "content": "O padrão é 90. Para fotos, 85–92 é um ponto ideal universal. Para economia máxima de tamanho com qualidade aceitável em imagens simples, tente 75–80."
+        },
+        "step3": {
+          "title": "3. Clique em Converter",
+          "content": "O servidor nivela transparência ao branco, aplica compressão JPEG na qualidade escolhida e retorna o JPG."
+        },
+        "step4": {
+          "title": "4. Baixe",
+          "content": "Visualize dimensões e tamanho do arquivo, depois baixe. O nome do arquivo mantém sua base original com a nova extensão `.jpg`."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "quality": {
+            "title": "Controle Deslizante de Qualidade",
+            "content": "Controle granular de 1 a 100 — ajuste exatamente o equilíbrio de tamanho do arquivo vs fidelidade que você precisa."
+          },
+          "sizeReduction": {
+            "title": "70–85% Menor",
+            "content": "Reduções típicas de PNG fotográfico: um PNG de 4 MB se torna um JPG de 500 KB na qualidade 90 sem diferença visível."
+          },
+          "privacy": {
+            "title": "Apenas na Memória",
+            "content": "Seu PNG é processado no lado do servidor e imediatamente descartado. Sem retenção, sem registro, sem conta."
+          },
+          "fast": {
+            "title": "Conversão em Menos de um Segundo",
+            "content": "Menos de 300 ms para PNGs típicos de tamanho web; menos de 1 segundo para fotos de alta resolução."
+          },
+          "free": {
+            "title": "Gratuito",
+            "content": "Três conversões gratuitas por sessão do navegador. Sem cartão de crédito, sem inscrição."
+          },
+          "noSignup": {
+            "title": "Sem Registro",
+            "content": "Comece a converter imediatamente. Sem conta, sem email necessário."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Otimização de Desempenho da Web",
+            "content": "Converta PNGs grandes de herói para JPG para carregamentos de página mais rápidos — crítico para Core Web Vitals e usuários móveis em redes lentas."
+          },
+          "email": {
+            "title": "Anexos de Email",
+            "content": "Muitos servidores de correio limitam anexos a 10–25 MB. A conversão JPG ajuda você a caber em mais fotos sob o limite."
+          },
+          "social": {
+            "title": "Uploads de Mídia Social",
+            "content": "As plataformas recodificam PNGs como JPG mesmo assim — converta primeiro para controlar a qualidade em vez de deixar a plataforma fazer."
+          },
+          "storage": {
+            "title": "Armazenamento em Massa de Fotos",
+            "content": "Converter álbuns de PNG para JPG na qualidade 88 tipicamente reduz o uso de armazenamento em ~80% sem mudança visível."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "transparency": {
+            "q": "O que acontece com pixels transparentes?",
+            "a": "Eles são nivelados para um fundo **branco** porque JPG não possui canal alfa. Se você precisa de transparência, converta para WebP (com ou sem perda)."
+          },
+          "quality": {
+            "q": "Qual qualidade devo escolher?",
+            "a": "90 é um padrão seguro para fotos — praticamente indistinguível da origem. 80 oferece um pouco mais de economia com suavização leve. Abaixo de 75, artefatos ficam visíveis em imagens de alto detalhe."
+          },
+          "sizeSavings": {
+            "q": "Quanto menor será o JPG?",
+            "a": "Para PNGs RGB típicos de 24 bits na qualidade 90, espere redução de tamanho de 70–85%. Para capturas de tela ou gráficos simples, a economia pode ser menor e artefatos mais visíveis."
+          },
+          "reversible": {
+            "q": "Posso converter de volta para PNG sem perda?",
+            "a": "Não — a compressão JPG descarta informações permanentemente. Converter JPG de volta para PNG fornece um PNG com artefatos JPG integrados. Mantenha um PNG original se precisar editar novamente."
+          },
+          "privacy": {
+            "q": "Meu PNG é armazenado em algum lugar?",
+            "a": "Não. É mantido na memória do servidor durante a conversão e descartado na resposta. Nada é registrado, sem conta necessária."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. Nossa listagem RapidAPI suporta uso ilimitado para camadas pagas."
+          }
+        }
+      }
+    }
+  },
+  "jpgToPng": {
+    "title": "Conversor Gratuito de JPG para PNG Online",
+    "subtitle": "Converta imagens JPG para formato PNG sem perda, pronto para edição com suporte a canal alfa.",
+    "upload": {
+      "title": "Solte seu arquivo JPG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · .jpg ou .jpeg",
+      "accept": "Apenas arquivos .jpg ou .jpeg são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para PNG",
+    "options": {},
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "PNG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar PNG",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de JPG para PNG",
+        "content": "Recodifique JPG para PNG sem perda programaticamente. O endpoint /jpg-to-png aceita um upload JPG multipart e retorna PNG de resolução completa — sem parâmetros de qualidade, apenas uma troca de formato limpa para ativos prontos para edição.",
+        "content2": "Funciona bem para pipelines que alimentam JPGs em editores apenas PNG, serviços que precisam de formatos capazes de alfa para composição downstream ou fluxos de trabalho automatizados preparando ativos para ferramentas de design.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /jpg-to-png: JPG → PNG",
+          "input": "Upload JPG multipart, até 50 MB",
+          "params": "Sem parâmetros configuráveis — sempre sem perda",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada JPG / JPEG; saída PNG sem perda",
+          "response": "Stream image/png binário na resolução de origem"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de JPG para PNG?",
+        "content": "A conversão de JPG para PNG resalva uma imagem JPG como PNG sem perda. Os pixels que você vê no JPG se tornam os valores de pixel exatos no PNG — nenhuma compressão adicional, nenhum artefato adicional, nenhuma perda geracional adicional.",
+        "content2": "É importante entender o que a conversão não pode fazer: ela não restaura a qualidade perdida quando a imagem foi originalmente codificada em JPG. Limites de bloco, surgelagem ao redor de texto e banding de cor permanecem visíveis no PNG. A conversão simplesmente 'congela' o estado atual sem perda para que edições futuras não agravem o dano.",
+        "content3": "Essa ferramenta carrega seu JPG em nosso conversor, decodifica e emite PNG na mesma resolução. Nenhum controle deslizante de qualidade é necessário porque PNG é sempre sem perda. A transparência pode ser adicionada posteriormente em qualquer editor uma vez que você tenha o PNG."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter JPG para PNG?",
+        "content": "Converta antes de editar um JPG em um fluxo de trabalho que o salvará várias vezes. Cada ressalva em JPG adiciona novos artefatos de compressão; manter o arquivo como PNG durante edições evita essa perda de qualidade cumulativa.",
+        "content2": "Também converta quando você precisa adicionar transparência (para sobreposições de logotipo, recortes, composição) ou quando uma ferramenta downstream requer entrada PNG — muitos pipelines de impressão, decks de apresentação e ferramentas de design legadas preferem ou requerem PNG."
+      },
+      "howTo": {
+        "title": "Como Converter JPG para PNG",
+        "step1": {
+          "title": "1. Carregue Seu JPG",
+          "content": "Arraste para a área de upload ou clique para abrir o seletor de arquivo. Extensões .jpg e .jpeg são aceitas, até 50 MB."
+        },
+        "step2": {
+          "title": "2. Clique em Converter",
+          "content": "Sem opções para configurar — PNG é sem perda por design. O servidor recodifica os pixels do seu JPG como PNG na resolução nativa completa."
+        },
+        "step3": {
+          "title": "3. Revise a Visualização",
+          "content": "Inspecione o resultado. Dimensões e tamanho do arquivo são exibidos. Os arquivos PNG são tipicamente 3–10× maiores que o JPG de origem para fotos."
+        },
+        "step4": {
+          "title": "4. Baixe",
+          "content": "Salve o PNG no seu computador. Agora seguro para edição repetida sem perda de qualidade geracional."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "lossless": {
+            "title": "Saída Completamente Sem Perda",
+            "content": "Sem perda de qualidade introduzida pela conversão — o PNG corresponde aos pixels atuais do JPG exatamente."
+          },
+          "alpha": {
+            "title": "Pronto para Transparência",
+            "content": "Uma vez em PNG, você pode adicionar transparência de canal alfa em qualquer editor de imagem — impossível com formato RGB puro do JPG."
+          },
+          "privacy": {
+            "title": "Retenção Zero de Arquivo",
+            "content": "Seu JPG é processado na memória e descartado imediatamente após a resposta ser enviada."
+          },
+          "fast": {
+            "title": "Conversão Rápida",
+            "content": "Menos de 500 ms para JPGs típicos de tamanho web; a maioria das fotos do iPhone termina em menos de 1 segundo."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão, sem conta necessária."
+          },
+          "noSignup": {
+            "title": "Início Instantâneo",
+            "content": "Sem inscrição, sem verificação de email, sem instalação — apenas solte o JPG e converta."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "editing": {
+            "title": "Edição de Foto em Múltiplas Etapas",
+            "content": "Salve edições como PNG para evitar agravar artefatos de compressão JPG com cada ciclo de salvamento."
+          },
+          "design": {
+            "title": "Fluxos de Trabalho de Design",
+            "content": "A maioria das ferramentas de design (Figma, Sketch, Photoshop) tratam PNG como cidadão de primeira classe — importe JPGs como PNGs para se integrar perfeitamente."
+          },
+          "transparency": {
+            "title": "Preparando para Recortes",
+            "content": "Converta para PNG primeiro, depois recorte fundos ou adicione canais alfa no seu editor escolhido."
+          },
+          "archival": {
+            "title": "Cópias de Preservação",
+            "content": "Mantenha um PNG intocado como seu mestre de arquivo; exporte JPGs dele para cada entrega em vez de iterar no JPG em si."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "qualityGain": {
+            "q": "Converter JPG para PNG melhora a qualidade?",
+            "a": "Não. PNG preserva qualquer qualidade no JPG — não consegue restaurar informações perdidas durante compressão JPG. O PNG é um instantâneo sem perda dos pixels atuais do JPG."
+          },
+          "fileSize": {
+            "q": "Por que o PNG é muito maior?",
+            "a": "PNG usa compressão DEFLATE sem perda; JPG usa compressão com perda agressiva sintonizada para visão humana. As fotos tipicamente inchão 3–10× quando convertidas de JPG para PNG."
+          },
+          "transparency": {
+            "q": "Meu PNG terá transparência?",
+            "a": "Não automaticamente — JPG não possui canal alfa, então o PNG de saída é completamente opaco. Você pode adicionar transparência posteriormente em qualquer editor de imagem."
+          },
+          "privacy": {
+            "q": "Meu arquivo é carregado em terceiros?",
+            "a": "Seu JPG vai para nosso próprio serviço Cloud Run, é processado na memória e a resposta é retornada. Sem armazenamento de terceiros, sem retenção, sem registro de conteúdo de imagem."
+          },
+          "maxSize": {
+            "q": "Qual é o tamanho máximo de arquivo?",
+            "a": "Upload de 50 MB, ~89 megapixels de resolução. Se encaixa confortavelmente em qualquer foto que uma câmera ou telefone moderno possa produzir."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. Automação e uso em volume via nossa API."
+          }
+        }
+      }
+    }
+  },
+  "pngToWebp": {
+    "title": "Conversor Gratuito de PNG para WebP Online",
+    "subtitle": "Encolha arquivos PNG em 50–80% convertendo para WebP — o formato moderno de imagem da web com suporte total a transparência.",
+    "upload": {
+      "title": "Solte seu arquivo PNG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · apenas .png",
+      "accept": "Apenas arquivos .png são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para WebP",
+    "options": {
+      "quality": "Qualidade WebP",
+      "qualityHint": "Ignorado quando Lossless está habilitado. 75–85 é um forte equilíbrio para a maioria das imagens web.",
+      "lossless": "Codificação Sem Perda",
+      "losslessHint": "Preservação de pixel perfeita — tipicamente 20–40% menor que o PNG, vs 50–80% menor para WebP com perda."
+    },
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "WebP Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar WebP",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de PNG para WebP",
+        "content": "Automatize a geração de WebP para seu CDN ou pipeline de compilação. O endpoint /webp detecta automaticamente a direção de entrada — envie um PNG e receba WebP, opcionalmente ajustando qualidade ou habilitando modo sem perda para saída perfeita em pixels.",
+        "content2": "Perfeito para etapas de compilação de imagem em geradores de site estático, conversão no upload em aplicativos SaaS e pré-processamento em massa de CDN que produz variantes de imagem amigáveis ao Core Web Vitals em escala.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /webp: qualquer → WebP (direção auto-detectada)",
+          "input": "Upload PNG multipart, até 50 MB",
+          "params": "quality (0–100), lossless (bool)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada PNG / JPG; saída WebP com alfa",
+          "response": "Stream image/webp binário"
+        }
+      },
+      "whatIs": {
+        "title": "O que é WebP e por que converter de PNG?",
+        "content": "WebP é um formato de imagem desenvolvido pelo Google que combina os melhores recursos de JPG, PNG e GIF. Suporta tanto compressão com perda quanto sem perda, transparência alfa completa e produz arquivos dramaticamente menores que PNG na mesma qualidade percebida.",
+        "content2": "Resultados do mundo real: um banner herói PNG de 2 MB tipicamente se torna um WebP de 300–500 KB em modo com perda (redução de 75–85%), ou um WebP de 1,2–1,6 MB em modo sem perda (redução de 20–40%). Ambos preservam transparência completa se presente na origem.",
+        "content3": "O suporte do navegador é universal entre navegadores evergreen — Chrome, Edge, Firefox, Safari 14+ e Opera todos decodificam WebP nativamente. Para fallbacks legados, use um `picture` com uma origem PNG como backup."
+      },
+      "whyWebp": {
+        "title": "Por Que Usar WebP para Imagens da Web?",
+        "content": "O Core Web Vitals do Google pesa muito o tamanho da imagem — especificamente a métrica **Largest Contentful Paint (LCP)**. Substituir imagens herói PNG por WebP frequentemente oferece um impulso LCP instantâneo sem nenhuma mudança de código além do atributo `img src`.",
+        "content2": "WebP também reduz custos de largura de banda para sua conta de CDN ou hospedagem, acelera carregamentos de página móvel em redes lentas e produz uma experiência melhor para usuários em planos com limite de dados. Para painéis SaaS, listagens de produtos de e-commerce e páginas de marketing pesadas em conteúdo, a atualização quase sempre vale a pena."
+      },
+      "howTo": {
+        "title": "Como Converter PNG para WebP",
+        "step1": {
+          "title": "1. Carregue Seu PNG",
+          "content": "Arraste ou clique para selecionar. Arquivos até 50 MB são aceitos."
+        },
+        "step2": {
+          "title": "2. Escolha Com Perda ou Sem Perda",
+          "content": "Deixe Lossless desativado para economia máxima de tamanho em fotos e imagens complexas. Ative Lossless para ícones, gráficos de UI e qualquer imagem onde fidelidade de pixel importa mais que tamanho."
+        },
+        "step3": {
+          "title": "3. Escolha uma Qualidade (Apenas Com Perda)",
+          "content": "O padrão é 80. Valores maiores produzem arquivos maiores e melhores; valores menores economizam mais largura de banda com algum custo visual. 75–85 é o ponto ideal para a maioria das imagens web."
+        },
+        "step4": {
+          "title": "4. Baixe",
+          "content": "Seu arquivo WebP está pronto — solte em suas tags `img` de site (ou um elemento `picture` para fallback legado)."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "compression": {
+            "title": "50–80% Arquivos Menores",
+            "content": "Economia dramática de tamanho vs o PNG de origem, sem perda de qualidade visível nas configurações recomendadas."
+          },
+          "lossless": {
+            "title": "Modo Sem Perda Disponível",
+            "content": "Preservação de pixel perfeita quando necessário — ainda 20–40% menor que o PNG de origem."
+          },
+          "alpha": {
+            "title": "Transparência Completa",
+            "content": "O canal alfa é preservado em modos com e sem perda — um verdadeiro substituto de PNG."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "Seu PNG é processado na memória e descartado após a resposta. Sem registro, sem conta."
+          },
+          "fast": {
+            "title": "Conversão em Menos de um Segundo",
+            "content": "PNGs típicos de tamanho web são convertidos em menos de 300 ms em nosso serviço."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três conversões gratuitas por sessão, sem inscrição. API disponível para volumes maiores."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Desempenho Web e SEO",
+            "content": "Imagens menores significam páginas mais rápidas, Core Web Vitals melhores e rankings SEO melhorados — especialmente em mobile."
+          },
+          "mobile": {
+            "title": "Aplicativos Móveis e PWAs",
+            "content": "WebP é suportado nativamente em Android WebViews e PWAs — pacotes mais leves, carregamentos mais rápidos, UX mais suave."
+          },
+          "ecommerce": {
+            "title": "Imagens de Produtos de E-commerce",
+            "content": "Converta catálogos de produtos para WebP para páginas de listagem mais rápidas e contas CDN menores em escala."
+          },
+          "cms": {
+            "title": "Sistemas de Gerenciamento de Conteúdo",
+            "content": "A maioria das plataformas CMS modernas (WordPress, Ghost, Strapi, Contentful) agora serve WebP automaticamente — mas apenas se você as alimentar com fontes WebP."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "browserSupport": {
+            "q": "Quais navegadores suportam WebP?",
+            "a": "Todo navegador evergreen: Chrome, Edge, Firefox, Opera e Safari 14+. Para Safari mais antigo e IE, use um elemento `picture` com fallback PNG."
+          },
+          "lossless": {
+            "q": "Sem perda vs com perda — qual devo usar?",
+            "a": "Com perda para fotos e imagens complexas onde tamanho importa mais. Sem perda para ícones, gráficos de UI, capturas de tela com texto ou qualquer imagem que você possa editar posteriormente."
+          },
+          "sizeSavings": {
+            "q": "Quanto menor será o WebP?",
+            "a": "WebP com perda: 50–80% menor que o PNG para fotos típicas. WebP sem perda: 20–40% menor. Os resultados variam com o conteúdo da imagem."
+          },
+          "transparency": {
+            "q": "WebP suporta transparência alfa?",
+            "a": "Sim — tanto WebP com perda quanto sem perda suportam canal alfa completo, um substituto direto de PNG."
+          },
+          "privacy": {
+            "q": "Meu PNG é armazenado em algum lugar?",
+            "a": "Não. É mantido na memória durante a conversão apenas; nenhum arquivo é escrito em disco, nenhum conteúdo é registrado, nenhuma conta é necessária."
+          },
+          "free": {
+            "q": "Isto é gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. Camadas pagas e acesso à API via RapidAPI para uso ilimitado."
+          }
+        }
+      }
+    }
+  },
+  "webpToPng": {
+    "title": "Conversor Gratuito de WebP para PNG Online",
+    "subtitle": "Converta imagens WebP de volta para formato PNG universalmente compatível — sem perda, com transparência preservada.",
+    "upload": {
+      "title": "Solte seu arquivo WebP aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · apenas .webp",
+      "accept": "Apenas arquivos .webp são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Converter para PNG",
+    "options": {},
+    "status": {
+      "converting": "Convertendo...",
+      "error": "Falha na conversão",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "PNG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar PNG",
+      "reset": "Converter Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} conversão gratuita restante | {count} conversões gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Conversão de WebP para PNG",
+        "content": "Decodifique WebP de volta para PNG no lado do servidor para compatibilidade legada. O endpoint /webp detecta a direção de WebP automaticamente — forneça target_format=png e a API retorna um PNG sem perda decodificado na resolução nativa da origem.",
+        "content2": "Útil para serviços que precisam servir fallbacks PNG para navegadores antigos, pipelines de produção de impressão que requerem entrada PNG e sistemas de gerenciamento de ativos que normalizam WebP de entrada para um formato universal.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /webp: WebP → PNG / JPG (com target_format)",
+          "input": "Upload WebP multipart, até 50 MB",
+          "params": "target_format=png (necessário quando entrada é WebP)",
+          "limit": "50 MB por solicitação, ~89 MP de resolução",
+          "formats": "Entrada WebP; saída PNG sem perda",
+          "response": "Stream image/png binário com alfa preservado"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Conversão de WebP para PNG?",
+        "content": "A conversão de WebP para PNG decodifica uma imagem WebP e a recodifica como PNG sem perda. O estado de pixel atual do WebP é preservado exatamente no PNG — nenhuma compressão adicional, nenhuma perda de qualidade adicional.",
+        "content2": "Isso é útil quando você precisa abrir um WebP em uma ferramenta que não suporta o formato, compartilhá-lo com usuários em dispositivos mais antigos ou integrá-lo em um fluxo de trabalho que requer PNG. Software de impressão legado, versões antigas do Microsoft Office e muitos sistemas embarcados se enquadram nessa categoria.",
+        "content3": "Nossa ferramenta executa a conversão no lado do servidor através de libvips, preservando canal alfa e perfil de cor. A saída é sempre na resolução completa da origem WebP, entregue como arquivo PNG pronto para uso."
+      },
+      "whyConvert": {
+        "title": "Quando Devo Converter WebP para PNG?",
+        "content": "Converta quando seu destino não conseguir ler WebP. Casos comuns: versões mais antigas do Photoshop, Microsoft PowerPoint antes de 365, laboratórios de impressão usando software RIP legado, ferramentas de terceiros que ainda não se atualizaram ou aplicativos Windows confiando em bibliotecas de imagem antigas.",
+        "content2": "Também converta quando você precisar editar um WebP em um pipeline que salvará várias vezes — como PNG, você evita perda de qualidade geracional, pois ambos formatos são sem perda (para WebP com perda, a decodificação inicial é como é, mas salvamentos futuros como PNG não degradarão mais)."
+      },
+      "howTo": {
+        "title": "Como Converter WebP para PNG",
+        "step1": {
+          "title": "1. Carregue Seu WebP",
+          "content": "Arraste e solte ou clique para abrir o seletor de arquivo. Aceita qualquer `.webp` até 50 MB — origem com ou sem perda, estática ou animada (primeiro quadro usado)."
+        },
+        "step2": {
+          "title": "2. Clique em Converter",
+          "content": "Sem opções necessárias — PNG é sempre sem perda. O servidor decodifica seu WebP e reemite como PNG nas dimensões nativas da origem."
+        },
+        "step3": {
+          "title": "3. Verifique a Visualização",
+          "content": "Seu PNG aparece com dimensões e tamanho. Espere o PNG ser 2–4× maior que o WebP de origem."
+        },
+        "step4": {
+          "title": "4. Baixe",
+          "content": "Salve o PNG. Agora pronto para abrir em qualquer aplicação, incluindo ferramentas legadas que não entendem WebP."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "lossless": {
+            "title": "Saída Sem Perda",
+            "content": "Nenhuma perda de qualidade adicional — PNG captura os pixels decodificados exatos do WebP."
+          },
+          "alpha": {
+            "title": "Transparência Preservada",
+            "content": "Canal alfa completo carregado do WebP para PNG, para logotipos, ícones e ativos de UI transparentes."
+          },
+          "compatibility": {
+            "title": "Compatibilidade Universal",
+            "content": "PNG abre em todos os navegadores, SOs, editores, ferramentas de impressão e formatos de documento — sem exceções."
+          },
+          "privacy": {
+            "title": "Sem Retenção",
+            "content": "Seu WebP é processado na memória e descartado imediatamente. Sem registro, sem conta."
+          },
+          "fast": {
+            "title": "Conversão Rápida",
+            "content": "Menos de 500 ms para WebPs típicos de tamanho web; sub-segundo para a maioria das imagens."
+          },
+          "free": {
+            "title": "Gratuito e Ilimitado",
+            "content": "Três conversões gratuitas por sessão. API para volumes maiores."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "editing": {
+            "title": "Edição em Ferramentas Legadas",
+            "content": "Versões mais antigas do Photoshop, Illustrator e GIMP carecem de suporte WebP — converta para PNG primeiro para compatibilidade."
+          },
+          "legacy": {
+            "title": "Aplicativos Windows Legados",
+            "content": "Paint, muitas ferramentas de preview IDE e utilitários antigos ainda não conseguem ler WebP — PNG o desbloqueia."
+          },
+          "printing": {
+            "title": "Produção de Impressão",
+            "content": "Alguns RIPs de impressão não suportam WebP. Converta para PNG para submissão segura a gráficas."
+          },
+          "design": {
+            "title": "Importações de Ferramentas de Design",
+            "content": "Solte o PNG em Figma, Sketch ou Adobe XD para comportamento consistente em pipelines de design."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "whyConvert": {
+            "q": "Por que eu converteria WebP de volta para PNG?",
+            "a": "Quando o destino não suporta WebP. Muitas ferramentas legadas, pipelines de impressão e sistemas operacionais mais antigos apenas aceitam PNG."
+          },
+          "qualityLoss": {
+            "q": "Vou perder qualidade?",
+            "a": "Não. PNG é sem perda — captura os pixels atuais do WebP exatamente. Se o WebP de origem era com perda, o PNG reflete esse estado mas não adiciona mais artefatos."
+          },
+          "fileSize": {
+            "q": "Por que o PNG é maior?",
+            "a": "WebP usa compressão agressiva; PNG usa DEFLATE sem perda. Espere PNG ser 2–4× maior que o WebP de origem."
+          },
+          "transparency": {
+            "q": "Transparência é preservada?",
+            "a": "Sim — canal alfa completo é carregado do WebP para PNG inalterado."
+          },
+          "privacy": {
+            "q": "Meu arquivo é armazenado no servidor?",
+            "a": "Não — seu WebP é processado apenas na memória e descartado após a resposta."
+          },
+          "free": {
+            "q": "Isto é gratuito?",
+            "a": "Sim — três conversões gratuitas por sessão. API para uso ilimitado."
+          }
+        }
+      }
+    }
+  },
+  "svgToPng": {
+    "title": "Conversor Gratuito de SVG para PNG Online",
+    "subtitle": "Rasterize gráficos vetoriais SVG em PNG em qualquer tamanho — com dimensões exatas de pixel, largura/altura preservando aspecto ou multiplicador de escala para ativos retina.",
+    "upload": {
+      "title": "Solte seu arquivo SVG aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · apenas .svg",
+      "accept": "Apenas arquivos .svg são aceitos",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Rasterizar para PNG",
+    "options": {
+      "sizeMode": "Modo de Tamanho",
+      "sizeMode_scale": "Escala (×)",
+      "sizeMode_width": "Apenas Largura",
+      "sizeMode_height": "Apenas Altura",
+      "sizeMode_exact": "Exato L × A",
+      "scale": "Multiplicador de Escala",
+      "scaleHint": "Multiplica o viewBox nativo do SVG. 2× é padrão para retina; 3× ou 4× para saída de impressão.",
+      "width": "Largura (px)",
+      "widthHint": "Proporção de aspecto preservada. Máximo 8192 px.",
+      "height": "Altura (px)",
+      "heightHint": "Proporção de aspecto preservada. Máximo 8192 px."
+    },
+    "status": {
+      "converting": "Rasterizando...",
+      "error": "Falha na rasterização",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "PNG Rasterizado",
+      "info": "{width} × {height} px • {size}",
+      "download": "Baixar PNG",
+      "reset": "Rasterizar Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} rasterização gratuita restante | {count} rasterizações gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API de Rasterização de SVG para PNG",
+        "content": "Rasterize SVG programaticamente para qualquer tamanho de saída. O endpoint /svg-to-png aceita um upload SVG multipart com tamanho controlado via width, height ou scale — renderizado no lado do servidor com fontes Noto CJK e emoji incluídas.",
+        "content2": "Ideal para geradores de imagem Open Graph, pipelines automatizados de favicon, criação dinâmica de cartão social e rasterização em tempo de compilação de ativos vetoriais em resoluções específicas.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /svg-to-png: SVG → PNG em qualquer tamanho",
+          "input": "Upload SVG multipart, até 50 MB",
+          "params": "width, height, scale (0.1–10.0) — misture e combine",
+          "limit": "Saída até 8192 × 8192 px",
+          "formats": "Entrada SVG 1.1 / 2.0; saída PNG sem perda",
+          "response": "Stream RGBA image/png binário com suporte a fonte Noto CJK"
+        }
+      },
+      "whatIs": {
+        "title": "O que é Rasterização de SVG para PNG?",
+        "content": "SVG (Scalable Vector Graphics) é um formato baseado em XML que descreve imagens como instruções geométricas — caminhos, formas, texto e preenchimentos — em vez de pixels. Isso permite que SVG seja renderizado em qualquer tamanho sem perda de qualidade, perfeito para logotipos, ícones e diagramas.",
+        "content2": "PNG é baseado em pixels (raster). Rasterização converte as instruções do SVG em pixels reais em uma resolução específica. Uma vez rasterizado, a imagem é fixa naquele tamanho — ampliação de PNG perde qualidade, ao contrário de SVG.",
+        "content3": "Você rasteriza quando precisa de uma saída PNG específica para uma plataforma que não aceita SVG: visualizações sociais Open Graph, favicons, ícones de app, emoji Slack, ativos de impressão ou incorporações Word/PowerPoint."
+      },
+      "sizing": {
+        "title": "Três Maneiras de Dimensionar Sua Saída",
+        "content": "**Multiplicador de escala** — multiplica o viewBox nativo do SVG. Use isso quando seu SVG já tiver proporções corretas e você apenas precise de um bitmap retina (2×) ou pronto para impressão (4×).",
+        "content2": "**Apenas largura** ou **Apenas altura** — defina uma dimensão, a outra é calculada a partir da proporção de aspecto do SVG. Ótimo para gerar ícones em uma largura específica sem se preocupar com matemática de altura.",
+        "content3": "**Largura × altura exata** — força a saída a essas dimensões exatas. Se sua proporção de aspecto diferir do SVG, a imagem será alongada. Útil para requisitos de tamanho fixo como Open Graph (1200×630)."
+      },
+      "howTo": {
+        "title": "Como Rasterizar um SVG",
+        "step1": {
+          "title": "1. Carregue Seu SVG",
+          "content": "Arraste ou clique para selecionar seu arquivo `.svg`. Até 50 MB aceito. Qualquer arquivo SVG 1.1 / 2.0 compatível funciona."
+        },
+        "step2": {
+          "title": "2. Escolha um Modo de Tamanho",
+          "content": "Escala para ativos retina, Largura ou Altura para redimensionamento preservando aspecto, Exata para dimensões perfeitas em pixels."
+        },
+        "step3": {
+          "title": "3. Defina Dimensões",
+          "content": "Controle deslizante de escala vai de 0.1× a 10×. Largura e Altura aceitam qualquer inteiro de 1 a 8192 pixels."
+        },
+        "step4": {
+          "title": "4. Rasterizar e Baixar",
+          "content": "O servidor renderiza seu SVG usando libvips + librsvg com fontes Noto CJK e emoji incluídas. Baixe o PNG e solte em seu projeto."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "sizing": {
+            "title": "Dimensionamento Flexível",
+            "content": "Escala, apenas largura, apenas altura ou dimensões exatas — cubra todos os requisitos de saída."
+          },
+          "retina": {
+            "title": "Pronto para Retina",
+            "content": "Escale até 10× para qualidade de impressão ou telas ultra-alta-DPI sem perda de qualidade."
+          },
+          "transparency": {
+            "title": "Canal Alfa Preservado",
+            "content": "Transparência SVG (incluindo traços e gradientes semi-transparentes) é capturada no canal alfa do PNG."
+          },
+          "fonts": {
+            "title": "Fontes Noto CJK Incluídas",
+            "content": "Nosso servidor tem fontes Noto Sans CJK e emoji pré-instaladas — texto chinês, japonês, coreano e emoji são renderizados corretamente sem tofu de glifo ausente."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "Seu SVG é processado na memória e descartado imediatamente após a resposta."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três rasterizações gratuitas por sessão, sem conta necessária."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "ogImages": {
+            "title": "Visualizações Sociais Open Graph",
+            "content": "Gere PNGs de 1200×630 de modelos SVG para visualizações de link do Twitter, LinkedIn e Facebook."
+          },
+          "appIcons": {
+            "title": "Ícones de App",
+            "content": "Rasterize um mestre SVG único em 1024×1024 para app store iOS, 512×512 para Android e qualquer tamanho intermediário."
+          },
+          "print": {
+            "title": "Ativos de Impressão",
+            "content": "Gere PNGs em escala 4×–10× para panfletos, cartazes e saída de impressão alta-DPI de origem SVG."
+          },
+          "presentations": {
+            "title": "Decks de Apresentação e Documentos",
+            "content": "Muitas ferramentas de apresentação não renderizam SVG corretamente — rasterize para PNG para gráficos incorporados consistentes."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "sizeModes": {
+            "q": "Qual modo de tamanho devo usar?",
+            "a": "Escala para multiplicadores retina ou impressão; Largura/Altura para redimensionamento preservando aspecto; Exata para requisitos de dimensão fixa como imagens Open Graph (1200×630)."
+          },
+          "fonts": {
+            "q": "Meu texto SVG será renderizado corretamente?",
+            "a": "Nosso servidor tem fontes Noto CJK e emoji pré-instaladas, então texto chinês, japonês, coreano e emoji são renderizados corretamente. Para outras fontes, incorpore-as como base64 via regra CSS font-face em seu SVG ou converta texto em caminhos antes de carregar."
+          },
+          "transparency": {
+            "q": "Transparência é preservada?",
+            "a": "Sim — canal alfa completo do SVG (incluindo traços semi-transparentes, gradientes e filtros) é capturado no canal alfa do PNG."
+          },
+          "maxSize": {
+            "q": "Qual é o tamanho máximo de saída?",
+            "a": "8192 × 8192 pixels. Para saídas maiores, divida o SVG ou use a API diretamente."
+          },
+          "privacy": {
+            "q": "Meu SVG é armazenado no seu servidor?",
+            "a": "Não. SVGs são processados na memória e descartados imediatamente após a resposta. Sem registro, sem conta."
+          },
+          "free": {
+            "q": "Isto é gratuito?",
+            "a": "Sim — três rasterizações gratuitas por sessão. Nossa API oferece uso ilimitado com camadas pagas."
+          }
+        }
+      }
+    }
+  },
+  "faviconGenerator": {
+    "title": "Gerador de Favicon Gratuito Online",
+    "subtitle": "Gere um pacote de favicon completo a partir de uma imagem de origem — ICO, Apple Touch, Android Chrome e manifesto web, tudo em um ZIP.",
+    "upload": {
+      "title": "Solte sua imagem de origem aqui ou clique para selecionar",
+      "limit": "Tamanho máximo: 50 MB · PNG, JPG ou WebP · 512×512 recomendado",
+      "accept": "Apenas PNG, JPG ou WebP — SVG não suportado (rasterize primeiro)",
+      "tooLarge": "O arquivo excede o limite de 50 MB",
+      "changeFile": "Alterar arquivo"
+    },
+    "convert": "Gerar Pacote de Favicon",
+    "options": {},
+    "preview": {
+      "title": "Visualizar em tamanhos de favicon"
+    },
+    "status": {
+      "converting": "Gerando pacote...",
+      "error": "Falha na geração",
+      "retry": "Tentar Novamente"
+    },
+    "result": {
+      "title": "Seu Pacote de Favicon Está Pronto",
+      "info": "ZIP de 7 arquivos • {size}",
+      "filesTitle": "Arquivos Incluídos",
+      "snippetTitle": "Trecho HTML — Cole em Seu Head HTML",
+      "copy": "Copiar Trecho",
+      "copied": "Copiado!",
+      "download": "Baixar ZIP",
+      "reset": "Gerar Outro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor, nos apoie. 🌸",
+      "description": "Desbloqueie 3 mais conversões lendo nossos artigos. Obrigado por apoiar esta ferramenta gratuita!",
+      "remaining": "{count} geração gratuita restante | {count} gerações gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Fechar"
+    },
+    "seo": {
+      "api": {
+        "title": "Use a API do Gerador de Favicon",
+        "content": "Gere pacotes de favicon completos em seu pipeline CI/CD. O endpoint /favicon pega um upload de imagem quadrada única e retorna um ZIP contendo todos os 7 arquivos de favicon mais um stub de manifesto web — sem config, sem lógica de ramificação, uma solicitação.",
+        "content2": "Perfeito para produtos site builder, pipelines de implantação de white-label que marca por cliente e ferramentas dev/staging que regeneram ícones em cada implantação.",
+        "cta": "Ver API no RapidAPI",
+        "tutorial": "Ler o Tutorial Completo",
+        "features": {
+          "title": "Destaques da API",
+          "endpoints": "POST /favicon: imagem → ZIP de 7 arquivos",
+          "input": "PNG / JPG / WebP multipart, até 50 MB",
+          "params": "Sem parâmetros — totalmente automatizado",
+          "limit": "Origem 512×512 recomendada para saída mais nítida",
+          "formats": "A saída inclui favicon.ico + 6 PNGs + site.webmanifest",
+          "response": "Stream application/zip binário, pronto para extração"
+        }
+      },
+      "whatIs": {
+        "title": "O que é um Favicon e por que você precisa de um pacote completo?",
+        "content": "Um favicon é o pequeno ícone que representa seu website em abas do navegador, favoritos, telas iniciais de celular e resultados de busca. Em 2025, suportar cada dispositivo apropriadamente requer não apenas um `favicon.ico` mas um conjunto coordenado de imagens em tamanhos específicos — o ICO clássico, PNGs de alta-DPI para navegadores modernos, um Apple Touch Icon para telas iniciais iOS e ícones Android Chrome para Progressive Web Apps.",
+        "content2": "Fazer isso corretamente manualmente é tedioso: você precisa exportar seu logotipo em 7 tamanhos diferentes, gerar um ICO multi-resolução, produzir um manifesto web e lembrar das tags de link HTML exatas para cada dispositivo. Pule ou configure incorretamente um e você termina com um 16×16 desfocado escalado da origem errada, um espaço reservado genérico no iOS ou um prompt de instalação PWA quebrado.",
+        "content3": "Essa ferramenta gera o pacote completo a partir de uma imagem de origem em segundos — todos os 7 arquivos em tamanhos corretos, mais um trecho HTML pronto para colar que conecta tudo para cada plataforma na ordem certa."
+      },
+      "contents": {
+        "title": "O Que Está no Pacote",
+        "content": "**`favicon.ico`** — ICO multi-resolução contendo quadros 16×16, 32×32 e 48×48 para ampla compatibilidade com navegador incluindo IE e Edge mais antigos.",
+        "content2": "**`favicon-16x16.png` / `favicon-32x32.png`** — PNGs de alta-DPI para navegadores modernos que preferem favicons PNG. **`apple-touch-icon.png`** — ícone de tela inicial de 180×180 para iOS. **`android-chrome-192x192.png` / `android-chrome-512x512.png`** — ícones PWA para instalação e splash do Android. **`site.webmanifest`** — stub de manifesto PWA (edite `name` e `short_name` após download)."
+      },
+      "howTo": {
+        "title": "Como Gerar um Pacote de Favicon",
+        "step1": {
+          "title": "1. Carregue um PNG, JPG ou WebP Quadrado",
+          "content": "Mínimo de 512×512 recomendado para resultados mais nítidos em todos os tamanhos. A ferramenta aceita qualquer proporção de aspecto mas funciona melhor com quadrados perfeitos. SVG não suportado — rasterize para PNG primeiro usando nossa ferramenta SVG para PNG."
+        },
+        "step2": {
+          "title": "2. Visualize em Tamanhos de Favicon",
+          "content": "Inspecione sua imagem de origem em 16, 32, 48, 180, 192 e 512 pixels — certifique-se de que permanece legível em 16×16 (o teste mais difícil). Logotipos simples e de alto contraste funcionam melhor."
+        },
+        "step3": {
+          "title": "3. Clique em Gerar",
+          "content": "O servidor reamostra sua origem para todos os 7 tamanhos alvo, monta um ICO multi-resolução, cria um stub de manifesto web e empacota tudo em um ZIP."
+        },
+        "step4": {
+          "title": "4. Baixe e Implante",
+          "content": "Extraia o ZIP na raiz pública do seu site (ou `/static` para Nuxt, `/public` para Next.js). Copie o trecho HTML que fornecemos no seu `head`. Edite `site.webmanifest` `name` e `short_name` para corresponder à sua marca."
+        }
+      },
+      "features": {
+        "title": "Recursos",
+        "items": {
+          "completeSet": {
+            "title": "Todos os 7 Arquivos em Um Pacote",
+            "content": "ICO, PNGs do navegador, Apple Touch, Android Chrome e manifesto web — tudo que você precisa, sem partes faltantes."
+          },
+          "pwa": {
+            "title": "Pronto para PWA",
+            "content": "Inclui ícones Android Chrome 192×192 e 512×512 e um stub de manifesto web — configure `manifest.json` e você é instalável."
+          },
+          "htmlSnippet": {
+            "title": "Trecho HTML Pronto para Copiar e Colar",
+            "content": "Fornecemos as tags de link exatas para colar em seu `head` — sem pesquisa, sem adivinhação."
+          },
+          "privacy": {
+            "title": "Sem Retenção de Arquivo",
+            "content": "Sua imagem de origem é processada na memória e descartada imediatamente. Sem conta, sem registro."
+          },
+          "fast": {
+            "title": "Geração em Uma Solicitação",
+            "content": "Todos os 7 resultados produzidos em uma única solicitação em torno de 500 ms."
+          },
+          "free": {
+            "title": "Gratuito para Uso Casual",
+            "content": "Três gerações gratuitas por sessão, sem conta. API disponível para volumes maiores."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "newSite": {
+            "title": "Lançando um Novo Website",
+            "content": "Acerte favicons no dia um — todos os navegadores, todos os dispositivos, nenhuma plataforma esquecida."
+          },
+          "pwa": {
+            "title": "Progressive Web Apps",
+            "content": "Envie os ícones Android 192/512 e manifesto web necessários para instalações Add-to-Home-Screen."
+          },
+          "rebrand": {
+            "title": "Atualização de Marca",
+            "content": "Regenere todos os favicons a partir de um novo logotipo em uma única rodada quando sua identidade visual mudar."
+          },
+          "dev": {
+            "title": "Ambientes Dev e Staging",
+            "content": "Favicons rápidos para URLs de staging, ferramentas internas e sites de visualização de cliente — sem ticket de equipe de design necessário."
+          }
+        }
+      },
+      "faq": {
+        "title": "Perguntas Frequentes",
+        "items": {
+          "sourceSize": {
+            "q": "Qual tamanho de origem devo carregar?",
+            "a": "512×512 ou maior, proporção de aspecto quadrado, PNG ou WebP para melhor tratamento de transparência. Origens menores (como 256×256) funcionarão mas 16×16 e 32×32 podem parecer ligeiramente suaves devido ao redimensionamento de um mestre já pequeno."
+          },
+          "svg": {
+            "q": "Posso carregar um SVG?",
+            "a": "Não diretamente — nosso serviço de favicon usa um pipeline raster que não consegue analisar SVG. Use nossa ferramenta `SVG para PNG` primeiro em 512×512 ou 1024×1024, depois alimente esse PNG aqui."
+          },
+          "transparency": {
+            "q": "Transparência é suportada?",
+            "a": "Sim — fundos transparentes em seu PNG ou WebP de origem são preservados em toda saída, exceto o ICO (que usa quadros comprimidos PNG com transparência)."
+          },
+          "customize": {
+            "q": "Posso personalizar o manifesto web?",
+            "a": "O `site.webmanifest` gerado é um stub funcional com campos `name` e `short_name` de espaço reservado. Abra em um editor de texto e defina-os para seus nomes reais de marca antes de implantar."
+          },
+          "privacy": {
+            "q": "Minha imagem de origem é armazenada?",
+            "a": "Não. Seu upload é mantido na memória apenas durante a geração e descartado instantaneamente após o ZIP ser retornado."
+          },
+          "free": {
+            "q": "É gratuito?",
+            "a": "Sim — três gerações gratuitas por sessão. Use nossa API para integração CI/CD ou trabalho em cliente em massa."
           }
         }
       }
