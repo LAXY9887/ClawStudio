@@ -2598,40 +2598,40 @@
       },
       "howTo": {
         "title": "如何將 WebP 轉為 HEIC",
-        "step1": { "title": "1. 上傳你的 WebP", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 選擇 HEIC 品質", "content": "預設 90 —— WebP 本已高效，使用 90–95 以避免雙重壓縮失真。" },
-        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 WebP 並以 HEVC 壓縮重新編碼為 HEIC。一般網頁用圖低於 1 秒完成。" },
-        "step4": { "title": "4. 下載並儲存", "content": "HEIC 已就緒。透過 AirDrop 傳至 iPhone 或匯入 Apple 照片。" }
+        "step1": { "title": "1. 上傳你的 WebP", "content": "將 WebP 檔案拖曳至上傳區，或點擊開啟檔案選取器。接受最大 50 MB、約 89 百萬像素的檔案。上傳直接送至 Cloud Run 處理管線 —— 不會寫入磁碟。" },
+        "step2": { "title": "2. 選擇 HEIC 品質", "content": "預設為 90。由於 WebP 本已高效壓縮，使用 90–95 以避免 HEIC 輸出的雙重壓縮失真。品質 95 對照片內容幾乎等同無損。避免低於 80，否則 HEVC 的區塊失真會變得明顯。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器以 libvips 解碼 WebP，再用 libheif 以 HEVC 壓縮重新編碼為 HEIC。一般網頁用圖（1–4 MB WebP）在 1 秒內完成。整個過程在記憶體中執行 —— 不建立任何暫存檔案。" },
+        "step4": { "title": "4. 下載並儲存", "content": "HEIC 檔案直接串流至你的瀏覽器。透過 AirDrop 傳至 iPhone、在 Mac 上匯入 Apple 照片、或上傳到 iCloud Drive。HEIC 在 iOS 11+、iPadOS 及 macOS High Sierra+ 原生顯示，無需安裝任何應用程式。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "compression": { "title": "縮小 2–3 倍", "content": "相同品質下典型的 WebP → HEIC 節省量。" },
-          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制。" },
-          "apple": { "title": "Apple 原生格式", "content": "在 iPhone、iPad、Mac 上原生開啟。" },
-          "privacy": { "title": "不保留檔案", "content": "WebP 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "快速轉換", "content": "一般網頁用圖低於 1 秒完成。" },
-          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+          "compression": { "title": "縮小 2–3 倍", "content": "相同視覺品質下典型的 WebP → HEIC 節省量，由 Apple HEIF 容器內的 HEVC 壓縮驅動。HEVC 的幀內預測與自適應量化在照片內容（尤其是天空、膚色等平滑漸層區域）上一貫優於 WebP 的 VP8 編碼。" },
+          "quality": { "title": "品質滑桿", "content": "透過 HEIC 品質參數從 1 到 100 細緻調整。品質 90 是從 WebP 來源取得近乎無損效果的最佳點；品質 95+ 適合封存級保真。低於 80 可能在細節區域出現明顯的 HEVC 區塊失真。" },
+          "apple": { "title": "Apple 原生格式", "content": "HEIC 在每部 iPhone（iOS 11+）、iPad、及 Mac（High Sierra+）上原生開啟，無需安裝外掛。iCloud 照片圖庫在所有 Apple 裝置間高效同步、儲存 HEIC，Apple 照片也在轉換過程中保留 EXIF 與 IPTC metadata。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 WebP 僅在轉換請求期間存於伺服器記憶體，HEIC 回應串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄內容、無需帳號。管線在 us-central1 的無狀態 Cloud Run 容器上執行。" },
+          "fast": { "title": "快速轉換", "content": "使用 libvips + libheif 伺服器端處理，一般網頁用圖低於 1 秒。處理在 Google Cloud Run us-central1 以純記憶體 I/O 執行，無磁碟寫入延遲。較大檔案（20–50 MB）通常在 2–4 秒完成。" },
+          "free": { "title": "免費供一般使用", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需大量處理 —— 例如把大批 WebP 匯出轉為 HEIC 存入 iCloud —— RapidAPI 提供每月免費額度與超量按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "iphone": { "title": "iPhone 儲存", "content": "透過 AirDrop 把 WebP 照片傳至 iPhone 前先轉為 HEIC，更省空間。" },
-          "storage": { "title": "Mac 照片封存", "content": "把 Mac 上的 WebP 函式庫遷移為 HEIC，節省 2–3 倍空間。" },
-          "icloud": { "title": "iCloud 同步", "content": "更高效儲存照片 —— iCloud 原生支援 HEIC，在裝置間同步。" },
-          "archival": { "title": "長期歸檔", "content": "HEIC 是 Apple 中心照片封存的未來保險選擇。" }
+          "iphone": { "title": "iPhone 儲存最佳化", "content": "透過 AirDrop 把 WebP 照片傳至 iPhone 前先轉為 HEIC，可大幅提升裝置儲存效率。相同感知品質下，HEIC 通常比 WebP 小 2–3 倍，直接擴大 iPhone 可用儲存空間。對於從網路來源或預設傳送 WebP 的通訊 App 儲存大批照片時，效益尤為顯著。" },
+          "storage": { "title": "Mac 照片封存", "content": "把 Mac 上的 WebP 照片函式庫遷移為 HEIC，每張圖省 2–3 倍空間。若你從 Lightroom、Capture One 等工具以 WebP 格式匯出照片，封存前先轉為 HEIC 可回收大量磁碟空間 —— 尤其是在接近 iCloud Drive 或外接硬碟容量上限時特別重要。Apple 照片原生處理 HEIC，工作流程無縫銜接。" },
+          "icloud": { "title": "iCloud 同步效率", "content": "iCloud 照片圖庫原生支援 HEIC，並以此作為跨裝置高效同步的首選格式。以 HEIC 而非 WebP 儲存照片代表更小的 iCloud 上傳量、更快的同步速度，以及在接近儲存方案上限時更低的月費。50 GB iCloud 方案改用 HEIC 後實際容量相當於 100–150 GB。" },
+          "archival": { "title": "長期 Apple 歸檔", "content": "HEIC 是 Apple 選擇的長期照片儲存格式，深度整合至整個 Apple 生態系 —— 照片、iCloud、AirDrop、Quick Look 全部原生支援。對於要在 Apple 平台上封存的 WebP 集合，HEIC 提供壓縮、品質與生態系相容性的最佳平衡。檔案在 2017 年後發行的任何 Apple 裝置上無需轉換即可讀取。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "whyHeic": { "q": "為什麼要把 WebP 轉為 HEIC？", "a": "為了在 Apple 裝置上節省約 2–3 倍空間。HEIC 的 HEVC 壓縮對照片比 WebP 更激進，iCloud／Apple 照片可原生處理。" },
-          "compatibility": { "q": "HEIC 在哪能開？", "a": "iPhone（iOS 11+）、iPad、Mac（High Sierra+）、Windows 10+（需 HEVC 解碼器）、Android 10+。舊 Windows 與多數網頁瀏覽器不原生支援。" },
-          "quality": { "q": "畫質會下降嗎？", "a": "WebP 與 HEIC 通常都是有損的，重新編碼必然有些許損失。品質 90+ 時螢幕上基本看不出。" },
-          "transparency": { "q": "透明會保留嗎？", "a": "轉換時會平展到黑色背景。HEIC 技術上支援 alpha，但 iOS App 相容性不一致。" },
-          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援更大量。" }
+          "whyHeic": { "q": "為什麼要把 WebP 轉為 HEIC？", "a": "為了在 Apple 中心儲存上節省約 2–3 倍空間。HEIC 的 HEVC 壓縮在照片內容（特別是平滑漸層與細膩紋理）上勝過 WebP 的 VP8 編碼。iCloud 照片圖庫、Apple 照片、以及 iOS 11 以後的每部 iPhone 都原生處理 HEIC，無需第三方應用或解碼器。" },
+          "compatibility": { "q": "HEIC 在哪能開？", "a": "原生支援：iPhone（iOS 11+）、iPad、Mac（macOS High Sierra+）、Windows 10+（需 Microsoft Store 免費的 HEVC Video Extensions）、以及多數 Android 10+ 裝置。網頁瀏覽器沒有額外軟體無法開啟 HEIC，因此 HEIC 最適合保持在 Apple 原生工作流程中，不建議用於網頁交付。" },
+          "quality": { "q": "畫質會下降嗎？", "a": "WebP 與 HEIC 都是有損格式，在兩者之間轉換時有些許再編碼損失是不可避免的。品質 90+ 時，對任何消費級螢幕上的照片內容幾乎看不出差異。對銳利邊緣的 UI 圖形、圖示和截圖，HEVC 壓縮可能引入輕微模糊 —— 這些檔案建議保持 PNG 格式。" },
+          "transparency": { "q": "透明會保留嗎？", "a": "透明像素在轉換時會平展到黑色背景。HEIC 技術上支援 alpha（HEVC alpha 平面），但 iOS App 對含透明 HEIC 的相容性不一致 —— 有些 App 正常處理，有些顯示錯誤。若需要可靠的透明，請轉換為 WebP 或 PNG，兩者在所有現代平台上都有穩定的 alpha 支援。" },
+          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 你的 WebP 僅在轉換請求期間存於伺服器記憶體，HEIC 回應串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需要大量 HEIC 封存管線 —— 把大批 WebP 匯出轉為 HEIC 存入 iCloud —— RapidAPI 提供慷慨的每月免費額度與超量按用計費。" }
         }
       }
     }
@@ -2667,40 +2667,40 @@
       },
       "howTo": {
         "title": "如何將 PNG 轉為 AVIF",
-        "step1": { "title": "1. 上傳你的 PNG", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 選擇品質", "content": "預設 75 —— 等同 JPG 品質 90。需要最高保真試 85；要激進壓縮試 60。" },
-        "step3": { "title": "3. 點擊轉換", "content": "AVIF 編碼在預設設定下每張約 2–4 秒，值得等待。" },
-        "step4": { "title": "4. 下載", "content": "AVIF 已就緒，可用於現代瀏覽器。向下相容請用 picture 元素搭配 WebP/JPG fallback。" }
+        "step1": { "title": "1. 上傳你的 PNG", "content": "將 PNG 拖曳至上傳區，或點擊開啟檔案選取器。支援最大 50 MB、約 89 百萬像素的檔案。檔案直接送至 Cloud Run 編碼管線 —— 無本地處理，不寫入磁碟。" },
+        "step2": { "title": "2. 選擇品質", "content": "預設 75 —— 約等於 JPG 品質 90，因為 AVIF 的 AV1 編碼效率顯著更高。透明 logo 或 UI 元件需要最高保真時試 85。非主視覺的背景紋理或其他圖像要激進壓縮試 60。品質數值與檔案大小不成線性關係。" },
+        "step3": { "title": "3. 點擊轉換", "content": "使用 libaom（AV1 參考編碼器）在 speed=6 設定下編碼，每張照片約需 2–4 秒。speed=6 在壓縮效率與使用者等待時間之間取得平衡 —— 較低 speed 的檔案稍小但可能需要 10–20 秒。伺服器完全在記憶體中處理，不寫入磁碟。" },
+        "step4": { "title": "4. 下載", "content": "AVIF 已就緒，可用於現代瀏覽器 —— Chrome 85+、Firefox 93+、Safari 16+、Edge 121+。要支援舊版瀏覽器，請用 picture 元素：AVIF 主來源、WebP 次選、JPG 或 PNG 作為舊版 Safari 的最終 fallback。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "compression": { "title": "比 WebP 再小 50%", "content": "目前網頁影像壓縮的業界最佳。" },
-          "alpha": { "title": "完整透明", "content": "保留 alpha 通道 —— 真正的 PNG 替代品。" },
-          "modern": { "title": "下世代編碼", "content": "基於免授權金 AV1 —— 網頁影像的未來。" },
-          "privacy": { "title": "不保留檔案", "content": "PNG 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "為網頁調校", "content": "speed=6 在壓縮與轉換時間間取得平衡。" },
-          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+          "compression": { "title": "比 WebP 再小 50%", "content": "AVIF 的 AV1 編碼在相同視覺品質下比 WebP 壓縮約好 50%，比 JPG 好約 75%。2 MB 的 PNG 主視覺通常能變成 200–400 KB 的 AVIF，且完整保留透明度。這使 AVIF 成為目前網頁影像交付的最高水準。" },
+          "alpha": { "title": "完整透明", "content": "AVIF 完整支援 alpha 通道，是透明網頁素材的真正 PNG 替代品。不同於沒有 alpha 的 JPG，AVIF 精確保留每層透明度。Alpha 支援在 Chrome 85+、Firefox 93+、Safari 16+、Edge 121+ 中都很穩定。" },
+          "modern": { "title": "下世代編解碼器", "content": "AVIF 基於免授權金的 AV1 視訊編碼，由 Google、Netflix、Apple 等共同支持的開放媒體聯盟（AOMedia）開發。AV1 不涉及專利費用，可零成本全面授權，這正是它迅速成為網頁影像交付預設選擇的原因。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 PNG 僅在 AVIF 編碼請求期間存於伺服器記憶體。AVIF 回應串流至瀏覽器後，原始資料立即丟棄。不寫入磁碟、不記錄內容、無需帳號。處理在 us-central1 的無狀態 Cloud Run 容器上執行。" },
+          "fast": { "title": "為網頁調校", "content": "編碼器以 speed=6（0–10 由最慢最佳到最快最差）執行，在壓縮效率與 2–4 秒等待時間之間取得平衡。批次管線可透過 API 使用 speed=8–10 取得更快吞吐量，適合壓縮最優性要求較低的場景。" },
+          "free": { "title": "免費供一般使用", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需要整合至建置管線 —— 在部署時把整個 PNG 素材庫轉為 AVIF —— RapidAPI 提供每月免費額度與高用量的高效按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "web": { "title": "網頁效能", "content": "把 PNG 主視覺換為 AVIF，帶來顯著的 Core Web Vitals 提升。" },
-          "mobile": { "title": "行動 App 與 PWA", "content": "AVIF 在 Android WebView 與現代 PWA 中原生支援。" },
-          "cdn": { "title": "CDN 預處理", "content": "build 時批次把 PNG 素材轉為 AVIF 供正式環境交付。" },
-          "hero": { "title": "主視覺與 Banner", "content": "2025 年單一最大的 LCP 優化。" }
+          "web": { "title": "網頁效能", "content": "把 PNG 主視覺換為 AVIF，帶來顯著的 Core Web Vitals 提升，尤其是 Largest Contentful Paint（LCP）。AVIF 比 WebP 壓縮好 50%，把 1 MB 的 PNG 主視覺換成 150 KB 的 AVIF 直接縮短 LCP 時間 —— 是對 SEO 和感知效能影響最大的單一優化之一。Google PageSpeed Insights 也建議提供下世代格式。" },
+          "mobile": { "title": "行動 App 與 PWA", "content": "AVIF 在 Android WebView（Android 12+）及所有在 Chrome 或 Edge 中執行的現代 PWA 原生支援。較小的 AVIF 素材直接轉化為 4G/5G 連線和資料管制方案上更快的載入速度 —— 網速較慢的用戶感受到最大改善。PWA 離線快取也受益於 AVIF 的較小體積。" },
+          "cdn": { "title": "CDN 預處理", "content": "build 時批次把 PNG 素材轉為 AVIF，透過 CDN 供正式環境交付。Sharp、libvips、ImageMagick 都支援 AVIF 輸出，而我們的 API 可接入 CI/CD 管線自動化轉換。建議在 build 時預先編碼 —— AVIF 的 2–4 秒編碼時間讓高流量 CDN 難以即時按請求轉換。" },
+          "hero": { "title": "主視覺與 Banner", "content": "主視覺與行銷 banner 是大多數網站最大的 LCP 優化目標。典型的 PNG 主視覺（1–3 MB）轉為 AVIF 後只需 100–400 KB —— 縮小 80–90% —— 在任何消費級螢幕上視覺無差異。僅此一項優化就能讓網站從 LCP 不及格變為及格，無需改任何程式碼。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "browserSupport": { "q": "哪些瀏覽器支援 AVIF？", "a": "Chrome 85+、Firefox 93+、Safari 16+、Edge 121+、Opera 71+。所有常青瀏覽器。舊瀏覽器請用 picture 元素搭配 WebP 或 JPG fallback。" },
-          "vsWebp": { "q": "AVIF 真的比 WebP 好嗎？", "a": "是 —— 相同品質下 AVIF 比 WebP 壓縮好 20–30%（照片），含大量漸層的影像甚至好 50%。代價是編碼速度較慢。" },
-          "sizeSavings": { "q": "AVIF 會小多少？", "a": "典型 PNG → AVIF：小 80–90%。含漸層的照片效果最強；純色 UI 圖形節省較少。" },
-          "transparency": { "q": "透明會保留嗎？", "a": "會 —— 完整 alpha 通道，與 PNG 相同。透明網頁素材的直接替代品。" },
-          "privacy": { "q": "PNG 會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體，回應後丟棄。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援無限使用。" }
+          "browserSupport": { "q": "哪些瀏覽器支援 AVIF？", "a": "Chrome 85+、Firefox 93+、Safari 16+、Edge 121+、Opera 71+ —— 截至 2024 年所有常青瀏覽器。舊版瀏覽器（Safari 14–15、舊 Edge）請用 picture 元素搭配 WebP 次選、JPG 或 PNG 作為舊版 IE 的最終 fallback。picture 元素讓現代瀏覽器自動選擇最佳支援格式。" },
+          "vsWebp": { "q": "AVIF 真的比 WebP 好嗎？", "a": "是 —— 相同視覺品質下，基於 AV1 的 AVIF 比基於 VP8 的 WebP 在一般照片上壓縮好約 20–30%，在平滑漸層、紋理與透明疊層的影像上好約 50%。有意義的代價是編碼速度：AVIF 在 speed=6 需 2–4 秒，WebP 只需幾毫秒。" },
+          "sizeSavings": { "q": "AVIF 會小多少？", "a": "照片內容的典型 PNG → AVIF 縮減為 80–90%。品質 75 下，2 MB 的照片 PNG 通常變成約 200–400 KB 的 AVIF。壓縮對平滑漸層、細膩紋理、照片細節最強。純色 UI 圖形和簡單圖示收益較小，有時只縮減 50–60%。" },
+          "transparency": { "q": "透明會保留嗎？", "a": "會 —— AVIF 完整支援 alpha 通道透明，與 PNG 相同。透明像素、部分透明與反鋸齒邊緣都被正確保留。這使 AVIF 成為網頁交付中透明 PNG 的真正直接替代品 —— 只需確保使用 picture 元素搭配 PNG 或 WebP 作為尚不支援 AVIF 的瀏覽器的 fallback。" },
+          "privacy": { "q": "PNG 會被儲存嗎？", "a": "不會 —— 你的 PNG 僅在轉換期間存於伺服器記憶體，AVIF 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號。需要建置管線或大量轉換 —— 把整個 PNG 素材目錄轉為 AVIF —— RapidAPI 提供每月免費額度與高用量的按用計費。" }
         }
       }
     }
@@ -2736,40 +2736,40 @@
       },
       "howTo": {
         "title": "如何將 JPG 轉為 AVIF",
-        "step1": { "title": "1. 上傳你的 JPG", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 選擇品質", "content": "預設 75。JPG 本就是有損的，品質高於 85 增加檔案但看不出差異。" },
-        "step3": { "title": "3. 點擊轉換", "content": "AVIF 編碼每張照片 2–4 秒。等待值得 —— 預期比 JPG 來源小 35–50%。" },
-        "step4": { "title": "4. 下載", "content": "AVIF 已就緒。用 picture 元素搭配 JPG fallback 以全面相容。" }
+        "step1": { "title": "1. 上傳你的 JPG", "content": "將 JPG（或 JPEG）拖曳至上傳區，或點擊開啟檔案選取器。接受最大 50 MB、約 89 百萬像素的檔案。檔案直接送至 Cloud Run AVIF 編碼管線 —— 無本地處理，不寫入磁碟。" },
+        "step2": { "title": "2. 選擇品質", "content": "預設 75。由於 JPG 本就是有損格式，AVIF 品質數值不能直接對應 JPG 品質 —— AVIF 75 在感知保真度上約等於 JPG 90。高於 85 增加檔案大小但幾乎看不出改善。縮圖或非主視覺要激進壓縮可用 60–65。" },
+        "step3": { "title": "3. 點擊轉換", "content": "libaom AV1 編碼器在 speed=6 設定下每張照片約需 2–4 秒。等待是值得的 —— 相同視覺品質下預期比 JPG 來源小 35–50%。伺服器完全在記憶體中處理，不寫入磁碟，在 Cloud Run us-central1 執行。" },
+        "step4": { "title": "4. 下載", "content": "AVIF 已就緒供現代瀏覽器使用。要維持全面瀏覽器相容，請用 picture 元素：AVIF 主來源、WebP 次選、JPG 最終 fallback。Chrome 85+、Firefox 93+、Safari 16+、Edge 121+ 會自動選擇 AVIF。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "compression": { "title": "比 JPG 小 35–50%", "content": "照片類網站單一最大的 Core Web Vitals 優化。" },
-          "photo": { "title": "照片最佳化", "content": "AVIF 對有平滑漸層的照片特別強。" },
-          "modern": { "title": "下世代編碼", "content": "基於免授權金 AV1 —— 全面可授權、零費用。" },
-          "privacy": { "title": "不保留檔案", "content": "JPG 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "速度調校編碼", "content": "speed=6 為互動使用在壓縮與時間間取得平衡。" },
-          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+          "compression": { "title": "比 JPG 小 35–50%", "content": "相同視覺品質下，AVIF 比 JPG 小 35–50%，是照片類網站最大的單一 Core Web Vitals 優化。影像負載減半直接縮短 LCP 時間。AVIF 品質 75 能達到 JPG 品質 90 的效果，檔案卻只有約一半大小。" },
+          "photo": { "title": "照片最佳化", "content": "AVIF 的 AV1 編碼對平滑漸層、細膩紋理、連續色調變化的照片內容特別強 —— 正是 JPG 的區塊壓縮失真最明顯的場景。品質 75 下，AVIF 在保留照片細節方面優於 JPG 品質 90，且檔案顯著更小。" },
+          "modern": { "title": "下世代編解碼器", "content": "基於開放媒體聯盟開發的免授權金 AV1 編碼。AV1 無需按單位支付授權費 —— 不同於部分需要授權金的編碼技術。這個開放、免費的基礎確保 AVIF 在沒有法律或授權障礙下持續普及。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 JPG 僅在 AVIF 編碼期間存於伺服器記憶體，AVIF 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在 us-central1 的無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "fast": { "title": "速度調校編碼", "content": "libaom 編碼器以 speed=6 執行，在壓縮率與 2–4 秒互動等待時間之間取得平衡。speed=6 的 libaom 輸出在最低 speed 可達最優壓縮的 5% 以內，卻快 10–20 倍。批次 API 使用可用 speed=8–10 每秒處理多張圖像。" },
+          "free": { "title": "免費供一般使用", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需要整合至建置管線 —— 預先把整個照片目錄編碼為 AVIF 供 CDN 交付 —— RapidAPI 提供每月免費額度與高用量的按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "web": { "title": "網頁效能", "content": "把照片類頁面的影像負載減半 —— 直接提升 LCP 與 SEO。" },
-          "photography": { "title": "攝影類網站", "content": "作品集、圖庫、編輯網站從 AVIF 收穫最大。" },
-          "cdn": { "title": "CDN 預處理", "content": "預先把商品目錄編碼為 AVIF，帶來即時行動頁面載入。" },
-          "mobile": { "title": "行動體驗", "content": "對慢速 4G/5G 或資料管制方案的用戶影響特別大。" }
+          "web": { "title": "網頁效能", "content": "把照片類頁面的影像負載減半，直接提升 Largest Contentful Paint（LCP）和 Core Web Vitals 分數。AVIF 比 JPG 小 35–50% 帶來可量測的感知載入速度提升 —— Google 用 LCP 作為排名信號，使這成為少數對 SEO 有直接影響的影像優化之一。對有大量主視覺 JPG 照片的網站，AVIF 通常是可做的最高槓桿單一改變。" },
+          "photography": { "title": "攝影類網站", "content": "作品集、圖庫攝影和編輯類網站是 JPG → AVIF 轉換最大的受益者。大尺寸主視覺（2–6 MB JPG）在 AVIF 相同品質下壓縮到 600 KB–2 MB，即使在較慢的網路上也能快速載入圖庫。AVIF 對平滑漸層和細節的卓越處理，使其特別適合高品質攝影作品。" },
+          "cdn": { "title": "CDN 預處理", "content": "在 build 或上傳時預先把商品圖片目錄編碼為 AVIF，透過 CDN 實現即時行動頁面載入。有大量商品 JPG 的電商網站在 AVIF 遷移後可見顯著 LCP 改善。搭配 picture 元素（AVIF 主來源加 JPG fallback）在所有瀏覽器維持相容，同時為現代瀏覽器提供最小檔案。" },
+          "mobile": { "title": "行動體驗", "content": "對慢速 4G/5G 連線或資料管制行動方案的用戶影響特別大，因為影像大小直接決定頁面載入時間。使用 JPG 需 8 秒才能在 4G 上載入的相片圖庫，用 AVIF 可能只需 4–5 秒 —— 降低跳出率並提升用戶留存。較小的檔案也在 GPU 解碼路徑上消耗更少電力。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "browserSupport": { "q": "哪些瀏覽器支援 AVIF？", "a": "Chrome 85+、Firefox 93+、Safari 16+、Edge 121+、Opera 71+。舊瀏覽器請用 picture 元素提供 JPG fallback。" },
-          "sizeSavings": { "q": "AVIF 會小多少？", "a": "典型 JPG → AVIF 相同品質下：小 35–50%。依影像內容而定；平滑漸層效果最強，雜訊多的照片較小。" },
-          "quality": { "q": "品質該選多少？", "a": "75 是安全預設。保真很重要時試 85。非主視覺要激進壓縮試 60–65。" },
-          "fallback": { "q": "怎麼提供 AVIF 搭配 fallback？", "a": "使用 picture 元素：AVIF 來源第一、WebP 第二、JPG 第三。現代瀏覽器會自動挑最佳支援格式。" },
-          "privacy": { "q": "JPG 會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體，回應後丟棄。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援無限使用。" }
+          "browserSupport": { "q": "哪些瀏覽器支援 AVIF？", "a": "Chrome 85+、Firefox 93+、Safari 16+、Edge 121+、Opera 71+ —— 所有常青瀏覽器。舊版瀏覽器請用 picture 元素：AVIF 主來源、WebP 次選、JPG 最終 fallback。現代瀏覽器自動選擇最佳支援格式，不需 JavaScript 處理 fallback 鏈。" },
+          "sizeSavings": { "q": "AVIF 會小多少？", "a": "相同視覺品質下典型的 JPG → AVIF：小 35–50%。平滑漸層（天空、膚色、背景）收益最大，有時小 55–60%。高 ISO 雜訊多的照片收益較小，約 25–35%。品質 75 預設校準為在約一半檔案大小下產出與 JPG 品質 90 視覺等效的輸出。" },
+          "quality": { "q": "品質該選多少？", "a": "品質 75 是安全預設 —— 在約一半檔案大小下產出等效於 JPG 品質 90 的輸出，在任何消費級螢幕上都無可感知差異。專業攝影作品集等需要像素級保真時用 85。非主視覺的小尺寸優先影像用 60–65 激進壓縮。" },
+          "fallback": { "q": "怎麼提供 AVIF 搭配 fallback？", "a": "使用 HTML picture 元素：先加 AVIF 來源，再加 WebP 作為 Safari 14–15 的次選 fallback，最後以標準 JPG img 標籤作為舊版瀏覽器最終 fallback。不支援 AVIF 的瀏覽器自動 fallback 到下一個支援格式。這個三格式鏈在現代瀏覽器取得最佳壓縮，同時保持 100% 相容性。" },
+          "privacy": { "q": "JPG 會被儲存嗎？", "a": "不會 —— 你的 JPG 僅在轉換期間存於伺服器記憶體，AVIF 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號。需要大量照片目錄編碼或自動化建置管線整合，RapidAPI 提供每月免費額度與高用量工作流程的高效按用計費。" }
         }
       }
     }
@@ -2805,40 +2805,40 @@
       },
       "howTo": {
         "title": "如何將 WebP 轉為 AVIF",
-        "step1": { "title": "1. 上傳你的 WebP", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 選擇品質", "content": "預設 75 —— 等同 WebP 品質 85 感知畫質。主視覺試 85。" },
-        "step3": { "title": "3. 點擊轉換", "content": "AVIF 編碼每張 2–4 秒。為了壓縮收穫值得。" },
-        "step4": { "title": "4. 下載", "content": "AVIF 已就緒。用 picture 元素搭配 WebP 次選 fallback。" }
+        "step1": { "title": "1. 上傳你的 WebP", "content": "將 WebP 拖曳至上傳區，或點擊開啟檔案選取器。接受最大 50 MB、約 89 百萬像素的檔案。上傳直接送至 Cloud Run AVIF 編碼管線 —— 不寫入磁碟，無本地處理。" },
+        "step2": { "title": "2. 選擇品質", "content": "預設 75 —— 在感知視覺保真度上約等於 WebP 品質 85，因為 AVIF 的 AV1 編碼比 WebP 的 VP8 壓縮效率更高。效能關鍵主視覺需要最高保真度時試 85。縮圖或次要影像在額外節省大於邊際品質損失的情況下可用 65。" },
+        "step3": { "title": "3. 點擊轉換", "content": "libaom 在 speed=6 下編碼每張照片約需 2–4 秒。這比 WebP 編碼（只需毫秒）長，因為 AV1 是更複雜的編碼。對靜態素材來說壓縮收穫值得等待 —— 最好在 build 時預先編碼。" },
+        "step4": { "title": "4. 下載", "content": "AVIF 已就緒供現代瀏覽器使用。要最大覆蓋，請用 picture 元素：AVIF 主來源、WebP 次選 fallback —— Chrome 85+、Firefox 93+、Safari 16+、Edge 121+ 取得 AVIF，Safari 14–15 用戶取得 WebP。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "compression": { "title": "比 WebP 再小 20–30%", "content": "在已經優化格式之上有意義的額外節省。" },
-          "alpha": { "title": "完整透明", "content": "alpha 通道從 WebP 保留到 AVIF。" },
-          "nextgen": { "title": "下世代編碼", "content": "基於 AV1 —— 視訊與影像壓縮的未來。" },
-          "privacy": { "title": "不保留檔案", "content": "WebP 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "速度調校編碼", "content": "speed=6 在壓縮與時間間取得平衡。" },
-          "free": { "title": "免費供一般使用", "content": "每個工作階段三次免費，無需帳號。" }
+          "compression": { "title": "比 WebP 再小 20–30%", "content": "AVIF 的 AV1 編碼在相同視覺品質下比 WebP 的 VP8 壓縮好 20–30% —— 在已優化格式之上有意義的額外節省。增益對含平滑漸層、細膩紋理、連續色調範圍的照片內容最明顯。純色 UI 圖形收益較小。" },
+          "alpha": { "title": "完整透明", "content": "alpha 通道透明從 WebP 到 AVIF 端對端保留。部分透明、反鋸齒邊緣、複雜混合遮罩都能正確通過。AVIF alpha 在 Chrome 85+、Firefox 93+、Safari 16+、Edge 121+ 中支援穩定，是透明網頁素材的安全選擇。" },
+          "nextgen": { "title": "下世代編解碼器", "content": "基於免授權金的 AV1 視訊編碼，AVIF 代表目前網頁影像壓縮的最高水準。AV1 由包含 Google、Netflix、Apple、Microsoft、Mozilla 的開放媒體聯盟開發，確保其持續可免費使用，無按單位授權金或授權限制。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 WebP 僅在 AVIF 編碼請求期間存於伺服器記憶體。AVIF 串流至瀏覽器後，來源資料立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在 us-central1 的無狀態 Cloud Run 容器上執行。" },
+          "fast": { "title": "速度調校編碼", "content": "libaom 編碼器以 speed=6 執行，在壓縮品質與 2–4 秒使用者等待時間之間取得平衡。speed=6 的輸出在最優壓縮的 5% 以內，比較低 speed 設定快得多。批次 API 工作流程可用 speed=8–10 取得更高吞吐量。" },
+          "free": { "title": "免費供一般使用", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。對要把整個 WebP 封存遷移至 AVIF 的網站 —— 可能涉及數千個檔案的一次性批次工作 —— RapidAPI 提供每月免費額度與高用量遷移的按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "web": { "title": "效能關鍵頁面", "content": "主視覺、商品目錄、首屏媒體。" },
-          "migration": { "title": "WebP → AVIF 遷移", "content": "一次性批次把 WebP 封存轉為 AVIF 主要來源。" },
-          "cdn": { "title": "CDN 預處理", "content": "build 時期產出 AVIF 變體供正式交付。" },
-          "vitals": { "title": "Core Web Vitals", "content": "從已優化的影像再擠出額外 LCP 提升。" }
+          "web": { "title": "效能關鍵頁面", "content": "主視覺、商品目錄和首屏媒體是 WebP → AVIF 遷移的最優先目標。這些影像主導 LCP 分數，額外 20–30% 的縮減直接轉化為可量測的載入速度提升。優先對頁面載入後 2.5 秒內出現在視窗中的影像進行 AVIF 編碼 —— 那裡是 LCP 影響最大的地方。" },
+          "migration": { "title": "WebP → AVIF 遷移", "content": "對已從 JPG/PNG 遷移到 WebP 的網站，下一步優化是把 WebP 封存一次性批次轉為 AVIF 主要來源。用我們的 API 處理整個素材庫，然後更新 picture 元素的 src 屬性，指向 AVIF 主來源搭配 WebP fallback。對行動流量大的網站，額外 20–30% 的縮減特別有價值。" },
+          "cdn": { "title": "CDN 預處理", "content": "在 build 時期產出 WebP 素材的 AVIF 變體，透過 CDN 供正式環境交付。在 picture 元素中把每個 AVIF 搭配 WebP fallback，並從 CDN 以正確 cache 標頭和 content-type 送出。CDN 預先編碼完全避免即時編碼開銷 —— AVIF 的 2–4 秒編碼時間使高流量素材的按請求即時產生不切實際。" },
+          "vitals": { "title": "Core Web Vitals", "content": "從已優化的 WebP 影像再擠出額外 LCP 提升 —— 對網站接近 2.5 秒 LCP 閾值但無法突破特別有價值。主視覺和首屏內容的 20–30% AVIF 縮減可把 LCP 從邊緣推到清楚及格。Google 用 LCP 作為排名信號，使這個優化對 SEO 有實際意義。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "vsWebp": { "q": "AVIF 比 WebP 小多少？", "a": "相同感知品質下通常小 20–30%。含平滑漸層的照片效果最強。" },
-          "browserSupport": { "q": "哪些瀏覽器支援 AVIF？", "a": "Chrome 85+、Firefox 93+、Safari 16+、Edge 121+、Opera 71+。略晚於 WebP（Safari 14+）。" },
-          "sizeSavings": { "q": "這 20–30% 值得複雜度嗎？", "a": "對效能關鍵主視覺與 LCP 敏感頁面，是。對縮圖或非關鍵影像可能不 —— WebP 已夠優秀。" },
-          "fallback": { "q": "需要 WebP fallback 嗎？", "a": "要支援 Safari 14–15 請提供。用 picture 元素 AVIF 第一、WebP 第二。現代瀏覽器選 AVIF、舊的 fallback 到 WebP。" },
-          "privacy": { "q": "WebP 會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。API 支援無限使用。" }
+          "vsWebp": { "q": "AVIF 比 WebP 小多少？", "a": "相同感知視覺品質下通常小 20–30%。增益對含平滑漸層的照片（天空、膚色、模糊背景）最強，AV1 更精密的編碼演算法在這裡最勝出於 WebP 的 VP8。純色圖形和簡單插圖收益較小，約 10–15%。" },
+          "browserSupport": { "q": "哪些瀏覽器支援 AVIF？", "a": "Chrome 85+、Firefox 93+、Safari 16+、Edge 121+、Opera 71+ —— 所有常青瀏覽器。AVIF 支援略晚於 WebP（Safari 14+）約兩個主要 Safari 版本。要最大覆蓋，用 picture 元素：AVIF 主來源、WebP 次選 —— Safari 14–15 取得 WebP，現代瀏覽器取得較小的 AVIF。" },
+          "sizeSavings": { "q": "這 20–30% 值得複雜度嗎？", "a": "對效能關鍵的主視覺和 LCP 敏感頁面（每毫秒都重要的場合）值得 —— 額外壓縮在行動裝置上可量測地更快。對縮圖、非首屏影像、低流量頁面可能不值得 —— WebP 已夠優秀，維護兩個 AVIF+WebP 變體的建置複雜度可能大於邊際收益。" },
+          "fallback": { "q": "需要 WebP fallback 嗎？", "a": "是，若需要 Safari 14–15 支援。用 picture 元素：AVIF 主來源、WebP 次來源 —— 不支援 AVIF 的瀏覽器自動 fallback 到 WebP。若只關心 2022 年以後發行的瀏覽器，單用 AVIF 即可，因為 Safari 16（2022 年 9 月發行）加入了 AVIF 支援。" },
+          "privacy": { "q": "WebP 會被儲存嗎？", "a": "不會 —— 你的 WebP 僅在轉換期間存於伺服器記憶體，AVIF 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。處理在無狀態 Cloud Run 容器上執行，沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號。需要把整個素材庫從 WebP 批次遷移到 AVIF，RapidAPI 提供每月免費額度與高用量工作流程的高效按用計費。" }
         }
       }
     }
@@ -2874,40 +2874,40 @@
       },
       "howTo": {
         "title": "如何將 AVIF 轉為 PNG",
-        "step1": { "title": "1. 上傳你的 AVIF", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 點擊轉換", "content": "無需設定 —— PNG 永遠無損。伺服器解碼 AVIF 並以 PNG 重新輸出。" },
-        "step3": { "title": "3. 檢視預覽", "content": "PNG 輸出顯示尺寸。預期檔案比 AVIF 來源大 3–5 倍。" },
-        "step4": { "title": "4. 下載", "content": "PNG 可在任何應用程式中開啟 —— 無需安裝解碼器。" }
+        "step1": { "title": "1. 上傳你的 AVIF", "content": "將 AVIF 拖曳至上傳區，或點擊開啟檔案選取器。接受最大 50 MB、約 89 百萬像素的檔案。檔案送至 Cloud Run 解碼管線 —— 無本地處理，不寫入磁碟。" },
+        "step2": { "title": "2. 點擊轉換", "content": "無需設定任何品質選項 —— PNG 永遠無損。伺服器使用 libvips 以 libaom AV1 解碼器解碼 AVIF，並以 DEFLATE 壓縮重新編碼原始像素資料為 PNG。整個過程在記憶體中執行。" },
+        "step3": { "title": "3. 檢視預覽", "content": "PNG 輸出顯示像素尺寸。預期 PNG 比 AVIF 來源大 3–5 倍 —— 這是正常且預期的，因為 AVIF 使用激進的 AV1 壓縮，而 PNG 使用無損 DEFLATE。大小增加是通用相容性的代價。" },
+        "step4": { "title": "4. 下載", "content": "你的 PNG 無需安裝解碼器即可在任何應用程式中開啟 —— Photoshop、GIMP、Figma、Microsoft Office、印刷 RIP 軟體、每個網頁瀏覽器。PNG 是存在最廣泛相容的點陣圖格式。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "lossless": { "title": "無損輸出", "content": "PNG 精確捕捉 AVIF 的解碼像素。" },
-          "alpha": { "title": "保留透明度", "content": "完整 alpha 通道從 AVIF 保留到 PNG。" },
-          "compatibility": { "title": "通用 PNG", "content": "在所有編輯器、OS、印刷工具中開啟，無需外掛。" },
-          "privacy": { "title": "不保留檔案", "content": "AVIF 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "快速轉換", "content": "一般網頁用 AVIF 低於 500 毫秒。" },
-          "free": { "title": "免費", "content": "每個工作階段三次免費，無需帳號。" }
+          "lossless": { "title": "無損輸出", "content": "PNG 精確捕捉 AVIF 的解碼像素 —— 轉換過程中不引入任何額外品質劣化。若 AVIF 以品質 75 編碼，PNG 忠實呈現那些解碼像素，不新增壓縮失真。這使 PNG 成為在重新處理前封存或編輯 AVIF 內容的理想格式。" },
+          "alpha": { "title": "保留透明度", "content": "完整 alpha 通道透明從 AVIF 到 PNG 不損失地傳遞。部分透明、平滑透明漸層、複雜遮罩都完整保留。由於 AVIF 和 PNG 都支援完整的 8 位元 alpha 通道，透明資料的傳遞完美，不產生捨入誤差。" },
+          "compatibility": { "title": "通用 PNG", "content": "PNG 無需任何外掛或解碼器安裝，在每個影像編輯器、作業系統、網頁瀏覽器、印刷工具、文件編輯器和企業應用中開啟。自 1996 年以來一直是通用標準，每個軟體生態系統都原生支援。需要在任何地方都能開啟而不引發疑問時，PNG 是答案。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 AVIF 僅在解碼和 PNG 編碼請求期間存於伺服器記憶體。PNG 串流至瀏覽器後，AVIF 資料立即丟棄。不寫入磁碟、不記錄內容、無需帳號。處理在 us-central1 的無狀態 Cloud Run 容器上執行。" },
+          "fast": { "title": "快速轉換", "content": "AVIF 轉 PNG 比 AVIF 編碼快 —— 使用 libvips 伺服器端解碼 AV1 並重新編碼為 PNG，一般網頁用圖通常在 500 毫秒以內完成。較大檔案（20–50 MB）可能需要 1–3 秒。轉換以 I/O 為瓶頸而非 CPU，隨檔案大小良好擴展。" },
+          "free": { "title": "免費", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需要批次 AVIF 轉 PNG 管線 —— 把 AVIF 封存轉為 PNG 分發至老舊下游工具 —— RapidAPI 提供每月免費額度與高用量的按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "editing": { "title": "在老舊工具中編輯", "content": "舊版 Photoshop、GIMP、免費編輯器不支援 AVIF —— 先轉 PNG。" },
-          "legacy": { "title": "老舊應用", "content": "MS Office 非 365、舊 Windows 工具、嵌入式預覽器 —— PNG 通用。" },
-          "printing": { "title": "印刷生產", "content": "部分印刷 RIP 不支援 AVIF。PNG 是安全的送件格式。" },
-          "design": { "title": "設計工具匯入", "content": "把 PNG 丟進 Figma、Sketch、Adobe XD 取得一致匯入行為。" }
+          "editing": { "title": "在老舊工具中編輯", "content": "舊版 Photoshop（2021 年前）、沒有 AVIF 外掛的 GIMP、以及許多免費影像編輯器缺乏 AVIF 解碼支援 —— 先轉 PNG 再自由開啟和編輯。PNG 無損，可以編輯重存而不引入額外品質損失。編輯完成後如需網頁交付可再轉回 AVIF。" },
+          "legacy": { "title": "老舊應用", "content": "Microsoft Office 非 365 版本、舊版 Windows 小畫家、企業軟體的嵌入式預覽器、以及大多數嵌入式系統只處理傳統點陣圖格式。PNG 是通用安全選擇 —— Windows 98 以來 Windows 就原生支援，Office 2003 版起就支援。無需安裝解碼器，無相容性疑問。" },
+          "printing": { "title": "印刷生產", "content": "許多商業印刷 RIP（Raster Image Processor）系統尚未支援 AVIF，使 PNG 成為印刷工作的安全送件格式。PNG 的無損壓縮確保螢幕到印刷間不產生品質劣化，其 alpha 通道支援與大多數需要透明處理的印刷工作流程相容。" },
+          "design": { "title": "設計工具匯入", "content": "把 PNG 丟進 Figma、Sketch、Adobe XD、Affinity Designer 或任何其他設計工具，取得一致且可預期的匯入行為。針對向量和 UI 工作最佳化的設計工具有時點陣圖格式支援有限 —— PNG 是有保障的共同基礎。用 PNG 做原型設計，只在最終網頁交付時換成 AVIF。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "whyConvert": { "q": "為什麼要把 AVIF 轉為 PNG？", "a": "當目的地不支援 AVIF 時。許多老舊工具與印刷管線仍需要 PNG 輸入。" },
-          "qualityLoss": { "q": "會損失畫質嗎？", "a": "不會。PNG 無損 —— 精確捕捉 AVIF 解碼像素。若來源 AVIF 是有損，PNG 反映該狀態但不再新增失真。" },
-          "fileSize": { "q": "為什麼 PNG 大得多？", "a": "AVIF 使用下世代 AV1 壓縮；PNG 是無損 DEFLATE。預期 PNG 比 AVIF 來源大 3–5 倍。" },
-          "transparency": { "q": "透明會保留嗎？", "a": "會 —— 完整 alpha 通道不變通過。" },
-          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。" }
+          "whyConvert": { "q": "為什麼要把 AVIF 轉為 PNG？", "a": "當目的地不支援 AVIF 時。許多老舊設計工具（2021 年前的 Photoshop、沒有外掛的 GIMP）、印刷 RIP 軟體、舊版 MS Office、嵌入式預覽器和企業系統只接受傳統格式。PNG 是無需額外軟體即可在任何地方開啟的通用 fallback。需要在無損格式中編輯影像後再重新編碼時也很有用。" },
+          "qualityLoss": { "q": "會損失畫質嗎？", "a": "不會 —— PNG 無損，精確捕捉 AVIF 的解碼像素。若來源 AVIF 以品質 75 編碼，PNG 忠實呈現那些解碼像素，不引入任何額外壓縮失真。PNG 輸出是 AVIF 解碼狀態逐像素完美的快照 —— 在進一步編輯前封存的理想格式。" },
+          "fileSize": { "q": "為什麼 PNG 大得多？", "a": "AVIF 使用下世代 AV1 視訊編碼壓縮達到極高壓縮率；PNG 使用優先精確像素保留而非檔案大小的無損 DEFLATE 壓縮。預期 PNG 比 AVIF 來源大 3–5 倍。這個大小差異只是無損、通用相容儲存的代價 —— 當相容性是目標時值得付出。" },
+          "transparency": { "q": "透明會保留嗎？", "a": "會 —— 完整 alpha 通道透明從 AVIF 到 PNG 不損失地傳遞。兩種格式都支援完整的 8 位元 alpha 通道，因此透明資料完美傳遞。部分透明、平滑透明漸層和複雜透明遮罩都完整保留，在 PNG 輸出中正確呈現。" },
+          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 你的 AVIF 僅在轉換期間存於伺服器記憶體，PNG 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在 us-central1 的無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號。需要批次 AVIF 轉 PNG 轉換管線 —— 處理 AVIF 封存分發至老舊工具 —— RapidAPI 提供每月免費額度與高用量工作流程的按用計費。" }
         }
       }
     }
@@ -2943,40 +2943,40 @@
       },
       "howTo": {
         "title": "如何將 AVIF 轉為 JPG",
-        "step1": { "title": "1. 上傳你的 AVIF", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 選擇品質", "content": "預設 90 —— 與 AVIF 來源幾乎無差異。80 可再省空間。" },
-        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 AVIF、把透明平展到白色、重新編碼為 JPG。" },
-        "step4": { "title": "4. 下載", "content": "儲存 JPG。可用於電子郵件、印刷或任何不支援 AVIF 的應用。" }
+        "step1": { "title": "1. 上傳你的 AVIF", "content": "將 AVIF 拖曳至上傳區，或點擊開啟檔案選取器。接受最大 50 MB、約 89 百萬像素的檔案。檔案送至 Cloud Run 解碼管線 —— 無本地處理，不寫入磁碟。" },
+        "step2": { "title": "2. 選擇品質", "content": "預設 90 —— 在任何消費級螢幕上與 AVIF 來源幾乎無可分辨。非主視覺影像要更省空間可用 80。實際使用的合理範圍是 85–92 —— 高於 95 大幅增加檔案大小但品質改善幾乎不可感知。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器使用 libvips 以 libaom 解碼器解碼 AVIF，把透明像素平展到白色背景（因為 JPG 沒有 alpha 通道），以你選的品質重新編碼為 JPG。整個過程在 Cloud Run us-central1 的記憶體中執行。" },
+        "step4": { "title": "4. 下載", "content": "儲存 JPG 到你的裝置。已就緒用於電子郵件附件、印刷廠送件、老舊應用、以及任何尚不支援 AVIF 的平台。JPG 無需任何解碼器安裝，在每個電子郵件客戶端、作業系統和應用中原生支援。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制。" },
-          "compatibility": { "title": "通用輸出", "content": "JPG 到處都能開，無需外掛、無相容性問題。" },
-          "smaller": { "title": "高效 JPG 編碼", "content": "現代 JPEG 編碼器在高品質設定下也能產生小檔案。" },
-          "privacy": { "title": "不保留檔案", "content": "AVIF 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "快速轉換", "content": "一般網頁用 AVIF 低於 500 毫秒。" },
-          "free": { "title": "免費", "content": "每個工作階段三次免費，無需帳號。" }
+          "quality": { "title": "品質滑桿", "content": "透過標準 JPEG 品質參數從 1 到 100 細緻控制 JPG 品質。品質 90 是最高保真與合理檔案大小的最佳點 —— 通常比 AVIF 來源大約 30%，但仍比未壓縮版本小得多。品質 80 在細節區域略微變軟的情況下再縮減 20–30% 大小。" },
+          "compatibility": { "title": "通用輸出", "content": "JPG 無需外掛、解碼器安裝或相容性顧慮，在每個電子郵件客戶端、每個作業系統、每個網頁瀏覽器、每個印刷工具、以及幾乎所有曾編寫過的影像處理應用中開啟。自 1992 年以來一直是通用標準，將永久保持如此。需要絕對最大相容性時，JPG 是最安全的格式。" },
+          "smaller": { "title": "高效 JPG 編碼", "content": "伺服器使用 libvips 的現代 JPEG 編碼器，即使在高品質設定下也能產生高效壓縮的 JPG 輸出。品質 90 下，典型的 AVIF 轉 JPG 輸出比同等 PNG 小 25–40%，同時保留幾乎所有可見細節。這使 AVIF → JPG 在需要控制大小但不需要 PNG 級別無損性的場合成為好選擇。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 AVIF 僅在轉換請求期間存於伺服器記憶體。JPG 串流至瀏覽器後，AVIF 資料立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。處理在 us-central1 的無狀態 Cloud Run 容器上執行，沒有持久狀態。" },
+          "fast": { "title": "快速轉換", "content": "AVIF 轉 JPG 的解碼和重新編碼很快 —— 使用 libvips 伺服器端，一般網頁用圖通常在 500 毫秒以內完成。轉換以 I/O 為瓶頸而非 CPU（不同於耗 CPU 的 AVIF 編碼）。較大檔案（20–50 MB）在 1–2 秒完成。" },
+          "free": { "title": "免費", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需要批次 AVIF 轉 JPG 管線 —— 把 AVIF 封存轉為 JPG 供老舊系統分發或電子郵件交付 —— RapidAPI 提供每月免費額度與高用量的按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "email": { "title": "電子郵件附件", "content": "部分郵件客戶端拒絕 AVIF。JPG 永遠安全。" },
-          "legacy": { "title": "老舊應用", "content": "舊版 Photoshop、MS Office、Windows 工具都能乾淨開啟 JPG。" },
-          "printing": { "title": "印刷生產", "content": "大多數印刷 RIP 只接受 JPG 送件。" },
-          "social": { "title": "較舊平台", "content": "部分小眾平台仍拒絕 AVIF 上傳。" }
+          "email": { "title": "電子郵件附件", "content": "許多電子郵件客戶端 —— 特別是企業 Outlook、舊版 Apple Mail、以及 webmail 系統 —— 拒絕或無法渲染 AVIF 附件。JPG 在電子郵件中普遍安全：自 1990 年代初以來每個郵件客戶端都支援。附加前先把 AVIF 照片轉為 JPG，確保無論收件者使用何種郵件軟體都能正確顯示。" },
+          "legacy": { "title": "老舊應用", "content": "舊版 Photoshop（2021 年前）、MS Office（非 365）、Windows 老舊工具、以及大多數沒有 AVIF 解碼器的企業軟體都能乾淨開啟 JPG，無需外掛安裝。需要把影像發送給使用舊版軟體的客戶或同事時，JPG 是最安全的最大公約數。自 Windows 3.1 以來普遍支援。" },
+          "printing": { "title": "印刷生產", "content": "大多數商業印刷 RIP 系統、線上印刷服務和專業印刷廠以 JPG 作為主要輸入格式。許多特別要求 JPG 用於照片印刷。AVIF 雖然非常適合網頁，但尚未成為印刷工作流程的標準。轉為 JPG 後再送件可確保你的檔案被所有印刷系統接受並正確處理。" },
+          "social": { "title": "較舊平台", "content": "部分小眾社群網路、論壇平台和老舊內容管理系統仍拒絕 AVIF 上傳，或在伺服器端靜默地把它轉為低品質 JPG。上傳前自己轉為 JPG，讓你能控制品質設定並確保影像看起來與預期完全一致。這對影像品質至上的攝影社群特別重要。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "whyConvert": { "q": "為什麼要把 AVIF 轉回 JPG？", "a": "為了相容性 —— JPG 在所有電子郵件、OS、應用中都能開，AVIF 尚未普及。" },
-          "transparency": { "q": "透明像素怎麼處理？", "a": "平展到白色，因為 JPG 沒有 alpha 通道。需要透明請改用 PNG。" },
-          "quality": { "q": "品質該選多少？", "a": "照片 90 —— 與來源幾乎無差異。80 省空間但略微變軟。" },
-          "fileSize": { "q": "JPG 會比 AVIF 大嗎？", "a": "通常大 30%，因為 AVIF 壓縮更有效率。通用相容的代價。" },
-          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。" }
+          "whyConvert": { "q": "為什麼要把 AVIF 轉回 JPG？", "a": "為了相容性 —— JPG 在所有現存的電子郵件客戶端、作業系統、應用和印刷系統中都能開啟，而 AVIF 尚未普及。常見使用情境包括：把照片寄給老舊系統用戶、向印刷廠送件、與使用舊版軟體的客戶分享、以及上傳到尚不接受 AVIF 的平台。" },
+          "transparency": { "q": "透明像素怎麼處理？", "a": "透明像素會平展到白色背景，因為 JPG 沒有 alpha 通道支援。若你的 AVIF 含有必須保留的透明 —— logo、UI 元件、疊加 —— 請改轉 PNG，PNG 完整支援 alpha。對沒有透明的照片內容，JPG 是正確選擇，平展問題不適用。" },
+          "quality": { "q": "品質該選多少？", "a": "照片內容建議品質 90 —— 在任何消費級螢幕上產出與 AVIF 來源幾乎無可分辨的輸出，同時比更高品質設定緊湊得多。網頁縮圖和次要影像用 80 以節省更多空間。一般用途分享用 85 作為 80 與 90 之間的良好中間值。" },
+          "fileSize": { "q": "JPG 會比 AVIF 大嗎？", "a": "通常大約 30%，因為 AVIF 的 AV1 壓縮比 JPG 的 DCT 編碼更有效率。500 KB 的 AVIF 照片，品質 90 下預期約 650–700 KB 的 JPG。這個大小增加只是通用相容性的代價 —— 在 AVIF 較窄支援不成問題的場合，是值得接受的。" },
+          "privacy": { "q": "檔案會被儲存嗎？", "a": "不會 —— 你的 AVIF 僅在轉換期間存於伺服器記憶體，JPG 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在 us-central1 的無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號。需要批次 AVIF 轉 JPG 管線 —— 把 AVIF 封存轉為 JPG 供老舊分發或電子郵件交付工作流程 —— RapidAPI 提供每月免費額度與高用量使用情境的按用計費。" }
         }
       }
     }
@@ -3012,40 +3012,40 @@
       },
       "howTo": {
         "title": "如何將 AVIF 轉為 WebP",
-        "step1": { "title": "1. 上傳你的 AVIF", "content": "拖曳或點擊選取，最大 50 MB。" },
-        "step2": { "title": "2. 選擇品質", "content": "預設 85 —— 在感知畫質上約等於 AVIF 75。" },
-        "step3": { "title": "3. 點擊轉換", "content": "伺服器解碼 AVIF 並以你選的品質重新編碼為 WebP。" },
-        "step4": { "title": "4. 下載", "content": "WebP 已就緒，可用於 Safari 14 以後的任何瀏覽器。" }
+        "step1": { "title": "1. 上傳你的 AVIF", "content": "將 AVIF 拖曳至上傳區，或點擊開啟檔案選取器。接受最大 50 MB、約 89 百萬像素的檔案。檔案送至 Cloud Run 解碼和重新編碼管線 —— 無本地處理，不寫入磁碟。" },
+        "step2": { "title": "2. 選擇品質", "content": "預設 85 —— 在感知視覺保真度上約等於 AVIF 品質 75，因為 WebP 的 VP8 編碼比 AVIF 的 AV1 壓縮效率稍低。主視覺影像大小不那麼關鍵時用 90。縮圖和次要影像優先節省頻寬可用 75–80。" },
+        "step3": { "title": "3. 點擊轉換", "content": "伺服器使用 libvips 以 libaom AV1 解碼器解碼 AVIF，以你選的品質把像素資料重新編碼為 WebP。WebP 編碼比 AVIF 編碼快得多 —— 一般影像預期在 1 秒以內完成。整個過程在 Cloud Run us-central1 的記憶體中執行。" },
+        "step4": { "title": "4. 下載", "content": "WebP 已就緒，可用於 Safari 14 以後的任何瀏覽器 —— 包含 2016 年以後所有版本的 Chrome、Firefox、Edge、Opera。在 picture 元素中以 WebP 作為 AVIF 主來源旁的次選 fallback，不犧牲現代壓縮即可最大化瀏覽器覆蓋。" }
       },
       "features": {
         "title": "功能特色",
         "items": {
-          "quality": { "title": "品質滑桿", "content": "從 1 到 100 的細緻控制。" },
-          "compatibility": { "title": "更廣瀏覽器支援", "content": "WebP 支援 Safari 14+；AVIF 需要 Safari 16+。" },
-          "alpha": { "title": "保留透明度", "content": "完整 alpha 通道從 AVIF 到 WebP。" },
-          "privacy": { "title": "不保留檔案", "content": "AVIF 在記憶體中處理後立即丟棄。" },
-          "fast": { "title": "快速轉換", "content": "一般網頁用 AVIF 低於 1 秒。" },
-          "free": { "title": "免費", "content": "每個工作階段三次免費，無需帳號。" }
+          "quality": { "title": "品質滑桿", "content": "從 1 到 100 細緻控制 WebP 品質。品質 85 是從 AVIF 轉換的典型最佳點 —— 在感知保真度上近似 AVIF 品質 75，產出比 AVIF 大 20–30% 但仍遠小於同等 JPG 的 WebP 輸出。品質 90+ 適合優先保真度的主視覺或攝影類情境。" },
+          "compatibility": { "title": "更廣瀏覽器支援", "content": "WebP 在 Safari 14+（2020 年發行）中支援；AVIF 需要 Safari 16+（2022 年發行）。把 AVIF 轉為 WebP 作為次選來源，可覆蓋約額外兩年的 Safari 版本週期。2016 年以後發行的所有 Chrome、Firefox、Edge、Opera 版本都原生支援 WebP —— 它是廣相容的安全現代預設。" },
+          "alpha": { "title": "保留透明度", "content": "完整 alpha 通道透明從 AVIF 到 WebP 端對端保留。部分透明、平滑透明漸層、複雜遮罩都能正確通過。WebP 的 alpha 通道支援在 Chrome 23 以後的所有瀏覽器中都很穩定，是需要比 AVIF 更廣瀏覽器覆蓋的透明網頁素材的可靠選擇。" },
+          "privacy": { "title": "不保留檔案", "content": "你的 AVIF 僅在轉換請求期間存於伺服器記憶體。WebP 串流至瀏覽器後，AVIF 資料立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。處理在 us-central1 的無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "fast": { "title": "快速轉換", "content": "AVIF 轉 WebP 很快 —— 使用 libvips 伺服器端解碼 AV1 並重新編碼為 WebP，一般網頁用圖通常在 1 秒以內完成。WebP 編碼的運算開銷遠低於 AVIF 編碼（後者需 2–4 秒）。轉換實際上適合互動使用，沒有明顯等待。" },
+          "free": { "title": "免費", "content": "每 24 小時瀏覽器工作階段三次免費，無需帳號或信用卡。需要為整個 AVIF 素材庫產出 WebP 次選變體 —— picture 元素 AVIF+WebP 策略的關鍵部分 —— RapidAPI 提供每月免費額度與高用量工作流程的按用計費。" }
         }
       },
       "useCases": {
         "title": "使用情境",
         "items": {
-          "fallback": { "title": "picture 元素 fallback", "content": "AVIF 主來源搭配 WebP 次選，支援 Safari 14–15。" },
-          "web": { "title": "CDN 遷移", "content": "當 CDN 尚未原生支援 AVIF 時產出 WebP 變體。" },
-          "safari": { "title": "Safari < 16 支援", "content": "較舊 Safari 用戶需要 WebP fallback —— AVIF 到 v16 才支援。" },
-          "cms": { "title": "CMS 相容", "content": "部分 CMS 原生送 WebP 但尚未加入 AVIF 支援。" }
+          "fallback": { "title": "picture 元素 fallback", "content": "主要使用情境：在 picture 元素中以 AVIF 主來源、WebP 次選 fallback 提供服務 —— Chrome 85+、Firefox 93+、Safari 16+、Edge 121+ 取得較小的 AVIF，Safari 14–15 用戶取得 WebP。這個雙格式策略覆蓋 100% 的現代瀏覽器，是 Google web.dev 效能指南對最大影像優化的建議做法。" },
+          "web": { "title": "CDN 遷移", "content": "若你的 CDN 或主機管線尚未原生支援 AVIF 但支援 WebP，可以為 AVIF 素材產出 WebP 變體作為過渡步驟。WebP 在相同品質下仍比 JPG 小 25–35%，所以即使 WebP fallback 也比 JPG 提供有意義的效能收穫。這個做法讓你今天就能受益於更好壓縮，同時規劃完整 AVIF 推出。" },
+          "safari": { "title": "Safari 14–15 支援", "content": "Safari 14 在 2020 年加入 WebP 支援；Safari 16 在 2022 年加入 AVIF。使用 Safari 14–15 的用戶 —— 特別是尚未更新的 iPhone 用戶、或舊款 iPad 用戶 —— 需要 WebP fallback 以避免一路 fallback 到 JPG。從 AVIF 來源產出 WebP 確保這些用戶取得現代壓縮格式而非老舊格式。" },
+          "cms": { "title": "CMS 相容", "content": "部分內容管理系統、影像 CDN 和媒體伺服器原生提供 WebP 但尚未加入 AVIF 支援。把 AVIF 轉為 WebP 讓你以 AVIF 格式儲存影像，同時透過尚未處理 AVIF 的 CMS 影像管線提供 WebP。這在過渡期特別有用，新內容可以 AVIF 原生格式存在，舊內容使用 WebP。" }
         }
       },
       "faq": {
         "title": "常見問題",
         "items": {
-          "whyConvert": { "q": "為什麼要把 AVIF 轉為 WebP？", "a": "為更廣瀏覽器支援。WebP 支援 Safari 14+；AVIF 需要 Safari 16+。要最大覆蓋請用 picture 元素 AVIF 主 + WebP fallback。" },
-          "browserSupport": { "q": "哪些瀏覽器支援 WebP？", "a": "每個常青瀏覽器：Chrome、Edge、Firefox、Opera、Safari 14+。比 AVIF 廣約 2 個 Safari 版本週期。" },
-          "sizeDifference": { "q": "WebP 會大多少？", "a": "相同品質下通常比 AVIF 來源大 20–30%。仍遠小於 JPG 或 PNG 同品質。" },
-          "quality": { "q": "品質該選多少？", "a": "85 在感知畫質上等於 AVIF 75。主視覺要重視品質試 90。" },
-          "privacy": { "q": "AVIF 會被儲存嗎？", "a": "不會 —— 只在轉換期間存於記憶體。" },
-          "free": { "q": "免費嗎？", "a": "是 —— 每個工作階段三次免費。" }
+          "whyConvert": { "q": "為什麼要把 AVIF 轉為 WebP？", "a": "為了更廣的瀏覽器支援，而不必一路 fallback 到 JPG。WebP 在 Safari 14+（2020 年）支援；AVIF 需要 Safari 16+（2022 年）。典型策略是在 picture 元素中提供 AVIF 主來源 + WebP 次選 —— 現代瀏覽器取得 AVIF 的卓越壓縮，Safari 14–15 用戶取得 WebP 仍出色的壓縮，舊版瀏覽器 fallback 到 JPG。" },
+          "browserSupport": { "q": "哪些瀏覽器支援 WebP？", "a": "所有主流常青瀏覽器：Chrome 23+、Edge 18+、Firefox 65+、Opera 12+、Safari 14+。比 AVIF 廣約兩年的 Safari 版本週期。WebP 現在已普及到可視為安全現代預設 —— 幾乎沒有使用積極維護瀏覽器的用戶遇到 WebP 相容性問題。" },
+          "sizeDifference": { "q": "WebP 會大多少？", "a": "相同感知品質下通常比 AVIF 來源大 20–30%。400 KB 的 AVIF 影像，品質 85 下預期約 500–550 KB 的 WebP。儘管比 AVIF 大，WebP 仍比同等品質的 JPG 小 25–35% —— 所以即使 fallback 也比老舊格式提供有意義的壓縮改善。" },
+          "quality": { "q": "品質該選多少？", "a": "品質 85 是 AVIF 的 WebP fallback 的標準建議 —— 在感知保真度上近似 AVIF 品質 75，產出在視覺品質範圍相同的輸出，大約大 20–30%。主視覺或攝影類情境優先保真度時用 90。縮圖和次要影像最重視頻寬效率時用 75–80。" },
+          "privacy": { "q": "AVIF 會被儲存嗎？", "a": "不會 —— 你的 AVIF 僅在轉換期間存於伺服器記憶體，WebP 串流至瀏覽器後立即丟棄。不寫入磁碟、不記錄影像內容、無需帳號。管線在 us-central1 的無狀態 Cloud Run 容器上執行，請求間沒有持久狀態。" },
+          "free": { "q": "免費嗎？", "a": "是 —— 每 24 小時瀏覽器工作階段三次免費，無需帳號。需要為整個 AVIF 素材庫產出 WebP 次選變體 —— picture 元素 AVIF+WebP 策略的必要部分 —— RapidAPI 提供每月免費額度與高用量工作流程的按用計費。" }
         }
       }
     }
