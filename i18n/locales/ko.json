@@ -283,6 +283,69 @@
         "여러 PNG 파일을 한 번에 업로드하여 일괄 변환하세요 — 모든 HEIC 파일은 단일 ZIP으로 반환됩니다.",
         "PNG 스크린샷이나 디자인 소재를 HEIC로 변환하면 Apple 기기에서 저장 공간을 크게 절약하면서 뛰어난 시각적 품질을 유지할 수 있습니다."
       ]
+    },
+    "webpToHeic": {
+      "tipsTitle": "알고 계셨나요? WebP to HEIC 팁",
+      "tips": [
+        "HEIC는 일반적으로 동일한 사진이 WebP로 저장된 것과 비교하여 **2–3배 더 작습니다** – Apple 중심 저장소에 아카이빙할 때 변환할 가치가 있습니다.",
+        "비사진 WebP (로고, 아이콘, UI)의 경우 이 변환을 건너뜁니다. HEIC의 손실 압축은 날카로운 모서리를 흐리게 합니다; WebP 또는 대신 PNG로 변환합니다.",
+        "HEIC 호환성은 Apple 기기 외부에서 제한됩니다. Windows / Android 사용자와 공유할 때 WebP를 유지하거나 JPG로 변환합니다.",
+        "최고 결과를 위해 품질 **90–95** 사용합니다 – WebP는 이미 효율적이므로 HEIC를 품질 75로 과도하게 압축하는 것은 품질 손실을 정당화할 만한 공간을 거의 절감하지 못합니다."
+      ]
+    },
+    "pngToAvif": {
+      "tipsTitle": "알고 계셨나요? PNG to AVIF 팁",
+      "tips": [
+        "AVIF는 동일한 인지된 품질에서 WebP보다 약 **50% 더 잘 압축합니다** – 웹 이미지 전달의 현재 수준입니다.",
+        "AVIF는 PNG처럼 **완전한 알파 투명도**를 보존하며 흰색 배경으로의 폴백은 없습니다. 사진 콘텐츠의 진정한 PNG 대체입니다.",
+        "브라우저 지원: Chrome 85+, Firefox 93+, Safari 16+, Edge 121+ (모든 주요 브라우저). 이전 폴백의 경우 WebP 소스를 가진 picture 요소를 사용합니다.",
+        "AVIF 인코딩은 느립니다 (우리 서버에서 기본 speed=6으로 사진당 약 2~4초). 타임아웃을 방지하기 위해 speed 0–2를 비활성화했습니다; 더 깊은 압축이 필요한 경우 API를 사용합니다."
+      ]
+    },
+    "jpgToAvif": {
+      "tipsTitle": "알고 계셨나요? JPG to AVIF 팁",
+      "tips": [
+        "일반적인 JPG 사진은 동등한 시각적 품질에서 **35–50% 더 작은** 파일 크기의 AVIF로 변환됩니다 – 종종 주목할 만한 Core Web Vitals 이득입니다.",
+        "품질 75의 AVIF는 인지된 충실도에서 대략 품질 90의 JPG와 일치하므로 낮은 숫자가 나와도 놀라지 마세요.",
+        "AVIF 인코딩은 CPU 집약적입니다 – 우리는 기본값으로 압축 비율과 변환 시간의 균형을 위해 speed=6을 사용합니다 (사진당 약 2~4초).",
+        "히어로 이미지의 최대 압축을 위해 원하는 품질 설정을 검증한 후 더 낮은 속도 (3–5)로 API를 다시 실행할 수 있습니다."
+      ]
+    },
+    "webpToAvif": {
+      "tipsTitle": "알고 계셨나요? WebP to AVIF 팁",
+      "tips": [
+        "AVIF는 일반적으로 동등한 품질에서 WebP보다 **20–30% 더 작은** 파일을 생성합니다 – JPG/PNG에서 WebP로 마이그레이션했으며 다음 최적화 단계를 원하는 경우 가치 있습니다.",
+        "AVIF에 대한 브라우저 지원은 이제 모든 에버그린 브라우저 전반에서 견고하지만 WebP보다 약간 뒤떨어집니다. 역호환성을 위해 WebP 폴백을 가진 picture 요소를 사용합니다.",
+        "AVIF는 HDR 및 와이드 감마 이미지의 WebP보다 더 나은 색상 충실도를 가집니다. SDR 웹 사진의 경우 차이는 최소입니다.",
+        "모든 사이트에서 WebP → AVIF로 변환하지 마세요 – 이미지가 WebP로 이미 성능하는 경우 AVIF의 추가 CDN 및 빌드 복잡성은 회수하지 못할 수 있습니다."
+      ]
+    },
+    "avifToPng": {
+      "tipsTitle": "알고 계셨나요? AVIF to PNG 팁",
+      "tips": [
+        "AVIF → PNG를 사용할 때 **이미지를 편집**해야 하거나 AVIF를 지원하지 않는 인쇄 / Office 문서에 포함시켜야 합니다.",
+        "PNG 출력은 무손실이므로 PNG는 AVIF의 디코딩된 픽셀을 정확히 캡처합니다 – 변환 자체로 인한 추가 품질 저하가 없습니다.",
+        "PNG가 **상당히 더 클** (종종 3–5배)것으로 기대합니다 AVIF 소스보다. PNG의 압축은 무손실이지만 덜 효율적입니다.",
+        "완전한 알파 채널이 유지됩니다 – 투명 AVIF는 투명 PNG로 깨끗하게 변환됩니다."
+      ]
+    },
+    "avifToJpg": {
+      "tipsTitle": "알고 계셨나요? AVIF to JPG 팁",
+      "tips": [
+        "AVIF가 도달하지 않는 모든 OS, 이메일 클라이언트 및 인쇄 도구에서 **보편적 형식**이 필요할 때 변환합니다.",
+        "품질 85–92의 JPG는 AVIF 소스에서 본질적으로 모든 보이는 품질을 유지하므로 품질 슬라이더에 빠져들지 마세요.",
+        "소스 AVIF의 투명 픽셀은 변환 중에 흰색으로 평탄화됩니다. 투명도가 필요하면 대신 PNG로 변환합니다.",
+        "일반적인 JPG 출력은 소스 AVIF보다 약 30% 더 클 것입니다 – 이것은 보편적 호환성의 비용입니다."
+      ]
+    },
+    "avifToWebp": {
+      "tipsTitle": "알고 계셨나요? AVIF to WebP 팁",
+      "tips": [
+        "**더 넓은 브라우저 지원**이 필요할 때 AVIF → WebP로 변환합니다 – WebP는 Safari 14+에서 작동하는 반면 AVIF는 Safari 16+이 필요합니다.",
+        "품질 85의 WebP 출력은 일반적으로 소스 AVIF보다 20–30% 더 크지만 JPG 또는 PNG 동등물보다 훨씬 더 작습니다.",
+        "완전한 알파 투명도가 유지됩니다 – AVIF 로고 또는 UI 자산을 광범위하게 호환되는 WebP로 변환하기에 좋습니다.",
+        "최고 범위를 원하는 프로덕션 사이트의 경우 picture 요소를 통해 AVIF 기본 + WebP 폴백 + JPG 폴백을 제공합니다."
+      ]
     }
   },
   "error": {
@@ -299,6 +362,12 @@
   },
   "relatedTools": {
     "label": "관련 도구",
+    "groups": {
+      "sprite": "스프라이트 & 프레임 도구",
+      "imageFormat": "이미지 형식 변환기",
+      "vector": "벡터 & 아이콘 도구",
+      "avif": "AVIF 변환 도구"
+    },
     "gifToSprite": "GIF → 스프라이트시트",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → 스프라이트시트",
@@ -306,22 +375,24 @@
     "splitSpritesheet": "스프라이트시트 분할기",
     "heicToJpg": "HEIC → JPG",
     "heicToPng": "HEIC → PNG",
+    "heicToWebp": "HEIC → WebP",
     "pngToJpg": "PNG → JPG",
     "jpgToPng": "JPG → PNG",
     "pngToWebp": "PNG → WebP",
     "webpToPng": "WebP → PNG",
-    "svgToPng": "SVG → PNG",
-    "faviconGenerator": "Favicon 생성기",
-    "groups": {
-      "sprite": "스프라이트 & 프레임 도구",
-      "imageFormat": "이미지 형식 변환기",
-      "vector": "벡터 & 아이콘 도구"
-    },
     "jpgToWebp": "JPG → WebP",
     "webpToJpg": "WebP → JPG",
-    "heicToWebp": "HEIC → WebP",
     "jpgToHeic": "JPG → HEIC",
-    "pngToHeic": "PNG → HEIC"
+    "pngToHeic": "PNG → HEIC",
+    "webpToHeic": "WebP → HEIC",
+    "pngToAvif": "PNG → AVIF",
+    "jpgToAvif": "JPG → AVIF",
+    "webpToAvif": "WebP → AVIF",
+    "avifToPng": "AVIF → PNG",
+    "avifToJpg": "AVIF → JPG",
+    "avifToWebp": "AVIF → WebP",
+    "svgToPng": "SVG → PNG",
+    "faviconGenerator": "Favicon 생성기"
   },
   "home": {
     "title": "무료 온라인 개발 도구",
@@ -370,13 +441,9 @@
         "title": "WebP를 PNG로",
         "description": "WebP를 범용 호환 PNG로 디코딩, 투명도 보존."
       },
-      "svgToPng": {
-        "title": "SVG를 PNG로",
-        "description": "SVG 벡터를 원하는 크기의 PNG로 래스터화 — 배율, 정확한 크기 또는 종횡비 유지 지원."
-      },
-      "faviconGenerator": {
-        "title": "Favicon 생성기",
-        "description": "ICO, Apple Touch, Android 및 Web Manifest를 포함한 완전한 7파일 favicon 팩을 생성."
+      "heicToWebp": {
+        "title": "HEIC를 WebP로",
+        "description": "iPhone HEIC 사진을 직접 WebP로 변환 — JPG보다 작고 알파를 지원."
       },
       "jpgToWebp": {
         "title": "JPG를 WebP로",
@@ -386,10 +453,6 @@
         "title": "WebP를 JPG로",
         "description": "WebP를 범용 호환 JPG로 변환, 이메일, 인쇄 및 레거시 앱용."
       },
-      "heicToWebp": {
-        "title": "HEIC를 WebP로",
-        "description": "iPhone HEIC 사진을 직접 WebP로 변환 — JPG보다 작고 알파를 지원."
-      },
       "jpgToHeic": {
         "title": "JPG를 HEIC로",
         "description": "JPG 사진을 Apple HEIC 형식으로 변환하여 iPhone과 Mac에서 효율적으로 저장."
@@ -397,6 +460,42 @@
       "pngToHeic": {
         "title": "PNG를 HEIC로",
         "description": "PNG 이미지를 Apple HEIC 형식으로 변환하여 Apple 기기에서 약 50% 작은 파일."
+      },
+      "webpToHeic": {
+        "title": "WebP에서 HEIC로 변환",
+        "description": "WebP 이미지를 Apple HEIC 형식으로 변환하여 iPhone 및 Mac에서 효율적으로 저장합니다."
+      },
+      "pngToAvif": {
+        "title": "PNG에서 AVIF로 변환",
+        "description": "다음 세대 AVIF 형식으로 PNG를 변환합니다 — WebP보다 50% 작으며 완전한 투명도를 지원합니다."
+      },
+      "jpgToAvif": {
+        "title": "JPG에서 AVIF로 변환",
+        "description": "JPG 사진을 AVIF로 변환하여 동등한 품질에서 35–50% 더 작은 파일을 얻습니다."
+      },
+      "webpToAvif": {
+        "title": "WebP에서 AVIF로 변환",
+        "description": "WebP 이미지를 AVIF로 업그레이드하여 최신 브라우저에서 추가 20–30% 압축 이점을 얻습니다."
+      },
+      "avifToPng": {
+        "title": "AVIF에서 PNG로 변환",
+        "description": "편집 및 레거시 도구를 위해 AVIF를 다시 보편적으로 호환되는 PNG로 디코딩합니다."
+      },
+      "avifToJpg": {
+        "title": "AVIF에서 JPG로 변환",
+        "description": "이메일, 인쇄 및 레거시 앱과의 보편적 호환성을 위해 AVIF를 JPG로 변환합니다."
+      },
+      "avifToWebp": {
+        "title": "AVIF에서 WebP로 변환",
+        "description": "AVIF를 WebP로 변환하여 더 광범위한 브라우저 지원을 제공합니다 — Safari 14+ 에서 작동합니다."
+      },
+      "svgToPng": {
+        "title": "SVG를 PNG로",
+        "description": "SVG 벡터를 원하는 크기의 PNG로 래스터화 — 배율, 정확한 크기 또는 종횡비 유지 지원."
+      },
+      "faviconGenerator": {
+        "title": "Favicon 생성기",
+        "description": "ICO, Apple Touch, Android 및 Web Manifest를 포함한 완전한 7파일 favicon 팩을 생성."
       }
     }
   },
@@ -3561,6 +3660,1130 @@
           "free": {
             "q": "무료인가요?",
             "a": "네 — 세션당 3회 무료 변환. 더 높은 볼륨을 위한 API."
+          }
+        }
+      }
+    }
+  },
+  "webpToHeic": {
+    "title": "무료 온라인 WebP to HEIC 변환기",
+    "subtitle": "WebP 이미지를 iPhone과 Mac에서 효율적인 저장을 위해 Apple HEIC 형식으로 변환합니다.",
+    "upload": {
+      "title": "WebP 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .webp 파일만 해당",
+      "accept": ".webp 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "HEIC로 변환",
+    "options": {
+      "quality": "HEIC 품질",
+      "qualityHint": "HEIC는 손실 형식이므로 품질 85–95가 권장됩니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 HEIC",
+      "info": "{width} × {height} px • {size}",
+      "download": "HEIC 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "WebP를 HEIC로 변환 API 사용하기",
+        "content": "WebP 자산을 HEIC으로 프로그래밍 방식으로 재인코딩합니다. /heic 엔드포인트는 source_format=webp 및 target_format=heic의 multipart WebP 업로드를 수락하며, Apple 최적화 HEIC 파일을 반환합니다.",
+        "content2": "Apple 중심 아카이브에 사진을 저장하는 파이프라인, 플랫폼별 사진 변형을 내보내는 CMS 워크플로우, WebP 카탈로그를 HEIC로 저장 효율성을 위해 대량 마이그레이션하는 경우에 이상적입니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Multipart WebP 업로드, 최대 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "WebP 입력; HEVC 압축을 사용한 HEIC 출력",
+          "response": "Binary image/heic 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "WebP를 HEIC로 변환하는 것이란?",
+        "content": "WebP를 HEIC로 변환하면 WebP 이미지를 디코딩하고 Apple의 HEIF 컨테이너를 사용하여 HEVC 압축으로 재인코딩합니다. 일반적인 절감: HEIC 출력은 동등한 시각적 품질에서 WebP 소스보다 2–3배 작습니다.",
+        "content2": "대상 플랫폼이 Apple 중심인 경우에 유용합니다 — iCloud 사진 보관함, Mac의 Apple 사진 또는 iPhone 저장소. HEIC의 더 긴밀한 압축은 저장 공간을 확보하며, iOS / macOS 앱은 이를 기본적으로 표시합니다.",
+        "content3": "우리 도구는 서버 측에서 libvips + libheif를 실행하여 iOS 11+ 및 macOS High Sierra+와 호환되는 표준 HEIC 파일을 생성합니다. 가입 불필요, 데이터 보관 없음, 단일 API 호출입니다."
+      },
+      "whyConvert": {
+        "title": "WebP를 HEIC로 변환해야 하는 경우는?",
+        "content": "WebP 기반 사진 아카이브를 Apple 네이티브 저장소로 마이그레이션할 때 변환합니다. 공간 절감은 대규모 라이브러리의 경우 의미 있으며, HEIC은 iCloud 워크플로우에서 Apple 특정 메타데이터를 더 잘 보존합니다.",
+        "content2": "WebP 로고, 아이콘 및 UI 그래픽에는 HEIC을 건너뜁니다 — HEIC의 손실 압축은 날카로운 모서리를 흐리게 합니다. 또한 파일이 HEVC 코덱 없이 Windows < 10, Android < 10 또는 이전 브라우저에서 열어야 하는 경우 건너뜁니다."
+      },
+      "howTo": {
+        "title": "WebP를 HEIC로 변환하는 방법",
+        "step1": {
+          "title": "1. WebP 업로드",
+          "content": "WebP 파일을 업로드 영역으로 드래그하거나 클릭하여 파일 선택기를 열기합니다. 최대 50 MB 및 ~89 메가픽셀까지의 파일이 수락됩니다. 업로드는 우리의 Cloud Run 처리 파이프라인으로 직접 전송됩니다 — 디스크에 아무것도 기록되지 않습니다."
+        },
+        "step2": {
+          "title": "2. HEIC 품질 선택",
+          "content": "기본값은 90입니다. WebP는 이미 효율적으로 압축되어 있으므로 90–95를 사용하여 HEIC 출력의 이중 압축 아티팩트를 피합니다. 품질 95는 사진 콘텐츠에 대해 거의 투명한 결과를 생성합니다. 80 미만으로 가지 마십시오. HEVC의 블록 아티팩트가 보이게 됩니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버가 libvips를 사용하여 WebP를 디코딩하고 HEVC 압축으로 libheif를 사용하여 결과를 HEIC으로 재인코딩합니다. 일반적인 웹 크기 이미지(1–4 MB WebP)는 1초 이내에 완료됩니다. 전체 프로세스는 메모리에서 실행됩니다 — 임시 파일은 생성되지 않습니다."
+        },
+        "step4": {
+          "title": "4. 다운로드 및 저장",
+          "content": "HEIC 파일은 브라우저에 직접 스트리밍됩니다. AirDrop을 통해 iPhone으로 전송하고, Mac의 Apple 사진으로 가져오고, iCloud Drive로 업로드합니다. HEIC은 iOS 11+, iPadOS 및 macOS High Sierra+에서 기본적으로 표시됩니다. 앱 설치 없음."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "2–3배 더 작은 파일",
+            "content": "동등한 시각적 품질에서 일반적인 WebP → HEIC 절감. Apple의 HEIF 컨테이너 내부의 HEVC 압축으로 구동됩니다. HEVC의 인트라 프레임 예측 및 적응형 양자화는 일관되게 사진 콘텐츠, 특히 하늘과 피부 톤과 같은 부드러운 그래디언트 영역에서 WebP의 VP8 코덱을 능가합니다."
+          },
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "HEIC 품질 매개변수를 통해 1에서 100까지의 세분화된 제어입니다. 품질 90은 WebP 소스의 무손실 같은 결과를 위한 최적의 지점입니다; 보관용 품질 95+ 충실도. 80 미만의 값은 자세한 영역에서 보이는 HEVC 블록 아티팩트의 위험이 있습니다."
+          },
+          "apple": {
+            "title": "Apple 네이티브 형식",
+            "content": "모든 iPhone(iOS 11+), iPad 및 Mac(High Sierra+)에서 기본적으로 HEIC을 엽니다. 플러그인 설치 없음. iCloud 사진 보관함은 모든 Apple 기기에서 HEIC을 효율적으로 동기화 및 저장하며, Apple 사진은 변환을 통해 EXIF 및 IPTC 메타데이터를 보존합니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "WebP는 변환 요청 기간 동안만 서버 메모리에 보관되고 HEIC 응답이 브라우저로 스트리밍되는 즉시 삭제됩니다. 디스크에 쓰이지 않음, 콘텐츠 기록 안 함, 계정 불필요. 파이프라인은 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "서버 측 libvips + libheif를 사용하여 일반적인 웹 크기 이미지의 경우 1초 미만입니다. 처리는 Google Cloud Run us-central1에서 메모리 전용 I/O로 실행되므로 디스크 쓰기 지연이 없습니다. 더 큰 파일(20–50 MB)은 일반적으로 2–4초 안에 완료됩니다."
+          },
+          "free": {
+            "title": "캐주얼 사용 무료",
+            "content": "계정 또는 신용 카드 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 벌크 처리 — 수천 개의 WebP 내보내기를 iCloud 저장소용 HEIC으로 변환 — RapidAPI 목록은 월간 무료 계층 및 그 이상의 종량제 요금을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "iphone": {
+            "title": "iPhone 저장소 최적화",
+            "content": "WebP 사진을 HEIC으로 변환한 후 AirDrop으로 iPhone에 전송하여 장치상 저장소를 훨씬 더 효율적으로 만듭니다. HEIC 파일은 일반적으로 동일한 인식된 품질에서 동등한 WebP보다 2–3배 작으므로 iPhone의 저장소 풀의 사용 가능한 용량을 직접 확장합니다. 이는 웹 소스 또는 기본적으로 WebP를 제공하는 메시징 앱에서 저장된 사진의 대규모 배치에 가장 중요합니다."
+          },
+          "storage": {
+            "title": "Mac 사진 아카이브",
+            "content": "WebP 사진 라이브러리를 Mac에서 HEIC으로 마이그레이션하여 이미지당 2–3배 공간 절감합니다. Lightroom, Capture One 또는 기타 도구에서 WebP 형식으로 사진을 내보내는 경우 보관 전 HEIC으로 변환하면 상당한 디스크 공간이 확보됩니다 — iCloud Drive 계층 또는 외부 드라이브를 채울 때 특히 관련이 있습니다. Apple 사진은 HEIC을 기본적으로 처리하므로 워크플로우는 원활합니다."
+          },
+          "icloud": {
+            "title": "iCloud 동기화 효율성",
+            "content": "iCloud 사진 보관함은 기본적으로 HEIC을 지원하며 모든 Apple 기기에서 효율적인 동기화를 위해 선호하는 형식으로 사용합니다. WebP 대신 HEIC으로 사진을 저장하면 iCloud 업로드가 더 작아지고, 동기화가 빠르며, 계층 제한에 가까운 경우 월간 저장소 비용이 낮아집니다. 50 GB iCloud 계획은 라이브러리가 HEIC일 때 실질적으로 100–150 GB 동등이 됩니다."
+          },
+          "archival": {
+            "title": "장기 Apple 보관",
+            "content": "HEIC은 장기 사진 저장을 위한 Apple의 선택 형식이며 Apple 에코시스템에 깊이 통합되어 있습니다 — 사진, iCloud, AirDrop 및 Quick Look이 모두 기본적으로 처리합니다. WebP 컬렉션을 Apple 플랫폼용으로 보관하는 경우 HEIC은 압축, 품질 및 에코시스템 호환성의 최적 균형을 제공합니다. 파일은 변환 없이 2017년 이후 출시된 모든 Apple 기기에서 읽을 수 있습니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyHeic": {
+            "q": "WebP를 HEIC으로 변환하는 이유는?",
+            "a": "대상이 Apple 중심 저장소일 때 약 2–3배 공간 절감을 위해서입니다. HEIC의 HEVC 압축은 특히 부드러운 그래디언트 및 미세한 텍스처에서 사진 콘텐츠에 대해 WebP의 VP8 코덱을 능가합니다. iCloud 사진 보관함, Apple 사진 및 iOS 11 이후 모든 iPhone은 타사 앱이나 코덱 없이 기본적으로 HEIC을 처리합니다."
+          },
+          "compatibility": {
+            "q": "HEIC은 어디서 열 수 있나요?",
+            "a": "iPhone(iOS 11+), iPad, Mac(macOS High Sierra+), Microsoft Store의 무료 HEVC 비디오 확장이 있는 Windows 10+, 대부분의 Android 10+ 기기에서 기본적으로 합니다. 웹 브라우저는 추가 소프트웨어 없이 HEIC을 열 수 없으므로 HEIC은 웹 배달에 사용하기 보다는 Apple 네이티브 워크플로우 내에서 유지하는 것이 가장 좋습니다."
+          },
+          "quality": {
+            "q": "품질이 떨어지나요?",
+            "a": "WebP와 HEIC 모두 손실 형식이므로 이들 사이에 변환할 때 재인코딩 손실은 피할 수 없습니다. 품질 90 이상에서 사진 콘텐츠에 대해 모든 소비자 디스플레이에서 차이는 본질적으로 눈에 띄지 않습니다. 날카로운 모서리 UI 그래픽, 아이콘 및 스크린샷의 경우 HEVC 압축은 약간의 흐림을 도입할 수 있습니다 — 이러한 파일의 경우 PNG가 더 나은 보관 선택입니다."
+          },
+          "transparency": {
+            "q": "투명성이 보존되나요?",
+            "a": "투명 픽셀은 변환 중 검은색 배경으로 평탄화됩니다. HEIC은 기술적으로 알파(HEVC 알파 평면)를 지원하지만 투명한 HEIC 파일에 대한 iOS 앱 호환성은 일관되지 않습니다 — 일부 앱은 올바르게 처리하고 다른 앱은 잘못 표시합니다. 신뢰할 수 있는 투명성이 필요한 경우 WebP 또는 PNG로 변환하십시오. 둘 다 견고한 크로스 플랫폼 알파 지원을 가지고 있습니다."
+          },
+          "privacy": {
+            "q": "내 파일이 저장되나요?",
+            "a": "아니오 — WebP는 변환 요청 기간 동안만 서버 메모리에 보관되고 HEIC 응답이 브라우저로 스트리밍되는 즉시 삭제됩니다. 디스크에 쓰이지 않음, 이미지 콘텐츠 기록 없음, 계정 불필요. 파이프라인은 요청 간 지속적인 상태 없이 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 계정 또는 신용 카드 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 벌크 HEIC 보관 파이프라인 — iCloud 저장소 효율성을 위해 수천 개의 WebP 내보내기 처리 — RapidAPI 목록은 넉넉한 월간 무료 계층 및 그 이상의 종량제 요금을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "pngToAvif": {
+    "title": "무료 온라인 PNG to AVIF 변환기",
+    "subtitle": "PNG 이미지를 AVIF로 변환하여 최고의 웹 압축 – WebP보다 50% 작으면서 완전한 투명도 지원합니다.",
+    "upload": {
+      "title": "PNG 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .png 파일만 해당",
+      "accept": ".png 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "AVIF로 변환",
+    "options": {
+      "quality": "AVIF 품질",
+      "qualityHint": "품질 75의 AVIF는 대략 품질 90의 JPG와 일치합니다. 낮은 숫자가 나와도 놀라지 마세요."
+    },
+    "status": {
+      "converting": "인코딩 중... (AVIF는 2~4초 소요됩니다)",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 AVIF",
+      "info": "{width} × {height} px • {size}",
+      "download": "AVIF 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "PNG to AVIF 변환 API 사용",
+        "content": "차세대 웹 전송을 위한 AVIF 이미지 생성합니다. /avif 엔드포인트는 source_format=png 및 target_format=avif가 포함된 멀티파트 PNG 업로드를 허용하며, AV1 압축 AVIF 파일을 반환합니다.",
+        "content2": "이미지 빌드 파이프라인, CDN 사전처리, 최고의 이미지 압축을 원하는 SaaS 앱의 업로드 시 변환에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 하이라이트",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "멀티파트 PNG 업로드, 최대 50MB",
+          "params": "source_format, target_format, quality (0–100), speed (3–10)",
+          "limit": "요청당 50MB, ~89MP 해상도",
+          "formats": "PNG 입력; 알파가 있는 AVIF 출력",
+          "response": "바이너리 image/avif 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "AVIF란 무엇이며 PNG에서 왜 변환해야 합니까?",
+        "content": "AVIF (AV1 이미지 파일 형식)는 웹 이미지 압축의 현재 수준입니다. 로열티 무료 AV1 비디오 코덱을 기반으로 동등한 품질에서 WebP보다 약 50% 더 잘 압축하고 JPG보다 약 75% 더 잘 압축하면서 PNG처럼 완전한 알파 투명도를 유지합니다.",
+        "content2": "실제 결과: 2MB PNG 히어로 배너는 일반적으로 200~400KB AVIF (80~90% 감소)가 되면서 픽셀 완벽한 투명도를 유지합니다. 트레이드오프: 인코딩은 CPU 시간이 소요되므로 AVIF는 정적 자산에 가장 유용하며 동적 요청당 생성에는 적합하지 않습니다.",
+        "content3": "브라우저 지원은 이제 모든 에버그린 브라우저에서 보편적입니다: Chrome 85+, Firefox 93+, Safari 16+, Edge 121+, Opera 71+. 레거시 폴백의 경우 WebP를 보조로 사용하고 JPG/PNG를 최종 폴백으로 사용하는 picture 요소를 사용합니다."
+      },
+      "whyAvif": {
+        "title": "PNG를 AVIF로 업그레이드하는 이유는 무엇입니까?",
+        "content": "Google의 Core Web Vitals는 이미지 크기를 크게 가중치로 두므로 특히 최대 콘텐츠 페인트 (LCP)입니다. PNG 히어로 이미지를 AVIF로 교체하면 AVIF가 PNG와 WebP 모두보다 훨씬 더 잘 압축하므로 종종 가능한 가장 큰 LCP 부스트를 제공합니다.",
+        "content2": "AVIF는 부드러운 그래디언트, 미묘한 텍스처 및 투명한 오버레이가 있는 사진에 특히 강력하며 – PNG로 저장되는 이미지의 정확한 유형입니다. 사이트의 성능이 이미지에 달려 있다면 AVIF는 현재 사용 가능한 가장 큰 단일 최적화입니다."
+      },
+      "howTo": {
+        "title": "PNG를 AVIF로 변환하는 방법",
+        "step1": {
+          "title": "1. PNG 업로드",
+          "content": "PNG 파일을 업로드 영역에 드래그하거나 클릭하여 파일 선택기를 엽니다. 최대 50MB이고 최대 약 89메가픽셀까지 지원됩니다. 파일은 우리의 Cloud Run 인코딩 파이프라인으로 직접 전송됩니다 – 로컬 처리 없음, 디스크에 저장되지 않습니다."
+        },
+        "step2": {
+          "title": "2. 품질 선택",
+          "content": "기본값 75 – AV1 코덱이 훨씬 더 효율적이므로 대략 JPG 품질 90과 동등합니다. 최대 충실도 (투명 로고, UI 요소)의 경우 85를 시도해 보세요. 배경 텍스처 또는 비 히어로 이미지의 적극적인 압축의 경우 60을 시도해 보세요. 품질 숫자는 파일 크기에 선형으로 매핑되지 않습니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "libaom (AV1 참조 인코더)을 사용한 AVIF 인코딩 (speed=6)은 파이프라인에서 사진당 약 2~4초 소요됩니다. speed=6 설정은 압축 효율과 사용자 대기 시간의 균형을 맞춥니다 – 낮은 속도는 약간 더 작은 파일을 생성하지만 10~20초가 소요될 수 있습니다. 서버는 디스크 쓰기 없이 메모리에서 완전히 처리합니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "AVIF 파일은 최신 브라우저 – Chrome 85+, Firefox 93+, Safari 16+, Edge 121+에서 사용할 수 있습니다. 이전 브라우저를 지원하려면 AVIF를 WebP 소스가 보조 폴백이고 JPG 또는 PNG가 IE 및 레거시 Safari의 최종 폴백인 picture 요소로 래핑합니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "WebP보다 50% 작음",
+            "content": "AVIF의 AV1 코덱은 동등한 시각적 품질에서 WebP보다 약 50% 더 나은 압축을 달성하고 JPG보다 약 75% 더 나은 압축을 달성합니다. 2MB PNG 히어로 배너는 일반적으로 픽셀 완벽한 투명도를 유지하면서 200~400KB AVIF가 됩니다. 이는 AVIF를 웹 이미지 전송의 현재 수준으로 만듭니다."
+          },
+          "alpha": {
+            "title": "완전한 투명도",
+            "content": "AVIF는 알파 채널을 완전히 지원하므로 투명 웹 자산에서 PNG의 진정한 대체입니다. JPG와 달리 알파가 없는 AVIF는 소스 PNG에 정확히 나타나는 투명도의 모든 수준을 유지합니다. Chrome 85+, Firefox 93+, Safari 16+, Edge 121+에서 AVIF 알파에 대한 브라우저 지원은 견고합니다."
+          },
+          "modern": {
+            "title": "차세대 코덱",
+            "content": "AVIF는 로열티 무료 AV1 비디오 코덱을 기반으로 하며, Google, Netflix, Apple 및 기타 회사의 지원을 받는 미디어를 위한 연합에 의해 개발되었습니다. AV1은 특허 없음이며 비용 없이 보편적으로 라이선스할 수 있으므로 웹 이미지 전송의 기본 선택이 되고 있습니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "PNG는 AVIF 인코딩 요청 기간 동안만 서버 메모리에 유지됩니다. AVIF 응답이 브라우저로 스트리밍되면 원본 데이터는 폐기됩니다. 디스크에 쓰인 것이 없고, 콘텐츠가 로깅되지 않으며, 계정이 필요하지 않습니다. 처리는 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "fast": {
+            "title": "웹용으로 조정됨",
+            "content": "인코더는 speed=6 (0–10 범위에서 가장 느림/최고에서 가장 빠름/최악)에서 실행되므로 압축 효율과 대화형 사용에 적합한 2~4초 대기 시간의 균형을 맞춥니다. 배치 파이프라인은 정확한 압축 최적성이 덜 중요할 때 더 높은 처리량을 위해 API를 통해 speed=8–10을 사용할 수 있습니다."
+          },
+          "free": {
+            "title": "비상업적 사용을 위해 무료",
+            "content": "24시간 브라우저 세션당 3회의 무료 변환, 계정 또는 신용카드 필요 없습니다. 빌드 파이프라인 통합 – 배포 시 전체 PNG 자산 라이브러리를 AVIF로 변환 – RapidAPI 목록은 월별 무료 계층 및 높은 볼륨에 대한 비용 효율적인 종량제 가격을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "웹 성능",
+            "content": "PNG 히어로 이미지를 AVIF로 교체하여 Core Web Vitals 개선, 특히 최대 콘텐츠 페인트 (LCP)를 합니다. AVIF가 WebP보다 50% 더 잘 압축하므로 1MB PNG 히어로를 150KB AVIF로 교체하면 LCP 시간을 직접 감소시킵니다 – SEO 및 인지된 성능의 가장 영향력 있는 단일 최적화 중 하나입니다. Google은 PageSpeed Insights 확인으로 차세대 형식을 제공하도록 권장합니다."
+          },
+          "mobile": {
+            "title": "모바일 앱 및 PWA",
+            "content": "AVIF는 Android WebViews (Android 12+)와 Chrome 또는 Edge에서 실행 중인 모든 최신 Progressive Web Apps에서 기본적으로 지원됩니다. 더 작은 AVIF 자산은 4G/5G 연결 및 데이터 제한 요금제에서 직접 더 빠른 로드 시간으로 변환됩니다 – 느린 네트워크의 사용자가 가장 극적인 개선을 봅니다. PWA 오프라인 캐시도 AVIF의 더 작은 공간에서 이점을 얻습니다."
+          },
+          "cdn": {
+            "title": "CDN 사전처리",
+            "content": "빌드 시간 동안 PNG 자산을 AVIF로 배치 변환하여 CDN을 통한 프로덕션 전달을 위해 합니다. Sharp, libvips, ImageMagick과 같은 도구는 모두 AVIF 출력을 지원하며 우리 API는 CI/CD 파이프라인에 슬롯되어 변환을 자동화할 수 있습니다. 빌드 시 사전 인코딩은 권장 접근 방식입니다 – AVIF의 2~4초 인코딩 시간은 높은 트래픽 CDN의 요청당 변환을 비실용적으로 만듭니다."
+          },
+          "hero": {
+            "title": "히어로 이미지 및 배너",
+            "content": "히어로 이미지 및 마케팅 배너는 대부분의 사이트에서 가장 단일 LCP 최적화 대상입니다. 일반적인 PNG 히어로 (1~3MB)는 AVIF에서 100~400KB가 되며 – 80~90% 감소 – 모든 소비자 디스플레이에서 시각적 차이가 없습니다. 이것만으로도 코드 변경 없이 사이트를 실패한 Core Web Vitals LCP 점수에서 통과하는 점수로 이동할 수 있습니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "browserSupport": {
+            "q": "어떤 브라우저가 AVIF를 지원합니까?",
+            "a": "Chrome 85+, Firefox 93+, Safari 16+, Edge 121+, Opera 71+ – 2024년 현재 모든 에버그린 브라우저. 이전 브라우저 (Safari 14–15, 이전 Edge)의 경우 picture 요소와 WebP 소스를 폴백으로 사용하고 레거시 IE의 경우 JPG 또는 PNG를 최종 폴백으로 사용합니다. picture 요소를 통해 최신 브라우저가 지원되는 최적의 형식을 자동으로 선택할 수 있습니다."
+          },
+          "vsWebp": {
+            "q": "AVIF가 정말 WebP보다 낫습니까?",
+            "a": "예 – 동등한 시각적 품질에서 AVIF (AV1 기반)는 일반적인 사진 콘텐츠에 대해 WebP (VP8 기반)보다 약 20~30% 더 잘 압축하고 부드러운 그래디언트, 텍스처 및 투명한 오버레이가 있는 이미지에 대해 약 50% 더 잘 압축합니다. 의미 있는 트레이드오프는 인코딩 속도입니다: AVIF는 speed=6에서 2~4초가 소요되는 반면 WebP는 밀리초 단위로 인코딩합니다."
+          },
+          "sizeSavings": {
+            "q": "AVIF는 얼마나 작을까요?",
+            "a": "일반적인 PNG → AVIF 감소는 사진 콘텐츠의 경우 80–90%입니다. 2MB 사진 PNG는 품질 75에서 대략 200~400KB AVIF가 됩니다. 압축은 부드러운 그래디언트, 세밀한 텍스처 및 사진 세부 사항이 있는 이미지에 대해 가장 강력합니다. 평탄한 색상 UI 그래픽 및 단순 아이콘은 더 작은 이득 (50~60% 감소)을 봅니다."
+          },
+          "transparency": {
+            "q": "투명도가 유지됩니까?",
+            "a": "예 – AVIF는 PNG처럼 완전한 알파 채널 투명도를 지원합니다. 투명 픽셀, 부분 투명도 및 앤티 앨리어싱된 모서리는 모두 올바르게 유지됩니다. 이는 AVIF를 웹 전달에서 투명 PNG의 진정한 대체로 만듭니다 – AVIF를 지원하지 않는 브라우저의 PNG 또는 WebP 폴백을 사용하는 picture 요소를 사용해야 합니다."
+          },
+          "privacy": {
+            "q": "내 PNG가 저장됩니까?",
+            "a": "아니오 – PNG는 변환 기간 동안만 서버 메모리에 유지되며 AVIF가 브라우저로 스트리밍되면 폐기됩니다. 디스크에 기록된 것이 없고, 이미지 콘텐츠가 로깅되지 않으며, 계정이 필요하지 않습니다. 파이프라인은 요청 간에 지속적 상태가 없는 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료입니까?",
+            "a": "예 – 24시간 브라우저 세션당 3회의 무료 변환, 계정 필요 없습니다. 빌드 파이프라인 또는 대량 변환 사용 사례 – 전체 PNG 자산 디렉토리를 AVIF로 변환 – RapidAPI 목록은 월별 무료 계층과 높은 볼륨 워크플로에 대한 종량제 가격을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "jpgToAvif": {
+    "title": "무료 온라인 JPG to AVIF 변환기",
+    "subtitle": "JPG 사진을 AVIF로 변환하여 동등한 시각적 품질에서 35–50% 더 작은 파일 – 사진이 많은 사이트의 가장 큰 Core Web Vitals 이득입니다.",
+    "upload": {
+      "title": "JPG 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .jpg 또는 .jpeg",
+      "accept": ".jpg 또는 .jpeg 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "AVIF로 변환",
+    "options": {
+      "quality": "AVIF 품질",
+      "qualityHint": "품질 75의 AVIF는 대략 품질 90의 JPG와 일치합니다. 낮은 숫자가 나와도 놀라지 마세요."
+    },
+    "status": {
+      "converting": "인코딩 중... (AVIF는 2~4초 소요됩니다)",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 AVIF",
+      "info": "{width} × {height} px • {size}",
+      "download": "AVIF 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "JPG to AVIF 변환 API 사용",
+        "content": "사진이 많은 사이트에 대한 AVIF 생성을 자동화합니다. /avif 엔드포인트는 source_format=jpg 및 target_format=avif가 포함된 멀티파트 JPG 업로드를 허용하여 극적으로 더 작은 AVIF 파일을 반환합니다.",
+        "content2": "제품 카탈로그, 편집 사진 워크플로 및 AVIF를 기본으로 제공하는 CDN 사전처리 파이프라인의 빌드 시간 최적화에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 하이라이트",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "멀티파트 JPG 업로드, 최대 50MB",
+          "params": "source_format, target_format, quality (0–100), speed (3–10)",
+          "limit": "요청당 50MB, ~89MP 해상도",
+          "formats": "JPG 입력; AVIF 출력",
+          "response": "바이너리 image/avif 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "JPG to AVIF 변환이란 무엇입니까?",
+        "content": "AVIF (AV1 이미지 파일 형식)는 로열티 무료 AV1 비디오 코덱을 기반으로 하는 웹 이미지 압축의 다음 세대입니다. 동등한 시각적 품질에서 AVIF는 JPG보다 약 50% 작은 파일을 생성합니다 – 현재 이미지가 많은 사이트에 사용 가능한 가장 큰 단일 최적화입니다.",
+        "content2": "AVIF는 JPG와 완전히 다른 압축 기술을 사용하므로 (블록 기반 DCT 대 신경 규모 변환) 품질 숫자가 직접 변환되지 않습니다. AVIF 품질 75는 대략 JPG 품질 90과 일치합니다; AVIF 품질 60은 JPG 품질 80과 일치합니다.",
+        "content3": "우리 도구는 속도 6 – 압축 비율과 사용자 대기 시간의 조정된 균형에서 서버 측 AVIF 인코딩을 실행합니다. 일반적인 사진은 2~4초 내에 완료됩니다. 더 빠른 속도 (7–10)는 배치 워크플로를 위해 API를 통해 사용 가능합니다."
+      },
+      "whyAvif": {
+        "title": "JPG를 AVIF로 업그레이드하는 이유는 무엇입니까?",
+        "content": "웹사이트에 많은 JPG 사진을 제공합니다 – 포트폴리오, 전자 상거래, 편집, 여행, 음식 – AVIF는 거의 확실히 만들 수 있는 가장 큰 단일 성능 이득입니다. 이미지 페이로드를 절반으로 줄이면 Google이 순위 요소로 사용하는 Core Web Vitals의 LCP 점수를 직접 개선합니다.",
+        "content2": "트레이드오프는 빌드 시간 비용 (인코딩은 CPU 집약적) 및 약간 지연된 Safari 지원 (v16+)입니다. 동적/사용자 업로드 시나리오의 경우 AVIF는 과할 수 있습니다 – 하지만 정적 히어로 이미지, 제품 갤러리 및 편집 미디어의 경우 LCP 이득은 상당합니다."
+      },
+      "howTo": {
+        "title": "JPG를 AVIF로 변환하는 방법",
+        "step1": {
+          "title": "1. JPG 업로드",
+          "content": "JPG (또는 JPEG) 파일을 업로드 영역에 드래그하거나 클릭하여 파일 선택기를 엽니다. 최대 50MB이고 최대 약 89메가픽셀까지 허용됩니다. 파일은 우리의 Cloud Run AVIF 인코딩 파이프라인으로 직접 전송됩니다 – 로컬 처리 없음, 디스크에 저장되지 않습니다."
+        },
+        "step2": {
+          "title": "2. 품질 선택",
+          "content": "기본값 75. JPG는 이미 손실 형식이므로 AVIF 품질 숫자는 JPG 품질에 직접 매핑되지 않습니다 – AVIF 75는 인지된 충실도에서 대략 JPG 90과 일치합니다. 85 이상으로 올리면 최소한의 시각적 품질 개선이 있는 파일 크기가 추가됩니다. 축소판 또는 비 히어로 이미지의 적극적인 압축의 경우 60–65가 적절합니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "libaom AV1 인코더를 사용한 AVIF 인코딩 (speed=6)은 사진당 약 2~4초 소요됩니다. 이 대기는 가치가 있습니다 – JPG 소스와 비교하여 35–50% 크기 감소를 기대하세요 (동등한 시각적 품질에서). 서버는 디스크 쓰기 없이 메모리에서 완전히 처리하여 us-central1 Cloud Run에서 실행됩니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "AVIF는 최신 브라우저를 위해 준비되어 있습니다. 완전한 브라우저 호환성을 유지하려면 AVIF를 기본 소스로 하고, WebP를 폴백으로 하고, JPG를 최종 폴백으로 하는 picture 요소를 통해 제공합니다. Chrome 85+, Firefox 93+, Safari 16+, Edge 121+는 자동으로 AVIF를 선택합니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "JPG보다 35–50% 작음",
+            "content": "동등한 시각적 품질에서 AVIF는 일반적인 사진 콘텐츠에 대해 JPG보다 35–50% 더 작은 파일을 생성합니다. 이는 사진이 많은 사이트에 사용 가능한 가장 큰 단일 Core Web Vitals 최적화입니다 – 이미지 페이로드를 절반으로 줄이면 LCP 시간을 직접 감소시킵니다. AVIF 품질 75는 JPG 품질 90이 하는 것을 거의 두 배의 파일 크기로 달성합니다."
+          },
+          "photo": {
+            "title": "사진에 최적화됨",
+            "content": "AVIF의 AV1 코덱은 부드러운 그래디언트, 미묘한 텍스처 및 연속 톤 변형을 가진 사진 콘텐츠에 특히 강력합니다 – JPG가 블록 압축 아티팩트를 가장 보여주는 콘텐츠입니다. 품질 75에서 AVIF는 이전 JPG 품질 90보다 사진 세부 사항을 더 잘 보존하면서 훨씬 더 작습니다."
+          },
+          "modern": {
+            "title": "차세대 코덱",
+            "content": "미디어를 위한 연합에 의해 개발된 로열티 무료 AV1 코덱을 기반으로 합니다. AV1은 단위당 로열티가 필요한 일부 코덱 기술과 달리 보편적으로 라이선스할 수 있습니다. 이 열린 로열티 무료 토대는 AVIF가 법적 또는 라이선스 장벽 없이 보편적으로 사용 가능하게 남아 있다는 것을 의미합니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "JPG는 AVIF 인코딩 기간 동안만 서버 메모리에 유지되며 AVIF가 브라우저로 스트리밍되면 폐기됩니다. 디스크에 기록된 것이 없고, 이미지 콘텐츠가 로깅되지 않으며, 계정이 필요하지 않습니다. 파이프라인은 요청 간에 지속적 상태가 없는 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "fast": {
+            "title": "속도 조정 인코딩",
+            "content": "libaom 인코더는 speed=6에서 실행되어 압축 비율과 2~4초 대화형 대기 시간의 균형을 맞춥니다. Speed=6은 libaom에서 가장 낮은 속도 설정에서 달성 가능한 최적 압축의 약 5% 내에서 출력을 생성하면서 10~20배 더 빠릅니다. 배치 API 사용의 경우 speed=8–10은 초당 여러 이미지를 처리할 수 있습니다."
+          },
+          "free": {
+            "title": "비상업적 사용을 위해 무료",
+            "content": "24시간 브라우저 세션당 3회의 무료 변환, 계정 또는 신용카드 필요 없습니다. 빌드 파이프라인 통합 – 배포를 위해 전체 사진 카탈로그를 AVIF로 사전 인코딩 – RapidAPI 목록은 월별 무료 계층과 높은 볼륨에 대한 종량제 가격을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "웹 성능",
+            "content": "사진이 많은 페이지의 이미지 페이로드를 절반으로 줄여 Largest Contentful Paint (LCP) 및 Core Web Vitals 점수를 직접 개선합니다. AVIF의 35–50% 크기 감소 대 JPG는 측정 가능하게 더 빠른 인지된 로드 시간으로 변환됩니다 – Google은 LCP를 순위 신호로 사용하므로 이는 직접 SEO 영향을 가진 이미지 최적화 중 몇 가지입니다. 많은 위쪽 부분 JPG 사진을 가진 사이트의 경우 AVIF는 일반적으로 사용 가능한 가장 높은 활용도 단일 변경입니다."
+          },
+          "photography": {
+            "title": "사진 사이트",
+            "content": "포트폴리오, 스톡 사진 및 편집 사이트는 JPG → AVIF 변환의 가장 큰 수혜자입니다. 대형 형식 히어로 이미지 (2–6MB JPG)는 동등한 품질에서 AVIF에서 600KB–2MB로 압축되어 느린 연결에서도 빠른 갤러리 로드를 가능하게 합니다. AVIF의 부드러운 그래디언트 및 미세 디테일의 우수한 처리는 고품질 사진에 특히 적합합니다."
+          },
+          "cdn": {
+            "title": "CDN 사전처리",
+            "content": "빌드 또는 업로드 시간에 제품 이미지 카탈로그를 AVIF로 사전 인코딩하여 CDN을 통한 즉각적인 모바일 페이지 로드를 위해 합니다. 수백 개의 제품 JPG를 가진 전자 상거래 사이트는 AVIF 마이그레이션 후 극적인 LCP 개선을 봅니다. picture 요소에서 AVIF (기본)와 JPG 폴백을 결합하여 최신 브라우저 전반의 호환성을 유지하면서 가장 작은 가능한 파일을 제공합니다."
+          },
+          "mobile": {
+            "title": "모바일 경험",
+            "content": "느린 4G/5G 연결 또는 데이터 제한 모바일 요금제의 사용자에게 특히 영향력 있으므로 이미지 크기는 페이지 로드 시간을 직접 결정합니다. JPG로 4G를 통해 8초가 소요되는 사진 갤러리는 AVIF로 4~5초로 로드될 수 있습니다 – 반송률을 줄이고 사용자 보관을 개선합니다. 더 작은 파일은 또한 GPU 디코드 경로에서 덜 배터리를 소비합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "browserSupport": {
+            "q": "어떤 브라우저가 AVIF를 지원합니까?",
+            "a": "Chrome 85+, Firefox 93+, Safari 16+, Edge 121+, Opera 71+ – 모든 에버그린 브라우저. 이전 브라우저의 경우 picture 요소를 AVIF 기본 소스로, WebP를 보조로, JPG를 최종 폴백으로 사용하여 제공합니다. 최신 브라우저는 지원되는 최고 형식을 자동으로 선택하므로 폴백 체인에 JavaScript가 필요하지 않습니다."
+          },
+          "sizeSavings": {
+            "q": "AVIF는 얼마나 작을까요?",
+            "a": "동등한 시각적 품질에서 일반적인 JPG → AVIF: 35–50% 더 작습니다. 부드러운 그래디언트 (하늘, 피부 톤, 배경)는 가장 큰 이득을 봅니다, 때로는 55–60% 더 작습니다. 많은 세밀한 입자 세부 사항을 가진 높은 ISO 노이즈 사진은 더 작은 이득 (약 25–35%)을 봅니다. 품질 75 기본값은 대략 JPG 품질 90과 동등한 출력을 생성하도록 보정되어 있습니다 (약 절반 파일 크기에서)."
+          },
+          "quality": {
+            "q": "어떤 품질을 선택해야 합니까?",
+            "a": "품질 75는 안전한 기본값입니다 – JPG 품질 90과 동등한 출력을 약 절반의 파일 크기로 생성하며 모든 소비자 디스플레이에서 인지할 수 없습니다. 픽셀 수준 충실도가 중요한 경우 (예: 전문 사진 포트폴리오) 85를 사용합니다. 더 작은 크기가 완벽한 충실도보다 더 중요한 비 히어로 이미지의 적극적인 압축의 경우 60–65를 사용합니다."
+          },
+          "fallback": {
+            "q": "AVIF와 폴백을 어떻게 제공합니까?",
+            "a": "HTML picture 요소를 사용합니다: AVIF 소스를 먼저 추가한 후 Safari 14–15의 보조 폴백으로 WebP 소스를 추가한 후 이전 브라우저의 최종 폴백으로 표준 JPG img 태그를 추가합니다. AVIF를 지원하지 않는 브라우저는 자동으로 다음 지원되는 형식으로 넘어갑니다. 이 3가지 형식 체인은 최신 브라우저에서 최고 압축을 받으면서 100% 호환성을 유지합니다."
+          },
+          "privacy": {
+            "q": "내 JPG가 저장됩니까?",
+            "a": "아니오 – JPG는 변환 기간 동안만 서버 메모리에 유지되며 AVIF가 브라우저로 스트리밍되면 즉시 폐기됩니다. 디스크에 기록된 것이 없고, 이미지 콘텐츠가 로깅되지 않으며, 계정이 필요하지 않습니다. 파이프라인은 요청 간에 지속적 상태가 없는 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료입니까?",
+            "a": "예 – 계정 필요 없이 24시간 브라우저 세션당 3회의 무료 변환. 사진 카탈로그의 대량 인코딩 또는 자동화된 빌드 파이프라인 통합의 경우 RapidAPI 목록은 월별 무료 계층과 높은 볼륨 워크플로에 대한 비용 효율적인 종량제 가격을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "webpToAvif": {
+    "title": "무료 온라인 WebP to AVIF 변환기",
+    "subtitle": "WebP 이미지를 차세대 AVIF로 업그레이드하여 최신 브라우저에서 추가 20–30% 압축 이득을 얻습니다.",
+    "upload": {
+      "title": "WebP 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .webp 파일만 해당",
+      "accept": ".webp 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "AVIF로 변환",
+    "options": {
+      "quality": "AVIF 품질",
+      "qualityHint": "품질 75의 AVIF는 인지된 충실도에서 품질 85의 WebP와 일치합니다."
+    },
+    "status": {
+      "converting": "인코딩 중... (AVIF는 2~4초 소요됩니다)",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 AVIF",
+      "info": "{width} × {height} px • {size}",
+      "download": "AVIF 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "WebP to AVIF 변환 API 사용",
+        "content": "WebP 자산을 AVIF로 프로그래밍 방식으로 마이그레이션합니다. /avif 엔드포인트는 source_format=webp 및 target_format=avif가 포함된 멀티파트 WebP 업로드를 허용하여 차세대 AV1 압축 출력을 생성합니다.",
+        "content2": "이미 WebP로 최적화되었으며 다음 단계를 원하는 사이트, 대량 CDN 재인코딩 파이프라인 및 프로덕션 전달을 위한 빌드 시간 AVIF 생성에 유용합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 하이라이트",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "멀티파트 WebP 업로드, 최대 50MB",
+          "params": "source_format, target_format, quality (0–100), speed (3–10)",
+          "limit": "요청당 50MB, ~89MP 해상도",
+          "formats": "WebP 입력; 알파가 있는 AVIF 출력",
+          "response": "바이너리 image/avif 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "WebP에서 AVIF로의 변환이란 무엇입니까?",
+        "content": "WebP와 AVIF는 모두 최신 웹 이미지 코덱이지만 다른 압축 기술을 사용합니다. WebP는 VP8 (비디오 코덱)을 기반으로 합니다; AVIF는 AV1 (더 새로운 비디오 코덱)을 기반으로 합니다. AV1은 단순히 더 효율적입니다 – 동등한 품질에서 AVIF 출력이 WebP보다 약 20–30% 더 작습니다.",
+        "content2": "트레이드오프: AVIF 인코딩이 WebP보다 느리며 AVIF에 대한 브라우저 지원 (Safari 16+)이 WebP (Safari 14+)보다 약간 뒤떨어집니다. 이미 WebP를 제공하는 사이트의 경우 질문은 추가 20–30% 크기 이득이 추가 빌드 복잡성을 정당화하는지입니다.",
+        "content3": "우리 도구는 speed=6에서 서버 측 AVIF 인코딩을 실행하여 모든 최신 에버그린 브라우저와 호환되는 파일을 생성합니다. 가입 없음, 워터마크 없음, 보관 없음."
+      },
+      "whyAvif": {
+        "title": "WebP를 AVIF로 업그레이드해야 할까요?",
+        "content": "이미 WebP로 최적화된 사이트의 경우 AVIF로 업그레이드하는 것은 의미 있지만 원래의 JPG/PNG → WebP 마이그레이션보다 작은 이득입니다. 추가 절감액 20–30%을 예상하세요 – 성능 중요 히어로 이미지 및 제품 카탈로그에는 가치 있지만 영향이 낮은 축소판에는 과할 수 있습니다.",
+        "content2": "가장 안전한 출시: picture 요소에서 AVIF를 기본 소스로 추가하고 WebP를 폴백으로 유지합니다. 이는 더 새로운 브라우저에 AVIF 속도 부스트를 제공하면서 이전 브라우저 (Safari 14–15)를 WebP에 남깁니다."
+      },
+      "howTo": {
+        "title": "WebP를 AVIF로 변환하는 방법",
+        "step1": {
+          "title": "1. WebP 업로드",
+          "content": "WebP 파일을 업로드 영역에 드래그하거나 클릭하여 파일 선택기를 엽니다. 최대 50MB이고 최대 약 89메가픽셀까지 허용됩니다. 업로드는 우리의 Cloud Run AVIF 인코딩 파이프라인으로 직접 이동합니다 – 디스크에 저장된 것이 없고 로컬 처리 없음."
+        },
+        "step2": {
+          "title": "2. 품질 선택",
+          "content": "기본값 75 – AVIF의 AV1 코덱이 WebP의 VP8보다 더 압축 효율적이므로 대략 WebP 품질 85와 인지된 시각적 충실도를 일치시킵니다. 성능 중요 히어로 이미지에서 최대 충실도가 중요할 때는 더 높게 (85) 올립니다. 축소판 또는 보조 이미지에서 추가 크기 절감이 한계 품질 이득을 능가할 때는 더 낮게 (65) 합니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "libaom을 사용한 AVIF 인코딩 (speed=6)은 사진당 약 2~4초 소요됩니다. 이는 WebP 인코딩 (밀리초)보다 더 길며 AV1이 더 복잡한 코덱이기 때문입니다. 압축 절감액은 정적 자산의 대기 시간을 기다릴 가치가 있습니다 – 최고 결과를 위해 빌드 시간에 한 번 인코딩합니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "AVIF는 최신 브라우저에 대해 준비되어 있습니다. 최대 범위를 위해 AVIF를 기본으로 제공하고 WebP를 보조 폴백으로 사용하는 picture 요소를 통해 제공합니다 – Chrome 85+, Firefox 93+, Safari 16+, Edge 121+는 AVIF를 받고 Safari 14–15 사용자는 WebP를 받습니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "compression": {
+            "title": "WebP보다 20–30% 작음",
+            "content": "AVIF의 AV1 코덱은 동등한 시각적 품질에서 WebP의 VP8보다 20–30% 더 나은 압축을 달성합니다 – 이미 최적화된 형식의 상단에서 의미 있는 추가 절감액입니다. 이득은 부드러운 그래디언트, 미묘한 텍스처 및 연속 톤 범위를 가진 사진 콘텐츠에서 가장 두드러집니다. 평탄한 색상 UI 그래픽은 더 작은 이득을 봅니다."
+          },
+          "alpha": {
+            "title": "완전한 투명도",
+            "content": "알파 채널 투명도는 WebP에서 AVIF로 엔드 투 엔드로 유지됩니다. 부분 투명도, 앤티 앨리어싱된 모서리 및 복잡한 블렌딩 마스크는 모두 올바르게 수행됩니다. Chrome 85+, Firefox 93+, Safari 16+, Edge 121+에서 AVIF 알파에 대한 브라우저 지원은 견고하여 AVIF를 투명 웹 자산의 안전한 선택으로 만듭니다."
+          },
+          "nextgen": {
+            "title": "차세대 코덱",
+            "content": "로열티 무료 AV1 비디오 코덱을 기반으로 AVIF는 웹 이미지 압축의 현재 선도적 가장자리를 나타냅니다. AV1은 Google, Netflix, Apple, Microsoft 및 Mozilla를 포함하는 연합인 미디어를 위한 연합에 의해 개발되었으므로 단위당 로열티 또는 라이선스 제한 없이 무료로 사용할 수 있습니다."
+          },
+          "privacy": {
+            "title": "파일 보관 없음",
+            "content": "WebP는 AVIF 인코딩 요청 기간 동안만 서버 메모리에 유지됩니다. AVIF가 브라우저로 스트리밍되면 소스 데이터는 즉시 폐기됩니다. 디스크에 기록된 것이 없고, 이미지 콘텐츠가 로깅되지 않으며, 계정이 필요하지 않습니다. 파이프라인은 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "fast": {
+            "title": "속도 조정 인코딩",
+            "content": "libaom 인코더는 speed=6에서 실행되어 압축 품질과 대화형 변환에 적합한 2~4초의 사용자 대면 대기 시간의 균형을 맞춥니다. speed=6 설정은 최대 압축의 약 5% 이내의 출력을 생성하여 낮은 속도 설정이 필요한 10~20초보다 훨씬 빠릅니다. 배치 API 워크플로는 더 높은 처리량을 위해 speed=8–10을 사용할 수 있습니다."
+          },
+          "free": {
+            "title": "비상업적 사용을 위해 무료",
+            "content": "24시간 브라우저 세션당 3회의 무료 변환, 계정 또는 신용카드 필요 없습니다. 전체 WebP 아카이브를 AVIF로 변환하는 사이트 – 수천 개의 파일과 관련된 일회성 배치 작업 – RapidAPI 목록은 월별 무료 계층과 높은 볼륨 마이그레이션에 대한 종량제 가격을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "web": {
+            "title": "성능 중요 페이지",
+            "content": "히어로 이미지, 제품 카탈로그 및 위쪽 부분 미디어는 WebP → AVIF 마이그레이션의 가장 높은 우선 대상입니다. 이러한 이미지는 LCP 점수를 지배하며 추가 20–30% 크기 감소는 측정 가능하게 더 빠른 로드 시간으로 직접 변환됩니다. AVIF 인코딩 작업을 페이지 로드 후 처음 2.5초 내에 뷰포트에 나타나는 이미지에 집중하세요 – LCP 영향이 가장 큰 곳입니다."
+          },
+          "migration": {
+            "title": "WebP → AVIF 마이그레이션",
+            "content": "JPG/PNG에서 WebP로 마이그레이션한 사이트의 경우 다음 최적화 단계는 WebP 아카이브의 일회성 배치 변환으로 AVIF를 기본 소스로 제공하는 것입니다. 우리의 API를 사용하여 전체 자산 라이브러리를 처리한 후 picture 요소 src 특성을 AVIF 기본 및 WebP 폴백을 가리키도록 업데이트합니다. 추가 20–30% 크기 감소는 사이트에 상당한 모바일 트래픽이 있는 경우 특히 가치 있습니다."
+          },
+          "cdn": {
+            "title": "CDN 사전 처리",
+            "content": "프로덕션 CDN 전달을 위해 빌드 시간에 WebP 자산의 AVIF 변형을 생성합니다. 각 AVIF를 picture 요소의 WebP 폴백과 쌍을 이루고 적절한 캐시 헤더 및 콘텐츠 유형으로 CDN에서 제공합니다. CDN 사전 인코딩은 요청당 인코딩 오버헤드를 완전히 피합니다 – AVIF의 2~4초 인코딩 시간은 높은 트래픽 자산을 위해 요청당 생성을 비실용적으로 만듭니다."
+          },
+          "vitals": {
+            "title": "Core Web Vitals",
+            "content": "이미 최적화된 WebP 이미지에서 추가 LCP 개선을 짜냅니다 – 2.5초 LCP 임계값에 가깝지만 명확히 지우지 못하는 사이트에 특히 가치 있습니다. 히어로 이미지 및 위쪽 부분 콘텐츠에서 20–30% AVIF 크기 감소는 LCP를 경계선에서 명확히 통과하도록 푸시할 수 있습니다. Google은 LCP를 순위 신호로 사용하여 이 최적화를 SEO 관련으로 만듭니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "vsWebp": {
+            "q": "AVIF는 WebP보다 얼마나 작습니까?",
+            "a": "동등한 인지된 시각적 품질에서 일반적으로 20–30% 더 작습니다. 이득은 부드러운 그래디언트 (하늘, 피부 톤, 흐릿한 배경)를 가진 사진 콘텐츠에서 가장 두드러지며 AV1의 더 정교한 인코딩 알고리즘이 WebP의 VP8을 가장 강력하게 능가하는 곳입니다. 평탄한 색상 그래픽과 단순 삽화는 10–15%의 더 작은 이득을 봅니다."
+          },
+          "browserSupport": {
+            "q": "어떤 브라우저가 AVIF를 지원합니까?",
+            "a": "Chrome 85+, Firefox 93+, Safari 16+, Edge 121+, Opera 71+ – 모든 에버그린 브라우저. AVIF 지원은 WebP (Safari 14+)보다 약 2개의 주요 Safari 버전만큼 약간 뒤떨어집니다. 최대 범위를 위해 AVIF를 기본으로 picture 요소를 사용하고 WebP를 보조로 사용합니다 – Safari 14–15는 WebP를 받고 최신 브라우저는 더 작은 AVIF를 받습니다."
+          },
+          "sizeSavings": {
+            "q": "20–30% 이득을 얻을 가치가 있습니까?",
+            "a": "성능 중요 히어로 이미지 및 LCP 민감한 페이지에서 모든 밀리초 중요한 경우 예 – 추가 압축은 모바일에서 측정 가능하게 더 빠릅니다. 축소판, 위쪽 부분이 아닌 이미지 및 낮은 트래픽 페이지의 경우 아마도 아니오 – WebP는 이미 우수하며 AVIF와 WebP 변형 유지의 빌드 복잡성은 한계 이득을 정당화하지 않을 수 있습니다."
+          },
+          "fallback": {
+            "q": "WebP 폴백이 필요합니까?",
+            "a": "예, Safari 14–15 지원이 필요한 경우 합니다. AVIF를 기본 소스로, WebP를 보조 소스로 사용하는 picture 요소를 사용합니다 – AVIF 지원이 없는 브라우저는 자동으로 WebP로 넘어갑니다. 2022년 이후 출시된 브라우저에만 관심이 있는 경우 AVIF만으로 충분합니다 (2022년 9월 출시 Safari 16이 AVIF 지원을 추가했기 때문입니다)."
+          },
+          "privacy": {
+            "q": "내 WebP가 저장됩니까?",
+            "a": "아니오 – WebP는 변환 기간 동안만 서버 메모리에 유지되며 AVIF가 브라우저로 스트리밍되면 폐기됩니다. 디스크에 기록된 것이 없고, 이미지 콘텐츠가 로깅되지 않으며, 계정이 필요하지 않습니다. 처리는 지속적 상태가 없는 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료입니까?",
+            "a": "예 – 24시간 브라우저 세션당 3회의 무료 변환, 계정 필요 없습니다. 전체 WebP 아카이브를 AVIF로 대량 마이그레이션하는 경우 RapidAPI 목록은 월별 무료 계층과 높은 볼륨 워크플로에 대한 비용 효율적인 종량제 가격을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "avifToPng": {
+    "title": "무료 온라인 AVIF to PNG 변환기",
+    "subtitle": "AVIF 이미지를 편집, 레거시 도구 및 이전 브라우저를 위해 보편적으로 호환되는 PNG로 변환합니다.",
+    "upload": {
+      "title": "AVIF 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .avif 파일만 해당",
+      "accept": ".avif 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "PNG로 변환",
+    "options": {},
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 PNG",
+      "info": "{width} × {height} px • {size}",
+      "download": "PNG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "AVIF를 PNG로 변환 API 사용하기",
+        "content": "AVIF를 PNG로 프로그래밍 방식으로 디코딩합니다. /avif 엔드포인트는 source_format=avif 및 target_format=png의 multipart AVIF 업로드를 수락하며, 편집 또는 레거시 호환성을 위해 무손실 PNG를 반환합니다.",
+        "content2": "다운스트림 파이프라인 또는 사용자가 PNG를 필요로 할 때 유용합니다 — 이전 편집기, 인쇄 소프트웨어 또는 AVIF 코덱 지원 없는 시스템.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Multipart AVIF 업로드, 최대 50 MB",
+          "params": "source_format=avif, target_format=png",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "AVIF 입력; 무손실 PNG 출력",
+          "response": "알파 보존된 Binary image/png 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "AVIF를 PNG로 변환하는 것이란?",
+        "content": "AVIF를 PNG로 변환하면 AVIF 이미지를 디코딩하고 무손실 PNG로 재인코딩합니다. PNG는 AVIF의 디코딩된 픽셀을 정확하게 캡처합니다 — 추가 품질 손실 없음, 전체 알파 채널 보존.",
+        "content2": "이 변환은 AVIF를 지원하지 않는 다운스트림 도구가 필요할 때 유용합니다. 이전 Photoshop 버전, 레거시 인쇄 RIP 소프트웨어, Microsoft Office 365 이전 및 많은 임베드 시스템은 전통적인 형식만 처리합니다.",
+        "content3": "우리 도구는 libvips를 통해 서버 측에서 실행되어 AVIF의 기본 해상도에서 깔끔한 PNG 출력을 생성합니다. 가입 불필요, 데이터 보관 없음, 단일 요청입니다."
+      },
+      "whyConvert": {
+        "title": "AVIF를 PNG로 변환해야 하는 경우는?",
+        "content": "대상이 AVIF를 지원하지 않을 때 변환합니다. 일반적인 경우: 이전 디자인 도구, 인쇄 파이프라인, 레거시 CMS 시스템 또는 PNG를 입력으로 요구하는 모든 워크플로우.",
+        "content2": "또한 AVIF를 편집하고 손실 형식을 다시 저장할 때 발생하는 세대 품질 손실을 피하려면 변환합니다. PNG는 현재 상태를 무손실로 동결합니다."
+      },
+      "howTo": {
+        "title": "AVIF를 PNG로 변환하는 방법",
+        "step1": {
+          "title": "1. AVIF 업로드",
+          "content": "AVIF 파일을 업로드 영역으로 드래그하거나 클릭하여 파일 선택기를 열기합니다. 최대 50 MB 및 ~89 메가픽셀까지의 파일이 수락됩니다. 파일은 우리의 Cloud Run 디코딩 파이프라인으로 전송됩니다 — 로컬 처리 없음, 디스크에 저장 안 함."
+        },
+        "step2": {
+          "title": "2. 변환 클릭",
+          "content": "구성할 품질 옵션이 없습니다 — PNG는 항상 무손실입니다. 서버는 libvips를 사용하여 libaom AV1 디코더를 사용하여 AVIF를 디코딩하고 DEFLATE 압축으로 PNG로 원본 픽셀 데이터를 재인코딩합니다. 전체 프로세스는 메모리에서 실행됩니다."
+        },
+        "step3": {
+          "title": "3. 미리보기 확인",
+          "content": "PNG 출력은 픽셀 치수로 나타납니다. PNG가 AVIF 소스보다 3–5배 크다고 예상하십시오 — 이는 정상이며 예상됩니다. AVIF는 공격적인 AV1 압축을 사용하고 PNG는 파일 크기보다 정확한 픽셀 보존을 우선하는 무손실 DEFLATE를 사용하기 때문입니다. 크기 증가는 범용 호환성의 대가입니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "PNG는 코덱 설치 없이 모든 애플리케이션에서 열립니다 — Photoshop, GIMP, Figma, Microsoft Office, 인쇄 RIP 소프트웨어 및 모든 웹 브라우저. PNG는 존재하는 가장 범용적으로 호환되는 래스터 이미지 형식입니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "lossless": {
+            "title": "무손실 출력",
+            "content": "PNG는 AVIF의 디코딩된 픽셀을 정확하게 캡처합니다 — 변환 중 추가 품질 저하가 도입되지 않습니다. AVIF가 품질 75로 인코딩된 경우 PNG는 추가 압축 아티팩트 없이 이러한 디코딩된 픽셀을 충실하게 나타냅니다. 이는 AVIF 콘텐츠를 보관하거나 재처리 전에 편집할 때 이상적인 형식입니다."
+          },
+          "alpha": {
+            "title": "투명성 보존",
+            "content": "완전한 알파 채널 투명성은 손실 없이 AVIF에서 PNG로 전달됩니다. 부분 투명성, 부드러운 투명성 그래디언트 및 복잡한 마스킹은 모두 변환 손상 없이 살아남습니다. AVIF와 PNG 모두 완전한 8비트 알파 채널을 지원하므로 투명성 데이터는 0 반올림으로 완벽하게 전달됩니다."
+          },
+          "compatibility": {
+            "title": "범용 PNG",
+            "content": "PNG는 플러그인이나 코덱 설치 없이 모든 이미지 편집기, 운영 체제, 웹 브라우저, 인쇄 도구, 문서 편집기 및 엔터프라이즈 애플리케이션에서 열립니다. 1996년 이후 범용 표준이며 모든 소프트웨어 에코시스템이 기본적으로 지원합니다. 질문 없이 어디서나 파일을 열어야 할 때 PNG가 답입니다."
+          },
+          "privacy": {
+            "title": "보관 없음",
+            "content": "AVIF는 디코딩 및 PNG 인코딩 요청 기간 동안만 서버 메모리에 보관됩니다. PNG가 브라우저로 스트리밍되는 즉시 AVIF 데이터가 삭제됩니다. 디스크에 쓰이지 않음, 콘텐츠 기록 없음, 계정 불필요. 처리는 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "AVIF-to-PNG는 AVIF 인코딩보다 빠릅니다 — libvips를 사용하는 서버 측 AV1 디코딩 및 PNG 재인코딩은 일반적으로 웹 크기 이미지의 경우 500ms 미만입니다. 더 큰 파일(20–50 MB)은 1–3초가 걸릴 수 있습니다. 변환은 CPU 바운드보다는 I/O 바운드이므로 파일 크기에 따라 잘 확장됩니다."
+          },
+          "free": {
+            "title": "무료",
+            "content": "계정이나 신용 카드 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 배치 AVIF-to-PNG 파이프라인 — AVIF 아카이브를 레거시 다운스트림 도구로 배포하기 위해 PNG로 변환 — RapidAPI 목록은 월간 무료 계층 및 높은 볼륨을 위한 종량제 가격을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "editing": {
+            "title": "레거시 도구에서 편집",
+            "content": "이전 Photoshop 버전(2021년 이전), AVIF 플러그인 없는 GIMP 및 많은 무료 이미지 편집기는 AVIF 코덱 지원을 부족합니다 — PNG로 먼저 변환하여 자유롭게 열고 편집합니다. PNG는 무손실이므로 추가 품질 저하 없이 편집하고 다시 저장할 수 있습니다. 편집 후 웹 배달을 위해 필요한 경우 AVIF로 다시 변환할 수 있습니다."
+          },
+          "legacy": {
+            "title": "레거시 애플리케이션",
+            "content": "Microsoft 365 이전 MS Office, Paint와 같은 이전 Windows 유틸리티, 엔터프라이즈 소프트웨어의 임베드 뷰어 및 대부분의 임베드 시스템은 전통적인 래스터 형식만 처리합니다. PNG는 범용적으로 안전한 선택입니다 — Windows 98 이후 Windows에서 기본적으로 지원되고 버전 2003 이후 Office에서 지원됩니다. 코덱 설치 없음, 호환성 질문 없음."
+          },
+          "printing": {
+            "title": "인쇄 생산",
+            "content": "많은 상업 인쇄 RIP(래스터 이미지 프로세서) 시스템은 아직 AVIF를 지원하지 않으므로 PNG가 인쇄 작업의 안전한 제출 형식입니다. PNG의 무손실 압축은 화면과 인쇄 간 품질 저하가 없음을 보장하며, 투명성 처리가 필요한 대부분의 인쇄 워크플로우와 알파 채널 지원이 호환됩니다."
+          },
+          "design": {
+            "title": "디자인 도구 가져오기",
+            "content": "PNG를 Figma, Sketch, Adobe XD, Affinity Designer 또는 다른 디자인 도구로 드롭하여 일관되고 예측 가능한 가져오기 동작을 위해 합니다. 벡터 및 UI 작업에 최적화된 디자인 도구는 때때로 제한된 래스터 형식 지원을 가집니다 — PNG는 보장된 공통 지면입니다. PNG를 프로토타이핑에 사용하고 최종 웹 배달을 위해서만 AVIF로 전환합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyConvert": {
+            "q": "AVIF를 PNG로 변환하는 이유는?",
+            "a": "대상이 AVIF를 지원하지 않을 때입니다. 많은 레거시 디자인 도구(Photoshop 2021년 이전, 플러그인 없는 GIMP), 인쇄 RIP 소프트웨어, 이전 MS Office 버전, 임베드 뷰어 및 엔터프라이즈 시스템은 전통적인 형식만 수락합니다. PNG는 추가 소프트웨어 없이 어디서나 열리는 범용 폴백입니다. 재인코딩 전 무손실 형식에서 이미지를 편집해야 할 때도 유용합니다."
+          },
+          "qualityLoss": {
+            "q": "품질을 잃게 되나요?",
+            "a": "아니오 — PNG는 무손실이므로 AVIF의 디코딩된 픽셀을 정확하게 캡처합니다. 소스 AVIF가 품질 75로 인코딩된 경우 PNG는 추가 압축 아티팩트를 도입하지 않고 이러한 디코딩된 픽셀을 충실하게 나타냅니다. PNG 출력은 AVIF의 디코딩된 상태의 완벽한 픽셀 단위 스냅샷입니다 — 추가 편집 전 보관에 이상적입니다."
+          },
+          "fileSize": {
+            "q": "PNG가 훨씬 더 큰 이유는?",
+            "a": "AVIF는 극도의 압축 비율을 달성하는 차세대 AV1 비디오 코덱 압축을 사용합니다; PNG는 파일 크기보다 정확한 픽셀 보존을 우선하는 무손실 DEFLATE 압축을 사용합니다. PNG가 AVIF 소스보다 3–5배 크다고 예상하십시오. 이 크기 차이는 단순히 무손실, 범용 호환 저장소의 대가입니다 — 호환성이 목표일 때 지불할 가치가 있습니다."
+          },
+          "transparency": {
+            "q": "투명성이 보존되나요?",
+            "a": "네 — 완전한 알파 채널 투명성은 손실 없이 AVIF에서 PNG로 전달됩니다. 두 형식 모두 완전한 8비트 알파 채널을 지원하므로 투명성 데이터가 완벽하게 전달됩니다. 부분 투명성, 부드러운 투명성 그래디언트 및 복잡한 투명성 마스크는 모두 변환을 견디고 PNG 출력에 올바르게 표현됩니다."
+          },
+          "privacy": {
+            "q": "내 파일이 저장되나요?",
+            "a": "아니오 — AVIF는 변환 기간 동안만 서버 메모리에 보관되고 PNG가 브라우저로 스트리밍되는 즉시 삭제됩니다. 디스크에 쓰이지 않음, 이미지 콘텐츠 기록 없음, 계정 불필요. 파이프라인은 요청 간 지속적인 상태 없이 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 계정 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 배치 AVIF-to-PNG 변환 파이프라인 — 레거시 도구로 배포하기 위해 AVIF 아카이브 처리 — RapidAPI 목록은 월간 무료 계층 및 높은 볼륨 워크플로우를 위한 종량제 가격을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "avifToJpg": {
+    "title": "무료 온라인 AVIF to JPG 변환기",
+    "subtitle": "AVIF 이미지를 이메일, 인쇄 및 레거시 애플리케이션을 위해 보편적으로 호환되는 JPG로 변환합니다.",
+    "upload": {
+      "title": "AVIF 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .avif 파일만 해당",
+      "accept": ".avif 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "JPG로 변환",
+    "options": {
+      "quality": "JPG 품질",
+      "qualityHint": "품질 85는 시각적으로 무손실 출력을 제공합니다. 더 낮게 이동하는 것은 권장하지 않습니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 JPG",
+      "info": "{width} × {height} px • {size}",
+      "download": "JPG 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "AVIF를 JPG로 변환 API 사용하기",
+        "content": "AVIF 콘텐츠에 대한 JPG 폴백을 프로그래밍 방식으로 제공합니다. /avif 엔드포인트는 source_format=avif 및 target_format=jpg의 multipart AVIF 업로드를 수락하며, 범용적으로 호환되는 JPG 파일을 반환합니다.",
+        "content2": "AVIF 콘텐츠를 레거시 시스템의 수신자에게 이메일로 보내야 하는 서비스, JPG를 필요로 하는 인쇄 파이프라인 및 차세대 형식을 정규화하는 자산 관리 시스템에 완벽합니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Multipart AVIF 업로드, 최대 50 MB",
+          "params": "source_format=avif, target_format=jpg, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "AVIF 입력; JPG 출력",
+          "response": "Binary image/jpeg 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "AVIF를 JPG로 변환하는 것이란?",
+        "content": "AVIF를 JPG로 변환하면 AVIF 이미지를 디코딩하고 JPG로 재인코딩합니다. JPG는 모든 이메일 클라이언트, OS 및 인쇄 도구에서 범용적으로 지원되므로 이 변환은 광범위한 호환성이 필요할 때 선택입니다.",
+        "content2": "JPG에는 알파 채널이 없으므로 AVIF 소스의 투명 픽셀은 흰색 배경으로 평탄화됩니다. 투명성을 보존해야 하는 경우 PNG로 변환합니다.",
+        "content3": "우리 도구는 libvips를 통해 서버 측에서 실행되어 선택한 품질의 AVIF 기본 해상도에서 깔끔한 JPG 출력을 생성합니다. 가입 불필요, 워터마크 없음, 데이터 보관 없음."
+      },
+      "whyConvert": {
+        "title": "AVIF를 JPG로 변환해야 하는 경우는?",
+        "content": "수신자가 AVIF를 지원하지 않는 이메일 클라이언트, 운영 체제 또는 도구를 사용할 때 변환합니다. 일반적인 경우: 회사 이메일, 인쇄소, 이전 Windows 앱, 레거시 CMS 시스템.",
+        "content2": "JPG 출력은 AVIF 소스보다 크습니다(일반적으로 ~30%). 하지만 범용 호환성은 일회성 공유 또는 레거시 워크플로우에서 크기 비용의 가치가 있을 수 있습니다."
+      },
+      "howTo": {
+        "title": "AVIF를 JPG로 변환하는 방법",
+        "step1": {
+          "title": "1. AVIF 업로드",
+          "content": "AVIF 파일을 업로드 영역으로 드래그하거나 클릭하여 파일 선택기를 열기합니다. 최대 50 MB 및 ~89 메가픽셀까지의 파일이 수락됩니다. 파일은 우리의 Cloud Run 디코딩 파이프라인으로 전송됩니다 — 로컬 처리 없음, 디스크에 저장 안 함."
+        },
+        "step2": {
+          "title": "2. 품질 선택",
+          "content": "기본값 90 — 모든 소비자 디스플레이에서 AVIF 소스와 거의 구분할 수 없는 JPG 출력을 생성합니다. 2차 이미지에 대해 추가 크기 절감과 최소 보이는 품질 영향을 위해 80을 사용합니다. 품질 85–92가 대부분의 사용 사례에 대한 실제 범위입니다 — 95 이상의 값은 눈에 띄지 않는 품질 개선으로 상당한 파일 크기를 추가합니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버는 libvips를 사용하여 libaom 디코더를 사용하여 AVIF를 디코딩하고, 투명 픽셀을 흰색 배경으로 평탄화하고(JPG에는 알파 채널이 없기 때문), 선택한 품질로 JPG로 결과를 재인코딩합니다. 전체 프로세스는 Cloud Run us-central1의 메모리에서 실행됩니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "JPG를 기기에 저장합니다. 이메일 첨부파일, 인쇄소 제출, 레거시 애플리케이션 및 아직 AVIF를 지원하지 않는 모든 플랫폼에 준비되어 있습니다. JPG는 모든 이메일 클라이언트, 운영 체제 및 코덱 설치 없이 애플리케이션에서 기본적으로 지원됩니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "표준 JPEG 품질 매개변수를 통해 1에서 100까지의 세분화된 JPG 품질 제어입니다. 품질 90은 최대 충실도와 합리적인 파일 크기에 대한 최적의 지점입니다 — 일반적으로 AVIF 소스보다 30% 크지만 여전히 압축되지 않은 동등보다 훨씬 작습니다. 품질 80은 자세한 영역에서 약간의 부드러움으로 추가 20–30% 크기 감소를 제공합니다."
+          },
+          "compatibility": {
+            "title": "범용 출력",
+            "content": "JPG는 플러그인, 코덱 설치 또는 호환성 우려 없이 모든 곳에서 열립니다 — 모든 이메일 클라이언트, 모든 운영 체제, 모든 웹 브라우저, 모든 인쇄 도구 및 사실상 이미지를 처리한 모든 애플리케이션. 1992년 이후 범용 표준이며 무기한으로 유지될 것입니다. 절대 최대 호환성이 필요할 때 JPG가 가장 안전한 형식입니다."
+          },
+          "smaller": {
+            "title": "효율적인 JPG 인코딩",
+            "content": "서버는 libvips의 현대 JPEG 인코더를 사용하여 높은 품질 설정에서도 효율적으로 압축된 JPG 출력을 생성합니다. 품질 90에서 일반적인 AVIF-to-JPG 출력은 동등한 PNG보다 25–40% 작으면서 거의 모든 보이는 세부 사항을 보존합니다. 이는 AVIF → JPG를 크기가 중요하지만 PNG 수준 무손실이 필요하지 않을 때의 좋은 선택으로 만듭니다."
+          },
+          "privacy": {
+            "title": "보관 없음",
+            "content": "AVIF는 변환 요청 기간 동안만 서버 메모리에 보관됩니다. JPG가 브라우저로 스트리밍되는 즉시 AVIF 데이터가 삭제됩니다. 디스크에 쓰이지 않음, 이미지 콘텐츠 기록 없음, 계정 불필요. 처리는 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "AVIF-to-JPG 디코딩 및 재인코딩은 빠릅니다 — 일반적으로 libvips를 사용하는 서버 측 웹 크기 이미지의 경우 500ms 미만입니다. 변환은 AVIF 인코딩과 달리 CPU 바운드가 아니라 I/O 바운드입니다. 더 큰 파일(20–50 MB)은 1–2초 안에 완료됩니다."
+          },
+          "free": {
+            "title": "무료",
+            "content": "계정 또는 신용 카드 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 배치 AVIF-to-JPG 파이프라인 — 레거시 시스템 배포 또는 이메일 배달을 위해 AVIF 아카이브 변환 — RapidAPI 목록은 월간 무료 계층 및 높은 볼륨을 위한 종량제 가격을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "email": {
+            "title": "이메일 첨부파일",
+            "content": "많은 이메일 클라이언트 — 특히 회사 Outlook, 이전 Apple Mail 버전 및 웹메일 시스템 — AVIF 첨부파일을 거부하거나 렌더링하지 못합니다. JPG는 이메일에서 범용적으로 안전합니다: 1990년대 초 이후 모든 메일 클라이언트가 처리합니다. AVIF 사진을 첨부하기 전 JPG로 변환하면 레거시 소프트웨어에 관계없이 모든 수신자에게 이미지가 올바르게 표시됩니다."
+          },
+          "legacy": {
+            "title": "레거시 애플리케이션",
+            "content": "이전 Photoshop 버전(2021년 이전), MS Office(365년 이전), Windows 레거시 도구 및 AVIF 코덱 지원 없는 대부분의 엔터프라이즈 소프트웨어는 모두 플러그인 설치 없이 JPG를 깔끔하게 엽니다. 이전 소프트웨어를 사용하는 클라이언트 또는 동료에게 이미지를 보내야 할 때 JPG가 가장 안전한 공통 분모입니다. Windows 3.1 이후 범용적으로 지원되고 있습니다."
+          },
+          "printing": {
+            "title": "인쇄 생산",
+            "content": "대부분의 상업 인쇄 RIP 시스템, 온라인 인쇄 서비스 및 전문 인쇄소는 JPG를 기본 입력 형식으로 수락합니다. 많은 사항이 사진 인쇄를 위해 JPG를 특별히 요구합니다. AVIF는 웹에 탁월하지만 아직 인쇄 워크플로우의 표준이 아닙니다. 인쇄 제출 전 JPG로 변환하면 모든 인쇄 시스템이 파일을 수락하고 올바르게 처리합니다."
+          },
+          "social": {
+            "title": "이전 플랫폼",
+            "content": "일부 틈새 소셜 네트워크, 포럼 플랫폼 및 레거시 콘텐츠 관리 시스템은 여전히 AVIF 업로드를 거부하거나 서버 측에서 저품질 JPG로 자동 변환합니다. JPG로 먼저 변환하면 품질 설정을 제어하고 이미지가 정확히 의도대로 보이도록 합니다. 이는 이미지 품질이 가장 중요한 사진 커뮤니티에 특히 중요합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyConvert": {
+            "q": "AVIF를 JPG로 다시 변환하는 이유는?",
+            "a": "호환성을 위해서입니다 — JPG는 존재하는 모든 이메일 클라이언트, 운영 체제, 애플리케이션 및 인쇄 시스템에서 열리지만 AVIF는 아직 범용적으로 지원되지 않습니다. 일반적인 사용 사례는 레거시 시스템의 수신자에게 사진을 이메일로 보내기, 인쇄소에 이미지 제출, 이전 소프트웨어를 사용하는 클라이언트와 공유 및 아직 AVIF를 수락하지 않는 플랫폼으로 업로드입니다."
+          },
+          "transparency": {
+            "q": "투명 픽셀에 어떤 일이 발생하나요?",
+            "a": "투명 픽셀은 흰색 배경으로 평탄화됩니다. JPG는 알파 채널 지원이 없기 때문입니다. AVIF에 보존해야 하는 투명성이 있는 경우 — 로고, UI 요소, 오버레이 — PNG로 변환하십시오. 이는 완전히 알파를 지원합니다. 투명성 없는 사진 콘텐츠의 경우 JPG가 올바른 선택이며 평탄화 문제가 적용되지 않습니다."
+          },
+          "quality": {
+            "q": "어떤 품질을 선택해야 하나요?",
+            "a": "사진 콘텐츠의 경우 품질 90을 권장합니다 — 모든 소비자 디스플레이에서 AVIF 소스와 거의 구분할 수 없는 출력을 생성합니다. 웹 썸네일 및 2차 이미지에 대해 80을 사용하여 추가 크기 절감을 위해 합니다. 일반 목적 공유를 위해 80과 90 사이의 중간 지점으로 85를 사용합니다."
+          },
+          "fileSize": {
+            "q": "JPG가 AVIF보다 더 크나요?",
+            "a": "일반적으로 약 30% 크므로 AVIF의 AV1 압축이 JPG의 DCT 기반 인코딩보다 더 효율적입니다. 500 KB AVIF 사진의 경우 품질 90에서 대략 650–700 KB JPG를 예상합니다. 이 크기 증가는 단순히 범용 호환성의 대가입니다 — AVIF의 더 좁은 지원이 중요하지 않은 상황에서 수락할 가치가 있습니다."
+          },
+          "privacy": {
+            "q": "내 파일이 저장되나요?",
+            "a": "아니오 — AVIF는 변환 기간 동안만 서버 메모리에 보관되고 JPG가 브라우저로 스트리밍되는 즉시 삭제됩니다. 디스크에 쓰이지 않음, 이미지 콘텐츠 기록 없음, 계정 불필요. 파이프라인은 요청 간 지속적인 상태 없이 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 계정 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 배치 AVIF-to-JPG 파이프라인 — 레거시 배포 또는 이메일 배달 워크플로우를 위해 AVIF 아카이브 변환 — RapidAPI 목록은 월간 무료 계층 및 높은 볼륨 사용 사례를 위한 종량제 가격을 제공합니다."
+          }
+        }
+      }
+    }
+  },
+  "avifToWebp": {
+    "title": "무료 온라인 AVIF to WebP 변환기",
+    "subtitle": "AVIF 이미지를 더 넓은 브라우저 호환성을 위해 WebP로 변환하면서 파일 크기를 작게 유지합니다.",
+    "upload": {
+      "title": "AVIF 파일을 여기에 드래그하거나 클릭하여 선택합니다",
+      "limit": "최대 파일 크기: 50MB · .avif 파일만 해당",
+      "accept": ".avif 파일만 허용됩니다",
+      "tooLarge": "파일이 50MB 한계를 초과합니다",
+      "changeFile": "파일 변경"
+    },
+    "convert": "WebP로 변환",
+    "options": {
+      "quality": "WebP 품질",
+      "qualityHint": "WebP 품질 85는 AVIF 소스의 선명한 세부 사항을 유지합니다."
+    },
+    "status": {
+      "converting": "변환 중...",
+      "error": "변환 실패",
+      "retry": "다시 시도"
+    },
+    "result": {
+      "title": "변환된 WebP",
+      "info": "{width} × {height} px • {size}",
+      "download": "WebP 다운로드",
+      "reset": "다른 파일 변환"
+    },
+    "adModal": {
+      "title": "🥺 우리를 응원해 주세요. 🌸",
+      "description": "우리 기사를 읽어 3회의 변환을 더 언제든 할 수 있습니다. 무료 도구 지원감사합니다!",
+      "remaining": "{count}회의 무료 변환이 남음 | {count}회의 무료 변환이 남음",
+      "watch": "확인",
+      "close": "닫기"
+    },
+    "seo": {
+      "api": {
+        "title": "AVIF를 WebP로 변환 API 사용하기",
+        "content": "AVIF 자산에 대한 WebP 폴백을 생성합니다. /avif 엔드포인트는 source_format=avif 및 target_format=webp의 multipart AVIF 업로드를 수락하며, 더 광범위한 브라우저 범위를 위해 현대적인 WebP 출력을 반환합니다.",
+        "content2": "그림 요소 폴백 체인(AVIF → WebP → JPG), 이전 Safari 버전에 WebP를 제공하는 CDN 전처리 및 AVIF 아카이브를 다운샘플링하는 마이그레이션 워크플로우에 이상적입니다.",
+        "cta": "RapidAPI에서 API 보기",
+        "tutorial": "전체 튜토리얼 읽기",
+        "features": {
+          "title": "API 주요 기능",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Multipart AVIF 업로드, 최대 50 MB",
+          "params": "source_format=avif, target_format=webp, quality (0–100)",
+          "limit": "요청당 50 MB, ~89 MP 해상도",
+          "formats": "AVIF 입력; 알파가 있는 WebP 출력",
+          "response": "Binary image/webp 스트림"
+        }
+      },
+      "whatIs": {
+        "title": "AVIF를 WebP로 변환하는 것이란?",
+        "content": "AVIF와 WebP 모두 현대적인 웹 이미지 형식이지만 AVIF는 더 새로우며 약간 더 좁은 브라우저 지원을 가집니다(Safari 16+ vs WebP의 Safari 14+). AVIF를 WebP로 변환하면 압축 효율을 일부 호환성과 거래합니다.",
+        "content2": "변환은 AVIF를 디코딩하고 WebP로 재인코딩합니다. WebP 출력은 일반적으로 AVIF 소스보다 20–30% 크지만 여전히 JPG 또는 PNG 동등보다 훨씬 작으며 Safari 14 이후의 모든 브라우저에서 열립니다.",
+        "content3": "우리 도구는 libvips를 통해 서버 측에서 실행되어 완전한 알파 투명성을 보존하고 일반적인 사진에서 1초 미만에 고품질 WebP 출력을 생성합니다."
+      },
+      "whyConvert": {
+        "title": "AVIF를 WebP로 변환해야 하는 경우는?",
+        "content": "그림 요소 폴백 체인에 대해 변환합니다: 현대 브라우저의 기본 AVIF를 제공하고 Safari 14–15 사용자 및 약간 이전 모바일 브라우저에 대한 WebP 소스로 폴백합니다.",
+        "content2": "또한 CDN이나 호스팅 파이프라인이 아직 AVIF를 기본적으로 지원하지 않을 때 변환합니다 — WebP는 여전히 광범위한 브라우저 범위를 위한 안전한 현대 기본값으로 널리 간주됩니다."
+      },
+      "howTo": {
+        "title": "AVIF를 WebP로 변환하는 방법",
+        "step1": {
+          "title": "1. AVIF 업로드",
+          "content": "AVIF 파일을 업로드 영역으로 드래그하거나 클릭하여 파일 선택기를 열기합니다. 최대 50 MB 및 ~89 메가픽셀까지의 파일이 수락됩니다. 파일은 우리의 Cloud Run 디코딩 및 재인코딩 파이프라인으로 전송됩니다 — 로컬 처리 없음, 디스크에 저장 안 함."
+        },
+        "step2": {
+          "title": "2. 품질 선택",
+          "content": "기본값 85 — WebP의 VP8 코덱이 AVIF의 AV1보다 압축 효율이 떨어지므로 대략 AVIF 품질 75의 인식된 시각적 충실도와 일치합니다. 파일 크기가 덜 중요한 영웅 이미지의 경우 90을 사용합니다. 대역폭 절감이 우선 순위인 썸네일 및 2차 이미지의 경우 75–80을 사용합니다."
+        },
+        "step3": {
+          "title": "3. 변환 클릭",
+          "content": "서버는 libvips를 사용하여 libaom AV1 디코더를 사용하여 AVIF를 디코딩하고 선택한 품질에서 WebP로 픽셀 데이터를 재인코딩합니다. WebP 인코딩은 AVIF 인코딩보다 훨씬 빠릅니다 — 일반적인 이미지의 경우 1초 미만을 예상합니다. 전체 프로세스는 Cloud Run us-central1의 메모리에서 실행됩니다."
+        },
+        "step4": {
+          "title": "4. 다운로드",
+          "content": "WebP는 Safari 14 이후 모든 브라우저 — 2016년 이후의 모든 Chrome, Firefox, Edge 및 Opera 버전을 포함합니다 — 에 준비되어 있습니다. 최대 브라우저 범위를 위해 그림 요소의 AVIF 기본과 함께 폴백 소스로 사용합니다. 현대 압축을 희생하지 않습니다."
+        }
+      },
+      "features": {
+        "title": "기능",
+        "items": {
+          "quality": {
+            "title": "품질 슬라이더",
+            "content": "1에서 100까지의 세분화된 WebP 품질 제어입니다. 품질 85는 AVIF에서 변환할 때의 일반적인 최적 지점입니다 — AVIF 품질 75와 인식된 충실도에서 근사하고 20–30% 더 크면서도 여전히 JPG 동등보다 훨씬 작은 WebP 출력을 생성합니다. 품질 90 이상은 충실도가 우선 순위인 영웅 이미지에 적절합니다."
+          },
+          "compatibility": {
+            "title": "더 광범위한 브라우저 지원",
+            "content": "WebP는 Safari 14+ (2020년 출시)에서 지원되는 반면 AVIF는 Safari 16+ (2022년 출시)이 필요합니다. AVIF를 WebP로 폴백 소스로 변환하면 대략 2년 추가 Safari 출시의 범위를 제공합니다. 2016년 이후 출시된 모든 Chrome, Firefox, Edge 및 Opera 버전은 기본적으로 WebP를 지원합니다 — 광범위한 호환성을 위한 안전한 현대 기본값입니다."
+          },
+          "alpha": {
+            "title": "투명성 보존",
+            "content": "완전한 알파 채널 투명성은 AVIF에서 WebP로 끝에서 끝까지 보존됩니다. 부분 투명성, 부드러운 투명성 그래디언트 및 복잡한 마스킹은 모두 올바르게 전달됩니다. Chrome 23 이후의 모든 브라우저에서 WebP의 알파 채널 지원이 견고하므로 AVIF가 제공하는 것보다 더 광범위한 브라우저 범위가 필요한 투명한 웹 자산에 신뢰할 수 있는 선택입니다."
+          },
+          "privacy": {
+            "title": "보관 없음",
+            "content": "AVIF는 변환 요청 기간 동안만 서버 메모리에 보관됩니다. WebP가 브라우저로 스트리밍되는 즉시 AVIF 데이터가 즉시 삭제됩니다. 디스크에 쓰이지 않음, 이미지 콘텐츠 기록 없음, 계정 불필요. 처리는 us-central1의 상태 비저장 Cloud Run 컨테이너에서 요청 간 지속적인 상태 없이 실행됩니다."
+          },
+          "fast": {
+            "title": "빠른 변환",
+            "content": "AVIF-to-WebP는 빠릅니다 — libvips를 사용하는 서버 측 AV1 디코딩 및 WebP 재인코딩은 일반적으로 웹 크기 이미지의 경우 1초 미만에 완료됩니다. WebP 인코딩은 AVIF 인코딩에 비해 계산상 가볍습니다(2–4초 걸림). 변환은 눈에 띄는 대기 시간 없이 대화식 사용에 실용적입니다."
+          },
+          "free": {
+            "title": "무료",
+            "content": "계정 또는 신용 카드 없이 24시간 브라우저 세션당 3회 무료 변환입니다. AVIF 자산 라이브러리의 WebP 폴백 변형 생성 — AVIF+WebP 그림 요소 전략의 핵심 부분 — RapidAPI 목록은 월간 무료 계층 및 높은 볼륨 워크플로우를 위한 종량제 가격을 제공합니다."
+          }
+        }
+      },
+      "useCases": {
+        "title": "사용 사례",
+        "items": {
+          "fallback": {
+            "title": "그림 요소 폴백",
+            "content": "기본 사용 사례: 그림 요소에서 AVIF를 기본 소스로 제공하고 WebP를 보조 폴백으로 제공하여 Chrome 85+, Firefox 93+, Safari 16+ 및 Edge 121+는 더 작은 AVIF를 얻고 Safari 14–15 사용자는 WebP를 얻습니다. 이 이중 형식 전략은 100% 현대 브라우저를 범위 하며 Google의 web.dev 성능 가이드라인에서 최대 이미지 최적화를 위해 권장합니다."
+          },
+          "web": {
+            "title": "CDN 마이그레이션",
+            "content": "CDN이나 호스팅 파이프라인이 아직 AVIF를 기본적으로 지원하지 않지만 WebP를 지원하는 경우 AVIF 자산의 WebP 변형을 생성합니다. WebP는 여전히 동등한 품질에서 JPG보다 25–35% 작으므로 WebP 폴백도 JPG와 비교할 때 의미 있는 성능 이득을 제공합니다. 이 방식은 완전한 AVIF 롤아웃을 계획하면서 오늘 더 나은 압축의 이점을 받습니다."
+          },
+          "safari": {
+            "title": "Safari 14–15 지원",
+            "content": "Safari 14는 2020년 WebP 지원을 추가했습니다; Safari 16은 2022년 AVIF를 추가했습니다. Safari 14–15를 사용하는 사용자 — 특히 업데이트하지 않은 iPhone 사용자 또는 이전 iPad 모델 사용자 — JPG로 모두 폴백하는 것을 피하기 위해 WebP 폴백이 필요합니다. AVIF 소스에서 WebP를 생성하면 이 사용자들은 레거시 형식이 아닌 현대 압축 형식을 얻습니다."
+          },
+          "cms": {
+            "title": "CMS 호환성",
+            "content": "일부 콘텐츠 관리 시스템, 이미지 CDN 및 미디어 서버는 WebP를 기본적으로 제공하지만 아직 AVIF 지원을 추가하지 않았습니다. AVIF를 WebP로 변환하면 이미지를 AVIF 형식으로 저장하면서 아직 AVIF를 처리하지 않는 CMS 이미지 파이프라인을 통해 WebP를 제공합니다. 이는 새 콘텐츠가 AVIF 네이티브일 수 있는 전환 중 특히 유용합니다. 레거시 콘텐츠는 WebP를 사용합니다."
+          }
+        }
+      },
+      "faq": {
+        "title": "자주 묻는 질문",
+        "items": {
+          "whyConvert": {
+            "q": "AVIF를 WebP로 변환하는 이유는?",
+            "a": "JPG로 모두 폴백하지 않고 더 광범위한 브라우저 지원을 위해서입니다. WebP는 Safari 14+ (2020)에서 작동합니다; AVIF는 Safari 16+ (2022)이 필요합니다. 일반적인 전략은 그림 요소에서 AVIF 기본 + WebP 보조를 제공합니다 — 현대 브라우저는 AVIF의 뛰어난 압축을 얻고 Safari 14–15 사용자는 WebP의 여전히 탁월한 압축을 얻으며 이전 브라우저는 JPG로 폴백합니다."
+          },
+          "browserSupport": {
+            "q": "어떤 브라우저가 WebP를 지원하나요?",
+            "a": "모든 주요 에버그린 브라우저: Chrome 23+, Edge 18+, Firefox 65+, Opera 12+ 및 Safari 14+. 이는 대략 2년 Safari 출시로 AVIF보다 더 광범위합니다. WebP는 이제 너무 범용적으로 지원되어 안전한 현대 기본값으로 간주될 수 있습니다 — 적극적으로 유지되는 브라우저의 사실상 사용자는 WebP 호환성 문제를 만나지 않습니다."
+          },
+          "sizeDifference": {
+            "q": "WebP가 얼마나 더 크나요?",
+            "a": "일반적으로 동등한 인식된 품질에서 AVIF 소스보다 20–30% 크습니다. 400 KB AVIF 이미지의 경우 품질 85에서 대략 500–550 KB WebP를 예상합니다. AVIF보다 더 크지만 WebP는 여전히 동등한 품질의 JPG보다 25–35% 작습니다 — 따라서 폴백도 레거시 형식과 비교할 때 의미 있는 압축 개선을 제공합니다."
+          },
+          "quality": {
+            "q": "어떤 품질을 선택해야 하나요?",
+            "a": "품질 85는 AVIF로부터의 WebP 폴백에 대한 표준 권장사항입니다 — AVIF 품질 75와 인식된 충실도를 근사하고 20–30% 더 크면서도 동등한 시각적 품질 범위의 출력을 생성합니다. 영웅 이미지 또는 사진 중심 맥락에 품질 90을 사용합니다. 대역폭 효율성이 가장 중요한 썸네일 및 2차 이미지에 75–80을 사용합니다."
+          },
+          "privacy": {
+            "q": "내 AVIF가 저장되나요?",
+            "a": "아니오 — AVIF는 변환 기간 동안만 서버 메모리에 보관되고 WebP가 브라우저로 스트리밍되는 즉시 삭제됩니다. 디스크에 쓰이지 않음, 이미지 콘텐츠 기록 없음, 계정 불필요. 파이프라인은 요청 간 지속적인 상태 없이 us-central1의 상태 비저장 Cloud Run 컨테이너에서 실행됩니다."
+          },
+          "free": {
+            "q": "무료인가요?",
+            "a": "네 — 계정 없이 24시간 브라우저 세션당 3회 무료 변환입니다. 전체 AVIF 자산 라이브러리의 WebP 폴백 변형 생성 — AVIF+WebP 그림 요소 전략의 필수 부분 — RapidAPI 목록은 월간 무료 계층 및 높은 볼륨 워크플로우를 위한 종량제 가격을 제공합니다."
           }
         }
       }

@@ -283,6 +283,69 @@
         "Sube multiples archivos PNG a la vez para conversion por lotes — todos los archivos HEIC se devuelven en un unico ZIP.",
         "Convertir capturas de pantalla PNG o materiales de diseno a HEIC ahorra significativamente espacio de almacenamiento en dispositivos Apple, manteniendo una excelente calidad visual."
       ]
+    },
+    "webpToHeic": {
+      "tipsTitle": "¿Sabías? Consejos de WebP a HEIC",
+      "tips": [
+        "HEIC es típicamente **2–3× más pequeño** que la misma foto almacenada como WebP — vale la pena convertir si estás archivando fotos en almacenamiento centrado en Apple.",
+        "Salta esta conversión para WebPs no fotográficos (logos, iconos, UI). La compresión lossy de HEIC desenfoca bordes afilados; mantente con WebP o convierte a PNG en su lugar.",
+        "La compatibilidad HEIC es limitada fuera de dispositivos Apple. Para compartir con usuarios Windows / Android, mantén el WebP o convierte a JPG.",
+        "Usa calidad **90–95** para mejores resultados — ya que WebP ya es eficiente, sobre-comprimir a HEIC con calidad 75 raramente ahorra suficiente espacio para justificar la pérdida de calidad."
+      ]
+    },
+    "pngToAvif": {
+      "tipsTitle": "¿Sabías? Consejos de PNG a AVIF",
+      "tips": [
+        "AVIF comprime fotos aproximadamente **50% mejor que WebP** con la misma calidad percibida — el estado actual del arte para entrega de imágenes web.",
+        "AVIF preserva **transparencia alfa completa** justamente como PNG, sin fallback a fondos blancos. Un verdadero reemplazo PNG para contenido fotográfico.",
+        "Soporte del navegador: Chrome 85+, Firefox 93+, Safari 16+, Edge 121+ (todos los navegadores grandes). Para fallback antiguo, usa un elemento picture con una fuente WebP.",
+        "Codificar AVIF es lento (~2–4 segundos por foto en nuestro servidor con speed=6 predeterminado). Hemos deshabilitado speed 0–2 para prevenir timeouts; si necesitas esos para compresión más profunda, usa la API."
+      ]
+    },
+    "jpgToAvif": {
+      "tipsTitle": "¿Sabías? Consejos de JPG a AVIF",
+      "tips": [
+        "Una foto JPG típica se convierte a AVIF en tamaño de archivo **35–50% más pequeño** con calidad visual equivalente — a menudo una ganancia de Core Web Vitals notable.",
+        "AVIF con calidad 75 se asemeja aproximadamente a JPG con calidad 90 en fidelidad percibida, así que no te alarmes por los números más bajos.",
+        "La codificación AVIF es intensiva en CPU — usamos speed=6 por defecto como equilibrio entre relación de compresión y tiempo de conversión (alrededor de 2–4 segundos por foto).",
+        "Para máxima compresión en imágenes de héroe, puedes re-ejecutar la API con una velocidad más baja (3–5) después de validar la configuración de calidad que desees."
+      ]
+    },
+    "webpToAvif": {
+      "tipsTitle": "¿Sabías? Consejos de WebP a AVIF",
+      "tips": [
+        "AVIF típicamente produce archivos **20–30% más pequeños** que WebP con calidad equivalente — valioso si ya has migrado de JPG/PNG a WebP y quieres el siguiente paso de optimización.",
+        "El soporte del navegador para AVIF ahora es sólido en todos los navegadores siempre actualizados, pero se retrasa ligeramente respecto a WebP. Usa un elemento picture con fallback WebP para compatibilidad hacia atrás.",
+        "AVIF tiene mejor fidelidad de color que WebP para imágenes HDR y de gama amplia. Para fotos SDR web la diferencia es mínima.",
+        "No conviertas WebP → AVIF en cada sitio — si tus imágenes ya son performantes como WebP, la complejidad adicional de CDN y compilación de AVIF puede no pagarse."
+      ]
+    },
+    "avifToPng": {
+      "tipsTitle": "¿Sabías? Consejos de AVIF a PNG",
+      "tips": [
+        "Usa AVIF → PNG cuando necesites **editar una imagen** en una herramienta más antigua, o insertarla en documentos Print / Office que no soportan AVIF.",
+        "La salida PNG es lossless, así que PNG captura exactamente los píxeles decodificados de AVIF — sin degradación adicional de calidad de la conversión en sí.",
+        "Espera PNG **significativamente más grande** (a menudo 3–5×) que la fuente AVIF. La compresión PNG es lossless pero menos eficiente.",
+        "El canal alfa completo se preserva — AVIF transparentes convierten limpidamente a PNG transparentes."
+      ]
+    },
+    "avifToJpg": {
+      "tipsTitle": "¿Sabías? Consejos de AVIF a JPG",
+      "tips": [
+        "Convierte cuando necesites un **formato universal** — JPG abre en cada sistema operativo, cliente de correo y herramienta de impresión que AVIF no alcanza.",
+        "JPG con calidad 85–92 retiene esencialmente toda la calidad visible de la fuente AVIF, así que no obsesiones sobre el deslizador de calidad.",
+        "Los píxeles transparentes en el AVIF de origen se aplanan a blanco durante la conversión. Si necesitas transparencia, convierte a PNG en su lugar.",
+        "La salida JPG típica será ~30% más grande que el AVIF de origen — este es el costo de compatibilidad universal."
+      ]
+    },
+    "avifToWebp": {
+      "tipsTitle": "¿Sabías? Consejos de AVIF a WebP",
+      "tips": [
+        "Convierte AVIF → WebP cuando necesites **soporte de navegador más amplio** — WebP funciona en Safari 14+, mientras AVIF necesita Safari 16+.",
+        "La salida WebP con calidad 85 es típicamente 20–30% más grande que el AVIF de origen, pero aún mucho más pequeño que equivalentes JPG o PNG.",
+        "La transparencia alfa completa se preserva — excelente para convertir logos AVIF o activos UI a WebP ampliamente compatible.",
+        "Para sitios de producción queriendo la mejor cobertura, sirve AVIF primario + fallback WebP + fallback JPG vía elemento picture."
+      ]
     }
   },
   "error": {
@@ -299,6 +362,12 @@
   },
   "relatedTools": {
     "label": "Herramientas relacionadas",
+    "groups": {
+      "sprite": "Herramientas de Sprites y Frames",
+      "imageFormat": "Conversores de Formato de Imagen",
+      "vector": "Herramientas de Vectores e Iconos",
+      "avif": "Conversores AVIF"
+    },
     "gifToSprite": "GIF → Hoja de sprites",
     "toGif": "PNG → GIF",
     "pngToSpritesheet": "PNG → Spritesheet",
@@ -306,22 +375,24 @@
     "splitSpritesheet": "Divisor de Spritesheet",
     "heicToJpg": "HEIC → JPG",
     "heicToPng": "HEIC → PNG",
+    "heicToWebp": "HEIC → WebP",
     "pngToJpg": "PNG → JPG",
     "jpgToPng": "JPG → PNG",
     "pngToWebp": "PNG → WebP",
     "webpToPng": "WebP → PNG",
-    "svgToPng": "SVG → PNG",
-    "faviconGenerator": "Generador de Favicon",
-    "groups": {
-      "sprite": "Herramientas de Sprites y Frames",
-      "imageFormat": "Conversores de Formato de Imagen",
-      "vector": "Herramientas de Vectores e Iconos"
-    },
     "jpgToWebp": "JPG → WebP",
     "webpToJpg": "WebP → JPG",
-    "heicToWebp": "HEIC → WebP",
     "jpgToHeic": "JPG → HEIC",
-    "pngToHeic": "PNG → HEIC"
+    "pngToHeic": "PNG → HEIC",
+    "webpToHeic": "WebP → HEIC",
+    "pngToAvif": "PNG → AVIF",
+    "jpgToAvif": "JPG → AVIF",
+    "webpToAvif": "WebP → AVIF",
+    "avifToPng": "AVIF → PNG",
+    "avifToJpg": "AVIF → JPG",
+    "avifToWebp": "AVIF → WebP",
+    "svgToPng": "SVG → PNG",
+    "faviconGenerator": "Generador de Favicon"
   },
   "home": {
     "title": "Herramientas de desarrollo en línea gratuitas",
@@ -354,6 +425,10 @@
         "title": "HEIC a PNG",
         "description": "Convierte fotos HEIC a PNG sin pérdidas con soporte completo de transparencia."
       },
+      "heicToWebp": {
+        "title": "HEIC a WebP",
+        "description": "Convierte fotos HEIC del iPhone directamente a WebP — mas pequeno que JPG con soporte alfa."
+      },
       "pngToJpg": {
         "title": "PNG a JPG",
         "description": "Reduce imágenes PNG convirtiéndolas a JPG — las áreas transparentes se rellenan de blanco."
@@ -370,14 +445,6 @@
         "title": "WebP a PNG",
         "description": "Decodifica WebP de vuelta a PNG universalmente compatible con transparencia preservada."
       },
-      "svgToPng": {
-        "title": "SVG a PNG",
-        "description": "Rasteriza vectores SVG a PNG en cualquier tamaño — escala, dimensiones exactas o preservación de proporción."
-      },
-      "faviconGenerator": {
-        "title": "Generador de Favicon",
-        "description": "Genera un paquete completo de 7 archivos favicon con ICO, Apple Touch, Android y manifiesto web."
-      },
       "jpgToWebp": {
         "title": "JPG a WebP",
         "description": "Reduce aun mas los archivos JPG convirtiendolos al moderno WebP — perfecto para distribucion web."
@@ -386,10 +453,6 @@
         "title": "WebP a JPG",
         "description": "Convierte WebP a JPG universalmente compatible para correo, impresion y apps heredadas."
       },
-      "heicToWebp": {
-        "title": "HEIC a WebP",
-        "description": "Convierte fotos HEIC del iPhone directamente a WebP — mas pequeno que JPG con soporte alfa."
-      },
       "jpgToHeic": {
         "title": "JPG a HEIC",
         "description": "Convierte fotos JPG al formato Apple HEIC para almacenamiento eficiente en iPhone y Mac."
@@ -397,6 +460,42 @@
       "pngToHeic": {
         "title": "PNG a HEIC",
         "description": "Convierte imagenes PNG al formato Apple HEIC para archivos ~50% mas pequenos en dispositivos Apple."
+      },
+      "webpToHeic": {
+        "title": "WebP a HEIC",
+        "description": "Convierte imágenes WebP a formato Apple HEIC para almacenamiento eficiente en iPhone y Mac."
+      },
+      "pngToAvif": {
+        "title": "PNG a AVIF",
+        "description": "Convierte PNG a formato AVIF de última generación — 50% más pequeño que WebP, con transparencia total."
+      },
+      "jpgToAvif": {
+        "title": "JPG a AVIF",
+        "description": "Convierte fotos JPG a AVIF para archivos 35–50% más pequeños con calidad equivalente."
+      },
+      "webpToAvif": {
+        "title": "WebP a AVIF",
+        "description": "Actualiza imágenes WebP a AVIF para una compresión 20–30% adicional en navegadores modernos."
+      },
+      "avifToPng": {
+        "title": "AVIF a PNG",
+        "description": "Decodifica AVIF de vuelta a PNG compatible universalmente para edición y herramientas antiguas."
+      },
+      "avifToJpg": {
+        "title": "AVIF a JPG",
+        "description": "Convierte AVIF a JPG para compatibilidad universal con correo, impresión y aplicaciones antiguas."
+      },
+      "avifToWebp": {
+        "title": "AVIF a WebP",
+        "description": "Convierte AVIF a WebP para mayor compatibilidad de navegador — funciona en Safari 14+."
+      },
+      "svgToPng": {
+        "title": "SVG a PNG",
+        "description": "Rasteriza vectores SVG a PNG en cualquier tamaño — escala, dimensiones exactas o preservación de proporción."
+      },
+      "faviconGenerator": {
+        "title": "Generador de Favicon",
+        "description": "Genera un paquete completo de 7 archivos favicon con ICO, Apple Touch, Android y manifiesto web."
       }
     }
   },
@@ -3561,6 +3660,1130 @@
           "free": {
             "q": "¿Es gratuito?",
             "a": "Sí — tres conversiones gratuitas por sesión. API para volúmenes más altos."
+          }
+        }
+      }
+    }
+  },
+  "webpToHeic": {
+    "title": "Convertidor Gratuito de WebP a HEIC en Línea",
+    "subtitle": "Convierte imágenes WebP a formato HEIC de Apple para almacenamiento eficiente en iPhone y Mac.",
+    "upload": {
+      "title": "Suelta tu archivo WebP aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo de archivo: 50 MB · .webp solamente",
+      "accept": "Solo se aceptan archivos .webp",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a HEIC",
+    "options": {
+      "quality": "Calidad HEIC",
+      "qualityHint": "Mayor = archivo más grande, mejor fidelidad. Se recomienda 90–95 para salida visualmente sin pérdidas desde una fuente WebP."
+    },
+    "status": {
+      "converting": "Convirtiendo...",
+      "error": "Falló la conversión",
+      "retry": "Intentar de nuevo"
+    },
+    "result": {
+      "title": "HEIC Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar HEIC",
+      "reset": "Convertir otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de conversión de WebP a HEIC",
+        "content": "Recodifica activos WebP como HEIC mediante programación. El endpoint /heic acepta cargas multipart WebP con source_format=webp y target_format=heic, devolviendo archivos HEIC optimizados para Apple.",
+        "content2": "Ideal para pipelines que almacenan fotos en archivos centrados en Apple, flujos de trabajo CMS que exportan variantes de fotos por plataforma, y migración masiva de catálogos WebP a HEIC para eficiencia de almacenamiento.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Destacados de la API",
+          "endpoints": "POST /heic: HEIC ↔ JPG / PNG / WebP",
+          "input": "Carga multipart WebP, hasta 50 MB",
+          "params": "source_format, target_format, quality (0–100)",
+          "limit": "50 MB por solicitud, ~89 MP resolución",
+          "formats": "Entrada WebP; salida HEIC con compresión HEVC",
+          "response": "Flujo binario image/heic"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la conversión de WebP a HEIC?",
+        "content": "La conversión de WebP a HEIC decodifica una imagen WebP y la recodifica utilizando el contenedor HEIF de Apple con compresión HEVC. Ahorros típicos: la salida HEIC es 2–3× más pequeña que la fuente WebP con calidad visual equivalente.",
+        "content2": "Útil cuando la plataforma de destino es centrada en Apple — iCloud Photo Library, Apple Photos en Mac, o almacenamiento en iPhone. La compresión más ajustada de HEIC recupara espacio de almacenamiento, y las apps iOS / macOS la muestran de forma nativa.",
+        "content3": "Nuestra herramienta ejecuta libvips + libheif en el servidor, produciendo archivos HEIC estándar compatibles con iOS 11+ y macOS High Sierra+. Sin registro, sin retención, una sola llamada a API."
+      },
+      "whyConvert": {
+        "title": "¿Cuándo debo convertir WebP a HEIC?",
+        "content": "Convierte cuando estés migrando un archivo de fotos basado en WebP a almacenamiento nativo de Apple. Los ahorros de espacio son significativos para bibliotecas grandes, y HEIC preserva los metadatos específicos de Apple mejor en flujos de trabajo de iCloud.",
+        "content2": "Salta HEIC para logos WebP, iconos y gráficos UI — la compresión lossy de HEIC desenfoca bordes afilados. También salta si tus archivos necesitan abrirse en Windows < 10, Android < 10, o navegadores más antiguos sin el códec HEVC."
+      },
+      "howTo": {
+        "title": "Cómo convertir WebP a HEIC",
+        "step1": {
+          "title": "1. Carga tu WebP",
+          "content": "Arrastra tu archivo WebP a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapixels. La carga se envía directamente a nuestro pipeline de procesamiento Cloud Run — nada se escribe en disco."
+        },
+        "step2": {
+          "title": "2. Elige una calidad HEIC",
+          "content": "El predeterminado es 90. Dado que WebP ya está comprimido eficientemente, usa 90–95 para evitar artefactos de doble compresión en la salida HEIC. La calidad 95 produce resultados prácticamente transparentes para contenido fotográfico. Evita ir por debajo de 80 ya que los artefactos de bloque de HEVC se vuelven visibles."
+        },
+        "step3": {
+          "title": "3. Haz clic en Convertir",
+          "content": "El servidor decodifica tu WebP usando libvips y recodifica el resultado como HEIC usando libheif con compresión HEVC. Las imágenes de tamaño web típicas (1–4 MB WebP) se completan en menos de un segundo. Todo el proceso se ejecuta en memoria — no se crean archivos temporales."
+        },
+        "step4": {
+          "title": "4. Descarga y almacena",
+          "content": "Tu archivo HEIC se transmite directamente a tu navegador. Transfierelo a iPhone vía AirDrop, importalo a Apple Photos en Mac, o cárgalo a iCloud Drive. HEIC se muestra de forma nativa en iOS 11+, iPadOS, y macOS High Sierra+ sin instalación de app."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "compression": {
+            "title": "Archivos 2–3× más pequeños",
+            "content": "Ahorros típicos de WebP → HEIC con calidad visual equivalente, potenciado por compresión HEVC dentro del contenedor HEIF de Apple. La predicción intramarco de HEVC y cuantificación adaptativa de HEVC superan consistentemente el códec VP8 de WebP para contenido fotográfico, especialmente en áreas de gradientes suaves como cielos y tonos de piel."
+          },
+          "quality": {
+            "title": "Control deslizante de calidad",
+            "content": "Control granular de 1 a 100 a través del parámetro de calidad HEIC. La calidad 90 es el punto dulce para resultados sin pérdidas desde una fuente WebP; calidad 95+ para fidelidad de archivo. Los valores por debajo de 80 arriesgan artefactos de bloque HEVC visibles en áreas detalladas."
+          },
+          "apple": {
+            "title": "Formato nativo de Apple",
+            "content": "HEIC se abre de forma nativa en cada iPhone (iOS 11+), iPad, y Mac (High Sierra+) sin instalación de plugin. iCloud Photo Library sincroniza y almacena HEIC eficientemente en todos los dispositivos Apple, y Apple Photos preserva metadatos EXIF e IPTC a través de la conversión."
+          },
+          "privacy": {
+            "title": "Sin retención de archivos",
+            "content": "Tu WebP se mantiene en memoria del servidor solo durante la duración de la solicitud de conversión y se descarta tan pronto como la respuesta HEIC se transmite a tu navegador. Nada se escribe en disco, ningún contenido se registra, y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado en us-central1."
+          },
+          "fast": {
+            "title": "Conversión rápida",
+            "content": "Menos de 1 segundo para imágenes de tamaño web típico usando libvips + libheif en el servidor. El procesamiento se ejecuta en Google Cloud Run us-central1 con E/S de memoria solamente, por lo que no hay latencia de escritura de disco. Archivos más grandes (20–50 MB) típicamente se completan en 2–4 segundos."
+          },
+          "free": {
+            "title": "Gratuito para uso casual",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta ni tarjeta de crédito requerida. Para procesamiento masivo — convertir miles de exportaciones WebP a HEIC para almacenamiento en iCloud — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso más allá de eso."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "iphone": {
+            "title": "Optimización de almacenamiento de iPhone",
+            "content": "Convierte fotos WebP a HEIC antes de enviarlas a iPhone vía AirDrop para almacenamiento significativamente más eficiente en el dispositivo. Un archivo HEIC es típicamente 2–3× más pequeño que el WebP equivalente con la misma calidad percibida, extendiendo directamente la capacidad utilizable del pool de almacenamiento de tu iPhone. Esto importa más para lotes grandes de fotos guardadas de fuentes web o apps de mensajería que entregan WebP por defecto."
+          },
+          "storage": {
+            "title": "Archivos de fotos de Mac",
+            "content": "Migra bibliotecas de fotos WebP a HEIC en Mac para ahorros de espacio de 2–3× por imagen. Si exportas fotos desde Lightroom, Capture One, u otras herramientas en formato WebP, convertir a HEIC antes del archivo recupera espacio de disco significativo — especialmente relevante al llenar niveles de iCloud Drive o unidades externas. Apple Photos maneja HEIC de forma nativa, por lo que el flujo de trabajo es transparente."
+          },
+          "icloud": {
+            "title": "Eficiencia de sincronización de iCloud",
+            "content": "iCloud Photo Library soporta de forma nativa HEIC y lo usa como su formato preferido para sincronización eficiente en todos los dispositivos Apple. Almacenar fotos como HEIC en lugar de WebP significa cargas de iCloud más pequeñas, sincronización más rápida, y costos de almacenamiento mensuales más bajos si estás cerca de un límite de nivel. Un plan de 50 GB de iCloud se convierte efectivamente en 100–150 GB equivalentes cuando la biblioteca está en HEIC."
+          },
+          "archival": {
+            "title": "Archivo de Apple a largo plazo",
+            "content": "HEIC es el formato elegido de Apple para almacenamiento de fotos a largo plazo y está profundamente integrado en el ecosistema Apple — Photos, iCloud, AirDrop, y Quick Look todos lo manejan de forma nativa. Para archivar colecciones WebP destinadas a plataformas Apple, HEIC ofrece el mejor equilibrio de compresión, calidad y compatibilidad de ecosistema. Los archivos permanecen legibles en cualquier dispositivo Apple lanzado desde 2017 sin conversión."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "whyHeic": {
+            "q": "¿Por qué convertir WebP a HEIC?",
+            "a": "Para ~ahorros de espacio de 2–3× cuando tu destino es almacenamiento centrado en Apple. La compresión HEVC de HEIC supera el códec VP8 de WebP para contenido fotográfico, particularmente en gradientes suaves y texturas finas. iCloud Photo Library, Apple Photos, y cada iPhone desde iOS 11 manejan HEIC de forma nativa sin requerir apps de terceros o códecs."
+          },
+          "compatibility": {
+            "q": "¿Dónde se puede abrir HEIC?",
+            "a": "De forma nativa en iPhone (iOS 11+), iPad, Mac (macOS High Sierra+), Windows 10+ con las extensiones de vídeo HEVC gratuitas de Microsoft Store, y la mayoría de dispositivos Android 10+. Los navegadores web no pueden abrir HEIC sin software adicional, por lo que HEIC es mejor mantenerlo dentro de flujos de trabajo nativos de Apple en lugar de usarlo para entrega web."
+          },
+          "quality": {
+            "q": "¿Se perderá calidad?",
+            "a": "Tanto WebP como HEIC son formatos con pérdidas, por lo que alguna pérdida por recodificación es inevitable cuando se convierten entre ellos. A calidad 90+ la diferencia es esencialmente invisible en cualquier pantalla de consumo para contenido fotográfico. Para gráficos UI con bordes afilados, iconos y capturas de pantalla, la compresión HEVC puede introducir ligero desenfoque — para esos archivos, PNG es una mejor opción de archivo."
+          },
+          "transparency": {
+            "q": "¿Se preserva la transparencia?",
+            "a": "Los píxeles transparentes se aplanan a un fondo negro durante la conversión. HEIC técnicamente soporta alfa (planos alfa HEVC), pero la compatibilidad de app iOS con archivos HEIC transparentes es inconsistente — algunas apps lo manejan correctamente, otras lo muestran incorrectamente. Si necesitas transparencia confiable, convierte a WebP o PNG, ambos tienen soporte alfa sólido multiplataforma."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi archivo?",
+            "a": "No — tu WebP se mantiene en memoria del servidor solo durante la duración de la solicitud de conversión y se descarta tan pronto como la respuesta HEIC se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra, y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado sin estado persistente entre solicitudes."
+          },
+          "free": {
+            "q": "¿Es gratuito?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta ni tarjeta de crédito requerida. Para pipelines de archivo HEIC masivo — procesando miles de exportaciones WebP en HEIC para eficiencia de almacenamiento de iCloud — el listado de RapidAPI proporciona un nivel gratuito generoso mensual y precios de pago por uso más allá de eso."
+          }
+        }
+      }
+    }
+  },
+  "pngToAvif": {
+    "title": "Convertidor de PNG a AVIF Gratuito",
+    "subtitle": "Convierte imágenes PNG a AVIF para la mejor compresión web — 50% más pequeño que WebP con soporte de transparencia total.",
+    "upload": {
+      "title": "Arrastra tu archivo PNG aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo: 50 MB · solo .png",
+      "accept": "Solo se aceptan archivos .png",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a AVIF",
+    "options": {
+      "quality": "Calidad AVIF",
+      "qualityHint": "AVIF con calidad 75 se aproxima a JPG con calidad 90. No te alarmes por los números más bajos."
+    },
+    "status": {
+      "converting": "Codificando... (AVIF toma 2–4 segundos)",
+      "error": "La conversión falló",
+      "retry": "Intentar de Nuevo"
+    },
+    "result": {
+      "title": "AVIF Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar AVIF",
+      "reset": "Convertir Otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de Conversión PNG a AVIF",
+        "content": "Genera imágenes AVIF para entrega web de próxima generación. El endpoint /avif acepta cargas PNG multiparte con source_format=png y target_format=avif, devolviendo archivos AVIF comprimidos con AV1.",
+        "content2": "Perfecto para canalizaciones de compilación de imágenes, preprocesamiento de CDN y conversión al cargar en aplicaciones SaaS que desean la mejor compresión de imágenes para navegadores modernos.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el Tutorial Completo",
+        "features": {
+          "title": "Aspectos Destacados de la API",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Carga PNG multiparte, hasta 50 MB",
+          "params": "source_format, target_format, quality (0–100), speed (3–10)",
+          "limit": "50 MB por solicitud, ~89 MP de resolución",
+          "formats": "Entrada PNG; Salida AVIF con alfa",
+          "response": "Flujo image/avif binario"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es AVIF y por qué convertir desde PNG?",
+        "content": "AVIF (AV1 Image File Format) es el estado actual del arte en compresión de imágenes web. Basado en el códec de vídeo AV1 libre de regalías, comprime fotos ~50% mejor que WebP y ~75% mejor que JPG con calidad equivalente, mientras preserva la transparencia alfa completa como PNG.",
+        "content2": "Resultados del mundo real: un banner PNG de héroe de 2 MB típicamente se convierte en 200–400 KB AVIF (reducción 80–90%) preservando la transparencia pixel-perfect. El tradeoff: la codificación requiere tiempo de CPU, así que AVIF es más valioso para activos estáticos, no para generación dinámica por solicitud.",
+        "content3": "El soporte del navegador es ahora universal entre navegadores siempre actualizados: Chrome 85+, Firefox 93+, Safari 16+, Edge 121+, Opera 71+. Para fallback heredado, usa un elemento picture con WebP como secundario y JPG/PNG como fallback final."
+      },
+      "whyAvif": {
+        "title": "¿Por qué Actualizar PNG a AVIF?",
+        "content": "Las Core Web Vitals de Google ponderan fuertemente el tamaño de imagen — específicamente Largest Contentful Paint (LCP). Reemplazar imágenes PNG de héroe con AVIF a menudo da el mayor impulso de LCP disponible, ya que AVIF comprime dramáticamente mejor que PNG y WebP.",
+        "content2": "AVIF es particularmente fuerte para fotos con gradientes suave, texturas sutiles y superposiciones transparentes — exactamente el tipo de imágenes almacenadas como PNG. Si el rendimiento de tu sitio depende de imágenes, AVIF es la única optimización más grande disponible hoy."
+      },
+      "howTo": {
+        "title": "Cómo Convertir PNG a AVIF",
+        "step1": {
+          "title": "1. Carga Tu PNG",
+          "content": "Arrastra tu archivo PNG a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapíxeles. El archivo se envía directamente a nuestro pipeline de codificación Cloud Run — sin procesamiento local, nada almacenado en disco."
+        },
+        "step2": {
+          "title": "2. Elige una Calidad",
+          "content": "Por defecto 75 — esto es aproximadamente equivalente a calidad JPG 90, porque el códec AV1 de AVIF es significativamente más eficiente. Para máxima fidelidad (logos transparentes, elementos UI), prueba 85. Para compresión agresiva en texturas de fondo o imágenes no-héroe, prueba 60. El número de calidad no se mapea linealmente al tamaño de archivo."
+        },
+        "step3": {
+          "title": "3. Haz Clic en Convertir",
+          "content": "La codificación AVIF con libaom (el codificador de referencia AV1) a speed=6 toma aproximadamente 2–4 segundos por foto en nuestro pipeline. La configuración speed=6 equilibra eficiencia de compresión con tiempo de espera del usuario — velocidades más bajas producen archivos ligeramente más pequeños pero pueden tomar 10–20 segundos. El servidor procesa completamente en memoria sin escrituras en disco."
+        },
+        "step4": {
+          "title": "4. Descargar",
+          "content": "Tu archivo AVIF está listo para navegadores modernos — Chrome 85+, Firefox 93+, Safari 16+, Edge 121+. Para soportar navegadores más antiguos, envuelve tu AVIF en un elemento picture con una fuente WebP como fallback secundario y JPG o PNG como fallback final para IE y Safari heredado."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "compression": {
+            "title": "50% Más Pequeño que WebP",
+            "content": "El códec AV1 de AVIF logra aproximadamente 50% mejor compresión que WebP con calidad visual equivalente, y ~75% mejor que JPG. Un banner PNG de héroe típico de 2 MB se convierte en 200–400 KB AVIF preservando transparencia pixel-perfect. Esto convierte a AVIF en el estado actual del arte para entrega de imágenes web."
+          },
+          "alpha": {
+            "title": "Transparencia Completa",
+            "content": "AVIF soporta completamente canales alfa, convirtiéndolo en un verdadero reemplazo directo para PNG en activos web transparentes. A diferencia de JPG que no tiene alfa, AVIF preserva cada nivel de transparencia exactamente como aparece en el PNG de origen. El soporte del navegador para alfa AVIF es sólido en Chrome 85+, Firefox 93+, Safari 16+ y Edge 121+."
+          },
+          "modern": {
+            "title": "Códec de Próxima Generación",
+            "content": "AVIF está basado en el códec de vídeo AV1 libre de regalías, desarrollado por la Alliance for Open Media (AOMedia) con respaldo de Google, Netflix, Apple y otros. AV1 está exento de patentes y universalmente licenciable sin costo, lo que es por qué está convirtiéndose rápidamente en la opción predeterminada para entrega de imágenes web."
+          },
+          "privacy": {
+            "title": "Sin Retención de Archivo",
+            "content": "Tu PNG se mantiene en la memoria del servidor solo durante la solicitud de codificación AVIF. Tan pronto como la respuesta AVIF se transmite a tu navegador, los datos originales se descartan. Nada se escribe en disco, ningún contenido se registra y no se requiere cuenta. El procesamiento se ejecuta en contenedores Cloud Run sin estado en us-central1."
+          },
+          "fast": {
+            "title": "Sintonizado para Web",
+            "content": "El codificador se ejecuta a speed=6 (en una escala de 0–10 de más lento/mejor a más rápido/peor), que equilibra eficiencia de compresión con un tiempo de espera de 2–4 segundos apropiado para uso interactivo. Los pipelines de lote pueden usar speed=8–10 a través de la API para mayor rendimiento cuando la optimalidad de compresión exacta importa menos."
+          },
+          "free": {
+            "title": "Gratis para Uso Casual",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta o tarjeta de crédito requerida. Para integración de pipeline de compilación — convirtiendo librerías de activos PNG completas a AVIF al desplegar — el listado de RapidAPI proporciona un nivel gratuito mensual y precios pay-per-use eficientes para volúmenes altos."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Rendimiento Web",
+            "content": "Reemplaza imágenes PNG de héroe con AVIF para mejoras dramáticas de Core Web Vitals, particularmente Largest Contentful Paint (LCP). Porque AVIF comprime 50% mejor que WebP, intercambiar un héroe PNG de 1 MB por 150 KB AVIF reduce directamente el tiempo LCP — una de las optimizaciones individuales más impactantes para SEO y rendimiento percibido. Google recomienda servir formatos de próxima generación como una verificación de PageSpeed Insights."
+          },
+          "mobile": {
+            "title": "Aplicaciones Móviles y PWAs",
+            "content": "AVIF es nativamente soportado en WebViews de Android (Android 12+) y todas las Progressive Web Apps modernas que se ejecutan en Chrome o Edge. Activos AVIF más pequeños se traducen directamente en tiempos de carga más rápidos en conexiones 4G/5G y en planes de datos limitados — usuarios en redes más lentas ven la mejora más dramática. Los cachés offline de PWA también se benefician del tamaño más pequeño de AVIF."
+          },
+          "cdn": {
+            "title": "Preprocesamiento de CDN",
+            "content": "Convierte en lote activos PNG a AVIF durante el tiempo de compilación para entrega de producción vía CDN. Herramientas como Sharp, libvips e ImageMagick todas soportan salida AVIF, y nuestra API puede insertarse en pipelines CI/CD para automatizar conversión. La pre-codificación en tiempo de compilación es el enfoque recomendado — el tiempo de codificación de 2–4 segundos de AVIF hace que la conversión por solicitud bajo demanda sea impráctica para CDNs de alto tráfico."
+          },
+          "hero": {
+            "title": "Imágenes de Héroe y Banners",
+            "content": "Las imágenes de héroe y banners de marketing son el objetivo de optimización de LCP individual más grande en la mayoría de sitios. Un PNG de héroe típico (1–3 MB) convertido a AVIF se convierte en 100–400 KB — una reducción del 80–90% — sin diferencia visual perceptible en ninguna pantalla de consumidor. Esto solo puede mover un sitio de una puntuación de LCP de Core Web Vitals fallida a aprobada sin cambios de código."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas Frecuentes",
+        "items": {
+          "browserSupport": {
+            "q": "¿Qué navegadores soportan AVIF?",
+            "a": "Chrome 85+, Firefox 93+, Safari 16+, Edge 121+ y Opera 71+ — todos los navegadores siempre actualizados a partir de 2024. Para navegadores más antiguos (Safari 14–15, Edge más antiguo), usa un elemento picture con una fuente WebP como fallback, y JPG o PNG como fallback final para IE heredado. El elemento picture permite que navegadores modernos seleccionen automáticamente el mejor formato soportado."
+          },
+          "vsWebp": {
+            "q": "¿Es AVIF realmente mejor que WebP?",
+            "a": "Sí — con calidad visual equivalente, AVIF (basado en AV1) comprime ~20–30% mejor que WebP (basado en VP8) para contenido fotográfico típico, y ~50% mejor para imágenes con gradientes suave, texturas y superposiciones transparentes. El tradeoff significativo es velocidad de codificación: AVIF toma 2–4 segundos a speed=6 mientras WebP codifica en milisegundos."
+          },
+          "sizeSavings": {
+            "q": "¿Qué tan pequeño será AVIF?",
+            "a": "La reducción típica PNG → AVIF es 80–90% para contenido fotográfico. Una foto PNG de 2 MB se convierte en aproximadamente 200–400 KB AVIF con calidad 75. La compresión es más fuerte para imágenes con gradientes suave, texturas finas y detalle fotográfico. Los gráficos UI de color plano e iconos simples ven ganancias menores, a veces solo 50–60% de reducción."
+          },
+          "transparency": {
+            "q": "¿Se preserva la transparencia?",
+            "a": "Sí — AVIF soporta transparencia de canal alfa completa, exactamente como PNG. Píxeles transparentes, transparencia parcial y bordes anti-alias se preservan correctamente. Esto convierte a AVIF en un verdadero reemplazo directo para PNG transparente en entrega web — solo asegúrate de usar un elemento picture con fallback PNG o WebP para navegadores que aún no soportan AVIF."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi PNG?",
+            "a": "No — tu PNG se mantiene en memoria del servidor solo durante la duración de la conversión y se descarta tan pronto como se transmite el AVIF a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado sin estado persistente entre solicitudes."
+          },
+          "free": {
+            "q": "¿Es gratis?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta requerida. Para casos de uso de pipeline de compilación o conversión en lote — convirtiendo directorios completos de activos PNG a AVIF — el listado de RapidAPI proporciona un nivel gratuito mensual con precios pay-per-use para flujos de trabajo de alto volumen."
+          }
+        }
+      }
+    }
+  },
+  "jpgToAvif": {
+    "title": "Convertidor de JPG a AVIF Gratuito",
+    "subtitle": "Convierte fotos JPG a AVIF para archivos 35–50% más pequeños con calidad visual equivalente — la mayor ganancia de Core Web Vitals para sitios con muchas fotos.",
+    "upload": {
+      "title": "Arrastra tu archivo JPG aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo: 50 MB · .jpg o .jpeg",
+      "accept": "Solo se aceptan archivos .jpg o .jpeg",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a AVIF",
+    "options": {
+      "quality": "Calidad AVIF",
+      "qualityHint": "AVIF con calidad 75 se aproxima a JPG con calidad 90. No te alarmes por los números más bajos."
+    },
+    "status": {
+      "converting": "Codificando... (AVIF toma 2–4 segundos)",
+      "error": "La conversión falló",
+      "retry": "Intentar de Nuevo"
+    },
+    "result": {
+      "title": "AVIF Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar AVIF",
+      "reset": "Convertir Otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de Conversión JPG a AVIF",
+        "content": "Automatiza la generación AVIF para tu sitio con muchas fotos. El endpoint /avif acepta cargas JPG multiparte con source_format=jpg y target_format=avif, devolviendo archivos AVIF dramáticamente más pequeños.",
+        "content2": "Perfecto para optimización en tiempo de compilación de catálogos de productos, flujos de trabajo de fotografía editorial y pipelines de preprocesamiento de CDN que envían AVIF como primario con fallback JPG.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el Tutorial Completo",
+        "features": {
+          "title": "Aspectos Destacados de la API",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Carga JPG multiparte, hasta 50 MB",
+          "params": "source_format, target_format, quality (0–100), speed (3–10)",
+          "limit": "50 MB por solicitud, ~89 MP de resolución",
+          "formats": "Entrada JPG; Salida AVIF",
+          "response": "Flujo image/avif binario"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la Conversión JPG a AVIF?",
+        "content": "AVIF (AV1 Image File Format) es la próxima generación de compresión de imágenes web, construida sobre el códec de vídeo AV1 libre de regalías. Con calidad visual equivalente, AVIF produce archivos aproximadamente 50% más pequeños que JPG — la mayor optimización individual disponible para sitios con muchas imágenes hoy.",
+        "content2": "Porque AVIF usa una técnica de compresión completamente diferente a JPG (bloques DCT vs transformadas de escala neural), los números de calidad no se traducen directamente. La calidad 75 AVIF se asemeja aproximadamente a calidad 90 JPG; la calidad 60 AVIF se asemeja a calidad 80 JPG.",
+        "content3": "Nuestra herramienta ejecuta codificación AVIF del lado del servidor a speed=6 — un equilibrio sintonizado entre relación de compresión (más apretado = más lento) y tiempo de espera del usuario. Las fotos típicas se terminan en 2–4 segundos. Velocidades más rápidas (7–10) están disponibles vía la API para flujos de trabajo en lote."
+      },
+      "whyAvif": {
+        "title": "¿Por qué Actualizar JPG a AVIF?",
+        "content": "Si tu sitio web sirve muchas fotos JPG — portfolios, e-commerce, editorial, viajes, comida — AVIF es casi ciertamente la mayor ganancia individual de rendimiento que puedes hacer. Reducir a la mitad la carga de imagen mejora directamente la puntuación de LCP de Core Web Vitals, que Google usa como factor de ranking.",
+        "content2": "El tradeoff es costo en tiempo de compilación (la codificación es intensiva en CPU) y soporte de Safari ligeramente retrasado (v16+). Para escenarios dinámicos/carga de usuario, AVIF puede ser excesivo — pero para imágenes de héroe estáticas, galerías de productos y medios editorial, las ganancias de LCP son sustanciales."
+      },
+      "howTo": {
+        "title": "Cómo Convertir JPG a AVIF",
+        "step1": {
+          "title": "1. Carga Tu JPG",
+          "content": "Arrastra tu archivo JPG (o JPEG) a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapíxeles. El archivo se envía directamente a nuestro pipeline de codificación AVIF Cloud Run — sin procesamiento local, nada almacenado en disco."
+        },
+        "step2": {
+          "title": "2. Elige una Calidad",
+          "content": "Por defecto 75. Ya que JPG es un formato lossy, el número de calidad AVIF no se mapea directamente a calidad JPG — AVIF 75 se asemeja aproximadamente a JPG 90 en fidelidad percibida. Ir más alto que 85 añade tamaño de archivo con mejora de calidad visual mínima. Para miniaturas comprimidas agresivamente o imágenes no-héroe, 60–65 es apropiado."
+        },
+        "step3": {
+          "title": "3. Haz Clic en Convertir",
+          "content": "La codificación AVIF con el codificador AV1 libaom a speed=6 toma aproximadamente 2–4 segundos por foto. Esta espera vale la pena — espera reducción de tamaño del 35–50% comparado con la fuente JPG con calidad visual equivalente. El servidor procesa completamente en memoria sin escrituras en disco, ejecutándose en Cloud Run us-central1."
+        },
+        "step4": {
+          "title": "4. Descargar",
+          "content": "Tu AVIF está listo para navegadores modernos. Para mantener compatibilidad de navegador completa, sírvelo vía un elemento picture con AVIF como fuente primaria, seguido de WebP como fallback, y JPG como fallback final. Chrome 85+, Firefox 93+, Safari 16+ y Edge 121+ seleccionarán automáticamente AVIF."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "compression": {
+            "title": "35–50% Más Pequeño que JPG",
+            "content": "Con calidad visual equivalente, AVIF produce archivos 35–50% más pequeños que JPG para contenido fotográfico típico. Esta es la mayor optimización individual de Core Web Vitals disponible para sitios con muchas fotos — reducir a la mitad la carga de imagen reduce directamente el tiempo LCP. AVIF calidad 75 logra lo que JPG calidad 90 hace en aproximadamente la mitad del tamaño de archivo."
+          },
+          "photo": {
+            "title": "Optimizado para Fotos",
+            "content": "El códec AV1 de AVIF es especialmente fuerte para contenido fotográfico con gradientes suave, texturas sutiles y variaciones tonales continuas — exactamente el contenido donde JPG muestra sus artefactos de compresión de bloques más. Con calidad 75, AVIF preserva detalle fotográfico mejor que JPG con calidad 90 mientras es significativamente más pequeño."
+          },
+          "modern": {
+            "title": "Códec de Próxima Generación",
+            "content": "Basado en el códec AV1 libre de regalías desarrollado por la Alliance for Open Media. AV1 es universalmente licenciable sin cuotas — a diferencia de algunas tecnologías de códec que requieren regalías por unidad. Esta base abierta y libre de regalías significa que AVIF permanecerá universalmente disponible sin barreras legales o de licencia."
+          },
+          "privacy": {
+            "title": "Sin Retención de Archivo",
+            "content": "Tu JPG se mantiene en memoria del servidor solo durante la duración de la codificación AVIF y se descarta tan pronto como el AVIF se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado en us-central1 sin estado persistente entre solicitudes."
+          },
+          "fast": {
+            "title": "Codificación Sintonizada para Velocidad",
+            "content": "El codificador libaom se ejecuta a speed=6, equilibrando relación de compresión con un tiempo de espera interactivo de 2–4 segundos. Speed=6 en libaom produce salida dentro de ~5% de la compresión óptima alcanzable a la configuración de velocidad más baja, mientras es 10–20x más rápido. Para uso de API en lote, speed=8–10 puede procesar múltiples imágenes por segundo."
+          },
+          "free": {
+            "title": "Gratis para Uso Casual",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta o tarjeta de crédito requerida. Para integración de pipeline de compilación — pre-codificación de catálogos de fotos completos como AVIF para entrega de CDN — el listado de RapidAPI proporciona un nivel gratuito mensual y precios pay-per-use para volúmenes altos."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Rendimiento Web",
+            "content": "Reduce a la mitad la carga de imagen en páginas con muchas fotos, mejorando directamente puntuaciones de Largest Contentful Paint (LCP) y Core Web Vitals. La reducción de tamaño AVIF del 35–50% vs JPG se traduce en tiempos de carga percibidos mediblemente más rápidos — Google usa LCP como señal de ranking, haciendo de esta una de las pocas optimizaciones de imagen con impacto directo en SEO. Para sitios con muchas fotos JPG arriba del pliegue, AVIF es típicamente el cambio individual de mayor apalancamiento disponible."
+          },
+          "photography": {
+            "title": "Sitios de Fotografía",
+            "content": "Los sitios de portfolio, fotografía de stock y editorial son los mayores beneficiarios de conversión JPG → AVIF. Imágenes de gran formato (JPGs de 2–6 MB) comprimen a 600 KB–2 MB en AVIF con calidad equivalente, habilitando cargas de galerías rápidas incluso en conexiones más lentas. El manejo superior de AVIF de gradientes suave y detalle fino lo hace particularmente adecuado para fotografía de alta calidad."
+          },
+          "cdn": {
+            "title": "Preprocesamiento de CDN",
+            "content": "Pre-codifica catálogos de imágenes de productos como AVIF en tiempo de compilación o carga para cargas de página móvil instantánea vía CDN. Sitios de e-commerce con cientos de JPGs de productos ven mejoras dramáticas de LCP después de migración AVIF. Combina AVIF (primario) con fallback JPG en elementos picture para mantener compatibilidad entre todos los navegadores mientras sirves el archivo más pequeño posible a navegadores modernos."
+          },
+          "mobile": {
+            "title": "Experiencias Móviles",
+            "content": "Especialmente impactante para usuarios en conexiones lentes 4G/5G o planes móviles de datos limitados, donde el tamaño de imagen determina directamente el tiempo de carga de página. Una galería de fotos que toma 8 segundos en cargar vía 4G con JPGs podría cargar en 4–5 segundos con AVIF — cortando tasas de rebote y mejorando retención de usuario. Archivos más pequeños también consumen menos batería en la ruta de decodificación GPU."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas Frecuentes",
+        "items": {
+          "browserSupport": {
+            "q": "¿Qué navegadores soportan AVIF?",
+            "a": "Chrome 85+, Firefox 93+, Safari 16+, Edge 121+ y Opera 71+ — todos los navegadores siempre actualizados. Para navegadores más antiguos, sirve JPG como fallback vía un elemento picture con AVIF como fuente primaria, WebP como secundaria y JPG como final. Los navegadores modernos automáticamente seleccionan el mejor formato soportado, así que no se requiere JavaScript para la cadena de fallback."
+          },
+          "sizeSavings": {
+            "q": "¿Qué tan pequeño será AVIF?",
+            "a": "Típica JPG → AVIF con calidad visual equivalente: 35–50% más pequeño. Los gradientes suave (cielos, tonos de piel, fondos) ven las mayores ganancias, a veces 55–60% más pequeño. Las fotos de ruido alto ISO con mucho detalle de grano fino ven ganancias más pequeñas, alrededor del 25–35%. El predeterminado de calidad 75 está calibrado para producir salida visualmente equivalente a JPG calidad 90 en aproximadamente la mitad del tamaño de archivo."
+          },
+          "quality": {
+            "q": "¿Qué calidad debería elegir?",
+            "a": "Calidad 75 es el predeterminado seguro — produce salida equivalente a JPG calidad 90 en aproximadamente la mitad del tamaño de archivo, que es imperceptible en cualquier pantalla de consumidor. Usa 85 si la fidelidad a nivel de píxel es crítica (por ejemplo, portfolios de fotografía profesional). Usa 60–65 para imágenes no-héroe comprimidas agresivamente donde el tamaño pequeño importa más que fidelidad perfecta."
+          },
+          "fallback": {
+            "q": "¿Cómo sirvo AVIF con fallback?",
+            "a": "Usa un elemento HTML picture: añade una fuente AVIF primero, luego una fuente WebP como fallback secundario para Safari 14–15, luego una etiqueta img JPG estándar como fallback final para navegadores más antiguos. Los navegadores sin soporte AVIF automáticamente se replieguen al próximo formato soportado. Esta cadena de tres formatos te da la mejor compresión en navegadores modernos mientras mantienes compatibilidad 100%."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi JPG?",
+            "a": "No — tu JPG se mantiene en memoria del servidor solo durante la duración de la conversión y se descarta inmediatamente después de que el AVIF se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado sin estado persistente entre solicitudes."
+          },
+          "free": {
+            "q": "¿Es gratis?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta requerida. Para codificación en lote de catálogos de fotos o integración automatizada de pipeline de compilación, el listado de RapidAPI proporciona un nivel gratuito mensual y precios pay-per-use efectivos para flujos de trabajo de alto volumen."
+          }
+        }
+      }
+    }
+  },
+  "webpToAvif": {
+    "title": "Convertidor de WebP a AVIF Gratuito",
+    "subtitle": "Actualiza imágenes WebP a AVIF de próxima generación para una ganancia de compresión adicional del 20–30% en navegadores modernos.",
+    "upload": {
+      "title": "Arrastra tu archivo WebP aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo: 50 MB · solo .webp",
+      "accept": "Solo se aceptan archivos .webp",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a AVIF",
+    "options": {
+      "quality": "Calidad AVIF",
+      "qualityHint": "AVIF con calidad 75 se asemeja a WebP con calidad 85 en fidelidad percibida."
+    },
+    "status": {
+      "converting": "Codificando... (AVIF toma 2–4 segundos)",
+      "error": "La conversión falló",
+      "retry": "Intentar de Nuevo"
+    },
+    "result": {
+      "title": "AVIF Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar AVIF",
+      "reset": "Convertir Otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de Conversión WebP a AVIF",
+        "content": "Migra activos WebP programáticamente a AVIF. El endpoint /avif acepta cargas WebP multiparte con source_format=webp y target_format=avif, produciendo salida comprimida con AV1 de próxima generación.",
+        "content2": "Útil para sitios que ya se han optimizado a WebP y quieren dar el siguiente paso, pipelines de re-codificación de CDN en lote y generación AVIF en tiempo de compilación para entrega de producción.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el Tutorial Completo",
+        "features": {
+          "title": "Aspectos Destacados de la API",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Carga WebP multiparte, hasta 50 MB",
+          "params": "source_format, target_format, quality (0–100), speed (3–10)",
+          "limit": "50 MB por solicitud, ~89 MP de resolución",
+          "formats": "Entrada WebP; Salida AVIF con alfa",
+          "response": "Flujo image/avif binario"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la Conversión WebP a AVIF?",
+        "content": "Tanto WebP como AVIF son códecs de imagen web modernos, pero usan técnicas de compresión diferentes. WebP está basado en VP8 (códec de vídeo); AVIF está basado en AV1 (códec de vídeo más nuevo). AV1 es simplemente más eficiente — lo que significa que la salida AVIF es ~20–30% más pequeña que WebP con calidad equivalente.",
+        "content2": "El tradeoff: la codificación AVIF es más lenta que WebP, y el soporte del navegador para AVIF (Safari 16+) se retrasa ligeramente respecto a WebP (Safari 14+). Para sitios que ya sirven WebP, la pregunta es si la ganancia de tamaño adicional del 20–30% justifica la complejidad de compilación adicional.",
+        "content3": "Nuestra herramienta ejecuta la codificación AVIF del lado del servidor a speed=6, produciendo archivos compatibles con todos los navegadores siempre actualizados modernos. Sin registro, sin marca de agua, sin retención."
+      },
+      "whyAvif": {
+        "title": "¿Deberías Actualizar WebP a AVIF?",
+        "content": "Para sitios ya optimizados con WebP, actualizar a AVIF es una ganancia significativa pero más pequeña que la migración original JPG/PNG → WebP. Espera 20–30% de ahorros adicionales — valioso para imágenes de héroe críticas de rendimiento y catálogos de productos, pero quizás excesivo para miniaturas de bajo impacto.",
+        "content2": "El despliegue más seguro: añade AVIF como fuente primaria en elementos picture, manteniendo WebP como fallback. Esto da a navegadores más nuevos el impulso de velocidad AVIF mientras deja navegadores más antiguos (Safari 14–15) en WebP."
+      },
+      "howTo": {
+        "title": "Cómo Convertir WebP a AVIF",
+        "step1": {
+          "title": "1. Carga Tu WebP",
+          "content": "Arrastra tu archivo WebP a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapíxeles. La carga va directamente a nuestro pipeline de codificación AVIF Cloud Run — nada almacenado en disco, sin procesamiento local."
+        },
+        "step2": {
+          "title": "2. Elige una Calidad",
+          "content": "Por defecto 75 — esto se asemeja aproximadamente a WebP calidad 85 en fidelidad visual percibida, ya que el códec AV1 de AVIF es más eficiente en compresión que VP8 de WebP. Sube más (85) para imágenes de héroe críticas de rendimiento donde la máxima fidelidad importa. Más bajo (65) para miniaturas o imágenes secundarias donde ahorros de tamaño adicionales superan ganancias de calidad marginal."
+        },
+        "step3": {
+          "title": "3. Haz Clic en Convertir",
+          "content": "La codificación AVIF con libaom a speed=6 toma aproximadamente 2–4 segundos por foto. Esto es más largo que la codificación WebP (que toma milisegundos) porque AV1 es un códec más complejo. Los ahorros de compresión valen la espera para activos estáticos — codifica una vez en tiempo de compilación para mejores resultados."
+        },
+        "step4": {
+          "title": "4. Descargar",
+          "content": "Tu AVIF está listo para navegadores modernos. Para cobertura máxima, sírvelo vía un elemento picture con AVIF primario y WebP secundario — esto da Chrome 85+, Firefox 93+, Safari 16+ y Edge 121+ el AVIF, mientras Safari 14–15 obtiene WebP."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "compression": {
+            "title": "20–30% Más Pequeño que WebP",
+            "content": "El códec AV1 de AVIF logra 20–30% mejor compresión que VP8 de WebP con calidad visual equivalente — ahorros adicionales significativos además de un formato ya optimizado. La ganancia es más pronunciada para contenido fotográfico con gradientes suave, texturas sutiles y rangos tonales continuos. Los gráficos UI de color plano ven ganancias más pequeñas."
+          },
+          "alpha": {
+            "title": "Transparencia Completa",
+            "content": "La transparencia del canal alfa se preserva de extremo a extremo de WebP a AVIF. La transparencia parcial, bordes anti-alias y máscaras de mezcla complejas se transportan correctamente. El soporte del navegador para alfa AVIF es sólido en Chrome 85+, Firefox 93+, Safari 16+ y Edge 121+, haciendo de AVIF una opción segura para activos web transparentes."
+          },
+          "nextgen": {
+            "title": "Códec de Próxima Generación",
+            "content": "Basado en el códec de vídeo AV1 libre de regalías, AVIF representa el borde actual de compresión de imágenes web. AV1 fue desarrollado por la Alliance for Open Media — un consorcio incluyendo Google, Netflix, Apple, Microsoft y Mozilla — asegurando que permanezca libre de usar sin regalías por unidad o restricciones de licencia."
+          },
+          "privacy": {
+            "title": "Sin Retención de Archivo",
+            "content": "Tu WebP se mantiene en memoria del servidor solo durante la solicitud de codificación AVIF. Una vez que el AVIF se transmite a tu navegador, los datos de origen se descartan inmediatamente. Nada se escribe en disco, ningún contenido de imagen se registra y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado en us-central1."
+          },
+          "fast": {
+            "title": "Codificación Sintonizada para Velocidad",
+            "content": "El codificador libaom se ejecuta a speed=6, equilibrando calidad de compresión con un tiempo de espera de 2–4 segundos apropiado para conversión interactiva. La configuración speed=6 produce salida dentro de ~5% de compresión óptima, mucho más rápido que los 10–20 segundos que configuraciones de velocidad más baja requieren. Los flujos de trabajo de API en lote pueden usar speed=8–10 para mayor rendimiento."
+          },
+          "free": {
+            "title": "Gratis para Uso Casual",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta o tarjeta de crédito requerida. Para sitios migrando archivos WebP completos a AVIF — un trabajo de lote único que puede involucrar miles de archivos — el listado de RapidAPI proporciona un nivel gratuito mensual y precios pay-per-use para migraciones de alto volumen."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso",
+        "items": {
+          "web": {
+            "title": "Páginas Críticas de Rendimiento",
+            "content": "Las imágenes de héroe, catálogos de productos y medios arriba del pliegue son los objetivos de prioridad más alta para migración WebP → AVIF. Estas imágenes dominan puntuaciones de LCP, y una reducción de tamaño adicional del 20–30% se traduce directamente en tiempos de carga mediblemente más rápidos. Enfoca el esfuerzo de codificación AVIF en imágenes que aparecen en el viewport dentro de los primeros 2.5 segundos de carga de página — es donde el impacto de LCP es mayor."
+          },
+          "migration": {
+            "title": "Migración WebP → AVIF",
+            "content": "Para sitios que ya han migrado de JPG/PNG a WebP, el siguiente paso de optimización es una conversión en lote única de archivos WebP a AVIF como fuentes primarias. Usa nuestra API para procesar librerías de activos completas, luego actualiza atributos src de elemento picture para apuntar a AVIF primario con fallback WebP. La reducción de tamaño adicional del 20–30% es particularmente valiosa si tu sitio tiene tráfico móvil significativo."
+          },
+          "cdn": {
+            "title": "Pre-procesamiento de CDN",
+            "content": "Genera variantes AVIF de activos WebP en tiempo de compilación para entrega de producción de CDN. Empareja cada AVIF con un fallback WebP en elementos picture y sirve desde un CDN con encabezados de caché y tipo de contenido apropiados. El pre-codificación de CDN evita completamente la sobrecarga de codificación bajo demanda — el tiempo de codificación de 2–4 segundos de AVIF hace que la generación por solicitud sea impráctica para activos de alto tráfico."
+          },
+          "vitals": {
+            "title": "Core Web Vitals",
+            "content": "Exprime mejora LCP adicional de imágenes WebP ya optimizadas — particularmente valiosa para sitios cerca del umbral de LCP de 2.5 segundos pero que no pueden alcanzarlo completamente. Una reducción de tamaño AVIF del 20–30% en imágenes de héroe y contenido arriba del pliegue puede empujar LCP de borderline a claramente aprobado. Google usa LCP como señal de ranking, haciendo de esta optimización SEO-relevante."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas Frecuentes",
+        "items": {
+          "vsWebp": {
+            "q": "¿Qué tan pequeño es AVIF vs WebP?",
+            "a": "Típicamente 20–30% más pequeño con calidad visual percibida equivalente. La ganancia es más pronunciada para contenido fotográfico con gradientes suave (cielos, tonos de piel, fondos desenfocados) donde los algoritmos de codificación más sofisticados de AV1 superan VP8 de WebP más fuertemente. Los gráficos de color plano e ilustraciones simples ven ganancias más pequeñas del 10–15%."
+          },
+          "browserSupport": {
+            "q": "¿Qué navegadores soportan AVIF?",
+            "a": "Chrome 85+, Firefox 93+, Safari 16+, Edge 121+ y Opera 71+ — todos los navegadores siempre actualizados. El soporte AVIF se retrasa ligeramente respecto a WebP (Safari 14+) por aproximadamente dos versiones importantes de Safari. Para cobertura máxima, usa un elemento picture con AVIF primario y WebP secundario — Safari 14–15 obtiene WebP mientras navegadores modernos obtienen el AVIF más pequeño."
+          },
+          "sizeSavings": {
+            "q": "¿Vale la pena la ganancia del 20–30% la complejidad?",
+            "a": "Para imágenes de héroe críticas de rendimiento y páginas sensibles a LCP donde cada milisegundo importa, sí — la compresión adicional es mediblemente más rápida en móvil. Para miniaturas, imágenes no-arriba-del-pliegue y páginas de bajo tráfico, probablemente no — WebP ya es excelente y la complejidad de compilación de mantener dos variantes AVIF+WebP puede no valer los ahorros marginales."
+          },
+          "fallback": {
+            "q": "¿Necesito un fallback WebP?",
+            "a": "Sí, si necesitas soporte Safari 14–15. Usa un elemento picture con AVIF como fuente primaria y WebP como fuente secundaria — navegadores sin soporte AVIF automáticamente se replieguen a WebP. Si solo te importan navegadores lanzados en 2022 y después, AVIF solo es suficiente ya que Safari 16 (lanzado septiembre 2022) añadió soporte AVIF."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi WebP?",
+            "a": "No — tu WebP se mantiene en memoria del servidor solo durante la duración de la conversión y se descarta tan pronto como el AVIF se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra y no se requiere cuenta. El procesamiento se ejecuta en contenedores Cloud Run sin estado sin estado persistente."
+          },
+          "free": {
+            "q": "¿Es gratis?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta requerida. Para migración en lote WebP-a-AVIF de librerías de activos completas, el listado de RapidAPI proporciona un nivel gratuito mensual y precios pay-per-use efectivos para flujos de trabajo de alto volumen."
+          }
+        }
+      }
+    }
+  },
+  "avifToPng": {
+    "title": "Convertidor Gratuito de AVIF a PNG en Línea",
+    "subtitle": "Convierte imágenes AVIF de nuevo a PNG universalmente compatible para edición, herramientas heredadas y navegadores más antiguos.",
+    "upload": {
+      "title": "Suelta tu archivo AVIF aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo de archivo: 50 MB · .avif solamente",
+      "accept": "Solo se aceptan archivos .avif",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a PNG",
+    "options": {},
+    "status": {
+      "converting": "Convirtiendo...",
+      "error": "Falló la conversión",
+      "retry": "Intentar de nuevo"
+    },
+    "result": {
+      "title": "PNG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar PNG",
+      "reset": "Convertir otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de conversión de AVIF a PNG",
+        "content": "Decodifica AVIF a PNG mediante programación. El endpoint /avif acepta cargas multipart AVIF con source_format=avif y target_format=png, devolviendo PNG sin pérdidas para edición o compatibilidad heredada.",
+        "content2": "Útil cuando pipelines posteriores o usuarios necesitan PNG — editores más antiguos, software de impresión heredado, o sistemas sin soporte de códec AVIF.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Destacados de la API",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Carga multipart AVIF, hasta 50 MB",
+          "params": "source_format=avif, target_format=png",
+          "limit": "50 MB por solicitud, ~89 MP resolución",
+          "formats": "Entrada AVIF; salida PNG sin pérdidas",
+          "response": "Flujo binario image/png con alfa preservado"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la conversión de AVIF a PNG?",
+        "content": "AVIF a PNG decodifica una imagen AVIF y la recodifica como PNG sin pérdidas. El PNG captura los píxeles decodificados de AVIF exactamente — sin pérdida de calidad adicional, canal alfa completo preservado.",
+        "content2": "Esta conversión es útil cuando necesitas PNG para una herramienta posterior que no soporta AVIF. Versiones más antiguas de Photoshop, software RIP de impresión heredado, Microsoft Office anterior a 365, y muchos sistemas integrados solo manejan formatos tradicionales.",
+        "content3": "Nuestra herramienta se ejecuta en el servidor a través de libvips, produciendo salida PNG limpia a la resolución nativa de AVIF. Sin registro, sin retención, una sola solicitud."
+      },
+      "whyConvert": {
+        "title": "¿Cuándo debo convertir AVIF a PNG?",
+        "content": "Convierte cuando tu destino no soporta AVIF. Casos comunes: herramientas de diseño más antiguas, pipelines de impresión, sistemas CMS heredados, o cualquier flujo de trabajo que requiera PNG como entrada.",
+        "content2": "También convierte cuando necesitas editar un AVIF y quieres evitar la pérdida de calidad generacional que viene con re-guardar formatos con pérdidas. PNG congela el estado actual de forma sin pérdidas."
+      },
+      "howTo": {
+        "title": "Cómo convertir AVIF a PNG",
+        "step1": {
+          "title": "1. Carga tu AVIF",
+          "content": "Arrastra tu archivo AVIF a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapixels. El archivo se envía a nuestro pipeline de decodificación Cloud Run — sin procesamiento local, nada almacenado en disco."
+        },
+        "step2": {
+          "title": "2. Haz clic en Convertir",
+          "content": "Sin opciones de calidad para configurar — PNG siempre es sin pérdidas. El servidor usa libvips para decodificar AVIF usando el decodificador AV1 libaom y recodifica los datos de píxel sin procesar como PNG con compresión DEFLATE. Todo el proceso se ejecuta en memoria."
+        },
+        "step3": {
+          "title": "3. Verifica la vista previa",
+          "content": "La salida PNG aparece con sus dimensiones de píxel. Espera que PNG sea 3–5× más grande que la fuente AVIF — esto es normal y esperado, ya que AVIF usa compresión AV1 agresiva mientras PNG usa DEFLATE sin pérdidas. El aumento de tamaño es el precio de la compatibilidad universal."
+        },
+        "step4": {
+          "title": "4. Descarga",
+          "content": "Tu PNG se abre en cualquier aplicación sin instalación de códec — Photoshop, GIMP, Figma, Microsoft Office, software RIP de impresión, y cada navegador web. PNG es el formato de imagen ráster más universalmente compatible que existe."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "lossless": {
+            "title": "Salida sin pérdidas",
+            "content": "PNG captura los píxeles decodificados de AVIF exactamente — sin degradación de calidad adicional introducida durante la conversión. Si AVIF fue codificado a calidad 75, PNG representa fielmente esos píxeles decodificados sin artefactos de compresión adicionales. Esto hace que PNG sea el formato ideal para archivar o editar contenido AVIF antes de reprocesar."
+          },
+          "alpha": {
+            "title": "Transparencia preservada",
+            "content": "La transparencia del canal alfa completo se transporta desde AVIF a PNG sin pérdida. La transparencia parcial, gradientes de transparencia suave y enmascaramiento complejo todos sobreviven a la conversión intactos. Dado que tanto AVIF como PNG soportan canales alfa de 8 bits completos, los datos de transparencia se transfieren perfectamente sin redondeo."
+          },
+          "compatibility": {
+            "title": "PNG universal",
+            "content": "PNG se abre en cada editor de imágenes, sistema operativo, navegador web, herramienta de impresión, editor de documentos y aplicación empresarial sin instalación de plugin o códec. Ha sido un estándar universal desde 1996, y cada ecosistema de software lo soporta de forma nativa. Cuando necesitas que un archivo se abra en cualquier lugar sin preguntas, PNG es la respuesta."
+          },
+          "privacy": {
+            "title": "Sin retención",
+            "content": "Tu AVIF se mantiene en memoria del servidor solo durante la duración de la solicitud de decodificación y codificación PNG. Tan pronto como PNG se transmite a tu navegador, los datos AVIF se descartan. Nada se escribe en disco, ningún contenido se registra, y no se requiere cuenta. El procesamiento se ejecuta en contenedores Cloud Run sin estado en us-central1."
+          },
+          "fast": {
+            "title": "Conversión rápida",
+            "content": "AVIF a PNG es más rápido que la codificación AVIF — decodificar AV1 y recodificar como PNG típicamente toma menos de 500 ms para imágenes de tamaño web usando libvips en el servidor. Archivos más grandes (20–50 MB) pueden tomar 1–3 segundos. La conversión está vinculada a E/S en lugar de CPU, por lo que se escala bien con tamaño de archivo."
+          },
+          "free": {
+            "title": "Gratuito",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta ni tarjeta de crédito requerida. Para pipelines de AVIF-a-PNG por lotes — convirtiendo archivos AVIF a PNG para distribución a herramientas heredadas posteriores — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso para volúmenes altos."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "editing": {
+            "title": "Edición en herramientas heredadas",
+            "content": "Versiones más antiguas de Photoshop (anterior a 2021), GIMP sin plugins AVIF, y muchos editores de imágenes gratuitos carecen de soporte de códec AVIF — convierte a PNG primero para abrir y editar libremente. Dado que PNG es sin pérdidas, puedes editar y re-guardar sin degradación de calidad adicional. Después de editar, puedes convertir de vuelta a AVIF para entrega web si es necesario."
+          },
+          "legacy": {
+            "title": "Aplicaciones heredadas",
+            "content": "MS Office anterior a Microsoft 365, utilidades antiguas de Windows como Paint, visualizadores integrados en software empresarial, y la mayoría de sistemas integrados solo manejan formatos ráster tradicionales. PNG es la opción universalmente segura — ha sido soportado de forma nativa en Windows desde Windows 98 y en Office desde la versión 2003. Sin instalación de códec, sin preguntas de compatibilidad."
+          },
+          "printing": {
+            "title": "Producción de impresión",
+            "content": "Muchos sistemas RIP de impresión comercial (Raster Image Processor) no soportan aún AVIF, haciendo PNG el formato de envío seguro para trabajos de impresión. La compresión sin pérdidas de PNG asegura sin degradación de calidad entre pantalla e impresión, y su soporte de canal alfa es compatible con la mayoría de flujos de trabajo de impresión que requieren manejo de transparencia."
+          },
+          "design": {
+            "title": "Importaciones de herramientas de diseño",
+            "content": "Suelta PNG en Figma, Sketch, Adobe XD, Affinity Designer, o cualquier otra herramienta de diseño para comportamiento de importación consistente y predecible. Las herramientas de diseño optimizadas para trabajo de vector y UI a veces tienen soporte de formato ráster limitado — PNG es el terreno común garantizado. Usa PNG para prototipos, e intercambia a AVIF solo para entrega web final."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "whyConvert": {
+            "q": "¿Por qué convertir AVIF a PNG?",
+            "a": "Cuando tu destino no soporta AVIF. Muchas herramientas de diseño heredadas (Photoshop anterior a 2021, GIMP sin plugins), software RIP de impresión, versiones antiguas de MS Office, visualizadores integrados, y sistemas empresariales solo aceptan formatos tradicionales. PNG es el fallback universal que se abre en todas partes sin software adicional. También es útil cuando necesitas editar la imagen en formato sin pérdidas antes de recodificar."
+          },
+          "qualityLoss": {
+            "q": "¿Perderé calidad?",
+            "a": "No — PNG es sin pérdidas, por lo que captura los píxeles decodificados de AVIF exactamente. Si AVIF fuente fue codificado a calidad 75, PNG representa fielmente esos píxeles decodificados sin introducir artefactos de compresión adicionales. La salida PNG es una instantánea píxel por píxel perfecta del estado decodificado de AVIF — ideal para archivar antes de ediciones posteriores."
+          },
+          "fileSize": {
+            "q": "¿Por qué PNG es mucho más grande?",
+            "a": "AVIF usa compresión de códec de vídeo AV1 de próxima generación que logra razones de compresión extrema; PNG usa compresión DEFLATE sin pérdidas que prioriza preservación de píxel exacta sobre tamaño de archivo. Espera que PNG sea 3–5× más grande que la fuente AVIF. Esta diferencia de tamaño es simplemente el costo de almacenamiento sin pérdidas y universalmente compatible — vale la pena pagar cuando compatibilidad es el objetivo."
+          },
+          "transparency": {
+            "q": "¿Se preserva la transparencia?",
+            "a": "Sí — la transparencia del canal alfa completo se transporta desde AVIF a PNG sin pérdida. Ambos formatos soportan canales alfa de 8 bits completos, por lo que los datos de transparencia se transfieren perfectamente. La transparencia parcial, gradientes de transparencia suave, y máscaras de transparencia complejas todas sobreviven a la conversión intactas y se representan correctamente en la salida PNG."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi archivo?",
+            "a": "No — tu AVIF se mantiene en memoria del servidor solo durante la duración de la conversión y se descarta tan pronto como PNG se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra, y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado en us-central1 sin estado persistente entre solicitudes."
+          },
+          "free": {
+            "q": "¿Es gratuito?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta requerida. Para pipelines de conversión AVIF-a-PNG por lotes — procesando archivos AVIF para distribución a herramientas heredadas — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso para flujos de trabajo de alto volumen."
+          }
+        }
+      }
+    }
+  },
+  "avifToJpg": {
+    "title": "Convertidor Gratuito de AVIF a JPG en Línea",
+    "subtitle": "Convierte imágenes AVIF a JPG universalmente compatible para correo electrónico, impresión y aplicaciones heredadas.",
+    "upload": {
+      "title": "Suelta tu archivo AVIF aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo de archivo: 50 MB · .avif solamente",
+      "accept": "Solo se aceptan archivos .avif",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a JPG",
+    "options": {
+      "quality": "Calidad JPG",
+      "qualityHint": "Mayor = archivo más grande, mejor fidelidad. 85–92 es prácticamente indistinguible de la fuente AVIF."
+    },
+    "status": {
+      "converting": "Convirtiendo...",
+      "error": "Falló la conversión",
+      "retry": "Intentar de nuevo"
+    },
+    "result": {
+      "title": "JPG Convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar JPG",
+      "reset": "Convertir otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de conversión de AVIF a JPG",
+        "content": "Sirve fallbacks de JPG para contenido AVIF mediante programación. El endpoint /avif acepta cargas multipart AVIF con source_format=avif y target_format=jpg, devolviendo archivos JPG ampliamente compatibles.",
+        "content2": "Perfecto para servicios que necesitan enviar correo electrónico a contenido AVIF a destinatarios en sistemas heredados, pipelines de impresión que requieren JPG, y sistemas de gestión de activos normalizando formatos de próxima generación.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Destacados de la API",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Carga multipart AVIF, hasta 50 MB",
+          "params": "source_format=avif, target_format=jpg, quality (0–100)",
+          "limit": "50 MB por solicitud, ~89 MP resolución",
+          "formats": "Entrada AVIF; salida JPG",
+          "response": "Flujo binario image/jpeg"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la conversión de AVIF a JPG?",
+        "content": "AVIF a JPG decodifica una imagen AVIF y la recodifica como JPG. Dado que JPG es universalmente soportado por cada cliente de correo, SO e herramienta de impresión, esta conversión es la predeterminada cuando necesitas compatibilidad amplia.",
+        "content2": "JPG no tiene canal alfa, por lo que los píxeles transparentes en la fuente AVIF se aplanan a un fondo blanco. Si necesitas preservar transparencia, convierte a PNG en su lugar.",
+        "content3": "Nuestra herramienta se ejecuta en el servidor a través de libvips, produciendo salida JPG limpia a la resolución nativa de AVIF con tu calidad elegida. Sin registro, sin marca de agua, sin retención."
+      },
+      "whyConvert": {
+        "title": "¿Cuándo debo convertir AVIF a JPG?",
+        "content": "Convierte cuando tus destinatarios usan clientes de correo, sistemas operativos, o herramientas sin soporte AVIF. Casos comunes: correo electrónico corporativo, imprentas, apps antiguas de Windows, sistemas CMS heredados.",
+        "content2": "La salida JPG es más grande que la fuente AVIF (típicamente ~30%), pero la compatibilidad universal es a menudo vale la pena el costo de tamaño para compartir única o flujos de trabajo heredados."
+      },
+      "howTo": {
+        "title": "Cómo convertir AVIF a JPG",
+        "step1": {
+          "title": "1. Carga tu AVIF",
+          "content": "Arrastra tu archivo AVIF a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapixels. El archivo se envía a nuestro pipeline de decodificación Cloud Run — sin procesamiento local, nada almacenado en disco."
+        },
+        "step2": {
+          "title": "2. Elige una calidad",
+          "content": "Predeterminado 90 — esto produce salida JPG que es prácticamente indistinguible de la fuente AVIF en cualquier pantalla de consumo. Usa 80 para más ahorros de tamaño con impacto mínimo de calidad visible en imágenes no principales. La calidad 85–92 es el rango práctico para la mayoría de casos de uso — valores por encima de 95 agregan tamaño de archivo significativo con mejora de calidad imperceptible."
+        },
+        "step3": {
+          "title": "3. Haz clic en Convertir",
+          "content": "El servidor usa libvips para decodificar AVIF usando el decodificador libaom, aplana cualquier píxel transparente a un fondo blanco (ya que JPG no tiene soporte de canal alfa), y recodifica el resultado como JPG con tu calidad elegida. Todo el proceso se ejecuta en memoria en Cloud Run us-central1."
+        },
+        "step4": {
+          "title": "4. Descarga",
+          "content": "Guarda JPG en tu dispositivo. Está listo para adjuntos de correo, envío a tienda de impresión, aplicaciones heredadas, y cualquier plataforma que no soporta aún AVIF. JPG es soportado de forma nativa en cada cliente de correo, sistema operativo, y aplicación sin instalación de códec."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "quality": {
+            "title": "Control deslizante de calidad",
+            "content": "Control granular de calidad JPG de 1 a 100 a través del parámetro de calidad JPEG estándar. La calidad 90 es el punto dulce para máxima fidelidad con tamaño de archivo razonable — típicamente 30% más grande que la fuente AVIF pero aún mucho más pequeño que equivalentes sin comprimir. La calidad 80 da una reducción de tamaño adicional de 20–30% con suavizado leve en áreas detalladas."
+          },
+          "compatibility": {
+            "title": "Salida universal",
+            "content": "JPG se abre en todas partes sin plugins, instalación de códec, o preocupaciones de compatibilidad — en cada cliente de correo, cada sistema operativo, cada navegador web, cada herramienta de impresión, y prácticamente cada aplicación jamás escrita que maneja imágenes. Ha sido un estándar universal desde 1992 y permanecerá así indefinidamente. Cuando se requiere la máxima compatibilidad absoluta, JPG es el formato más seguro."
+          },
+          "smaller": {
+            "title": "Codificación JPG eficiente",
+            "content": "El servidor usa el codificador JPEG moderno de libvips, que produce salida JPG comprimida eficientemente incluso con configuraciones de calidad alta. A calidad 90, la salida típica de AVIF-a-JPG es 25–40% más pequeña que PNG equivalente mientras preserva prácticamente todos los detalles visibles. Esto hace AVIF → JPG una buena opción cuando el tamaño importa pero no se requiere sin pérdidas de nivel PNG."
+          },
+          "privacy": {
+            "title": "Sin retención",
+            "content": "Tu AVIF se mantiene en memoria del servidor solo durante la duración de la solicitud de conversión. Una vez que JPG se transmite a tu navegador, los datos AVIF se descartan. Nada se escribe en disco, ningún contenido de imagen se registra, y no se requiere cuenta. El procesamiento se ejecuta en contenedores Cloud Run sin estado en us-central1 sin estado persistente."
+          },
+          "fast": {
+            "title": "Conversión rápida",
+            "content": "La decodificación AVIF-a-JPG y recodificación es rápida — típicamente menos de 500 ms para imágenes de tamaño web usando libvips en el servidor. La conversión está vinculada a E/S en lugar de CPU (a diferencia de la codificación AVIF que es computacionalmente intensiva). Archivos más grandes (20–50 MB) se completan en 1–2 segundos."
+          },
+          "free": {
+            "title": "Gratuito",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta ni tarjeta de crédito requerida. Para pipelines de AVIF-a-JPG por lotes — convirtiendo archivos AVIF a JPG para distribución a sistema heredado o flujos de trabajo de entrega de correo — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso para volúmenes altos."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "email": {
+            "title": "Adjuntos de correo",
+            "content": "Muchos clientes de correo — particularmente Outlook corporativo, versiones antiguas de Apple Mail, y sistemas webmail — rechazan o no logran renderizar adjuntos AVIF. JPG es universalmente seguro para correo: cada cliente de correo desde los años 90 lo maneja. Convertir fotos AVIF a JPG antes de adjuntar asegura que tus imágenes se muestren correctamente para cada destinatario sin importar su software de correo."
+          },
+          "legacy": {
+            "title": "Aplicaciones heredadas",
+            "content": "Versiones antiguas de Photoshop (anterior a 2021), MS Office (anterior a 365), herramientas heredadas de Windows, y la mayoría de software empresarial sin soporte de códec AVIF todos abren JPG limpiamente sin instalación de plugin. Si necesitas enviar una imagen a un cliente o colega usando software más antiguo, JPG es el denominador común más seguro. Ha sido universalmente soportado desde Windows 3.1."
+          },
+          "printing": {
+            "title": "Producción de impresión",
+            "content": "La mayoría de sistemas RIP de impresión comercial, servicios de impresión en línea, e imprentas profesionales aceptan JPG como su formato de entrada principal. Muchas específicamente requieren JPG para impresión de fotos. AVIF, aunque excelente para web, aún no es un estándar en flujos de trabajo de impresión. Convertir a JPG antes del envío a tienda de impresión asegura que tu archivo sea aceptado y procesado correctamente por todos los sistemas de impresión."
+          },
+          "social": {
+            "title": "Plataformas más antiguas",
+            "content": "Algunas redes sociales de nicho, plataformas de foros, y sistemas de gestión de contenidos heredados aún rechazan cargas AVIF o las convierten silenciosamente a JPG de baja calidad en el servidor. Al convertir a JPG antes de subir, controlas las configuraciones de calidad y aseguras que la imagen se vea exactamente como se pretendía. Esto es especialmente importante para comunidades de fotografía donde la calidad de imagen es primordial."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "whyConvert": {
+            "q": "¿Por qué convertir AVIF de vuelta a JPG?",
+            "a": "Para compatibilidad — JPG se abre en cada cliente de correo, sistema operativo, aplicación, y sistema de impresión que existe, mientras AVIF aún no es universalmente soportado. Los casos de uso comunes incluyen enviar fotos a destinatarios en sistemas heredados, enviar imágenes a imprentas, compartir con clientes que usan software más antiguo, y cargar a plataformas que aún no aceptan AVIF."
+          },
+          "transparency": {
+            "q": "¿Qué sucede con los píxeles transparentes?",
+            "a": "Los píxeles transparentes se aplanan a un fondo blanco, porque JPG no tiene soporte de canal alfa. Si tu AVIF tiene transparencia que debe preservarse — logos, elementos UI, superposiciones — convierte a PNG en su lugar, que soporta completamente alfa. Para contenido fotográfico sin transparencia, JPG es la opción correcta y el problema de aplanamiento no se aplica."
+          },
+          "quality": {
+            "q": "¿Qué calidad debo elegir?",
+            "a": "Se recomienda calidad 90 para contenido fotográfico — produce salida prácticamente indistinguible de la fuente AVIF en cualquier pantalla de consumo mientras es significativamente más compacta que configuraciones de calidad más alta. Usa 80 para miniaturas web e imágenes secundarias donde el ahorro de tamaño extra importa. Usa 85 como buen punto medio entre 80 y 90 para compartir de propósito general."
+          },
+          "fileSize": {
+            "q": "¿Será JPG más grande que AVIF?",
+            "a": "Típicamente alrededor de 30% más grande, ya que la compresión AV1 de AVIF es más eficiente que la codificación basada en DCT de JPG. Para una foto AVIF de 500 KB, espera aproximadamente un JPG de 650–700 KB a calidad 90. Este aumento de tamaño es simplemente el precio de la compatibilidad universal — para situaciones donde el soporte más estrecho de AVIF no importa, vale la pena aceptar."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi archivo?",
+            "a": "No — tu AVIF se mantiene en memoria del servidor solo durante la duración de la conversión y se descarta inmediatamente después de que JPG se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra, y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado en us-central1 sin estado persistente entre solicitudes."
+          },
+          "free": {
+            "q": "¿Es gratuito?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta requerida. Para pipelines de AVIF-a-JPG por lotes — convirtiendo archivos AVIF para distribución heredada o flujos de trabajo de entrega de correo — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso para casos de uso de alto volumen."
+          }
+        }
+      }
+    }
+  },
+  "avifToWebp": {
+    "title": "Convertidor Gratuito de AVIF a WebP en Línea",
+    "subtitle": "Convierte imágenes AVIF a WebP para compatibilidad de navegador más amplia mientras mantienes tamaños de archivo compactos.",
+    "upload": {
+      "title": "Suelta tu archivo AVIF aquí o haz clic para seleccionar",
+      "limit": "Tamaño máximo de archivo: 50 MB · .avif solamente",
+      "accept": "Solo se aceptan archivos .avif",
+      "tooLarge": "El archivo excede el límite de 50 MB",
+      "changeFile": "Cambiar archivo"
+    },
+    "convert": "Convertir a WebP",
+    "options": {
+      "quality": "Calidad WebP",
+      "qualityHint": "El predeterminado 85 equilibra tamaño y calidad. WebP a 85 típicamente coincide AVIF a 75 en fidelidad visual percibida."
+    },
+    "status": {
+      "converting": "Convirtiendo...",
+      "error": "Falló la conversión",
+      "retry": "Intentar de nuevo"
+    },
+    "result": {
+      "title": "WebP convertido",
+      "info": "{width} × {height} px • {size}",
+      "download": "Descargar WebP",
+      "reset": "Convertir otro"
+    },
+    "adModal": {
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 conversiones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} conversión gratuita restante | {count} conversiones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
+    },
+    "seo": {
+      "api": {
+        "title": "Usa la API de conversión de AVIF a WebP",
+        "content": "Genera fallbacks WebP para activos AVIF. El endpoint /avif acepta cargas multipart AVIF con source_format=avif y target_format=webp, devolviendo salida WebP moderna para cobertura de navegador más amplia.",
+        "content2": "Ideal para cadenas de fallback de elemento picture (AVIF → WebP → JPG), preprocesamiento de CDN que envía WebP a versiones Safari más antiguas, y flujos de trabajo de migración reduciendo muestras de archivos AVIF.",
+        "cta": "Ver API en RapidAPI",
+        "tutorial": "Leer el tutorial completo",
+        "features": {
+          "title": "Destacados de la API",
+          "endpoints": "POST /avif: AVIF ↔ JPG / PNG / WebP",
+          "input": "Carga multipart AVIF, hasta 50 MB",
+          "params": "source_format=avif, target_format=webp, quality (0–100)",
+          "limit": "50 MB por solicitud, ~89 MP resolución",
+          "formats": "Entrada AVIF; salida WebP con alfa",
+          "response": "Flujo binario image/webp"
+        }
+      },
+      "whatIs": {
+        "title": "¿Qué es la conversión de AVIF a WebP?",
+        "content": "Tanto AVIF como WebP son formatos de imagen web modernos, pero AVIF es más nuevo y tiene soporte de navegador ligeramente más estrecho (Safari 16+ vs Safari 14+ para WebP). Convertir AVIF a WebP intercambia algo de eficiencia de compresión por compatibilidad más amplia.",
+        "content2": "La conversión decodifica AVIF y recodifica como WebP. La salida WebP es típicamente 20–30% más grande que la fuente AVIF, pero aún mucho más pequeña que equivalentes JPG o PNG, y se abre en cada navegador de Safari 14 en adelante.",
+        "content3": "Nuestra herramienta se ejecuta en el servidor a través de libvips, preservando transparencia alfa completa y produciendo salida WebP de alta calidad en menos de un segundo para fotos típicas."
+      },
+      "whyConvert": {
+        "title": "¿Cuándo debo convertir AVIF a WebP?",
+        "content": "Convierte para cadenas de fallback de elemento picture: sirve AVIF primario para navegadores modernos, con una fuente WebP como fallback para usuarios de Safari 14–15 y navegadores móviles ligeramente más antiguos.",
+        "content2": "También convierte cuando tu CDN o pipeline de hosting no soporta aún AVIF de forma nativa — WebP aún se considera ampliamente el predeterminado moderno seguro para cobertura de navegador amplia."
+      },
+      "howTo": {
+        "title": "Cómo convertir AVIF a WebP",
+        "step1": {
+          "title": "1. Carga tu AVIF",
+          "content": "Arrastra tu archivo AVIF a la zona de carga o haz clic para abrir el selector de archivos. Se aceptan archivos hasta 50 MB y hasta ~89 megapixels. El archivo se envía a nuestro pipeline de decodificación y recodificación Cloud Run — sin procesamiento local, nada almacenado en disco."
+        },
+        "step2": {
+          "title": "2. Elige una calidad",
+          "content": "Predeterminado 85 — esto aproximadamente coincide calidad AVIF 75 en fidelidad visual percibida, ya que el códec VP8 de WebP es menos eficiente en compresión que el AV1 de AVIF. Usa 90 para imágenes principales donde el tamaño de archivo es menos crítico. Usa 75–80 para miniaturas e imágenes secundarias donde los ahorros de ancho de banda son la prioridad."
+        },
+        "step3": {
+          "title": "3. Haz clic en Convertir",
+          "content": "El servidor usa libvips para decodificar AVIF usando el decodificador AV1 libaom y recodifica los datos de píxel como WebP con tu calidad elegida. La codificación WebP es mucho más rápida que la codificación AVIF — espera menos de 1 segundo para imágenes típicas. Todo el proceso se ejecuta en memoria en Cloud Run us-central1."
+        },
+        "step4": {
+          "title": "4. Descarga",
+          "content": "Tu WebP está listo para cualquier navegador de Safari 14 en adelante — incluyendo todas las versiones de Chrome, Firefox, Edge, y Opera desde 2016 en adelante. Úsalo como una fuente fallback en un elemento picture junto a tu AVIF primario para máxima cobertura de navegador sin sacrificar compresión moderna."
+        }
+      },
+      "features": {
+        "title": "Características",
+        "items": {
+          "quality": {
+            "title": "Control deslizante de calidad",
+            "content": "Control granular de calidad WebP de 1 a 100. La calidad 85 es la recomendación típica estándar para fallbacks WebP desde AVIF — aproximadamente calidad AVIF 75 en fidelidad visual percibida mientras produce salida WebP en el mismo rango de calidad visual mientras es 20–30% más grande. La calidad 90+ es apropiada para imágenes principales o contextos focalizados en fotografía donde fidelidad es prioritaria."
+          },
+          "compatibility": {
+            "title": "Soporte de navegador más amplio",
+            "content": "WebP es soportado en Safari 14+ (lanzado 2020), mientras AVIF requiere Safari 16+ (lanzado 2022). Convertir AVIF a WebP como una fuente fallback te da cobertura para aproximadamente dos años adicionales de lanzamientos de Safari. Todas las versiones de Chrome, Firefox, Edge, y Opera lanzadas desde 2016 soportan WebP de forma nativa — es el predeterminado moderno seguro para compatibilidad amplia."
+          },
+          "alpha": {
+            "title": "Transparencia preservada",
+            "content": "La transparencia del canal alfa completo se preserva de extremo a extremo desde AVIF a WebP. La transparencia parcial, gradientes de transparencia suave, y enmascaramiento complejo todos se transportan correctamente. El soporte de canal alfa de WebP es sólido en todos los navegadores de Chrome 23 en adelante, haciéndolo una opción confiable para activos web transparentes que necesitan cobertura de navegador más amplia que AVIF proporciona."
+          },
+          "privacy": {
+            "title": "Sin retención",
+            "content": "Tu AVIF se mantiene en memoria del servidor solo durante la duración de la solicitud de conversión. Una vez que WebP se transmite a tu navegador, los datos AVIF se descartan inmediatamente. Nada se escribe en disco, ningún contenido de imagen se registra, y no se requiere cuenta. El procesamiento se ejecuta en contenedores Cloud Run sin estado en us-central1 sin estado persistente entre solicitudes."
+          },
+          "fast": {
+            "title": "Conversión rápida",
+            "content": "AVIF-a-WebP es rápido — decodificar AV1 y recodificar como WebP típicamente se completa en menos de 1 segundo para imágenes de tamaño web usando libvips en el servidor. La codificación WebP es computacionalmente ligera comparada con codificación AVIF (que toma 2–4 segundos). La conversión es práctica para uso interactivo sin espera notable."
+          },
+          "free": {
+            "title": "Gratuito",
+            "content": "Tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta ni tarjeta de crédito requerida. Para generar variantes fallback WebP de bibliotecas de activos AVIF — una parte clave de la estrategia de elemento picture AVIF+WebP — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso para flujos de trabajo de alto volumen."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso",
+        "items": {
+          "fallback": {
+            "title": "Fallback de elemento picture",
+            "content": "El caso de uso principal: sirve AVIF como la fuente principal en un elemento picture con WebP como fallback secundario, dando Chrome 85+, Firefox 93+, Safari 16+, y Edge 121+ los AVIF más pequeños mientras los usuarios de Safari 14–15 obtienen WebP. Esta estrategia de dos formatos cubre 100% de navegadores modernos y es recomendada por las guías de rendimiento de web.dev de Google para optimización máxima de imagen."
+          },
+          "web": {
+            "title": "Migración de CDN",
+            "content": "Si tu CDN o pipeline de hosting aún no soporta AVIF de forma nativa pero soporta WebP, genera variantes WebP de tus activos AVIF como paso intermedio. WebP aún es 25–35% más pequeño que JPG con calidad equivalente, por lo que incluso el fallback WebP proporciona ganancias de rendimiento significativas comparadas con JPG. Este enfoque te permite beneficiarte de mejor compresión hoy mientras planificas un despliegue AVIF completo."
+          },
+          "safari": {
+            "title": "Soporte de Safari 14–15",
+            "content": "Safari 14 agregó soporte WebP en 2020; Safari 16 agregó AVIF en 2022. Los usuarios en Safari 14–15 — particularmente usuarios de iPhone que no han actualizado, o usuarios de modelos iPad más antiguos — necesitan un fallback WebP para evitar retroceder todo el camino a JPG. Generar WebP desde tu fuente AVIF asegura que estos usuarios obtengan un formato moderno comprimido en lugar de uno heredado."
+          },
+          "cms": {
+            "title": "Compatibilidad CMS",
+            "content": "Algunos sistemas de gestión de contenidos, CDN de imágenes, y servidores de medios sirven WebP de forma nativa pero aún no han agregado soporte AVIF. Convertir AVIF a WebP te permite almacenar imágenes en formato AVIF mientras sirves WebP a través de pipelines de imágenes CMS que aún no manejan AVIF. Esto es particularmente útil durante transiciones, donde contenido nuevo puede ser nativo a AVIF mientras contenido heredado usa WebP."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "whyConvert": {
+            "q": "¿Por qué convertir AVIF a WebP?",
+            "a": "Para soporte de navegador más amplio sin retroceder todo el camino a JPG. WebP funciona en Safari 14+ (2020); AVIF necesita Safari 16+ (2022). La estrategia típica es servir AVIF primario + WebP secundario en un elemento picture — navegadores modernos obtienen compresión superior de AVIF mientras usuarios de Safari 14–15 obtienen compresión aún excelente de WebP, y navegadores más antiguos retroced a JPG."
+          },
+          "browserSupport": {
+            "q": "¿Qué navegadores soportan WebP?",
+            "a": "Cada navegador evergreen principal: Chrome 23+, Edge 18+, Firefox 65+, Opera 12+, y Safari 14+. Esto es más amplio que AVIF aproximadamente dos años de lanzamientos de Safari. WebP ahora es tan universalmente soportado que puede considerarse el predeterminado moderno seguro — prácticamente no hay usuarios de navegadores activamente mantenidos que encuentren problemas de compatibilidad WebP."
+          },
+          "sizeDifference": {
+            "q": "¿Cuánto más grande será WebP?",
+            "a": "Típicamente 20–30% más grande que la fuente AVIF con calidad percibida equivalente. Para una imagen AVIF de 400 KB, espera aproximadamente un WebP de 500–550 KB a calidad 85. A pesar de ser más grande que AVIF, WebP aún es 25–35% más pequeño que un JPG de calidad equivalente — por lo que incluso el fallback proporciona mejora de compresión significativa sobre formatos heredados."
+          },
+          "quality": {
+            "q": "¿Qué calidad debo elegir?",
+            "a": "La calidad 85 es la recomendación estándar para fallbacks WebP desde AVIF — aproximadamente calidad AVIF 75 en fidelidad visual percibida y produce salida en el mismo rango de calidad visual mientras es 20–30% más grande. Usa 90 para imágenes principales o contextos focalizados en fotografía donde fidelidad es priorizada. Usa 75–80 para miniaturas e imágenes secundarias donde la eficiencia de ancho de banda importa más."
+          },
+          "privacy": {
+            "q": "¿Se almacena mi AVIF?",
+            "a": "No — tu AVIF se mantiene en memoria del servidor solo durante la duración de la conversión y se descarta tan pronto como WebP se transmite a tu navegador. Nada se escribe en disco, ningún contenido de imagen se registra, y no se requiere cuenta. El pipeline se ejecuta en contenedores Cloud Run sin estado en us-central1 sin estado persistente entre solicitudes."
+          },
+          "free": {
+            "q": "¿Es gratuito?",
+            "a": "Sí — tres conversiones gratuitas por sesión de navegador de 24 horas sin cuenta requerida. Para generar variantes fallback WebP de bibliotecas de activos AVIF completas — esencial para la estrategia AVIF+WebP de elemento picture — el listado de RapidAPI proporciona un nivel gratuito mensual y precios de pago por uso para flujos de trabajo de alto volumen."
           }
         }
       }
