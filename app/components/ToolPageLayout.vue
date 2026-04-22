@@ -20,7 +20,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto px-4 pt-6 space-y-4">
+  <div class="max-w-3xl mx-auto px-4 pt-6 space-y-4">
     <!-- Related Tools -->
     <RelatedTools />
 

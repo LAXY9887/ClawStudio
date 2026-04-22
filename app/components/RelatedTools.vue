@@ -2,37 +2,40 @@
 const { t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-const { groups, totalCount, findByPath } = useTools()
+const { groups, findByPath } = useTools()
 
 const currentPath = computed(() => route.path)
 const currentTool = computed(() => findByPath(currentPath.value))
 </script>
 
 <template>
-  <UPopover :content="{ align: 'start', sideOffset: 4 }">
-    <UButton
-      variant="outline"
-      color="neutral"
-      size="sm"
-      trailing-icon="i-lucide-chevron-down"
-    >
-      <UIcon name="i-lucide-wrench" class="text-sm" />
-      <span class="text-xs">{{ t('relatedTools.label') }}</span>
-      <span v-if="currentTool" class="text-xs text-primary font-medium">
-        · {{ t(`relatedTools.${currentTool.tool.key}`) }}
-      </span>
-      <span v-else class="text-xs text-muted">· {{ totalCount }}</span>
-    </UButton>
+  <div class="flex flex-wrap items-center gap-2">
+    <span class="text-xs text-muted mr-1">{{ t('relatedTools.label') }}:</span>
 
-    <template #content>
-      <div class="p-3 space-y-4 min-w-72 max-w-sm">
-        <div v-for="group in groups" :key="group.key">
-          <div class="flex items-center gap-1.5 mb-1.5 px-1">
-            <UIcon :name="group.icon" class="text-xs text-muted" />
-            <p class="text-xs font-semibold text-muted uppercase tracking-wide">
-              {{ t(`relatedTools.groups.${group.key}`) }}
-            </p>
-          </div>
+    <UPopover
+      v-for="group in groups"
+      :key="group.key"
+      :content="{ align: 'start', sideOffset: 4 }"
+    >
+      <UButton
+        variant="outline"
+        :color="currentTool?.group.key === group.key ? 'primary' : 'neutral'"
+        size="sm"
+        trailing-icon="i-lucide-chevron-down"
+      >
+        <UIcon :name="group.icon" class="text-sm" />
+        <span class="text-xs">{{ t(`relatedTools.groups.${group.key}`) }}</span>
+        <span
+          v-if="currentTool?.group.key === group.key"
+          class="text-xs text-primary font-medium"
+        >
+          · {{ t(`relatedTools.${currentTool.tool.key}`) }}
+        </span>
+        <span v-else class="text-xs text-muted">· {{ group.tools.length }}</span>
+      </UButton>
+
+      <template #content>
+        <div class="p-2 min-w-56 max-w-sm">
           <div class="flex flex-col">
             <NuxtLink
               v-for="tool in group.tools"
@@ -48,7 +51,7 @@ const currentTool = computed(() => findByPath(currentPath.value))
             </NuxtLink>
           </div>
         </div>
-      </div>
-    </template>
-  </UPopover>
+      </template>
+    </UPopover>
+  </div>
 </template>

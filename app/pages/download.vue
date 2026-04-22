@@ -9,11 +9,18 @@ const returnPath = computed(() => (route.query.from as string) || localePath('/'
 // Detect which tool the user came from
 const toolKey = computed(() => {
   const from = returnPath.value
+  if (from.includes('png-to-avif')) return 'pngToAvif'
+  if (from.includes('jpg-to-avif')) return 'jpgToAvif'
+  if (from.includes('webp-to-avif')) return 'webpToAvif'
+  if (from.includes('avif-to-png')) return 'avifToPng'
+  if (from.includes('avif-to-jpg')) return 'avifToJpg'
+  if (from.includes('avif-to-webp')) return 'avifToWebp'
   if (from.includes('heic-to-jpg')) return 'heicToJpg'
   if (from.includes('heic-to-png')) return 'heicToPng'
   if (from.includes('heic-to-webp')) return 'heicToWebp'
   if (from.includes('jpg-to-heic')) return 'jpgToHeic'
   if (from.includes('png-to-heic')) return 'pngToHeic'
+  if (from.includes('webp-to-heic')) return 'webpToHeic'
   if (from.includes('favicon-generator')) return 'faviconGenerator'
   if (from.includes('svg-to-png')) return 'svgToPng'
   if (from.includes('png-to-webp')) return 'pngToWebp'
@@ -32,8 +39,9 @@ const toolKey = computed(() => {
 const tipCount = computed(() => {
   const counts: Record<string, number> = {
     gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4, splitSpritesheet: 5,
-    heicToJpg: 4, heicToPng: 4, heicToWebp: 4, jpgToHeic: 4, pngToHeic: 4,
+    heicToJpg: 4, heicToPng: 4, heicToWebp: 4, jpgToHeic: 4, pngToHeic: 4, webpToHeic: 4,
     pngToJpg: 4, jpgToPng: 4, pngToWebp: 4, webpToPng: 4, jpgToWebp: 4, webpToJpg: 4,
+    pngToAvif: 4, jpgToAvif: 4, webpToAvif: 4, avifToPng: 4, avifToJpg: 4, avifToWebp: 4,
     svgToPng: 5, faviconGenerator: 5
   }
   return counts[toolKey.value] ?? 4
@@ -42,8 +50,9 @@ const tipCount = computed(() => {
 const apiUrl = computed(() => {
   const pngTools = ['pngToSpritesheet', 'pngTrim', 'splitSpritesheet']
   const uniimgcTools = [
-    'heicToJpg', 'heicToPng', 'heicToWebp', 'jpgToHeic', 'pngToHeic',
+    'heicToJpg', 'heicToPng', 'heicToWebp', 'jpgToHeic', 'pngToHeic', 'webpToHeic',
     'pngToJpg', 'jpgToPng', 'pngToWebp', 'webpToPng', 'jpgToWebp', 'webpToJpg',
+    'pngToAvif', 'jpgToAvif', 'webpToAvif', 'avifToPng', 'avifToJpg', 'avifToWebp',
     'svgToPng', 'faviconGenerator'
   ]
   if (uniimgcTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'

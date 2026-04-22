@@ -31,12 +31,25 @@ const GROUPS: ToolGroup[] = [
       { key: 'heicToWebp', icon: 'i-lucide-smartphone', to: '/tools/heic-to-webp' },
       { key: 'jpgToHeic', icon: 'i-lucide-smartphone', to: '/tools/jpg-to-heic' },
       { key: 'pngToHeic', icon: 'i-lucide-smartphone', to: '/tools/png-to-heic' },
+      { key: 'webpToHeic', icon: 'i-lucide-smartphone', to: '/tools/webp-to-heic' },
       { key: 'pngToJpg', icon: 'i-lucide-image', to: '/tools/png-to-jpg' },
       { key: 'jpgToPng', icon: 'i-lucide-image', to: '/tools/jpg-to-png' },
       { key: 'pngToWebp', icon: 'i-lucide-image', to: '/tools/png-to-webp' },
       { key: 'webpToPng', icon: 'i-lucide-image', to: '/tools/webp-to-png' },
       { key: 'jpgToWebp', icon: 'i-lucide-image', to: '/tools/jpg-to-webp' },
       { key: 'webpToJpg', icon: 'i-lucide-image', to: '/tools/webp-to-jpg' }
+    ]
+  },
+  {
+    key: 'avif',
+    icon: 'i-lucide-zap',
+    tools: [
+      { key: 'pngToAvif', icon: 'i-lucide-zap', to: '/tools/png-to-avif' },
+      { key: 'jpgToAvif', icon: 'i-lucide-zap', to: '/tools/jpg-to-avif' },
+      { key: 'webpToAvif', icon: 'i-lucide-zap', to: '/tools/webp-to-avif' },
+      { key: 'avifToPng', icon: 'i-lucide-zap', to: '/tools/avif-to-png' },
+      { key: 'avifToJpg', icon: 'i-lucide-zap', to: '/tools/avif-to-jpg' },
+      { key: 'avifToWebp', icon: 'i-lucide-zap', to: '/tools/avif-to-webp' }
     ]
   },
   {
