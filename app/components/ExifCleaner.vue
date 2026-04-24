@@ -224,13 +224,19 @@ function downloadMetadata() {
   const isBatchData = batchReports.value.length > 0
   if (!isSingle && !isBatchData) return
 
-  const data: unknown = isSingle ? singleReport.value : batchReports.value
+  let data: unknown
   let filename: string
   if (isSingle) {
+    data = singleReport.value
     const orig = files.value[0]?.name || 'photo'
     const base = orig.replace(/\.[^.]+$/, '')
     filename = `${base}_metadata.json`
   } else {
+    data = batchReports.value.map(item =>
+      item.hasPrivacyRisk
+        ? item
+        : { filename: item.filename, hasPrivacyRisk: false }
+    )
     filename = 'scan_metadata.json'
   }
 
