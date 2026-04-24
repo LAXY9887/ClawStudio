@@ -197,19 +197,22 @@ function getOutputFilename(): string {
 function onWidthInput(e: Event) {
   const v = parseInt((e.target as HTMLInputElement).value) || 0
   resizeWidth.value = v
-  if (lockAspect.value && v > 0) resizeHeight.value = Math.round(v / originalAspect.value)
+  if (v === 0) { resizeHeight.value = 0; return }
+  if (lockAspect.value) resizeHeight.value = Math.round(v / originalAspect.value)
   renderPreview()
 }
 
 function onHeightInput(e: Event) {
   const v = parseInt((e.target as HTMLInputElement).value) || 0
   resizeHeight.value = v
-  if (lockAspect.value && v > 0) resizeWidth.value = Math.round(v * originalAspect.value)
+  if (v === 0) { resizeWidth.value = 0; return }
+  if (lockAspect.value) resizeWidth.value = Math.round(v * originalAspect.value)
   renderPreview()
 }
 
 function applyPreset(pct: number) {
-  const img = originalImage.value!
+  const img = originalImage.value
+  if (!img) return
   resizeWidth.value = Math.round(img.naturalWidth * pct / 100)
   resizeHeight.value = Math.round(img.naturalHeight * pct / 100)
   renderPreview()
