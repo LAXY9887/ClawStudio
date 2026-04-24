@@ -6,6 +6,9 @@ const ALLOWED_PATHS = new Set([
 ])
 
 export default defineEventHandler(async (event) => {
+  if (event.method !== 'POST') {
+    throw createError({ statusCode: 405, statusMessage: 'Method Not Allowed' })
+  }
   const path = getRouterParam(event, 'path')
   if (!path || !ALLOWED_PATHS.has(path)) {
     throw createError({ statusCode: 404, statusMessage: 'Unknown endpoint' })
