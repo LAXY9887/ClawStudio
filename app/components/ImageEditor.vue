@@ -61,6 +61,7 @@ const outputMime = computed(() => {
 
 // Ad modal
 const showAdModal = ref(false)
+const pendingBlob = ref<Blob | null>(null)
 
 function validateFile(f: File): string | null {
   const name = f.name.toLowerCase()
@@ -313,13 +314,18 @@ async function handleDownload() {
     return
   }
 
-  const blob = await buildOutputBlob()
-  doDirectDownload(blob)
-  downloadCount.value++
-
-  if (downloadCount.value >= FREE_LIMIT) {
-    useDownloadStore().setBlob(blob, getOutputFilename())
-    showAdModal.value = true
+  try {
+    const blob = await buildOutputBlob()
+    doDirectDownload(blob)
+    downloadCount.value++
+    if (downloadCount.value >= FREE_LIMIT) {
+      pendingBlob.value = blob
+      useDownloadStore().setBlob(blob, getOutputFilename())
+      showAdModal.value = true
+    }
+  } catch (e) {
+    console.error(e)
+    errorMessage.value = t('imageEditor.actions.exportError')
   }
 }
 
@@ -327,12 +333,18 @@ async function onAdConfirm() {
   showAdModal.value = false
   downloadCount.value = 0
   openDirectLink()
-  const blob = await buildOutputBlob()
-  useDownloadStore().setBlob(blob, getOutputFilename())
-  navigateTo({
-    path: localePath('/download'),
-    query: { from: localePath('/tools/image-editor') }
-  })
+  try {
+    const blob = pendingBlob.value ?? await buildOutputBlob()
+    pendingBlob.value = null
+    useDownloadStore().setBlob(blob, getOutputFilename())
+    navigateTo({
+      path: localePath('/download'),
+      query: { from: localePath('/tools/image-editor') }
+    })
+  } catch (e) {
+    console.error(e)
+    errorMessage.value = t('imageEditor.actions.exportError')
+  }
 }
 </script>
 
