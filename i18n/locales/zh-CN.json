@@ -346,6 +346,15 @@
         "完整保留 alpha 透明 — 适合把 AVIF logo 或 UI 素材转为兼容性更广的 WebP。",
         "正式网站想要最佳覆盖率：用 picture 元素提供 AVIF 主源 + WebP fallback + JPG 最终 fallback。"
       ]
+    },
+    "exifRemover": {
+      "tipsTitle": "等待时的隐私提示",
+      "tips": [
+        "**HEIC 清理完全无损** —— ExifTool 在二进制层级直接去除 metadata 标签，像素资料完全未动。输出档案与原始档逐位元完全一致，只有 metadata 区块被移除。",
+        "**GPS 座标精确到约 10 公尺** —— 一张未清理、在家中拍摄的照片足以把你的住家门牌号码精确到任何下载者面前。",
+        "**设备指纹跨平台持续存在** —— 相机厂牌、型号与序号在同一台设备拍摄的每一张照片中都相同，资料仲介商用这组指纹把你匿名发的贴文串连回你的真实身份。",
+        "**ICC 色彩设定档完整保留** —— JPEG、PNG、WebP、AVIF、TIFF 的输出档案保留嵌入的色彩空间（sRGB、Display P3、Adobe RGB），广色域照片清理后在相容显示器上仍能正确呈现。"
+      ]
     }
   },
   "error": {
@@ -366,7 +375,8 @@
       "sprite": "精灵与帧工具",
       "imageFormat": "图片格式转换器",
       "vector": "矢量与图标工具",
-      "avif": "AVIF 转换器"
+      "avif": "AVIF 转换器",
+      "privacy": "隐私工具"
     },
     "gifToSprite": "GIF → 精灵表",
     "toGif": "PNG → GIF",
@@ -392,7 +402,8 @@
     "avifToJpg": "AVIF → JPG",
     "avifToWebp": "AVIF → WebP",
     "svgToPng": "SVG → PNG",
-    "faviconGenerator": "Favicon 生成器"
+    "faviconGenerator": "Favicon 生成器",
+    "exifRemover": "EXIF 清除器"
   },
   "home": {
     "title": "免费在线开发工具",
@@ -496,6 +507,10 @@
       "faviconGenerator": {
         "title": "Favicon 生成器",
         "description": "生成完整的 7 文件 favicon 套件，包含 ICO、Apple Touch、Android 和 Web Manifest。"
+      },
+      "exifRemover": {
+        "title": "EXIF 清除器与隐私扫描器",
+        "description": "扫描照片中的 GPS、设备、时间等隐私 metadata 并一键清除，支持批次最多 10 张。"
       }
     }
   },
@@ -4787,6 +4802,210 @@
           }
         }
       }
+    }
+  },
+  "exifRemover": {
+    "title": "免费线上 EXIF 清除器与隐私扫描器",
+    "subtitle": "扫描照片中隐藏的 GPS、设备、时间等 metadata，并一键全部清除。单张最大 50 MB，批次最多 10 张。",
+    "upload": {
+      "title": "拖放照片到此或点击选择",
+      "limit": "单张最大 50 MB · 批次（2–10 张）每张 10 MB",
+      "formats": "支持 JPEG、PNG、WebP、AVIF、TIFF、HEIC/HEIF",
+      "accept": "不支持的档案格式。请使用 JPEG、PNG、WebP、AVIF、TIFF 或 HEIC/HEIF。",
+      "tooLargeSingle": "档案超过 {size} —— 单张上限为 50 MB。",
+      "tooLargeBatch": "有档案超过 {size} —— 批次模式每张上限为 10 MB。",
+      "tooMany": "一次最多只能上传 {max} 张。",
+      "heicUploaded": "档案已成功上传"
+    },
+    "status": {
+      "scanning": "正在扫描隐私 metadata…",
+      "cleaning": "正在清除 metadata…",
+      "scanFailed": "扫描失败，请再试一次。",
+      "cleanFailed": "清除失败，请再试一次。"
+    },
+    "report": {
+      "riskDetected": "侦测到隐私 metadata",
+      "safetyScoreHint": "分数越低代表暴露的 metadata 越多。",
+      "gps": {
+        "title": "拍摄地点",
+        "altitude": "海拔",
+        "direction": "方向",
+        "mapAlt": "照片地点静态地图"
+      },
+      "device": {
+        "title": "设备"
+      },
+      "timestamp": {
+        "title": "拍摄时间"
+      },
+      "software": {
+        "title": "软体"
+      }
+    },
+    "noRisk": {
+      "title": "这张照片已经是干净的",
+      "description": "未侦测到任何隐私 metadata，不需要清理。"
+    },
+    "batch": {
+      "title": "扫描结果（共 {count} 张）",
+      "riskyCount": "含隐私资讯",
+      "cleanCount": "已干净"
+    },
+    "tags": {
+      "gps": "GPS",
+      "device": "设备",
+      "time": "时间",
+      "software": "软体",
+      "clean": "干净"
+    },
+    "actions": {
+      "clean": "一键抹除所有 metadata",
+      "cleanAll": "全部清理并下载 ZIP",
+      "download": "下载 {filename}",
+      "verifyAgain": "重新上传验证",
+      "chooseAgain": "重新选择",
+      "retry": "重试",
+      "downloadMeta": "下载 metadata"
+    },
+    "done": {
+      "title": "所有 metadata 已清除",
+      "descriptionSingle": "清理后的档案维持原格式 —— HEIC 零品质损失，其他格式保留 ICC 色彩设定档。",
+      "descriptionBatch": "所有档案已清理并打包成 cleaned.zip，原档名完整保留。",
+      "verifyTip": "提示：把下载的档案再上传一次 —— 第二次扫描应显示为干净。"
+    },
+    "seo": {
+      "api": {
+        "title": "使用 EXIF 清除 API",
+        "content": "透过单一 HTTP 呼叫在伺服器端扫描或清除照片 metadata。/scan 端点回传结构化 JSON 隐私风险报告；/clean 端点回传已清除 metadata 的原格式二进位图片。批次端点一次接受最多 10 张，回传 ZIP 压缩包 —— 无需客户端处理，不保留任何档案。",
+        "content2": "典型使用情境：云端上传前自动化隐私清理、上架前必须去除 GPS 的电商商品照处理管线、需要无溯源来源照片的新闻工作流程，以及不想在本地嵌入 ExifTool 却需要轻量伺服器端 metadata 扫描器的行动 App。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "阅读完整教学",
+        "features": {
+          "title": "API 重点规格",
+          "endpoints": "POST /scan + /clean（单张，最大 50 MB）及 POST /batch/scan + /batch/clean（最多 10 张，每张 10 MB）",
+          "input": "Multipart 图片上传 —— JPEG、PNG、WebP、AVIF、TIFF、HEIC/HEIF",
+          "params": "file（单张）或 files[]（批次）；无品质参数 —— 格式与品质完整保留",
+          "limit": "单张模式每张最大 50 MB · 批次模式每张最大 10 MB，最多 10 张",
+          "formats": "所有输入格式在输出中完整保留 —— HEIC 进 → HEIC 出，JPEG 进 → JPEG 出",
+          "response": "JSON 隐私报告（scan）· 二进位清理图片（单张 clean）· application/zip 压缩包（批次 clean）"
+        }
+      },
+      "whatIs": {
+        "title": "什么是 EXIF metadata？为什么要清除？",
+        "content": "EXIF（Exchangeable Image File Format）是你手机或相机拍下的几乎每一张照片中悄悄嵌入的隐藏资料。它会记录照片拍摄地的精确 GPS 座标、设备厂牌与型号、相机设定、精确到秒的时间戳记，甚至包含最后一次编辑档案使用的软体名称。这些 metadata 在你浏览图片时完全看不见，但会跟着档案走 —— 附加在每一次上传、每一封信件、每一则你分享的讯息上。",
+        "content2": "对大多数人来说，GPS 座标是最让人警惕的部分。一张贴上网路的度假照片，如果是在你家后院拍的，就能精确指出你家地址。刊在二手拍卖的商品照会暴露你的住家位置。传给陌生人的人像照会泄漏你当时所在的房间。除此之外，设备识别码还会建立跨多次上传的指纹，让任何人都能把你匿名的贴文串连回同一台相机。",
+        "content3": "这个工具会从照片中剥除每一个 EXIF 标籤，同时让图像视觉上完全一致。HEIC 档案透过二进位层级的 metadata 移除，完全不进行重新编码，原始压缩品质 100% 保留。其他格式则透过特殊管线处理 —— 在清理前先萃取 ICC 色彩设定档，清理后再重新嵌入，确保颜色绝不会跑掉。"
+      },
+      "whyRemove": {
+        "title": "照片 metadata 会暴露哪些隐私风险？",
+        "content": "GPS 座标精确到约 10 公尺 —— 足以辨识出具体的房屋、办公大楼内的特定房间、或餐厅的某张桌子。配合精确到秒的时间戳记，一张照片就能揭露你当时在哪裡、何时在那裡，以及对许多现代手机而言甚至连你面对的方向都会泄漏。攻击者已经多次利用这类资料跟踪个人、绘製日常作息、并从善意支持者贴出的照片中辨识出安全住所。",
+        "content2": "设备 metadata 是更隐蔽但持久的追踪器。相机厂牌、型号与序号的组合会建立一组硬体指纹，这组指纹在该设备拍下的每一张照片中都相同。平台与资料仲介商会用这组指纹来串连帐号：你贴在某论坛上的匿名照片与你二手拍卖列表的商品照，即使使用不同名称也能被连结到同一台设备。软体标籤则会额外泄漏你的编修流程 —— 哪个版本的 Photoshop、Lightroom、或手机 app 处理过档案 —— 对于留意的人来说等于摊开了你完整的工具链。"
+      },
+      "howTo": {
+        "title": "如何移除照片的 EXIF metadata",
+        "step1": {
+          "title": "1. 上传照片",
+          "content": "上传一张照片（最大 50 MB）或一次拖入 2–10 张（每张最大 10 MB）批次处理。工具支持 JPEG、PNG、WebP、AVIF、TIFF、HEIC/HEIF —— 就是 iPhone 相机预设产生的 HEIC 格式。本工具设计于桌面浏览器使用，手机浏览器不在官方支持范围内，受行动装置作业系统的档案处理限制，可能无法正常运作。"
+        },
+        "step2": {
+          "title": "2. 确认隐私扫描结果",
+          "content": "工具会自动扫描档案，并清楚列出嵌入了哪些隐私 metadata。若是单张含有 GPS 的照片，会显示一张互动式 OpenStreetMap 地图预览，红色定位针标示出拍摄地点。设备、时间、软体等栏位则会分别列出，每一项都有对应的隐私影响权重。下方显示 0–100 的安全评分，一目了然地总结整体暴露程度。"
+        },
+        "step3": {
+          "title": "3. 一键抹除所有 Metadata",
+          "content": "点击「一键抹除所有 metadata」，一次清除所有隐私资讯。HEIC 档案透过 ExifTool 的二进位路径处理，压缩后的像素资料完全不动 —— 零品质损失、零重新编码。其他格式则走 ICC Profile 感知的重新编码管线：清理前先萃取嵌入的色彩设定档，清理后再重新嵌入，让绿的保持绿、蓝天还是蓝天。"
+        },
+        "step4": {
+          "title": "4. 下载清理后的档案",
+          "content": "下载清理后的档案 —— 格式与输入完全相同，安全评分 100/100。要验证清理效果？把下载的档案再丢回工具一次，第二次扫描应该会显示零 metadata。批次模式下，所有清理后的档案会打包成单一个 cleaned.zip 压缩档，原档名完整保留，可直接上传至社群媒体、拍卖平台或夹在 email 附件。"
+        }
+      },
+      "features": {
+        "title": "为什么这个 EXIF 清除器与众不同",
+        "items": {
+          "heicLossless": {
+            "title": "HEIC 无损清理",
+            "content": "HEIC 是透过 ExifTool 在二进位层级清理，而不是透过 HEIC 编码器重新编码。压缩后的像素资料从未被碰过，因此输出画质与原始档完全相同 —— 不像多数线上工具会默默重新编码 HEIC 并引入代际压缩 artifact。"
+          },
+          "iccPreserved": {
+            "title": "ICC 色彩设定档完整保留",
+            "content": "JPEG、PNG、WebP、AVIF、TIFF 在清理前会先萃取嵌入的 ICC 色彩设定档，清理后重新嵌入输出档案。这可以避免一般工具「清掉所有 metadata 连 ICC 一起清」造成的隐性但可见的色偏问题（褪色的天空、色调偏暗的膚色）。"
+          },
+          "formatKept": {
+            "title": "输出格式与输入完全一致",
+            "content": "输出格式永远与输入格式完全一致。JPEG 进、JPEG 出。HEIC 进、HEIC 出。不会发生任何「为了相容性自动转档」的情况，因为隐私清理与格式转换是两个独立的操作，绝不该绑在一起。"
+          },
+          "batch": {
+            "title": "批次最多 10 张",
+            "content": "批次模式一次接受最多 10 张档案，全部打包成单一个 cleaned.zip 压缩档回传。非常适合在分享前清理整个相簿，或在上架拍卖前清理一批商品照。"
+          },
+          "free": {
+            "title": "免费轻松使用",
+            "content": "每 24 小时浏览器视窗享有 3 次免费清理机会，无需注册、无需帐号。若需要高用量自动化流程，RapidAPI 上架版本提供相同的管线，$29/月 10,000 次呼叫含批次端点。"
+          },
+          "privacy": {
+            "title": "纯记忆体处理，不留存档案",
+            "content": "上传的档案只在扫描与清理期间暂存于伺服器记忆体，处理完立即丢弃。不写入磁碟、不记录影像内容、照片绝不离开处理它的无状态 Cloud Run us-central1 容器。"
+          }
+        }
+      },
+      "useCases": {
+        "title": "哪些情境下分享前应该先清除 EXIF",
+        "items": {
+          "social": {
+            "title": "社群媒体分享前",
+            "content": "在贴照片到社群平台前，尤其是那些会暴露可下载原图的平台，例如 Flickr、Imgur 或直连图床。即使平台号称上传时会清除 metadata，有时还是会透过其他管道泄漏 GPS —— 在本地先清干净，就能确保敏感资料绝不离开你的装置。"
+          },
+          "marketplace": {
+            "title": "线上拍卖商品照",
+            "content": "在 eBay、Facebook Marketplace、Yahoo 拍卖、虾皮等平台刊登商品时。在家拍的商品照会把你的 GPS 座标直接嵌进刊登照片裡，等于给每个潜在买家一条通往你家门口的精确路线。上架前先清掉，保护自己的住家地址。"
+          },
+          "album": {
+            "title": "共享旅游相簿",
+            "content": "在透过云端连结（Dropbox、Google Drive、iCloud 相簿）与近亲以外的任何人分享旅游相簿前。共享连结的扩散往往难以预料，相簿中的每张照片都带有各自独立的 GPS 资料 —— 一个 50 张假期照片的共享连结等于精确绘製出你旅行期间每晚住在哪裡。"
+          },
+          "journalism": {
+            "title": "新闻与敏感来源资料",
+            "content": "记者、研究人员、吹哨者处理敏感素材时。文件、地点、线人照片都嵌有拍摄地点、时间、设备、编修软体的完整证据。清除这些 metadata 是任何资安作业流程中不可妥协的步骤。"
+          }
+        }
+      },
+      "faq": {
+        "title": "常见问题",
+        "items": {
+          "whatIsMetadata": {
+            "q": "照片 metadata 到底是什么？",
+            "a": "照片 metadata —— 通称为 EXIF、IPTC、XMP 标籤 —— 是嵌入在图片档内部的结构化资料，与可见的像素资料分开。它包含 GPS 经纬度、拍摄时间、相机厂牌型号、镜头资讯、ISO/快门/光圈设定、编修歷史、软体版本，有时甚至包含缩图预览或空拍机的航线记录。这一切都在你分享档案时悄悄跟着走。"
+          },
+          "heicQuality": {
+            "q": "清理 HEIC 会降低画质吗？",
+            "a": "不会 —— 本工具的 HEIC 清理完全无损。我们使用 ExifTool 在二进位层级剥除 metadata，完全不碰压缩后的像素资料，因此输出与原始档除了 metadata 区块以外完全一模一样。这和多数竞品不同 —— 它们会透过有损的 HEIC 编码器重新编码，造成细微的画质损失。你可以自己验证：清理后的档案会和原档维持相同尺寸与几乎相同的档案大小。"
+          },
+          "colorShift": {
+            "q": "清理后颜色会跑掉吗？",
+            "a": "不会 —— ICC 色彩设定档会被完整保留。对于 JPEG、PNG、WebP、AVIF、TIFF，我们会在移除 metadata 前先萃取嵌入的 ICC 设定档（例如 sRGB、Display P3、Adobe RGB），清理后再重新嵌入清理后的档案。这意味着在广色域工作区编修并以 Display P3 汇出的照片，在相容的显示器上依然能精确呈现。HEIC 档案由于完全不重新编码，自动保留原始设定档。"
+          },
+          "mobileSupport": {
+            "q": "这个工具在手机浏览器上可以用吗？",
+            "a": "本工具是为桌面浏览器设计的，我们不保证在手机环境下能正常运作。行动装置作业系统对档案处理有平台层级的限制 —— 例如 iOS Safari 从相簿选取时会自动把 HEIC 转成 JPEG，这会破坏 HEIC 相关的流程。若要使用完整功能，请在可直接存取档案系统的桌上型或笔记型电脑浏览器上开启本工具。"
+          },
+          "storage": {
+            "q": "你们会储存我上传的照片吗？",
+            "a": "不会 —— 你的照片只在扫描与清理期间（通常 1–3 秒）存于伺服器记忆体中，处理完立即丢弃。不写入磁碟、不记录影像内容、不保留任何杂凑或指纹。处理流程在无状态的 Cloud Run 容器上执行，这些容器独立于单一请求销毁与重建。在回应串流回你的浏览器后，我们在技术上没有任何方式保留、索引或取回你的照片。"
+          },
+          "batchHowMany": {
+            "q": "批次一次可以清理几张？",
+            "a": "每次批次最多 10 张，每张上限 10 MB。2–10 张的情况下，工具会使用批次端点并回传单一个 cleaned.zip，原档名完整保留。单张则可以最大 50 MB，清理后的档案以原格式直接下载 —— 不会被包进 ZIP。想用满 50 MB 上限就丢 1 张；想批次处理就丢 2 张或以上。"
+          }
+        }
+      }
+    },
+    "adModal": {
+      "title": "🥺 请支持我们 🌸",
+      "description": "阅读我们的文章即可再解锁 3 次免费清除。感谢你支持这个免费工具！",
+      "remaining": "{count} 次免费清除 | {count} 次免费清除",
+      "watch": "确认",
+      "close": "关闭"
     }
   }
 }

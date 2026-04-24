@@ -346,6 +346,15 @@
         "Volle Alpha-Transparenz wird erhalten — großartig für die Konvertierung von AVIF-Logos oder UI-Assets zu breit kompatiblem WebP.",
         "Für Produktions-Websites mit bestem Abdeckung, bedienen Sie AVIF-primär + WebP-Fallback + JPG-Fallback über picture-Element."
       ]
+    },
+    "exifRemover": {
+      "tipsTitle": "Datenschutztipps während Sie warten",
+      "tips": [
+        "**HEIC-Reinigung ist vollständig verlustfrei** — ExifTool entfernt Metadaten auf Binärebene, ohne ein Pixel neu zu codieren. Die Ausgabe ist identisch mit dem Original, mit Ausnahme der Metadaten-Boxen.",
+        "**GPS-Koordinaten sind auf etwa 10 Meter genau** — Ein einzelnes unbereinigtes Foto von zu Hause kann Ihre Adresse jedem offenlegen, der die Datei herunterlädt.",
+        "**Gerätefingerabdrücke bleiben plattformübergreifend erhalten** — Kamerahersteller, Modell und Seriennummer bleiben in jedem Foto von diesem Gerät identisch, sodass Datenmakler Ihre anonymen Beiträge mit Ihrer echten Identität verknüpfen können.",
+        "**ICC-Farbprofile werden beibehalten** — JPEG-, PNG-, WebP-, AVIF- und TIFF-Ausgaben behalten den eingebetteten Farbraum (sRGB, Display P3, Adobe RGB) bei, sodass Fotos mit großem Farbraum nach der Reinigung korrekt aussehen."
+      ]
     }
   },
   "error": {
@@ -366,7 +375,8 @@
       "avif": "AVIF-Konverter",
       "imageFormat": "Bildformat-Konverter",
       "sprite": "Sprite- & Frame-Tools",
-      "vector": "Vektor- & Icon-Tools"
+      "vector": "Vektor- & Icon-Tools",
+      "privacy": "Datenschutz-Tools"
     },
     "gifToSprite": "GIF → Sprite Sheet",
     "toGif": "PNG → GIF",
@@ -392,7 +402,8 @@
     "avifToJpg": "→ AVIF zu JPG",
     "avifToWebp": "→ AVIF zu WebP",
     "svgToPng": "SVG → PNG",
-    "faviconGenerator": "Favicon-Generator"
+    "faviconGenerator": "Favicon-Generator",
+    "exifRemover": "EXIF-Remover"
   },
   "home": {
     "title": "Kostenlose Online-Entwicklertools",
@@ -496,6 +507,10 @@
       "faviconGenerator": {
         "title": "Favicon-Generator",
         "description": "Ein komplettes 7-Dateien-Favicon-Paket mit ICO, Apple Touch, Android und Web-Manifest generieren."
+      },
+      "exifRemover": {
+        "title": "EXIF-Remover & Datenschutz-Scanner",
+        "description": "Scans Fotos auf GPS-, Geräte- und Zeitstempel-Metadaten, dann alles entfernen. Batch bis zu 10 Dateien."
       }
     }
   },
@@ -4787,6 +4802,210 @@
           }
         }
       }
+    }
+  },
+  "exifRemover": {
+    "title": "Kostenloser Online-EXIF-Remover & Datenschutz-Scanner",
+    "subtitle": "Scans Fotos auf versteckte GPS-, Geräte- und Zeitstempel-Metadaten und entfernt alles mit einem Klick. Einzelne Datei bis 50 MB oder Batch bis 10 Dateien.",
+    "upload": {
+      "title": "Fotos hier ablegen oder klicken zum Durchsuchen",
+      "limit": "Einzelne Datei: bis zu 50 MB · Batch (2–10 Dateien): 10 MB pro Datei",
+      "formats": "Unterstützt JPEG, PNG, WebP, AVIF, TIFF, HEIC/HEIF",
+      "accept": "Nicht unterstütztes Dateiformat. Bitte verwenden Sie JPEG, PNG, WebP, AVIF, TIFF oder HEIC/HEIF.",
+      "tooLargeSingle": "Datei überschreitet {size} — Das Limit für einzelne Dateien beträgt 50 MB.",
+      "tooLargeBatch": "Eine oder mehrere Dateien überschreiten {size} — Der Batch-Modus begrenzt jede Datei auf 10 MB.",
+      "tooMany": "Sie können höchstens {max} Dateien pro Batch hochladen.",
+      "heicUploaded": "Datei erfolgreich hochgeladen"
+    },
+    "status": {
+      "scanning": "Scans Datenschutzmetadaten…",
+      "cleaning": "Entfernt Metadaten…",
+      "scanFailed": "Scan fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "cleanFailed": "Reinigung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "report": {
+      "riskDetected": "Datenschutzmetadaten erkannt",
+      "safetyScoreHint": "Eine niedrigere Punktzahl bedeutet mehr freiliegende Metadaten in diesem Foto.",
+      "gps": {
+        "title": "Aufnahmeort",
+        "altitude": "Höhe",
+        "direction": "Richtung",
+        "mapAlt": "Statische Karte des Fotostandorts"
+      },
+      "device": {
+        "title": "Gerät"
+      },
+      "timestamp": {
+        "title": "Aufgenommen am"
+      },
+      "software": {
+        "title": "Software"
+      }
+    },
+    "noRisk": {
+      "title": "Dieses Foto ist bereits bereinigt",
+      "description": "Keine datenschutzsensitiven Metadaten wurden erkannt. Keine Aktion erforderlich."
+    },
+    "batch": {
+      "title": "Scan-Ergebnisse ({count} Dateien)",
+      "riskyCount": "mit Datenschutzrisiko",
+      "cleanCount": "bereits bereinigt"
+    },
+    "tags": {
+      "gps": "GPS",
+      "device": "Gerät",
+      "time": "Zeitstempel",
+      "software": "Software",
+      "clean": "Bereinigt"
+    },
+    "actions": {
+      "clean": "Alle Metadaten entfernen",
+      "cleanAll": "Alles bereinigen und ZIP herunterladen",
+      "download": "{filename} herunterladen",
+      "verifyAgain": "Mit einem anderen Upload überprüfen",
+      "chooseAgain": "Erneut wählen",
+      "retry": "Erneut versuchen",
+      "downloadMeta": "Metadaten herunterladen"
+    },
+    "done": {
+      "title": "Alle Metadaten entfernt",
+      "descriptionSingle": "Die bereinigte Datei behält das Original-Format mit null Qualitätsverlust für HEIC und ICC-bewahrt für andere Formate.",
+      "descriptionBatch": "Alle Dateien wurden bereinigt und als cleaned.zip mit Originalzeilennamen verpackt.",
+      "verifyTip": "Tipp: Laden Sie die heruntergeladene Datei erneut in das Tool hoch — der Scan sollte melden, dass sie bereinigt ist."
+    },
+    "seo": {
+      "api": {
+        "title": "Verwenden Sie die EXIF-Removal-API",
+        "content": "Stripps oder scans Foto-Metadaten serverseitig mit einem einzelnen HTTP-Aufruf. Der /scan-Endpunkt gibt einen strukturierten JSON-Bericht jedes gefundenen Datenschutzrisikos zurück; /clean gibt das bereinigte Binärbild im Original-Format mit entfernten Metadaten zurück. Batch-Endpunkte akzeptieren bis zu 10 Dateien und geben ein ZIP-Archiv zurück — Keine Client-seitige Verarbeitung, keine Dateispeicherung.",
+        "content2": "Typische Anwendungen: automatisierte Datenschutzbereinigung vor Cloud-Upload, Marketplace-Listing-Pipelines, die GPS vor der Veröffentlichung entfernen müssen, journalistische Arbeitsabläufe, die quellenfreie Fotos benötigen, und Mobile Apps, die einen leichtgewichtigen Server-seitigen Metadaten-Scanner ohne lokale ExifTool-Einbettung wünschen.",
+        "cta": "Siehe API auf RapidAPI",
+        "tutorial": "Lesen Sie das vollständige Tutorial",
+        "features": {
+          "title": "API-Highlights",
+          "endpoints": "POST /scan + /clean (einzelne Datei, bis zu 50 MB) und POST /batch/scan + /batch/clean (bis zu 10 Dateien, 10 MB jede)",
+          "input": "Multipart-Bild-Upload — JPEG, PNG, WebP, AVIF, TIFF, HEIC/HEIF",
+          "params": "file (einzeln) oder files[] (batch); keine Qualitätsparameter — Format und Qualität werden beibehalten",
+          "limit": "50 MB pro Datei (Einzelmodus) · 10 MB pro Datei / 10 Dateien max. (Batch-Modus)",
+          "formats": "Alle Eingabeformate bleiben in der Ausgabe erhalten — HEIC in → HEIC raus, JPEG in → JPEG raus",
+          "response": "JSON-Datenschutzbericht (scan) · Binäres bereinigtes Bild (einzeln bereinigt) · application/zip-Archiv (batch bereinigt)"
+        }
+      },
+      "whatIs": {
+        "title": "Was ist EXIF-Metadaten und warum sollte man sie entfernen?",
+        "content": "EXIF (Exchangeable Image File Format) sind versteckte Daten, die stillschweigend in fast jedem Foto eingebettet werden, das Ihr Telefon oder Ihre Kamera aufnimmt. Sie speichert die genauen GPS-Koordinaten des Ortes, an dem das Foto aufgenommen wurde, Gerätehersteller und Modell, Kameraeinstellungen, Zeitstempel bis zur Sekunde und sogar welche Software die Datei zuletzt bearbeitet hat. Diese Metadaten sind unsichtbar, wenn Sie das Bild ansehen, aber sie reisen mit der Datei überall hin — angefügt an jeden Upload, jede E-Mail, jede Nachricht, die Sie teilen.",
+        "content2": "Für die meisten Menschen sind die GPS-Koordinaten der beunruhigende Teil. Ein einzelnes Urlaubsfoto, das online gepostet wird, kann Ihre Heimatadresse offenlegen, wenn es in Ihrem Garten aufgenommen wurde. Ein Produktfoto auf einem Marktplatz offenbart, wo Sie wohnen. Ein mit einem Fremden geteiltes Porträt offenbart den Raum, in dem Sie waren. Gerätebezeichner fingerabdrucken Sie zusätzlich über mehrere Uploads hinweg, sodass jeder anonyme Beiträge wieder auf die gleiche Kamera zurückverfolgen kann.",
+        "content3": "Dieses Tool entfernt jeden EXIF-Tag von Ihrem Foto und hält das Bild visuell identisch. Für HEIC-Dateien führt es eine Metadaten-Entfernung auf Binärebene durch, ohne wieder zu codieren, sodass die ursprüngliche Kompressionsqualität perfekt bewahrt bleibt. Für andere Formate wird durch eine Pipeline neu codiert, die das ICC-Farbprofil vor der Reinigung extrahiert und danach wieder einbettet, sodass Ihre Farben nie verschoben werden."
+      },
+      "whyRemove": {
+        "title": "Welche Datenschutzrisiken offenbaren Fotomedaten?",
+        "content": "GPS-Koordinaten sind auf etwa 10 Meter genau — genug, um das genaue Haus, den spezifischen Raum in einem Bürogebäude oder den Tisch in einem Restaurant zu identifizieren. Kombiniert mit einem Zeitstempel, der auf die Sekunde genau ist, offenbart ein einzelnes Foto, wo Sie waren, wann Sie dort waren, und für viele moderne Telefone, in welche Richtung Sie blickten. Bedrohungsakteure haben diese Daten verwendet, um Personen zu verfolgen, tägliche Routinen zu kartografieren und sichere Häuser aus Fotos zu identifizieren, die von wohlgesinnten Unterstützern gepostet wurden.",
+        "content2": "Gerätemetadaten sind ein subtilerer, aber anhaltender Tracker. Die Kombination von Kamerahersteller, Modell und Seriennummer erzeugt einen Hardware-Fingerabdruck, der in jedem Foto von diesem Gerät identisch bleibt. Plattformen und Datenmakler verwenden diesen Fingerabdruck, um Konten zu korrelieren: Das anonyme Foto, das Sie auf einem Forum gepostet haben, und das Produktfoto auf Ihrem Marktplatz-Listing können dem gleichen Gerät zugeordnet werden, auch wenn Sie unterschiedliche Namen verwendet haben. Software-Tags offenbaren zusätzlich Ihren Bearbeitungs-Workflow — welche Version von Photoshop, Lightroom oder Mobile App die Datei bearbeitet hat — und zeichnen ein detailliertes Bild Ihrer Tools für jeden, der aufpasst."
+      },
+      "howTo": {
+        "title": "Wie man EXIF-Metadaten aus Fotos entfernt",
+        "step1": {
+          "title": "1. Laden Sie Ihre Fotos hoch",
+          "content": "Laden Sie ein Foto (bis zu 50 MB) hoch oder legen Sie einen Batch von 2–10 Fotos (jeweils bis zu 10 MB) ab. Das Tool akzeptiert JPEG, PNG, WebP, AVIF, TIFF und HEIC/HEIF — das gleiche HEIC-Format, das iPhone-Kameras standardmäßig produzieren. Dieses Tool ist für Desktop-Browser konzipiert; Mobile Browser werden nicht offiziell unterstützt und funktionieren möglicherweise nicht korrekt aufgrund von Plattform-Level-Dateiverwaltungsbeschränkungen."
+        },
+        "step2": {
+          "title": "2. Überprüfen Sie den Datenschutz-Scan",
+          "content": "Das Tool scans die Datei automatisch und zeigt genau, welche Datenschutzmetadaten eingebettet sind. Für einzelne Fotos mit GPS-Daten zeigt eine interaktive OpenStreetMap-Vorschau den Aufnahmeort mit einem roten Marker an. Geräte-, Zeitstempel- und Software-Felder sind unten aufgelistet, jeweils mit seiner eigenen Datenschutz-Impact-Gewichtung. Ein numerischer Sicherheitsscore von 0–100 fasst das Gesamtexpositionsniveau zusammen."
+        },
+        "step3": {
+          "title": "3. Alle Metadaten entfernen",
+          "content": "Klicken Sie auf Alle Metadaten entfernen, um alles in einem Durchgang zu entfernen. HEIC-Dateien werden über einen Binär-Level-ExifTool-Pfad verarbeitet, der die komprimierten Pixel völlig unberührt lässt — null Qualitätsverlust, null Neucodierung. Alle anderen Formate durchlaufen eine ICC-Profil-bewusste Neucodierungs-Pipeline: Das eingebettete Farbprofil wird vor der Reinigung extrahiert und danach wieder eingebettet, sodass Ihre Grüntöne Grün bleiben und Ihre Himmel blau bleiben."
+        },
+        "step4": {
+          "title": "4. Laden Sie die bereinigte Datei herunter",
+          "content": "Laden Sie die bereinigte Datei herunter — gleich Format wie die Eingabe, mit einem Sicherheitsscore von 100/100. Um zu überprüfen, ob die Bereinigung funktioniert hat, legen Sie einfach die heruntergeladene Datei erneut in das Tool — der zweite Scan sollte null Metadaten melden. Im Batch-Modus werden alle bereinigten Dateien in einem einzigen cleaned.zip-Archiv mit erhaltenen Originalzeilennamen verpackt, bereit für den direkten Upload in soziale Medien, Marktplätze oder E-Mail-Anhänge."
+        }
+      },
+      "features": {
+        "title": "Warum dieser EXIF-Cleaner unterschiedlich ist",
+        "items": {
+          "heicLossless": {
+            "title": "HEIC-Reinigung verlustfrei",
+            "content": "HEIC wird auf Binärebene über ExifTool gereinigt, anstatt über einen HEIC-Encoder neu codiert zu werden. Die komprimierten Pixel-Daten werden niemals berührt, sodass Sie genau die gleiche visuelle Qualität wie das Original erhalten — anders als die meisten Online-Tools, die HEIC stillschweigend neu kodieren und generationsbezogene Kompressionsartefakte einführen."
+          },
+          "iccPreserved": {
+            "title": "ICC-Farbprofil beibehalten",
+            "content": "Für JPEG, PNG, WebP, AVIF und TIFF wird das ICC-Farbprofil vor dem Metadaten-Strip extrahiert und in die bereinigte Ausgabe wieder eingebettet. Dies verhindert subtile, aber merkliche Farbverschiebungen (ausgewaschene Himmel, entsättigte Hauttöne), die auftreten, wenn naiv arbeitende Tools alle Metadaten einschließlich des Farbprofils entfernen."
+          },
+          "formatKept": {
+            "title": "Originalformat beibehalten",
+            "content": "Das Ausgabe-Format entspricht immer genau dem Eingabe-Format. JPEG rein → JPEG raus. HEIC rein → HEIC raus. Es gibt keine stillschweigende Konvertierung in ein kompatibleres Format, da Datenschutz-Reinigung und Format-Konvertierung zwei separate Operationen sind, die niemals gebündelt werden sollten."
+          },
+          "batch": {
+            "title": "Batch bis zu 10 Dateien",
+            "content": "Der Batch-Modus akzeptiert bis zu 10 Dateien gleichzeitig und gibt sie alle in einem einzigen cleaned.zip-Archiv verpackt zurück. Perfekt zum Verarbeiten eines ganzen Fotoalbums vor dem Teilen oder zum Bereinigen eines Satzes von Produktfotos, bevor sie auf einem Marktplatz aufgelistet werden."
+          },
+          "free": {
+            "title": "Kostenlos für gelegentliche Nutzung",
+            "content": "Drei kostenlose Bereinigungssitzungen pro 24-Stunden-Browserfenster, kein Konto erforderlich und keine Anmelde-Reibung. Für High-Volume-automatisierte Arbeitsabläufe stellt die RapidAPI-Auflistung die gleiche Pipeline mit 29 US-Dollar/Monat für 10.000 Aufrufe einschließlich Batch-Endpunkte zur Verfügung."
+          },
+          "privacy": {
+            "title": "Nur im Speicher — Keine Speicherung",
+            "content": "Hochgeladene Dateien werden nur während der Scan- und Reinigungsoperation im Serverspeicher gehalten und dann verworfen. Nichts wird auf die Festplatte geschrieben, keine Bildinhalte werden protokolliert, und kein Foto verlässt jemals den zustandslosen Cloud Run us-central1-Container, in dem es verarbeitet wurde."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Wann Sie EXIF vor dem Teilen entfernen sollten",
+        "items": {
+          "social": {
+            "title": "Social Media Sharing",
+            "content": "Bevor Sie Fotos auf Social-Plattformen posten, besonders solche, die herunterladbare Originale wie Flickr, Imgur oder Direct-Link-Image-Hosts offenlegen. Sogar Plattformen, die behaupten, Metadaten beim Upload zu entfernen, lecken manchmal GPS über andere Kanäle — das Client-seitige Entfernen garantiert zunächst, dass nichts Sensibles Ihr Gerät verlässt."
+          },
+          "marketplace": {
+            "title": "Online-Marktplatz-Angebote",
+            "content": "Beim Auflisten von Gegenständen auf Marktplätzen wie eBay, Craigslist, Facebook Marketplace oder Mercari. Produktfotos, die zu Hause aufgenommen wurden, betten Ihre GPS-Koordinaten direkt in das Angebotsfoto ein, und geben jedem potenziellen Käufer eine genaue Route zu Ihrer Haustür. Entfernen Sie es vor dem Hochladen und schützen Sie Ihre Heimatadresse."
+          },
+          "album": {
+            "title": "Freigegebene Fotoenalben",
+            "content": "Bevor Sie Urlaubs-Fotoenlben über Cloud-Links (Dropbox, Google Drive, iCloud Photos) mit jemandem außerhalb Ihrer unmittelbaren Familie teilen. Gemeinsame Links verbreiten sich oft unvorhersehbar, und jedes Foto in dem Album trägt unabhängige GPS-Daten — Ein gemeinsamer Link zu 50 Urlaubsfotos kartographiert genau, wo Sie jede Nacht Ihres Urlaubs übernachtet haben."
+          },
+          "journalism": {
+            "title": "Journalismus & Vertrauliche Quellen",
+            "content": "Für Journalisten, Forscher und Whistleblower, die mit vertraulichem Quellenmaterial umgehen. Fotos von Dokumenten, Orten oder Informanten tragen eingebettete Beweise dafür, wo und wann sie aufgenommen wurden, welches Gerät sie aufnahm und welche Bearbeitungssoftware sie verarbeitete. Das Entfernen dieser Metadaten ist ein nicht verhandelbarer Schritt in jedem Operational-Security-Workflow."
+          }
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "items": {
+          "whatIsMetadata": {
+            "q": "Was genau ist Foto-Metadaten?",
+            "a": "Foto-Metadaten — bekannt als EXIF, IPTC und XMP-Tags — sind strukturierte Daten, die in der Bilddatei selbst eingebettet sind, getrennt von den sichtbaren Pixel-Daten. Sie umfasst GPS-Breitengrad/Längengrad, Erfassungs-Zeitstempel, Kamera-Hersteller und Modell, Objektiv-Informationen, ISO/Verschlusszeit/Blenden-Einstellungen, Bearbeitungsverlauf, Software-Versionen und manchmal sogar Miniatur-Vorschauen oder Drohnenflugpfade. All das reist stillschweigend mit der Datei mit, wann immer Sie es teilen."
+          },
+          "heicQuality": {
+            "q": "Wird die Reinigung von HEIC die Bildqualität verringern?",
+            "a": "Nein — HEIC-Reinigung ist vollständig verlustfrei in diesem Tool. Wir verwenden ExifTool, um Metadaten auf Binärebene zu entfernen, ohne die komprimierten Pixel-Daten zu berühren, was bedeutet, dass die Ausgabe in jedem Bereich außer den Metadaten-Boxen bit-für-bit identisch mit dem Original ist. Dies ist anders als die meisten Konkurrenten, die HEIC über einen verlustbehafteten HEIC-Encoder neu codieren und subtile Qualitätsverluste einführen. Überprüfen Sie es selbst: die bereinigte Datei hat die gleichen Abmessungen und ist fast identisch in der Größe des Originals."
+          },
+          "colorShift": {
+            "q": "Werden meine Farben nach der Reinigung anders aussehen?",
+            "a": "Nein — ICC-Farbprofile werden beibehalten. Für JPEG, PNG, WebP, AVIF und TIFF extrahieren wir das eingebettete ICC-Profil (zum Beispiel sRGB, Display P3, Adobe RGB) vor dem Entfernen von Metadaten und betten es in die bereinigte Datei wieder ein. Dies bedeutet, dass Fotos, die in Wide-Gamut-Workspaces bearbeitet wurden, und die mit Display P3 exportiert wurden, auf kompatiblen Displays weiterhin korrekt angezeigt werden. HEIC-Dateien behalten ihr Originalprofile automatisch bei, da keine Neucodierung stattfindet."
+          },
+          "mobileSupport": {
+            "q": "Funktioniert dieses Tool in Mobile-Browsern?",
+            "a": "Dieses Tool ist für Desktop-Browser konzipiert und wir garantieren keine Mobile-Kompatibilität. Mobile-Betriebssysteme erlegen Plattform-Level-Beschränkungen für die Dateiverwaltung auf — beispielsweise konvertiert iOS Safari stillschweigend HEIC-Fotos zu JPEG, wenn Sie aus dem Kamera-Roll auswählen, was HEIC-spezifische Arbeitsabläufe bricht. Für vollständige Funktionalität verwenden Sie bitte dieses Tool auf einem Desktop- oder Laptop-Browser mit direktem Dateisystem-Zugriff."
+          },
+          "storage": {
+            "q": "Speichern Sie meine hochgeladenen Fotos?",
+            "a": "Nein — Ihre Fotos werden nur während der Scan- und Reinigungs-Operationen, typischerweise 1–3 Sekunden, im Serverspeicher gehalten und dann sofort verworfen. Nichts wird auf die Festplatte geschrieben, keine Bildinhalte werden protokolliert, keine Hashes oder Fingerabdrücke werden beibehalten. Die Verarbeitung läuft auf zustandslosen Cloud Run-Containern, die unabhängig von jeder einzelnen Anfrage zerstört und neu erstellt werden. Wir haben keine technische Möglichkeit, Ihre Fotos nach dem Streaming der Antwort zurück an Ihren Browser zu speichern, zu indizieren oder abzurufen."
+          },
+          "batchHowMany": {
+            "q": "Wie viele Dateien kann ich in einem Batch bereinigen?",
+            "a": "Bis zu 10 Dateien pro Batch, mit jede Datei auf 10 MB begrenzt. Für Batches von 2–10 Dateien verwendet das Tool die Batch-Endpunkte, die ein einzelnes cleaned.zip-Archiv mit erhaltenen Originalzeilennamen zurückgeben. Für eine einzelne Datei können Sie bis zu 50 MB gehen und die bereinigte Ausgabe lädt direkt in ihrem Original-Format herunter — keine ZIP-Umhüllung. Legen Sie 1 Datei für das volle 50-MB-Limit ab; legen Sie 2 oder mehr für Batch-Modus ab."
+          }
+        }
+      }
+    },
+    "adModal": {
+      "title": "🥺 Bitte unterstützen Sie uns. 🌸",
+      "description": "Entsperren Sie 3 weitere kostenlose Reinigungen, indem Sie unsere Artikel lesen. Vielen Dank, dass Sie dieses kostenlose Tool unterstützen!",
+      "remaining": "{count} kostenlose Reinigung verbleibend | {count} kostenlose Reinigungen verbleibend",
+      "watch": "Bestätigen",
+      "close": "Schließen"
     }
   }
 }

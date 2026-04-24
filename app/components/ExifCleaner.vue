@@ -3,6 +3,7 @@ const FREE_LIMIT = 3
 const cleanCount = useCookie<number>('exif_clean_count', { default: () => 0, maxAge: 60 * 60 * 24 })
 const remainingUses = computed(() => Math.max(0, FREE_LIMIT - cleanCount.value))
 const showAdModal = ref(false)
+const pendingAction = ref<(() => void) | null>(null)
 const { openDirectLink } = useMonetagDirectLink()
 
 interface GpsSummary {
@@ -160,6 +161,11 @@ async function runScan() {
 }
 
 async function runClean() {
+  if (cleanCount.value >= FREE_LIMIT) {
+    pendingAction.value = () => runClean()
+    showAdModal.value = true
+    return
+  }
   status.value = 'cleaning'
   try {
     const formData = new FormData()
@@ -219,11 +225,8 @@ function downloadCleaned() {
   document.body.removeChild(a)
 }
 
-function downloadMetadata() {
+function _executeDownloadMetadata() {
   const isSingle = !!singleReport.value
-  const isBatchData = batchReports.value.length > 0
-  if (!isSingle && !isBatchData) return
-
   let data: unknown
   let filename: string
   if (isSingle) {
@@ -253,20 +256,38 @@ function downloadMetadata() {
 
   cleanCount.value++
   if (cleanCount.value >= FREE_LIMIT) {
-    useDownloadStore().setBlob(blob, filename)
     showAdModal.value = true
   }
+}
+
+function downloadMetadata() {
+  const isSingle = !!singleReport.value
+  const isBatchData = batchReports.value.length > 0
+  if (!isSingle && !isBatchData) return
+
+  if (cleanCount.value >= FREE_LIMIT) {
+    pendingAction.value = () => _executeDownloadMetadata()
+    showAdModal.value = true
+    return
+  }
+  _executeDownloadMetadata()
 }
 
 function onAdConfirm() {
   showAdModal.value = false
   cleanCount.value = 0
   openDirectLink()
-  const localePath = useLocalePath()
-  navigateTo({
-    path: localePath('/download'),
-    query: { from: localePath('/tools/exif-remover') }
-  })
+  if (pendingAction.value) {
+    const action = pendingAction.value
+    pendingAction.value = null
+    action()
+  } else {
+    const localePath = useLocalePath()
+    navigateTo({
+      path: localePath('/download'),
+      query: { from: localePath('/tools/exif-remover') }
+    })
+  }
 }
 
 function reset() {
