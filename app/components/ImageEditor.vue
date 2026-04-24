@@ -154,7 +154,7 @@ function tabIcon(tab: Tab): string {
 function onTabChange(tab: Tab) {
   if (activeTab.value === 'crop' && cropperRef.value) {
     const result = cropperRef.value.getResult()
-    if (result?.coordinates) {
+    if (result?.coordinates && result.coordinates.width > 0 && result.coordinates.height > 0) {
       cropCoords.value = {
         left: Math.round(result.coordinates.left),
         top: Math.round(result.coordinates.top),
@@ -178,6 +178,12 @@ function onCropChange({ coordinates }: { coordinates: CropCoords }) {
 
 function setAspectRatio(ratio: number | undefined) {
   cropAspectRatio.value = ratio
+}
+
+function resetCrop() {
+  cropAspectRatio.value = undefined
+  cropCoords.value = { left: 0, top: 0, width: originalImage.value?.naturalWidth ?? 0, height: originalImage.value?.naturalHeight ?? 0 }
+  cropperRef.value?.reset()
 }
 
 const imageSrc = ref('')
@@ -235,6 +241,9 @@ function handleDownload() {
                 class="w-full h-full min-h-64"
                 @change="onCropChange"
               />
+              <template #fallback>
+                <div class="w-full h-full min-h-64 bg-muted/20 animate-pulse rounded-lg" />
+              </template>
             </ClientOnly>
           </div>
 
@@ -307,7 +316,7 @@ function handleDownload() {
                 color="neutral"
                 variant="outline"
                 class="w-full justify-center"
-                @click="cropAspectRatio = undefined; cropCoords = { left: 0, top: 0, width: originalImage?.naturalWidth ?? 0, height: originalImage?.naturalHeight ?? 0 }"
+                @click="resetCrop"
               />
             </template>
 
