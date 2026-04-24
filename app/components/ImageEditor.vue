@@ -152,9 +152,9 @@ function renderToCanvas(canvas: HTMLCanvasElement) {
   ctx.clearRect(0, 0, outW, outH)
   ctx.save()
   ctx.translate(outW / 2, outH / 2)
-  ctx.rotate(rad)
   if (flipH.value) ctx.scale(-1, 1)
   if (flipV.value) ctx.scale(1, -1)
+  ctx.rotate(rad)
   ctx.drawImage(img, cx, cy, cw, ch, -outW / 2, -outH / 2, outW, outH)
   ctx.restore()
 }
@@ -162,8 +162,8 @@ function renderToCanvas(canvas: HTMLCanvasElement) {
 function renderPreview() {
   const canvas = previewCanvasEl.value
   if (!canvas || !originalImage.value) return
-  canvas.width = resizeWidth.value || originalImage.value.naturalWidth
-  canvas.height = resizeHeight.value || originalImage.value.naturalHeight
+  canvas.width = Math.max(1, resizeWidth.value || originalImage.value.naturalWidth)
+  canvas.height = Math.max(1, resizeHeight.value || originalImage.value.naturalHeight)
   renderToCanvas(canvas)
 }
 
@@ -180,7 +180,12 @@ function buildOutputBlob(): Promise<Blob> {
   const canvas = buildOutputCanvas()
   const mime = outputMime.value
   const q = outputFormat.value === 'png' ? undefined : quality.value / 100
-  return new Promise(resolve => canvas.toBlob(blob => resolve(blob!), mime, q))
+  return new Promise((resolve, reject) =>
+    canvas.toBlob(blob => {
+      if (blob) resolve(blob)
+      else reject(new Error('Canvas export failed — image may be too large'))
+    }, mime, q)
+  )
 }
 
 function getOutputFilename(): string {
