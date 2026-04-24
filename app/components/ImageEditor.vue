@@ -294,8 +294,45 @@ watch(originalFile, (f, oldF) => {
 
 onBeforeUnmount(() => { if (imageSrc.value) URL.revokeObjectURL(imageSrc.value) })
 
-function handleDownload() {
-  // implemented in Task 10
+function doDirectDownload(blob: Blob) {
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = getOutputFilename()
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
+}
+
+async function handleDownload() {
+  if (!originalImage.value) return
+
+  if (downloadCount.value >= FREE_LIMIT) {
+    showAdModal.value = true
+    return
+  }
+
+  const blob = await buildOutputBlob()
+  doDirectDownload(blob)
+  downloadCount.value++
+
+  if (downloadCount.value >= FREE_LIMIT) {
+    useDownloadStore().setBlob(blob, getOutputFilename())
+    showAdModal.value = true
+  }
+}
+
+async function onAdConfirm() {
+  showAdModal.value = false
+  downloadCount.value = 0
+  openDirectLink()
+  const blob = await buildOutputBlob()
+  useDownloadStore().setBlob(blob, getOutputFilename())
+  navigateTo({
+    path: localePath('/download'),
+    query: { from: localePath('/tools/image-editor') }
+  })
 }
 </script>
 
@@ -533,5 +570,20 @@ function handleDownload() {
 
       </div>
     </div>
+
+    <!-- Ad Modal -->
+    <UModal v-model:open="showAdModal">
+      <template #content>
+        <div class="p-6 text-center space-y-4">
+          <UIcon name="i-lucide-heart" class="text-4xl text-primary mx-auto" />
+          <h3 class="text-lg font-bold">{{ t('imageEditor.adModal.title') }}</h3>
+          <p class="text-sm text-muted">{{ t('imageEditor.adModal.description') }}</p>
+          <div class="flex justify-center gap-3 pt-2">
+            <UButton :label="t('imageEditor.adModal.watch')" size="lg" @click="onAdConfirm" />
+            <UButton :label="t('imageEditor.adModal.close')" color="neutral" variant="outline" size="lg" @click="showAdModal = false" />
+          </div>
+        </div>
+      </template>
+    </UModal>
   </div>
 </template>
