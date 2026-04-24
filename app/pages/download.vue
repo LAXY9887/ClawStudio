@@ -9,6 +9,7 @@ const returnPath = computed(() => (route.query.from as string) || localePath('/'
 // Detect which tool the user came from
 const toolKey = computed(() => {
   const from = returnPath.value
+  if (from.includes('exif-remover')) return 'exifRemover'
   if (from.includes('png-to-avif')) return 'pngToAvif'
   if (from.includes('jpg-to-avif')) return 'jpgToAvif'
   if (from.includes('webp-to-avif')) return 'webpToAvif'
@@ -38,6 +39,7 @@ const toolKey = computed(() => {
 
 const tipCount = computed(() => {
   const counts: Record<string, number> = {
+    exifRemover: 4,
     gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4, splitSpritesheet: 5,
     heicToJpg: 4, heicToPng: 4, heicToWebp: 4, jpgToHeic: 4, pngToHeic: 4, webpToHeic: 4,
     pngToJpg: 4, jpgToPng: 4, pngToWebp: 4, webpToPng: 4, jpgToWebp: 4, webpToJpg: 4,
@@ -48,6 +50,7 @@ const tipCount = computed(() => {
 })
 
 const apiUrl = computed(() => {
+  if (toolKey.value === 'exifRemover') return 'https://rapidapi.com/lxya98874322688423/api/easy-photo-exif-extraction-removal'
   const pngTools = ['pngToSpritesheet', 'pngTrim', 'splitSpritesheet']
   const uniimgcTools = [
     'heicToJpg', 'heicToPng', 'heicToWebp', 'jpgToHeic', 'pngToHeic', 'webpToHeic',

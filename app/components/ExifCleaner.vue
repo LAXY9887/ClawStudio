@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const FREE_LIMIT = 3
+const cleanCount = useCookie<number>('exif_clean_count', { default: () => 0, maxAge: 60 * 60 * 24 })
+const { openDirectLink } = useMonetagDirectLink()
+
 interface GpsSummary {
   lat: number
   lng: number
@@ -189,6 +193,19 @@ async function runClean() {
 
     if (cleanedUrl.value) URL.revokeObjectURL(cleanedUrl.value)
     cleanedUrl.value = URL.createObjectURL(cleanedBlob.value)
+
+    cleanCount.value++
+    if (cleanCount.value > FREE_LIMIT) {
+      const store = useDownloadStore()
+      store.setBlob(cleanedBlob.value!, cleanedFilename.value)
+      openDirectLink()
+      const localePath = useLocalePath()
+      navigateTo({
+        path: localePath('/download'),
+        query: { from: localePath('/tools/exif-remover') }
+      })
+      return
+    }
     status.value = 'done'
   } catch (e) {
     console.error(e)
@@ -363,8 +380,20 @@ onBeforeUnmount(() => {
           <p class="text-xs text-muted">
             {{ formatSize(files[0]?.size || 0) }}
           </p>
+          <p v-if="!previewUrls[0]" class="text-xs text-success flex items-center gap-1 mt-0.5">
+            <UIcon name="i-lucide-check-circle" class="text-sm shrink-0" />
+            {{ t('exifRemover.upload.heicUploaded') }}
+          </p>
         </div>
-        <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        <div class="flex items-center gap-2 shrink-0">
+          <UButton
+            :label="t('exifRemover.actions.clean')"
+            icon="i-lucide-eraser"
+            size="xs"
+            @click="runClean"
+          />
+          <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        </div>
       </div>
 
       <!-- Safety score -->
@@ -443,24 +472,23 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <!-- Clean button -->
-      <div class="flex justify-end">
-        <UButton
-          :label="t('exifRemover.actions.clean')"
-          icon="i-lucide-eraser"
-          size="lg"
-          @click="runClean"
-        />
-      </div>
     </div>
 
     <!-- BATCH REPORT -->
     <div v-if="status === 'reportBatch'" class="space-y-4">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between gap-2">
         <h3 class="font-semibold text-lg">
           {{ t('exifRemover.batch.title', { count: batchStats.total }) }}
         </h3>
-        <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        <div class="flex items-center gap-2 shrink-0">
+          <UButton
+            :label="t('exifRemover.actions.cleanAll')"
+            icon="i-lucide-eraser"
+            size="xs"
+            @click="runClean"
+          />
+          <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-3">
@@ -509,14 +537,6 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="flex justify-end">
-        <UButton
-          :label="t('exifRemover.actions.cleanAll')"
-          icon="i-lucide-eraser"
-          size="lg"
-          @click="runClean"
-        />
-      </div>
     </div>
 
     <!-- CLEANING -->

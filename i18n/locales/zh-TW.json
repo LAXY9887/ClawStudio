@@ -346,6 +346,15 @@
         "完整保留 alpha 透明 —— 適合把 AVIF logo 或 UI 素材轉為相容性更廣的 WebP。",
         "正式網站想要最佳覆蓋率：用 picture 元素提供 AVIF 主源 + WebP fallback + JPG 最終 fallback。"
       ]
+    },
+    "exifRemover": {
+      "tipsTitle": "等待期間的隱私小知識",
+      "tips": [
+        "**HEIC 清理完全無損** —— ExifTool 在二進位層級直接去除 metadata 標籤，像素資料完全未動。輸出檔案與原始檔逐位元完全一致，只有 metadata 區塊被移除。",
+        "**GPS 座標精確到約 10 公尺** —— 一張未清理、在家中拍攝的照片足以把你的住家門牌號碼精確到任何下載者面前。",
+        "**設備指紋跨平台持續存在** —— 相機廠牌、型號與序號在同一台設備拍攝的每一張照片中都相同，資料仲介商用這組指紋把你匿名發的貼文串連回你的真實身份。",
+        "**ICC 色彩設定檔完整保留** —— JPEG、PNG、WebP、AVIF、TIFF 的輸出檔案保留嵌入的色彩空間（sRGB、Display P3、Adobe RGB），廣色域照片清理後在相容顯示器上仍能正確呈現。"
+      ]
     }
   },
   "error": {
@@ -3066,7 +3075,8 @@
       "accept": "不支援的檔案格式。請使用 JPEG、PNG、WebP、AVIF、TIFF 或 HEIC/HEIF。",
       "tooLargeSingle": "檔案超過 {size} —— 單張上限為 50 MB。",
       "tooLargeBatch": "有檔案超過 {size} —— 批次模式每張上限為 10 MB。",
-      "tooMany": "一次最多只能上傳 {max} 張。"
+      "tooMany": "一次最多只能上傳 {max} 張。",
+      "heicUploaded": "檔案已成功上傳"
     },
     "status": {
       "scanning": "正在掃描隱私 metadata…",
@@ -3118,6 +3128,22 @@
       "verifyTip": "提示：把下載的檔案再上傳一次 —— 第二次掃描應顯示為乾淨。"
     },
     "seo": {
+      "api": {
+        "title": "使用 EXIF 清除 API",
+        "content": "透過單一 HTTP 呼叫在伺服器端掃描或清除照片 metadata。/scan 端點回傳結構化 JSON 隱私風險報告；/clean 端點回傳已清除 metadata 的原格式二進位圖片。批次端點一次接受最多 10 張，回傳 ZIP 壓縮包 —— 無需客戶端處理，不保留任何檔案。",
+        "content2": "典型使用情境：雲端上傳前自動化隱私清理、上架前必須去除 GPS 的電商商品照處理管線、需要無溯源來源照片的新聞工作流程，以及不想在本地嵌入 ExifTool 卻需要輕量伺服器端 metadata 掃描器的行動 App。",
+        "cta": "在 RapidAPI 查看 API",
+        "tutorial": "閱讀完整教學",
+        "features": {
+          "title": "API 重點規格",
+          "endpoints": "POST /scan + /clean（單張，最大 50 MB）及 POST /batch/scan + /batch/clean（最多 10 張，每張 10 MB）",
+          "input": "Multipart 圖片上傳 —— JPEG、PNG、WebP、AVIF、TIFF、HEIC/HEIF",
+          "params": "file（單張）或 files[]（批次）；無品質參數 —— 格式與品質完整保留",
+          "limit": "單張模式每張最大 50 MB · 批次模式每張最大 10 MB，最多 10 張",
+          "formats": "所有輸入格式在輸出中完整保留 —— HEIC 進 → HEIC 出，JPEG 進 → JPEG 出",
+          "response": "JSON 隱私報告（scan）· 二進位清理圖片（單張 clean）· application/zip 壓縮包（批次 clean）"
+        }
+      },
       "whatIs": {
         "title": "什麼是 EXIF metadata？為什麼要清除？",
         "content": "EXIF（Exchangeable Image File Format）是你手機或相機拍下的幾乎每一張照片中悄悄嵌入的隱藏資料。它會記錄照片拍攝地的精確 GPS 座標、設備廠牌與型號、相機設定、精確到秒的時間戳記，甚至包含最後一次編輯檔案使用的軟體名稱。這些 metadata 在你瀏覽圖片時完全看不見，但會跟著檔案走 —— 附加在每一次上傳、每一封信件、每一則你分享的訊息上。",

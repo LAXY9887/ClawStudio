@@ -346,6 +346,15 @@
         "Full alpha transparency is preserved — great for converting AVIF logos or UI assets to broadly compatible WebP.",
         "For production sites wanting best coverage, serve AVIF primary + WebP fallback + JPG fallback via picture element."
       ]
+    },
+    "exifRemover": {
+      "tipsTitle": "Privacy Tips While You Wait",
+      "tips": [
+        "**HEIC cleaning is fully lossless** — ExifTool strips metadata at the binary level without re-encoding a single pixel. The output is bit-for-bit identical to the original except for the metadata boxes.",
+        "**GPS coordinates are accurate to ~10 metres** — a single unstripped photo taken at home can pinpoint your address to anyone who downloads the file.",
+        "**Device fingerprinting persists across platforms** — camera make, model, and serial number stay identical in every photo from that device, letting data brokers link your anonymous posts to your real identity.",
+        "**ICC colour profiles are preserved** — JPEG, PNG, WebP, AVIF, and TIFF outputs keep the embedded colour space (sRGB, Display P3, Adobe RGB) so wide-gamut photos still look correct after cleaning."
+      ]
     }
   },
   "error": {
@@ -3066,7 +3075,8 @@
       "accept": "Unsupported file format. Please use JPEG, PNG, WebP, AVIF, TIFF, or HEIC/HEIF.",
       "tooLargeSingle": "File exceeds {size} — the single-file limit is 50 MB.",
       "tooLargeBatch": "One or more files exceed {size} — batch mode limits each file to 10 MB.",
-      "tooMany": "You can upload at most {max} files per batch."
+      "tooMany": "You can upload at most {max} files per batch.",
+      "heicUploaded": "File uploaded successfully"
     },
     "status": {
       "scanning": "Scanning privacy metadata…",
@@ -3118,6 +3128,22 @@
       "verifyTip": "Tip: upload the downloaded file again — the scan should report it as clean."
     },
     "seo": {
+      "api": {
+        "title": "Use the EXIF Removal API",
+        "content": "Strip or scan photo metadata server-side with a single HTTP call. The /scan endpoint returns a structured JSON report of every privacy risk found; /clean returns the cleaned binary image in the original format with metadata stripped. Batch endpoints accept up to 10 files and return a ZIP archive — no client-side processing, no file retention.",
+        "content2": "Typical uses: automated privacy scrubbing before cloud upload, marketplace listing pipelines that must strip GPS before publishing, journalistic workflows that need provenance-free source photos, and mobile apps that want a lightweight server-side metadata scanner without embedding ExifTool locally.",
+        "cta": "View API on RapidAPI",
+        "tutorial": "Read the Full Tutorial",
+        "features": {
+          "title": "API Highlights",
+          "endpoints": "POST /scan + /clean (single file, up to 50 MB) and POST /batch/scan + /batch/clean (up to 10 files, 10 MB each)",
+          "input": "Multipart image upload — JPEG, PNG, WebP, AVIF, TIFF, HEIC/HEIF",
+          "params": "file (single) or files[] (batch); no quality params — format and quality are preserved",
+          "limit": "50 MB per file (single mode) · 10 MB per file / 10 files max (batch mode)",
+          "formats": "All input formats preserved in output — HEIC in → HEIC out, JPEG in → JPEG out",
+          "response": "JSON privacy report (scan) · Binary cleaned image (single clean) · application/zip archive (batch clean)"
+        }
+      },
       "whatIs": {
         "title": "What is EXIF metadata and why remove it?",
         "content": "EXIF (Exchangeable Image File Format) is hidden data silently embedded in almost every photo your phone or camera takes. It records the exact GPS coordinates of where the photo was captured, the device make and model, camera settings, timestamps down to the second, and even which software last edited the file. This metadata is invisible when you view the image but travels with the file wherever it goes — attached to every upload, every email, every message you share.",
