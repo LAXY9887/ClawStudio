@@ -97,13 +97,19 @@ async function loadFile(f: File) {
     nextTick(() => renderPreview())
     URL.revokeObjectURL(url)
   }
+  img.onerror = () => {
+    URL.revokeObjectURL(url)
+    originalFile.value = null
+    errorMessage.value = t('imageEditor.upload.loadError')
+  }
   img.src = url
 }
 
 function onFileSelect(e: Event) {
   const target = e.target as HTMLInputElement
-  if (target.files?.[0]) loadFile(target.files[0])
+  const f = target.files?.[0]
   target.value = ''
+  if (f) loadFile(f)
 }
 
 function onDrop(e: DragEvent) {
@@ -127,6 +133,8 @@ function reset() {
   quality.value = 85
   estimatedSize.value = ''
   activeTab.value = 'crop'
+  outputFormat.value = 'jpg'
+  originalAspect.value = 1
 }
 
 function renderPreview() {}
@@ -137,9 +145,13 @@ function renderPreview() {}
     <!-- IDLE: drop zone -->
     <div v-if="status === 'idle'">
       <div
+        role="button"
+        tabindex="0"
         class="relative border-2 border-dashed rounded-xl p-16 text-center cursor-pointer transition-colors"
         :class="isDragging ? 'border-primary bg-primary/5' : 'border-muted hover:border-primary/50'"
         @click="fileInput?.click()"
+        @keydown.enter.prevent="fileInput?.click()"
+        @keydown.space.prevent="fileInput?.click()"
         @dragover.prevent="isDragging = true"
         @dragleave.prevent="isDragging = false"
         @drop.prevent="onDrop"
