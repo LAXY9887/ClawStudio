@@ -29,6 +29,8 @@ env:
     secret: NUXT_PNG2SS_SERVICE_URL
   - variable: NUXT_UNIIMGC_SERVICE_URL
     secret: NUXT_UNIIMGC_SERVICE_URL
+  - variable: NUXT_EXIFRM_SERVICE_URL
+    secret: NUXT_EXIFRM_SERVICE_URL
   - variable: NUXT_INTERNAL_KEY
     secret: NUXT_INTERNAL_KEY
   # 廣告供應商覆寫：'adsense' | 'monetag' | 'none'
