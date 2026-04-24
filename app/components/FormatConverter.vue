@@ -103,6 +103,15 @@ function handleFile(f: File) {
 
 const hasInput = computed(() => !!file.value)
 
+const isHeicInput = computed(() => {
+  const f = file.value
+  if (!f) return false
+  const name = f.name.toLowerCase()
+  return name.endsWith('.heic') || name.endsWith('.heif') || f.type === 'image/heic' || f.type === 'image/heif'
+})
+
+const isHeicOutput = computed(() => props.outputExt.toLowerCase() === 'heic' || props.outputExt.toLowerCase() === 'heif')
+
 async function convert() {
   if (!file.value) return
   status.value = 'converting'
@@ -201,8 +210,12 @@ onUnmounted(() => {
     <div v-if="status === 'idle' || status === 'error'">
       <!-- Preview (when file selected) -->
       <div v-if="previewUrl" class="space-y-2">
-        <div class="border border-muted rounded-lg overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:10px_10px] max-h-80 flex items-center justify-center">
-          <img :src="previewUrl" :alt="file?.name" class="max-h-80 max-w-full object-contain">
+        <div class="border border-muted rounded-lg overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:10px_10px] max-h-80 min-h-48 flex flex-col items-center justify-center">
+          <template v-if="isHeicInput">
+            <UIcon name="i-lucide-file-image" class="text-5xl text-muted mb-2" />
+            <p class="text-xs text-muted font-mono tracking-wider">HEIC / HEIF</p>
+          </template>
+          <img v-else :src="previewUrl" :alt="file?.name" class="max-h-80 max-w-full object-contain">
         </div>
         <div class="flex items-center justify-between">
           <p class="text-sm text-muted">{{ file?.name }} · {{ formatSize(file?.size || 0) }}</p>
@@ -272,8 +285,12 @@ onUnmounted(() => {
     <div v-if="status === 'done'" class="space-y-6">
       <div v-if="resultUrl">
         <h3 class="font-semibold text-lg mb-2">{{ t(`${toolKey}.result.title`) }}</h3>
-        <div class="border border-muted rounded-xl overflow-auto bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px]">
-          <img :src="resultUrl" alt="Converted preview" class="max-w-full mx-auto">
+        <div class="border border-muted rounded-xl overflow-auto bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px] min-h-48 flex flex-col items-center justify-center">
+          <template v-if="isHeicOutput">
+            <UIcon name="i-lucide-file-image" class="text-5xl text-muted mb-2" />
+            <p class="text-xs text-muted font-mono tracking-wider">HEIC / HEIF</p>
+          </template>
+          <img v-else :src="resultUrl" alt="Converted preview" class="max-w-full mx-auto">
         </div>
         <p class="text-sm text-muted mt-2">{{ t(`${toolKey}.result.info`, resultInfo) }}</p>
       </div>

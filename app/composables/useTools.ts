@@ -59,6 +59,13 @@ const GROUPS: ToolGroup[] = [
       { key: 'svgToPng', icon: 'i-lucide-palette', to: '/tools/svg-to-png' },
       { key: 'faviconGenerator', icon: 'i-lucide-package', to: '/tools/favicon-generator' }
     ]
+  },
+  {
+    key: 'privacy',
+    icon: 'i-lucide-shield-check',
+    tools: [
+      { key: 'exifRemover', icon: 'i-lucide-shield-check', to: '/tools/exif-remover' }
+    ]
   }
 ]
 

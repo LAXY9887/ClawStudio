@@ -366,7 +366,8 @@
       "sprite": "Sprite & Frame Tools",
       "imageFormat": "Image Format Converters",
       "avif": "AVIF Converters",
-      "vector": "Vector & Icon Tools"
+      "vector": "Vector & Icon Tools",
+      "privacy": "Privacy Tools"
     },
     "gifToSprite": "GIF → Spritesheet",
     "toGif": "PNG → GIF",
@@ -392,7 +393,8 @@
     "avifToJpg": "AVIF → JPG",
     "avifToWebp": "AVIF → WebP",
     "svgToPng": "SVG → PNG",
-    "faviconGenerator": "Favicon Generator"
+    "faviconGenerator": "Favicon Generator",
+    "exifRemover": "EXIF Remover"
   },
   "home": {
     "title": "Free Online Dev Tools",
@@ -496,6 +498,10 @@
       "faviconGenerator": {
         "title": "Favicon Generator",
         "description": "Generate a complete 7-file favicon pack with ICO, Apple Touch, Android, and web manifest."
+      },
+      "exifRemover": {
+        "title": "EXIF Remover & Privacy Scanner",
+        "description": "Scan photos for GPS, device, and timestamp metadata, then strip it all. Batch up to 10 files."
       }
     }
   },
@@ -3046,6 +3052,119 @@
           "quality": { "q": "What quality should I pick?", "a": "Quality 85 is the standard recommendation for WebP fallbacks from AVIF — it approximates AVIF quality 75 in perceived fidelity and produces output in the same visual quality range while being 20–30% larger. Use 90 for hero images or photography-focused contexts where fidelity is prioritized. Use 75–80 for thumbnails and secondary images where bandwidth efficiency matters most." },
           "privacy": { "q": "Is my AVIF stored?", "a": "No — your AVIF is held in server memory only for the duration of the conversion and discarded as soon as the WebP streams to your browser. Nothing is written to disk, no image content is logged, and no account is required. The pipeline runs on stateless Cloud Run containers in us-central1 with no persistent state between requests." },
           "free": { "q": "Is it free?", "a": "Yes — three free conversions per 24-hour browser session with no account required. For generating WebP fallback variants of entire AVIF asset libraries — essential for the picture element AVIF+WebP strategy — the RapidAPI listing provides a monthly free tier and pay-per-use pricing for high-volume workflows." }
+        }
+      }
+    }
+  },
+  "exifRemover": {
+    "title": "Free Online EXIF Remover & Privacy Scanner",
+    "subtitle": "Scan photos for hidden GPS, device, and timestamp metadata, then strip it all in one click. Single file up to 50 MB or batch up to 10 files.",
+    "upload": {
+      "title": "Drop photos here or click to browse",
+      "limit": "Single file: up to 50 MB · Batch (2–10 files): 10 MB per file",
+      "formats": "Supports JPEG, PNG, WebP, AVIF, TIFF, HEIC/HEIF",
+      "accept": "Unsupported file format. Please use JPEG, PNG, WebP, AVIF, TIFF, or HEIC/HEIF.",
+      "tooLargeSingle": "File exceeds {size} — the single-file limit is 50 MB.",
+      "tooLargeBatch": "One or more files exceed {size} — batch mode limits each file to 10 MB.",
+      "tooMany": "You can upload at most {max} files per batch."
+    },
+    "status": {
+      "scanning": "Scanning privacy metadata…",
+      "cleaning": "Stripping metadata…",
+      "scanFailed": "Scan failed. Please try again.",
+      "cleanFailed": "Cleaning failed. Please try again."
+    },
+    "report": {
+      "riskDetected": "Privacy metadata detected",
+      "safetyScoreHint": "Lower score means more exposed metadata in this photo.",
+      "gps": {
+        "title": "Capture Location",
+        "altitude": "Altitude",
+        "direction": "Heading",
+        "mapAlt": "Static map of photo location"
+      },
+      "device": { "title": "Device" },
+      "timestamp": { "title": "Captured at" },
+      "software": { "title": "Software" }
+    },
+    "noRisk": {
+      "title": "This photo is already clean",
+      "description": "No privacy-sensitive metadata was detected. No action needed."
+    },
+    "batch": {
+      "title": "Scan results ({count} files)",
+      "riskyCount": "with privacy risk",
+      "cleanCount": "already clean"
+    },
+    "tags": {
+      "gps": "GPS",
+      "device": "Device",
+      "time": "Timestamp",
+      "software": "Software",
+      "clean": "Clean"
+    },
+    "actions": {
+      "clean": "Strip all metadata",
+      "cleanAll": "Clean all and download ZIP",
+      "download": "Download {filename}",
+      "verifyAgain": "Verify with another upload",
+      "chooseAgain": "Choose again",
+      "retry": "Retry"
+    },
+    "done": {
+      "title": "All metadata removed",
+      "descriptionSingle": "The cleaned file keeps the original format with zero quality loss for HEIC and ICC-preserved for other formats.",
+      "descriptionBatch": "All files have been cleaned and packaged as cleaned.zip with original filenames preserved.",
+      "verifyTip": "Tip: upload the downloaded file again — the scan should report it as clean."
+    },
+    "seo": {
+      "whatIs": {
+        "title": "What is EXIF metadata and why remove it?",
+        "content": "EXIF (Exchangeable Image File Format) is hidden data silently embedded in almost every photo your phone or camera takes. It records the exact GPS coordinates of where the photo was captured, the device make and model, camera settings, timestamps down to the second, and even which software last edited the file. This metadata is invisible when you view the image but travels with the file wherever it goes — attached to every upload, every email, every message you share.",
+        "content2": "For most people, the GPS coordinates are the alarming part. A single vacation photo posted online can pinpoint your home address if it was taken in your backyard. A product photo on a marketplace reveals where you live. A portrait shared with a stranger discloses the room you were in. Device identifiers additionally fingerprint you across multiple uploads, letting anyone correlate anonymous posts back to the same camera.",
+        "content3": "This tool strips every EXIF tag from your photo while keeping the image visually identical. For HEIC files it performs a binary-level metadata removal with zero re-encoding, so the original compression quality is perfectly preserved. For other formats it re-encodes through a pipeline that extracts the ICC colour profile before cleaning and re-embeds it afterwards, so your colours never shift."
+      },
+      "whyRemove": {
+        "title": "What privacy risks does photo metadata expose?",
+        "content": "GPS coordinates are precise to roughly 10 metres — enough to identify the exact house, the specific room in an office building, or the table at a restaurant. Combined with a timestamp accurate to the second, a single photo reveals where you were, when you were there, and for many modern phones, which direction you were facing. Threat actors have used this data to stalk individuals, map daily routines, and identify safe houses from photos posted by well-meaning supporters.",
+        "content2": "Device metadata is a subtler but persistent tracker. The combination of camera make, model, and serial number creates a hardware fingerprint that stays identical across every photo from that device. Platforms and data brokers use this fingerprint to correlate accounts: the anonymous photo you posted to one forum and the product photo on your marketplace listing can be linked to the same device even if you used different names. Software tags additionally leak your editing workflow — which version of Photoshop, Lightroom, or mobile app touched the file — painting a detailed picture of your tooling to anyone paying attention."
+      },
+      "howTo": {
+        "title": "How to remove EXIF metadata from photos",
+        "step1": "Upload one photo (up to 50 MB) or drop in a batch of 2–10 photos (each up to 10 MB). The tool accepts JPEG, PNG, WebP, AVIF, TIFF, and HEIC/HEIF — the same HEIC format iPhone cameras produce by default. This tool is designed for desktop browsers; mobile browsers are not officially supported and may not work correctly due to platform-level file handling restrictions.",
+        "step2": "The tool scans the file automatically and shows exactly what privacy metadata is embedded. For single photos with GPS data, an interactive OpenStreetMap preview displays the capture location with a red marker. Device, timestamp, and software fields are listed below, each with its own privacy impact weighting. A numeric safety score from 0–100 summarises the overall exposure level.",
+        "step3": "Click Strip all metadata to remove everything in one pass. HEIC files are processed through a binary-level ExifTool path that leaves the compressed pixels completely untouched — zero quality loss, zero re-encoding. All other formats go through an ICC-profile-aware re-encoding pipeline: the embedded colour profile is extracted before cleaning and re-embedded afterwards, so your greens stay green and your skies stay blue.",
+        "step4": "Download the cleaned file — same format as the input, with a safety score of 100/100. To verify the cleanup worked, simply drop the downloaded file back into the tool: the second scan should report zero metadata. For batch mode, all cleaned files are packaged into a single cleaned.zip archive with the original filenames preserved, ready for direct upload to social media, marketplaces, or email attachments."
+      },
+      "features": {
+        "title": "Why this EXIF cleaner is different",
+        "items": {
+          "heicLossless": "HEIC is cleaned through ExifTool at the binary level rather than being re-encoded through a HEIC encoder. The compressed pixel data is never touched, so you get exactly the same visual quality as the original — unlike most online tools that silently re-encode HEIC and introduce generational compression artifacts.",
+          "iccPreserved": "For JPEG, PNG, WebP, AVIF, and TIFF, the ICC colour profile is extracted before the metadata strip and re-embedded into the cleaned output. This prevents the subtle but noticeable colour shifts (washed-out skies, desaturated skin tones) that happen when naive tools strip all metadata including the colour profile.",
+          "formatKept": "The output format always matches the input format exactly. JPEG in → JPEG out. HEIC in → HEIC out. There is no silent conversion to a more compatible format, because privacy cleaning and format conversion are two separate operations that should never be bundled.",
+          "batch": "Batch mode accepts up to 10 files simultaneously and returns them all packaged as a single cleaned.zip archive. Perfect for processing an entire photo album before sharing, or cleaning a batch of product shots before listing them on a marketplace.",
+          "free": "Three free cleaning sessions per 24-hour browser window, no account required and no signup friction. For high-volume automated workflows, the RapidAPI listing exposes the same pipeline at $29/month for 10,000 calls including batch endpoints.",
+          "privacy": "Uploaded files are held in server memory only for the duration of the scan and clean operation, then discarded. Nothing is written to disk, no image content is logged, and no photo ever leaves the stateless Cloud Run us-central1 container it was processed in."
+        }
+      },
+      "useCases": {
+        "title": "When you should strip EXIF before sharing",
+        "items": {
+          "social": "Before posting photos to social platforms, especially ones that expose downloadable originals like Flickr, Imgur, or direct-link image hosts. Even platforms that claim to strip metadata on upload sometimes leak GPS through other channels — stripping it client-side first guarantees nothing sensitive leaves your device.",
+          "marketplace": "When listing items on marketplaces like eBay, Craigslist, Facebook Marketplace, or Mercari. Product photos taken at home embed your GPS coordinates directly into the listing photo, giving every potential buyer a precise route to your front door. Strip it before uploading and protect your home address.",
+          "album": "Before sharing vacation photo albums via cloud links (Dropbox, Google Drive, iCloud Photos) with anyone outside your immediate family. Shared links often propagate unpredictably, and each photo in the album carries independent GPS data — a shared link to 50 holiday photos maps out exactly where you stayed every night of the trip.",
+          "journalism": "For journalists, researchers, and leakers handling sensitive source material. Photos of documents, locations, or informants carry embedded evidence of where and when they were captured, which device took them, and which editing software processed them. Stripping this metadata is a non-negotiable step in any operational security workflow."
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "whatIsMetadata": { "q": "What exactly is photo metadata?", "a": "Photo metadata — collectively known as EXIF, IPTC, and XMP tags — is structured data embedded inside the image file itself, separate from the visible pixel data. It includes GPS latitude/longitude, capture timestamp, camera make and model, lens information, ISO/shutter/aperture settings, editing history, software versions, and sometimes even thumbnail previews or drone flight paths. All of this travels silently attached to the file whenever you share it." },
+          "heicQuality": { "q": "Will cleaning HEIC reduce the image quality?", "a": "No — HEIC cleaning is fully lossless in this tool. We use ExifTool to strip metadata at the binary level without touching the compressed pixel data, which means the output is bit-for-bit identical to the original in every area except the metadata boxes. This is different from most competitors that re-encode HEIC through a lossy HEIC encoder and introduce subtle quality loss. Verify it yourself: the cleaned file will be the same dimensions and nearly identical file size to the original." },
+          "colorShift": { "q": "Will my colours look different after cleaning?", "a": "No — ICC colour profiles are preserved. For JPEG, PNG, WebP, AVIF, and TIFF, we extract the embedded ICC profile (for example sRGB, Display P3, Adobe RGB) before removing metadata and re-embed it into the cleaned file. This means photos edited in wide-gamut workspaces and exported with Display P3 will continue to render accurately on compatible displays. HEIC files keep their original profile automatically since no re-encoding happens." },
+          "mobileSupport": { "q": "Does this tool work on mobile browsers?", "a": "This tool is built for desktop browsers and we do not guarantee mobile compatibility. Mobile operating systems impose platform-level restrictions on file handling — for example, iOS Safari silently converts HEIC photos to JPEG when selecting from the camera roll, which breaks HEIC-specific workflows. For full functionality, please use this tool on a desktop or laptop browser with direct file system access." },
+          "storage": { "q": "Do you store my uploaded photos?", "a": "No — your photos are held in server memory only for the duration of the scan and clean operations, typically 1–3 seconds, then immediately discarded. Nothing is written to disk, no image content is logged, no hashes or fingerprints are retained. The processing runs on stateless Cloud Run containers that are destroyed and recreated independently of any single request. We have no technical ability to retain, index, or retrieve your photos after the response streams back to your browser." },
+          "batchHowMany": { "q": "How many files can I clean in one batch?", "a": "Up to 10 files per batch, with each file capped at 10 MB. For batches of 2–10 files, the tool uses the batch endpoints which return a single cleaned.zip archive with the original filenames preserved. For a single file, you can go up to 50 MB and the cleaned output downloads directly in its original format — no ZIP wrapping. Drop 1 file for the full 50 MB limit; drop 2 or more for batch mode." }
         }
       }
     }
