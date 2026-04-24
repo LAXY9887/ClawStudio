@@ -1,6 +1,9 @@
 # Brainstorm mockups (visual companion sessions)
 .superpowers/
 
+# Claude Code local config
+.claude/
+
 # Nuxt dev/build outputs
 .output
 .data
