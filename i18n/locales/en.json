@@ -358,6 +358,15 @@
         "**Device fingerprinting persists across platforms** — camera make, model, and serial number stay identical in every photo from that device, letting data brokers link your anonymous posts to your real identity.",
         "**ICC colour profiles are preserved** — JPEG, PNG, WebP, AVIF, and TIFF outputs keep the embedded colour space (sRGB, Display P3, Adobe RGB) so wide-gamut photos still look correct after cleaning."
       ]
+    },
+    "imageEditor": {
+      "tipsTitle": "Image Editing Tips",
+      "tips": [
+        "**WebP vs JPG:** WebP produces files **25–35% smaller** than JPG at the same visual quality — ideal for websites and apps where load speed matters.",
+        "**Social media aspect ratios:** Instagram posts → **1:1** · YouTube thumbnails → **16:9** · Instagram Stories → **9:16** · LinkedIn cover photo → **4:1**.",
+        "**The compression sweet spot:** A quality setting of **80–85** removes up to 70% of file size with no visible quality difference. Going below 70 introduces noticeable artifacts.",
+        "**Privacy bonus:** The Canvas API that powers this editor automatically strips all **EXIF metadata** from your output — including GPS location, device model, and timestamp."
+      ]
     }
   },
   "error": {
@@ -5009,6 +5018,118 @@
       "remaining": "{count} free clean remaining | {count} free cleans remaining",
       "watch": "Confirm",
       "close": "Close"
+    }
+  },
+  "imageEditor": {
+    "title": "Free Online Image Editor — Crop, Resize & Compress",
+    "subtitle": "Crop, resize, compress, rotate and flip images in your browser. No uploads, no server — 100% private.",
+    "upload": {
+      "title": "Drop or click to upload your image",
+      "limit": "Max 50 MB · JPG, PNG, WebP, AVIF, GIF",
+      "formats": "Supports JPG · PNG · WebP · AVIF · GIF",
+      "sizeError": "File too large. Maximum size is 50 MB.",
+      "typeError": "Unsupported format. Please upload JPG, PNG, WebP, AVIF, or GIF.",
+      "loadError": "Failed to load image. The file may be corrupt or unsupported.",
+      "changeFile": "Change image"
+    },
+    "tabs": {
+      "crop": "Crop",
+      "resize": "Resize",
+      "compress": "Compress",
+      "rotate": "Rotate",
+      "flip": "Flip"
+    },
+    "crop": {
+      "aspectRatio": "Aspect Ratio",
+      "free": "Free",
+      "reset": "Reset Crop",
+      "width": "W",
+      "height": "H"
+    },
+    "resize": {
+      "width": "Width (px)",
+      "height": "Height (px)",
+      "lockAspect": "Lock aspect ratio",
+      "presets": "Quick presets"
+    },
+    "compress": {
+      "quality": "Quality",
+      "estimatedSize": "Est. output size",
+      "pngHint": "PNG is lossless — switch to WebP for a smaller file"
+    },
+    "rotate": {
+      "minus90": "−90°",
+      "plus90": "+90°",
+      "deg180": "180°",
+      "custom": "Custom angle"
+    },
+    "flip": {
+      "horizontal": "Flip Horizontal",
+      "vertical": "Flip Vertical"
+    },
+    "format": {
+      "label": "Output Format"
+    },
+    "actions": {
+      "download": "Download",
+      "changeFile": "Change",
+      "reset": "Start over",
+      "exportError": "Export failed — the image may be too large to process."
+    },
+    "adModal": {
+      "title": "Enjoying the free editor?",
+      "description": "You've used your 3 free downloads. Watch a short video to keep editing for free.",
+      "watch": "Watch Ad",
+      "close": "Not now",
+      "remaining": "1 free download remaining | {count} free downloads remaining"
+    },
+    "seo": {
+      "whatIs": {
+        "title": "What is this Image Editor?",
+        "content": "This free online image editor lets you crop, resize, compress, rotate, and flip images directly in your browser — no software to install, no files uploaded to any server. Everything runs on your device using the HTML5 Canvas API, so your photos stay completely private.",
+        "content2": "Whether you're preparing images for social media, shrinking files before emailing, or trimming screenshots, this tool handles it all in one place with instant real-time previews."
+      },
+      "howTo": {
+        "title": "How to Edit Your Image",
+        "step1": { "title": "Upload your image", "content": "Click the upload area or drag and drop a JPG, PNG, WebP, AVIF, or GIF file (up to 50 MB). The image loads instantly in the editor — nothing is sent to a server." },
+        "step2": { "title": "Choose your edits", "content": "Use the tabs on the right to crop, resize, adjust quality, rotate, or flip your image. Switch between tabs freely — the preview updates instantly with every change." },
+        "step3": { "title": "Select output format", "content": "Pick JPG, PNG, or WebP from the format selector. Use WebP for the smallest file size, PNG for images with transparency, JPG for universal compatibility." },
+        "step4": { "title": "Download your result", "content": "Click Download to save the edited image directly to your device. The file is generated in your browser — fast, private, and completely free." }
+      },
+      "features": {
+        "title": "Key Features",
+        "items": {
+          "crop": { "title": "Interactive Crop with Aspect Ratio Lock", "content": "Drag the crop box to select exactly the region you want. Lock to common ratios — 1:1 for Instagram, 16:9 for YouTube thumbnails, 4:3 for presentations — or crop freely." },
+          "resize": { "title": "Precise Resize with Aspect Ratio Preservation", "content": "Enter exact pixel dimensions or choose a quick preset (25%, 50%, 75%). The locked aspect ratio prevents stretching." },
+          "compress": { "title": "Quality Compression for Smaller Files", "content": "Adjust the quality slider to balance file size and visual clarity. A setting of 80–85 is the sweet spot for web images — typically 60–70% smaller with no visible quality loss." },
+          "rotate": { "title": "Rotate by Any Angle", "content": "Use quick buttons for 90°/180° rotations or the slider for a custom angle between −180° and +180°. Combine with flip for full orientation control." },
+          "privacy": { "title": "100% Private — No Server Upload", "content": "Your image never leaves your device. The Canvas API processes everything locally. The output is also stripped of any EXIF metadata automatically." },
+          "format": { "title": "Export as JPG, PNG, or WebP", "content": "Choose the best format for your use case. JPG for photos, PNG for images with transparency, WebP for the smallest file size at high quality." }
+        }
+      },
+      "useCases": {
+        "title": "Common Use Cases",
+        "items": {
+          "social": { "title": "Social Media Images", "content": "Crop to 1:1 for Instagram posts, 16:9 for Twitter/X headers, or 9:16 for Stories. Compress to stay under platform upload size limits." },
+          "email": { "title": "Email Attachments", "content": "Resize large phone photos (often 4–12 MB) down to a few hundred kilobytes before attaching to emails." },
+          "web": { "title": "Web & Blog Images", "content": "Export as WebP and set quality to 80–85 for images that load fast on your website without looking pixelated." },
+          "screenshot": { "title": "Screenshot Trimming", "content": "Crop out browser toolbars or irrelevant content from screenshots before sharing in docs or presentations." }
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "privacy": { "title": "Is my image uploaded to a server?", "content": "No. This editor runs entirely in your browser using the HTML5 Canvas API. Your image is never uploaded anywhere — it stays on your device the whole time." },
+          "formats": { "title": "What image formats are supported?", "content": "You can upload JPG, PNG, WebP, AVIF, and GIF files up to 50 MB. You can export as JPG, PNG, or WebP." },
+          "pngCompress": { "title": "Why can't I compress PNG files?", "content": "PNG uses lossless compression, so there is no quality slider. To reduce file size, switch the output format to WebP — it typically achieves 25–35% smaller files than PNG at equivalent visual quality." },
+          "quality": { "title": "What quality setting should I use?", "content": "For web images, 80–85 is the ideal range for JPG and WebP. Below 70 introduces visible artifacts; above 90 gives diminishing file-size returns." }
+        }
+      },
+      "api": {
+        "title": "Need to Process Images in Bulk?",
+        "content": "This browser editor is perfect for individual images. For batch resizing, cropping, or converting hundreds of images programmatically, the Easy HEIC Image Converter API on RapidAPI supports automation at scale.",
+        "cta": "Explore the API"
+      }
     }
   }
 }
