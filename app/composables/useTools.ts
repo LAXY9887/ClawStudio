@@ -66,6 +66,13 @@ const GROUPS: ToolGroup[] = [
     tools: [
       { key: 'exifRemover', icon: 'i-lucide-shield-check', to: '/tools/exif-remover' }
     ]
+  },
+  {
+    key: 'imageEditing',
+    icon: 'i-lucide-wand-sparkles',
+    tools: [
+      { key: 'imageEditor', icon: 'i-lucide-wand-sparkles', to: '/tools/image-editor' }
+    ]
   }
 ]
 

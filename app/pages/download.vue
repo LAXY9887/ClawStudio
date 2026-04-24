@@ -34,6 +34,7 @@ const toolKey = computed(() => {
   if (from.includes('png-to-spritesheet')) return 'pngToSpritesheet'
   if (from.includes('png-trim')) return 'pngTrim'
   if (from.includes('split-spritesheet')) return 'splitSpritesheet'
+  if (from.includes('image-editor')) return 'imageEditor'
   return 'gifToSprite'
 })
 
@@ -44,7 +45,8 @@ const tipCount = computed(() => {
     heicToJpg: 4, heicToPng: 4, heicToWebp: 4, jpgToHeic: 4, pngToHeic: 4, webpToHeic: 4,
     pngToJpg: 4, jpgToPng: 4, pngToWebp: 4, webpToPng: 4, jpgToWebp: 4, webpToJpg: 4,
     pngToAvif: 4, jpgToAvif: 4, webpToAvif: 4, avifToPng: 4, avifToJpg: 4, avifToWebp: 4,
-    svgToPng: 5, faviconGenerator: 5
+    svgToPng: 5, faviconGenerator: 5,
+    imageEditor: 4
   }
   return counts[toolKey.value] ?? 4
 })
@@ -59,6 +61,7 @@ const apiUrl = computed(() => {
     'svgToPng', 'faviconGenerator'
   ]
   if (uniimgcTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'
+  if (toolKey.value === 'imageEditor') return 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'
   if (pngTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites'
   return 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'
 })
