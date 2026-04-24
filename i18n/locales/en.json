@@ -5000,7 +5000,11 @@
       }
     },
     "adModal": {
-      "remaining": "{count} free clean remaining | {count} free cleans remaining"
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more free cleans by reading our articles. Thank you for supporting this free tool!",
+      "remaining": "{count} free clean remaining | {count} free cleans remaining",
+      "watch": "Confirm",
+      "close": "Close"
     }
   }
 }

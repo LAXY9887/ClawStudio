@@ -2,6 +2,7 @@
 const FREE_LIMIT = 3
 const cleanCount = useCookie<number>('exif_clean_count', { default: () => 0, maxAge: 60 * 60 * 24 })
 const remainingUses = computed(() => Math.max(0, FREE_LIMIT - cleanCount.value))
+const showAdModal = ref(false)
 const { openDirectLink } = useMonetagDirectLink()
 
 interface GpsSummary {
@@ -196,18 +197,11 @@ async function runClean() {
     cleanedUrl.value = URL.createObjectURL(cleanedBlob.value)
 
     cleanCount.value++
-    if (cleanCount.value > FREE_LIMIT) {
-      const store = useDownloadStore()
-      store.setBlob(cleanedBlob.value!, cleanedFilename.value)
-      openDirectLink()
-      const localePath = useLocalePath()
-      navigateTo({
-        path: localePath('/download'),
-        query: { from: localePath('/tools/exif-remover') }
-      })
-      return
-    }
     status.value = 'done'
+    if (cleanCount.value >= FREE_LIMIT) {
+      useDownloadStore().setBlob(cleanedBlob.value!, cleanedFilename.value)
+      showAdModal.value = true
+    }
   } catch (e) {
     console.error(e)
     errorMessage.value = t('exifRemover.status.cleanFailed')
@@ -223,6 +217,16 @@ function downloadCleaned() {
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
+}
+
+function onAdConfirm() {
+  showAdModal.value = false
+  openDirectLink()
+  const localePath = useLocalePath()
+  navigateTo({
+    path: localePath('/download'),
+    query: { from: localePath('/tools/exif-remover') }
+  })
 }
 
 function reset() {
@@ -386,14 +390,19 @@ onBeforeUnmount(() => {
             {{ t('exifRemover.upload.heicUploaded') }}
           </p>
         </div>
-        <div class="flex items-center gap-2 shrink-0">
-          <UButton
-            :label="t('exifRemover.actions.clean')"
-            icon="i-lucide-eraser"
-            size="xs"
-            @click="runClean"
-          />
-          <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        <div class="flex flex-col items-end gap-1 shrink-0">
+          <div class="flex items-center gap-2">
+            <UButton
+              :label="t('exifRemover.actions.clean')"
+              icon="i-lucide-eraser"
+              size="xs"
+              @click="runClean"
+            />
+            <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+          </div>
+          <p v-if="remainingUses > 0" class="text-[10px] text-muted">
+            {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
+          </p>
         </div>
       </div>
 
@@ -481,14 +490,19 @@ onBeforeUnmount(() => {
         <h3 class="font-semibold text-lg">
           {{ t('exifRemover.batch.title', { count: batchStats.total }) }}
         </h3>
-        <div class="flex items-center gap-2 shrink-0">
-          <UButton
-            :label="t('exifRemover.actions.cleanAll')"
-            icon="i-lucide-eraser"
-            size="xs"
-            @click="runClean"
-          />
-          <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        <div class="flex flex-col items-end gap-1 shrink-0">
+          <div class="flex items-center gap-2">
+            <UButton
+              :label="t('exifRemover.actions.cleanAll')"
+              icon="i-lucide-eraser"
+              size="xs"
+              @click="runClean"
+            />
+            <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+          </div>
+          <p v-if="remainingUses > 0" class="text-[10px] text-muted">
+            {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
+          </p>
         </div>
       </div>
 
@@ -596,5 +610,20 @@ onBeforeUnmount(() => {
         <UButton :label="t('exifRemover.actions.retry')" color="error" variant="outline" size="sm" @click="reset" />
       </template>
     </UAlert>
+
+    <!-- Ad Modal -->
+    <UModal v-model:open="showAdModal">
+      <template #content>
+        <div class="p-6 text-center space-y-4">
+          <UIcon name="i-lucide-heart" class="text-4xl text-primary mx-auto" />
+          <h3 class="text-lg font-bold">{{ t('exifRemover.adModal.title') }}</h3>
+          <p class="text-sm text-muted">{{ t('exifRemover.adModal.description') }}</p>
+          <div class="flex justify-center gap-3 pt-2">
+            <UButton :label="t('exifRemover.adModal.watch')" size="lg" @click="onAdConfirm" />
+            <UButton :label="t('exifRemover.adModal.close')" color="neutral" variant="outline" size="lg" @click="showAdModal = false" />
+          </div>
+        </div>
+      </template>
+    </UModal>
   </div>
 </template>

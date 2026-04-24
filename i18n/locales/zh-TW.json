@@ -5000,7 +5000,11 @@
       }
     },
     "adModal": {
-      "remaining": "剩餘 {count} 次免費清除"
+      "title": "🥺 請支持我們 🌸",
+      "description": "閱讀我們的文章即可再解鎖 3 次免費清除。感謝你支持這個免費工具！",
+      "remaining": "剩餘 {count} 次免費清除",
+      "watch": "確認",
+      "close": "關閉"
     }
   }
 }
