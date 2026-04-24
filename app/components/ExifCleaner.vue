@@ -388,21 +388,11 @@ onBeforeUnmount(() => {
 
     <!-- SINGLE REPORT: No risk -->
     <div v-if="status === 'reportSingle' && singleReport && !singleReport.hasPrivacyRisk" class="space-y-4">
-      <div class="flex items-center justify-between gap-2">
-        <p class="text-sm text-muted truncate">
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-muted">
           {{ files[0]?.name }} · {{ formatSize(files[0]?.size || 0) }}
         </p>
-        <div class="flex items-center gap-2 shrink-0">
-          <UButton
-            :label="t('exifRemover.actions.downloadMeta')"
-            icon="i-lucide-file-json"
-            size="xs"
-            color="neutral"
-            variant="outline"
-            @click="downloadMetadata"
-          />
-          <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
-        </div>
+        <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
       </div>
       <div class="border border-success/40 bg-success/5 rounded-xl p-6 text-center">
         <UIcon name="i-lucide-shield-check" class="text-5xl text-success mx-auto mb-3" />
