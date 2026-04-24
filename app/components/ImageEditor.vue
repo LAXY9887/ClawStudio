@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { Cropper } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
 
 type Tab = 'crop' | 'resize' | 'compress' | 'rotate' | 'flip'
 type OutputFormat = 'jpg' | 'png' | 'webp'
-interface CropCoords { left: number; top: number; width: number; height: number }
+interface CropCoords { left: number, top: number, width: number, height: number }
 
 const FREE_LIMIT = 3
 const MAX_BYTES = 50 * 1024 * 1024
@@ -29,7 +28,8 @@ const originalFile = ref<File | null>(null)
 const originalImage = ref<HTMLImageElement | null>(null)
 const fileInput = ref<HTMLInputElement>()
 const previewCanvasEl = ref<HTMLCanvasElement>()
-const cropperRef = ref()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const cropperRef = ref<any>(null)
 
 // Crop
 const cropCoords = ref<CropCoords>({ left: 0, top: 0, width: 0, height: 0 })
@@ -72,7 +72,7 @@ function validateFile(f: File): string | null {
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  if (Math.round(bytes / 1024) < 1024) return `${(bytes / 1024).toFixed(1)} KB`
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
 </script>
