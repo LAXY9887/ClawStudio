@@ -4864,7 +4864,8 @@
       "download": "Download {filename}",
       "verifyAgain": "Verify with another upload",
       "chooseAgain": "Choose again",
-      "retry": "Retry"
+      "retry": "Retry",
+      "downloadMeta": "Download metadata"
     },
     "done": {
       "title": "All metadata removed",

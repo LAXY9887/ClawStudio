@@ -4864,7 +4864,8 @@
       "download": "下載 {filename}",
       "verifyAgain": "重新上傳驗證",
       "chooseAgain": "重新選擇",
-      "retry": "重試"
+      "retry": "重試",
+      "downloadMeta": "下載 metadata"
     },
     "done": {
       "title": "所有 metadata 已清除",

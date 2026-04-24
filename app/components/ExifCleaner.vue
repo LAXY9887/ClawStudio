@@ -219,6 +219,39 @@ function downloadCleaned() {
   document.body.removeChild(a)
 }
 
+function downloadMetadata() {
+  const isSingle = !!singleReport.value
+  const isBatchData = batchReports.value.length > 0
+  if (!isSingle && !isBatchData) return
+
+  const data: unknown = isSingle ? singleReport.value : batchReports.value
+  let filename: string
+  if (isSingle) {
+    const orig = files.value[0]?.name || 'photo'
+    const base = orig.replace(/\.[^.]+$/, '')
+    filename = `${base}_metadata.json`
+  } else {
+    filename = 'scan_metadata.json'
+  }
+
+  const json = JSON.stringify(data, null, 2)
+  const blob = new Blob([json], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
+
+  cleanCount.value++
+  if (cleanCount.value >= FREE_LIMIT) {
+    useDownloadStore().setBlob(blob, filename)
+    showAdModal.value = true
+  }
+}
+
 function onAdConfirm() {
   showAdModal.value = false
   cleanCount.value = 0
@@ -355,11 +388,21 @@ onBeforeUnmount(() => {
 
     <!-- SINGLE REPORT: No risk -->
     <div v-if="status === 'reportSingle' && singleReport && !singleReport.hasPrivacyRisk" class="space-y-4">
-      <div class="flex items-center justify-between">
-        <p class="text-sm text-muted">
+      <div class="flex items-center justify-between gap-2">
+        <p class="text-sm text-muted truncate">
           {{ files[0]?.name }} · {{ formatSize(files[0]?.size || 0) }}
         </p>
-        <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        <div class="flex items-center gap-2 shrink-0">
+          <UButton
+            :label="t('exifRemover.actions.downloadMeta')"
+            icon="i-lucide-file-json"
+            size="xs"
+            color="neutral"
+            variant="outline"
+            @click="downloadMetadata"
+          />
+          <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
+        </div>
       </div>
       <div class="border border-success/40 bg-success/5 rounded-xl p-6 text-center">
         <UIcon name="i-lucide-shield-check" class="text-5xl text-success mx-auto mb-3" />
@@ -393,12 +436,20 @@ onBeforeUnmount(() => {
           </p>
         </div>
         <div class="flex flex-col items-end gap-1 shrink-0">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-wrap justify-end">
             <UButton
               :label="t('exifRemover.actions.clean')"
               icon="i-lucide-eraser"
               size="xs"
               @click="runClean"
+            />
+            <UButton
+              :label="t('exifRemover.actions.downloadMeta')"
+              icon="i-lucide-file-json"
+              size="xs"
+              color="neutral"
+              variant="outline"
+              @click="downloadMetadata"
             />
             <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
           </div>
@@ -490,12 +541,20 @@ onBeforeUnmount(() => {
           {{ t('exifRemover.batch.title', { count: batchStats.total }) }}
         </h3>
         <div class="flex flex-col items-end gap-1 shrink-0">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-wrap justify-end">
             <UButton
               :label="t('exifRemover.actions.cleanAll')"
               icon="i-lucide-eraser"
               size="xs"
               @click="runClean"
+            />
+            <UButton
+              :label="t('exifRemover.actions.downloadMeta')"
+              icon="i-lucide-file-json"
+              size="xs"
+              color="neutral"
+              variant="outline"
+              @click="downloadMetadata"
             />
             <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
           </div>
