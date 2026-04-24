@@ -1,4 +1,7 @@
 {
+  "common": {
+    "heicUploaded": "檔案已成功上傳"
+  },
   "site": {
     "name": "ClawStudiouo",
     "slogan": "免費線上開發工具"

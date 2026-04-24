@@ -1,4 +1,7 @@
 {
+  "common": {
+    "heicUploaded": "File uploaded successfully"
+  },
   "site": {
     "name": "ClawStudiouo",
     "slogan": "Free Online Dev Tools"

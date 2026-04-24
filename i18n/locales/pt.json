@@ -1,4 +1,7 @@
 {
+  "common": {
+    "heicUploaded": "Arquivo enviado com sucesso"
+  },
   "site": {
     "name": "ClawStudiouo",
     "slogan": "Ferramentas de desenvolvimento online gratuitas"

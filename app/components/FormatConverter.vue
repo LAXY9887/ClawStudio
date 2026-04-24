@@ -218,7 +218,13 @@ onUnmounted(() => {
           <img v-else :src="previewUrl" :alt="file?.name" class="max-h-80 max-w-full object-contain">
         </div>
         <div class="flex items-center justify-between">
-          <p class="text-sm text-muted">{{ file?.name }} · {{ formatSize(file?.size || 0) }}</p>
+          <div>
+            <p class="text-sm text-muted">{{ file?.name }} · {{ formatSize(file?.size || 0) }}</p>
+            <p v-if="isHeicInput" class="text-xs text-success flex items-center gap-1 mt-0.5">
+              <UIcon name="i-lucide-check-circle" class="text-sm shrink-0" />
+              {{ t('common.heicUploaded') }}
+            </p>
+          </div>
           <UButton :label="t(`${toolKey}.upload.changeFile`)" size="xs" color="neutral" variant="ghost" @click="fileInput?.click()" />
         </div>
         <input ref="fileInput" type="file" :accept="acceptAttr" class="hidden" @change="onFileSelect">

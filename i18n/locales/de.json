@@ -1,4 +1,7 @@
 {
+  "common": {
+    "heicUploaded": "Datei erfolgreich hochgeladen"
+  },
   "site": {
     "name": "ClawStudiouo",
     "slogan": "Kostenlose Online-Entwicklertools"
