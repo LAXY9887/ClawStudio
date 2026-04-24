@@ -75,8 +75,88 @@ function formatSize(bytes: number): string {
   if (Math.round(bytes / 1024) < 1024) return `${(bytes / 1024).toFixed(1)} KB`
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
+
+async function loadFile(f: File) {
+  const err = validateFile(f)
+  if (err) { errorMessage.value = err; return }
+  errorMessage.value = ''
+  originalFile.value = f
+
+  const url = URL.createObjectURL(f)
+  const img = new Image()
+  img.onload = () => {
+    originalImage.value = img
+    resizeWidth.value = img.naturalWidth
+    resizeHeight.value = img.naturalHeight
+    originalAspect.value = img.naturalWidth / img.naturalHeight
+    cropCoords.value = { left: 0, top: 0, width: img.naturalWidth, height: img.naturalHeight }
+    const ext = f.name.split('.').pop()?.toLowerCase()
+    outputFormat.value = ext === 'png' ? 'png' : ext === 'webp' ? 'webp' : 'jpg'
+    activeTab.value = 'crop'
+    status.value = 'editing'
+    nextTick(() => renderPreview())
+    URL.revokeObjectURL(url)
+  }
+  img.src = url
+}
+
+function onFileSelect(e: Event) {
+  const target = e.target as HTMLInputElement
+  if (target.files?.[0]) loadFile(target.files[0])
+  target.value = ''
+}
+
+function onDrop(e: DragEvent) {
+  isDragging.value = false
+  const f = e.dataTransfer?.files?.[0]
+  if (f) loadFile(f)
+}
+
+function reset() {
+  status.value = 'idle'
+  originalFile.value = null
+  originalImage.value = null
+  errorMessage.value = ''
+  cropCoords.value = { left: 0, top: 0, width: 0, height: 0 }
+  cropAspectRatio.value = undefined
+  resizeWidth.value = 0
+  resizeHeight.value = 0
+  rotateDegrees.value = 0
+  flipH.value = false
+  flipV.value = false
+  quality.value = 85
+  estimatedSize.value = ''
+  activeTab.value = 'crop'
+}
+
+function renderPreview() {}
 </script>
 
 <template>
-  <div>ImageEditor placeholder</div>
+  <div>
+    <!-- IDLE: drop zone -->
+    <div v-if="status === 'idle'">
+      <div
+        class="relative border-2 border-dashed rounded-xl p-16 text-center cursor-pointer transition-colors"
+        :class="isDragging ? 'border-primary bg-primary/5' : 'border-muted hover:border-primary/50'"
+        @click="fileInput?.click()"
+        @dragover.prevent="isDragging = true"
+        @dragleave.prevent="isDragging = false"
+        @drop.prevent="onDrop"
+      >
+        <input ref="fileInput" type="file" :accept="ACCEPT_ATTR" class="hidden" @change="onFileSelect">
+        <UIcon name="i-lucide-image-plus" class="text-4xl text-muted mx-auto mb-4" />
+        <p class="font-medium text-lg">{{ t('imageEditor.upload.title') }}</p>
+        <p class="text-sm text-muted mt-2">{{ t('imageEditor.upload.limit') }}</p>
+        <p class="text-xs text-muted mt-1">{{ t('imageEditor.upload.formats') }}</p>
+      </div>
+      <UAlert v-if="errorMessage" color="error" :title="errorMessage" class="mt-4" />
+    </div>
+
+    <!-- EDITING: placeholder until Task 4 -->
+    <div v-else>
+      <p>Editing: {{ originalFile?.name }}</p>
+      <UButton label="Reset" @click="reset" />
+    </div>
+  </div>
 </template>
