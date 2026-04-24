@@ -29,7 +29,6 @@ const originalFile = ref<File | null>(null)
 const originalImage = ref<HTMLImageElement | null>(null)
 const fileInput = ref<HTMLInputElement>()
 const previewCanvasEl = ref<HTMLCanvasElement>()
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const cropperRef = ref<any>(null)
 
 // Crop
@@ -80,7 +79,10 @@ function formatSize(bytes: number): string {
 
 async function loadFile(f: File) {
   const err = validateFile(f)
-  if (err) { errorMessage.value = err; return }
+  if (err) {
+    errorMessage.value = err
+    return
+  }
   errorMessage.value = ''
   originalFile.value = f
 
@@ -182,7 +184,7 @@ function buildOutputBlob(): Promise<Blob> {
   const mime = outputMime.value
   const q = outputFormat.value === 'png' ? undefined : quality.value / 100
   return new Promise((resolve, reject) =>
-    canvas.toBlob(blob => {
+    canvas.toBlob((blob) => {
       if (blob) resolve(blob)
       else reject(new Error('Canvas export failed — image may be too large'))
     }, mime, q)
@@ -198,7 +200,10 @@ function getOutputFilename(): string {
 function onWidthInput(e: Event) {
   const v = parseInt((e.target as HTMLInputElement).value) || 0
   resizeWidth.value = v
-  if (v === 0) { resizeHeight.value = 0; return }
+  if (v === 0) {
+    resizeHeight.value = 0
+    return
+  }
   if (lockAspect.value) resizeHeight.value = Math.round(v / originalAspect.value)
   renderPreview()
 }
@@ -206,7 +211,10 @@ function onWidthInput(e: Event) {
 function onHeightInput(e: Event) {
   const v = parseInt((e.target as HTMLInputElement).value) || 0
   resizeHeight.value = v
-  if (v === 0) { resizeWidth.value = 0; return }
+  if (v === 0) {
+    resizeWidth.value = 0
+    return
+  }
   if (lockAspect.value) resizeWidth.value = Math.round(v * originalAspect.value)
   renderPreview()
 }
@@ -221,24 +229,34 @@ function applyPreset(pct: number) {
 
 function updateEstimatedSize() {
   const canvas = previewCanvasEl.value
-  if (!canvas || outputFormat.value === 'png') { estimatedSize.value = ''; return }
-  canvas.toBlob(blob => { if (blob) estimatedSize.value = formatSize(blob.size) }, outputMime.value, quality.value / 100)
+  if (!canvas || outputFormat.value === 'png') {
+    estimatedSize.value = ''
+    return
+  }
+  canvas.toBlob((blob) => {
+    if (blob) estimatedSize.value = formatSize(blob.size)
+  }, outputMime.value, quality.value / 100)
 }
 
-watch([quality, outputFormat], () => { renderPreview(); updateEstimatedSize() })
+watch([quality, outputFormat], () => {
+  renderPreview()
+  updateEstimatedSize()
+})
 
 function applyRotation(deg: number) {
   rotateDegrees.value = ((rotateDegrees.value + deg) % 360 + 360) % 360
   renderPreview()
 }
 
-function setRotation(deg: number) {
-  rotateDegrees.value = deg
+function toggleFlipH() {
+  flipH.value = !flipH.value
   renderPreview()
 }
 
-function toggleFlipH() { flipH.value = !flipH.value; renderPreview() }
-function toggleFlipV() { flipV.value = !flipV.value; renderPreview() }
+function toggleFlipV() {
+  flipV.value = !flipV.value
+  renderPreview()
+}
 
 function tabIcon(tab: Tab): string {
   const icons: Record<Tab, string> = {
@@ -293,7 +311,9 @@ watch(originalFile, (f, oldF) => {
   imageSrc.value = f ? URL.createObjectURL(f) : ''
 })
 
-onBeforeUnmount(() => { if (imageSrc.value) URL.revokeObjectURL(imageSrc.value) })
+onBeforeUnmount(() => {
+  if (imageSrc.value) URL.revokeObjectURL(imageSrc.value)
+})
 
 function doDirectDownload(blob: Blob) {
   const url = URL.createObjectURL(blob)
@@ -528,7 +548,7 @@ async function onAdConfirm() {
                 <UButton size="xs" :label="t('imageEditor.rotate.deg180')" color="neutral" variant="outline" class="flex-1 justify-center" @click="applyRotation(180)" />
               </div>
               <UFormField :label="`${t('imageEditor.rotate.custom')}: ${rotateDegrees}°`">
-                <input v-model.number="rotateDegrees" type="range" min="-180" max="180" class="w-full" @input="renderPreview()" >
+                <input v-model.number="rotateDegrees" type="range" min="-180" max="180" class="w-full" @input="renderPreview()">
               </UFormField>
             </template>
 
@@ -577,6 +597,14 @@ async function onAdConfirm() {
             <p v-if="remainingUses > 0" class="text-xs text-muted text-center">
               {{ t('imageEditor.adModal.remaining', { count: remainingUses }, remainingUses) }}
             </p>
+            <UButton
+              :label="t('imageEditor.actions.reset')"
+              size="xs"
+              color="neutral"
+              variant="ghost"
+              class="w-full justify-center"
+              @click="reset"
+            />
           </div>
         </div>
 
