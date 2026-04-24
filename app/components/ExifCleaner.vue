@@ -309,7 +309,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="border border-muted rounded-xl bg-default p-4 md:p-6">
+  <div class="space-y-3">
+    <div class="border border-muted rounded-xl bg-default p-4 md:p-6">
     <!-- IDLE: Drop zone -->
     <div
       v-if="status === 'idle'"
@@ -339,11 +340,6 @@ onBeforeUnmount(() => {
         {{ t('exifRemover.upload.formats') }}
       </p>
     </div>
-
-    <!-- Remaining uses hint (below drop zone) -->
-    <p v-if="status === 'idle' && remainingUses > 0" class="text-xs text-muted text-center">
-      {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
-    </p>
 
     <!-- SCANNING -->
     <div v-if="status === 'scanning'" class="text-center py-16">
@@ -621,5 +617,11 @@ onBeforeUnmount(() => {
         </div>
       </template>
     </UModal>
+    </div>
+
+    <!-- Remaining uses hint (below card) -->
+    <p v-if="status === 'idle' && remainingUses > 0" class="text-xs text-muted text-center">
+      {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
+    </p>
   </div>
 </template>
