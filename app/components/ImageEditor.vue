@@ -138,6 +138,25 @@ function reset() {
 }
 
 function renderPreview() {}
+
+function tabIcon(tab: Tab): string {
+  const icons: Record<Tab, string> = {
+    crop: 'i-lucide-crop',
+    resize: 'i-lucide-expand',
+    compress: 'i-lucide-minimize-2',
+    rotate: 'i-lucide-rotate-cw',
+    flip: 'i-lucide-flip-horizontal-2'
+  }
+  return icons[tab]
+}
+
+function onTabChange(tab: Tab) {
+  activeTab.value = tab
+}
+
+function handleDownload() {
+  // implemented in Task 10
+}
 </script>
 
 <template>
@@ -165,10 +184,74 @@ function renderPreview() {}
       <UAlert v-if="errorMessage" color="error" :title="errorMessage" class="mt-4" />
     </div>
 
-    <!-- EDITING: placeholder until Task 4 -->
-    <div v-else>
-      <p>Editing: {{ originalFile?.name }}</p>
-      <UButton label="Reset" @click="reset" />
+    <!-- EDITING state -->
+    <div v-else class="border border-muted rounded-xl bg-default overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+
+        <!-- LEFT: preview -->
+        <div class="flex-1 flex flex-col gap-3 p-4 md:border-r border-muted min-w-0">
+          <!-- Preview canvas (filled in Task 6) -->
+          <div class="flex-1 bg-muted/10 rounded-lg min-h-64 flex items-center justify-center relative overflow-hidden">
+            <canvas ref="previewCanvasEl" class="max-w-full max-h-80 object-contain" />
+          </div>
+          <!-- File info bar -->
+          <div class="flex items-center justify-between text-sm text-muted">
+            <span class="truncate">{{ originalFile?.name }} · {{ formatSize(originalFile?.size || 0) }}</span>
+            <UButton :label="t('imageEditor.actions.changeFile')" size="xs" color="neutral" variant="ghost" @click="fileInput?.click()" />
+            <input ref="fileInput" type="file" :accept="ACCEPT_ATTR" class="hidden" @change="onFileSelect">
+          </div>
+        </div>
+
+        <!-- RIGHT: tool panel -->
+        <div class="w-full md:w-52 flex flex-col">
+
+          <!-- Tab list -->
+          <div class="flex md:flex-col gap-1 p-2 overflow-x-auto md:overflow-x-visible">
+            <button
+              v-for="tab in (['crop', 'resize', 'compress', 'rotate', 'flip'] as Tab[])"
+              :key="tab"
+              class="flex items-center gap-2 rounded px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors shrink-0"
+              :class="activeTab === tab
+                ? 'bg-primary/10 text-primary border-l-2 border-primary'
+                : 'text-muted hover:text-default hover:bg-muted/20'"
+              @click="onTabChange(tab)"
+            >
+              <UIcon :name="tabIcon(tab)" class="text-base" />
+              {{ t(`imageEditor.tabs.${tab}`) }}
+            </button>
+          </div>
+
+          <!-- Tab content (Tasks 5, 7, 8, 9) -->
+          <div class="flex-1 p-3 border-t border-muted space-y-3">
+            <p class="text-xs text-muted">{{ activeTab }} controls — coming in next tasks</p>
+          </div>
+
+          <!-- Format + Download (Task 10) -->
+          <div class="p-3 border-t border-muted space-y-2">
+            <p class="text-xs text-muted font-medium uppercase tracking-wide">{{ t('imageEditor.format.label') }}</p>
+            <div class="flex gap-1">
+              <button
+                v-for="fmt in (['jpg', 'png', 'webp'] as OutputFormat[])"
+                :key="fmt"
+                class="flex-1 rounded py-1 text-xs font-semibold uppercase transition-colors"
+                :class="outputFormat === fmt ? 'bg-primary text-white' : 'bg-muted/20 text-muted hover:bg-muted/40'"
+                @click="outputFormat = fmt"
+              >{{ fmt }}</button>
+            </div>
+            <UButton
+              :label="t('imageEditor.actions.download')"
+              icon="i-lucide-download"
+              size="sm"
+              class="w-full justify-center"
+              @click="handleDownload"
+            />
+            <p v-if="remainingUses > 0" class="text-xs text-muted text-center">
+              {{ t('imageEditor.adModal.remaining', { count: remainingUses }, remainingUses) }}
+            </p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </template>
