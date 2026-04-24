@@ -1,22 +1,8 @@
-const ALLOWED_PATHS = new Set([
-  'scan',
-  'clean',
-  'batch/scan',
-  'batch/clean'
-])
+import type { H3Event } from 'h3'
 
-export default defineEventHandler(async (event) => {
-  if (event.method !== 'POST') {
-    throw createError({ statusCode: 405, statusMessage: 'Method Not Allowed' })
-  }
-  const path = getRouterParam(event, 'path')
-  if (!path || !ALLOWED_PATHS.has(path)) {
-    throw createError({ statusCode: 404, statusMessage: 'Unknown endpoint' })
-  }
-
+export async function proxyExifrm(event: H3Event, path: string, isScan: boolean) {
   const config = useRuntimeConfig()
   const formData = await readFormData(event)
-  const isScan = path === 'scan' || path === 'batch/scan'
 
   const response = await $fetch.raw(`${config.exifrmServiceUrl}/${path}`, {
     method: 'POST',
@@ -42,4 +28,4 @@ export default defineEventHandler(async (event) => {
   }
 
   return new Uint8Array(response._data as ArrayBuffer)
-})
+}
