@@ -340,6 +340,11 @@ onBeforeUnmount(() => {
       </p>
     </div>
 
+    <!-- Remaining uses hint (below drop zone) -->
+    <p v-if="status === 'idle' && remainingUses > 0" class="text-xs text-muted text-center">
+      {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
+    </p>
+
     <!-- SCANNING -->
     <div v-if="status === 'scanning'" class="text-center py-16">
       <div class="relative w-20 h-20 mx-auto mb-6">
@@ -401,9 +406,6 @@ onBeforeUnmount(() => {
             />
             <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
           </div>
-          <p v-if="remainingUses > 0" class="text-[10px] text-muted">
-            {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
-          </p>
         </div>
       </div>
 
@@ -501,9 +503,6 @@ onBeforeUnmount(() => {
             />
             <UButton :label="t('exifRemover.actions.chooseAgain')" size="xs" color="neutral" variant="ghost" @click="reset" />
           </div>
-          <p v-if="remainingUses > 0" class="text-[10px] text-muted">
-            {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
-          </p>
         </div>
       </div>
 
@@ -595,10 +594,6 @@ onBeforeUnmount(() => {
           @click="reset"
         />
       </div>
-
-      <p v-if="remainingUses > 0" class="text-xs text-muted text-center">
-        {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
-      </p>
 
       <p class="text-xs text-muted text-center">
         {{ t('exifRemover.done.verifyTip') }}
