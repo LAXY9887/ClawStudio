@@ -168,9 +168,10 @@ async function runClean() {
     const response = await $fetch.raw(endpoint, {
       method: 'POST',
       body: formData,
-      responseType: 'blob'
+      responseType: 'arrayBuffer'
     })
-    cleanedBlob.value = response._data as Blob
+    const contentType = response.headers.get('content-type') || 'application/octet-stream'
+    cleanedBlob.value = new Blob([response._data as ArrayBuffer], { type: contentType })
 
     const disposition = response.headers.get('content-disposition') || ''
     const match = disposition.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i)
