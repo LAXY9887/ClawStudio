@@ -4998,6 +4998,9 @@
           }
         }
       }
+    },
+    "adModal": {
+      "remaining": "{count} free clean remaining | {count} free cleans remaining"
     }
   }
 }

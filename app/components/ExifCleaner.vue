@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const FREE_LIMIT = 3
 const cleanCount = useCookie<number>('exif_clean_count', { default: () => 0, maxAge: 60 * 60 * 24 })
+const remainingUses = computed(() => Math.max(0, FREE_LIMIT - cleanCount.value))
 const { openDirectLink } = useMonetagDirectLink()
 
 interface GpsSummary {
@@ -579,6 +580,10 @@ onBeforeUnmount(() => {
           @click="reset"
         />
       </div>
+
+      <p v-if="remainingUses > 0" class="text-xs text-muted text-center">
+        {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
+      </p>
 
       <p class="text-xs text-muted text-center">
         {{ t('exifRemover.done.verifyTip') }}

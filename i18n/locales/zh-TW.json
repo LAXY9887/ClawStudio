@@ -4998,6 +4998,9 @@
           }
         }
       }
+    },
+    "adModal": {
+      "remaining": "剩餘 {count} 次免費清除"
     }
   }
 }
