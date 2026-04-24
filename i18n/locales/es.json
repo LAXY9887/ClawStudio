@@ -358,6 +358,15 @@
         "**El fingerprinting del dispositivo persiste entre plataformas** — la marca, modelo y número de serie de la cámara permanecen idénticos en cada foto de ese dispositivo, permitiendo que los intermediarios de datos vinculen tus publicaciones anónimas a tu identidad real.",
         "**Los perfiles de color ICC se preservan** — Las salidas JPEG, PNG, WebP, AVIF y TIFF mantienen el espacio de color incrustado (sRGB, Display P3, Adobe RGB) para que las fotos de amplio rango cromático se vean correctas después de la limpieza."
       ]
+    },
+    "imageEditor": {
+      "tipsTitle": "Consejos para la edición de imágenes",
+      "tips": [
+        "**WebP vs JPG:** WebP produce archivos **25–35% más pequeños** que JPG con la misma calidad visual — ideal para sitios web y aplicaciones donde la velocidad de carga importa.",
+        "**Proporciones de redes sociales:** Publicaciones en Instagram → **1:1** · Miniaturas de YouTube → **16:9** · Historias de Instagram → **9:16** · Foto de portada de LinkedIn → **4:1**.",
+        "**El punto dulce de compresión:** Una configuración de calidad de **80–85** elimina hasta el 70% del tamaño de archivo sin diferencia de calidad visible. Por debajo de 70 introduce artefactos notables.",
+        "**Bonus de privacidad:** El Canvas API que potencia este editor elimina automáticamente todos los **metadatos EXIF** de tu salida — incluida la ubicación GPS, modelo de dispositivo y marca de tiempo."
+      ]
     }
   },
   "error": {
@@ -379,7 +388,8 @@
       "imageFormat": "Conversores de Formato de Imagen",
       "vector": "Herramientas de Vectores e Iconos",
       "avif": "Conversores AVIF",
-      "privacy": "Herramientas de privacidad"
+      "privacy": "Herramientas de privacidad",
+      "imageEditing": "Edición de imágenes"
     },
     "gifToSprite": "GIF → Hoja de sprites",
     "toGif": "PNG → GIF",
@@ -406,7 +416,8 @@
     "avifToWebp": "AVIF → WebP",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Generador de Favicon",
-    "exifRemover": "Removedor de EXIF"
+    "exifRemover": "Removedor de EXIF",
+    "imageEditor": "Editor de imágenes"
   },
   "home": {
     "title": "Herramientas de desarrollo en línea gratuitas",
@@ -514,6 +525,10 @@
       "exifRemover": {
         "title": "Removedor de EXIF y Escáner de Privacidad",
         "description": "Escanea fotos en busca de GPS, dispositivo y metadatos de timestamp, luego elimina todo. Lote de hasta 10 archivos."
+      },
+      "imageEditor": {
+        "title": "Editor de imágenes",
+        "description": "Recorta, redimensiona, comprime, rota y voltea imágenes en tu navegador. Sin subidas — 100% privado."
       }
     }
   },
@@ -5009,6 +5024,172 @@
       "remaining": "{count} limpieza gratuita restante | {count} limpiezas gratuitas restantes",
       "watch": "Confirmar",
       "close": "Cerrar"
+    }
+  },
+  "imageEditor": {
+    "title": "Editor de Imágenes Gratuito en Línea — Recortar, Redimensionar y Comprimir",
+    "subtitle": "Recorta, redimensiona, comprime, rota e invierte imágenes en tu navegador. Sin cargas, sin servidor — 100% privado.",
+    "upload": {
+      "title": "Arrastra o haz clic para cargar tu imagen",
+      "limit": "Máximo 50 MB · JPG, PNG, WebP, AVIF, GIF",
+      "formats": "Soporta JPG · PNG · WebP · AVIF · GIF",
+      "sizeError": "Archivo demasiado grande. El tamaño máximo es 50 MB.",
+      "typeError": "Formato no soportado. Por favor, carga JPG, PNG, WebP, AVIF o GIF.",
+      "loadError": "No se pudo cargar la imagen. El archivo puede estar corrupto o no ser soportado.",
+      "changeFile": "Cambiar imagen"
+    },
+    "tabs": {
+      "crop": "Recortar",
+      "resize": "Redimensionar",
+      "compress": "Comprimir",
+      "rotate": "Rotar",
+      "flip": "Invertir"
+    },
+    "crop": {
+      "aspectRatio": "Relación de aspecto",
+      "free": "Libre",
+      "reset": "Reiniciar recorte",
+      "width": "A",
+      "height": "A"
+    },
+    "resize": {
+      "width": "Ancho (px)",
+      "height": "Alto (px)",
+      "lockAspect": "Bloquear relación de aspecto",
+      "presets": "Presets rápidos"
+    },
+    "compress": {
+      "quality": "Calidad",
+      "estimatedSize": "Tamaño estimado de salida",
+      "pngHint": "PNG es sin pérdidas — cambia a WebP para un archivo más pequeño"
+    },
+    "rotate": {
+      "minus90": "−90°",
+      "plus90": "+90°",
+      "deg180": "180°",
+      "custom": "Ángulo personalizado"
+    },
+    "flip": {
+      "horizontal": "Invertir horizontalmente",
+      "vertical": "Invertir verticalmente"
+    },
+    "format": {
+      "label": "Formato de salida"
+    },
+    "actions": {
+      "download": "Descargar",
+      "changeFile": "Cambiar",
+      "reset": "Comenzar de nuevo",
+      "exportError": "La exportación falló — la imagen puede ser demasiado grande para procesar."
+    },
+    "adModal": {
+      "title": "¿Te está gustando el editor gratuito?",
+      "description": "Has usado tus 3 descargas gratuitas. Mira un video corto para seguir editando de forma gratuita.",
+      "watch": "Ver anuncio",
+      "close": "Ahora no",
+      "remaining": "1 descarga gratuita restante | {count} descargas gratuitas restantes"
+    },
+    "seo": {
+      "whatIs": {
+        "title": "¿Qué es este editor de imágenes?",
+        "content": "Este editor de imágenes gratuito en línea te permite recortar, redimensionar, comprimir, rotar e invertir imágenes directamente en tu navegador — sin software para instalar, sin archivos cargados en ningún servidor. Todo se ejecuta en tu dispositivo usando el Canvas API de HTML5, para que tus fotos permanezcan completamente privadas.",
+        "content2": "Ya sea que estés preparando imágenes para redes sociales, reduciendo archivos antes de enviar por correo, o recortando capturas de pantalla, esta herramienta lo maneja todo en un solo lugar con vistas previas en tiempo real instantáneas."
+      },
+      "howTo": {
+        "title": "Cómo editar tu imagen",
+        "step1": {
+          "title": "Carga tu imagen",
+          "content": "Haz clic en el área de carga o arrastra y suelta un archivo JPG, PNG, WebP, AVIF o GIF (hasta 50 MB). La imagen se carga instantáneamente en el editor — nada se envía a un servidor."
+        },
+        "step2": {
+          "title": "Elige tus ediciones",
+          "content": "Usa las pestañas de la derecha para recortar, redimensionar, ajustar calidad, rotar o invertir tu imagen. Cambia libremente entre pestañas — la vista previa se actualiza instantáneamente con cada cambio."
+        },
+        "step3": {
+          "title": "Selecciona formato de salida",
+          "content": "Elige JPG, PNG o WebP del selector de formato. Usa WebP para el tamaño de archivo más pequeño, PNG para imágenes con transparencia, JPG para compatibilidad universal."
+        },
+        "step4": {
+          "title": "Descarga tu resultado",
+          "content": "Haz clic en Descargar para guardar la imagen editada directamente en tu dispositivo. El archivo se genera en tu navegador — rápido, privado y completamente gratuito."
+        }
+      },
+      "features": {
+        "title": "Características clave",
+        "items": {
+          "crop": {
+            "title": "Recorte interactivo con bloqueo de relación de aspecto",
+            "content": "Arrastra el cuadro de recorte para seleccionar exactamente la región que deseas. Bloquea a relaciones comunes — 1:1 para Instagram, 16:9 para miniaturas de YouTube, 4:3 para presentaciones — o recorta libremente."
+          },
+          "resize": {
+            "title": "Redimensionamiento preciso con preservación de relación de aspecto",
+            "content": "Ingresa dimensiones exactas de píxeles o elige un preset rápido (25%, 50%, 75%). La relación de aspecto bloqueada previene distorsiones."
+          },
+          "compress": {
+            "title": "Compresión de calidad para archivos más pequeños",
+            "content": "Ajusta el deslizador de calidad para equilibrar el tamaño del archivo y la claridad visual. Una configuración de 80–85 es el punto óptimo para imágenes web — típicamente 60–70% más pequeño sin pérdida de calidad visible."
+          },
+          "rotate": {
+            "title": "Rotar por cualquier ángulo",
+            "content": "Usa botones rápidos para rotaciones de 90°/180° o el deslizador para un ángulo personalizado entre −180° y +180°. Combina con inversión para control de orientación completo."
+          },
+          "privacy": {
+            "title": "100% Privado — Sin carga en servidor",
+            "content": "Tu imagen nunca deja tu dispositivo. El Canvas API procesa todo localmente. La salida también se despoja de cualquier metadato EXIF automáticamente."
+          },
+          "format": {
+            "title": "Exportar como JPG, PNG o WebP",
+            "content": "Elige el mejor formato para tu caso de uso. JPG para fotos, PNG para imágenes con transparencia, WebP para el tamaño de archivo más pequeño con alta calidad."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de uso comunes",
+        "items": {
+          "social": {
+            "title": "Imágenes para redes sociales",
+            "content": "Recorta a 1:1 para publicaciones de Instagram, 16:9 para encabezados de Twitter/X, o 9:16 para Historias. Comprime para mantenerte dentro de los límites de tamaño de carga de la plataforma."
+          },
+          "email": {
+            "title": "Archivos adjuntos de correo",
+            "content": "Redimensiona fotos grandes del teléfono (a menudo 4–12 MB) a algunos cientos de kilobytes antes de adjuntarlas a correos."
+          },
+          "web": {
+            "title": "Imágenes web y de blog",
+            "content": "Exporta como WebP y establece calidad a 80–85 para imágenes que carguen rápido en tu sitio web sin verse pixeladas."
+          },
+          "screenshot": {
+            "title": "Recorte de capturas de pantalla",
+            "content": "Recorta las barras de herramientas del navegador o contenido irrelevante de las capturas de pantalla antes de compartir en documentos o presentaciones."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes",
+        "items": {
+          "privacy": {
+            "q": "¿Mi imagen se sube a un servidor?",
+            "a": "No. Este editor funciona completamente en tu navegador usando la API Canvas de HTML5. Tu imagen nunca se sube a ningún lado — permanece en tu dispositivo todo el tiempo."
+          },
+          "formats": {
+            "q": "¿Qué formatos de imagen son compatibles?",
+            "a": "Puedes subir archivos JPG, PNG, WebP, AVIF y GIF de hasta 50 MB. Puedes exportar como JPG, PNG o WebP."
+          },
+          "pngCompress": {
+            "q": "¿Por qué no puedo comprimir archivos PNG?",
+            "a": "PNG usa compresión sin pérdida, por lo que no hay un control deslizante de calidad. Para reducir el tamaño del archivo, cambia el formato de salida a WebP — normalmente logra archivos 25–35% más pequeños que PNG con calidad visual equivalente."
+          },
+          "quality": {
+            "q": "¿Qué configuración de calidad debo usar?",
+            "a": "Para imágenes web, 80–85 es el rango ideal para JPG y WebP. Por debajo de 70 aparecen artefactos visibles; por encima de 90, las reducciones de tamaño de archivo son mínimas."
+          }
+        }
+      },
+      "api": {
+        "title": "¿Necesita procesar imágenes en lote?",
+        "content": "Este editor de navegador es perfecto para imágenes individuales. Para redimensionar, recortar o convertir cientos de imágenes programáticamente en lote, la API Easy HEIC Image Converter en RapidAPI soporta automatización a escala.",
+        "cta": "Explorar la API"
+      }
     }
   }
 }

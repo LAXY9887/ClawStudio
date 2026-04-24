@@ -358,6 +358,15 @@
         "**设备指纹跨平台持续存在** —— 相机厂牌、型号与序号在同一台设备拍摄的每一张照片中都相同，资料仲介商用这组指纹把你匿名发的贴文串连回你的真实身份。",
         "**ICC 色彩设定档完整保留** —— JPEG、PNG、WebP、AVIF、TIFF 的输出档案保留嵌入的色彩空间（sRGB、Display P3、Adobe RGB），广色域照片清理后在相容显示器上仍能正确呈现。"
       ]
+    },
+    "imageEditor": {
+      "tipsTitle": "你知道吗？图片编辑器提示",
+      "tips": [
+        "使用 **Canvas API** 在本地处理一切 — 你的照片永远不会被发送到任何服务器，100% 隐私。",
+        "拖动裁剪框的角落以自由调整大小，或点击预设宽高比按钮以快速锁定到 Instagram、YouTube 或其他平台的标准尺寸。",
+        "调整质量滑块以平衡文件大小和清晰度。对于大多数网络图片，80–85 是最佳选择，可减小 60–70% 的大小而无明显损失。",
+        "压缩后自动去除所有 EXIF 数据 — 包括 GPS 座标和相机信息 — 以保护你的隐私。"
+      ]
     }
   },
   "error": {
@@ -379,7 +388,8 @@
       "imageFormat": "图片格式转换器",
       "vector": "矢量与图标工具",
       "avif": "AVIF 转换器",
-      "privacy": "隐私工具"
+      "privacy": "隐私工具",
+      "imageEditing": "图片编辑"
     },
     "gifToSprite": "GIF → 精灵表",
     "toGif": "PNG → GIF",
@@ -406,7 +416,8 @@
     "avifToWebp": "AVIF → WebP",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Favicon 生成器",
-    "exifRemover": "EXIF 清除器"
+    "exifRemover": "EXIF 清除器",
+    "imageEditor": "图片编辑器"
   },
   "home": {
     "title": "免费在线开发工具",
@@ -514,6 +525,10 @@
       "exifRemover": {
         "title": "EXIF 清除器与隐私扫描器",
         "description": "扫描照片中的 GPS、设备、时间等隐私 metadata 并一键清除，支持批次最多 10 张。"
+      },
+      "imageEditor": {
+        "title": "图片编辑器",
+        "description": "在浏览器中裁剪、调整大小、压缩、旋转、翻转图片。无需上传服务器 — 100% 私密。"
       }
     }
   },
@@ -5009,6 +5024,172 @@
       "remaining": "{count} 次免费清除 | {count} 次免费清除",
       "watch": "确认",
       "close": "关闭"
+    }
+  },
+  "imageEditor": {
+    "title": "免费在线图片编辑工具 — 裁剪、缩放与压缩",
+    "subtitle": "在浏览器中裁剪、缩放、压缩、旋转和翻转图片。无上传、无服务器 — 100% 隐私。",
+    "upload": {
+      "title": "拖放或点击上传你的图片",
+      "limit": "最大 50 MB · JPG、PNG、WebP、AVIF、GIF",
+      "formats": "支持 JPG · PNG · WebP · AVIF · GIF",
+      "sizeError": "文件过大。最大大小为 50 MB。",
+      "typeError": "不支持的格式。请上传 JPG、PNG、WebP、AVIF 或 GIF。",
+      "loadError": "加载图片失败。文件可能已损坏或不受支持。",
+      "changeFile": "更改图片"
+    },
+    "tabs": {
+      "crop": "裁剪",
+      "resize": "缩放",
+      "compress": "压缩",
+      "rotate": "旋转",
+      "flip": "翻转"
+    },
+    "crop": {
+      "aspectRatio": "宽高比",
+      "free": "自由",
+      "reset": "重置裁剪",
+      "width": "宽",
+      "height": "高"
+    },
+    "resize": {
+      "width": "宽度（像素）",
+      "height": "高度（像素）",
+      "lockAspect": "锁定宽高比",
+      "presets": "快速预设"
+    },
+    "compress": {
+      "quality": "质量",
+      "estimatedSize": "预估输出大小",
+      "pngHint": "PNG 是无损的 — 切换到 WebP 以获得更小的文件"
+    },
+    "rotate": {
+      "minus90": "−90°",
+      "plus90": "+90°",
+      "deg180": "180°",
+      "custom": "自定义角度"
+    },
+    "flip": {
+      "horizontal": "水平翻转",
+      "vertical": "垂直翻转"
+    },
+    "format": {
+      "label": "输出格式"
+    },
+    "actions": {
+      "download": "下载",
+      "changeFile": "更改",
+      "reset": "重新开始",
+      "exportError": "导出失败 — 图片可能太大而无法处理。"
+    },
+    "adModal": {
+      "title": "喜欢这个免费编辑器？",
+      "description": "你已用完 3 次免费下载。观看短视频以继续免费编辑。",
+      "watch": "观看广告",
+      "close": "暂不，谢谢",
+      "remaining": "还有 1 次免费下载 | 还有 {count} 次免费下载"
+    },
+    "seo": {
+      "whatIs": {
+        "title": "什么是这个图片编辑器？",
+        "content": "这个免费在线图片编辑器让你直接在浏览器中裁剪、缩放、压缩、旋转和翻转图片 — 无需安装软件，无需上传文件到任何服务器。一切都在你的设备上使用 HTML5 Canvas API 运行，所以你的照片完全私密。",
+        "content2": "无论你是在为社交媒体准备图片、在发送前压缩文件，还是裁剪屏幕截图，这个工具都能一站式搞定，并提供即时实时预览。"
+      },
+      "howTo": {
+        "title": "如何编辑你的图片",
+        "step1": {
+          "title": "上传你的图片",
+          "content": "点击上传区域或拖放一个 JPG、PNG、WebP、AVIF 或 GIF 文件（最大 50 MB）。图片会立即在编辑器中加载 — 不会发送到任何服务器。"
+        },
+        "step2": {
+          "title": "选择你的编辑",
+          "content": "使用右侧的标签页来裁剪、缩放、调整质量、旋转或翻转你的图片。自由切换标签页 — 预览会随着每次更改即时更新。"
+        },
+        "step3": {
+          "title": "选择输出格式",
+          "content": "从格式选择器中选择 JPG、PNG 或 WebP。使用 WebP 以获得最小文件大小，使用 PNG 以处理带透明度的图片，使用 JPG 以实现通用兼容性。"
+        },
+        "step4": {
+          "title": "下载你的结果",
+          "content": "点击下载将编辑后的图片直接保存到你的设备。文件在你的浏览器中生成 — 快速、私密且完全免费。"
+        }
+      },
+      "features": {
+        "title": "主要功能",
+        "items": {
+          "crop": {
+            "title": "具有宽高比锁定的交互式裁剪",
+            "content": "拖动裁剪框选择你想要的确切区域。锁定到常见比例 — 1:1 用于 Instagram、16:9 用于 YouTube 缩略图、4:3 用于演示文稿 — 或自由裁剪。"
+          },
+          "resize": {
+            "title": "精确缩放与宽高比保留",
+            "content": "输入精确的像素尺寸或选择快速预设（25%、50%、75%）。锁定的宽高比可防止拉伸。"
+          },
+          "compress": {
+            "title": "质量压缩以获得更小文件",
+            "content": "调整质量滑块以平衡文件大小和视觉清晰度。80–85 的设置是网络图片的最佳选择 — 通常可减小 60–70% 的大小，且无明显质量损失。"
+          },
+          "rotate": {
+            "title": "按任何角度旋转",
+            "content": "使用快速按钮进行 90°/180° 旋转，或使用滑块进行 −180° 到 +180° 之间的自定义角度。与翻转结合以进行完整方向控制。"
+          },
+          "privacy": {
+            "title": "100% 隐私 — 无服务器上传",
+            "content": "你的图片永远不会离开你的设备。Canvas API 在本地处理所有内容。输出也会自动清除任何 EXIF 元数据。"
+          },
+          "format": {
+            "title": "导出为 JPG、PNG 或 WebP",
+            "content": "选择最适合你用例的格式。JPG 用于照片，PNG 用于带透明度的图片，WebP 用于高质量情况下的最小文件大小。"
+          }
+        }
+      },
+      "useCases": {
+        "title": "常见用例",
+        "items": {
+          "social": {
+            "title": "社交媒体图片",
+            "content": "为 Instagram 帖子裁剪 1:1、为 Twitter/X 页眉裁剪 16:9，或为 Stories 裁剪 9:16。压缩以保持在平台上传大小限制之下。"
+          },
+          "email": {
+            "title": "电子邮件附件",
+            "content": "在附加到电子邮件之前，将大型手机照片（通常 4–12 MB）缩放到几百千字节。"
+          },
+          "web": {
+            "title": "网站与博客图片",
+            "content": "导出为 WebP 并将质量设置为 80–85，使图片在你的网站上快速加载，且不显示像素化。"
+          },
+          "screenshot": {
+            "title": "屏幕截图修剪",
+            "content": "在文档或演示文稿中分享前，裁剪掉浏览器工具栏或屏幕截图中的无关内容。"
+          }
+        }
+      },
+      "faq": {
+        "title": "常见问题",
+        "items": {
+          "privacy": {
+            "q": "我的图片会上传到服务器吗？",
+            "a": "不会。此编辑器完全在您的浏览器中使用 HTML5 Canvas API 运行。您的图片不会上传到任何地方 — 全程保留在您的设备上。"
+          },
+          "formats": {
+            "q": "支持哪些图片格式？",
+            "a": "您可以上传最大 50 MB 的 JPG、PNG、WebP、AVIF 和 GIF 文件。可导出为 JPG、PNG 或 WebP。"
+          },
+          "pngCompress": {
+            "q": "为什么 PNG 文件无法压缩？",
+            "a": "PNG 使用无损压缩，因此没有质量滑块。若要缩小文件大小，请将输出格式切换为 WebP — 在相同视觉质量下，通常可比 PNG 小 25–35%。"
+          },
+          "quality": {
+            "q": "应该使用什么质量设置？",
+            "a": "对于网页图片，JPG 和 WebP 的理想范围是 80–85。低于 70 会出现可见的失真；高于 90 则在缩减文件大小方面收益递减。"
+          }
+        }
+      },
+      "api": {
+        "title": "需要批量处理图片？",
+        "content": "这个浏览器编辑器非常适合单张图片。如果需要批量缩放、裁剪或以编程方式转换数百张图片，RapidAPI 上的 Easy HEIC Image Converter API 支持大规模自动化。",
+        "cta": "浏览 API"
+      }
     }
   }
 }

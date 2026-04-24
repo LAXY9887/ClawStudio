@@ -21,7 +21,7 @@ const apiFeatureKeys = props.apiHighlightKeys || ['endpoints', 'input', 'params'
   <UPageSection>
     <div class="max-w-3xl mx-auto space-y-12">
       <!-- API Promotion (shared) -->
-      <section>
+      <section v-if="apiUrl">
         <h2 class="text-2xl font-bold mb-4">
           {{ t(`${prefix}.seo.api.title`) }}
         </h2>

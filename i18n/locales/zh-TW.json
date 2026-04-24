@@ -358,6 +358,15 @@
         "**設備指紋跨平台持續存在** —— 相機廠牌、型號與序號在同一台設備拍攝的每一張照片中都相同，資料仲介商用這組指紋把你匿名發的貼文串連回你的真實身份。",
         "**ICC 色彩設定檔完整保留** —— JPEG、PNG、WebP、AVIF、TIFF 的輸出檔案保留嵌入的色彩空間（sRGB、Display P3、Adobe RGB），廣色域照片清理後在相容顯示器上仍能正確呈現。"
       ]
+    },
+    "imageEditor": {
+      "tipsTitle": "圖片編輯小技巧",
+      "tips": [
+        "**WebP vs JPG：** 在相同視覺品質下，WebP 的檔案大小比 JPG **小 25–35%**，非常適合在意載入速度的網站與應用程式。",
+        "**社群媒體長寬比：** Instagram 貼文 → **1:1** · YouTube 縮圖 → **16:9** · Instagram 限時動態 → **9:16** · LinkedIn 封面 → **4:1**。",
+        "**壓縮的甜蜜點：** 品質設定 **80–85** 可在幾乎無肉眼可見差異的情況下，將檔案大小縮減多達 70%。低於 70 則會出現明顯的失真。",
+        "**隱私加分：** 此編輯器所使用的 Canvas API 會自動移除輸出檔案中的所有 **EXIF 中繼資料**，包括 GPS 位置、裝置型號與拍攝時間。"
+      ]
     }
   },
   "error": {
@@ -379,7 +388,8 @@
       "imageFormat": "圖片格式轉換",
       "avif": "AVIF 轉換",
       "vector": "向量與圖示工具",
-      "privacy": "隱私工具"
+      "privacy": "隱私工具",
+      "imageEditing": "圖片編輯"
     },
     "gifToSprite": "GIF → Spritesheet",
     "toGif": "PNG → GIF",
@@ -406,7 +416,8 @@
     "avifToWebp": "AVIF → WebP",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Favicon 產生器",
-    "exifRemover": "EXIF 清除器"
+    "exifRemover": "EXIF 清除器",
+    "imageEditor": "圖片編輯器"
   },
   "home": {
     "title": "免費線上開發工具",
@@ -514,6 +525,10 @@
       "exifRemover": {
         "title": "EXIF 清除器與隱私掃描器",
         "description": "掃描照片中的 GPS、設備、時間等隱私 metadata 並一鍵清除，支援批次最多 10 張。"
+      },
+      "imageEditor": {
+        "title": "圖片編輯器",
+        "description": "在瀏覽器中裁切、縮放、壓縮、旋轉、翻轉圖片。不上傳伺服器 — 100% 私密。"
       }
     }
   },
@@ -5009,6 +5024,172 @@
       "remaining": "剩餘 {count} 次免費清除",
       "watch": "確認",
       "close": "關閉"
+    }
+  },
+  "imageEditor": {
+    "title": "免費線上圖片編輯器 — 裁切、縮放與壓縮",
+    "subtitle": "直接在瀏覽器中裁切、縮放、壓縮、旋轉和翻轉圖片。無需上傳，無伺服器 — 100% 私密。",
+    "upload": {
+      "title": "拖曳或點擊以上傳圖片",
+      "limit": "最大 50 MB · JPG、PNG、WebP、AVIF、GIF",
+      "formats": "支援 JPG · PNG · WebP · AVIF · GIF",
+      "sizeError": "檔案過大。最大支援 50 MB。",
+      "typeError": "不支援的格式。請上傳 JPG、PNG、WebP、AVIF 或 GIF。",
+      "loadError": "圖片載入失敗。檔案可能已損毀或格式不支援。",
+      "changeFile": "更換圖片"
+    },
+    "tabs": {
+      "crop": "裁切",
+      "resize": "縮放",
+      "compress": "壓縮",
+      "rotate": "旋轉",
+      "flip": "翻轉"
+    },
+    "crop": {
+      "aspectRatio": "長寬比",
+      "free": "自由",
+      "reset": "重設裁切",
+      "width": "寬",
+      "height": "高"
+    },
+    "resize": {
+      "width": "寬度（px）",
+      "height": "高度（px）",
+      "lockAspect": "鎖定長寬比",
+      "presets": "快速預設"
+    },
+    "compress": {
+      "quality": "品質",
+      "estimatedSize": "預估輸出大小",
+      "pngHint": "PNG 為無損壓縮 — 改用 WebP 可獲得更小的檔案"
+    },
+    "rotate": {
+      "minus90": "−90°",
+      "plus90": "+90°",
+      "deg180": "180°",
+      "custom": "自訂角度"
+    },
+    "flip": {
+      "horizontal": "水平翻轉",
+      "vertical": "垂直翻轉"
+    },
+    "format": {
+      "label": "輸出格式"
+    },
+    "actions": {
+      "download": "下載",
+      "changeFile": "更換",
+      "reset": "重新開始",
+      "exportError": "匯出失敗 — 圖片可能過大而無法處理。"
+    },
+    "adModal": {
+      "title": "喜歡這個免費編輯器嗎？",
+      "description": "您已使用 3 次免費下載。觀看短片即可繼續免費編輯。",
+      "watch": "觀看廣告",
+      "close": "下次再說",
+      "remaining": "剩餘 1 次免費下載 | 剩餘 {count} 次免費下載"
+    },
+    "seo": {
+      "whatIs": {
+        "title": "什麼是這個圖片編輯器？",
+        "content": "這款免費線上圖片編輯器讓您直接在瀏覽器中裁切、縮放、壓縮、旋轉和翻轉圖片 — 無需安裝軟體，也不會將檔案上傳至任何伺服器。一切皆透過 HTML5 Canvas API 在您的裝置上本機執行，讓您的照片保持完全私密。",
+        "content2": "無論是準備社群媒體圖片、在寄送電子郵件前縮小檔案，還是裁切螢幕截圖，這款工具都能在一處搞定，並提供即時預覽。"
+      },
+      "howTo": {
+        "title": "如何編輯您的圖片",
+        "step1": {
+          "title": "上傳您的圖片",
+          "content": "點擊上傳區域或拖放 JPG、PNG、WebP、AVIF 或 GIF 檔案（最大 50 MB）。圖片會立即載入編輯器 — 不會傳送至任何伺服器。"
+        },
+        "step2": {
+          "title": "選擇您的編輯方式",
+          "content": "使用右側的標籤頁進行裁切、縮放、調整品質、旋轉或翻轉。可自由切換標籤頁 — 每次變更都會即時更新預覽。"
+        },
+        "step3": {
+          "title": "選擇輸出格式",
+          "content": "從格式選擇器中選取 JPG、PNG 或 WebP。WebP 提供最小的檔案大小，PNG 適合含透明度的圖片，JPG 具有最廣泛的相容性。"
+        },
+        "step4": {
+          "title": "下載結果",
+          "content": "點擊下載，將編輯後的圖片直接儲存至您的裝置。檔案在您的瀏覽器中生成 — 快速、私密，且完全免費。"
+        }
+      },
+      "features": {
+        "title": "主要功能",
+        "items": {
+          "crop": {
+            "title": "互動式裁切與長寬比鎖定",
+            "content": "拖曳裁切框精確選取您想要的區域。鎖定常見比例 — Instagram 的 1:1、YouTube 縮圖的 16:9、簡報的 4:3 — 或自由裁切。"
+          },
+          "resize": {
+            "title": "精確縮放並保持長寬比",
+            "content": "輸入精確的像素尺寸，或選擇快速預設（25%、50%、75%）。鎖定長寬比可防止變形。"
+          },
+          "compress": {
+            "title": "品質壓縮以縮小檔案",
+            "content": "調整品質滑桿以平衡檔案大小與視覺清晰度。80–85 是網頁圖片的甜蜜點 — 通常可縮小 60–70%，且無可見的品質損失。"
+          },
+          "rotate": {
+            "title": "任意角度旋轉",
+            "content": "使用快速按鈕進行 90°/180° 旋轉，或使用滑桿在 −180° 到 +180° 之間設定自訂角度。結合翻轉可完整控制方向。"
+          },
+          "privacy": {
+            "title": "100% 私密 — 不上傳至伺服器",
+            "content": "您的圖片永遠不會離開您的裝置。Canvas API 在本機處理所有內容。輸出結果也會自動移除所有 EXIF 中繼資料。"
+          },
+          "format": {
+            "title": "匯出為 JPG、PNG 或 WebP",
+            "content": "根據使用情境選擇最佳格式。JPG 適合照片，PNG 適合含透明度的圖片，WebP 在高品質下提供最小的檔案大小。"
+          }
+        }
+      },
+      "useCases": {
+        "title": "常見使用情境",
+        "items": {
+          "social": {
+            "title": "社群媒體圖片",
+            "content": "裁切為 Instagram 貼文的 1:1、Twitter/X 封面的 16:9，或限時動態的 9:16。壓縮以符合平台上傳大小限制。"
+          },
+          "email": {
+            "title": "電子郵件附件",
+            "content": "將較大的手機照片（通常 4–12 MB）縮減至數百 KB，再附加至電子郵件中。"
+          },
+          "web": {
+            "title": "網頁與部落格圖片",
+            "content": "匯出為 WebP 並設定品質為 80–85，讓圖片在網站上快速載入且不失真。"
+          },
+          "screenshot": {
+            "title": "截圖裁切",
+            "content": "在分享至文件或簡報前，裁切掉截圖中的瀏覽器工具列或不相關的內容。"
+          }
+        }
+      },
+      "faq": {
+        "title": "常見問題",
+        "items": {
+          "privacy": {
+            "q": "我的圖片會上傳至伺服器嗎？",
+            "a": "不會。此編輯器完全在您的瀏覽器中使用 HTML5 Canvas API 執行。您的圖片不會上傳至任何地方 — 全程保留在您的裝置上。"
+          },
+          "formats": {
+            "q": "支援哪些圖片格式？",
+            "a": "您可以上傳最大 50 MB 的 JPG、PNG、WebP、AVIF 和 GIF 檔案。可匯出為 JPG、PNG 或 WebP。"
+          },
+          "pngCompress": {
+            "q": "為什麼 PNG 檔案無法壓縮？",
+            "a": "PNG 使用無損壓縮，因此沒有品質滑桿。若要縮小檔案大小，請將輸出格式切換為 WebP — 在相同視覺品質下，通常可比 PNG 小 25–35%。"
+          },
+          "quality": {
+            "q": "應該使用什麼品質設定？",
+            "a": "對於網頁圖片，JPG 和 WebP 的理想範圍是 80–85。低於 70 會出現可見的失真；高於 90 則在縮減檔案大小方面收益遞減。"
+          }
+        }
+      },
+      "api": {
+        "title": "需要批次處理圖片？",
+        "content": "此瀏覽器編輯器非常適合處理個別圖片。若需要以程式化方式批次縮放、裁切或轉換數百張圖片，RapidAPI 上的 Easy HEIC Image Converter API 可支援大規模自動化處理。",
+        "cta": "探索 API"
+      }
     }
   }
 }

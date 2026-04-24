@@ -358,6 +358,15 @@
         "**Gerätefingerabdrücke bleiben plattformübergreifend erhalten** — Kamerahersteller, Modell und Seriennummer bleiben in jedem Foto von diesem Gerät identisch, sodass Datenmakler Ihre anonymen Beiträge mit Ihrer echten Identität verknüpfen können.",
         "**ICC-Farbprofile werden beibehalten** — JPEG-, PNG-, WebP-, AVIF- und TIFF-Ausgaben behalten den eingebetteten Farbraum (sRGB, Display P3, Adobe RGB) bei, sodass Fotos mit großem Farbraum nach der Reinigung korrekt aussehen."
       ]
+    },
+    "imageEditor": {
+      "tipsTitle": "Tipps zum Bildbearbeiten",
+      "tips": [
+        "**WebP vs JPG:** WebP produziert Dateien **25–35 % kleiner** als JPG bei gleicher visueller Qualität — ideal für Websites und Apps, bei denen Ladegeschwindigkeit wichtig ist.",
+        "**Social-Media-Seitenverhältnisse:** Instagram-Beiträge → **1:1** · YouTube-Miniaturansichten → **16:9** · Instagram Stories → **9:16** · LinkedIn-Titelbild → **4:1**.",
+        "**Die optimale Kompression:** Eine Qualitätseinstellung von **80–85** reduziert bis zu 70 % der Dateigröße ohne sichtbare Qualitätsverluste. Unter 70 werden Artefakte sichtbar.",
+        "**Datenschutz-Bonus:** Die Canvas API, die diesen Editor antreibt, entfernt automatisch alle **EXIF-Metadaten** aus Ihrer Ausgabe — einschließlich GPS-Standort, Gerätemodell und Zeitstempel."
+      ]
     }
   },
   "error": {
@@ -379,7 +388,8 @@
       "imageFormat": "Bildformat-Konverter",
       "sprite": "Sprite- & Frame-Tools",
       "vector": "Vektor- & Icon-Tools",
-      "privacy": "Datenschutz-Tools"
+      "privacy": "Datenschutz-Tools",
+      "imageEditing": "Bildbearbeitung"
     },
     "gifToSprite": "GIF → Sprite Sheet",
     "toGif": "PNG → GIF",
@@ -406,7 +416,8 @@
     "avifToWebp": "→ AVIF zu WebP",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Favicon-Generator",
-    "exifRemover": "EXIF-Remover"
+    "exifRemover": "EXIF-Remover",
+    "imageEditor": "Bildeditor"
   },
   "home": {
     "title": "Kostenlose Online-Entwicklertools",
@@ -514,6 +525,10 @@
       "exifRemover": {
         "title": "EXIF-Remover & Datenschutz-Scanner",
         "description": "Scans Fotos auf GPS-, Geräte- und Zeitstempel-Metadaten, dann alles entfernen. Batch bis zu 10 Dateien."
+      },
+      "imageEditor": {
+        "title": "Bildeditor",
+        "description": "Bilder im Browser zuschneiden, skalieren, komprimieren, drehen und spiegeln. Kein Upload — 100% privat."
       }
     }
   },
@@ -5009,6 +5024,172 @@
       "remaining": "{count} kostenlose Reinigung verbleibend | {count} kostenlose Reinigungen verbleibend",
       "watch": "Bestätigen",
       "close": "Schließen"
+    }
+  },
+  "imageEditor": {
+    "title": "Kostenloser Online-Bildbearbeiter — Zuschneiden, Skalieren & Komprimieren",
+    "subtitle": "Schneiden Sie Bilder zu, skalieren Sie sie, komprimieren Sie sie, drehen Sie sie und spiegeln Sie sie in Ihrem Browser. Keine Uploads, kein Server — 100 % privat.",
+    "upload": {
+      "title": "Bild ziehen oder klicken zum Hochladen",
+      "limit": "Max 50 MB · JPG, PNG, WebP, AVIF, GIF",
+      "formats": "Unterstützt JPG · PNG · WebP · AVIF · GIF",
+      "sizeError": "Datei zu groß. Maximale Größe beträgt 50 MB.",
+      "typeError": "Nicht unterstütztes Format. Bitte laden Sie JPG, PNG, WebP, AVIF oder GIF hoch.",
+      "loadError": "Fehler beim Laden des Bildes. Die Datei ist möglicherweise beschädigt oder nicht unterstützt.",
+      "changeFile": "Bild ändern"
+    },
+    "tabs": {
+      "crop": "Zuschneiden",
+      "resize": "Skalieren",
+      "compress": "Komprimieren",
+      "rotate": "Drehen",
+      "flip": "Spiegeln"
+    },
+    "crop": {
+      "aspectRatio": "Seitenverhältnis",
+      "free": "Frei",
+      "reset": "Zuschnitt zurücksetzen",
+      "width": "B",
+      "height": "H"
+    },
+    "resize": {
+      "width": "Breite (px)",
+      "height": "Höhe (px)",
+      "lockAspect": "Seitenverhältnis sperren",
+      "presets": "Schnellvoreinstellungen"
+    },
+    "compress": {
+      "quality": "Qualität",
+      "estimatedSize": "Geschätzte Ausgabegröße",
+      "pngHint": "PNG ist verlustfrei — wechseln Sie zu WebP für eine kleinere Datei"
+    },
+    "rotate": {
+      "minus90": "−90°",
+      "plus90": "+90°",
+      "deg180": "180°",
+      "custom": "Benutzerdefinierter Winkel"
+    },
+    "flip": {
+      "horizontal": "Horizontal spiegeln",
+      "vertical": "Vertikal spiegeln"
+    },
+    "format": {
+      "label": "Ausgabeformat"
+    },
+    "actions": {
+      "download": "Herunterladen",
+      "changeFile": "Ändern",
+      "reset": "Von vorne beginnen",
+      "exportError": "Export fehlgeschlagen — das Bild ist möglicherweise zu groß zum Verarbeiten."
+    },
+    "adModal": {
+      "title": "Gefällt Ihnen der kostenlose Editor?",
+      "description": "Sie haben Ihre 3 kostenlosen Downloads verwendet. Sehen Sie sich ein kurzes Video an, um kostenlos weiterzubearbeiten.",
+      "watch": "Anzeige ansehen",
+      "close": "Jetzt nicht",
+      "remaining": "1 kostenlos verbleibend | {count} kostenlos verbleibend"
+    },
+    "seo": {
+      "whatIs": {
+        "title": "Was ist dieser Bildbearbeiter?",
+        "content": "Dieser kostenlose Online-Bildbearbeiter ermöglicht es Ihnen, Bilder direkt in Ihrem Browser zuzuschneiden, zu skalieren, zu komprimieren, zu drehen und zu spiegeln — keine Software zum Installieren, keine hochgeladenen Dateien auf einen Server. Alles wird auf Ihrem Gerät mit der HTML5 Canvas API ausgeführt, sodass Ihre Fotos vollständig privat bleiben.",
+        "content2": "Egal, ob Sie Bilder für soziale Medien vorbereiten, Dateien vor dem Versenden per E-Mail verkleinern oder Screenshots zuschneiden — dieses Tool erledigt alles an einem Ort mit sofortiger Echtzeit-Vorschau."
+      },
+      "howTo": {
+        "title": "Wie Sie Ihr Bild bearbeiten",
+        "step1": {
+          "title": "Laden Sie Ihr Bild hoch",
+          "content": "Klicken Sie auf den Upload-Bereich oder ziehen Sie eine JPG-, PNG-, WebP-, AVIF- oder GIF-Datei (bis zu 50 MB) per Drag & Drop. Das Bild wird sofort im Editor geladen — nichts wird an einen Server gesendet."
+        },
+        "step2": {
+          "title": "Wählen Sie Ihre Bearbeitungen aus",
+          "content": "Verwenden Sie die Registerkarten auf der rechten Seite, um Ihr Bild zuzuschneiden, zu skalieren, die Qualität anzupassen, zu drehen oder zu spiegeln. Wechseln Sie zwischen Registerkarten — die Vorschau wird mit jeder Änderung sofort aktualisiert."
+        },
+        "step3": {
+          "title": "Wählen Sie das Ausgabeformat aus",
+          "content": "Wählen Sie JPG, PNG oder WebP aus dem Formatauswahlgerät. Verwenden Sie WebP für die kleinste Dateigröße, PNG für Bilder mit Transparenz, JPG für universelle Kompatibilität."
+        },
+        "step4": {
+          "title": "Laden Sie Ihr Ergebnis herunter",
+          "content": "Klicken Sie auf Herunterladen, um das bearbeitete Bild direkt auf Ihrem Gerät zu speichern. Die Datei wird in Ihrem Browser generiert — schnell, privat und völlig kostenlos."
+        }
+      },
+      "features": {
+        "title": "Wichtige Funktionen",
+        "items": {
+          "crop": {
+            "title": "Interaktiver Zuschnitt mit Seitenverhältnis-Sperre",
+            "content": "Ziehen Sie das Zuschnittfeld, um genau den Bereich auszuwählen, den Sie möchten. Sperren Sie häufige Verhältnisse — 1:1 für Instagram, 16:9 für YouTube-Miniaturansichten, 4:3 für Präsentationen — oder schneiden Sie frei zu."
+          },
+          "resize": {
+            "title": "Präzises Skalieren mit Seitenverhältnis-Beibehaltung",
+            "content": "Geben Sie exakte Pixelabmessungen ein oder wählen Sie eine Schnellvoreinstellung (25 %, 50 %, 75 %). Das gesperrte Seitenverhältnis verhindert Verzerrungen."
+          },
+          "compress": {
+            "title": "Qualitätskomprimierung für kleinere Dateien",
+            "content": "Passen Sie den Qualitätsschieberegler an, um Dateigröße und visuelle Klarheit auszugleichen. Eine Einstellung von 80–85 ist der Sweetspot für Web-Bilder — typischerweise 60–70 % kleiner ohne sichtbare Qualitätsverluste."
+          },
+          "rotate": {
+            "title": "Drehen um jeden Winkel",
+            "content": "Verwenden Sie Schnellschaltflächen für 90°/180°-Drehungen oder den Schieberegler für einen benutzerdefinierten Winkel zwischen −180° und +180°. Kombinieren Sie mit Spiegeln für vollständige Orientierungskontrolle."
+          },
+          "privacy": {
+            "title": "100 % Privat — Kein Server-Upload",
+            "content": "Ihr Bild verlässt Ihr Gerät nie. Die Canvas API verarbeitet alles lokal. Die Ausgabe wird auch automatisch von EXIF-Metadaten befreit."
+          },
+          "format": {
+            "title": "Exportieren als JPG, PNG oder WebP",
+            "content": "Wählen Sie das beste Format für Ihren Anwendungsfall. JPG für Fotos, PNG für Bilder mit Transparenz, WebP für die kleinste Dateigröße bei hoher Qualität."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Häufige Anwendungsfälle",
+        "items": {
+          "social": {
+            "title": "Bilder für soziale Medien",
+            "content": "Schneiden Sie 1:1 für Instagram-Beiträge, 16:9 für Twitter/X-Header oder 9:16 für Stories zu. Komprimieren Sie, um innerhalb der Upload-Größenlimits der Plattform zu bleiben."
+          },
+          "email": {
+            "title": "E-Mail-Anhänge",
+            "content": "Skalieren Sie große Telefonfotos (oft 4–12 MB) auf einige hundert Kilobyte herunter, bevor Sie sie per E-Mail anhängen."
+          },
+          "web": {
+            "title": "Web- und Blog-Bilder",
+            "content": "Exportieren Sie als WebP und setzen Sie die Qualität auf 80–85 für Bilder, die schnell auf Ihrer Website geladen werden, ohne pixelig auszusehen."
+          },
+          "screenshot": {
+            "title": "Screenshot-Zuschnitt",
+            "content": "Schneiden Sie Browser-Symbolleisten oder irrelevante Inhalte aus Screenshots aus, bevor Sie sie in Dokumenten oder Präsentationen freigeben."
+          }
+        }
+      },
+      "faq": {
+        "title": "Häufig gestellte Fragen",
+        "items": {
+          "privacy": {
+            "q": "Wird mein Bild auf einen Server hochgeladen?",
+            "a": "Nein. Dieser Editor läuft vollständig in Ihrem Browser über die HTML5 Canvas API. Ihr Bild wird nirgendwo hochgeladen — es verbleibt die ganze Zeit auf Ihrem Gerät."
+          },
+          "formats": {
+            "q": "Welche Bildformate werden unterstützt?",
+            "a": "Sie können JPG-, PNG-, WebP-, AVIF- und GIF-Dateien bis zu 50 MB hochladen. Sie können als JPG, PNG oder WebP exportieren."
+          },
+          "pngCompress": {
+            "q": "Warum kann ich PNG-Dateien nicht komprimieren?",
+            "a": "PNG verwendet verlustfreie Komprimierung, daher gibt es keinen Qualitätsschieberegler. Um die Dateigröße zu reduzieren, wechseln Sie das Ausgabeformat zu WebP — es erreicht typischerweise 25–35% kleinere Dateien als PNG bei gleicher Bildqualität."
+          },
+          "quality": {
+            "q": "Welche Qualitätseinstellung sollte ich verwenden?",
+            "a": "Für Webbilder ist der Bereich 80–85 für JPG und WebP ideal. Unter 70 entstehen sichtbare Artefakte; über 90 sind die Dateigrößeneinsparungen minimal."
+          }
+        }
+      },
+      "api": {
+        "title": "Müssen Sie Bilder in Massenmengen verarbeiten?",
+        "content": "Dieser Browser-Editor ist perfekt für einzelne Bilder. Für Massenänderung der Größe, Zuschnitt oder Konvertierung von Hunderten von Bildern programmgesteuert unterstützt die Easy HEIC Image Converter API auf RapidAPI Automatisierung im großen Maßstab.",
+        "cta": "API erkunden"
+      }
     }
   }
 }

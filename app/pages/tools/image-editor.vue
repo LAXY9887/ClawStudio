@@ -79,7 +79,6 @@ useSeoMeta({
     subtitle-key="imageEditor.subtitle"
     prefix="imageEditor"
     :seo-sections="seoSections"
-    api-url="https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter"
   >
     <template #workspace>
       <ImageEditor />

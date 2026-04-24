@@ -388,7 +388,8 @@
       "imageFormat": "Image Format Converters",
       "avif": "AVIF Converters",
       "vector": "Vector & Icon Tools",
-      "privacy": "Privacy Tools"
+      "privacy": "Privacy Tools",
+      "imageEditing": "Image Editing"
     },
     "gifToSprite": "GIF → Spritesheet",
     "toGif": "PNG → GIF",
@@ -415,7 +416,8 @@
     "avifToWebp": "AVIF → WebP",
     "svgToPng": "SVG → PNG",
     "faviconGenerator": "Favicon Generator",
-    "exifRemover": "EXIF Remover"
+    "exifRemover": "EXIF Remover",
+    "imageEditor": "Image Editor"
   },
   "home": {
     "title": "Free Online Dev Tools",
@@ -523,6 +525,10 @@
       "exifRemover": {
         "title": "EXIF Remover & Privacy Scanner",
         "description": "Scan photos for GPS, device, and timestamp metadata, then strip it all. Batch up to 10 files."
+      },
+      "imageEditor": {
+        "title": "Image Editor",
+        "description": "Crop, resize, compress, rotate, and flip images in your browser. No uploads — 100% private."
       }
     }
   },
@@ -5119,10 +5125,10 @@
       "faq": {
         "title": "Frequently Asked Questions",
         "items": {
-          "privacy": { "title": "Is my image uploaded to a server?", "content": "No. This editor runs entirely in your browser using the HTML5 Canvas API. Your image is never uploaded anywhere — it stays on your device the whole time." },
-          "formats": { "title": "What image formats are supported?", "content": "You can upload JPG, PNG, WebP, AVIF, and GIF files up to 50 MB. You can export as JPG, PNG, or WebP." },
-          "pngCompress": { "title": "Why can't I compress PNG files?", "content": "PNG uses lossless compression, so there is no quality slider. To reduce file size, switch the output format to WebP — it typically achieves 25–35% smaller files than PNG at equivalent visual quality." },
-          "quality": { "title": "What quality setting should I use?", "content": "For web images, 80–85 is the ideal range for JPG and WebP. Below 70 introduces visible artifacts; above 90 gives diminishing file-size returns." }
+          "privacy": { "q": "Is my image uploaded to a server?", "a": "No. This editor runs entirely in your browser using the HTML5 Canvas API. Your image is never uploaded anywhere — it stays on your device the whole time." },
+          "formats": { "q": "What image formats are supported?", "a": "You can upload JPG, PNG, WebP, AVIF, and GIF files up to 50 MB. You can export as JPG, PNG, or WebP." },
+          "pngCompress": { "q": "Why can't I compress PNG files?", "a": "PNG uses lossless compression, so there is no quality slider. To reduce file size, switch the output format to WebP — it typically achieves 25–35% smaller files than PNG at equivalent visual quality." },
+          "quality": { "q": "What quality setting should I use?", "a": "For web images, 80–85 is the ideal range for JPG and WebP. Below 70 introduces visible artifacts; above 90 gives diminishing file-size returns." }
         }
       },
       "api": {
