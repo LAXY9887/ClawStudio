@@ -194,6 +194,48 @@ function getOutputFilename(): string {
   return `${base}_edited.${ext}`
 }
 
+function onWidthInput(e: Event) {
+  const v = parseInt((e.target as HTMLInputElement).value) || 0
+  resizeWidth.value = v
+  if (lockAspect.value && v > 0) resizeHeight.value = Math.round(v / originalAspect.value)
+  renderPreview()
+}
+
+function onHeightInput(e: Event) {
+  const v = parseInt((e.target as HTMLInputElement).value) || 0
+  resizeHeight.value = v
+  if (lockAspect.value && v > 0) resizeWidth.value = Math.round(v * originalAspect.value)
+  renderPreview()
+}
+
+function applyPreset(pct: number) {
+  const img = originalImage.value!
+  resizeWidth.value = Math.round(img.naturalWidth * pct / 100)
+  resizeHeight.value = Math.round(img.naturalHeight * pct / 100)
+  renderPreview()
+}
+
+function updateEstimatedSize() {
+  const canvas = previewCanvasEl.value
+  if (!canvas || outputFormat.value === 'png') { estimatedSize.value = ''; return }
+  canvas.toBlob(blob => { if (blob) estimatedSize.value = formatSize(blob.size) }, outputMime.value, quality.value / 100)
+}
+
+watch([quality, outputFormat], () => { renderPreview(); updateEstimatedSize() })
+
+function applyRotation(deg: number) {
+  rotateDegrees.value = ((rotateDegrees.value + deg) % 360 + 360) % 360
+  renderPreview()
+}
+
+function setRotation(deg: number) {
+  rotateDegrees.value = deg
+  renderPreview()
+}
+
+function toggleFlipH() { flipH.value = !flipH.value; renderPreview() }
+function toggleFlipV() { flipV.value = !flipV.value; renderPreview() }
+
 function tabIcon(tab: Tab): string {
   const icons: Record<Tab, string> = {
     crop: 'i-lucide-crop',
@@ -374,9 +416,88 @@ function handleDownload() {
               />
             </template>
 
-            <!-- Other tabs placeholder -->
-            <template v-else>
-              <p class="text-xs text-muted">{{ activeTab }} — next tasks</p>
+            <!-- Resize tab controls -->
+            <template v-else-if="activeTab === 'resize'">
+              <div class="grid grid-cols-2 gap-2">
+                <UFormField :label="t('imageEditor.resize.width')">
+                  <input
+                    type="number" min="1"
+                    :value="resizeWidth"
+                    class="w-full bg-muted/10 border border-muted rounded px-2 py-1 text-sm font-mono"
+                    @input="onWidthInput"
+                  >
+                </UFormField>
+                <UFormField :label="t('imageEditor.resize.height')">
+                  <input
+                    type="number" min="1"
+                    :value="resizeHeight"
+                    class="w-full bg-muted/10 border border-muted rounded px-2 py-1 text-sm font-mono"
+                    @input="onHeightInput"
+                  >
+                </UFormField>
+              </div>
+              <label class="flex items-center gap-2 text-sm cursor-pointer select-none">
+                <input v-model="lockAspect" type="checkbox" class="rounded">
+                {{ t('imageEditor.resize.lockAspect') }}
+              </label>
+              <div>
+                <p class="text-xs text-muted mb-1">{{ t('imageEditor.resize.presets') }}</p>
+                <div class="flex gap-1 flex-wrap">
+                  <button v-for="pct in [25, 50, 75]" :key="pct" class="px-2 py-1 bg-muted/20 hover:bg-muted/40 rounded text-xs" @click="applyPreset(pct)">{{ pct }}%</button>
+                  <button class="px-2 py-1 bg-muted/20 hover:bg-muted/40 rounded text-xs" @click="applyPreset(100)">Original</button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Compress tab controls -->
+            <template v-else-if="activeTab === 'compress'">
+              <template v-if="outputFormat !== 'png'">
+                <UFormField :label="`${t('imageEditor.compress.quality')}: ${quality}`">
+                  <input
+                    v-model.number="quality"
+                    type="range" min="1" max="100"
+                    class="w-full"
+                    @change="updateEstimatedSize"
+                  >
+                </UFormField>
+                <div v-if="estimatedSize" class="flex justify-between text-xs text-muted bg-muted/10 rounded p-2">
+                  <span>{{ t('imageEditor.compress.estimatedSize') }}</span>
+                  <span class="font-mono text-success">~{{ estimatedSize }}</span>
+                </div>
+              </template>
+              <p v-else class="text-xs text-muted italic leading-relaxed">{{ t('imageEditor.compress.pngHint') }}</p>
+            </template>
+
+            <!-- Rotate tab controls -->
+            <template v-else-if="activeTab === 'rotate'">
+              <div class="flex gap-1">
+                <UButton size="xs" :label="t('imageEditor.rotate.minus90')" color="neutral" variant="outline" class="flex-1 justify-center" @click="applyRotation(-90)" />
+                <UButton size="xs" :label="t('imageEditor.rotate.plus90')" color="neutral" variant="outline" class="flex-1 justify-center" @click="applyRotation(90)" />
+                <UButton size="xs" :label="t('imageEditor.rotate.deg180')" color="neutral" variant="outline" class="flex-1 justify-center" @click="applyRotation(180)" />
+              </div>
+              <UFormField :label="`${t('imageEditor.rotate.custom')}: ${rotateDegrees}°`">
+                <input v-model.number="rotateDegrees" type="range" min="-180" max="180" class="w-full" @input="renderPreview()" >
+              </UFormField>
+            </template>
+
+            <!-- Flip tab controls -->
+            <template v-else-if="activeTab === 'flip'">
+              <UButton
+                :label="t('imageEditor.flip.horizontal')"
+                icon="i-lucide-flip-horizontal-2"
+                color="neutral"
+                :variant="flipH ? 'solid' : 'outline'"
+                class="w-full justify-center"
+                @click="toggleFlipH"
+              />
+              <UButton
+                :label="t('imageEditor.flip.vertical')"
+                icon="i-lucide-flip-vertical-2"
+                color="neutral"
+                :variant="flipV ? 'solid' : 'outline'"
+                class="w-full justify-center"
+                @click="toggleFlipV"
+              />
             </template>
           </div>
 
