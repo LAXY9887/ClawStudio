@@ -4,8 +4,13 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxtjs/i18n',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    'nuxt-gtag'
   ],
+
+  gtag: {
+    id: 'G-RZH9MFRD9W'
+  },
 
   site: {
     url: 'https://clawstudiouo.com'
