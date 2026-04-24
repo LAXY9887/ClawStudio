@@ -206,10 +206,12 @@ function handleDownload() {
         <div class="w-full md:w-52 flex flex-col">
 
           <!-- Tab list -->
-          <div class="flex md:flex-col gap-1 p-2 overflow-x-auto md:overflow-x-visible">
+          <div role="tablist" class="flex md:flex-col gap-1 p-2 overflow-x-auto md:overflow-x-visible">
             <button
               v-for="tab in (['crop', 'resize', 'compress', 'rotate', 'flip'] as Tab[])"
               :key="tab"
+              role="tab"
+              :aria-selected="activeTab === tab"
               class="flex items-center gap-2 rounded px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors shrink-0"
               :class="activeTab === tab
                 ? 'bg-primary/10 text-primary border-l-2 border-primary'
@@ -229,10 +231,12 @@ function handleDownload() {
           <!-- Format + Download (Task 10) -->
           <div class="p-3 border-t border-muted space-y-2">
             <p class="text-xs text-muted font-medium uppercase tracking-wide">{{ t('imageEditor.format.label') }}</p>
-            <div class="flex gap-1">
+            <div role="radiogroup" :aria-label="t('imageEditor.format.label')" class="flex gap-1">
               <button
                 v-for="fmt in (['jpg', 'png', 'webp'] as OutputFormat[])"
                 :key="fmt"
+                role="radio"
+                :aria-checked="outputFormat === fmt"
                 class="flex-1 rounded py-1 text-xs font-semibold uppercase transition-colors"
                 :class="outputFormat === fmt ? 'bg-primary text-white' : 'bg-muted/20 text-muted hover:bg-muted/40'"
                 @click="outputFormat = fmt"
