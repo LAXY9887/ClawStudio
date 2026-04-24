@@ -221,6 +221,7 @@ function downloadCleaned() {
 
 function onAdConfirm() {
   showAdModal.value = false
+  cleanCount.value = 0
   openDirectLink()
   const localePath = useLocalePath()
   navigateTo({
