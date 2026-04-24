@@ -138,7 +138,56 @@ function reset() {
   originalAspect.value = 1
 }
 
-function renderPreview() {}
+function renderToCanvas(canvas: HTMLCanvasElement) {
+  const img = originalImage.value!
+  const ctx = canvas.getContext('2d')!
+  const cx = cropCoords.value.left
+  const cy = cropCoords.value.top
+  const cw = cropCoords.value.width || img.naturalWidth
+  const ch = cropCoords.value.height || img.naturalHeight
+  const rad = (rotateDegrees.value * Math.PI) / 180
+  const outW = canvas.width
+  const outH = canvas.height
+
+  ctx.clearRect(0, 0, outW, outH)
+  ctx.save()
+  ctx.translate(outW / 2, outH / 2)
+  ctx.rotate(rad)
+  if (flipH.value) ctx.scale(-1, 1)
+  if (flipV.value) ctx.scale(1, -1)
+  ctx.drawImage(img, cx, cy, cw, ch, -outW / 2, -outH / 2, outW, outH)
+  ctx.restore()
+}
+
+function renderPreview() {
+  const canvas = previewCanvasEl.value
+  if (!canvas || !originalImage.value) return
+  canvas.width = resizeWidth.value || originalImage.value.naturalWidth
+  canvas.height = resizeHeight.value || originalImage.value.naturalHeight
+  renderToCanvas(canvas)
+}
+
+function buildOutputCanvas(): HTMLCanvasElement {
+  const img = originalImage.value!
+  const canvas = document.createElement('canvas')
+  canvas.width = resizeWidth.value || img.naturalWidth
+  canvas.height = resizeHeight.value || img.naturalHeight
+  renderToCanvas(canvas)
+  return canvas
+}
+
+function buildOutputBlob(): Promise<Blob> {
+  const canvas = buildOutputCanvas()
+  const mime = outputMime.value
+  const q = outputFormat.value === 'png' ? undefined : quality.value / 100
+  return new Promise(resolve => canvas.toBlob(blob => resolve(blob!), mime, q))
+}
+
+function getOutputFilename(): string {
+  const base = originalFile.value?.name.replace(/\.[^.]+$/, '') || 'edited'
+  const ext = outputFormat.value === 'jpg' ? 'jpg' : outputFormat.value
+  return `${base}_edited.${ext}`
+}
 
 function tabIcon(tab: Tab): string {
   const icons: Record<Tab, string> = {
