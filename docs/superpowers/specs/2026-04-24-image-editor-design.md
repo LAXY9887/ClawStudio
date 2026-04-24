@@ -129,11 +129,12 @@ const downloadCount = useCookie('img_editor_count', { default: () => 0, maxAge: 
 ```
 
 - Each Download click = 1 use
-- At `downloadCount >= FREE_LIMIT`: show ad modal before download executes
-- Modal: Watch Ad → `openDirectLink()` + reset count → download proceeds (no navigation to `/download` page — download is instant client-side)
-- Cancel → modal closes, download does not happen
+- `downloadCount < FREE_LIMIT`: download proceeds directly (client-side blob → `<a download>`)
+- `downloadCount >= FREE_LIMIT`: show ad modal
+  - **Confirm** → `openDirectLink()` + reset count + store blob in `useDownloadStore` + navigate to `/download?from=/tools/image-editor`
+  - **Cancel** → modal closes, download does not happen
 
-> Note: Unlike FormatConverter/ExifCleaner which navigate to `/download` waiting room (because the file is served from backend), this tool's download is instant client-side, so the waiting room is skipped. The ad modal still fires the direct link.
+The `/download` waiting room serves the stored blob after the 15-second countdown, identical to FormatConverter/ExifCleaner flow. `download.vue` must be updated to recognise `imageEditor` as a `toolKey`.
 
 ---
 
@@ -142,6 +143,11 @@ const downloadCount = useCookie('img_editor_count', { default: () => 0, maxAge: 
 **New files:**
 - `app/components/ImageEditor.vue` — main tool component
 - `app/pages/tools/image-editor.vue` — page wrapper (ToolPageLayout + SEO)
+
+**Modified files:**
+- `app/pages/download.vue` — add `imageEditor` to `toolKey` computed, `tipCount: 4`, and `apiUrl`
+- `app/composables/useTools.ts` — register tool in nav/tool list
+- `i18n/locales/*.json` (all 9 locales) — add all keys above
 
 **Dependencies to add:**
 - `vue-advanced-cropper` — drag crop box UI
@@ -161,9 +167,54 @@ imageEditor.format.label / jpg / png / webp
 imageEditor.actions.download / changeFile / reset
 imageEditor.adModal.title / description / watch / close / remaining
 imageEditor.seo.*  (whatIs / howTo / features / useCases / faq)
+waitingRoom.imageEditor.tipsTitle
+waitingRoom.imageEditor.tips[0..3]   ← 4 tips unique to image editing
 ```
 
-> `waitingRoom.imageEditor` 不需要——此工具不跳轉 `/download` 等待頁。
+---
+
+## SEO Deliverables
+
+### 1. Tool Page SEO Article (bottom of `/tools/image-editor`)
+
+Rendered via `SeoSections` component inside `ToolPageLayout`. Required sections (matching existing tool page pattern):
+
+| Section | Type | Keys |
+|---------|------|------|
+| What is this tool? | `text` | `imageEditor.seo.whatIs` |
+| How to use (步驟) | `steps` | `imageEditor.seo.howTo.step1–4` — each `{title, content}` |
+| Features | `features` | `imageEditor.seo.features.items.*` — each `{title, content}` |
+| Use cases | `useCases` | `imageEditor.seo.useCases.items.*` — each `{title, content}` |
+| API promo | `api` | `imageEditor.seo.api` (title / content / cta) |
+| FAQ | `faq` | `imageEditor.seo.faq.items.*` — each `{title, content}` |
+
+Suggested SEO keywords to weave in: `image resizer online`, `crop image free`, `compress image`, `image editor no upload`, `resize image without quality loss`.
+
+### 2. Download Waiting Room Tips (`/download?from=/tools/image-editor`)
+
+4 unique tips shown during the 15-second countdown. Topic guidance:
+
+- **Tip 1** — WebP vs JPG: why WebP gives smaller files at same quality
+- **Tip 2** — Aspect ratio tip: common ratios for social platforms (Instagram 1:1, Twitter 16:9)
+- **Tip 3** — Compress tip: 80–85 quality is the sweet spot for web images
+- **Tip 4** — Privacy tip: canvas pipeline strips all EXIF metadata from the output
+
+Keys: `waitingRoom.imageEditor.tipsTitle` + `waitingRoom.imageEditor.tips[0..3]`  
+All 9 locales required.
+
+### 3. JSON-LD Structured Data
+
+`WebApplication` schema in `<head>` of the tool page (same pattern as heic-to-jpg.vue):
+
+```json
+{
+  "@type": "WebApplication",
+  "name": "Free Online Image Editor — Crop, Resize & Compress",
+  "url": "https://clawstudiouo.com/tools/image-editor",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any"
+}
+```
 
 ---
 
