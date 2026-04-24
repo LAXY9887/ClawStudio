@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import 'vue-advanced-cropper/dist/style.css'
+import { Cropper } from 'vue-advanced-cropper'
 
 type Tab = 'crop' | 'resize' | 'compress' | 'rotate' | 'flip'
 type OutputFormat = 'jpg' | 'png' | 'webp'
@@ -151,8 +152,42 @@ function tabIcon(tab: Tab): string {
 }
 
 function onTabChange(tab: Tab) {
+  if (activeTab.value === 'crop' && cropperRef.value) {
+    const result = cropperRef.value.getResult()
+    if (result?.coordinates) {
+      cropCoords.value = {
+        left: Math.round(result.coordinates.left),
+        top: Math.round(result.coordinates.top),
+        width: Math.round(result.coordinates.width),
+        height: Math.round(result.coordinates.height)
+      }
+    }
+  }
   activeTab.value = tab
+  if (tab !== 'crop') nextTick(() => renderPreview())
 }
+
+function onCropChange({ coordinates }: { coordinates: CropCoords }) {
+  cropCoords.value = {
+    left: Math.round(coordinates.left),
+    top: Math.round(coordinates.top),
+    width: Math.round(coordinates.width),
+    height: Math.round(coordinates.height)
+  }
+}
+
+function setAspectRatio(ratio: number | undefined) {
+  cropAspectRatio.value = ratio
+}
+
+const imageSrc = ref('')
+
+watch(originalFile, (f, oldF) => {
+  if (oldF && imageSrc.value) URL.revokeObjectURL(imageSrc.value)
+  imageSrc.value = f ? URL.createObjectURL(f) : ''
+})
+
+onBeforeUnmount(() => { if (imageSrc.value) URL.revokeObjectURL(imageSrc.value) })
 
 function handleDownload() {
   // implemented in Task 10
@@ -190,8 +225,21 @@ function handleDownload() {
 
         <!-- LEFT: preview -->
         <div class="flex-1 flex flex-col gap-3 p-4 md:border-r border-muted min-w-0">
-          <!-- Preview canvas (filled in Task 6) -->
-          <div class="flex-1 bg-muted/10 rounded-lg min-h-64 flex items-center justify-center relative overflow-hidden">
+          <!-- Crop tab: vue-advanced-cropper -->
+          <div v-if="activeTab === 'crop' && status === 'editing'" class="flex-1 min-h-64 overflow-hidden rounded-lg bg-muted/10">
+            <ClientOnly>
+              <Cropper
+                ref="cropperRef"
+                :src="imageSrc"
+                :stencil-props="cropAspectRatio ? { aspectRatio: cropAspectRatio } : {}"
+                class="w-full h-full min-h-64"
+                @change="onCropChange"
+              />
+            </ClientOnly>
+          </div>
+
+          <!-- Other tabs: canvas preview -->
+          <div v-else class="flex-1 bg-muted/10 rounded-lg min-h-64 flex items-center justify-center relative overflow-hidden">
             <canvas ref="previewCanvasEl" class="max-w-full max-h-80 object-contain" />
           </div>
           <!-- File info bar -->
@@ -225,7 +273,48 @@ function handleDownload() {
 
           <!-- Tab content (Tasks 5, 7, 8, 9) -->
           <div class="flex-1 p-3 border-t border-muted space-y-3">
-            <p class="text-xs text-muted">{{ activeTab }} controls — coming in next tasks</p>
+            <!-- Crop tab controls -->
+            <template v-if="activeTab === 'crop'">
+              <p class="text-xs text-muted font-medium uppercase tracking-wide">{{ t('imageEditor.crop.aspectRatio') }}</p>
+              <div class="flex flex-wrap gap-1">
+                <button
+                  v-for="preset in [
+                    { label: t('imageEditor.crop.free'), value: undefined },
+                    { label: '1:1', value: 1 },
+                    { label: '16:9', value: 16/9 },
+                    { label: '4:3', value: 4/3 },
+                    { label: '3:2', value: 3/2 }
+                  ]"
+                  :key="preset.label"
+                  class="px-2 py-1 rounded text-xs transition-colors"
+                  :class="cropAspectRatio === preset.value ? 'bg-primary text-white' : 'bg-muted/20 text-muted hover:bg-muted/40'"
+                  @click="setAspectRatio(preset.value)"
+                >{{ preset.label }}</button>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-xs text-muted">
+                <div class="bg-muted/10 rounded p-2">
+                  <div class="text-[10px] uppercase tracking-wide mb-1">{{ t('imageEditor.crop.width') }}</div>
+                  <div class="font-mono text-sm text-default">{{ cropCoords.width || (originalImage?.naturalWidth ?? 0) }}px</div>
+                </div>
+                <div class="bg-muted/10 rounded p-2">
+                  <div class="text-[10px] uppercase tracking-wide mb-1">{{ t('imageEditor.crop.height') }}</div>
+                  <div class="font-mono text-sm text-default">{{ cropCoords.height || (originalImage?.naturalHeight ?? 0) }}px</div>
+                </div>
+              </div>
+              <UButton
+                :label="t('imageEditor.crop.reset')"
+                size="xs"
+                color="neutral"
+                variant="outline"
+                class="w-full justify-center"
+                @click="cropAspectRatio = undefined; cropCoords = { left: 0, top: 0, width: originalImage?.naturalWidth ?? 0, height: originalImage?.naturalHeight ?? 0 }"
+              />
+            </template>
+
+            <!-- Other tabs placeholder -->
+            <template v-else>
+              <p class="text-xs text-muted">{{ activeTab }} — next tasks</p>
+            </template>
           </div>
 
           <!-- Format + Download (Task 10) -->
