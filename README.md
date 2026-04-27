@@ -1,77 +1,115 @@
 # ClawStudio
 
-A personal portal and free online tool hub built with Nuxt 4, powered by custom GCP Cloud Run APIs.
+A free online tool hub built with Nuxt 4 — a mix of pure client-side tools and proxied microservices on GCP Cloud Run.
 
 ## Branding Note
 
-The public-facing brand name is **ClawStudiouo** (domain: `clawstudiouo.com`). The project ID, repo name, and `package.json` name remain `ClawStudio` for simplicity. All user-visible text uses "ClawStudiouo" and is managed via i18n locale files.
+The public-facing brand name is **ClawStudiouo** (domain: `clawstudiouo.com`). The project ID, repo name, and `package.json` name remain `ClawStudio`. All user-visible text uses "ClawStudiouo" and is managed via i18n locale files.
 
 ## About
 
-ClawStudio is a collection of free, browser-based developer tools. Each tool is backed by a dedicated microservice running on GCP Cloud Run, with Nuxt acting as a server-side proxy to handle authentication and hide internal endpoints.
+ClawStudio is a collection of free, browser-based image / sprite / dev tools. Two architectural patterns coexist:
 
-The architecture follows a consistent pattern for every tool:
+**Server-side tools** (most format conversions, sprite operations, EXIF removal) route through a Nitro API proxy that calls a dedicated Cloud Run microservice. Internal endpoints stay hidden from the browser:
 
 ```
-Browser  ->  Nuxt Nitro API  ->  GCP Cloud Run Service
+Browser  →  Nuxt Nitro API  →  GCP Cloud Run Service
               (proxy + auth)       (processing engine)
 ```
 
-### Current Tools
+**Pure client-side tools** (Image Editor, Spritesheet Animator preview) run entirely in the browser using Canvas / Web APIs. No upload, no backend, no usage limits.
 
-| Tool | Description | Backend |
-|------|-------------|---------|
-| **GIF to PNG Spritesheet** | Convert GIF animations into sprite sheets or extract individual frames as PNGs | [Easy GIF2Sprite API](https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites) |
+### Current Tools (~27)
 
-More tools will be added over time, each following the same proxy pattern.
+| Category | Tools | Backend |
+|----------|-------|---------|
+| **Sprite & Frame** | GIF → Spritesheet, PNG → GIF, PNG → Spritesheet, PNG Trim, Spritesheet Splitter (with live animation preview) | `gifService`, `png2ssService` |
+| **Image Format** | HEIC ↔ JPG/PNG/WebP, PNG ↔ JPG/WebP, JPG ↔ WebP | `uniimgcService` |
+| **AVIF** | PNG/JPG/WebP ↔ AVIF | `uniimgcService` |
+| **Vector & Icon** | SVG → PNG, Favicon Generator | `uniimgcService` |
+| **Privacy** | EXIF Remover & Privacy Scanner | `exifrmService` |
+| **Image Editing** | Image Editor (crop / resize / compress / rotate / flip) | _client-side only_ |
+
+Each tool also exposes its corresponding RapidAPI endpoint for programmatic access (linked from the tool page).
 
 ## Tech Stack
 
 - **Frontend**: Nuxt 4 + Nuxt UI v4 + Tailwind CSS 4
-- **Backend Proxy**: Nitro (Nuxt built-in server)
-- **Deployment**: GCP Cloud Run
-- **i18n**: @nuxtjs/i18n (English + Traditional Chinese)
-- **Monetization**: AdSense with cookie-based usage limiter
+- **Backend Proxy**: Nitro (Nuxt built-in server) — `server/api/`
+- **Backends**: 4 GCP Cloud Run microservices (GIF, PNG2SS, UniIMGC, EXIFRm)
+- **Deployment**: Firebase App Hosting (`pnpm firebase:redeploy`)
+- **i18n**: `@nuxtjs/i18n` — 9 locales (en, zh-TW, zh-CN, ja, ko, de, es, pt, ru)
+- **SEO**: `@nuxtjs/sitemap`, JSON-LD per tool page
+- **Analytics**: `nuxt-gtag` (Google Analytics 4)
+- **Monetization**: Monetag (Multitag / Push / In-Page / Vignette / Direct Link) with cookie-based usage limiter; AdSense fallback supported via `NUXT_PUBLIC_AD_PROVIDER`
+- **Package manager**: pnpm (frozen lockfile in CI)
 
 ## Setup
 
 ```bash
 pnpm install
-```
-
-Copy `.env.example` to `.env` and fill in your values:
-
-```bash
 cp .env.example .env
 ```
 
-Required environment variables:
+Required environment variables (see `.env.example` for the full list including Monetag overrides):
 
 | Variable | Description |
 |----------|-------------|
-| `NUXT_GIF_SERVICE_URL` | GCP Cloud Run URL for the GIF service |
-| `NUXT_INTERNAL_KEY` | Internal API key to bypass RapidAPI gateway |
+| `NUXT_GIF_SERVICE_URL` | Cloud Run URL for the GIF service |
+| `NUXT_PNG2SS_SERVICE_URL` | Cloud Run URL for the PNG → Spritesheet service |
+| `NUXT_UNIIMGC_SERVICE_URL` | Cloud Run URL for the universal image converter |
+| `NUXT_EXIFRM_SERVICE_URL` | Cloud Run URL for the EXIF remover |
+| `NUXT_INTERNAL_KEY` | Shared `X-Internal-Key` header used by all four services |
+
+Pure client-side tools (Image Editor, Spritesheet Animator) work without any of these — useful for local development without backend services running.
 
 ## Development
 
 ```bash
-pnpm dev
+pnpm dev          # local dev server
+pnpm lint         # ESLint
+pnpm typecheck    # TS / Vue typecheck
+pnpm build        # production build (high RAM — see note below)
+pnpm preview      # serve built output
 ```
 
-## Production
+> **Note on `pnpm build`**: the build runs with `--max-old-space-size=4096` and is memory-intensive. Run it serially (one at a time, no parallel agents) to avoid OOM crashes. For day-to-day verification, `pnpm lint && pnpm typecheck` is sufficient — CI runs the full build.
+
+## Deployment
 
 ```bash
-pnpm build
-pnpm preview
+pnpm firebase:redeploy   # trigger Firebase App Hosting rollout
+pnpm firebase:rollouts   # list recent rollouts
+pnpm firebase:secrets    # set App Hosting secrets
 ```
+
+`pnpm deploy` is wired to `git push origin main`, which triggers the App Hosting rollout via the connected GitHub source.
 
 ## Adding a New Tool
 
-1. Create the Cloud Run service with an internal key check
+See [docs/adding-a-new-tool.md](docs/adding-a-new-tool.md) for the full checklist. Quick summary:
+
+1. (Server-side tools) Stand up the Cloud Run service with `X-Internal-Key` validation
 2. Add a proxy endpoint in `server/api/`
-3. Add the tool page in `app/pages/tools/`
-4. Add i18n keys in `i18n/locales/`
-5. Add a card entry on the homepage
+3. Add the tool page in `app/pages/tools/<slug>.vue` using `<ToolPageLayout>`
+4. Add i18n keys in `i18n/locales/{en,zh-TW}.json` (other 7 locales can follow later)
+5. Register the tool in `app/composables/useTools.ts` and add the homepage card
+6. Add a tip block in `download.vue` if the tool uses the post-download waiting room
+
+For pure client-side tools, skip steps 1–2.
+
+## Documentation
+
+In-repo documentation lives under [docs/](docs/):
+
+- [tool-page-architecture.md](docs/tool-page-architecture.md) — page layout pattern and shared components
+- [adding-a-new-tool.md](docs/adding-a-new-tool.md) — checklist for new tools
+- [reusable-components.md](docs/reusable-components.md) — `ToolPageLayout`, `SeoSections`, `RelatedTools`, etc.
+- [i18n-guide.md](docs/i18n-guide.md) — locale file structure and conventions
+- [ad-integration.md](docs/ad-integration.md) — Monetag / AdSense provider switching
+- [disabling-monetag-push.md](docs/disabling-monetag-push.md) — turning off the push SW cleanly
+- API references: [gif2ss](docs/gif2ss-api-reference.md) · [png2ss](docs/png2ss-api-reference.md) · [uniimgc](docs/uniimgc-api-reference.md) · [exifrm](docs/exifrm-api-reference.md)
+- Feature plans: [docs/superpowers/plans/](docs/superpowers/plans/)
 
 ## License
 
