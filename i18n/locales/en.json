@@ -1424,6 +1424,18 @@
       "metadataFormatJsonHash": "JSON Hash",
       "metadataFormatCss": "CSS Sprites"
     },
+    "preview": {
+      "grid": "Grid view",
+      "animate": "Animation preview"
+    },
+    "animator": {
+      "play": "Play",
+      "pause": "Pause",
+      "forward": "Forward",
+      "reverse": "Reverse",
+      "fps": "FPS",
+      "noFrames": "No frames to play — set columns and rows."
+    },
     "status": {
       "uploading": "Uploading...",
       "converting": "Splitting...",
@@ -1533,6 +1545,10 @@
           "privacy": {
             "title": "Privacy First",
             "content": "Your spritesheet is processed in memory on the server and discarded immediately after the response is returned. No account required, no persistent storage, no logging of file contents or pixel data. Relevant when the artwork you are splitting belongs to an unannounced project, a client asset under NDA, or a closed-source pipeline."
+          },
+          "animationPreview": {
+            "title": "Live Animation Preview",
+            "content": "Toggle to Animation Preview to play your grid configuration as a moving sprite right in the browser. Adjust columns, rows, padding, range, or skip-empty and see the animation update instantly. Find the right parameters before splitting — no round-trip to the server."
           }
         }
       },
@@ -1563,6 +1579,10 @@
           "gridVsCell": {
             "q": "What's the difference between Grid and Cell mode?",
             "a": "Grid mode asks for the number of columns and rows, then calculates cell size by dividing image dimensions by those counts. Cell mode asks for the pixel width and height of each cell, then calculates how many columns and rows fit. Use Grid mode when you know the layout structure (e.g., \"this is a 4×3 grid\"). Use Cell mode when you know the frame size (e.g., \"each frame is 64×64 pixels\"). Both produce identical output for the same spritesheet — the choice depends on what you know about the source asset."
+          },
+          "animationPreview": {
+            "q": "Can I preview the animation before splitting?",
+            "a": "Yes. Click \"Animation preview\" above the grid view to play your spritesheet as an animation directly in the browser. The preview uses the same columns, rows, range, and skip-empty settings, so you can verify your grid configuration produces the right animation before you split. The preview runs entirely client-side — no server call, no usage count consumed."
           },
           "rangeFormat": {
             "q": "How do I format column and row ranges?",

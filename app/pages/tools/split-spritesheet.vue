@@ -71,7 +71,8 @@ const seoSections: import('~/types/seo').SeoSection[] = [
       'splitSpritesheet.seo.features.items.trimAndPadding',
       'splitSpritesheet.seo.features.items.skipEmpty',
       'splitSpritesheet.seo.features.items.singleFile',
-      'splitSpritesheet.seo.features.items.privacy'
+      'splitSpritesheet.seo.features.items.privacy',
+      'splitSpritesheet.seo.features.items.animationPreview'
     ]
   },
   {
@@ -89,6 +90,7 @@ const seoSections: import('~/types/seo').SeoSection[] = [
     titleKey: 'splitSpritesheet.seo.faq.title',
     itemKeys: [
       'splitSpritesheet.seo.faq.items.gridVsCell',
+      'splitSpritesheet.seo.faq.items.animationPreview',
       'splitSpritesheet.seo.faq.items.rangeFormat',
       'splitSpritesheet.seo.faq.items.skipEmpty',
       'splitSpritesheet.seo.faq.items.padding',

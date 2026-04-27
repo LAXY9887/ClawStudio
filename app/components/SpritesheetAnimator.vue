@@ -26,6 +26,8 @@ const props = withDefaults(defineProps<{
   skipEmpty: true
 })
 
+const { t } = useI18n()
+
 interface FrameRect { sx: number, sy: number, sw: number, sh: number }
 
 const canvasRef = ref<HTMLCanvasElement>()
@@ -250,7 +252,7 @@ onBeforeUnmount(() => stopLoop())
         variant="solid"
         @click="togglePlay"
       >
-        {{ isPlaying ? 'Pause' : 'Play' }}
+        {{ isPlaying ? t('splitSpritesheet.animator.pause') : t('splitSpritesheet.animator.play') }}
       </UButton>
       <UButton
         :icon="reverse ? 'i-lucide-rotate-ccw' : 'i-lucide-rotate-cw'"
@@ -259,14 +261,14 @@ onBeforeUnmount(() => stopLoop())
         variant="outline"
         @click="reverse = !reverse"
       >
-        {{ reverse ? 'Reverse' : 'Forward' }}
+        {{ reverse ? t('splitSpritesheet.animator.reverse') : t('splitSpritesheet.animator.forward') }}
       </UButton>
       <div class="flex items-center gap-2 flex-1 min-w-40">
-        <span class="text-xs text-muted whitespace-nowrap">FPS: {{ fps }}</span>
+        <span class="text-xs text-muted whitespace-nowrap">{{ t('splitSpritesheet.animator.fps') }}: {{ fps }}</span>
         <input v-model.number="fps" type="range" min="1" max="60" class="flex-1">
       </div>
       <span class="text-xs text-muted font-mono">{{ currentFrame + 1 }} / {{ totalFrames }}</span>
     </div>
-    <p v-else class="text-sm text-muted text-center py-2">No frames to play — set columns and rows.</p>
+    <p v-else class="text-sm text-muted text-center py-2">{{ t('splitSpritesheet.animator.noFrames') }}</p>
   </div>
 </template>
