@@ -120,6 +120,10 @@ function onImgLoad() {
 }
 
 watch(frames, () => drawFrame(0))
+
+watch(() => props.src, () => {
+  imgLoaded.value = false
+})
 </script>
 
 <template>
