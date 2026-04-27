@@ -1533,6 +1533,10 @@
           "privacy": {
             "title": "Privacidad Primero",
             "content": "Tu hoja de sprites se procesa en memoria en el servidor y se descarta inmediatamente después de que se devuelva la respuesta. Sin cuenta requerida, sin almacenamiento persistente, sin registro de contenido de archivo o datos de píxeles. Relevante cuando la obra de arte que estás dividiendo pertenece a un proyecto no anunciado, un activo de cliente bajo NDA, o una pipeline de código cerrado."
+          },
+          "animationPreview": {
+            "title": "Vista previa de animación en tiempo real",
+            "content": "Cambia a Vista previa de animación para reproducir tu configuración de cuadrícula como un sprite animado directamente en el navegador. Ajusta columnas, filas, relleno, rango o skip-empty y ve la animación actualizarse al instante. Encuentra los parámetros correctos antes de dividir — sin viaje al servidor."
           }
         }
       },
@@ -1591,9 +1595,25 @@
           "privacy": {
             "q": "¿Se almacena mi hoja de sprites en el servidor?",
             "a": "No. El PNG cargado se mantiene en la memoria del servidor solo durante la duración del procesamiento y se descarta inmediatamente después de que se devuelva la respuesta. Ningún archivo se escribe en disco, ningún contenido de píxeles se registra, y ninguna cuenta es requerida. Relevante cuando la hoja de sprites contiene obra de arte no publicada, activos de cliente bajo NDA, o contenido de juego propietario."
+          },
+          "animationPreview": {
+            "q": "¿Puedo previsualizar la animación antes de dividir?",
+            "a": "Sí. Haz clic en «Vista previa de animación» encima de la vista de cuadrícula para reproducir tu spritesheet como animación directamente en el navegador. La vista previa usa los mismos ajustes de columnas, filas, rango y skip-empty, para que puedas verificar que tu configuración de cuadrícula produce la animación correcta antes de dividir. La vista previa funciona completamente en el lado del cliente — sin llamada al servidor, sin consumo de usos."
           }
         }
       }
+    },
+    "preview": {
+      "grid": "Vista de cuadrícula",
+      "animate": "Vista previa de animación"
+    },
+    "animator": {
+      "play": "Reproducir",
+      "pause": "Pausar",
+      "forward": "Avanzar",
+      "reverse": "Retroceder",
+      "fps": "FPS",
+      "noFrames": "No hay fotogramas para reproducir — establece columnas y filas."
     }
   },
   "heicToJpg": {

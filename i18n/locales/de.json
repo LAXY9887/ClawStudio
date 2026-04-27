@@ -1533,6 +1533,10 @@
           "privacy": {
             "title": "Privatsphaere an erster Stelle",
             "content": "Ihr Spritesheet wird im Speicher auf dem Server verarbeitet und sofort nach Rueckgabe der Antwort verworfen. Keine Registrierung erforderlich, kein perspetueller Speicher, keine Protokollierung von Dateiinhalten oder Pixeldaten. Relevant, wenn die Artwork, die Sie splitten, zu einem unangekuendigten Projekt, einem Client-Asset unter NDA oder einer Closed-Source-Pipeline gehoert."
+          },
+          "animationPreview": {
+            "title": "Live-Animationsvorschau",
+            "content": "Wechseln Sie zur Animationsvorschau, um Ihre Rasterkonfiguration als bewegten Sprite direkt im Browser abzuspielen. Passen Sie Spalten, Zeilen, Padding, Bereich oder skip-empty an und sehen Sie die Animation sofort aktualisiert. Finden Sie die richtigen Parameter vor dem Aufteilen — kein Server-Roundtrip."
           }
         }
       },
@@ -1591,9 +1595,25 @@
           "privacy": {
             "q": "Wird mein Spritesheet auf dem Server gespeichert?",
             "a": "Nein. Das hochgeladene PNG wird nur fuer die Dauer der Verarbeitung im Server-Speicher gespeichert und sofort nach Rueckgabe der Antwort verworfen. Keine Datei wird auf die Festplatte geschrieben, kein Pixelinhalt wird protokolliert und kein Konto ist erforderlich. Relevant, wenn das Spritesheet nicht freigegebenes Artwork, Client-Assets unter NDA oder proprietaeres Spiel-Content enthaelt."
+          },
+          "animationPreview": {
+            "q": "Kann ich die Animation vor dem Aufteilen in der Vorschau ansehen?",
+            "a": "Ja. Klicken Sie auf „Animationsvorschau“ über der Rasteransicht, um Ihr Spritesheet direkt im Browser als Animation abzuspielen. Die Vorschau verwendet dieselben Spalten-, Zeilen-, Bereichs- und skip-empty-Einstellungen, sodass Sie Ihre Rasterkonfiguration vor dem Aufteilen überprüfen können. Die Vorschau läuft vollständig clientseitig — kein Serveraufruf, kein Verbrauch von Kontingenten."
           }
         }
       }
+    },
+    "preview": {
+      "grid": "Rasteransicht",
+      "animate": "Animationsvorschau"
+    },
+    "animator": {
+      "play": "Abspielen",
+      "pause": "Pausieren",
+      "forward": "Vorwärts",
+      "reverse": "Rückwärts",
+      "fps": "FPS",
+      "noFrames": "Keine Frames zum Abspielen — Spalten und Zeilen festlegen."
     }
   },
   "heicToJpg": {

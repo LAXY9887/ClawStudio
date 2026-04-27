@@ -1533,6 +1533,10 @@
           "privacy": {
             "title": "Privacidade em primeiro lugar",
             "content": "Seu spritesheet é processado na memória do servidor e descartado imediatamente após a resposta ser retornada. Sem conta necessária, sem armazenamento persistente, sem registro de conteúdo de arquivo ou dados de pixel. Relevante quando a arte que você está dividindo pertence a um projeto não anunciado, um ativo de cliente sob NDA ou um pipeline fechado."
+          },
+          "animationPreview": {
+            "title": "Prévia de animação em tempo real",
+            "content": "Alterne para Prévia de animação para reproduzir sua configuração de grade como um sprite animado diretamente no navegador. Ajuste colunas, linhas, padding, intervalo ou skip-empty e veja a animação atualizar instantaneamente. Encontre os parâmetros corretos antes de dividir — sem chamada ao servidor."
           }
         }
       },
@@ -1591,9 +1595,25 @@
           "privacy": {
             "q": "Meu spritesheet é armazenado no servidor?",
             "a": "Não. O PNG enviado é mantido na memória do servidor apenas durante o processamento e descartado imediatamente após a resposta ser retornada. Nenhum arquivo é escrito em disco, nenhum conteúdo de pixel é registrado e nenhuma conta é necessária. Relevante quando o spritesheet contém arte não lançada, ativos de cliente sob NDA ou conteúdo de jogo proprietário."
+          },
+          "animationPreview": {
+            "q": "Posso visualizar a animação antes de dividir?",
+            "a": "Sim. Clique em «Prévia de animação» acima da visualização em grade para reproduzir seu spritesheet como animação diretamente no navegador. A prévia usa as mesmas configurações de colunas, linhas, intervalo e skip-empty, para que você possa verificar se sua configuração de grade produz a animação correta antes de dividir. A prévia funciona completamente no lado do cliente — sem chamada ao servidor, sem consumo de usos."
           }
         }
       }
+    },
+    "preview": {
+      "grid": "Visualização em grade",
+      "animate": "Prévia de animação"
+    },
+    "animator": {
+      "play": "Reproduzir",
+      "pause": "Pausar",
+      "forward": "Avançar",
+      "reverse": "Reverter",
+      "fps": "FPS",
+      "noFrames": "Nenhum frame para reproduzir — defina colunas e linhas."
     }
   },
   "heicToJpg": {
