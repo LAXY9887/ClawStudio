@@ -120,7 +120,10 @@ function onImgLoad() {
   if (isPlaying.value) startLoop()
 }
 
-watch(frames, () => drawFrame(0))
+watch(frames, () => {
+  currentFrame.value = 0
+  drawFrame(0)
+})
 
 watch(() => props.src, () => {
   imgLoaded.value = false
@@ -178,6 +181,7 @@ watch(isPlaying, (v) => {
 watch(totalFrames, (n) => {
   if (currentFrame.value >= n) currentFrame.value = 0
   drawFrame(currentFrame.value)
+  if (n > 0 && isPlaying.value) startLoop()
 })
 
 onMounted(() => {
