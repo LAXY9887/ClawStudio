@@ -74,6 +74,41 @@ function parseRange(range: string | undefined, max: number): [number, number] {
   return [isNaN(a) ? 0 : a, isNaN(b) ? max - 1 : b]
 }
 
+const emptyCells = ref<Set<string>>(new Set())
+
+function sampleEmptyCells() {
+  emptyCells.value = new Set()
+  if (!props.skipEmpty) return
+  const img = imgRef.value
+  const g = grid.value
+  if (!img || !imgLoaded.value || !g) return
+  const pad = props.padding || 0
+  const ox = props.trimLeft || 0
+  const oy = props.trimTop || 0
+  const off = document.createElement('canvas')
+  off.width = Math.max(1, Math.round(g.cellWidth))
+  off.height = Math.max(1, Math.round(g.cellHeight))
+  const ctx = off.getContext('2d', { willReadFrequently: true })
+  if (!ctx) return
+  for (let r = 0; r < g.rows; r++) {
+    for (let c = 0; c < g.cols; c++) {
+      ctx.clearRect(0, 0, off.width, off.height)
+      const sx = ox + c * (g.cellWidth + pad)
+      const sy = oy + r * (g.cellHeight + pad)
+      ctx.drawImage(img, sx, sy, g.cellWidth, g.cellHeight, 0, 0, off.width, off.height)
+      const data = ctx.getImageData(0, 0, off.width, off.height).data
+      let nonEmpty = false
+      for (let i = 3; i < data.length; i += 4) {
+        if (data[i] !== 0) {
+          nonEmpty = true
+          break
+        }
+      }
+      if (!nonEmpty) emptyCells.value.add(`${c},${r}`)
+    }
+  }
+}
+
 const frames = computed<FrameRect[]>(() => {
   const g = grid.value
   if (!g) return []
@@ -82,10 +117,12 @@ const frames = computed<FrameRect[]>(() => {
   const oy = props.trimTop || 0
   const [colStart, colEnd] = parseRange(props.columnRange, g.cols)
   const [rowStart, rowEnd] = parseRange(props.rowRange, g.rows)
+  const empties = emptyCells.value
   const result: FrameRect[] = []
   for (let r = 0; r < g.rows; r++) {
     for (let c = 0; c < g.cols; c++) {
       if (c < colStart || c > colEnd || r < rowStart || r > rowEnd) continue
+      if (props.skipEmpty && empties.has(`${c},${r}`)) continue
       result.push({
         sx: ox + c * (g.cellWidth + pad),
         sy: oy + r * (g.cellHeight + pad),
@@ -116,6 +153,7 @@ function drawFrame(idx: number) {
 
 function onImgLoad() {
   imgLoaded.value = true
+  sampleEmptyCells()
   drawFrame(currentFrame.value)
   if (isPlaying.value) startLoop()
 }
@@ -124,6 +162,13 @@ watch(frames, () => {
   currentFrame.value = 0
   drawFrame(0)
 })
+
+watch(
+  [() => props.mode, () => props.columns, () => props.rows, () => props.cellWidth, () => props.cellHeight, () => props.padding, () => props.trimTop, () => props.trimRight, () => props.trimBottom, () => props.trimLeft, () => props.skipEmpty, () => props.src],
+  () => {
+    if (imgLoaded.value) sampleEmptyCells()
+  }
+)
 
 watch(() => props.src, () => {
   imgLoaded.value = false
