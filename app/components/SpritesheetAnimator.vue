@@ -116,7 +116,8 @@ function drawFrame(idx: number) {
 
 function onImgLoad() {
   imgLoaded.value = true
-  drawFrame(0)
+  drawFrame(currentFrame.value)
+  if (isPlaying.value) startLoop()
 }
 
 watch(frames, () => drawFrame(0))
@@ -124,12 +125,99 @@ watch(frames, () => drawFrame(0))
 watch(() => props.src, () => {
   imgLoaded.value = false
 })
+
+const isPlaying = ref(true)
+const fps = ref(12)
+const reverse = ref(false)
+const currentFrame = ref(0)
+const totalFrames = computed(() => frames.value.length)
+
+let rafId = 0
+let lastTick = 0
+
+function loop(now: number) {
+  if (!isPlaying.value || totalFrames.value === 0) {
+    rafId = 0
+    return
+  }
+  if (lastTick === 0) lastTick = now
+  const interval = 1000 / Math.max(1, fps.value)
+  if (now - lastTick >= interval) {
+    lastTick = now
+    const dir = reverse.value ? -1 : 1
+    currentFrame.value = (currentFrame.value + dir + totalFrames.value) % totalFrames.value
+    drawFrame(currentFrame.value)
+  }
+  rafId = requestAnimationFrame(loop)
+}
+
+function startLoop() {
+  if (rafId !== 0) return
+  lastTick = 0
+  rafId = requestAnimationFrame(loop)
+}
+
+function stopLoop() {
+  if (rafId !== 0) {
+    cancelAnimationFrame(rafId)
+    rafId = 0
+  }
+}
+
+function togglePlay() {
+  isPlaying.value = !isPlaying.value
+  if (isPlaying.value) startLoop()
+  else stopLoop()
+}
+
+watch(isPlaying, (v) => {
+  if (v) startLoop()
+  else stopLoop()
+})
+
+watch(totalFrames, (n) => {
+  if (currentFrame.value >= n) currentFrame.value = 0
+  drawFrame(currentFrame.value)
+})
+
+onMounted(() => {
+  if (isPlaying.value) startLoop()
+})
+
+onBeforeUnmount(() => stopLoop())
 </script>
 
 <template>
-  <div class="relative w-full border border-muted rounded-xl overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px] flex items-center justify-center min-h-64 p-4">
-    <img ref="imgRef" :src="src" alt="" class="hidden" @load="onImgLoad">
-    <canvas ref="canvasRef" class="max-w-full max-h-96 object-contain" />
-    <p v-if="frames.length === 0" class="text-sm text-muted absolute">{{ '' }}</p>
+  <div class="space-y-2">
+    <div class="relative w-full border border-muted rounded-xl overflow-hidden bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px] flex items-center justify-center min-h-64 p-4">
+      <img ref="imgRef" :src="src" alt="" class="hidden" @load="onImgLoad">
+      <canvas ref="canvasRef" class="max-w-full max-h-96 object-contain" />
+    </div>
+    <div v-if="totalFrames > 0" class="flex flex-wrap items-center gap-3">
+      <UButton
+        :icon="isPlaying ? 'i-lucide-pause' : 'i-lucide-play'"
+        size="sm"
+        color="neutral"
+        variant="solid"
+        @click="togglePlay"
+      >
+        {{ isPlaying ? 'Pause' : 'Play' }}
+      </UButton>
+      <UButton
+        :icon="reverse ? 'i-lucide-rotate-ccw' : 'i-lucide-rotate-cw'"
+        size="sm"
+        color="neutral"
+        variant="outline"
+        @click="reverse = !reverse"
+      >
+        {{ reverse ? 'Reverse' : 'Forward' }}
+      </UButton>
+      <div class="flex items-center gap-2 flex-1 min-w-40">
+        <span class="text-xs text-muted whitespace-nowrap">FPS: {{ fps }}</span>
+        <input v-model.number="fps" type="range" min="1" max="60" class="flex-1">
+      </div>
+      <span class="text-xs text-muted font-mono">{{ currentFrame + 1 }} / {{ totalFrames }}</span>
+    </div>
+    <p v-else class="text-sm text-muted text-center py-2">No frames to play — set columns and rows.</p>
   </div>
 </template>
