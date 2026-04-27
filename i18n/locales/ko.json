@@ -118,7 +118,7 @@
     "download": "다운로드",
     "redirecting": "다운로드가 시작되었습니다! 리디렉션 중...",
     "apiTitle": "워크플로에 통합",
-    "apiPromo": "자동화가 필요하신가요? RapidAPI의 Easy GIF2Sprite API를 사용하면 동일한 변환 엔진을 자체 애플리케이션과 워크플로에 통합할 수 있습니다.",
+    "apiPromo": "자동화가 필요하신가요? RapidAPI의 {apiName} API를 사용하면 동일한 변환 엔진을 자체 애플리케이션과 워크플로에 통합할 수 있습니다.",
     "apiCta": "RapidAPI에서 API 보기",
     "gifToSprite": {
       "tipsTitle": "알고 계셨나요? GIF to Spritesheet 팁",
@@ -5083,11 +5083,11 @@
       "exportError": "내보내기 실패 — 이미지가 너무 커서 처리할 수 없습니다."
     },
     "adModal": {
-      "title": "무료 편집기를 즐기고 계신가요?",
-      "description": "3회의 무료 다운로드를 사용했습니다. 짧은 비디오를 시청하여 계속 무료로 편집하세요.",
-      "watch": "광고 시청",
-      "close": "나중에",
-      "remaining": "남은 무료 다운로드 1회 | 남은 무료 다운로드 {count}회"
+      "title": "🥺 저희를 지원해 주세요. 🌸",
+      "description": "기사를 읽고 3회의 무료 편집을 더 잠금 해제하세요. 이 무료 도구를 지원해 주셔서 감사합니다！",
+      "remaining": "{count}회 무료 편집 남음 | {count}회 무료 편집 남음",
+      "watch": "확인",
+      "close": "닫기"
     },
     "seo": {
       "whatIs": {

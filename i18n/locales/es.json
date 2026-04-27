@@ -118,7 +118,7 @@
     "download": "Descargar",
     "redirecting": "¡Descarga iniciada! Redirigiendo...",
     "apiTitle": "Integre en su flujo de trabajo",
-    "apiPromo": "¿Necesita automatización? La API Easy GIF2Sprite en RapidAPI le permite integrar el mismo motor de conversión en sus propias aplicaciones y flujos de trabajo.",
+    "apiPromo": "¿Necesita automatización? La API {apiName} en RapidAPI le permite integrar el mismo motor de conversión en sus propias aplicaciones y flujos de trabajo.",
     "apiCta": "Ver API en RapidAPI",
     "gifToSprite": {
       "tipsTitle": "¿Sabía que? Consejos de GIF to Spritesheet",
@@ -5083,11 +5083,11 @@
       "exportError": "La exportación falló — la imagen puede ser demasiado grande para procesar."
     },
     "adModal": {
-      "title": "¿Te está gustando el editor gratuito?",
-      "description": "Has usado tus 3 descargas gratuitas. Mira un video corto para seguir editando de forma gratuita.",
-      "watch": "Ver anuncio",
-      "close": "Ahora no",
-      "remaining": "1 descarga gratuita restante | {count} descargas gratuitas restantes"
+      "title": "🥺 Por favor apóyanos. 🌸",
+      "description": "Desbloquea 3 ediciones más leyendo nuestros artículos. ¡Gracias por apoyar esta herramienta gratuita!",
+      "remaining": "{count} edición gratuita restante | {count} ediciones gratuitas restantes",
+      "watch": "Confirmar",
+      "close": "Cerrar"
     },
     "seo": {
       "whatIs": {

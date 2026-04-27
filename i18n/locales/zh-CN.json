@@ -118,7 +118,7 @@
     "download": "下载",
     "redirecting": "下载已开始！正在重定向...",
     "apiTitle": "集成到您的工作流程",
-    "apiPromo": "需要自动化？RapidAPI 上的 Easy GIF2Sprite API 可让您将相同的转换引擎集成到自己的应用程序和工作流程中。",
+    "apiPromo": "需要自动化？RapidAPI 上的 {apiName} API 可让您将相同的转换引擎集成到自己的应用程序和工作流程中。",
     "apiCta": "在 RapidAPI 上查看 API",
     "gifToSprite": {
       "tipsTitle": "您知道吗？GIF 转 Spritesheet 技巧",
@@ -5083,11 +5083,11 @@
       "exportError": "导出失败 — 图片可能太大而无法处理。"
     },
     "adModal": {
-      "title": "喜欢这个免费编辑器？",
-      "description": "你已用完 3 次免费下载。观看短视频以继续免费编辑。",
-      "watch": "观看广告",
-      "close": "暂不，谢谢",
-      "remaining": "还有 1 次免费下载 | 还有 {count} 次免费下载"
+      "title": "🥺 请支持我们 🌸",
+      "description": "阅读我们的文章即可再解锁 3 次编辑。感谢你支持这个免费工具！",
+      "remaining": "{count} 次免费编辑 | {count} 次免费编辑",
+      "watch": "确认",
+      "close": "关闭"
     },
     "seo": {
       "whatIs": {

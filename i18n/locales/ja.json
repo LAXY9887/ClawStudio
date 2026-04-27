@@ -118,7 +118,7 @@
     "download": "ダウンロード",
     "redirecting": "ダウンロードが開始されました！リダイレクト中...",
     "apiTitle": "ワークフローに統合",
-    "apiPromo": "自動化が必要ですか？RapidAPI の Easy GIF2Sprite API を使えば、同じ変換エンジンを独自のアプリケーションやワークフローに統合できます。",
+    "apiPromo": "自動化が必要ですか？RapidAPI の {apiName} API を使えば、同じ変換エンジンを独自のアプリケーションやワークフローに統合できます。",
     "apiCta": "RapidAPI で API を見る",
     "gifToSprite": {
       "tipsTitle": "ご存知ですか？GIF to Spritesheet のヒント",
@@ -5083,11 +5083,11 @@
       "exportError": "エクスポートに失敗しました — 画像が大きすぎて処理できない可能性があります。"
     },
     "adModal": {
-      "title": "無料エディターをお気に召しましたか？",
-      "description": "3 回の無料ダウンロードを使用しました。短いビデオを視聴して、無料で編集を続けてください。",
-      "watch": "広告を視聴",
-      "close": "今は不要",
-      "remaining": "残り 1 回の無料ダウンロード | 残り {count} 回の無料ダウンロード"
+      "title": "🥺 お支えください。🌸",
+      "description": "記事を読んで 3 回の無料編集をアンロック。この無料ツールをサポートいただきありがとうございます！",
+      "remaining": "{count} 回の無料編集が残っています | {count} 回の無料編集が残っています",
+      "watch": "確認",
+      "close": "閉じる"
     },
     "seo": {
       "whatIs": {

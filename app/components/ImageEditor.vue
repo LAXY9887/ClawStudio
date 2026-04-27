@@ -222,8 +222,10 @@ function onHeightInput(e: Event) {
 function applyPreset(pct: number) {
   const img = originalImage.value
   if (!img) return
-  resizeWidth.value = Math.round(img.naturalWidth * pct / 100)
-  resizeHeight.value = Math.round(img.naturalHeight * pct / 100)
+  const baseW = cropCoords.value.width || img.naturalWidth
+  const baseH = cropCoords.value.height || img.naturalHeight
+  resizeWidth.value = Math.round(baseW * pct / 100)
+  resizeHeight.value = Math.round(baseH * pct / 100)
   renderPreview()
 }
 
@@ -269,16 +271,26 @@ function tabIcon(tab: Tab): string {
   return icons[tab]
 }
 
+function syncResizeToCrop(w: number, h: number) {
+  if (w <= 0 || h <= 0) return
+  resizeWidth.value = w
+  resizeHeight.value = h
+  originalAspect.value = w / h
+}
+
 function onTabChange(tab: Tab) {
   if (activeTab.value === 'crop' && cropperRef.value) {
     const result = cropperRef.value.getResult()
     if (result?.coordinates && result.coordinates.width > 0 && result.coordinates.height > 0) {
+      const w = Math.round(result.coordinates.width)
+      const h = Math.round(result.coordinates.height)
       cropCoords.value = {
         left: Math.round(result.coordinates.left),
         top: Math.round(result.coordinates.top),
-        width: Math.round(result.coordinates.width),
-        height: Math.round(result.coordinates.height)
+        width: w,
+        height: h
       }
+      syncResizeToCrop(w, h)
     }
   }
   activeTab.value = tab
@@ -286,12 +298,15 @@ function onTabChange(tab: Tab) {
 }
 
 function onCropChange({ coordinates }: { coordinates: CropCoords }) {
+  const w = Math.round(coordinates.width)
+  const h = Math.round(coordinates.height)
   cropCoords.value = {
     left: Math.round(coordinates.left),
     top: Math.round(coordinates.top),
-    width: Math.round(coordinates.width),
-    height: Math.round(coordinates.height)
+    width: w,
+    height: h
   }
+  syncResizeToCrop(w, h)
 }
 
 function setAspectRatio(ratio: number | undefined) {
@@ -406,6 +421,7 @@ async function onAdConfirm() {
                 ref="cropperRef"
                 :src="imageSrc"
                 :stencil-props="cropAspectRatio ? { aspectRatio: cropAspectRatio } : {}"
+                :resize-image="{ wheel: false, touch: true, adjustStencil: true }"
                 class="w-full h-full min-h-64"
                 @change="onCropChange"
               />
@@ -460,7 +476,10 @@ async function onAdConfirm() {
                     { label: '1:1', value: 1 },
                     { label: '16:9', value: 16/9 },
                     { label: '4:3', value: 4/3 },
-                    { label: '3:2', value: 3/2 }
+                    { label: '3:2', value: 3/2 },
+                    { label: '9:16', value: 9/16 },
+                    { label: '3:4', value: 3/4 },
+                    { label: '2:3', value: 2/3 }
                   ]"
                   :key="preset.label"
                   class="px-2 py-1 rounded text-xs transition-colors"

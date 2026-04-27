@@ -118,7 +118,7 @@
     "download": "Download",
     "redirecting": "Download started! Redirecting back...",
     "apiTitle": "Integrate with Your Workflow",
-    "apiPromo": "Need to automate this? The Easy GIF2Sprite API on RapidAPI lets you integrate the same conversion engine into your own applications and workflows.",
+    "apiPromo": "Need to automate this? The {apiName} API on RapidAPI lets you integrate the same conversion engine into your own applications and workflows.",
     "apiCta": "View API on RapidAPI",
     "gifToSprite": {
       "tipsTitle": "Did You Know? GIF to Spritesheet Tips",
@@ -5083,11 +5083,11 @@
       "exportError": "Export failed — the image may be too large to process."
     },
     "adModal": {
-      "title": "Enjoying the free editor?",
-      "description": "You've used your 3 free downloads. Watch a short video to keep editing for free.",
-      "watch": "Watch Ad",
-      "close": "Not now",
-      "remaining": "1 free download remaining | {count} free downloads remaining"
+      "title": "🥺 Please support us. 🌸",
+      "description": "Unlock 3 more edits by reading our articles. Thank you for supporting this free tool!",
+      "remaining": "{count} free edit remaining | {count} free edits remaining",
+      "watch": "Confirm",
+      "close": "Close"
     },
     "seo": {
       "whatIs": {

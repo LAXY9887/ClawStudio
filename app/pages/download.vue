@@ -51,8 +51,13 @@ const tipCount = computed(() => {
   return counts[toolKey.value] ?? 4
 })
 
-const apiUrl = computed(() => {
-  if (toolKey.value === 'exifRemover') return 'https://rapidapi.com/lxya98874322688423/api/easy-photo-exif-extraction-removal'
+const apiInfo = computed(() => {
+  if (toolKey.value === 'exifRemover') {
+    return {
+      name: 'Easy Photo EXIF Extraction & Removal',
+      url: 'https://rapidapi.com/lxya98874322688423/api/easy-photo-exif-extraction-removal'
+    }
+  }
   const pngTools = ['pngToSpritesheet', 'pngTrim', 'splitSpritesheet']
   const uniimgcTools = [
     'heicToJpg', 'heicToPng', 'heicToWebp', 'jpgToHeic', 'pngToHeic', 'webpToHeic',
@@ -60,10 +65,22 @@ const apiUrl = computed(() => {
     'pngToAvif', 'jpgToAvif', 'webpToAvif', 'avifToPng', 'avifToJpg', 'avifToWebp',
     'svgToPng', 'faviconGenerator'
   ]
-  if (uniimgcTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'
-  if (toolKey.value === 'imageEditor') return 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'
-  if (pngTools.includes(toolKey.value)) return 'https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites'
-  return 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'
+  if (uniimgcTools.includes(toolKey.value)) {
+    return {
+      name: 'Easy HEIC & Image Converter',
+      url: 'https://rapidapi.com/lxya98874322688423/api/easy-heic-image-converter'
+    }
+  }
+  if (pngTools.includes(toolKey.value)) {
+    return {
+      name: 'PNG2SS',
+      url: 'https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites'
+    }
+  }
+  return {
+    name: 'Easy GIF2Sprite',
+    url: 'https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites'
+  }
 })
 
 useSeoMeta({
@@ -102,18 +119,18 @@ onMounted(() => {
           </ul>
         </section>
 
-        <!-- API Promo Section (shared) -->
-        <section class="border border-muted rounded-lg p-5 space-y-3">
+        <!-- API Promo Section (shared, hidden for client-side-only tools) -->
+        <section v-if="toolKey !== 'imageEditor'" class="border border-muted rounded-lg p-5 space-y-3">
           <h2 class="text-lg font-bold">
             {{ t('waitingRoom.apiTitle') }}
           </h2>
           <p class="text-muted leading-relaxed">
-            {{ t('waitingRoom.apiPromo') }}
+            {{ t('waitingRoom.apiPromo', { apiName: apiInfo.name }) }}
           </p>
           <UButton
             :label="t('waitingRoom.apiCta')"
             icon="i-lucide-external-link"
-            :to="apiUrl"
+            :to="apiInfo.url"
             target="_blank"
             variant="outline"
             color="neutral"
