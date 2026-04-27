@@ -116,6 +116,9 @@ const previewUrl = ref('')
 const previewWidth = ref(0)
 const previewHeight = ref(0)
 
+// Preview mode (grid overlay vs animation)
+const previewMode = ref<'grid' | 'animate'>('grid')
+
 // Slicing mode
 const slicingMode = ref<'grid' | 'cell'>('grid')
 
@@ -318,9 +321,23 @@ onUnmounted(() => {
   >
     <template #workspace>
       <div v-if="status === 'idle' || status === 'error'">
-        <!-- Preview with grid overlay (when file selected) -->
+        <!-- Preview with grid overlay or animation (when file selected) -->
         <div v-if="previewUrl && previewWidth > 0" class="space-y-2">
+          <div class="flex gap-2">
+            <UButton
+              v-for="m in ['grid', 'animate'] as const"
+              :key="m"
+              :variant="previewMode === m ? 'solid' : 'outline'"
+              :icon="m === 'grid' ? 'i-lucide-grid-3x3' : 'i-lucide-play'"
+              color="neutral"
+              size="sm"
+              @click="previewMode = m"
+            >
+              {{ t(`splitSpritesheet.preview.${m}`) }}
+            </UButton>
+          </div>
           <SpritesheetPreview
+            v-if="previewMode === 'grid'"
             :src="previewUrl"
             :image-width="previewWidth"
             :image-height="previewHeight"
@@ -337,6 +354,26 @@ onUnmounted(() => {
             :trim-right="trimRight"
             :trim-bottom="trimBottom"
             :trim-left="trimLeft"
+          />
+          <SpritesheetAnimator
+            v-else
+            :src="previewUrl"
+            :image-width="previewWidth"
+            :image-height="previewHeight"
+            :mode="slicingMode"
+            :columns="columns"
+            :rows="rows"
+            :cell-width="cellWidth"
+            :cell-height="cellHeight"
+            :padding="padding"
+            :column-range="columnRange || undefined"
+            :row-range="rowRange || undefined"
+            :frame-count="frameCount"
+            :trim-top="trimTop"
+            :trim-right="trimRight"
+            :trim-bottom="trimBottom"
+            :trim-left="trimLeft"
+            :skip-empty="skipEmpty"
           />
           <div class="flex items-center justify-between">
             <p class="text-sm text-muted">{{ file?.name }} · {{ formatSize(file?.size || 0) }} · {{ previewWidth }}×{{ previewHeight }}px</p>
