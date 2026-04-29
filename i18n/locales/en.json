@@ -392,7 +392,7 @@
       "imageEditing": "Image Editing"
     },
     "gifToSprite": "GIF → Spritesheet",
-    "toGif": "PNG → GIF",
+    "toGif": "PNG → GIF / WebP",
     "pngToSpritesheet": "PNG → Spritesheet",
     "pngTrim": "PNG Trim",
     "splitSpritesheet": "Spritesheet Splitter",
@@ -427,8 +427,8 @@
         "description": "Convert GIF animations into sprite sheets or individual frame PNGs."
       },
       "toGif": {
-        "title": "PNG to GIF",
-        "description": "Convert PNG frames or a spritesheet into an animated GIF."
+        "title": "PNG to Animated GIF / WebP",
+        "description": "Convert PNG frames or a spritesheet into an animated GIF or modern WebP with smaller files and full alpha."
       },
       "pngToSpritesheet": {
         "title": "PNG to Spritesheet",
@@ -734,8 +734,8 @@
     }
   },
   "toGif": {
-    "title": "Free Online PNG to GIF Converter",
-    "subtitle": "Convert PNG frames or a spritesheet into an animated GIF — free, online, no registration.",
+    "title": "Free Online PNG to Animated GIF / WebP Converter",
+    "subtitle": "Convert PNG frames or a spritesheet into an animated GIF or smaller, full-alpha WebP — free, online, no registration.",
     "mode": {
       "frames": "From Frames",
       "spritesheet": "From Spritesheet"
@@ -755,6 +755,24 @@
     "convert": "Convert!",
     "url": {
       "placeholder": "Or paste a spritesheet PNG URL..."
+    },
+    "duration": {
+      "label": "Frame Duration (ms)",
+      "hint": "100ms ≈ 10 FPS · 50ms ≈ 20 FPS · 200ms ≈ 5 FPS"
+    },
+    "output": {
+      "title": "Output Format",
+      "gif": "GIF",
+      "webp": "WebP",
+      "hint": "GIF for universal compatibility · WebP for smaller files with full alpha"
+    },
+    "quality": {
+      "label": "WebP Quality",
+      "hint": "0–100. Higher = better quality, larger file. Ignored when Lossless is on."
+    },
+    "lossless": {
+      "label": "Lossless WebP",
+      "hint": "Pixel-perfect output. Files are larger but identical to source."
     },
     "framesOptions": {
       "title": "Animation Options",
@@ -813,7 +831,7 @@
     "result": {
       "title": "GIF Preview",
       "info": "{width} × {height} px • {size}",
-      "download": "Download GIF",
+      "download": "Download Animation",
       "reset": "Convert Another"
     },
     "adModal": {

@@ -392,7 +392,7 @@
       "imageEditing": "圖片編輯"
     },
     "gifToSprite": "GIF → Spritesheet",
-    "toGif": "PNG → GIF",
+    "toGif": "PNG → GIF / WebP",
     "pngToSpritesheet": "PNG → Spritesheet",
     "pngTrim": "PNG 裁切",
     "splitSpritesheet": "Spritesheet 分割",
@@ -427,8 +427,8 @@
         "description": "將 GIF 動畫轉換為 Sprite 圖或逐幀 PNG 圖片。"
       },
       "toGif": {
-        "title": "PNG 轉 GIF",
-        "description": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫。"
+        "title": "PNG 轉 動畫 GIF / WebP",
+        "description": "將 PNG 幀或 Spritesheet 組合成動畫 GIF，或檔案更小、支援完整 alpha 的現代 WebP 格式。"
       },
       "pngToSpritesheet": {
         "title": "PNG 轉 Spritesheet",
@@ -734,8 +734,8 @@
     }
   },
   "toGif": {
-    "title": "免費線上 PNG 轉 GIF 工具",
-    "subtitle": "將 PNG 逐幀圖片或 Spritesheet 轉換為 GIF 動畫 —— 免費、線上、無需註冊。",
+    "title": "免費線上 PNG 轉 動畫 GIF / WebP 轉換器",
+    "subtitle": "將 PNG 幀或 Spritesheet 轉換為動畫 GIF，或檔案更小、支援完整 alpha 的 WebP — 免費、線上、無需註冊。",
     "mode": {
       "frames": "逐幀上傳",
       "spritesheet": "Spritesheet"
@@ -755,6 +755,24 @@
     "convert": "Convert!",
     "url": {
       "placeholder": "或貼上 Spritesheet PNG 網址..."
+    },
+    "duration": {
+      "label": "幀延遲 (ms)",
+      "hint": "100ms ≈ 10 FPS · 50ms ≈ 20 FPS · 200ms ≈ 5 FPS"
+    },
+    "output": {
+      "title": "輸出格式",
+      "gif": "GIF",
+      "webp": "WebP",
+      "hint": "GIF 相容性最廣 · WebP 檔案更小、支援完整 alpha"
+    },
+    "quality": {
+      "label": "WebP 品質",
+      "hint": "0–100。數值越高品質越好但檔案越大。Lossless 開啟時忽略此參數。"
+    },
+    "lossless": {
+      "label": "無損 WebP",
+      "hint": "像素級精確輸出。檔案較大但與來源完全一致。"
     },
     "framesOptions": {
       "title": "動畫選項",
@@ -813,7 +831,7 @@
     "result": {
       "title": "GIF 預覽",
       "info": "{width} × {height} px・{size}",
-      "download": "下載 GIF",
+      "download": "下載動畫",
       "reset": "轉換另一個"
     },
     "adModal": {
