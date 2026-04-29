@@ -41,7 +41,7 @@ const toolKey = computed(() => {
 const tipCount = computed(() => {
   const counts: Record<string, number> = {
     exifRemover: 4,
-    gifToSprite: 4, toGif: 5, pngToSpritesheet: 5, pngTrim: 4, splitSpritesheet: 5,
+    gifToSprite: 4, toGif: 7, pngToSpritesheet: 5, pngTrim: 4, splitSpritesheet: 5,
     heicToJpg: 4, heicToPng: 4, heicToWebp: 4, jpgToHeic: 4, pngToHeic: 4, webpToHeic: 4,
     pngToJpg: 4, jpgToPng: 4, pngToWebp: 4, webpToPng: 4, jpgToWebp: 4, webpToJpg: 4,
     pngToAvif: 4, jpgToAvif: 4, webpToAvif: 4, avifToPng: 4, avifToJpg: 4, avifToWebp: 4,
