@@ -137,7 +137,7 @@
         "If your frames have **different sizes**, choose \"Center on transparent canvas\" to automatically align them on the largest frame's dimensions without cropping.",
         "In **Spritesheet mode**, use the grid preview overlay to verify your column and row settings before converting. The red lines show exactly where the tool will slice.",
         "Use **Trim Margins** to crop extra borders around your spritesheet before slicing. Many exported spritesheets have outer padding that isn't part of the frame grid — trimming it ensures accurate cell alignment.",
-        "**Building for the web?** Switch the Output Format to **Animated WebP** for files **25–50% smaller** than the equivalent GIF at the same visual quality. Modern browsers (Chrome, Firefox, Safari, Edge) all support it natively in plain `<img>` tags — no polyfill, no JavaScript. Smaller files mean better Core Web Vitals (LCP, INP) and lower mobile data usage.",
+        "**Building for the web?** Switch the Output Format to **Animated WebP** for files **25–50% smaller** than the equivalent GIF at the same visual quality. Modern browsers (Chrome, Firefox, Safari, Edge) all support it natively in plain `&lt;img&gt;` tags — no polyfill, no JavaScript. Smaller files mean better Core Web Vitals (LCP, INP) and lower mobile data usage.",
         "**WebP keeps soft edges sharp.** GIF's 1-bit transparency creates hard, jagged edges around transparent objects, which is especially noticeable on logos, UI overlays, and screenshots with rounded corners. WebP preserves the original PNG anti-aliasing — semi-transparent shadows, glows, and soft edges look clean against any background colour."
       ]
     },
