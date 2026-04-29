@@ -11,12 +11,20 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        'name': 'Free Online PNG to GIF Converter',
-        'description': 'Convert PNG frames or a spritesheet into an animated GIF.',
+        'name': 'Free Online PNG to Animated GIF / WebP Converter',
+        'description': 'Convert PNG frames or a spritesheet into an animated GIF or smaller, full-alpha WebP.',
         'url': 'https://clawstudiouo.com/tools/png-to-gif',
         'applicationCategory': 'DesignApplication',
         'operatingSystem': 'Any',
         'browserRequirements': 'Requires a modern web browser',
+        'featureList': [
+          'PNG frames to animated GIF or WebP',
+          'Spritesheet to animated GIF or WebP',
+          'Adjustable frame duration',
+          'WebP quality control with lossless option',
+          'Grid and cell slicing modes',
+          'Range and trim controls'
+        ],
         'offers': {
           '@type': 'Offer',
           'price': '0',
@@ -120,6 +128,14 @@ const previewHeight = ref(0)
 const framesInput = ref<HTMLInputElement>()
 const spritesheetInput = ref<HTMLInputElement>()
 const isDragging = ref(false)
+
+// Output format (shared across both modes)
+const outputFormat = ref<'gif' | 'webp'>('gif')
+const webpQuality = ref(80)
+const webpLossless = ref(false)
+
+const outputExtension = computed(() => outputFormat.value === 'webp' ? 'webp' : 'gif')
+const outputFilename = computed(() => `animation.${outputExtension.value}`)
 
 // Frames options
 const duration = ref(100)
@@ -271,6 +287,11 @@ async function convert() {
       if (fileNameOrder.value) formData.append('file_name_order', 'true')
       formData.append('resize', resizeMode.value)
       if (resizeMode.value === 'fill') formData.append('bg_fill_color', bgFillColor.value)
+      formData.append('output_format', outputFormat.value)
+      if (outputFormat.value === 'webp') {
+        formData.append('quality', String(webpQuality.value))
+        formData.append('lossless', String(webpLossless.value))
+      }
     } else {
       endpoint = '/api/from-spritesheet'
       if (spritesheetFile.value) {
@@ -298,6 +319,11 @@ async function convert() {
       if (trimLeft.value > 0) formData.append('trim_left', String(trimLeft.value))
       formData.append('duration', String(ssDuration.value))
       formData.append('loop', String(ssLoop.value))
+      formData.append('output_format', outputFormat.value)
+      if (outputFormat.value === 'webp') {
+        formData.append('quality', String(webpQuality.value))
+        formData.append('lossless', String(webpLossless.value))
+      }
     }
 
     const response = await $fetch.raw(endpoint, {
@@ -321,7 +347,7 @@ async function convert() {
     status.value = 'done'
 
     if (usageCount.value >= FREE_LIMIT) {
-      useDownloadStore().setBlob(blob, 'animation.gif')
+      useDownloadStore().setBlob(blob, outputFilename.value)
       showAdModal.value = true
     }
   } catch (e: unknown) {
@@ -336,7 +362,7 @@ function downloadResult() {
   const url = URL.createObjectURL(resultBlob.value)
   const a = document.createElement('a')
   a.href = url
-  a.download = 'animation.gif'
+  a.download = outputFilename.value
   a.click()
   URL.revokeObjectURL(url)
 }
