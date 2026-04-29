@@ -400,7 +400,7 @@ function onAdConfirm() {
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
-    query: { type: 'gif', from: localePath('/tools/png-to-gif') }
+    query: { type: outputFormat.value, from: localePath('/tools/png-to-gif') }
   })
 }
 
