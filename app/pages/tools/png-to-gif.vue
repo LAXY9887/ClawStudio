@@ -466,23 +466,47 @@ onUnmounted(() => {
             </template>
           </div>
 
+          <!-- Quick settings: duration + output format (frequently used) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <UFormField :label="t('toGif.duration.label')" :hint="t('toGif.duration.hint')">
+              <UInput v-model.number="duration" type="number" :min="10" :max="10000" />
+            </UFormField>
+            <UFormField :label="t('toGif.output.title')" :hint="t('toGif.output.hint')">
+              <div class="flex gap-2">
+                <UButton
+                  v-for="fmt in (['gif', 'webp'] as const)"
+                  :key="fmt"
+                  :variant="outputFormat === fmt ? 'solid' : 'outline'"
+                  color="neutral"
+                  size="sm"
+                  @click="outputFormat = fmt"
+                >
+                  {{ t(`toGif.output.${fmt}`) }}
+                </UButton>
+              </div>
+            </UFormField>
+          </div>
+          <div v-if="outputFormat === 'webp'" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <UFormField :label="`${t('toGif.quality.label')}: ${webpQuality}`" :hint="t('toGif.quality.hint')">
+              <input v-model.number="webpQuality" type="range" min="0" max="100" class="w-full" :disabled="webpLossless">
+            </UFormField>
+            <UFormField :label="t('toGif.lossless.label')" :hint="t('toGif.lossless.hint')">
+              <USwitch v-model="webpLossless" />
+            </UFormField>
+          </div>
+
           <!-- Convert button -->
           <div class="flex justify-end mt-4">
             <UButton :label="t('toGif.convert')" icon="i-lucide-sparkles" :disabled="!hasInput" @click="submitConvert" />
           </div>
 
           <!-- Frames Options -->
-          <UAccordion :items="[{ label: t('toGif.framesOptions.title'), value: 'opts' }]" :default-value="['opts']" class="mt-4">
+          <UAccordion :items="[{ label: t('toGif.framesOptions.title'), value: 'opts' }]" class="mt-4">
             <template #body>
               <div class="space-y-4 pt-2">
-                <div class="grid grid-cols-2 gap-4">
-                  <UFormField :label="t('toGif.framesOptions.duration')" :hint="t('toGif.framesOptions.durationHint')">
-                    <UInput v-model.number="duration" type="number" :min="10" :max="10000" />
-                  </UFormField>
-                  <UFormField :label="t('toGif.framesOptions.loop')" :hint="t('toGif.framesOptions.loopHint')">
-                    <UInput v-model.number="loop" type="number" :min="0" />
-                  </UFormField>
-                </div>
+                <UFormField :label="t('toGif.framesOptions.loop')" :hint="t('toGif.framesOptions.loopHint')">
+                  <UInput v-model.number="loop" type="number" :min="0" />
+                </UFormField>
                 <USwitch v-model="fileNameOrder" :label="t('toGif.framesOptions.fileNameOrder')" />
                 <p v-if="fileNameOrder" class="text-xs text-muted -mt-2 pl-1">{{ t('toGif.framesOptions.fileNameOrderHint') }}</p>
                 <UFormField :label="t('toGif.framesOptions.resize')" :hint="t('toGif.framesOptions.resizeHint')">
@@ -550,9 +574,41 @@ onUnmounted(() => {
             <p class="text-sm text-muted mt-2">{{ t('toGif.spritesheetUpload.limit') }}</p>
           </div>
 
-          <!-- URL + Convert -->
+          <!-- URL field -->
           <div class="flex gap-2 mt-4">
             <UInput v-model="pngUrl" :placeholder="t('toGif.url.placeholder')" :disabled="!!spritesheetFile" class="flex-1" @keyup.enter="submitConvert" />
+          </div>
+
+          <!-- Quick settings: duration + output format (frequently used) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <UFormField :label="t('toGif.duration.label')" :hint="t('toGif.duration.hint')">
+              <UInput v-model.number="ssDuration" type="number" :min="10" :max="10000" />
+            </UFormField>
+            <UFormField :label="t('toGif.output.title')" :hint="t('toGif.output.hint')">
+              <div class="flex gap-2">
+                <UButton
+                  v-for="fmt in (['gif', 'webp'] as const)"
+                  :key="fmt"
+                  :variant="outputFormat === fmt ? 'solid' : 'outline'"
+                  color="neutral"
+                  size="sm"
+                  @click="outputFormat = fmt"
+                >
+                  {{ t(`toGif.output.${fmt}`) }}
+                </UButton>
+              </div>
+            </UFormField>
+          </div>
+          <div v-if="outputFormat === 'webp'" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <UFormField :label="`${t('toGif.quality.label')}: ${webpQuality}`" :hint="t('toGif.quality.hint')">
+              <input v-model.number="webpQuality" type="range" min="0" max="100" class="w-full" :disabled="webpLossless">
+            </UFormField>
+            <UFormField :label="t('toGif.lossless.label')" :hint="t('toGif.lossless.hint')">
+              <USwitch v-model="webpLossless" />
+            </UFormField>
+          </div>
+
+          <div class="flex justify-end mt-4">
             <UButton :label="t('toGif.convert')" icon="i-lucide-sparkles" :disabled="!hasInput" @click="submitConvert" />
           </div>
 
@@ -589,14 +645,9 @@ onUnmounted(() => {
           <UAccordion :items="[{ label: t('toGif.spritesheetOptions.title'), value: 'opts' }]" class="mt-4">
             <template #body>
               <div class="space-y-4 pt-2">
-                <div class="grid grid-cols-2 gap-4">
-                  <UFormField :label="t('toGif.spritesheetOptions.duration')" :hint="t('toGif.spritesheetOptions.durationHint')">
-                    <UInput v-model.number="ssDuration" type="number" :min="10" :max="10000" />
-                  </UFormField>
-                  <UFormField :label="t('toGif.spritesheetOptions.loop')" :hint="t('toGif.spritesheetOptions.loopHint')">
-                    <UInput v-model.number="ssLoop" type="number" :min="0" />
-                  </UFormField>
-                </div>
+                <UFormField :label="t('toGif.spritesheetOptions.loop')" :hint="t('toGif.spritesheetOptions.loopHint')">
+                  <UInput v-model.number="ssLoop" type="number" :min="0" />
+                </UFormField>
                 <div class="grid grid-cols-2 gap-4">
                   <UFormField :label="t('toGif.spritesheetOptions.frameCount')" :hint="t('toGif.spritesheetOptions.frameCountHint')">
                     <UInput v-model.number="frameCount" type="number" :min="1" placeholder="Auto" />
@@ -662,7 +713,7 @@ onUnmounted(() => {
         <div v-if="resultUrl">
           <h3 class="font-semibold text-lg mb-2">{{ t('toGif.result.title') }}</h3>
           <div class="border border-muted rounded-xl overflow-auto bg-[repeating-conic-gradient(#80808015_0%_25%,transparent_0%_50%)] bg-[length:20px_20px]">
-            <img :src="resultUrl" alt="GIF preview" class="max-w-full mx-auto">
+            <img :src="resultUrl" :alt="`${outputFormat.toUpperCase()} preview`" class="max-w-full mx-auto">
           </div>
           <p class="text-sm text-muted mt-2">{{ t('toGif.result.info', resultInfo) }}</p>
         </div>
