@@ -831,7 +831,7 @@
       "retry": "Try Again"
     },
     "result": {
-      "title": "GIF Preview",
+      "title": "Animation Preview",
       "info": "{width} × {height} px • {size}",
       "download": "Download Animation",
       "reset": "Convert Another"

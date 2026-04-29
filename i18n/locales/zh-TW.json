@@ -831,7 +831,7 @@
       "retry": "重試"
     },
     "result": {
-      "title": "GIF 預覽",
+      "title": "動畫預覽",
       "info": "{width} × {height} px・{size}",
       "download": "下載動畫",
       "reset": "轉換另一個"
