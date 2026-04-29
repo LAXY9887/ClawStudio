@@ -55,6 +55,11 @@ const seoSections: import('~/types/seo').SeoSection[] = [
   },
   {
     type: 'text' as const,
+    titleKey: 'toGif.seo.whyWebP.title',
+    contentKeys: ['toGif.seo.whyWebP.content', 'toGif.seo.whyWebP.content2', 'toGif.seo.whyWebP.content3']
+  },
+  {
+    type: 'text' as const,
     titleKey: 'toGif.seo.whyConvert.title',
     contentKeys: ['toGif.seo.whyConvert.content', 'toGif.seo.whyConvert.content2', 'toGif.seo.whyConvert.content3'],
     adSlot: '7697241396'
@@ -78,6 +83,7 @@ const seoSections: import('~/types/seo').SeoSection[] = [
       'toGif.seo.features.items.frames', 'toGif.seo.features.items.spritesheet',
       'toGif.seo.features.items.duration', 'toGif.seo.features.items.fileOrder',
       'toGif.seo.features.items.resize', 'toGif.seo.features.items.rangeSelect',
+      'toGif.seo.features.items.outputFormat',
       'toGif.seo.features.items.privacy'
     ],
     adSlot: '7572080900'
@@ -95,7 +101,11 @@ const seoSections: import('~/types/seo').SeoSection[] = [
     type: 'faq' as const,
     titleKey: 'toGif.seo.faq.title',
     itemKeys: [
-      'toGif.seo.faq.items.formats', 'toGif.seo.faq.items.maxFiles',
+      'toGif.seo.faq.items.formats',
+      'toGif.seo.faq.items.outputFormat',
+      'toGif.seo.faq.items.webpSupport',
+      'toGif.seo.faq.items.webpQuality',
+      'toGif.seo.faq.items.maxFiles',
       'toGif.seo.faq.items.frameOrder', 'toGif.seo.faq.items.differentSizes',
       'toGif.seo.faq.items.gridVsCell', 'toGif.seo.faq.items.transparency',
       'toGif.seo.faq.items.free', 'toGif.seo.faq.items.api'

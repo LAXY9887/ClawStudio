@@ -844,7 +844,7 @@
     "seo": {
       "api": {
         "title": "使用 PNG 轉 GIF API",
-        "content": "透過 Easy GIF2Sprite API 將 PNG 轉 GIF 的功能整合到你的應用程式中。無論是組裝逐幀圖片或切割 Spritesheet，API 都透過兩個專用端點處理。",
+        "content": "透過 Easy GIF2Sprite API 把 PNG 轉動畫整合到你的應用程式。無論是組合個別幀或切割 Spritesheet，API 都透過兩個端點處理，並透過 `output_format` 參數同時支援 GIF 與 animated WebP 兩種輸出。",
         "content2": "上傳 PNG 逐幀圖片或 Spritesheet，透過簡單的 HTTP 請求即可取得 GIF 動畫。非常適合遊戲素材產線、自動化 Sprite 工作流程和批次處理工具。",
         "cta": "在 RapidAPI 上查看 API",
         "tutorial": "閱讀完整教學",
@@ -854,7 +854,7 @@
           "input": "支援 PNG 檔案上傳或公開網址",
           "params": "控制延遲、循環、幀排序、網格切割等",
           "limit": "每次最多 100 張或單檔 20MB",
-          "formats": "PNG 輸入，GIF 輸出",
+          "formats": "PNG 輸入，GIF 或 animated WebP 輸出（透過 output_format 參數選擇）",
           "response": "Cloud Run 自動擴展，回應速度快"
         }
       },
@@ -870,17 +870,23 @@
         "content2": "這在以下情境特別實用：不用遊戲引擎就能預覽 Spritesheet 動畫、在只支援 GIF 的平台上分享 Sprite 動畫，或將現有遊戲素材轉換為適合文件、社群媒體或設計審查的格式。你還可以指定特定的欄列範圍來只提取 Spritesheet 的一部分，這對單張圖包含多組動畫序列（例如行走、奔跑、待機動作分別放在不同列）的情況非常理想。",
         "content3": "Spritesheet 切割模式支援格子之間的間距設定，以應對部分工具在匯出時自動加入的框線或留白。你也可以啟用跳過空白幀功能，自動偵測並捨棄完全透明的格子，避免動畫結尾出現空白幀。無論你的 Spritesheet 是用 Aseprite、Photoshop、TexturePacker 或其他工具製作的，只要是標準的網格排列，都能順利轉換。"
       },
+      "whyWebP": {
+        "title": "為什麼現代網頁應該用 Animated WebP",
+        "content": "Animated WebP 檔案在相同視覺品質下，通常比 GIF 小 25–50%。一張 2 MB 的 GIF 行銷主視覺，換成 WebP 大概只剩 600–900 KB — 直接改善 Largest Contentful Paint (LCP) 與 Core Web Vitals，這兩個指標都直接影響 Google 搜尋排名。檔案小也代表使用者在行動數據或慢速連線下消耗的流量更少。",
+        "content2": "WebP 支援 24-bit 全彩與完整 alpha 透明度，徹底解決 GIF 的兩大限制。GIF 每幀最多 256 色，且只支援「全透明 / 全不透明」二元透明度 — 在照片類內容上會出現色帶，在透明物件邊緣會看到鋸齒。WebP 完整保留 PNG 的 anti-aliasing，半透明陰影、柔光、圓角邊緣在任何背景色上都乾淨清晰。",
+        "content3": "2026 年 WebP 的瀏覽器支援已經完全普及。Chrome 32+、Firefox 65+、Safari 14+、Edge 18+ 都可以在純 `<img>` 標籤中直接播放 animated WebP — 不需要 JavaScript、不需要 polyfill。剩下的相容性缺口主要是舊版 email client（Outlook 2019 以前）與少數有嚴格 MIME 政策的企業工具。公開網頁、行銷網站、App 截圖、部落格 hero 動畫、現代聊天工具，WebP 都是更好的預設選擇。"
+      },
       "whyConvert": {
         "title": "為什麼要將 PNG 轉換為 GIF？",
         "content": "GIF 是網路上相容性最廣泛的圖片格式之一。不同於影片檔或 APNG（動態 PNG），GIF 動畫幾乎在所有瀏覽器、電子郵件客戶端、通訊軟體和社群媒體平台上都能自動播放，完全不需要安裝任何外掛或執行 JavaScript。當你需要一個輕量且到處都能正常顯示的動畫時，GIF 是最實用的選擇。",
         "content2": "將 PNG 逐幀圖片或 Spritesheet 轉為 GIF 在需要脫離原始環境分享動畫時特別有價值。遊戲開發者可以在不啟動遊戲引擎的情況下預覽角色動畫；設計師可以把動態 UI 模擬圖直接貼到文件或 Slack 訊息中；美術創作者可以在不支援 Spritesheet 播放的平台上展示像素風格作品。在這些情境中，GIF 都扮演著通用預覽格式的角色，任何人都能即時觀看。",
-        "content3": "GIF 動畫也是完全自包含的 —— 單一檔案就包含所有幀、時間資訊和循環設定。不需要外部播放器、JavaScript 函式庫或 CSS 動畫就能讓它運作。這種簡潔特性讓 GIF 非常適合嵌入 README 檔案、Wiki 頁面、電子報，以及任何需要零依賴即自動播放動畫的場景。"
+        "content3": "若要最廣的相容性，GIF 仍是較安全的選擇 — 在舊版 email client 和尚未支援 WebP 的平台上都能正常顯示。若是現代網頁前端、App 商店素材、行銷網站，或任何重視檔案大小、色彩準確度的場景，animated WebP 是明顯更佳的選擇。本工具讓你一鍵切換兩種格式，依使用情境選對格式，不需要從頭重新轉換。"
       },
       "formatsExplained": {
-        "title": "了解 PNG 與 GIF 的差異",
+        "title": "理解 PNG、GIF 與 Animated WebP",
         "content": "PNG 和 GIF 都是點陣圖格式，但各有不同的用途。PNG 支援數百萬種顏色（24 位元或含 Alpha 透明的 32 位元）、無損壓縮，且為單一靜態幀，是高品質圖片、螢幕截圖和需要準確色彩的動畫逐幀素材的首選格式。相對地，GIF 每幀僅支援 256 色調色盤，但能在單一檔案中容納多個幀，成為簡單動畫的經典格式。",
         "content2": "GIF 的 256 色限制意味著，如果原始 PNG 使用了大量色彩，轉換後可能出現輕微的色差。對於像素風格美術和純色系插畫，這通常不明顯。但對攝影風格或漸層較多的內容，調色盤縮減可能產生可見的色帶效果。工具會自動處理這項轉換，根據你的幀內容選擇最合適的 256 色調色盤。",
-        "content3": "另一個關鍵差異在於透明度的處理方式。PNG 支援完整的 Alpha 透明度，具有 256 個層級的不透明度，能呈現平滑的半透明邊緣。GIF 的透明度是二元的 —— 每個像素不是完全透明就是完全不透明。這表示 PNG 幀中的半透明效果或柔和邊緣在 GIF 輸出中會變成硬邊。為了取得最佳的透明 GIF 動畫效果，建議使用已經具有乾淨硬邊透明度的 PNG 來源幀。"
+        "content3": "Animated WebP 同時補足了 GIF 的兩個短處：保留來源 PNG 的 24-bit 全彩與完整 alpha 透明度，照片內容銳利不失真、半透明邊緣平滑乾淨。WebP 檔案在相同品質下通常比 GIF 小 25–50%。代價是相容性 — animated WebP 在所有現代瀏覽器都正常，但在某些舊版 email client 或聊天工具可能無法顯示。需要最廣相容性選 GIF，重視檔案大小、色彩、alpha 品質選 WebP。"
       },
       "howTo": {
         "title": "如何將 PNG 轉換為 GIF",
@@ -894,11 +900,11 @@
         },
         "step3": {
           "title": "3. 設定動畫參數",
-          "content": "設定幀延遲（毫秒）—— 這控制每幀顯示的時間長度。預設 100ms 可產生流暢的 10 FPS 動畫，最快可設為 10ms，最慢可達每幀 10,000ms。循環次數設為 0 代表無限循環，或指定一個數字讓動畫播放固定次數。逐幀模式下，可啟用依檔名排序（適用於 walk_0.png、walk_1.png 這類命名），並選擇尺寸不一致時的處理方式。Spritesheet 模式下，指定欄數和列數（或格子的像素尺寸），還可以設定欄列範圍以從多動畫的 Spritesheet 中只提取特定動畫。如果你的 Spritesheet 在網格周圍有多餘的邊框或留白，可以使用「裁切邊距」功能在切割前先裁掉 —— 分別設定上、右、下、左的像素值，移除不屬於幀網格的外圍空間。"
+          "content": "設定幀延遲（毫秒）控制每幀顯示時間。預設 100ms 可達到流暢的 10 FPS 動畫。選擇輸出格式：GIF 提供最廣相容性（舊 email client、傳統平台），或 animated WebP 提供更小檔案（縮小約 25–50%）和完整 alpha 透明度。選擇 WebP 時可額外調整品質滑桿（預設 80）或開啟 Lossless 取得像素級精確輸出。Loop 設為 0 可無限循環。Frames 模式可啟用「依檔名排序」讓檔案按照 walk_0.png、walk_1.png 這類後綴排序。Spritesheet 模式需指定欄列數（或單格像素尺寸），並可選擇性設定欄列範圍以擷取特定動畫。若 Spritesheet 周圍有多餘邊框，可用 Trim Margins 在切割前先裁掉。"
         },
         "step4": {
           "title": "4. 轉換並下載",
-          "content": "點擊 Convert 將檔案傳送至伺服器並產生 GIF 動畫，轉換通常只需數秒。完成後會顯示即時預覽，讓你檢查動畫的時間、幀順序和整體效果。如果結果不滿意，可以調整設定後重新轉換。確認滿意後點擊下載將 GIF 儲存到裝置。點擊「轉換另一個」可清除所有內容，開始新的轉換。"
+          "content": "點擊轉換，將檔案送至伺服器產生動畫。轉換通常只需幾秒。完成後會即時預覽結果，可確認時間軸、幀順序、整體效果。瀏覽器會原生播放 GIF 和 WebP 兩種格式。如果結果不滿意，調整設定後重新轉換。滿意後點擊下載儲存檔案（副檔名會自動對應輸出格式 — `.gif` 或 `.webp`）。點擊「轉換另一個」清空工作區，重新開始。"
         }
       },
       "features": {
@@ -931,6 +937,10 @@
           "privacy": {
             "title": "隱私優先",
             "content": "你的檔案在伺服器端處理後絕不會被永久儲存。GIF 產生並回傳至瀏覽器後，原始上傳檔案即從伺服器記憶體中立即丟棄。無需建立帳號、不使用 Cookie 追蹤，你的圖片資料不會與第三方分享，也不會被用於轉換以外的任何用途。"
+          },
+          "outputFormat": {
+            "title": "兩種輸出格式 — GIF 或 Animated WebP",
+            "content": "選擇 GIF 取得最廣相容性（舊瀏覽器、email client、傳統聊天平台），或選擇 animated WebP 用於現代網頁，重視檔案大小與視覺品質。WebP 檔案在相同品質下通常比 GIF 小 25–50%，並完整保留 24-bit 色彩與 alpha 透明度。一鍵切換 — 不需要重新上傳或重新設定。"
           }
         }
       },
@@ -960,7 +970,19 @@
         "items": {
           "formats": {
             "q": "支援哪些檔案格式？",
-            "a": "輸入必須為 PNG 檔案 —— 兩種模式皆適用。逐幀模式下，所有上傳的檔案都必須是 PNG。Spritesheet 模式下，輸入必須是單一 PNG 檔案（直接上傳或透過公開網址提供）。輸出一律為 GIF 動畫。其他圖片格式如 JPEG、WebP 或 BMP 不支援作為輸入，如有需要請先轉換為 PNG。"
+            "a": "輸入必須是 PNG 檔 — 兩種模式都一樣。Frames 模式下所有上傳檔案必須是 PNG。Spritesheet 模式下需要單一 PNG 檔（上傳或公開 URL 皆可）。輸出可選擇 animated GIF 或 animated WebP，透過頁面上的「輸出格式」切換。其他輸入格式（JPEG、WebP、BMP）目前不支援，需要先轉成 PNG。"
+          },
+          "outputFormat": {
+            "q": "應該選 GIF 還是 Animated WebP？",
+            "a": "當需要最廣相容性時選 GIF — 舊 email client、傳統聊天平台、或不確定接收方工具是否支援 WebP 的場景。選擇 animated WebP 用於現代網頁：行銷網站、部落格、App 截圖、現代聊天工具，以及任何重視檔案大小或色彩準確度的場景。WebP 檔案在相同品質下通常比 GIF 小 25–50%，並完整保留 24-bit 色彩與 alpha 透明度，而 GIF 限制在 256 色與二元透明度。"
+          },
+          "webpSupport": {
+            "q": "哪些瀏覽器與平台支援 Animated WebP？",
+            "a": "所有現代瀏覽器都可以在純 <img> 標籤中原生播放 animated WebP — Chrome 32+、Firefox 65+、Safari 14+、Edge 18+，這涵蓋 2026 年全球 97% 以上的使用者。現代聊天平台包括 Discord、Slack（標準工作區）、Twitter/X 與大多數部落格平台都能正確顯示 WebP。剩下的缺口主要是舊版 email client（Windows 上 Outlook 2019 以前）和少數有嚴格 MIME 政策的企業工具。公開網頁與現代聊天工具上，WebP 可以放心當預設用。"
+          },
+          "webpQuality": {
+            "q": "WebP 品質滑桿是控制什麼？",
+            "a": "品質（0–100，預設 80）控制 lossy 壓縮率。數值越高畫面越銳利但檔案越大。80 是大多數情境的甜蜜點 — 視覺上幾乎與來源無差異，但檔案大小遠小於 GIF。低於 60 會出現可見的壓縮假影（特別是在純色與邊緣處）。高於 90 後檔案大小快速增加但視覺改善不多。如果需要像素級精確輸出，啟用 Lossless 模式 — 檔案較大，但每個像素都與來源 PNG 完全一致。"
           },
           "maxFiles": {
             "q": "可以上傳多少張圖片？",
