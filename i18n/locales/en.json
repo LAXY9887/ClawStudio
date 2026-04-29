@@ -137,7 +137,7 @@
         "If your frames have **different sizes**, choose \"Center on transparent canvas\" to automatically align them on the largest frame's dimensions without cropping.",
         "In **Spritesheet mode**, use the grid preview overlay to verify your column and row settings before converting. The red lines show exactly where the tool will slice.",
         "Use **Trim Margins** to crop extra borders around your spritesheet before slicing. Many exported spritesheets have outer padding that isn't part of the frame grid — trimming it ensures accurate cell alignment.",
-        "**Building for the web?** Switch the Output Format to **Animated WebP** for files **25–50% smaller** than the equivalent GIF at the same visual quality. Modern browsers (Chrome, Firefox, Safari, Edge) all support it natively in plain `&lt;img&gt;` tags — no polyfill, no JavaScript. Smaller files mean better Core Web Vitals (LCP, INP) and lower mobile data usage.",
+        "**Building for the web?** Switch the Output Format to **Animated WebP** for files **25–50% smaller** than the equivalent GIF at the same visual quality. Modern browsers (Chrome, Firefox, Safari, Edge) all support it natively in plain `img` tags — no polyfill, no JavaScript. Smaller files mean better Core Web Vitals (LCP, INP) and lower mobile data usage.",
         "**WebP keeps soft edges sharp.** GIF's 1-bit transparency creates hard, jagged edges around transparent objects, which is especially noticeable on logos, UI overlays, and screenshots with rounded corners. WebP preserves the original PNG anti-aliasing — semi-transparent shadows, glows, and soft edges look clean against any background colour."
       ]
     },
@@ -876,7 +876,7 @@
         "title": "Why Choose Animated WebP for the Modern Web",
         "content": "Animated WebP files are typically 25–50% smaller than equivalent GIFs at the same visual quality. A 2 MB hero GIF on a marketing page becomes a 600–900 KB WebP — directly improving Largest Contentful Paint (LCP) scores and Core Web Vitals, both of which factor into Google search ranking. Smaller files also mean less mobile data usage, which matters for users on metered or slow connections.",
         "content2": "WebP supports 24-bit color and full alpha transparency, eliminating two of GIF's biggest limitations. GIF tops out at 256 colors per frame and only supports binary on/off transparency — that produces visible color banding on photographic content and hard, jagged edges around transparent objects. WebP preserves the original PNG anti-aliasing, so semi-transparent shadows, soft glows, and rounded corners look clean against any background.",
-        "content3": "Browser support is universal in 2026. Chrome 32+, Firefox 65+, Safari 14+, and Edge 18+ all play animated WebP natively in a plain `<img>` tag — no JavaScript or polyfills needed. The remaining gaps are some older email clients and a handful of legacy chat platforms with stricter MIME policies. For public web pages, marketing sites, app screenshots, blog heroes, and modern messaging apps, WebP is the better default."
+        "content3": "Browser support is universal in 2026. Chrome 32+, Firefox 65+, Safari 14+, and Edge 18+ all play animated WebP natively in a plain `img` tag — no JavaScript or polyfills needed. The remaining gaps are some older email clients and a handful of legacy chat platforms with stricter MIME policies. For public web pages, marketing sites, app screenshots, blog heroes, and modern messaging apps, WebP is the better default."
       },
       "whyConvert": {
         "title": "Why Convert PNG to GIF?",
@@ -980,7 +980,7 @@
           },
           "webpSupport": {
             "q": "Which browsers and platforms support animated WebP?",
-            "a": "Every modern browser plays animated WebP natively in a plain <img> tag — Chrome 32+, Firefox 65+, Safari 14+, Edge 18+. That covers >97% of global users in 2026. Modern messaging apps including Discord, Slack (in standard workspaces), Twitter/X, and most blog platforms also display WebP correctly. The remaining gaps are some older email clients (Outlook 2019 and earlier on Windows) and a few legacy enterprise tools with strict MIME policies. For public web pages and modern chat tools, WebP is safe to use as the default."
+            "a": "Every modern browser plays animated WebP natively in a plain `img` tag — Chrome 32+, Firefox 65+, Safari 14+, Edge 18+. That covers >97% of global users in 2026. Modern messaging apps including Discord, Slack (in standard workspaces), Twitter/X, and most blog platforms also display WebP correctly. The remaining gaps are some older email clients (Outlook 2019 and earlier on Windows) and a few legacy enterprise tools with strict MIME policies. For public web pages and modern chat tools, WebP is safe to use as the default."
           },
           "webpQuality": {
             "q": "What does the WebP quality slider control?",

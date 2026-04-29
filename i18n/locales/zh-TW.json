@@ -137,7 +137,7 @@
         "如果你的各幀 **尺寸不同**，選擇「置中於透明畫布」可以自動以最大幀的尺寸對齊，不會裁切任何內容。",
         "在 **Spritesheet 模式** 下，上傳圖片後可利用格線預覽覆蓋層來確認欄數和列數設定是否正確。紅線會精確顯示工具將如何切割。",
         "使用 **裁切邊距** 可以在切割前裁掉 Spritesheet 周圍的多餘邊框。許多匯出的 Spritesheet 在網格外有額外留白，裁掉後才能確保格子對位精確。",
-        "**在開發網站前端嗎？** 把輸出格式切換成 **Animated WebP**，檔案在相同畫質下會比 GIF 小 **25–50%**。所有現代瀏覽器（Chrome、Firefox、Safari、Edge）都能在純 `&lt;img&gt;` 標籤中原生播放 — 不需 polyfill、不需 JavaScript。檔案更小代表更好的 Core Web Vitals 指標（LCP、INP），行動裝置流量也更省。",
+        "**在開發網站前端嗎？** 把輸出格式切換成 **Animated WebP**，檔案在相同畫質下會比 GIF 小 **25–50%**。所有現代瀏覽器（Chrome、Firefox、Safari、Edge）都能在純 `img` 標籤中原生播放 — 不需 polyfill、不需 JavaScript。檔案更小代表更好的 Core Web Vitals 指標（LCP、INP），行動裝置流量也更省。",
         "**WebP 讓柔邊保持乾淨。** GIF 的 1-bit 透明度會在透明物件邊緣產生硬邊鋸齒，logo、UI 疊圖、圓角截圖上特別明顯。WebP 完整保留 PNG 的 anti-aliasing — 半透明陰影、柔光、柔邊在任何背景色上都依然清晰乾淨。"
       ]
     },
@@ -876,7 +876,7 @@
         "title": "為什麼現代網頁應該用 Animated WebP",
         "content": "Animated WebP 檔案在相同視覺品質下，通常比 GIF 小 25–50%。一張 2 MB 的 GIF 行銷主視覺，換成 WebP 大概只剩 600–900 KB — 直接改善 Largest Contentful Paint (LCP) 與 Core Web Vitals，這兩個指標都直接影響 Google 搜尋排名。檔案小也代表使用者在行動數據或慢速連線下消耗的流量更少。",
         "content2": "WebP 支援 24-bit 全彩與完整 alpha 透明度，徹底解決 GIF 的兩大限制。GIF 每幀最多 256 色，且只支援「全透明 / 全不透明」二元透明度 — 在照片類內容上會出現色帶，在透明物件邊緣會看到鋸齒。WebP 完整保留 PNG 的 anti-aliasing，半透明陰影、柔光、圓角邊緣在任何背景色上都乾淨清晰。",
-        "content3": "2026 年 WebP 的瀏覽器支援已經完全普及。Chrome 32+、Firefox 65+、Safari 14+、Edge 18+ 都可以在純 `<img>` 標籤中直接播放 animated WebP — 不需要 JavaScript、不需要 polyfill。剩下的相容性缺口主要是舊版 email client（Outlook 2019 以前）與少數有嚴格 MIME 政策的企業工具。公開網頁、行銷網站、App 截圖、部落格 hero 動畫、現代聊天工具，WebP 都是更好的預設選擇。"
+        "content3": "2026 年 WebP 的瀏覽器支援已經完全普及。Chrome 32+、Firefox 65+、Safari 14+、Edge 18+ 都可以在純 `img` 標籤中直接播放 animated WebP — 不需要 JavaScript、不需要 polyfill。剩下的相容性缺口主要是舊版 email client（Outlook 2019 以前）與少數有嚴格 MIME 政策的企業工具。公開網頁、行銷網站、App 截圖、部落格 hero 動畫、現代聊天工具，WebP 都是更好的預設選擇。"
       },
       "whyConvert": {
         "title": "為什麼要將 PNG 轉換為 GIF？",
@@ -980,7 +980,7 @@
           },
           "webpSupport": {
             "q": "哪些瀏覽器與平台支援 Animated WebP？",
-            "a": "所有現代瀏覽器都可以在純 <img> 標籤中原生播放 animated WebP — Chrome 32+、Firefox 65+、Safari 14+、Edge 18+，這涵蓋 2026 年全球 97% 以上的使用者。現代聊天平台包括 Discord、Slack（標準工作區）、Twitter/X 與大多數部落格平台都能正確顯示 WebP。剩下的缺口主要是舊版 email client（Windows 上 Outlook 2019 以前）和少數有嚴格 MIME 政策的企業工具。公開網頁與現代聊天工具上，WebP 可以放心當預設用。"
+            "a": "所有現代瀏覽器都可以在純 `img` 標籤中原生播放 animated WebP — Chrome 32+、Firefox 65+、Safari 14+、Edge 18+，這涵蓋 2026 年全球 97% 以上的使用者。現代聊天平台包括 Discord、Slack（標準工作區）、Twitter/X 與大多數部落格平台都能正確顯示 WebP。剩下的缺口主要是舊版 email client（Windows 上 Outlook 2019 以前）和少數有嚴格 MIME 政策的企業工具。公開網頁與現代聊天工具上，WebP 可以放心當預設用。"
           },
           "webpQuality": {
             "q": "WebP 品質滑桿是控制什麼？",
