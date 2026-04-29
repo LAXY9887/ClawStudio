@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) => {
     responseType: 'arrayBuffer'
   })
 
-  setResponseHeader(event, 'Content-Type', 'image/gif')
+  const contentType = response.headers.get('content-type') || 'image/gif'
+  setResponseHeader(event, 'Content-Type', contentType)
   return new Uint8Array(response._data as ArrayBuffer)
 })
