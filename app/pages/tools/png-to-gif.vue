@@ -477,7 +477,7 @@ onUnmounted(() => {
           </div>
 
           <!-- Quick settings: duration + output format (frequently used) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div class="space-y-4 mt-4">
             <UFormField :label="t('toGif.duration.label')" :hint="t('toGif.duration.hint')">
               <UInput v-model.number="duration" type="number" :min="10" :max="10000" />
             </UFormField>
@@ -590,7 +590,7 @@ onUnmounted(() => {
           </div>
 
           <!-- Quick settings: duration + output format (frequently used) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div class="space-y-4 mt-4">
             <UFormField :label="t('toGif.duration.label')" :hint="t('toGif.duration.hint')">
               <UInput v-model.number="ssDuration" type="number" :min="10" :max="10000" />
             </UFormField>

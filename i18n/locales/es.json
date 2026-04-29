@@ -130,13 +130,15 @@
       ]
     },
     "toGif": {
-      "tipsTitle": "¿Sabía que? Consejos de PNG to GIF",
+      "tipsTitle": "¿Sabías? Consejos de PNG a GIF / WebP",
       "tips": [
         "Configure **Frame Duration** para controlar la velocidad de animación. 100ms produce una animación fluida de 10 FPS, mientras que 50ms crea un efecto rápido de 20 FPS. La mayoría de las animaciones de pixel art se ven mejor a 80–120ms.",
         "Active **Sort by Filename** cuando sus fotogramas usen una convención de nombres como walk_0.png, walk_1.png. La herramienta ordenará por el sufijo numérico en lugar del orden de carga.",
         "Si sus fotogramas tienen **tamaños diferentes**, elija \"Centrar en lienzo transparente\" para alinearlos automáticamente a las dimensiones del fotograma más grande sin recortar.",
         "En el **modo Spritesheet**, use la superposición de vista previa de cuadrícula para verificar sus configuraciones de columnas y filas antes de convertir. Las líneas rojas muestran exactamente dónde cortará la herramienta.",
-        "Usa **Recortar márgenes** para eliminar los bordes adicionales alrededor de tu spritesheet antes de cortarlo. Muchos spritesheets exportados tienen relleno exterior que no forma parte de la cuadrícula de frames — recortarlo asegura una alineación precisa de las celdas."
+        "Usa **Recortar márgenes** para eliminar los bordes adicionales alrededor de tu spritesheet antes de cortarlo. Muchos spritesheets exportados tienen relleno exterior que no forma parte de la cuadrícula de frames — recortarlo asegura una alineación precisa de las celdas.",
+        "**¿Construyendo para la web?** Cambia el Formato de Salida a **WebP Animado** para archivos **25–50% más pequeños** que el GIF equivalente con la misma calidad visual. Los navegadores modernos (Chrome, Firefox, Safari, Edge) todos lo admiten de forma nativa en etiquetas `img` simples — sin polyfill, sin JavaScript. Los archivos más pequeños significan mejor Core Web Vitals (LCP, INP) y menor uso de datos móviles.",
+        "**WebP mantiene los bordes suaves afilados.** La transparencia de 1 bit de GIF crea bordes duros, dentados alrededor de objetos transparentes, que es especialmente notable en logos, superposiciones de UI y capturas de pantalla con esquinas redondeadas. WebP preserva el suavizado de antialiasing del PNG original — sombras semitransparentes, resplandores y bordes suaves se ven limpios contra cualquier color de fondo."
       ]
     },
     "pngToSpritesheet": {
@@ -392,7 +394,7 @@
       "imageEditing": "Edición de imágenes"
     },
     "gifToSprite": "GIF → Hoja de sprites",
-    "toGif": "PNG → GIF",
+    "toGif": "PNG → GIF / WebP",
     "pngToSpritesheet": "PNG → Spritesheet",
     "pngTrim": "Recortar PNG",
     "splitSpritesheet": "Divisor de Spritesheet",
@@ -427,8 +429,8 @@
         "description": "Convierta animaciones GIF en hojas de sprites o PNGs de fotogramas individuales."
       },
       "toGif": {
-        "title": "PNG a GIF",
-        "description": "Convierta fotogramas PNG o una hoja de sprites en un GIF animado."
+        "title": "PNG a GIF Animado / WebP",
+        "description": "Convierte marcos PNG o un spritesheet en un GIF animado o WebP moderno con archivos más pequeños y alfa completa."
       },
       "pngToSpritesheet": {
         "title": "PNG a Spritesheet",
@@ -734,8 +736,8 @@
     }
   },
   "toGif": {
-    "title": "Conversor gratuito en línea de PNG a GIF",
-    "subtitle": "Convierte fotogramas PNG o un spritesheet en un GIF animado — gratis, en línea, sin registro.",
+    "title": "Convertidor Gratuito de PNG a GIF Animado / WebP",
+    "subtitle": "Convierte marcos PNG o un spritesheet en un GIF animado o WebP más pequeño con alfa completo — gratuito, en línea, sin registro.",
     "mode": {
       "frames": "Desde fotogramas",
       "spritesheet": "Desde hoja de sprites"
@@ -811,9 +813,9 @@
       "retry": "Reintentar"
     },
     "result": {
-      "title": "Vista previa de GIF",
+      "title": "Vista Previa de Animación",
       "info": "{width} × {height} px • {size}",
-      "download": "Descargar GIF",
+      "download": "Descargar Animación",
       "reset": "Convertir otro"
     },
     "adModal": {
@@ -826,7 +828,7 @@
     "seo": {
       "api": {
         "title": "Usar la API de PNG a GIF",
-        "content": "Integre la conversión de PNG a GIF en sus aplicaciones con la API Easy GIF2Sprite. Ya sea que necesite ensamblar fotogramas individuales o cortar una hoja de sprites, la API maneja ambos flujos de trabajo a través de dos puntos finales dedicados.",
+        "content": "Integra conversión PNG-a-animación en tus aplicaciones con la API de Easy GIF2Sprite. Ya sea que ensambres marcos individuales o dividas un spritesheet, la API maneja ambos flujos de trabajo a través de dos puntos finales dedicados, y admite salida GIF y WebP animado a través del parámetro `output_format`.",
         "content2": "Cargue fotogramas PNG o una hoja de sprites mediante una simple solicitud HTTP y reciba un GIF animado en segundos. Perfecto para pipelines de recursos de juegos, flujos de trabajo automatizados de sprites y herramientas de procesamiento por lotes.",
         "cta": "Ver API en RapidAPI",
         "tutorial": "Leer el tutorial completo",
@@ -836,7 +838,7 @@
           "input": "Cargue archivos PNG o proporcione una URL pública",
           "params": "Controle la duración, bucles, orden de fotogramas, corte de cuadrícula y más",
           "limit": "100 archivos por solicitud o 20 MB archivo único",
-          "formats": "Entrada PNG, salida GIF",
+          "formats": "Entrada PNG, salida GIF o WebP animado (seleccionable a través del parámetro output_format)",
           "response": "Respuesta rápida con auto-escalado de Cloud Run"
         }
       },
@@ -856,13 +858,13 @@
         "title": "¿Por qué convertir PNG a GIF?",
         "content": "GIF sigue siendo uno de los formatos de imagen más ampliamente compatibles en Internet. A diferencia de archivos de video o PNG animados (APNG), las animaciones GIF se reproducen automáticamente en prácticamente todos los navegadores, clientes de correo electrónico, aplicaciones de mensajería y plataformas de redes sociales sin requerir complementos o JavaScript. Esto hace que GIF sea el formato ideal cuando necesitas una animación ligera que simplemente funcione en todas partes.",
         "content2": "Convertir fotogramas PNG o hojas de sprites a GIF es especialmente valioso cuando quieres compartir animaciones fuera de su contexto original. Los desarrolladores de juegos pueden obtener una vista previa de animaciones de personajes sin lanzar un motor de juegos. Los diseñadores pueden incrustar maquetas de UI animadas directamente en documentación o mensajes de Slack. Los artistas pueden mostrar su pixel art en plataformas que no soportan reproducción de hoja de sprites. En cada caso, GIF sirve como un formato de vista previa universal que cualquiera puede ver instantáneamente.",
-        "content3": "Las animaciones GIF también son autosuficientes — un único archivo contiene cada fotograma, la información de cronometraje y el recuento de bucles. No hay necesidad de reproductores externos, bibliotecas JavaScript o animaciones CSS para hacerlas funcionar. Esta simplicidad hace que GIF sea ideal para archivos README, wikis, boletines de correo electrónico y cualquier contexto donde necesites una animación que simplemente se reproduzca por sí sola sin dependencias."
+        "content3": "Para un alcance más amplio, GIF sigue siendo la opción más segura — funciona en clientes de correo antiguos y plataformas que aún no han adoptado WebP. Para frontends web modernos, tiendas de aplicaciones, sitios de marketing y cualquier contexto donde el tamaño del archivo o la fidelidad de color sean importantes, WebP animado es el ganador claro. Esta herramienta te permite cambiar entre los dos con un solo clic, para que puedas elegir el formato correcto por caso de uso sin reconvertir desde cero."
       },
       "formatsExplained": {
-        "title": "Entendiendo PNG vs GIF",
+        "title": "Entendiendo PNG, GIF y WebP Animado",
         "content": "PNG y GIF son ambos formatos de imagen raster, pero sirven para propósitos diferentes. PNG soporta millones de colores (24 bits o 32 bits con transparencia alfa), compresión sin pérdida y un único fotograma estático. Es el formato preferido para imágenes de alta calidad, capturas de pantalla y fotogramas de animación individuales donde la precisión del color importa. GIF, por otro lado, está limitado a una paleta de 256 colores por fotograma pero soporta múltiples fotogramas en un único archivo, lo que la hace el formato clásico para animaciones simples.",
         "content2": "La limitación de 256 colores de GIF significa que convertir desde PNG puede introducir ligeros cambios de color si tus imágenes de origen usan un rango amplio de colores. Para pixel art e ilustraciones con colores planos, esto es raramente perceptible. Para contenido fotográfico o pesado en gradientes, la reducción de paleta puede producir bandas visibles. La herramienta maneja esta conversión automáticamente, seleccionando la mejor paleta de 256 colores para tus fotogramas específicos.",
-        "content3": "Otra diferencia clave es el manejo de transparencia. PNG soporta transparencia alfa completa con 256 niveles de opacidad, permitiendo bordes semi-transparentes suaves. La transparencia de GIF es binaria — cada píxel es completamente transparente u completamente opaco. Esto significa que bordes suaves u superposiciones semi-transparentes en tus fotogramas PNG se convertirán a bordes duros en la salida GIF. Para mejores resultados con animaciones GIF transparentes, usa fotogramas de origen PNG que ya tengan transparencia limpia de borde duro."
+        "content3": "WebP animado cierra ambas brechas que GIF deja abiertas: preserva color de 24 bits y transparencia alfa completa de tu origen PNG, por lo que las fotografías se mantienen nítidas y los bordes semitransparentes se mantienen suaves. Los archivos WebP también suelen ser 25–50% más pequeños que el equivalente GIF. El compensación es la compatibilidad del navegador/plataforma — WebP animado funciona en todo navegador moderno pero puede que no se muestre en clientes de correo antiguos o algunas herramientas de chat. Elige GIF cuando necesites máximo alcance, WebP cuando el tamaño del archivo, la fidelidad de color o la calidad alfa importen."
       },
       "howTo": {
         "title": "Cómo convertir PNG a GIF",
@@ -876,11 +878,11 @@
         },
         "step3": {
           "title": "3. Configura la configuración de animación",
-          "content": "Establece la duración del fotograma en milisegundos — esto controla cuánto tiempo se muestra cada fotograma. El valor predeterminado de 100 ms produce una animación suave de 10 FPS, pero puedes ir tan rápido como 10 ms o tan lento como 10,000 ms por fotograma. Establece el recuento de bucles a 0 para bucle infinito, o a un número específico para reproducir la animación un número fijo de veces. Para modo fotogramas, activa la ordenación basada en nombre de archivo si tus archivos siguen una convención de nombre como walk_0.png, walk_1.png, y elige cómo manejar fotogramas con diferentes dimensiones. Para modo hoja de sprites, especifica columnas y filas (o dimensiones de celda en píxeles), y opcionalmente establece rangos de columna/fila para extraer solo una animación específica de una hoja multi-animación."
+          "content": "Establece la duración del marco en milisegundos — esto controla cuánto tiempo se muestra cada marco. El valor predeterminado de 100ms da una animación suave de 10 FPS. Elige tu formato de salida: GIF para compatibilidad universal (clientes de correo antiguos, plataformas heredadas), o WebP animado para archivos más pequeños (~25–50% más pequeños) y transparencia alfa completa. Cuando WebP está seleccionado, opcionalmente ajusta el deslizador de calidad (predeterminado 80) o activa Lossless para salida pixel-perfecta. Establece el conteo de bucle a 0 para bucle infinito. Para modo de marcos, activa la clasificación basada en nombre de archivo si tus archivos usan convenciones de sufijo como walk_0.png, walk_1.png. Para modo spritesheet, especifica columnas y filas (o dimensiones de píxel de celda), y opcionalmente establece rangos de columna/fila para extraer una animación específica. Si tu spritesheet tiene bordes adicionales, usa Trim Margins para recortarlos antes de dividirlos."
         },
         "step4": {
           "title": "4. Convierte y descarga",
-          "content": "Haz clic en Convertir para enviar tus archivos al servidor y generar el GIF animado. La conversión típicamente toma solo unos pocos segundos. Una vez completada, una vista previa en vivo muestra la animación para que puedas verificar el cronometraje, el orden de fotogramas y la apariencia general antes de descargar. Si el resultado no es el correcto, ajusta tu configuración y convierte nuevamente. Cuando estés satisfecho, haz clic en Descargar para guardar el GIF en tu dispositivo. Haz clic en \"Convertir otro\" para borrar todo y comenzar una conversión fresca con nuevos archivos."
+          "content": "Haz clic en Convertir para enviar tus archivos al servidor y generar la animación. La conversión generalmente toma algunos segundos. Una vez completada, una vista previa en vivo muestra el resultado para que puedas verificar el cronometraje, el orden de fotogramas y la apariencia general. El navegador reproduce GIF y WebP de forma nativa en la vista previa. Si el resultado no es correcto, ajusta tus configuraciones y convierte de nuevo. Cuando estés satisfecho, haz clic en Descargar para guardar el archivo (la extensión coincide con el formato de salida elegido — `.gif` o `.webp`). Haz clic en \"Convertir Otro\" para limpiar todo y comenzar de nuevo."
         }
       },
       "features": {
@@ -913,6 +915,10 @@
           "privacy": {
             "title": "Privacidad primero",
             "content": "Tus archivos se procesan en el servidor y nunca se almacenan permanentemente. Una vez que el GIF se genera y se devuelve a tu navegador, las cargas originales se descartan inmediatamente de la memoria del servidor. No se requiere registro de cuenta, no se usan cookies para seguimiento, y tus datos de imagen nunca se comparten con terceros o se usan para ningún propósito más allá de la conversión que solicitaste."
+          },
+          "outputFormat": {
+            "title": "Dos Formatos de Salida — GIF o WebP Animado",
+            "content": "Elige GIF para compatibilidad máxima (navegadores antiguos, clientes de correo, plataformas de chat heredadas) o WebP animado para objetivos web modernos donde el tamaño del archivo y la calidad visual importen. Los archivos WebP suelen ser 25–50% más pequeños que el GIF equivalente con la misma calidad, con color de 24 bits completo y transparencia alfa. Cambia entre los dos con un solo clic — no necesitas volver a cargar ni reconfigurar."
           }
         }
       },
@@ -942,7 +948,7 @@
         "items": {
           "formats": {
             "q": "¿Qué formatos de archivo son compatibles?",
-            "a": "La entrada debe ser archivos PNG — esto se aplica a ambos modos. En modo fotogramas, cada archivo cargado debe ser una imagen PNG. En modo hoja de sprites, la entrada debe ser un único archivo PNG (cargado directamente o a través de una URL pública). La salida siempre es un GIF animado. Otros formatos de imagen como JPEG, WebP o BMP no son soportados como entrada, por lo que necesitarás convertirlos a PNG primero si es necesario."
+            "a": "La entrada debe ser archivos PNG — esto se aplica a ambos modos. En modo de marcos, cada archivo cargado debe ser una imagen PNG. En modo spritesheet, la entrada debe ser un único archivo PNG (cargado directamente o a través de una URL pública). La salida es un GIF animado o WebP animado, seleccionable a través del complemento de Formato de Salida. Otros formatos de entrada (JPEG, WebP, BMP) no son compatibles — conviértelos a PNG primero si es necesario."
           },
           "maxFiles": {
             "q": "¿Cuántos fotogramas puedo cargar?",
@@ -971,9 +977,45 @@
           "api": {
             "q": "¿Hay una API disponible?",
             "a": "Sí. Esta herramienta está impulsada por la API Easy GIF2Sprite disponible en RapidAPI. La API ofrece dos puntos finales: /from-frames para ensamblar múltiples archivos PNG en un GIF animado, y /from-spritesheet para cortar un PNG de hoja de sprites en fotogramas y producir un GIF animado. Ambos puntos finales soportan los mismos parámetros disponibles en la herramienta web, lo que simplifica la automatización de conversiones en tu pipeline de construcción o aplicación."
+          },
+          "outputFormat": {
+            "q": "¿Cuándo debo elegir GIF vs WebP Animado?",
+            "a": "Elige GIF cuando necesites compatibilidad máxima — clientes de correo antiguos, plataformas de chat heredadas, o en cualquier lugar donde no puedas estar seguro de que la herramienta del destinatario admite WebP. Elige WebP animado para objetivos web modernos: sitios de marketing, publicaciones de blog, capturas de pantalla de aplicaciones, aplicaciones de mensajería modernas, y en cualquier lugar donde el tamaño del archivo o la fidelidad de color importe. Los archivos WebP suelen ser 25–50% más pequeños y preservan color de 24 bits completo con transparencia alfa, mientras que GIF se limita a 256 colores y transparencia binaria activada/desactivada."
+          },
+          "webpSupport": {
+            "q": "¿Qué navegadores y plataformas admiten WebP Animado?",
+            "a": "Todo navegador moderno reproduce WebP animado de forma nativa en una etiqueta `img` simple — Chrome 32+, Firefox 65+, Safari 14+, Edge 18+. Eso cubre >97% de usuarios globales en 2026. Las aplicaciones de mensajería modernas incluyendo Discord, Slack (en espacios de trabajo estándar), Twitter/X y la mayoría de plataformas de blog también muestran WebP correctamente. Las brechas restantes son algunos clientes de correo antiguos (Outlook 2019 y anteriores en Windows) y algunas herramientas empresariales heredadas con políticas MIME estrictas. Para páginas web públicas y herramientas de chat modernas, WebP es seguro usar como predeterminado."
+          },
+          "webpQuality": {
+            "q": "¿Qué controla el deslizador de calidad de WebP?",
+            "a": "Calidad (0–100, predeterminado 80) controla la compresión con pérdida. Valores más altos producen imágenes más nítidas pero archivos más grandes. 80 es el punto dulce para la mayoría de casos de uso — visualmente indistinguible del origen para la mayoría de visualizadores, mientras que aún produce archivos mucho más pequeños que GIF. Por debajo de 60, los artefactos de compresión se hacen visibles (especialmente en colores planos y bordes). Por encima de 90 el tamaño del archivo crece rápidamente por retornos visuales decrecientes. Si necesitas salida pixel-perfecta, activa modo Lossless — el archivo será más grande pero cada píxel coincidirá exactamente con el PNG de origen."
           }
         }
+      },
+      "whyWebP": {
+        "title": "Por Qué Elegir WebP Animado para la Web Moderna",
+        "content": "Los archivos WebP animados suelen ser 25–50% más pequeños que GIFs equivalentes con la misma calidad visual. Un GIF hero de 2 MB en una página de marketing se convierte en un WebP de 600–900 KB — mejorando directamente las puntuaciones de Largest Contentful Paint (LCP) y Core Web Vitals, ambos factores en el ranking de búsqueda de Google. Los archivos más pequeños también significan menos uso de datos móviles, lo que importa para usuarios con conexiones medidas o lentas.",
+        "content2": "WebP admite color de 24 bits y transparencia alfa completa, eliminando dos de las mayores limitaciones de GIF. GIF tiene un máximo de 256 colores por marco y solo admite transparencia binaria activada/desactivada — eso produce bandas de color visibles en contenido fotográfico y bordes duros, dentados alrededor de objetos transparentes. WebP preserva el suavizado de antialiasing del PNG original, por lo que sombras semitransparentes, resplandores suaves y esquinas redondeadas se ven limpias contra cualquier fondo.",
+        "content3": "La compatibilidad del navegador es universal en 2026. Chrome 32+, Firefox 65+, Safari 14+ y Edge 18+ reproducen WebP animado de forma nativa en una etiqueta `img` simple — sin JavaScript ni polyfills. Las brechas restantes son algunos clientes de correo antiguos y un puñado de plataformas de chat heredadas con políticas MIME más estrictas. Para páginas web públicas, sitios de marketing, capturas de pantalla de aplicaciones, héroes de blog y aplicaciones de mensajería modernas, WebP es la mejor opción por defecto."
       }
+    },
+    "duration": {
+      "label": "Duración del Marco (ms)",
+      "hint": "100ms ≈ 10 FPS · 50ms ≈ 20 FPS · 200ms ≈ 5 FPS"
+    },
+    "output": {
+      "title": "Formato de Salida",
+      "gif": "GIF",
+      "webp": "WebP",
+      "hint": "GIF para compatibilidad universal · WebP para archivos más pequeños con alfa completo"
+    },
+    "quality": {
+      "label": "Calidad de WebP",
+      "hint": "0–100. Mayor = mejor calidad, archivo más grande. Se ignora cuando Lossless está activado."
+    },
+    "lossless": {
+      "label": "WebP Lossless",
+      "hint": "Salida pixel-perfecta. Los archivos son más grandes pero idénticos al origen."
     }
   },
   "pngToSpritesheet": {

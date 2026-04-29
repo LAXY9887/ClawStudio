@@ -130,13 +130,15 @@
       ]
     },
     "toGif": {
-      "tipsTitle": "Wussten Sie schon? PNG to GIF Tipps",
+      "tipsTitle": "Wussten Sie schon? PNG zu GIF / WebP Tipps",
       "tips": [
         "Stellen Sie **Frame Duration** ein, um die Animationsgeschwindigkeit zu steuern. 100ms ergibt eine flüssige 10-FPS-Animation, während 50ms einen schnellen 20-FPS-Effekt erzeugt. Die meisten Pixel-Art-Animationen sehen bei 80–120ms am besten aus.",
         "Aktivieren Sie **Sort by Filename**, wenn Ihre Frames eine Namenskonvention wie walk_0.png, walk_1.png verwenden. Das Tool sortiert nach dem numerischen Suffix anstatt nach der Upload-Reihenfolge.",
         "Wenn Ihre Frames **unterschiedliche Größen** haben, wählen Sie \"Auf transparentem Canvas zentrieren\", um sie automatisch an den Abmessungen des größten Frames auszurichten, ohne zu beschneiden.",
         "Im **Spritesheet-Modus** verwenden Sie das Rastervorschau-Overlay, um Ihre Spalten- und Zeileneinstellungen vor der Konvertierung zu überprüfen. Die roten Linien zeigen genau, wo das Tool schneiden wird.",
-        "Verwenden Sie **Ränder beschneiden**, um vor dem Zuschneiden zusätzliche Ränder um Ihr Spritesheet zu entfernen. Viele exportierte Spritesheets haben äußere Abstände, die nicht zum Frame-Raster gehören — das Beschneiden stellt eine genaue Zellenausrichtung sicher."
+        "Verwenden Sie **Ränder beschneiden**, um vor dem Zuschneiden zusätzliche Ränder um Ihr Spritesheet zu entfernen. Viele exportierte Spritesheets haben äußere Abstände, die nicht zum Frame-Raster gehören — das Beschneiden stellt eine genaue Zellenausrichtung sicher.",
+        "**Bauen für das Web?** Schalten Sie das Ausgabeformat auf **Animiertes WebP** um für Dateien **25–50% kleiner** als das entsprechende GIF mit der gleichen visuellen Qualität. Moderne Browser (Chrome, Firefox, Safari, Edge) unterstützen es nativ in einfachen `img`-Tags — kein Polyfill, kein JavaScript. Kleinere Dateien bedeuten bessere Core Web Vitals (LCP, INP) und niedrigere mobile Datennutzung.",
+        "**WebP hält weiche Kanten scharf.** Die 1-Bit-Transparenz von GIF erzeugt harte, gezackte Kanten um transparent Objekte, was besonders bei Logos, UI-Overlays und Screenshots mit gerundeten Ecken auffällig ist. WebP bewahrt die ursprüngliche PNG-Kantenglättung — halbdurchsichtige Schatten, Glühen und weiche Kanten sehen saubер gegen jeden Hintergrund aus."
       ]
     },
     "pngToSpritesheet": {
@@ -392,7 +394,7 @@
       "imageEditing": "Bildbearbeitung"
     },
     "gifToSprite": "GIF → Sprite Sheet",
-    "toGif": "PNG → GIF",
+    "toGif": "PNG → GIF / WebP",
     "pngToSpritesheet": "PNG → Spritesheet",
     "pngTrim": "PNG Zuschneiden",
     "splitSpritesheet": "Spritesheet-Teiler",
@@ -427,8 +429,8 @@
         "description": "Konvertieren Sie GIF-Animationen in Sprite Sheets oder einzelne Frame-PNGs."
       },
       "toGif": {
-        "title": "PNG zu GIF",
-        "description": "Konvertieren Sie PNG-Frames oder ein Sprite Sheet in eine animierte GIF."
+        "title": "PNG zu animiertes GIF / WebP",
+        "description": "Konvertieren Sie PNG-Rahmen oder ein Spritesheet in ein animiertes GIF oder modernes WebP mit kleineren Dateien und vollständiger Transparenz."
       },
       "pngToSpritesheet": {
         "title": "PNG zu Spritesheet",
@@ -734,8 +736,8 @@
     }
   },
   "toGif": {
-    "title": "Kostenloser Online PNG-zu-GIF Konverter",
-    "subtitle": "PNG-Frames oder Spritesheets in animierte GIFs umwandeln — kostenlos, online, ohne Registrierung.",
+    "title": "Kostenloser Online-PNG-zu-animiertes-GIF-/-WebP-Konverter",
+    "subtitle": "Konvertieren Sie PNG-Rahmen oder ein Spritesheet in ein animiertes GIF oder ein kleineres, vollständig transparentes WebP — kostenlos, online, keine Registrierung erforderlich.",
     "mode": {
       "frames": "Aus Frames",
       "spritesheet": "Aus Sprite Sheet"
@@ -811,9 +813,9 @@
       "retry": "Erneut versuchen"
     },
     "result": {
-      "title": "GIF-Vorschau",
+      "title": "Animationsvorschau",
       "info": "{width} × {height} px • {size}",
-      "download": "GIF herunterladen",
+      "download": "Animation herunterladen",
       "reset": "Eine weitere konvertieren"
     },
     "adModal": {
@@ -826,7 +828,7 @@
     "seo": {
       "api": {
         "title": "Verwenden Sie die PNG-zu-GIF-API",
-        "content": "Integrieren Sie die PNG-zu-GIF-Konvertierung in Ihre Anwendungen mit der Easy GIF2Sprite API. Unabhängig davon, ob Sie einzelne Frames zusammensetzen oder ein Sprite Sheet teilen müssen, behandelt die API beide Workflows durch zwei dedizierte Endpunkte.",
+        "content": "Integrieren Sie PNG-zu-Animation-Konvertierung in Ihre Anwendungen mit der Easy GIF2Sprite API. Ob Sie einzelne Rahmen zusammenstellen oder ein Spritesheet schneiden, die API verarbeitet beide Workflows durch zwei dedizierte Endpunkte und unterstützt beide GIF- und animierte WebP-Ausgabe über den Parameter `output_format`.",
         "content2": "Laden Sie PNG-Frames oder ein Sprite Sheet über eine einfache HTTP-Anfrage hoch und erhalten Sie in Sekunden eine animierte GIF. Perfekt für Game-Asset-Pipelines, automatisierte Sprite-Workflows und Stapelverarbeitungstools.",
         "cta": "API auf RapidAPI ansehen",
         "tutorial": "Vollständiges Tutorial lesen",
@@ -836,7 +838,7 @@
           "input": "Laden Sie PNG-Dateien hoch oder stellen Sie eine öffentliche URL bereit",
           "params": "Steuern Sie Dauer, Schleife, Frame-Reihenfolge, Rasterschnitt und mehr",
           "limit": "100 Dateien pro Anfrage oder 20 MB einzelne Datei",
-          "formats": "PNG-Eingabe, GIF-Ausgabe",
+          "formats": "PNG-Eingabe, GIF- oder animierte WebP-Ausgabe (wählbar über Parameter `output_format`)",
           "response": "Schnelle Antwort mit Cloud Run Auto-Scaling"
         }
       },
@@ -856,13 +858,13 @@
         "title": "Warum PNG zu GIF konvertieren?",
         "content": "GIF bleibt eines der am weitesten unterstützten Bildformate im Internet. Im Gegensatz zu Videodateien oder animierten PNGs (APNG) werden GIF-Animationen in praktisch jedem Browser, E-Mail-Client, Messaging-App und Social-Media-Plattform ohne Plugins oder JavaScript automatisch abgespielt. Dies macht GIF zum bevorzugten Format, wenn Sie eine leichtgewichtige Animation benötigen, die einfach überall funktioniert.",
         "content2": "Die Konvertierung von PNG-Frames oder Sprite Sheets zu GIF ist besonders wertvoll, wenn Sie Animationen außerhalb ihres ursprünglichen Kontexts teilen möchten. Spieleentwickler können Charakteranimationen in der Vorschau ansehen, ohne eine Spiel-Engine zu starten. Designer können animierte UI-Mockups direkt in Dokumentation oder Slack-Nachrichten einbetten. Künstler können ihre Pixel Art auf Plattformen präsentieren, die keine Sprite-Sheet-Wiedergabe unterstützen. In jedem Fall fungiert GIF als universelles Vorschauformat, das jeder sofort anzeigen kann.",
-        "content3": "GIF-Animationen sind auch in sich geschlossen — eine einzelne Datei enthält jeden Frame, die Timing-Informationen und die Schleifenzahl. Es ist nicht erforderlich, externe Player, JavaScript-Bibliotheken oder CSS-Animationen zum Betrieb zu verwenden. Diese Einfachheit macht GIF ideal für README-Dateien, Wikis, E-Mail-Newsletter und jeden Kontext, in dem Sie eine Animation benötigen, die mit null Abhängigkeiten einfach abgespielt wird."
+        "content3": "Für größere Reichweite bleibt GIF die sicherere Wahl — funktioniert in älteren E-Mail-Clients und Plattformen, die WebP noch nicht unterstützt haben. Für moderne Web-Frontends, App-Stores, Marketing-Seiten und jeden Kontext, in dem Dateigröße oder Farbgenauigkeit wichtig ist, ist animiertes WebP der klare Gewinner. Dieses Tool ermöglicht es Ihnen, mit einem einzigen Klick zwischen den beiden zu wechseln, damit Sie das richtige Format pro Anwendungsfall wählen können, ohne von Grund auf neu zu konvertieren."
       },
       "formatsExplained": {
-        "title": "PNG vs. GIF verstehen",
+        "title": "PNG, GIF und animiertes WebP verstehen",
         "content": "PNG und GIF sind beide Rasterbildformate, dienen aber unterschiedlichen Zwecken. PNG unterstützt Millionen von Farben (24-Bit oder 32-Bit mit Alpha-Transparenz), verlustfreie Kompression und einen einzelnen statischen Frame. Es ist das bevorzugte Format für hochwertige Bilder, Screenshots und einzelne Animationsframes, bei denen die Farbgenauigkeit wichtig ist. GIF hingegen ist auf eine 256-Farben-Palette pro Frame begrenzt, unterstützt aber mehrere Frames in einer Datei, was es zum klassischen Format für einfache Animationen macht.",
         "content2": "Die 256-Farben-Einschränkung von GIF bedeutet, dass die Konvertierung von PNG zu leichten Farbveränderungen führen kann, wenn Ihre Quellbilder eine breite Farbpalette verwenden. Für Pixel Art und Illustrationen mit flachen Farben ist dies selten wahrnehmbar. Bei fotorealistischen oder Farbverläufen können die Paletteneinsparungen sichtbare Streifenmuster erzeugen. Das Tool behandelt diese Konvertierung automatisch und wählt die beste 256-Farben-Palette für Ihre spezifischen Frames.",
-        "content3": "Ein weiterer wichtiger Unterschied ist die Transparenzbehandlung. PNG unterstützt vollständige Alpha-Transparenz mit 256 Opazitätsstufen, was glatte halbtransparente Kanten ermöglicht. GIF-Transparenz ist binär — jedes Pixel ist entweder vollständig transparent oder vollständig undurchsichtig. Dies bedeutet, dass weiche Kanten oder halbtransparente Überlagerungen in Ihren PNG-Frames zu harten Kanten in der GIF-Ausgabe konvertiert werden. Verwenden Sie für optimale Ergebnisse mit transparenten GIF-Animationen PNG-Quell-Frames, die bereits saubere, hartkantige Transparenz haben."
+        "content3": "Animiertes WebP schließt beide Lücken, die GIF hinterlässt: Es behält 24-Bit-Farben und vollständige Alpha-Transparenz aus Ihrer PNG-Quelle, sodass Fotografien scharf bleiben und halbdurchsichtige Kanten glatt bleiben. WebP-Dateien sind in der Regel auch 25–50% kleiner als das GIF-Äquivalent. Der Nachteil ist die Browser-/Plattformunterstützung — animiertes WebP funktioniert in jedem modernen Browser, wird aber möglicherweise nicht in älteren E-Mail-Clients oder einigen Chat-Tools angezeigt. Wählen Sie GIF, wenn Sie maximale Reichweite benötigen, WebP, wenn Dateigröße, Farbgenauigkeit oder Alpha-Qualität wichtig sind."
       },
       "howTo": {
         "title": "So konvertieren Sie PNG zu GIF",
@@ -876,11 +878,11 @@
         },
         "step3": {
           "title": "3. Animationseinstellungen konfigurieren",
-          "content": "Stellen Sie die Frame-Dauer in Millisekunden ein — dies steuert, wie lange jeder Frame angezeigt wird. Die Standardeinstellung von 100 ms ergibt eine glatte 10-FPS-Animation, aber Sie können so schnell wie 10 ms oder so langsam wie 10.000 ms pro Frame gehen. Stellen Sie die Schleifenzahl auf 0 für unendliches Looping oder eine bestimmte Zahl, um die Animation eine feste Anzahl von Malen abzuspielen. Aktivieren Sie für den Frames-Modus dateinamensbasierte Sortierung, wenn Ihre Dateien einem Benennungsschema wie walk_0.png, walk_1.png entsprechen, und wählen Sie, wie mit Frames unterschiedlicher Dimensionen umgegangen wird. Geben Sie für den Sprite-Sheet-Modus Spalten und Zeilen (oder Zellenpixel-Dimensionen) an und legen Sie optional Spalten-/Zeilenbereiche fest, um nur eine bestimmte Animation aus einem Multi-Animation-Blatt zu extrahieren."
+          "content": "Stellen Sie die Rahmendauer in Millisekunden ein — dies steuert, wie lange jeder Rahmen angezeigt wird. Der Standard von 100ms gibt eine sanfte 10-FPS-Animation. Wählen Sie Ihr Ausgabeformat: GIF für maximale Kompatibilität (ältere E-Mail-Clients, Legacy-Plattformen) oder animiertes WebP für kleinere Dateien (~25–50% kleiner) und vollständige Alpha-Transparenz. Wenn WebP ausgewählt ist, passen Sie optional den Qualitätsschieber an (Standard 80) oder aktivieren Sie Verlustfrei für pixelgenaue Ausgabe. Stellen Sie die Schleifenanzahl auf 0 für unbegrenzte Schleifenbildung ein. Für Rahmen-Modus aktivieren Sie dateinamenbasierte Sortierung, wenn Ihre Dateien Suffix-Konventionen wie walk_0.png, walk_1.png verwenden. Für Spritesheet-Modus geben Sie Spalten und Zeilen an (oder Zellpixel-Dimensionen) und stellen Sie optional Spalten-/Zeilenbereiche ein, um eine bestimmte Animation zu extrahieren. Wenn Ihr Spritesheet zusätzliche Ränder hat, verwenden Sie „Ränder kürzen\", um sie vor dem Schneiden zu schneiden."
         },
         "step4": {
           "title": "4. Konvertieren und herunterladen",
-          "content": "Klicken Sie auf Konvertieren, um Ihre Dateien an den Server zu senden und die animierte GIF zu erstellen. Die Konvertierung dauert typischerweise nur wenige Sekunden. Nach Abschluss wird eine Live-Vorschau der Animation angezeigt, damit Sie das Timing, die Frame-Reihenfolge und das Gesamterscheinungsbild vor dem Herunterladen überprüfen können. Wenn das Ergebnis nicht richtig ist, passen Sie Ihre Einstellungen an und konvertieren Sie erneut. Wenn Sie zufrieden sind, klicken Sie auf Herunterladen, um das GIF auf Ihrem Gerät zu speichern. Klicken Sie auf \"Weiteres konvertieren\", um alles zu löschen und eine neue Konvertierung mit neuen Dateien zu starten."
+          "content": "Klicken Sie auf „Konvertieren\", um Ihre Dateien an den Server zu senden und die Animation zu generieren. Die Konvertierung dauert normalerweise einige Sekunden. Nach Abschluss wird eine Live-Vorschau angezeigt, damit Sie das Timing, die Reihenfolge der Rahmen und das Gesamtbild überprüfen können. Der Browser spielt sowohl GIF als auch WebP nativ in der Vorschau ab. Wenn das Ergebnis nicht stimmt, passen Sie Ihre Einstellungen an und konvertieren Sie erneut. Wenn Sie zufrieden sind, klicken Sie auf „Herunterladen\", um die Datei zu speichern (die Erweiterung entspricht dem gewählten Ausgabeformat — `.gif` oder `.webp`). Klicken Sie auf „Anderes konvertieren\", um alles zu löschen und neu zu beginnen."
         }
       },
       "features": {
@@ -913,6 +915,10 @@
           "privacy": {
             "title": "Datenschutz zuerst",
             "content": "Ihre Dateien werden auf dem Server verarbeitet und niemals dauerhaft gespeichert. Sobald das GIF generiert und an Ihren Browser zurückgegeben wird, werden die ursprünglichen Uploads sofort aus dem Serverspeicher verworfen. Keine Registrierung erforderlich, keine Cookies für Tracking, und Ihre Bilddaten werden nicht mit Dritten geteilt oder für andere Zwecke als die angeforderte Konvertierung verwendet."
+          },
+          "outputFormat": {
+            "title": "Zwei Ausgabeformate — GIF oder animiertes WebP",
+            "content": "Wählen Sie GIF für maximale Kompatibilität (ältere Browser, E-Mail-Clients, Legacy-Chat-Plattformen) oder animiertes WebP für moderne Web-Ziele, wo Dateigröße und visuelle Qualität wichtig sind. WebP-Dateien sind in der Regel 25–50% kleiner als das entsprechende GIF bei gleicher Qualität, mit vollständiger 24-Bit-Farbe und Alpha-Transparenz. Wechseln Sie mit einem einzigen Klick zwischen den beiden — kein erneutes Hochladen oder Neukonfigurieren erforderlich."
           }
         }
       },
@@ -942,7 +948,7 @@
         "items": {
           "formats": {
             "q": "Welche Dateiformate werden unterstützt?",
-            "a": "Die Eingabe muss PNG-Dateien sein — dies gilt für beide Modi. Im Frames-Modus muss jede hochgeladene Datei eine PNG-Bilddatei sein. Im Sprite-Sheet-Modus muss die Eingabe eine einzelne PNG-Datei sein (direkt hochgeladen oder über eine öffentliche URL). Die Ausgabe ist immer eine animierte GIF. Andere Bildformate wie JPEG, WebP oder BMP werden als Eingabe nicht unterstützt. Daher müssen Sie diese zuerst in PNG konvertieren, falls erforderlich."
+            "a": "Die Eingabe muss PNG-Dateien sein — dies gilt für beide Modi. Im Rahmen-Modus muss jede hochgeladene Datei eine PNG-Bilddatei sein. Im Spritesheet-Modus muss die Eingabe eine einzelne PNG-Datei sein (direkt hochgeladen oder über eine öffentliche URL). Die Ausgabe ist ein animiertes GIF oder animiertes WebP, wählbar über die Schaltfläche „Ausgabeformat\". Andere Eingabeformate (JPEG, WebP, BMP) werden nicht unterstützt — konvertieren Sie sie zuerst in PNG, falls erforderlich."
           },
           "maxFiles": {
             "q": "Wie viele Frames kann ich hochladen?",
@@ -971,9 +977,45 @@
           "api": {
             "q": "Gibt es eine verfügbare API?",
             "a": "Ja. Dieses Tool wird von der Easy GIF2Sprite API angetrieben, die auf RapidAPI verfügbar ist. Die API bietet zwei Endpunkte: /from-frames zum Zusammensetzen mehrerer PNG-Dateien in eine animierte GIF und /from-spritesheet zum Schneiden eines Sprite-Sheet-PNGs in Frames und zur Erzeugung einer animierten GIF. Beide Endpunkte unterstützen die gleichen Parameter, die im Web-Tool verfügbar sind, wodurch es einfach ist, Konvertierungen in Ihrer Build-Pipeline oder Anwendung zu automatisieren."
+          },
+          "outputFormat": {
+            "q": "Wann sollte ich GIF oder animiertes WebP wählen?",
+            "a": "Wählen Sie GIF, wenn Sie maximale Kompatibilität benötigen — ältere E-Mail-Clients, Legacy-Chat-Plattformen oder überall dort, wo Sie nicht sicher sind, dass das Werkzeug des Empfängers WebP unterstützt. Wählen Sie animiertes WebP für moderne Web-Ziele: Marketing-Seiten, Blog-Beiträge, App-Screenshots, moderne Messaging-Apps und überall dort, wo Dateigröße oder Farbgenauigkeit wichtig ist. WebP-Dateien sind in der Regel 25–50% kleiner und bewahren vollständige 24-Bit-Farben mit Alpha-Transparenz, während GIF auf 256 Farben und binäre Ein-/Aus-Transparenz beschränkt ist."
+          },
+          "webpSupport": {
+            "q": "Welche Browser und Plattformen unterstützen animiertes WebP?",
+            "a": "Jeder moderne Browser spielt animiertes WebP nativ in einem einfachen `img`-Tag ab — Chrome 32+, Firefox 65+, Safari 14+, Edge 18+. Das deckt >97% der globalen Benutzer 2026 ab. Moderne Messaging-Apps einschließlich Discord, Slack (in Standard-Workspaces), Twitter/X und die meisten Blog-Plattformen zeigen WebP ebenfalls korrekt an. Die verbleibenden Lücken sind einige ältere E-Mail-Clients (Outlook 2019 und früher unter Windows) und einige Legacy-Enterprise-Tools mit strengerer MIME-Richtlinie. Für öffentliche Web-Seiten und moderne Chat-Tools ist WebP sicher als Standard zu verwenden."
+          },
+          "webpQuality": {
+            "q": "Was steuert der WebP-Qualitätsschieber?",
+            "a": "Qualität (0–100, Standard 80) steuert verlustbehaftete Kompression. Höhere Werte erzeugen schärfere Bilder, aber größere Dateien. 80 ist der ideale Punkt für die meisten Anwendungsfälle — für die meisten Betrachter visuell nicht zu unterscheiden von der Quelle, während immer noch viel kleinere Dateien als GIF produziert werden. Unter 60 werden Kompressionsfehler sichtbar (besonders auf flachen Farben und Kanten). Über 90 wächst die Dateigröße schnell für sinkende visuelle Erträge. Wenn Sie pixelgenaue Ausgabe benötigen, aktivieren Sie Verlustfreien Modus — die Datei ist größer, aber jedes Pixel entspricht genau dem Quell-PNG."
           }
         }
+      },
+      "whyWebP": {
+        "title": "Warum animiertes WebP für das moderne Web wählen",
+        "content": "Animierte WebP-Dateien sind in der Regel 25–50% kleiner als entsprechende GIFs mit gleicher visueller Qualität. Ein 2-MB-Hero-GIF auf einer Marketing-Seite wird zu einem 600–900-KB-WebP — verbessert direkt die Largest Contentful Paint (LCP)-Scores und Core Web Vitals, die beide in das Google-Suchranking einfließen. Kleinere Dateien bedeuten auch weniger mobile Datennutzung, was für Benutzer mit gemessenen oder langsamen Verbindungen wichtig ist.",
+        "content2": "WebP unterstützt 24-Bit-Farbe und vollständige Alpha-Transparenz und eliminiert zwei von GIFs größten Einschränkungen. GIF maximal 256 Farben pro Rahmen und unterstützt nur binäre Ein-/Aus-Transparenz — das erzeugt sichtbare Farbabstufungen bei fotografischem Inhalt und harte, gezackte Kanten um transparent Objekte. WebP erhält die ursprüngliche PNG-Kantenglättung, daher sind halbdurchsichtige Schatten, weiche Glühen und gerundete Ecken saubер gegen jeden Hintergrund.",
+        "content3": "Die Browser-Unterstützung ist 2026 universell. Chrome 32+, Firefox 65+, Safari 14+ und Edge 18+ spielen animiertes WebP nativ in einem einfachen `img`-Tag ab — kein JavaScript oder Polyfills erforderlich. Die verbleibenden Lücken sind einige ältere E-Mail-Clients und eine Handvoll Legacy-Chat-Plattformen mit strengerer MIME-Richtlinie. Für öffentliche Web-Seiten, Marketing-Seiten, App-Screenshots, Blog-Helden und moderne Messaging-Apps ist WebP die bessere Standardwahl."
       }
+    },
+    "duration": {
+      "label": "Rahmendauer (ms)",
+      "hint": "100ms ≈ 10 FPS · 50ms ≈ 20 FPS · 200ms ≈ 5 FPS"
+    },
+    "output": {
+      "title": "Ausgabeformat",
+      "gif": "GIF",
+      "webp": "WebP",
+      "hint": "GIF für maximale Kompatibilität · WebP für kleinere Dateien mit vollständiger Transparenz"
+    },
+    "quality": {
+      "label": "WebP-Qualität",
+      "hint": "0–100. Höher = bessere Qualität, größere Datei. Wird ignoriert, wenn Verlustfrei aktiv ist."
+    },
+    "lossless": {
+      "label": "Verlustfreies WebP",
+      "hint": "Pixelgenaue Ausgabe. Dateien sind größer, aber identisch mit der Quelle."
     }
   },
   "pngToSpritesheet": {

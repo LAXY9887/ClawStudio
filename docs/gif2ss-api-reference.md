@@ -196,6 +196,9 @@ Assembles multiple PNG file uploads into an animated GIF.
 | `file_name_order` | boolean | No       | `false`         | Sort frames by `_N` filename suffix instead of upload order.             |
 | `resize`          | string  | No       | `"transparent"` | Dimension mismatch handling:`"error"`, `"fill"`, or `"transparent"`. |
 | `bg_fill_color`   | string  | No       | `"#000000"`     | Fill color when `resize="fill"`. Hex `#RRGGBB`. Ignored otherwise.     |
+| `output_format`   | string  | No       | `"gif"`         | Output format:`"gif"` or `"webp"` (animated WebP).                   |
+| `quality`         | integer | No       | `80`            | WebP lossy quality (0–100). Ignored when `output_format="gif"` or `lossless=true`. |
+| `lossless`        | boolean | No       | `false`         | WebP lossless mode. Larger file but pixel-perfect. Ignored when `output_format="gif"`. |
 
 **No `url` parameter** — multi-file upload is file-only.
 
@@ -214,12 +217,14 @@ Assembles multiple PNG file uploads into an animated GIF.
 
 ### Response
 
-| Status     | Content-Type         | Body                            |
-| ---------- | -------------------- | ------------------------------- |
-| `200 OK` | `image/gif`        | Raw GIF binary                  |
-| `400`    | `application/json` | Validation error                |
-| `413`    | `application/json` | File too large / too many files |
-| `422`    | `application/json` | Invalid parameter value         |
+| Status     | Content-Type                           | Body                            |
+| ---------- | -------------------------------------- | ------------------------------- |
+| `200 OK` | `image/gif` or `image/webp`        | Raw GIF or animated WebP binary |
+| `400`    | `application/json`                   | Validation error                |
+| `413`    | `application/json`                   | File too large / too many files |
+| `422`    | `application/json`                   | Invalid parameter value         |
+
+Content-Type follows `output_format`: `image/gif` for `gif`, `image/webp` for `webp`.
 
 ### Examples
 
@@ -262,6 +267,20 @@ curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-frames \
   --output animation.gif
 ```
 
+**Animated WebP output:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-frames \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "files=@frame_01.png" \
+  -F "files=@frame_02.png" \
+  -F "files=@frame_03.png" \
+  -F "output_format=webp" \
+  -F "quality=80" \
+  --output animation.webp
+```
+
 ---
 
 ## POST /from-spritesheet
@@ -291,6 +310,9 @@ Slices a SpriteSheet PNG into individual frames and produces an animated GIF.
 | `trim_left`    | integer | No                      | `0`    | Crop pixels from the left of the spritesheet before slicing. Min: `0`.                        |
 | `duration`     | integer | No                      | `100`  | Frame duration in milliseconds. Min:`10`, Max: `10000`.                                   |
 | `loop`         | integer | No                      | `0`    | Loop count.`0` = infinite loop.                                                             |
+| `output_format`| string  | No                      | `"gif"`| Output format:`"gif"` or `"webp"` (animated WebP).                                       |
+| `quality`      | integer | No                      | `80`   | WebP lossy quality (0–100). Ignored when `output_format="gif"` or `lossless=true`.    |
+| `lossless`     | boolean | No                      | `false`| WebP lossless mode. Larger file but pixel-perfect. Ignored when `output_format="gif"`.    |
 
 **Slicing mode (one required):**
 
@@ -329,12 +351,14 @@ Cannot mix modes.
 
 ### Response
 
-| Status     | Content-Type         | Body                    |
-| ---------- | -------------------- | ----------------------- |
-| `200 OK` | `image/gif`        | Raw GIF binary          |
-| `400`    | `application/json` | Validation error        |
-| `413`    | `application/json` | File too large          |
-| `422`    | `application/json` | Invalid parameter value |
+| Status     | Content-Type                       | Body                            |
+| ---------- | ---------------------------------- | ------------------------------- |
+| `200 OK` | `image/gif` or `image/webp`    | Raw GIF or animated WebP binary |
+| `400`    | `application/json`               | Validation error                |
+| `413`    | `application/json`               | File too large                  |
+| `422`    | `application/json`               | Invalid parameter value         |
+
+Content-Type follows `output_format`: `image/gif` for `gif`, `image/webp` for `webp`.
 
 ### Examples
 
@@ -431,6 +455,40 @@ curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
   --output animation_with_blanks.gif
 ```
 
+**Animated WebP output:**
+
+```bash
+curl -X POST https://easy-gif-to-sprites.p.rapidapi.com/from-spritesheet \
+  -H "X-RapidAPI-Key: YOUR_API_KEY" \
+  -H "X-RapidAPI-Host: easy-gif-to-sprites.p.rapidapi.com" \
+  -F "file=@spritesheet.png" \
+  -F "columns=4" \
+  -F "rows=3" \
+  -F "output_format=webp" \
+  -F "quality=80" \
+  --output animation.webp
+```
+
+---
+
+## Output Formats: GIF vs Animated WebP
+
+The `/from-frames` and `/from-spritesheet` endpoints support two animation output formats:
+
+| Aspect            | GIF (`output_format=gif`) | Animated WebP (`output_format=webp`) |
+| ----------------- | --------------------------- | -------------------------------------- |
+| Color depth       | 256 colors (palette)        | 24-bit + full alpha                    |
+| Transparency      | 1-bit (on/off)              | Full alpha channel                     |
+| Typical file size | Larger                      | 25–50% smaller                        |
+| Compatibility     | Universal                   | All modern browsers; some older tools may not display |
+
+### WebP Parameters
+
+- `quality` (0–100, default 80) — lossy compression quality. Higher = better quality, larger file. Ignored when `lossless=true`.
+- `lossless` (boolean, default false) — when true, output is pixel-perfect (larger file). When false, lossy compression is used.
+
+When `output_format=gif`, both `quality` and `lossless` are ignored.
+
 ---
 
 ## GET /health
@@ -516,12 +574,13 @@ All error responses follow this schema:
 
 ## Limits
 
-| Limit                | Value                                |
-| -------------------- | ------------------------------------ |
-| Max input size       | 20 MB                                |
-| Accepted formats     | GIF only (`GIF87a` and `GIF89a`) |
-| URL download timeout | 10 seconds                           |
-| Max request timeout  | 60 seconds                           |
+| Limit                | Value                                                          |
+| -------------------- | -------------------------------------------------------------- |
+| Max input size       | 20 MB (`/from-frames`: 5 MB per file, 60 MB total, 100 files) |
+| Accepted inputs      | GIF (`GIF87a`/`GIF89a`) for `/to-*`; PNG for `/from-*`     |
+| Output formats       | PNG, ZIP, GIF, animated WebP                                   |
+| URL download timeout | 10 seconds                                                     |
+| Max request timeout  | 60 seconds                                                     |
 
 ---
 
