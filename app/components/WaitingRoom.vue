@@ -65,6 +65,9 @@ function download() {
 
 <template>
   <div class="max-w-3xl mx-auto px-4 py-10 space-y-8">
+    <!-- Top Ad Slot（位於進度條上方） -->
+    <slot name="topAd" />
+
     <!-- Progress Bar -->
     <div class="space-y-2">
       <p class="text-center font-medium">
