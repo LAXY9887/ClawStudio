@@ -6,7 +6,9 @@ const i18nHead = useLocaleHead({ addSeoAttributes: true } as any)
 const config = useRuntimeConfig()
 
 const canonicalUrl = computed(() => `https://clawstudiouo.com${route.path}`)
-const adProvider = config.public.adProvider as 'adsense' | 'monetag' | 'none'
+const adsenseEnabled = Boolean(config.public.adsenseEnabled)
+const adsterraEnabled = Boolean(config.public.adsterraEnabled)
+const monetagEnabled = Boolean(config.public.monetagEnabled)
 const adsenseClient = config.public.adsenseClient as string
 const monetagMultitagSrc = config.public.monetagMultitagSrc as string
 const monetagMultitagZone = config.public.monetagMultitagZone as string
@@ -16,6 +18,9 @@ const monetagInpagePushSrc = config.public.monetagInpagePushSrc as string
 const monetagInpagePushZone = config.public.monetagInpagePushZone as string
 const monetagVignetteSrc = config.public.monetagVignetteSrc as string
 const monetagVignetteZone = config.public.monetagVignetteZone as string
+const adsterraBannerKey = config.public.adsterraBannerKey as string
+const adsterraBannerDomain = config.public.adsterraBannerDomain as string
+// 注意：adsterraNative{Key,Domain} 在 SeoSections.vue 直接讀，不在這裡使用
 
 // 防禦性檢查：只接受 https:// 開頭的完整 URL，避免誤設的 env var（例如字面字串 "monetag"）
 // 被當成相對路徑解析為 https://domain.com/monetag 造成 404
@@ -31,13 +36,16 @@ function buildMonetagInlineLoader(src: string, zone: string): string {
 }
 
 const adScripts: Array<Record<string, unknown>> = []
-if (adProvider === 'adsense' && adsenseClient) {
+
+// 三家獨立判斷，可同時載入；Adsterra 不需全域 SDK（每個 iframe 自帶 invoke.js）
+if (adsenseEnabled && adsenseClient) {
   adScripts.push({
     src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`,
     async: true,
     crossorigin: 'anonymous'
   })
-} else if (adProvider === 'monetag') {
+}
+if (monetagEnabled) {
   if (isValidAdScriptSrc(monetagMultitagSrc) && monetagMultitagZone) {
     adScripts.push({
       'src': monetagMultitagSrc,
@@ -138,10 +146,10 @@ const localeItems = computed(() =>
     </UHeader>
 
     <div class="flex min-h-[calc(100vh-var(--ui-header-height)-60px)]">
-      <!-- Left Ad Sidebar (AdSense 專用離散版位) -->
-      <aside v-if="adProvider === 'adsense'" class="hidden xl:block w-[160px] shrink-0 p-4">
+      <!-- Left Ad Sidebar（AdSense 版位，啟用後顯示；Adsterra 待建立 sidebar zone） -->
+      <aside v-if="adsenseEnabled" class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <AdUnit ad-slot="8882057481" />
+          <AdUnit network="adsense" ad-slot="8882057481" />
         </div>
       </aside>
 
@@ -150,17 +158,27 @@ const localeItems = computed(() =>
         <NuxtPage />
       </UMain>
 
-      <!-- Right Ad Sidebar (AdSense 專用離散版位) -->
-      <aside v-if="adProvider === 'adsense'" class="hidden xl:block w-[160px] shrink-0 p-4">
+      <!-- Right Ad Sidebar（同上） -->
+      <aside v-if="adsenseEnabled" class="hidden xl:block w-[160px] shrink-0 p-4">
         <div class="sticky top-20">
-          <AdUnit ad-slot="3629730800" />
+          <AdUnit network="adsense" ad-slot="3629730800" />
         </div>
       </aside>
     </div>
 
-    <!-- Ad Slot: Above Footer (AdSense 專用離散版位) -->
-    <div v-if="adProvider === 'adsense'" class="flex justify-center py-4">
-      <AdUnit ad-slot="1939246744" format="autorelaxed" :responsive="false" />
+    <!-- Ad Slot: Above Footer（Adsterra Banner 728×90 優先；AdSense 啟用時 fallback） -->
+    <div v-if="adsterraEnabled" class="flex justify-center py-4">
+      <AdUnit
+        network="adsterra"
+        adsterra-format="banner"
+        :adsterra-key="adsterraBannerKey"
+        :adsterra-domain="adsterraBannerDomain"
+        :adsterra-width="728"
+        :adsterra-height="90"
+      />
+    </div>
+    <div v-else-if="adsenseEnabled" class="flex justify-center py-4">
+      <AdUnit network="adsense" ad-slot="1939246744" format="autorelaxed" :responsive="false" />
     </div>
 
     <UFooter>

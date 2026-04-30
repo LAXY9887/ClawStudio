@@ -616,6 +616,7 @@ async function onAdConfirm() {
             <p v-if="remainingUses > 0" class="text-xs text-muted text-center">
               {{ t('imageEditor.adModal.remaining', { count: remainingUses }, remainingUses) }}
             </p>
+
             <UButton
               :label="t('imageEditor.actions.reset')"
               size="xs"
@@ -628,6 +629,11 @@ async function onAdConfirm() {
         </div>
 
       </div>
+    </div>
+
+    <!-- Adsterra Native（工作區下方廣告位，與容器隔開） -->
+    <div class="mt-8">
+      <WorkspaceNativeAd />
     </div>
 
     <!-- Ad Modal -->

@@ -273,6 +273,9 @@ onUnmounted(() => {
         {{ t(`${toolKey}.adModal.remaining`, { count: remainingUses }, remainingUses) }}
       </p>
 
+      <!-- Adsterra Native（工作區廣告位） -->
+      <WorkspaceNativeAd />
+
       <!-- Error -->
       <UAlert v-if="status === 'error'" color="error" :title="errorMessage" class="mt-4">
         <template #actions>

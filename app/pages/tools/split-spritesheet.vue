@@ -505,12 +505,12 @@ onUnmounted(() => {
             <div class="space-y-4 pt-2">
 
               <!-- Cell Padding -->
-              <UFormField :label="t('splitSpritesheet.options.padding')" :hint="t('splitSpritesheet.options.paddingHint')">
+              <UFormField :label="t('splitSpritesheet.options.padding')" :description="t('splitSpritesheet.options.paddingHint')">
                 <UInput v-model.number="padding" type="number" :min="0" />
               </UFormField>
 
               <!-- Trim Margins -->
-              <UFormField :label="t('splitSpritesheet.options.trimTitle')" :hint="t('splitSpritesheet.options.trimHint')">
+              <UFormField :label="t('splitSpritesheet.options.trimTitle')" :description="t('splitSpritesheet.options.trimHint')">
                 <div class="grid grid-cols-2 gap-3 mt-1">
                   <UFormField :label="t('splitSpritesheet.options.trimTop')">
                     <UInput v-model.number="trimTop" type="number" :min="0" />
@@ -528,19 +528,17 @@ onUnmounted(() => {
               </UFormField>
 
               <!-- Frame Count -->
-              <UFormField :label="t('splitSpritesheet.options.frameCount')" :hint="t('splitSpritesheet.options.frameCountHint')">
+              <UFormField :label="t('splitSpritesheet.options.frameCount')" :description="t('splitSpritesheet.options.frameCountHint')">
                 <UInput v-model.number="frameCount" type="number" :min="1" placeholder="Auto" />
               </UFormField>
 
               <!-- Column / Row Range -->
-              <div class="grid grid-cols-2 gap-4">
-                <UFormField :label="t('splitSpritesheet.options.columnRange')" :hint="t('splitSpritesheet.options.columnRangeHint')">
-                  <UInput v-model="columnRange" placeholder="e.g. 0-3" />
-                </UFormField>
-                <UFormField :label="t('splitSpritesheet.options.rowRange')" :hint="t('splitSpritesheet.options.rowRangeHint')">
-                  <UInput v-model="rowRange" placeholder="e.g. 1-2" />
-                </UFormField>
-              </div>
+              <UFormField :label="t('splitSpritesheet.options.columnRange')" :description="t('splitSpritesheet.options.columnRangeHint')">
+                <UInput v-model="columnRange" placeholder="e.g. 0-3" />
+              </UFormField>
+              <UFormField :label="t('splitSpritesheet.options.rowRange')" :description="t('splitSpritesheet.options.rowRangeHint')">
+                <UInput v-model="rowRange" placeholder="e.g. 1-2" />
+              </UFormField>
 
               <!-- Skip Empty -->
               <USwitch v-model="skipEmpty" :label="t('splitSpritesheet.options.skipEmpty')" />
@@ -549,6 +547,9 @@ onUnmounted(() => {
             </div>
           </template>
         </UAccordion>
+
+        <!-- Adsterra Native（工作區廣告位，置於 Options 之後） -->
+        <WorkspaceNativeAd />
       </div>
 
       <!-- Converting -->

@@ -284,6 +284,9 @@ onUnmounted(() => {
           {{ t('svgToPng.adModal.remaining', { count: remainingUses }, remainingUses) }}
         </p>
 
+        <!-- Adsterra Native（工作區廣告位） -->
+        <WorkspaceNativeAd />
+
         <UAlert v-if="status === 'error'" color="error" :title="errorMessage" class="mt-4">
           <template #actions>
             <UButton :label="t('svgToPng.status.retry')" color="error" variant="outline" size="sm" @click="reset" />

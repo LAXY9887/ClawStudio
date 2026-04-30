@@ -2,6 +2,7 @@
 import type { SeoSection } from '~/types/seo'
 
 const { t } = useI18n()
+const config = useRuntimeConfig()
 
 const props = defineProps<{
   titleKey: string
@@ -19,10 +20,28 @@ useSeoMeta({
   ogTitle: () => t(props.titleKey),
   ogDescription: () => t(props.subtitleKey)
 })
+
+// Adsterra Banner（每頁頂端，RelatedTools 上方）— 目前重用 above-footer 同一個 zone，
+// 之後若另建專屬 zone 改 nuxt.config.ts 的 adsterraBannerKey/Domain 即可
+const adsterraEnabled = computed(() => Boolean(config.public.adsterraEnabled))
+const adsterraBannerKey = computed(() => config.public.adsterraBannerKey as string)
+const adsterraBannerDomain = computed(() => config.public.adsterraBannerDomain as string)
 </script>
 
 <template>
   <div class="max-w-3xl mx-auto px-4 pt-6 space-y-4">
+    <!-- Adsterra Banner 728×90（頁面頂端） -->
+    <div v-if="adsterraEnabled && adsterraBannerKey && adsterraBannerDomain" class="flex justify-center">
+      <AdUnit
+        network="adsterra"
+        adsterra-format="banner"
+        :adsterra-key="adsterraBannerKey"
+        :adsterra-domain="adsterraBannerDomain"
+        :adsterra-width="728"
+        :adsterra-height="90"
+      />
+    </div>
+
     <!-- Related Tools -->
     <RelatedTools />
 

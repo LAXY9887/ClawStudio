@@ -23,9 +23,19 @@ export default defineNuxtConfig({
     exifrmServiceUrl: '',
     internalKey: '',
     public: {
-      // 'adsense' | 'monetag' | 'none'
+      // 各家廣告網路獨立 enable flag（可同時 true，並行運行）
+      adsenseEnabled: false,
+      adsterraEnabled: true,
+      monetagEnabled: true,
+      // (deprecated) 舊的單選 provider，保留向下相容；新代碼請用上面三個 flag
       adProvider: 'monetag',
       adsenseClient: 'ca-pub-6385934484512467',
+      // Adsterra: Banner 728×90（above-footer）
+      adsterraBannerKey: '735d1c8140c9922b8c211fd50fe29304',
+      adsterraBannerDomain: 'www.highperformanceformat.com',
+      // Adsterra: Native Banner（in-article）
+      adsterraNativeKey: '4d95f22de7e6a35151b21c2e9a3cedf6',
+      adsterraNativeDomain: 'pl29298740.profitablecpmratenetwork.com',
       // Monetag: Multitag (all-in-one)
       monetagMultitagSrc: 'https://quge5.com/88/tag.min.js',
       monetagMultitagZone: '228851',

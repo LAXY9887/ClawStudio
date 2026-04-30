@@ -1,26 +1,44 @@
-# AdSense Integration Guide
+# Ad Networks Integration Guide
 
-This document covers how Google AdSense is integrated into ClawStudio, how to use the `AdUnit` component, and the compliance rules that must be followed.
+This document covers how multiple ad networks (Google AdSense, Adsterra, Monetag) are integrated into ClawStudio, how to use the `AdUnit` component, and the compliance rules that must be followed.
+
+**Architecture summary:** three independent enable flags (`adsenseEnabled`, `adsterraEnabled`, `monetagEnabled`) — any combination can run simultaneously. Each `<AdUnit>` placement explicitly declares which `network` it serves; the global flag controls whether that network actually renders.
 
 ---
 
-## How the SDK Is Loaded
+## Multi-Network Architecture
 
-The AdSense JavaScript SDK is loaded **once** globally in `app/app.vue` via `useHead`:
+### Enable flags (`nuxt.config.ts` → `runtimeConfig.public`)
 
 ```ts
-useHead({
-  script: [
-    {
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6385934484512467',
-      async: true,
-      crossorigin: 'anonymous'
-    }
-  ]
-})
+adsenseEnabled: false      // AdSense SDK + per-slot <ins>
+adsterraEnabled: true      // Per-slot iframe (banner) / div + script (native)
+monetagEnabled: true       // Global Multitag / Push / In-Page Push / Vignette
 ```
 
-This injects the `<script>` tag into the `<head>` of every page. The `client` parameter is the AdSense publisher ID: `ca-pub-6385934484512467`.
+Each is independent. Set any combination of `true`/`false`. The deprecated `adProvider` setting is retained for backward compatibility but no longer read by current code.
+
+### What each network needs
+
+| Network | Global script (in `app.vue`) | Per-slot rendering (in `AdUnit.vue`) |
+|---|---|---|
+| **AdSense** | `adsbygoogle.js?client=...` once | `<ins class="adsbygoogle">` per slot, push to `window.adsbygoogle` on mount |
+| **Adsterra** | None | `<iframe srcdoc>` (banner) or `<div id="container-{key}">` + dynamic `<script>` (native), per slot |
+| **Monetag** | Multitag + 3 inline IIFE loaders (in-page push, vignette, push notif) | Nothing — Multitag auto-covers the page |
+
+### How `<AdUnit>` decides what to render
+
+Each placement declares its `network` prop:
+
+```vue
+<AdUnit network="adsense" ad-slot="..." />
+<AdUnit network="adsterra" adsterra-format="banner" :adsterra-key="..." :adsterra-domain="..." :adsterra-width="728" :adsterra-height="90" />
+<AdUnit network="adsterra" adsterra-format="native" :adsterra-key="..." :adsterra-domain="..." />
+```
+
+The component renders only if **both** `network` matches **and** the corresponding global flag is enabled. If the flag is off, the placement is silent (no DOM output).
+
+Monetag has no `<AdUnit>` placements — it covers the page globally via Multitag, so the AdUnit component is bypassed entirely.
 
 ---
 
@@ -28,47 +46,121 @@ This injects the `<script>` tag into the `<head>` of every page. The `client` pa
 
 **File:** `app/components/AdUnit.vue`
 
-Each ad placement is rendered using the `<AdUnit>` component, which wraps a standard AdSense `<ins>` tag.
+Each ad placement is rendered using the `<AdUnit>` component. The component is **network-agnostic** — `network` prop selects between `adsense` and `adsterra`.
 
 ### Props
 
+#### Common
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `slot` | `string` | **(required)** | Ad slot ID from AdSense. |
-| `format` | `string` | `'auto'` | Ad format (`'auto'`, `'autorelaxed'`, `'fluid'`). |
-| `layout` | `string` | `''` | Ad layout type. Use `'in-article'` for content-interleaved placements. |
+| `network` | `'adsense' \| 'adsterra'` | `'adsense'` | Which network this placement uses. |
+
+#### AdSense props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `adSlot` | `string` | — | Ad slot ID from AdSense. |
+| `format` | `string` | `'auto'` | `'auto'`, `'autorelaxed'`, `'fluid'`. |
+| `layout` | `string` | `''` | Use `'in-article'` for content-interleaved placements. |
 | `responsive` | `boolean` | `true` | Whether the ad resizes to fill its container. |
 
-### How It Works
+#### Adsterra props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `adsterraFormat` | `'banner' \| 'native'` | `'banner'` | Banner (fixed-size iframe) or Native (responsive container div). |
+| `adsterraKey` | `string` | — | Zone key from Adsterra dashboard. |
+| `adsterraDomain` | `string` | — | Per-zone CDN domain (varies — see below). |
+| `adsterraWidth` | `number` | — | Banner width in px (only for `format='banner'`). |
+| `adsterraHeight` | `number` | — | Banner height in px (only for `format='banner'`). |
 
-On mount, the component pushes an empty object to the `window.adsbygoogle` array. The AdSense SDK picks this up and fills the corresponding `<ins>` element:
+### How AdSense renders
+
+On mount, the component pushes an empty object to `window.adsbygoogle`. The AdSense SDK (loaded globally) picks this up and fills the corresponding `<ins>` element:
 
 ```ts
 onMounted(() => {
-  try {
-    ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
-  } catch {}
+  if (showAdsense.value) {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
+    } catch {}
+  }
 })
 ```
 
-The `try/catch` silently handles cases where the SDK is blocked (ad blockers, development mode, etc.).
+### How Adsterra Banner renders
+
+Adsterra Banner uses a **global `atOptions` variable** that gets overwritten if multiple banners co-exist on the same page. The fix is to render each banner inside an isolated `<iframe srcdoc>`:
+
+```ts
+const bannerSrcdoc = computed(() =>
+  `<!DOCTYPE html><html><body style="margin:0">
+    <script>atOptions={'key':'${key}',...}<\/script>
+    <script src="//${domain}/${key}/invoke.js"><\/script>
+  </body></html>`
+)
+```
+
+Each iframe has its own `window`, so multiple banners with different keys don't collide. The `<\/script>` escape is required to prevent the Vue SFC parser from terminating the host `<script setup>` block.
+
+### How Adsterra Native renders
+
+Native banner uses a `<div id="container-{key}">` paired with a script that targets that container by id. Each zone has a unique key → unique container id → no global collision (no iframe needed):
+
+```vue
+<div :id="`container-${adsterraKey}`" />
+```
+
+```ts
+onMounted(() => {
+  if (showAdsterraNative.value) {
+    const s = document.createElement('script')
+    s.async = true
+    s.setAttribute('data-cfasync', 'false')
+    s.src = `https://${adsterraDomain}/${adsterraKey}/invoke.js`
+    document.body.appendChild(s)
+  }
+})
+```
+
+### Adsterra domain quirk
+
+Different zones serve from different domains:
+
+| Format | Typical domain pattern |
+|---|---|
+| Banner | `www.highperformanceformat.com` (shared) |
+| Native | `pl{publisherId}.profitablecpmratenetwork.com` (publisher-specific subdomain) |
+
+The domain is **not** a global config — it's a per-zone prop, because Adsterra may serve different zones from different domains entirely. Always copy the exact `src` URL from the Adsterra dashboard.
+
+The `try/catch` blocks silently handle cases where ad networks are blocked (ad blockers, development mode, etc.).
 
 ---
 
-## Current Ad Slot IDs and Their Locations
+## Current Placements
+
+### AdSense slots (rendered when `adsenseEnabled=true`)
 
 | Slot ID | Location | Format | Notes |
 |---------|----------|--------|-------|
 | `8882057481` | Left sidebar (`app.vue`) | `auto` (default) | Sticky, visible on `xl` screens only |
 | `3629730800` | Right sidebar (`app.vue`) | `auto` (default) | Sticky, visible on `xl` screens only |
-| `1939246744` | Above footer (`app.vue`) | `autorelaxed` | Non-responsive (`responsive={false}`) |
+| `1939246744` | Above footer (`app.vue`) | `autorelaxed` | Fallback when `adsterraEnabled=false` |
 | `1774557803` | Waiting room (`download.vue`) | `auto` (default) | Shown during countdown |
-| `7383145112` | GIF tool SEO: before "What Is" section | `fluid` | `layout="in-article"` |
-| `3210094258` | GIF tool SEO: before "What Is Frames" section | `fluid` | `layout="in-article"` |
-| `8504655099` | GIF tool SEO: before "How To" section | `fluid` | `layout="in-article"` |
-| `5316113927` | GIF tool SEO: before "Features" section | `fluid` | `layout="in-article"` |
-| `3438159116` | GIF tool SEO: before "Use Cases" section | `fluid` | `layout="in-article"` |
-| `7191573428` | GIF tool SEO: before "FAQ" section | `fluid` | `layout="in-article"` |
+| `7383145112` | Tool page SEO: before "What Is" | `fluid` | `layout="in-article"` |
+| `3210094258` | Tool page SEO: before "What Is Frames" | `fluid` | `layout="in-article"` |
+| `8504655099` | Tool page SEO: before "How To" | `fluid` | `layout="in-article"` |
+| `5316113927` | Tool page SEO: before "Features" | `fluid` | `layout="in-article"` |
+| `3438159116` | Tool page SEO: before "Use Cases" | `fluid` | `layout="in-article"` |
+| `7191573428` | Tool page SEO: before "FAQ" | `fluid` | `layout="in-article"` |
+
+### Adsterra zones (rendered when `adsterraEnabled=true`)
+
+| Zone format | Key | Domain | Location |
+|---|---|---|---|
+| Banner 728×90 | `735d1c8140c9922b8c211fd50fe29304` | `www.highperformanceformat.com` | Above footer (`app.vue`) — overrides AdSense slot at this position |
+| Native | `4d95f22de7e6a35151b21c2e9a3cedf6` | `pl29298740.profitablecpmratenetwork.com` | First in-article slot per tool page (`SeoSections.vue`) |
+
+Zone keys are config values in `nuxt.config.ts` → `runtimeConfig.public.adsterraBanner{Key,Domain}` and `adsterraNative{Key,Domain}`.
 
 ---
 

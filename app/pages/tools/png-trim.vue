@@ -345,17 +345,18 @@ onUnmounted(() => {
         >
           <template #body>
             <div class="space-y-4 pt-2">
-              <div class="grid grid-cols-2 gap-4">
-                <UFormField :label="t('pngTrim.options.threshold')" :hint="t('pngTrim.options.thresholdHint')">
-                  <UInput v-model.number="threshold" type="number" :min="0" :max="255" />
-                </UFormField>
-                <UFormField :label="t('pngTrim.options.padding')" :hint="t('pngTrim.options.paddingHint')">
-                  <UInput v-model.number="padding" type="number" :min="0" />
-                </UFormField>
-              </div>
+              <UFormField :label="t('pngTrim.options.threshold')" :description="t('pngTrim.options.thresholdHint')">
+                <UInput v-model.number="threshold" type="number" :min="0" :max="255" />
+              </UFormField>
+              <UFormField :label="t('pngTrim.options.padding')" :description="t('pngTrim.options.paddingHint')">
+                <UInput v-model.number="padding" type="number" :min="0" />
+              </UFormField>
             </div>
           </template>
         </UAccordion>
+
+        <!-- Adsterra Native（工作區廣告位，置於 Options 之後） -->
+        <WorkspaceNativeAd />
       </div>
 
       <!-- Converting -->

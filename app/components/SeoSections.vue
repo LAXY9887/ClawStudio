@@ -66,8 +66,8 @@ const apiFeatureKeys = props.apiHighlightKeys || ['endpoints', 'input', 'params'
 
       <!-- Dynamic Sections -->
       <template v-for="(section, idx) in sections" :key="idx">
-        <!-- Ad before section -->
-        <AdUnit v-if="section.adSlot" :ad-slot="section.adSlot" format="fluid" layout="in-article" />
+        <!-- Ad before section（AdSense，啟用後填單） -->
+        <AdUnit v-if="section.adSlot" network="adsense" :ad-slot="section.adSlot" format="fluid" layout="in-article" />
 
         <!-- Text Section -->
         <section v-if="section.type === 'text'">

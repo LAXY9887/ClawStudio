@@ -511,6 +511,9 @@ onUnmounted(() => {
             </div>
           </template>
         </UAccordion>
+
+        <!-- Adsterra Native（工作區廣告位，置於 Options 之後） -->
+        <WorkspaceNativeAd />
       </div>
 
       <!-- Converting -->

@@ -101,7 +101,7 @@ onMounted(() => {
     :return-path="returnPath"
   >
     <template #ad>
-      <AdUnit ad-slot="1774557803" />
+      <AdUnit network="adsense" ad-slot="1774557803" />
     </template>
 
     <template #content>

@@ -699,5 +699,8 @@ onBeforeUnmount(() => {
     <p v-if="status === 'idle' && remainingUses > 0" class="text-xs text-muted text-center">
       {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
     </p>
+
+    <!-- Adsterra Native（工作區廣告位） -->
+    <WorkspaceNativeAd />
   </div>
 </template>
