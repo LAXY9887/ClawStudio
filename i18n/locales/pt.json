@@ -111,6 +111,44 @@
       "email": "E-mail"
     }
   },
+  "contact": {
+    "seoTitle": "Contato — ClawStudiouo | Relatos de bugs, feedback e solicitações de ferramentas",
+    "metaDescription": "Entre em contato com o ClawStudiouo. Relate bugs, solicite novas ferramentas, faça perguntas ou compartilhe feedback — cada mensagem é lida por uma pessoa real e respondida em poucos dias úteis.",
+    "title": "Fale Conosco",
+    "subtitle": "Tem dúvidas, feedback ou uma ideia para uma ferramenta? Adoraríamos ouvir você.",
+    "intro": "O ClawStudiouo é gerenciado por um desenvolvedor independente. Cada mensagem que você enviar chega diretamente a mim — sem tickets de suporte, sem chatbots, sem respostas automáticas. Leio tudo e respondo pessoalmente.",
+    "topics": {
+      "title": "Como podemos ajudar?",
+      "items": {
+        "bug": {
+          "title": "Relatos de Bugs",
+          "description": "A ferramenta não está funcionando como esperado, o resultado parece errado ou a página não carrega? Diga-nos o que você tentou e investigaremos."
+        },
+        "feature": {
+          "title": "Solicitações de Recursos",
+          "description": "Precisa de uma nova ferramenta, uma opção extra em uma ferramenta existente ou suporte para outro formato de arquivo? As sugestões moldam o que desenvolvemos a seguir."
+        },
+        "general": {
+          "title": "Dúvidas Gerais",
+          "description": "Confuso sobre como uma ferramenta específica funciona, o que uma configuração faz ou qual formato escolher? Pode perguntar."
+        },
+        "business": {
+          "title": "Negócios e API",
+          "description": "Interessado em nossas APIs no RapidAPI, integrações personalizadas, parcerias ou licenciamento comercial? Vamos conversar."
+        }
+      }
+    },
+    "email": {
+      "title": "Envie-nos um E-mail",
+      "intro": "A maneira mais rápida de nos contatar é por e-mail:",
+      "label": "E-mail",
+      "responseTime": "Geralmente respondemos em 1–3 dias úteis. Para problemas urgentes, adicione \"urgent\" na linha de assunto."
+    },
+    "privacy": {
+      "title": "Como Tratamos Sua Mensagem",
+      "content": "Tudo o que você enviar é usado apenas para responder à sua consulta — não compartilhamos endereços de e-mail com terceiros nem os usamos para marketing. Consulte nossa Política de Privacidade para mais detalhes."
+    }
+  },
   "waitingRoom": {
     "title": "Seu download",
     "countdown": "Por favor aguarde {seconds} segundos...",

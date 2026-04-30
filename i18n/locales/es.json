@@ -111,6 +111,44 @@
       "email": "Correo electrónico"
     }
   },
+  "contact": {
+    "seoTitle": "Contacto — ClawStudiouo | Informes de errores, comentarios y solicitudes de herramientas",
+    "metaDescription": "Ponte en contacto con ClawStudiouo. Reporta errores, solicita nuevas herramientas, haz preguntas o comparte comentarios — cada mensaje es leído por una persona real y respondido en pocos días hábiles.",
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes preguntas, comentarios o una idea para una herramienta? Nos encantaría escucharte.",
+    "intro": "ClawStudiouo está gestionado por un desarrollador independiente. Cada mensaje que envíes llega directamente a mí — sin tickets de soporte, sin chatbots, sin respuestas automáticas. Leo todo y respondo personalmente.",
+    "topics": {
+      "title": "¿En qué podemos ayudarte?",
+      "items": {
+        "bug": {
+          "title": "Informes de errores",
+          "description": "¿Una herramienta no funciona como se esperaba, el resultado parece incorrecto o la página no carga? Cuéntanos qué intentaste y lo investigaremos."
+        },
+        "feature": {
+          "title": "Solicitudes de funciones",
+          "description": "¿Necesitas una nueva herramienta, una opción adicional en una herramienta existente o soporte para otro formato de archivo? Las sugerencias influyen en lo que desarrollamos a continuación."
+        },
+        "general": {
+          "title": "Preguntas generales",
+          "description": "¿Confundido sobre cómo funciona una herramienta específica, qué hace una configuración o qué formato elegir? Pregunta sin problema."
+        },
+        "business": {
+          "title": "Negocios y API",
+          "description": "¿Interesado en nuestras APIs en RapidAPI, integraciones personalizadas, alianzas o licencias comerciales? Hablemos."
+        }
+      }
+    },
+    "email": {
+      "title": "Escríbenos un correo",
+      "intro": "La forma más rápida de contactarnos es por correo electrónico:",
+      "label": "Correo electrónico",
+      "responseTime": "Normalmente respondemos en 1–3 días hábiles. Para asuntos urgentes, añade \"urgent\" en el asunto del correo."
+    },
+    "privacy": {
+      "title": "Cómo gestionamos tu mensaje",
+      "content": "Todo lo que envíes se utiliza únicamente para responder a tu consulta — no compartimos correos electrónicos con terceros ni los usamos para marketing. Consulta nuestra Política de privacidad para más detalles."
+    }
+  },
   "waitingRoom": {
     "title": "Su descarga",
     "countdown": "Por favor espere {seconds} segundos...",

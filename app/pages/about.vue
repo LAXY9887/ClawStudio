@@ -1,8 +1,11 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-useHead({
-  title: () => t('aboutUs.seoTitle')
+useSeoMeta({
+  title: () => t('aboutUs.seoTitle'),
+  description: () => t('aboutUs.hero.subtitle'),
+  ogTitle: () => t('aboutUs.seoTitle'),
+  ogDescription: () => t('aboutUs.hero.subtitle')
 })
 </script>
 

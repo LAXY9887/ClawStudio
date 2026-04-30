@@ -111,6 +111,44 @@
       "email": "Email"
     }
   },
+  "contact": {
+    "seoTitle": "Contact ClawStudiouo — Bug Reports, Feedback & Tool Requests",
+    "metaDescription": "Get in touch with ClawStudiouo. Report bugs, request new tools, ask questions, or share feedback — every message is read by a real human and replied to within a few business days.",
+    "title": "Contact Us",
+    "subtitle": "Questions, feedback, or a tool idea? We'd love to hear from you.",
+    "intro": "ClawStudiouo is run by an independent developer. Every message you send goes directly to me — no support tickets, no chatbots, no auto-responses. I read everything and reply personally.",
+    "topics": {
+      "title": "What can we help with?",
+      "items": {
+        "bug": {
+          "title": "Bug Reports",
+          "description": "Tool not working as expected, output looks wrong, or the page won't load? Tell us what you tried and we'll investigate."
+        },
+        "feature": {
+          "title": "Feature Requests",
+          "description": "Need a new tool, an extra option in an existing tool, or support for another file format? Suggestions shape what we build next."
+        },
+        "general": {
+          "title": "General Questions",
+          "description": "Confused about how a specific tool works, what a setting does, or which format to choose? Ask away."
+        },
+        "business": {
+          "title": "Business & API",
+          "description": "Interested in our APIs on RapidAPI, custom integrations, partnerships, or commercial licensing? Let's talk."
+        }
+      }
+    },
+    "email": {
+      "title": "Email Us",
+      "intro": "The fastest way to reach us is by email:",
+      "label": "Email",
+      "responseTime": "We typically reply within 1–3 business days. For urgent issues, please add \"urgent\" to the subject line."
+    },
+    "privacy": {
+      "title": "How We Handle Your Message",
+      "content": "Anything you send is used only to respond to your inquiry — we don't share email addresses with third parties or use them for marketing. See our Privacy Policy for full details."
+    }
+  },
   "waitingRoom": {
     "title": "Your Download",
     "countdown": "Please wait {seconds} seconds...",

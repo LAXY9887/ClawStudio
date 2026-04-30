@@ -111,6 +111,44 @@
       "email": "電子郵件"
     }
   },
+  "contact": {
+    "seoTitle": "聯絡 ClawStudiouo — Bug 回報、建議與工具需求",
+    "metaDescription": "聯絡 ClawStudiouo。回報 Bug、建議新工具、提出問題或分享意見 — 每封訊息都由真人閱讀，並會在數個工作日內回覆。",
+    "title": "聯絡我們",
+    "subtitle": "有問題、建議或新工具點子？我們很想聽聽。",
+    "intro": "ClawStudiouo 由一位獨立開發者經營。你傳來的每一封訊息都會直接到我手上 — 沒有客服系統、沒有聊天機器人、沒有自動回覆。每一封訊息我都會親自閱讀並回覆。",
+    "topics": {
+      "title": "我們能幫上什麼？",
+      "items": {
+        "bug": {
+          "title": "Bug 回報",
+          "description": "工具運作不正常、輸出結果有問題、或頁面無法載入？告訴我們你做了什麼，我們會調查。"
+        },
+        "feature": {
+          "title": "功能建議",
+          "description": "需要新工具、現有工具的額外選項、或支援其他檔案格式？建議會影響我們接下來開發的方向。"
+        },
+        "general": {
+          "title": "一般問題",
+          "description": "不確定某個工具怎麼用、某個設定的作用、或該選哪個格式？歡迎提問。"
+        },
+        "business": {
+          "title": "商務與 API",
+          "description": "想了解我們在 RapidAPI 上的 API、客製化整合、合作或商業授權？歡迎聯絡。"
+        }
+      }
+    },
+    "email": {
+      "title": "用 Email 聯絡",
+      "intro": "最快的聯絡方式是 Email：",
+      "label": "Email",
+      "responseTime": "通常會在 1–3 個工作日內回覆。緊急問題請在主旨註明「urgent」。"
+    },
+    "privacy": {
+      "title": "我們如何處理你的訊息",
+      "content": "你傳來的訊息僅用於回覆你的詢問 — 我們不會分享 email 給第三方，也不會用於行銷。詳情請見隱私政策。"
+    }
+  },
   "waitingRoom": {
     "title": "你的下載",
     "countdown": "請等待 {seconds} 秒...",

@@ -15,7 +15,9 @@ const props = defineProps<{
 
 useSeoMeta({
   title: () => t(props.titleKey),
-  description: () => t(props.subtitleKey)
+  description: () => t(props.subtitleKey),
+  ogTitle: () => t(props.titleKey),
+  ogDescription: () => t(props.subtitleKey)
 })
 </script>
 

@@ -111,6 +111,44 @@
       "email": "邮箱"
     }
   },
+  "contact": {
+    "seoTitle": "联系 ClawStudiouo — Bug 反馈、建议与工具需求",
+    "metaDescription": "联系 ClawStudiouo。反馈 Bug、建议新工具、提出问题或分享意见 — 每封消息都由真人阅读，并会在数个工作日内回复。",
+    "title": "联系我们",
+    "subtitle": "有问题、建议或新工具想法？我们很想听听。",
+    "intro": "ClawStudiouo 由一位独立开发者运营。你发来的每一封消息都会直接到我手上 — 没有客服系统、没有聊天机器人、没有自动回复。每一封消息我都会亲自阅读并回复。",
+    "topics": {
+      "title": "我们能帮上什么？",
+      "items": {
+        "bug": {
+          "title": "Bug 反馈",
+          "description": "工具运行不正常、输出结果有问题、或页面无法加载？告诉我们你做了什么，我们会调查。"
+        },
+        "feature": {
+          "title": "功能建议",
+          "description": "需要新工具、现有工具的额外选项、或支持其他文件格式？建议会影响我们接下来的开发方向。"
+        },
+        "general": {
+          "title": "一般问题",
+          "description": "不确定某个工具怎么用、某个设置的作用、或该选哪个格式？欢迎提问。"
+        },
+        "business": {
+          "title": "商务与 API",
+          "description": "想了解我们在 RapidAPI 上的 API、定制化集成、合作或商业授权？欢迎联系。"
+        }
+      }
+    },
+    "email": {
+      "title": "Email 联系",
+      "intro": "最快的联系方式是 Email：",
+      "label": "Email",
+      "responseTime": "通常会在 1–3 个工作日内回复。紧急问题请在主题注明「urgent」。"
+    },
+    "privacy": {
+      "title": "我们如何处理你的消息",
+      "content": "你发来的消息仅用于回复你的询问 — 我们不会将 email 分享给第三方，也不会用于营销。详情请见隐私政策。"
+    }
+  },
   "waitingRoom": {
     "title": "您的下载",
     "countdown": "请等待 {seconds} 秒...",

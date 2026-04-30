@@ -111,6 +111,44 @@
       "email": "E-Mail"
     }
   },
+  "contact": {
+    "seoTitle": "Kontakt — ClawStudiouo | Bug-Meldungen, Feedback & Tool-Anfragen",
+    "metaDescription": "Kontaktieren Sie ClawStudiouo. Bugs melden, neue Tools anfragen, Fragen stellen oder Feedback teilen — jede Nachricht wird von einem echten Menschen gelesen und innerhalb weniger Werktage beantwortet.",
+    "title": "Kontakt",
+    "subtitle": "Fragen, Feedback oder eine Tool-Idee? Wir freuen uns von Ihnen zu hören.",
+    "intro": "ClawStudiouo wird von einem unabhängigen Entwickler betrieben. Jede Nachricht, die Sie senden, geht direkt an mich — keine Support-Tickets, keine Chatbots, keine automatischen Antworten. Ich lese alles und antworte persönlich.",
+    "topics": {
+      "title": "Wie können wir helfen?",
+      "items": {
+        "bug": {
+          "title": "Bug-Meldungen",
+          "description": "Funktioniert ein Tool nicht wie erwartet, sieht die Ausgabe falsch aus oder lädt die Seite nicht? Teilen Sie uns mit, was Sie versucht haben, und wir untersuchen es."
+        },
+        "feature": {
+          "title": "Feature-Anfragen",
+          "description": "Brauchen Sie ein neues Tool, eine zusätzliche Option in einem vorhandenen Tool oder Unterstützung für ein anderes Dateiformat? Vorschläge beeinflussen, was wir als Nächstes entwickeln."
+        },
+        "general": {
+          "title": "Allgemeine Fragen",
+          "description": "Unsicher, wie ein bestimmtes Tool funktioniert, was eine Einstellung bewirkt oder welches Format Sie wählen sollten? Fragen Sie einfach."
+        },
+        "business": {
+          "title": "Business & API",
+          "description": "Interesse an unseren APIs auf RapidAPI, benutzerdefinierten Integrationen, Partnerschaften oder kommerziellen Lizenzen? Lassen Sie uns sprechen."
+        }
+      }
+    },
+    "email": {
+      "title": "Per E-Mail kontaktieren",
+      "intro": "Der schnellste Weg, uns zu erreichen, ist per E-Mail:",
+      "label": "E-Mail",
+      "responseTime": "Wir antworten in der Regel innerhalb von 1–3 Werktagen. Bei dringenden Anliegen fügen Sie bitte \"urgent\" in die Betreffzeile ein."
+    },
+    "privacy": {
+      "title": "Wie wir Ihre Nachricht verarbeiten",
+      "content": "Alles, was Sie senden, wird ausschließlich zur Beantwortung Ihrer Anfrage verwendet — wir geben keine E-Mail-Adressen an Dritte weiter und nutzen sie nicht für Marketing. Weitere Details finden Sie in unserer Datenschutzrichtlinie."
+    }
+  },
   "waitingRoom": {
     "title": "Ihr Download",
     "countdown": "Bitte warten Sie {seconds} Sekunden...",

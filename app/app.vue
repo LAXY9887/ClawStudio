@@ -175,9 +175,9 @@ const localeItems = computed(() =>
           <NuxtLink to="/about" class="text-muted hover:text-primary">
             {{ t('footer.about') }}
           </NuxtLink>
-          <a href="mailto:angelcemept@gmail.com" class="text-muted hover:text-primary">
+          <NuxtLink to="/contact" class="text-muted hover:text-primary">
             {{ t('footer.contact') }}
-          </a>
+          </NuxtLink>
         </div>
         <p class="text-sm text-muted w-full text-center">
           {{ t('footer.copyright', { year: new Date().getFullYear() }) }}
