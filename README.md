@@ -41,7 +41,7 @@ Each tool also exposes its corresponding RapidAPI endpoint for programmatic acce
 - **i18n**: `@nuxtjs/i18n` — 9 locales (en, zh-TW, zh-CN, ja, ko, de, es, pt, ru)
 - **SEO**: `@nuxtjs/sitemap`, JSON-LD per tool page
 - **Analytics**: `nuxt-gtag` (Google Analytics 4)
-- **Monetization**: Monetag (Multitag / Push / In-Page / Vignette / Direct Link) with cookie-based usage limiter; AdSense fallback supported via `NUXT_PUBLIC_AD_PROVIDER`
+- **Monetization**: Cookie-based usage limiter (3 free uses/day → waiting room); Google AdSense infrastructure in place (`adsenseEnabled: false`, pending approval)
 - **Package manager**: pnpm (frozen lockfile in CI)
 
 ## Setup
@@ -51,7 +51,7 @@ pnpm install
 cp .env.example .env
 ```
 
-Required environment variables (see `.env.example` for the full list including Monetag overrides):
+Required environment variables (see `.env.example`):
 
 | Variable | Description |
 |----------|-------------|
@@ -106,8 +106,7 @@ In-repo documentation lives under [docs/](docs/):
 - [adding-a-new-tool.md](docs/adding-a-new-tool.md) — checklist for new tools
 - [reusable-components.md](docs/reusable-components.md) — `ToolPageLayout`, `SeoSections`, `RelatedTools`, etc.
 - [i18n-guide.md](docs/i18n-guide.md) — locale file structure and conventions
-- [ad-integration.md](docs/ad-integration.md) — Monetag / AdSense provider switching
-- [disabling-monetag-push.md](docs/disabling-monetag-push.md) — turning off the push SW cleanly
+- [ad-integration.md](docs/ad-integration.md) — AdSense slot map and compliance rules
 - API references: [gif2ss](docs/gif2ss-api-reference.md) · [png2ss](docs/png2ss-api-reference.md) · [uniimgc](docs/uniimgc-api-reference.md) · [exifrm](docs/exifrm-api-reference.md)
 - Feature plans: [docs/superpowers/plans/](docs/superpowers/plans/)
 

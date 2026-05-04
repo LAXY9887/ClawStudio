@@ -11,7 +11,7 @@
 
 | 階段 | 流量 | 建議廣告網路 |
 |---|---|---|
-| **起步** | < 10K 月 PV | Monetag（已用）+ Adsterra |
+| **起步** | < 10K 月 PV | Monetag + Adsterra（已移除，待流量成長後重新評估） |
 | **成長** | 10K–50K 月 PV | 加 Monumetric |
 | **穩定** | 50K+ 月 sessions | 評估 Mediavine（要轉內容站） |
 | **規模化** | 100K+ 月 PV + blog 內容 | 重啟 AdSense / Clickio / Raptive / Ezoic |
@@ -38,6 +38,8 @@
 ### 推薦組合：Monetag + Adsterra
 
 兩家都允許並行（不要求獨家），可做 ad mediation。整體 fill rate 與 RPM 比單跑高 30-50%。
+
+> **ClawStudio 現況（2026-05）**：Monetag + Adsterra 已暫時移除，目前僅保留 AdSense 基礎建設（`adsenseEnabled: false`，待 Google 審核通過）。待流量成長後重新評估是否回頭加入。
 
 ---
 
@@ -109,7 +111,7 @@
 
 - 不同廣告網路有不同 demand pool，並行可提高 fill rate
 - 同一個版位可以 fallback：A 沒填單就 B 接手
-- ClawStudio 已有的 Monetag 不需要為了試其他網路關掉
+- ClawStudio 目前暫停所有第三方廣告，待流量成長再重新接入
 - 注意：**AdSense 要求 ad placement 不能與其他「類似 AdSense」的網路重疊**（例如同個版位放 Ezoic + AdSense）— 但跟 Monetag/Adsterra 這類非 GAM 網路並行 OK
 
 ---
@@ -165,5 +167,5 @@
 
 ## 建議閱讀
 
-- `docs/ad-integration.md` — ClawStudio 既有 AdSense / Monetag 整合架構
-- `docs/disabling-monetag-push.md` — Monetag push 退場流程（如果要切換網路時參考）
+- `docs/ad-integration.md` — ClawStudio AdSense 整合架構（目前唯一啟用的廣告系統）
+- `docs/disabling-monetag-push.md` — Monetag push 退場流程（歷史文件）
