@@ -14,7 +14,6 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
-const { openDirectLink } = useMonetagDirectLink()
 
 const file = ref<File | null>(null)
 const status = ref<'idle' | 'converting' | 'done' | 'error'>('idle')
@@ -190,7 +189,6 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
-  openDirectLink()
   const localePath = useLocalePath()
   const slug = props.toolKey.replace(/([A-Z])/g, '-$1').toLowerCase()
   navigateTo({
@@ -272,9 +270,6 @@ onUnmounted(() => {
       <p v-if="remainingUses <= 3 && remainingUses > 0" class="text-xs text-muted text-center">
         {{ t(`${toolKey}.adModal.remaining`, { count: remainingUses }, remainingUses) }}
       </p>
-
-      <!-- Adsterra Native（工作區廣告位） -->
-      <WorkspaceNativeAd />
 
       <!-- Error -->
       <UAlert v-if="status === 'error'" color="error" :title="errorMessage" class="mt-4">

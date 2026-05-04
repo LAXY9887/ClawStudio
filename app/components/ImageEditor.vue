@@ -13,7 +13,7 @@ const ACCEPTED_MIMES = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', '
 const ACCEPT_ATTR = [...ACCEPTED_EXTS, ...ACCEPTED_MIMES].join(',')
 
 const { t } = useI18n()
-const { openDirectLink } = useMonetagDirectLink()
+
 const localePath = useLocalePath()
 const downloadCount = useCookie<number>('img_editor_count', { default: () => 0, maxAge: 86400 })
 const remainingUses = computed(() => Math.max(0, FREE_LIMIT - downloadCount.value))
@@ -367,7 +367,6 @@ async function handleDownload() {
 async function onAdConfirm() {
   showAdModal.value = false
   downloadCount.value = 0
-  openDirectLink()
   try {
     const blob = pendingBlob.value ?? await buildOutputBlob()
     pendingBlob.value = null
@@ -629,11 +628,6 @@ async function onAdConfirm() {
         </div>
 
       </div>
-    </div>
-
-    <!-- Adsterra Native（工作區下方廣告位，與容器隔開） -->
-    <div class="mt-8">
-      <WorkspaceNativeAd />
     </div>
 
     <!-- Ad Modal -->

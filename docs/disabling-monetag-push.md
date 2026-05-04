@@ -1,4 +1,8 @@
-# Disabling Monetag Push Notifications
+# Disabling Monetag Push Notifications (Historical — Monetag removed 2026-05-04)
+
+> **Note:** Monetag has been fully removed from ClawStudio. The `/sw.js` route now permanently serves a tombstone Service Worker that unregisters any previously subscribed browsers. This document is kept for historical reference only.
+
+---
 
 Push notifications use a **Service Worker**, which means a simple script removal is not enough — browsers persist SW registrations even after the source file disappears, so already-subscribed users would keep receiving pushes indefinitely. This document explains the correct full-shutdown procedure.
 

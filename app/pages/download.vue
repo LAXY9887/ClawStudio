@@ -3,12 +3,6 @@ const { t } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const store = useDownloadStore()
-const config = useRuntimeConfig()
-
-// Adsterra Banner 728×90（進度條上方）
-const adsterraEnabled = computed(() => Boolean(config.public.adsterraEnabled))
-const adsterraBannerKey = computed(() => config.public.adsterraBannerKey as string)
-const adsterraBannerDomain = computed(() => config.public.adsterraBannerDomain as string)
 
 const returnPath = computed(() => (route.query.from as string) || localePath('/'))
 
@@ -106,28 +100,12 @@ onMounted(() => {
     :countdown="15"
     :return-path="returnPath"
   >
-    <template #topAd>
-      <div v-if="adsterraEnabled && adsterraBannerKey && adsterraBannerDomain" class="flex justify-center">
-        <AdUnit
-          network="adsterra"
-          adsterra-format="banner"
-          :adsterra-key="adsterraBannerKey"
-          :adsterra-domain="adsterraBannerDomain"
-          :adsterra-width="728"
-          :adsterra-height="90"
-        />
-      </div>
-    </template>
-
     <template #ad>
-      <AdUnit network="adsense" ad-slot="1774557803" />
+      <AdUnit ad-slot="1774557803" />
     </template>
 
     <template #content>
       <div class="space-y-8">
-        <!-- Adsterra Native（SEO 文章標題上方） -->
-        <WorkspaceNativeAd />
-
         <!-- Tips Section (tool-specific) -->
         <section class="space-y-4">
           <h2 class="text-xl font-bold">

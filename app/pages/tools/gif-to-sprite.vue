@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -267,8 +266,6 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
-  openDirectLink()
-
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
@@ -473,8 +470,6 @@ onUnmounted(() => {
           </template>
         </UAccordion>
 
-        <!-- Adsterra Native（工作區廣告位，置於 Advanced Options 之後） -->
-        <WorkspaceNativeAd />
       </div>
 
       <!-- Converting Status -->

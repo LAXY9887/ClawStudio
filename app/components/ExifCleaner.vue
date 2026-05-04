@@ -4,7 +4,6 @@ const cleanCount = useCookie<number>('exif_clean_count', { default: () => 0, max
 const remainingUses = computed(() => Math.max(0, FREE_LIMIT - cleanCount.value))
 const showAdModal = ref(false)
 const pendingAction = ref<(() => void) | null>(null)
-const { openDirectLink } = useMonetagDirectLink()
 
 interface GpsSummary {
   lat: number
@@ -276,7 +275,6 @@ function downloadMetadata() {
 function onAdConfirm() {
   showAdModal.value = false
   cleanCount.value = 0
-  openDirectLink()
   if (pendingAction.value) {
     const action = pendingAction.value
     pendingAction.value = null
@@ -700,7 +698,5 @@ onBeforeUnmount(() => {
       {{ t('exifRemover.adModal.remaining', { count: remainingUses }, remainingUses) }}
     </p>
 
-    <!-- Adsterra Native（工作區廣告位） -->
-    <WorkspaceNativeAd />
   </div>
 </template>
