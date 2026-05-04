@@ -2,7 +2,6 @@
 import { VueDraggable } from 'vue-draggable-plus'
 
 const { t } = useI18n()
-const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -300,8 +299,6 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
-  openDirectLink()
-
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
@@ -512,8 +509,6 @@ onUnmounted(() => {
           </template>
         </UAccordion>
 
-        <!-- Adsterra Native（工作區廣告位，置於 Options 之後） -->
-        <WorkspaceNativeAd />
       </div>
 
       <!-- Converting -->

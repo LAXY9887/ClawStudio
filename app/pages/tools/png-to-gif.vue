@@ -2,7 +2,6 @@
 import { VueDraggable } from 'vue-draggable-plus'
 
 const { t } = useI18n()
-const { openDirectLink } = useMonetagDirectLink()
 
 useHead({
   script: [
@@ -405,8 +404,6 @@ function submitConvert() {
 
 function onAdConfirm() {
   showAdModal.value = false
-  openDirectLink()
-
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
@@ -703,9 +700,6 @@ onUnmounted(() => {
         <p v-if="remainingUses <= 3 && remainingUses > 0" class="text-xs text-muted text-center mt-2">
           {{ t('toGif.adModal.remaining', { count: remainingUses }, remainingUses) }}
         </p>
-
-        <!-- Adsterra Native（工作區廣告位） -->
-        <WorkspaceNativeAd />
 
         <!-- Error -->
         <UAlert v-if="status === 'error'" color="error" :title="errorMessage" class="mt-4">
