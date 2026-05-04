@@ -403,7 +403,7 @@
       "tipsTitle": "Tipps zum Bildbearbeiten",
       "tips": [
         "**WebP vs JPG:** WebP produziert Dateien **25–35 % kleiner** als JPG bei gleicher visueller Qualität — ideal für Websites und Apps, bei denen Ladegeschwindigkeit wichtig ist.",
-        "**Social-Media-Seitenverhältnisse:** Instagram-Beiträge → **1:1** · YouTube-Miniaturansichten → **16:9** · Instagram Stories → **9:16** · LinkedIn-Titelbild → **4:1**.",
+        "**Social-Media-Seitenverhältnisse:** Instagram-Beiträge → **1:1** · YouTube-Miniaturansichten → **16:9** · Instagram Stories → **9:16** · Porträt/Querformat → **4:3 / 3:4**.",
         "**Die optimale Kompression:** Eine Qualitätseinstellung von **80–85** reduziert bis zu 70 % der Dateigröße ohne sichtbare Qualitätsverluste. Unter 70 werden Artefakte sichtbar.",
         "**Datenschutz-Bonus:** Die Canvas API, die diesen Editor antreibt, entfernt automatisch alle **EXIF-Metadaten** aus Ihrer Ausgabe — einschließlich GPS-Standort, Gerätemodell und Zeitstempel."
       ]

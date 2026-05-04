@@ -403,7 +403,7 @@
       "tipsTitle": "Dicas de Edição de Imagem",
       "tips": [
         "**WebP vs JPG:** WebP produz arquivos **25–35% menores** que JPG com a mesma qualidade visual — ideal para sites e apps onde a velocidade de carregamento importa.",
-        "**Proporções para redes sociais:** Posts do Instagram → **1:1** · Miniaturas do YouTube → **16:9** · Histórias do Instagram → **9:16** · Foto de capa do LinkedIn → **4:1**.",
+        "**Proporções para redes sociais:** Posts do Instagram → **1:1** · Miniaturas do YouTube → **16:9** · Histórias do Instagram → **9:16** · retrato/paisagem → **4:3 / 3:4**.",
         "**O ponto doce da compressão:** Uma configuração de qualidade de **80–85** remove até 70% do tamanho do arquivo sem diferença visual perceptível. Abaixo de 70 introduz artefatos visíveis.",
         "**Bônus de privacidade:** A Canvas API que alimenta este editor remove automaticamente todos os metadados **EXIF** — incluindo localização GPS, modelo do dispositivo e timestamp."
       ]
