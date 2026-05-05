@@ -8,7 +8,9 @@
   },
   "nav": {
     "home": "首頁",
-    "tools": "工具"
+    "tools": "工具",
+    "blog": "部落格",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. 保留所有權利。",
@@ -16,6 +18,8 @@
     "privacy": "隱私政策",
     "contact": "聯絡我們",
     "about": "關於我們",
+    "blog": "部落格",
+    "mcp": "MCP 伺服器",
     "termsContent": {
       "intro": "使用 ClawStudiouo 即表示您同意以下條款：",
       "items": [
@@ -409,6 +413,97 @@
       ]
     }
   },
+  "blog": {
+    "seoTitle": "部落格 — ClawStudiouo",
+    "seoDescription": "提供遊戲開發者與設計師使用 ClawStudiouo 工具的教學、指南與工作流程。",
+    "title": "部落格",
+    "subtitle": "遊戲開發者與設計師的教學與指南。",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "GIF 轉 Spritesheet：Unity 和 Godot 完整工作流程",
+        "description": "完整的工作流程指南：將 GIF 動畫轉換為適用於 Unity 和 Godot 遊戲引擎的 Sprite Sheet。",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP 伺服器 — ClawStudiouo",
+    "seoDescription": "讓 Claude AI 透過自然語言指令處理 GIF 轉換、精靈圖打包和材質圖集生成，完全不需要寫程式。",
+    "hero": {
+      "title": "Spritesheet Forge MCP 伺服器",
+      "subtitle": "讓 Claude 處理你的 Spritesheet 工作流程。8 個工具，每月 100 次免費操作，GitHub 身份驗證。",
+      "ctaGitHub": "在 GitHub 上查看",
+      "ctaDocs": "完整文件"
+    },
+    "quickStart": {
+      "title": "快速開始",
+      "endpoint": "MCP 端點",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "將以下內容加入你的 claude_desktop_config.json："
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "在終端機執行以下指令："
+      },
+      "auth": "驗證使用 GitHub OAuth 2.1。首次使用時，MCP 客戶端會開啟瀏覽器登入頁面。Token 有效期為 30 天。"
+    },
+    "tools": {
+      "title": "8 個可用工具",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "將 GIF 動畫轉換為 PNG Spritesheet 格線。支援移除背景。"
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "將 GIF 的所有幀提取為個別 PNG，以 ZIP 壓縮包回傳。"
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "將多個 PNG 打包為一張 Spritesheet。支援格線、水平、垂直、裝箱排列，以及 TexturePacker 相容的 JSON 圖集。"
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "將 Spritesheet 分割為個別幀，可輸出 JSON 或 CSS 元數據。"
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "將 Spritesheet PNG 轉換回 GIF 或 WebP 動畫。"
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "將 PNG 序列組合為 GIF 或 WebP 動畫。"
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "移除 PNG 檔案的透明邊緣，支援閾值與邊距控制。"
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "回傳執行環境設定：上傳網址、檔案大小限制、TTL 和編碼規則。在多步驟工作流程中請先呼叫此工具。"
+      }
+    },
+    "limits": {
+      "title": "每月免費額度",
+      "ops": "100 次操作 / GitHub 帳號 / 月",
+      "fileSize": "每個檔案最大 20 MB",
+      "ttl": "輸出網址 1 小時後過期",
+      "reset": "額度於每月 1 日重置"
+    }
+  },
+  "mcpPromo": {
+    "seo": {
+      "title": "也可透過 Claude AI 使用",
+      "content": "這些功能可透過 Spritesheet Forge MCP server 使用 — 一個 Model Context Protocol 伺服器，讓 Claude 等 AI agent 能以自然語言執行精靈圖工作流程。",
+      "content2": "連接一次，即可在程式開發過程中直接請 Claude 轉換、打包、裁切或分割精靈圖 — 無需切換瀏覽器。",
+      "cta": "查看 Spritesheet Forge MCP"
+    },
+    "waitingRoom": {
+      "title": "搭配 Claude AI 使用此工具",
+      "content": "此功能可透過 Spritesheet Forge MCP server 使用。將它連接到 Claude Desktop 或 Claude Code 一次，即可用自然語言執行轉換 — 無需切換瀏覽器。",
+      "cta": "了解 MCP server"
+    }
+  },
   "error": {
     "title": "找不到頁面 — ClawStudiouo",
     "description": "您要找的頁面不存在，不妨試試我們的免費圖片工具。",
@@ -461,6 +556,20 @@
   },
   "home": {
     "title": "免費線上開發工具",
+    "subtitle": "持續增長的免費瀏覽器工具集，專為遊戲開發者與設計師打造。",
+    "whatsNew": {
+      "heading": "最新消息",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP 伺服器",
+          "description": "8 個 Spritesheet Forge 工具現已可透過 MCP 伺服器供 AI 編碼代理使用，支援 Claude Desktop、VS Code 等。"
+        },
+        "gifToSpriteBlogPost": {
+          "title": "部落格：將 GIF Spritesheet 匯入 Unity 與 Godot",
+          "description": "逐步指南，教你將生成的 Sprite Sheet 匯入 Unity 和 Godot Engine。"
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF 轉 Spritesheet",

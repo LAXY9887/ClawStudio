@@ -277,6 +277,7 @@ onUnmounted(() => {
     :seo-sections="seoSections"
     api-url="https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites"
     tutorial-url="https://rapidapi.com/lxya98874322688423/api/easy-png-to-sprites/tutorials/merge-png-into-sprite-sheet-by-easy-png2ss"
+    show-mcp-promo
   >
     <template #workspace>
       <div v-if="status === 'idle' || status === 'error'">

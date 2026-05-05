@@ -119,6 +119,30 @@ onMounted(() => {
           </ul>
         </section>
 
+        <!-- MCP Promo Section (spritesheet tools only) -->
+        <section
+          v-if="['gifToSprite', 'toGif', 'pngToSpritesheet', 'pngTrim', 'splitSpritesheet'].includes(toolKey)"
+          class="border border-primary/30 rounded-lg p-5 space-y-3"
+        >
+          <div class="flex items-center gap-2">
+            <UIcon name="i-lucide-cpu" class="text-primary shrink-0" />
+            <h2 class="text-lg font-bold">
+              {{ t('mcpPromo.waitingRoom.title') }}
+            </h2>
+          </div>
+          <p class="text-muted leading-relaxed text-sm">
+            {{ t('mcpPromo.waitingRoom.content') }}
+          </p>
+          <UButton
+            :label="t('mcpPromo.waitingRoom.cta')"
+            icon="i-lucide-arrow-right"
+            to="/mcp"
+            color="primary"
+            variant="outline"
+            size="sm"
+          />
+        </section>
+
         <!-- API Promo Section (shared, hidden for client-side-only tools) -->
         <section v-if="toolKey !== 'imageEditor'" class="border border-muted rounded-lg p-5 space-y-3">
           <h2 class="text-lg font-bold">

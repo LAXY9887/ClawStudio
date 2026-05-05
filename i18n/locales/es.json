@@ -8,13 +8,18 @@
   },
   "nav": {
     "home": "Inicio",
-    "tools": "Herramientas"
+    "tools": "Herramientas",
+    "blog": "Blog",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. Todos los derechos reservados.",
     "terms": "Términos de servicio",
     "privacy": "Política de privacidad",
     "contact": "Contáctenos",
+    "about": "Sobre nosotros",
+    "blog": "Blog",
+    "mcp": "Servidor MCP",
     "termsContent": {
       "intro": "Al usar ClawStudiouo, usted acepta los siguientes términos:",
       "items": [
@@ -25,8 +30,7 @@
         "**Limitación de responsabilidad.** El proveedor no es responsable de ningún daño directo, indirecto o consecuente derivado del uso de este sitio web o sus herramientas.",
         "**Cambios.** Estos términos y la funcionalidad del sitio web pueden actualizarse en cualquier momento. El uso continuado después de los cambios constituye aceptación."
       ]
-    },
-    "about": "Sobre nosotros"
+    }
   },
   "privacy": {
     "title": "Política de privacidad",
@@ -409,6 +413,97 @@
       ]
     }
   },
+  "blog": {
+    "seoTitle": "Blog — ClawStudiouo",
+    "seoDescription": "Tutoriales, guías y flujos de trabajo para desarrolladores y diseñadores de juegos que utilizan herramientas de ClawStudiouo.",
+    "title": "Blog",
+    "subtitle": "Tutoriales y guías para desarrolladores y diseñadores de juegos.",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "GIF a Spritesheet para Unity y Godot",
+        "description": "Guía de flujo de trabajo completo: convierte GIFs animados en hojas de sprites optimizadas para los motores de juegos Unity y Godot.",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
+    "seoDescription": "Usa Claude AI para convertir GIFs, empacar sprites y generar atlas de texturas a través de comandos en lenguaje natural — sin necesidad de código.",
+    "hero": {
+      "title": "Spritesheet Forge MCP Server",
+      "subtitle": "Deja que Claude maneje tus flujos de trabajo de spritesheet. 8 herramientas. 100 operaciones gratuitas por mes. Autenticación con GitHub.",
+      "ctaGitHub": "Ver en GitHub",
+      "ctaDocs": "Documentación Completa"
+    },
+    "quickStart": {
+      "title": "Inicio Rápido",
+      "endpoint": "Punto final de MCP",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "Agrega esto a tu archivo claude_desktop_config.json:"
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "Ejecuta este comando una vez en tu terminal:"
+      },
+      "auth": "La autenticación usa GitHub OAuth 2.1. Tu cliente MCP abrirá un inicio de sesión en el navegador en el primer uso. Los tokens duran 30 días."
+    },
+    "tools": {
+      "title": "8 Herramientas Disponibles",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "Convierte un GIF animado en una cuadrícula PNG spritesheet. Eliminación de fondo opcional."
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "Extrae todos los fotogramas de un GIF como PNGs individuales, devueltos como archivo ZIP."
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "Empaca múltiples PNGs en un spritesheet. Diseños: cuadrícula, horizontal, vertical, empacado (bin-pack). Admite JSON de atlas compatible con TexturePacker."
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "Divide un spritesheet en fotogramas individuales. Opcionalmente, genera JSON de atlas o metadatos de CSS."
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "Convierte un PNG spritesheet de vuelta a un GIF animado o WebP."
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "Ensambla una secuencia PNG en un GIF animado o WebP."
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "Elimina bordes transparentes de archivos PNG. Admite control de umbral y relleno."
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "Devuelve la configuración en tiempo de ejecución: URL de carga, límites de tamaño de archivo, TTL y reglas de codificación. Llama a esto primero en flujos de trabajo de varios pasos."
+      }
+    },
+    "limits": {
+      "title": "Cuota Mensual Gratuita",
+      "ops": "100 operaciones / cuenta de GitHub / mes",
+      "fileSize": "Tamaño máximo de archivo: 20 MB por archivo",
+      "ttl": "Las URL de salida caducan después de 1 hora",
+      "reset": "La cuota se reinicia el 1 de cada mes"
+    }
+  },
+  "mcpPromo": {
+    "seo": {
+      "title": "También disponible vía Claude AI",
+      "content": "Estas operaciones están disponibles a través del servidor Spritesheet Forge MCP — un servidor Model Context Protocol que permite a agentes de IA como Claude ejecutar flujos de trabajo de spritesheets mediante lenguaje natural.",
+      "content2": "Conéctalo una vez y luego pídele a Claude que convierta, empaque, recorte o divida sprites directamente en tu sesión de código — sin necesidad de cambiar de navegador.",
+      "cta": "Ver Spritesheet Forge MCP"
+    },
+    "waitingRoom": {
+      "title": "Usa esta herramienta con Claude AI",
+      "content": "Esta operación está disponible a través del servidor Spritesheet Forge MCP. Conéctalo a Claude Desktop o Claude Code una vez y luego ejecuta conversiones mediante lenguaje natural — sin necesidad de cambiar de navegador.",
+      "cta": "Conocer el servidor MCP"
+    }
+  },
   "error": {
     "title": "Pagina no encontrada — ClawStudiouo",
     "description": "La pagina que buscas no existe. Prueba una de nuestras herramientas de imagen gratuitas.",
@@ -461,6 +556,20 @@
   },
   "home": {
     "title": "Herramientas de desarrollo en línea gratuitas",
+    "subtitle": "Una colección creciente de herramientas gratuitas basadas en navegador para desarrolladores de juegos y diseñadores.",
+    "whatsNew": {
+      "heading": "Novedades",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Servidor Spritesheet Forge MCP",
+          "description": "Las 8 herramientas de Spritesheet Forge ahora están disponibles como servidor MCP para agentes de codificación IA — úsalas desde Claude Desktop, VS Code y más."
+        },
+        "gifToSpriteBlogPost": {
+          "title": "Blog: Importar Spritesheet de GIF en Unity y Godot",
+          "description": "Guía paso a paso para importar tus sprite sheets generados en Unity y Godot Engine."
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF to Spritesheet",

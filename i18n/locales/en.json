@@ -8,7 +8,9 @@
   },
   "nav": {
     "home": "Home",
-    "tools": "Tools"
+    "tools": "Tools",
+    "blog": "Blog",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. All rights reserved.",
@@ -16,6 +18,8 @@
     "privacy": "Privacy Policy",
     "contact": "Contact Us",
     "about": "About Us",
+    "blog": "Blog",
+    "mcp": "MCP Server",
     "termsContent": {
       "intro": "By using ClawStudiouo, you agree to the following terms:",
       "items": [
@@ -409,6 +413,97 @@
       ]
     }
   },
+  "blog": {
+    "seoTitle": "Blog — ClawStudiouo",
+    "seoDescription": "Tutorials, guides, and workflows for game developers and designers using ClawStudiouo tools.",
+    "title": "Blog",
+    "subtitle": "Tutorials and guides for game developers and designers.",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "GIF to Spritesheet for Unity and Godot",
+        "description": "A complete workflow guide: convert animated GIFs into sprite sheets optimized for Unity and Godot game engines.",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
+    "seoDescription": "Use Claude AI to convert GIFs, pack sprites, and generate texture atlases through natural language commands — no code required.",
+    "hero": {
+      "title": "Spritesheet Forge MCP Server",
+      "subtitle": "Let Claude handle your spritesheet workflows. 8 tools. 100 free operations per month. GitHub authentication.",
+      "ctaGitHub": "View on GitHub",
+      "ctaDocs": "Full Documentation"
+    },
+    "quickStart": {
+      "title": "Quick Start",
+      "endpoint": "MCP Endpoint",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "Add this to your claude_desktop_config.json:"
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "Run this command once in your terminal:"
+      },
+      "auth": "Authentication uses GitHub OAuth 2.1. Your MCP client will open a browser login on first use. Tokens last 30 days."
+    },
+    "tools": {
+      "title": "8 Tools Available",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "Convert an animated GIF into a PNG spritesheet grid. Optional background removal."
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "Extract all frames from a GIF as individual PNGs, returned as a ZIP archive."
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "Pack multiple PNGs into one spritesheet. Layouts: grid, horizontal, vertical, packed (bin-pack). Supports TexturePacker-compatible atlas JSON."
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "Split a spritesheet into individual frames. Optionally output atlas JSON or CSS metadata."
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "Convert a spritesheet PNG back to an animated GIF or WebP."
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "Assemble a PNG sequence into an animated GIF or WebP."
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "Remove transparent edges from PNG files. Supports threshold and padding control."
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "Returns runtime config: upload URL, file size limits, TTL, and encoding rules. Call this first in multi-step workflows."
+      }
+    },
+    "limits": {
+      "title": "Free Monthly Quota",
+      "ops": "100 operations / GitHub account / month",
+      "fileSize": "Max file size: 20 MB per file",
+      "ttl": "Output URLs expire after 1 hour",
+      "reset": "Quota resets on the 1st of each month"
+    }
+  },
+  "mcpPromo": {
+    "seo": {
+      "title": "Also Available via Claude AI",
+      "content": "These operations are available through the Spritesheet Forge MCP server — a Model Context Protocol server that lets AI agents like Claude run spritesheet workflows through natural language.",
+      "content2": "Connect once, then ask Claude to convert, pack, trim, or split sprites directly in your coding session — no browser switching needed.",
+      "cta": "View Spritesheet Forge MCP"
+    },
+    "waitingRoom": {
+      "title": "Use This Tool with Claude AI",
+      "content": "This operation is available through the Spritesheet Forge MCP server. Connect it to Claude Desktop or Claude Code once, then run conversions through natural language — no browser switching needed.",
+      "cta": "Learn about the MCP server"
+    }
+  },
   "error": {
     "title": "Page Not Found — ClawStudiouo",
     "description": "The page you're looking for doesn't exist. Try one of our free image tools instead.",
@@ -461,6 +556,20 @@
   },
   "home": {
     "title": "Free Online Dev Tools",
+    "subtitle": "A growing collection of free browser-based tools for game developers and designers.",
+    "whatsNew": {
+      "heading": "What's New",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP Server",
+          "description": "All 8 Spritesheet Forge tools are now available as an MCP server for AI coding agents — use them from Claude Desktop, VS Code, and more."
+        },
+        "gifToSpriteBlogPost": {
+          "title": "Blog: Import GIF Spritesheet into Unity and Godot",
+          "description": "Step-by-step guide to importing your generated sprite sheets into both Unity and Godot Engine."
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF to Spritesheet",

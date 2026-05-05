@@ -112,7 +112,13 @@ const localeItems = computed(() =>
 
     <UFooter>
       <div style="width: 100%;" class="space-y-2">
-        <div class="flex justify-center gap-4 text-sm">
+        <div class="flex justify-center gap-4 text-sm flex-wrap">
+          <NuxtLink to="/blog" class="text-muted hover:text-primary">
+            {{ t('footer.blog') }}
+          </NuxtLink>
+          <NuxtLink to="/mcp" class="text-muted hover:text-primary">
+            {{ t('footer.mcp') }}
+          </NuxtLink>
           <NuxtLink to="/privacy" class="text-muted hover:text-primary">
             {{ t('footer.privacy') }}
           </NuxtLink>

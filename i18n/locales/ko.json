@@ -8,13 +8,18 @@
   },
   "nav": {
     "home": "홈",
-    "tools": "도구"
+    "tools": "도구",
+    "blog": "블로그",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. All rights reserved.",
     "terms": "이용약관",
     "privacy": "개인정보처리방침",
     "contact": "문의하기",
+    "about": "소개",
+    "blog": "블로그",
+    "mcp": "MCP 서버",
     "termsContent": {
       "intro": "ClawStudiouo를 사용함으로써 다음 약관에 동의하는 것으로 간주됩니다:",
       "items": [
@@ -25,8 +30,7 @@
         "**책임 제한.** 제공자는 본 웹사이트 또는 도구의 사용으로 인해 발생하는 직접적, 간접적 또는 결과적 손해에 대해 책임을 지지 않습니다.",
         "**변경.** 본 약관 및 웹사이트 기능은 언제든지 업데이트될 수 있습니다. 변경 후 계속 사용하면 변경 사항을 수락한 것으로 간주됩니다."
       ]
-    },
-    "about": "소개"
+    }
   },
   "privacy": {
     "title": "개인정보처리방침",
@@ -409,6 +413,97 @@
       ]
     }
   },
+  "blog": {
+    "seoTitle": "블로그 — ClawStudiouo",
+    "seoDescription": "게임 개발자와 디자이너를 위한 ClawStudiouo 도구 튜토리얼, 가이드 및 워크플로우입니다.",
+    "title": "블로그",
+    "subtitle": "게임 개발자와 디자이너를 위한 튜토리얼 및 가이드입니다.",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "Unity와 Godot을 위한 GIF to Spritesheet",
+        "description": "완전한 워크플로우 가이드: 애니메이션 GIF를 Unity와 Godot 게임 엔진에 최적화된 스프라이트 시트로 변환합니다.",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
+    "seoDescription": "Claude AI를 사용하여 자연어 명령으로 GIF를 변환하고, 스프라이트를 패킹하며, 텍스처 아틀라스를 생성합니다 - 코드가 필요 없습니다.",
+    "hero": {
+      "title": "Spritesheet Forge MCP Server",
+      "subtitle": "Claude에게 스프라이트시트 워크플로우를 맡기십시오. 8개 도구. 월 100회 무료 작업. GitHub 인증.",
+      "ctaGitHub": "GitHub에서 보기",
+      "ctaDocs": "전체 문서"
+    },
+    "quickStart": {
+      "title": "빠른 시작",
+      "endpoint": "MCP 엔드포인트",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "claude_desktop_config.json에 추가하십시오:"
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "터미널에서 이 명령을 한 번 실행하십시오:"
+      },
+      "auth": "인증은 GitHub OAuth 2.1을 사용합니다. MCP 클라이언트는 처음 사용할 때 브라우저 로그인을 엽니다. 토큰은 30일간 유지됩니다."
+    },
+    "tools": {
+      "title": "사용 가능한 8가지 도구",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "애니메이션 GIF를 PNG 스프라이트시트 그리드로 변환합니다. 선택적 배경 제거."
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "GIF에서 모든 프레임을 개별 PNG로 추출하여 ZIP 아카이브로 반환합니다."
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "여러 PNG를 하나의 스프라이트시트로 패킹합니다. 레이아웃: 그리드, 수평, 수직, 패킹됨(bin-pack). TexturePacker 호환 아틀라스 JSON을 지원합니다."
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "스프라이트시트를 개별 프레임으로 분할합니다. 선택적으로 아틀라스 JSON 또는 CSS 메타데이터를 출력합니다."
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "스프라이트시트 PNG를 애니메이션 GIF 또는 WebP로 변환합니다."
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "PNG 시퀀스를 애니메이션 GIF 또는 WebP로 조립합니다."
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "PNG 파일에서 투명한 가장자리를 제거합니다. 임계값 및 패딩 제어를 지원합니다."
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "런타임 구성을 반환합니다: 업로드 URL, 파일 크기 제한, TTL 및 인코딩 규칙. 다중 단계 워크플로우에서 먼저 호출합니다."
+      }
+    },
+    "limits": {
+      "title": "월간 무료 할당량",
+      "ops": "100개 작업 / GitHub 계정 / 월",
+      "fileSize": "최대 파일 크기: 파일당 20MB",
+      "ttl": "출력 URL은 1시간 후 만료됩니다",
+      "reset": "할당량은 매월 1일에 초기화됩니다"
+    }
+  },
+  "mcpPromo": {
+    "seo": {
+      "title": "Claude AI로도 이용 가능",
+      "content": "이 작업들은 Spritesheet Forge MCP 서버를 통해 이용할 수 있습니다 — Claude 같은 AI 에이전트가 자연어로 스프라이트시트 워크플로를 실행할 수 있는 Model Context Protocol 서버입니다.",
+      "content2": "한 번 연결하면 코딩 세션에서 Claude에게 직접 스프라이트 변환, 패킹, 트리밍, 분할을 요청할 수 있습니다 — 브라우저 전환이 필요 없습니다.",
+      "cta": "Spritesheet Forge MCP 보기"
+    },
+    "waitingRoom": {
+      "title": "Claude AI로 이 도구 사용하기",
+      "content": "이 작업은 Spritesheet Forge MCP 서버를 통해 이용할 수 있습니다. Claude Desktop 또는 Claude Code에 한 번 연결하면 자연어로 변환을 실행할 수 있습니다 — 브라우저 전환이 필요 없습니다.",
+      "cta": "MCP 서버에 대해 알아보기"
+    }
+  },
   "error": {
     "title": "페이지를 찾을 수 없습니다 — ClawStudiouo",
     "description": "찾고 있는 페이지가 존재하지 않습니다. 대신 무료 이미지 도구를 사용해 보세요.",
@@ -461,6 +556,20 @@
   },
   "home": {
     "title": "무료 온라인 개발 도구",
+    "subtitle": "게임 개발자와 디자이너를 위한 무료 브라우저 기반 도구 모음이 계속 늘어나고 있습니다.",
+    "whatsNew": {
+      "heading": "새로운 소식",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP 서버",
+          "description": "8개의 Spritesheet Forge 도구가 이제 AI 코딩 에이전트를 위한 MCP 서버로 제공됩니다 — Claude Desktop, VS Code 등에서 사용하세요."
+        },
+        "gifToSpriteBlogPost": {
+          "title": "블로그: GIF Spritesheet를 Unity 및 Godot에 가져오기",
+          "description": "생성된 스프라이트 시트를 Unity와 Godot Engine 모두에 가져오는 단계별 가이드입니다."
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF to Spritesheet",

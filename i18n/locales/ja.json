@@ -8,13 +8,18 @@
   },
   "nav": {
     "home": "ホーム",
-    "tools": "ツール"
+    "tools": "ツール",
+    "blog": "ブログ",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. All rights reserved.",
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "contact": "お問い合わせ",
+    "about": "私たちについて",
+    "blog": "ブログ",
+    "mcp": "MCP サーバー",
     "termsContent": {
       "intro": "ClawStudiouo を使用することにより、以下の規約に同意したものとみなされます：",
       "items": [
@@ -25,8 +30,7 @@
         "**責任の制限。** 提供者は、本ウェブサイトまたはそのツールの使用から生じるいかなる直接的、間接的、または結果的な損害についても責任を負いません。",
         "**変更。** これらの規約およびウェブサイトの機能は随時更新される場合があります。変更後の継続使用は、変更の承諾とみなされます。"
       ]
-    },
-    "about": "私たちについて"
+    }
   },
   "privacy": {
     "title": "プライバシーポリシー",
@@ -409,6 +413,97 @@
       ]
     }
   },
+  "blog": {
+    "seoTitle": "ブログ — ClawStudiouo",
+    "seoDescription": "ゲーム開発者やデザイナーがClawStudiouoツールを使用するためのチュートリアル、ガイド、およびワークフロー。",
+    "title": "ブログ",
+    "subtitle": "ゲーム開発者やデザイナー向けのチュートリアルとガイド。",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "GIF to Spritesheet for Unity and Godot",
+        "description": "完全なワークフローガイド：アニメーションGIFをUnityおよびGodotゲームエンジン向けに最適化されたスプライトシートに変換します。",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
+    "seoDescription": "Claude AIを使用して、GIF、スプライトの詰め込み、テクスチャアトラスの生成を自然言語コマンドで実行します。コード不要。",
+    "hero": {
+      "title": "Spritesheet Forge MCP Server",
+      "subtitle": "Claudeにスプライトシートワークフローを任せましょう。8つのツール。月100回の無料操作。GitHub認証。",
+      "ctaGitHub": "GitHubで表示",
+      "ctaDocs": "完全なドキュメント"
+    },
+    "quickStart": {
+      "title": "クイックスタート",
+      "endpoint": "MCPエンドポイント",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "これをclaude_desktop_config.jsonに追加します："
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "ターミナルでこのコマンドを1回実行します："
+      },
+      "auth": "認証はGitHub OAuth 2.1を使用します。MCPクライアントは初回使用時にブラウザログインを開きます。トークンは30日間有効です。"
+    },
+    "tools": {
+      "title": "利用可能な8つのツール",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "アニメーションGIFをPNGスプライトシートグリッドに変換します。背景除去オプション付き。"
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "GIFのすべてのフレームを個別のPNGとして抽出し、ZIPアーカイブとして返します。"
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "複数のPNGを1つのスプライトシートに詰め込みます。レイアウト：グリッド、水平、垂直、詰め込み（ビンパック）。TexturePackerコンパチブルアトラスJSON対応。"
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "スプライトシートを個別フレームに分割します。オプションでアトラスJSONまたはCSSメタデータを出力。"
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "スプライトシートPNGをアニメーションGIFまたはWebPに変換し直します。"
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "PNG画像シーケンスをアニメーションGIFまたはWebPに組み立てます。"
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "PNGファイルから透明な端を除去します。閾値とパディング制御に対応。"
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "ランタイム設定を返します：アップロードURL、ファイルサイズ制限、TTL、エンコーディングルール。マルチステップワークフローで最初に呼び出してください。"
+      }
+    },
+    "limits": {
+      "title": "無料月額クォーター",
+      "ops": "100操作 / GitHubアカウント / 月",
+      "fileSize": "最大ファイルサイズ：1ファイル20 MB",
+      "ttl": "出力URLは1時間後に期限切れ",
+      "reset": "クォータは毎月1日にリセットされます"
+    }
+  },
+  "mcpPromo": {
+    "seo": {
+      "title": "Claude AI でも利用可能",
+      "content": "これらの操作は Spritesheet Forge MCP サーバーを通じて利用できます — Claude などの AI エージェントが自然言語でスプライトシートのワークフローを実行できる Model Context Protocol サーバーです。",
+      "content2": "一度接続すれば、コーディングセッション中に Claude に直接スプライトの変換・パック・トリム・分割を依頼できます — ブラウザの切り替えは不要です。",
+      "cta": "Spritesheet Forge MCP を見る"
+    },
+    "waitingRoom": {
+      "title": "Claude AI でこのツールを使う",
+      "content": "この操作は Spritesheet Forge MCP サーバーを通じて利用できます。Claude Desktop または Claude Code に一度接続すれば、自然言語で変換を実行できます — ブラウザの切り替えは不要です。",
+      "cta": "MCP サーバーについて詳しく"
+    }
+  },
   "error": {
     "title": "ページが見つかりません — ClawStudiouo",
     "description": "お探しのページは存在しません。代わりに無料の画像ツールをお試しください。",
@@ -461,6 +556,20 @@
   },
   "home": {
     "title": "無料オンライン開発ツール",
+    "subtitle": "ゲーム開発者やデザイナーのための、ブラウザで使える無料ツールが増え続けるコレクションです。",
+    "whatsNew": {
+      "heading": "最新情報",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP サーバー",
+          "description": "8つの Spritesheet Forge ツールが MCP サーバーとして AI コーディングエージェントで利用可能になりました。Claude Desktop、VS Code などから使用できます。"
+        },
+        "gifToSpriteBlogPost": {
+          "title": "ブログ：GIF Spritesheet を Unity と Godot にインポート",
+          "description": "生成したスプライトシートを Unity と Godot Engine にインポートするステップバイステップガイドです。"
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF to Spritesheet",
