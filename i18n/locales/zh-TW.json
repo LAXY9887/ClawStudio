@@ -8,7 +8,9 @@
   },
   "nav": {
     "home": "首頁",
-    "tools": "工具"
+    "tools": "工具",
+    "blog": "部落格",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. 保留所有權利。",
@@ -16,6 +18,8 @@
     "privacy": "隱私政策",
     "contact": "聯絡我們",
     "about": "關於我們",
+    "blog": "部落格",
+    "mcp": "MCP 伺服器",
     "termsContent": {
       "intro": "使用 ClawStudiouo 即表示您同意以下條款：",
       "items": [
@@ -407,6 +411,84 @@
         "**壓縮的甜蜜點：** 品質設定 **80–85** 可在幾乎無肉眼可見差異的情況下，將檔案大小縮減多達 70%。低於 70 則會出現明顯的失真。",
         "**隱私加分：** 此編輯器所使用的 Canvas API 會自動移除輸出檔案中的所有 **EXIF 中繼資料**，包括 GPS 位置、裝置型號與拍攝時間。"
       ]
+    }
+  },
+  "blog": {
+    "seoTitle": "部落格 — ClawStudiouo",
+    "seoDescription": "提供遊戲開發者與設計師使用 ClawStudiouo 工具的教學、指南與工作流程。",
+    "title": "部落格",
+    "subtitle": "遊戲開發者與設計師的教學與指南。",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "GIF 轉 Spritesheet：Unity 和 Godot 完整工作流程",
+        "description": "完整的工作流程指南：將 GIF 動畫轉換為適用於 Unity 和 Godot 遊戲引擎的 Sprite Sheet。",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP 伺服器 — ClawStudiouo",
+    "seoDescription": "讓 Claude AI 透過自然語言指令處理 GIF 轉換、精靈圖打包和材質圖集生成，完全不需要寫程式。",
+    "hero": {
+      "title": "Spritesheet Forge MCP 伺服器",
+      "subtitle": "讓 Claude 處理你的 Spritesheet 工作流程。8 個工具，每月 100 次免費操作，GitHub 身份驗證。",
+      "ctaGitHub": "在 GitHub 上查看",
+      "ctaDocs": "完整文件"
+    },
+    "quickStart": {
+      "title": "快速開始",
+      "endpoint": "MCP 端點",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "將以下內容加入你的 claude_desktop_config.json："
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "在終端機執行以下指令："
+      },
+      "auth": "驗證使用 GitHub OAuth 2.1。首次使用時，MCP 客戶端會開啟瀏覽器登入頁面。Token 有效期為 30 天。"
+    },
+    "tools": {
+      "title": "8 個可用工具",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "將 GIF 動畫轉換為 PNG Spritesheet 格線。支援移除背景。"
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "將 GIF 的所有幀提取為個別 PNG，以 ZIP 壓縮包回傳。"
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "將多個 PNG 打包為一張 Spritesheet。支援格線、水平、垂直、裝箱排列，以及 TexturePacker 相容的 JSON 圖集。"
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "將 Spritesheet 分割為個別幀，可輸出 JSON 或 CSS 元數據。"
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "將 Spritesheet PNG 轉換回 GIF 或 WebP 動畫。"
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "將 PNG 序列組合為 GIF 或 WebP 動畫。"
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "移除 PNG 檔案的透明邊緣，支援閾值與邊距控制。"
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "回傳執行環境設定：上傳網址、檔案大小限制、TTL 和編碼規則。在多步驟工作流程中請先呼叫此工具。"
+      }
+    },
+    "limits": {
+      "title": "每月免費額度",
+      "ops": "100 次操作 / GitHub 帳號 / 月",
+      "fileSize": "每個檔案最大 20 MB",
+      "ttl": "輸出網址 1 小時後過期",
+      "reset": "額度於每月 1 日重置"
     }
   },
   "error": {
