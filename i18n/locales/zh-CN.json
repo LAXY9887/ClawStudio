@@ -8,13 +8,18 @@
   },
   "nav": {
     "home": "首页",
-    "tools": "工具"
+    "tools": "工具",
+    "blog": "博客",
+    "mcp": "MCP"
   },
   "footer": {
     "copyright": "© {year} ClawStudiouo. 保留所有权利。",
     "terms": "服务条款",
     "privacy": "隐私政策",
     "contact": "联系我们",
+    "about": "关于我们",
+    "blog": "博客",
+    "mcp": "MCP 服务器",
     "termsContent": {
       "intro": "使用 ClawStudiouo 即表示您同意以下条款：",
       "items": [
@@ -25,8 +30,7 @@
         "**责任限制。** 提供者不对因使用本网站或其工具而产生的任何直接、间接或后果性损害承担责任。",
         "**变更。** 这些条款和网站功能可能随时更新。在变更后继续使用即视为接受。"
       ]
-    },
-    "about": "关于我们"
+    }
   },
   "privacy": {
     "title": "隐私政策",
@@ -409,6 +413,97 @@
       ]
     }
   },
+  "blog": {
+    "seoTitle": "博客 — ClawStudiouo",
+    "seoDescription": "针对使用 ClawStudiouo 工具的游戏开发者与设计师的教程、指南与工作流程。",
+    "title": "博客",
+    "subtitle": "针对游戏开发者与设计师的教程与指南。",
+    "posts": {
+      "gifToSpritesheetUnityGodot": {
+        "title": "GIF 转 Spritesheet：Unity 和 Godot 工作流程",
+        "description": "完整的工作流程指南：将动画 GIF 转换为针对 Unity 和 Godot 游戏引擎优化的精灵表。",
+        "date": "2026-05-05"
+      }
+    }
+  },
+  "mcp": {
+    "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
+    "seoDescription": "通过自然语言命令使用 Claude AI 转换 GIF、打包精灵和生成纹理图集 — 无需编码。",
+    "hero": {
+      "title": "Spritesheet Forge MCP Server",
+      "subtitle": "让 Claude 处理您的精灵表工作流程。8 个工具。每月 100 次免费操作。GitHub 身份验证。",
+      "ctaGitHub": "在 GitHub 上查看",
+      "ctaDocs": "完整文档"
+    },
+    "quickStart": {
+      "title": "快速开始",
+      "endpoint": "MCP 端点",
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "将此添加到您的 claude_desktop_config.json："
+      },
+      "claudeCode": {
+        "title": "Claude Code CLI",
+        "description": "在您的终端中运行此命令一次："
+      },
+      "auth": "身份验证使用 GitHub OAuth 2.1。您的 MCP 客户端将在首次使用时打开浏览器登录。令牌有效期为 30 天。"
+    },
+    "tools": {
+      "title": "8 个可用工具",
+      "gifToSpritesheet": {
+        "title": "gif_to_spritesheet",
+        "description": "将动画 GIF 转换为 PNG 精灵表网格。支持可选的背景移除。"
+      },
+      "gifToFrames": {
+        "title": "gif_to_frames",
+        "description": "从 GIF 提取所有帧作为单独的 PNG 文件，返回为 ZIP 压缩包。"
+      },
+      "pngToSpritesheet": {
+        "title": "png_to_spritesheet",
+        "description": "将多个 PNG 打包为一个精灵表。支持的布局：网格、水平、垂直、紧凑打包（bin-pack）。支持 TexturePacker 兼容的图集 JSON。"
+      },
+      "splitSpritesheet": {
+        "title": "split_spritesheet",
+        "description": "将精灵表拆分为单个帧。可选地输出图集 JSON 或 CSS 元数据。"
+      },
+      "spritesheetToAnimation": {
+        "title": "spritesheet_to_animation",
+        "description": "将精灵表 PNG 转换回动画 GIF 或 WebP。"
+      },
+      "framesToAnimation": {
+        "title": "frames_to_animation",
+        "description": "将 PNG 序列组合成动画 GIF 或 WebP。"
+      },
+      "trimPng": {
+        "title": "trim_png",
+        "description": "从 PNG 文件移除透明边缘。支持阈值和填充控制。"
+      },
+      "serverInfo": {
+        "title": "server_info",
+        "description": "返回运行时配置：上传 URL、文件大小限制、TTL 和编码规则。在多步骤工作流程中首先调用此方法。"
+      }
+    },
+    "limits": {
+      "title": "免费月度配额",
+      "ops": "100 次操作 / GitHub 账户 / 月",
+      "fileSize": "最大文件大小：每个文件 20 MB",
+      "ttl": "输出 URL 在 1 小时后过期",
+      "reset": "配额在每月 1 日重置"
+    }
+  },
+  "mcpPromo": {
+    "seo": {
+      "title": "也可通过 Claude AI 使用",
+      "content": "这些功能可通过 Spritesheet Forge MCP server 使用 — 一个 Model Context Protocol 服务器，让 Claude 等 AI agent 能以自然语言执行精灵图工作流程。",
+      "content2": "连接一次，即可在编程过程中直接请 Claude 转换、打包、裁切或分割精灵图 — 无需切换浏览器。",
+      "cta": "查看 Spritesheet Forge MCP"
+    },
+    "waitingRoom": {
+      "title": "搭配 Claude AI 使用此工具",
+      "content": "此功能可通过 Spritesheet Forge MCP server 使用。将它连接到 Claude Desktop 或 Claude Code 一次，即可用自然语言执行转换 — 无需切换浏览器。",
+      "cta": "了解 MCP server"
+    }
+  },
   "error": {
     "title": "页面未找到 — ClawStudiouo",
     "description": "你要找的页面不存在。试试我们的免费图片工具吧。",
@@ -461,6 +556,20 @@
   },
   "home": {
     "title": "免费在线开发工具",
+    "subtitle": "持续增长的免费浏览器工具集，专为游戏开发者与设计师打造。",
+    "whatsNew": {
+      "heading": "最新消息",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP 服务器",
+          "description": "8 个 Spritesheet Forge 工具现已可通过 MCP 服务器供 AI 编程代理使用，支持 Claude Desktop、VS Code 等。"
+        },
+        "gifToSpriteBlogPost": {
+          "title": "博客：将 GIF Spritesheet 导入 Unity 与 Godot",
+          "description": "逐步指南，教你将生成的 Sprite Sheet 导入 Unity 和 Godot Engine。"
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF 转 Spritesheet",
