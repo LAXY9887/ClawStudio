@@ -16,14 +16,6 @@ const ENTRIES: WhatsNewEntry[] = [
     to: '/mcp',
     date: '2026-05-05',
     isNew: true
-  },
-  {
-    key: 'gifToSpriteBlogPost',
-    type: 'blog',
-    icon: 'i-lucide-book-open',
-    to: '/blog/gif-to-spritesheet-unity-godot',
-    date: '2026-05-05',
-    isNew: true
   }
 ]
 
