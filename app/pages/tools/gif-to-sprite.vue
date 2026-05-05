@@ -289,6 +289,7 @@ onUnmounted(() => {
     prefix="gifToSprite"
     :seo-sections="seoSections"
     api-url="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites"
+    show-mcp-promo
   >
     <template #workspace>
       <!-- Mode Selector -->

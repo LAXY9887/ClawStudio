@@ -426,6 +426,7 @@ onUnmounted(() => {
     :seo-sections="seoSections"
     api-url="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites"
     tutorial-url="https://rapidapi.com/lxya98874322688423/api/easy-gif-to-sprites/tutorials/how-to-use-easy-png-to-gif-1"
+    show-mcp-promo
   >
     <template #workspace>
       <!-- Mode Selector -->

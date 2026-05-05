@@ -9,6 +9,7 @@ const props = defineProps<{
   apiHighlightKeys?: string[]
   apiUrl?: string
   tutorialUrl?: string
+  showMcpPromo?: boolean
 }>()
 
 // API promo is shared across all tools
@@ -62,6 +63,30 @@ const apiFeatureKeys = props.apiHighlightKeys || ['endpoints', 'input', 'params'
             size="lg"
           />
         </div>
+      </section>
+
+      <!-- MCP Promotion -->
+      <section v-if="showMcpPromo" class="border border-primary/30 rounded-lg p-6 space-y-4">
+        <div class="flex items-center gap-2">
+          <UIcon name="i-lucide-cpu" class="text-xl text-primary shrink-0" />
+          <h2 class="text-xl font-bold">
+            {{ t('mcpPromo.seo.title') }}
+          </h2>
+        </div>
+        <p class="text-muted leading-relaxed">
+          {{ t('mcpPromo.seo.content') }}
+        </p>
+        <p class="text-muted leading-relaxed">
+          {{ t('mcpPromo.seo.content2') }}
+        </p>
+        <UButton
+          :label="t('mcpPromo.seo.cta')"
+          icon="i-lucide-arrow-right"
+          to="/mcp"
+          color="primary"
+          variant="outline"
+          size="lg"
+        />
       </section>
 
       <!-- Dynamic Sections -->

@@ -11,6 +11,7 @@ const props = defineProps<{
   apiHighlightKeys?: string[]
   apiUrl?: string
   tutorialUrl?: string
+  showMcpPromo?: boolean
 }>()
 
 useSeoMeta({
@@ -47,5 +48,6 @@ useSeoMeta({
     :api-highlight-keys="apiHighlightKeys"
     :api-url="apiUrl"
     :tutorial-url="tutorialUrl"
+    :show-mcp-promo="showMcpPromo"
   />
 </template>
