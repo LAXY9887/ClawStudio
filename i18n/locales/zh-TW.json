@@ -491,6 +491,19 @@
       "reset": "額度於每月 1 日重置"
     }
   },
+  "mcpPromo": {
+    "seo": {
+      "title": "也可透過 Claude AI 使用",
+      "content": "這些功能可透過 Spritesheet Forge MCP server 使用 — 一個 Model Context Protocol 伺服器，讓 Claude 等 AI agent 能以自然語言執行精靈圖工作流程。",
+      "content2": "連接一次，即可在程式開發過程中直接請 Claude 轉換、打包、裁切或分割精靈圖 — 無需切換瀏覽器。",
+      "cta": "查看 Spritesheet Forge MCP"
+    },
+    "waitingRoom": {
+      "title": "搭配 Claude AI 使用此工具",
+      "content": "此功能可透過 Spritesheet Forge MCP server 使用。將它連接到 Claude Desktop 或 Claude Code 一次，即可用自然語言執行轉換 — 無需切換瀏覽器。",
+      "cta": "了解 MCP server"
+    }
+  },
   "error": {
     "title": "找不到頁面 — ClawStudiouo",
     "description": "您要找的頁面不存在，不妨試試我們的免費圖片工具。",
