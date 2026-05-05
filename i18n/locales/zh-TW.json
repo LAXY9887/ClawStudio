@@ -543,6 +543,20 @@
   },
   "home": {
     "title": "免費線上開發工具",
+    "subtitle": "持續增長的免費瀏覽器工具集，專為遊戲開發者與設計師打造。",
+    "whatsNew": {
+      "heading": "最新消息",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP 伺服器",
+          "description": "8 個 Spritesheet Forge 工具現已可透過 MCP 伺服器供 AI 編碼代理使用，支援 Claude Desktop、VS Code 等。"
+        },
+        "gifToSpriteBlogPost": {
+          "title": "部落格：將 GIF Spritesheet 匯入 Unity 與 Godot",
+          "description": "逐步指南，教你將生成的 Sprite Sheet 匯入 Unity 和 Godot Engine。"
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF 轉 Spritesheet",

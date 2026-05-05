@@ -543,6 +543,20 @@
   },
   "home": {
     "title": "Free Online Dev Tools",
+    "subtitle": "A growing collection of free browser-based tools for game developers and designers.",
+    "whatsNew": {
+      "heading": "What's New",
+      "items": {
+        "spritesheetForgeMcp": {
+          "title": "Spritesheet Forge MCP Server",
+          "description": "All 8 Spritesheet Forge tools are now available as an MCP server for AI coding agents — use them from Claude Desktop, VS Code, and more."
+        },
+        "gifToSpriteBlogPost": {
+          "title": "Blog: Import GIF Spritesheet into Unity and Godot",
+          "description": "Step-by-step guide to importing your generated sprite sheets into both Unity and Godot Engine."
+        }
+      }
+    },
     "tools": {
       "gifToSprite": {
         "title": "GIF to Spritesheet",
