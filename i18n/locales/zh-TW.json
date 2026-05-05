@@ -419,9 +419,9 @@
     "title": "部落格",
     "subtitle": "遊戲開發者與設計師的教學與指南。",
     "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "GIF 轉 Spritesheet：Unity 和 Godot 完整工作流程",
-        "description": "完整的工作流程指南：將 GIF 動畫轉換為適用於 Unity 和 Godot 遊戲引擎的 Sprite Sheet。",
+      "spritesheetForgeMcpDemo": {
+        "title": "GIF 到 Spritesheet 的 AI 工作流：Claude + MCP 實機展示",
+        "description": "看 Claude 透過 Spritesheet Forge MCP 伺服器，用對話把 GIF 動畫轉成 Spritesheet 和 TexturePacker JSON Atlas，全程無需手動操作。",
         "date": "2026-05-05"
       }
     }
@@ -565,8 +565,8 @@
           "description": "8 個 Spritesheet Forge 工具現已可透過 MCP 伺服器供 AI 編碼代理使用，支援 Claude Desktop、VS Code 等。"
         },
         "gifToSpriteBlogPost": {
-          "title": "部落格：將 GIF Spritesheet 匯入 Unity 與 Godot",
-          "description": "逐步指南，教你將生成的 Sprite Sheet 匯入 Unity 和 Godot Engine。"
+          "title": "部落格：Claude + MCP 實機展示 GIF 轉 Spritesheet 工作流",
+          "description": "Spritesheet Forge MCP 實機展示 — 看 Claude 透過對話把 GIF 轉成 Spritesheet 並產生 TexturePacker JSON Atlas。"
         }
       }
     },

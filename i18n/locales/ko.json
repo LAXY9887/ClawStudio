@@ -419,9 +419,9 @@
     "title": "블로그",
     "subtitle": "게임 개발자와 디자이너를 위한 튜토리얼 및 가이드입니다.",
     "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "Unity와 Godot을 위한 GIF to Spritesheet",
-        "description": "완전한 워크플로우 가이드: 애니메이션 GIF를 Unity와 Godot 게임 엔진에 최적화된 스프라이트 시트로 변환합니다.",
+      "spritesheetForgeMcpDemo": {
+        "title": "GIF에서 게임용 스프라이트시트까지: Claude + MCP 라이브 데모",
+        "description": "Claude 가 Spritesheet Forge MCP 서버를 사용해 GIF 애니메이션을 스프라이트시트와 TexturePacker 호환 Atlas JSON 으로 변환하는 과정을 확인하세요 — 수동 도구 없이 가능합니다.",
         "date": "2026-05-05"
       }
     }
@@ -565,8 +565,8 @@
           "description": "8개의 Spritesheet Forge 도구가 이제 AI 코딩 에이전트를 위한 MCP 서버로 제공됩니다 — Claude Desktop, VS Code 등에서 사용하세요."
         },
         "gifToSpriteBlogPost": {
-          "title": "블로그: GIF Spritesheet를 Unity 및 Godot에 가져오기",
-          "description": "생성된 스프라이트 시트를 Unity와 Godot Engine 모두에 가져오는 단계별 가이드입니다."
+          "title": "블로그: Claude + MCP로 GIF를 스프라이트시트로 변환",
+          "description": "Spritesheet Forge MCP 라이브 데모 — Claude 가 자연스러운 대화를 통해 GIF 를 스프라이트시트로 변환하고 TexturePacker Atlas JSON 을 생성하는 과정을 확인하세요."
         }
       }
     },

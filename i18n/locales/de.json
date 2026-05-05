@@ -419,9 +419,9 @@
     "title": "Blog",
     "subtitle": "Tutorials und Anleitungen für Spieleentwickler und Designer.",
     "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "GIF zu Spritesheet für Unity und Godot",
-        "description": "Eine vollständige Workflow-Anleitung: Konvertieren Sie animierte GIFs in optimierte Sprite Sheets für Unity- und Godot-Spieleengines.",
+      "spritesheetForgeMcpDemo": {
+        "title": "Von GIF zum spielfertigen Spritesheet: Ein Claude + MCP Live-Demo",
+        "description": "Sehen Sie, wie Claude mithilfe des Spritesheet Forge MCP-Servers eine GIF-Animation in ein Spritesheet und TexturePacker-kompatibles Atlas-JSON umwandelt — ohne manuelle Tools.",
         "date": "2026-05-05"
       }
     }
@@ -565,8 +565,8 @@
           "description": "Alle 8 Spritesheet Forge Tools sind jetzt als MCP-Server für KI-Coding-Agenten verfügbar — nutzbar aus Claude Desktop, VS Code und mehr."
         },
         "gifToSpriteBlogPost": {
-          "title": "Blog: GIF-Spritesheet in Unity und Godot importieren",
-          "description": "Schritt-für-Schritt-Anleitung zum Importieren Ihrer generierten Sprite-Sheets in Unity und Godot Engine."
+          "title": "Blog: GIF mit Claude + MCP in Spritesheet umwandeln",
+          "description": "Eine Live-Demo von Spritesheet Forge MCP — sehen Sie, wie Claude per natürlicher Konversation ein GIF in ein Spritesheet umwandelt und ein TexturePacker-Atlas-JSON generiert."
         }
       }
     },

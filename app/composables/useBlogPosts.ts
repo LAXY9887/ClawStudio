@@ -10,11 +10,11 @@ export interface BlogPost {
 
 const POSTS: BlogPost[] = [
   {
-    slug: 'gif-to-spritesheet-unity-godot',
-    titleKey: 'blog.posts.gifToSpritesheetUnityGodot.title',
-    descriptionKey: 'blog.posts.gifToSpritesheetUnityGodot.description',
+    slug: 'spritesheet-forge-mcp-demo',
+    titleKey: 'blog.posts.spritesheetForgeMcpDemo.title',
+    descriptionKey: 'blog.posts.spritesheetForgeMcpDemo.description',
     date: '2026-05-05',
-    readingTime: 8,
+    readingTime: 6,
     tag: 'tutorial'
   }
 ]
