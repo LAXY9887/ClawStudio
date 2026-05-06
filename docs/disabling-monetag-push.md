@@ -59,15 +59,9 @@ That is the whole toggle. Everything else downstream reacts to it:
 
 ## Re-enabling later
 
-Delete (or comment out) the `NUXT_PUBLIC_MONETAG_PUSH_SRC` override in `apphosting.yaml` and redeploy. The default value in [nuxt.config.ts](../nuxt.config.ts) kicks back in, `<head>` starts injecting the tag script again, and `/sw.js` returns the live Monetag SW.
+> **不建議重新啟用。** Monetag 已從 ClawStudio 的廣告策略中**永久棄用**——詳見 [ad-networks-comparison.md](./ad-networks-comparison.md) 的棄用警示。本節保留僅供歷史參考，不應作為操作指引。
 
-No other changes needed — the source of truth (SW domain, zone ID, tag src) is always preserved in `nuxt.config.ts`. The yaml override is purely a runtime switch.
-
-## What about monetag verification?
-
-Monetag originally asked for a `sw.js` file in the site root as a one-time domain ownership check. Once verification is complete, Monetag does **not** re-check the contents of `sw.js` on an ongoing basis. The tombstone version that the server route returns while disabled is still valid JavaScript served at the expected path, so verification remains intact.
-
-If Monetag dashboard ever flags the site as needing re-verification, temporarily re-enable Push (set `NUXT_PUBLIC_MONETAG_PUSH_SRC` back to the default value) and re-run verification, then disable again.
+如果有特殊歷史驗證需求，可刪除（或註解）`apphosting.yaml` 中的 `NUXT_PUBLIC_MONETAG_PUSH_SRC` override，並重新部署。但這應該屬於極少見的情況，預設行為應該是維持目前的關閉狀態。
 
 ## What NOT to do
 

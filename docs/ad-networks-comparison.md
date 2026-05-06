@@ -1,8 +1,12 @@
 # Ad Networks Comparison Reference
 
+> **⚠️ 歷史研究文件（2026-04 製作）。**
+> ClawStudio 目前的廣告策略已收斂為**僅使用 Google AdSense**。Monetag、Adsterra 及其他第三方廣告網路均已棄用且不會重新導入。
+> 本文件保留作為廣告生態研究的歷史紀錄，**不代表現行策略**。實際的廣告整合請見 [ad-integration.md](./ad-integration.md)。
+
 廣告網路選擇參考文件，依「月流量門檻」分組。針對 ClawStudio（工具型網站，月流量起步階段）的策略選擇而整理。
 
-**最後更新：** 2026-04-30
+**最後更新：** 2026-04-30（此後策略已調整，見上方警示）
 **資訊來源：** 各網路官方支援文件 + 2026 年產業 review 文章（見底部 Sources）
 
 ---
@@ -11,7 +15,7 @@
 
 | 階段 | 流量 | 建議廣告網路 |
 |---|---|---|
-| **起步** | < 10K 月 PV | Monetag + Adsterra（已移除，待流量成長後重新評估） |
+| **起步** | < 10K 月 PV | ~~Monetag + Adsterra~~（已棄用，不再採用第三方廣告網路） |
 | **成長** | 10K–50K 月 PV | 加 Monumetric |
 | **穩定** | 50K+ 月 sessions | 評估 Mediavine（要轉內容站） |
 | **規模化** | 100K+ 月 PV + blog 內容 | 重啟 AdSense / Clickio / Raptive / Ezoic |
@@ -28,18 +32,19 @@
 | 廣告網路 | 內容門檻 | 工具站友好度 | RPM 級距 | 備註 |
 |---|---|---|---|---|
 | **Google AdSense** | ⚠️ 嚴格內容質量審查 | ❌ 純工具站難過審 | $5–20 | 「缺乏價值內容」是常見拒絕理由；要有真內容（blog）支援 |
-| **Monetag**（前 PropellerAds） | 無 | ✅ | $1–5 | 即時批准；多元廣告格式（push、interstitial、native）；ClawStudio 主力 |
-| **Adsterra** | 無 | ✅ | $1–5 | 1-2 天批准；display / native / popup / social bar；接受工具站，**可與 Monetag 並行** |
+| **Monetag**（前 PropellerAds） | 無 | ✅ | $1–5 | 即時批准；多元廣告格式（push、interstitial、native）；~~ClawStudio 主力~~ **已棄用** |
+| **Adsterra** | 無 | ✅ | $1–5 | 1-2 天批准；display / native / popup / social bar；接受工具站；**已棄用** |
 | **PopAds** | 無 | 🟡 | $1–3 | Pop-under only，UX 侵入性強，不建議當主力 |
 | **PopCash** | 無 | 🟡 | $1–3 | Pop-under 為主，日結，門檻 $10 |
 | **ExoClick** | 無 | ⚠️ | $1–4 | 接受工具站但廣告主池偏成人/博弈，**有品牌風險** |
 | **Hilltopads** | 無 | ✅ | $1–5 | Pop-under 專長，工具站常見搭配 |
 
-### 推薦組合：Monetag + Adsterra
+### ~~推薦組合：Monetag + Adsterra~~（歷史紀錄）
 
-兩家都允許並行（不要求獨家），可做 ad mediation。整體 fill rate 與 RPM 比單跑高 30-50%。
+> **此節為歷史研究階段的構想，不代表 ClawStudio 現行策略。**
+> 兩家原本都允許並行（不要求獨家），可做 ad mediation，整體 fill rate 與 RPM 比單跑高 30-50%。
 
-> **ClawStudio 現況（2026-05）**：Monetag + Adsterra 已暫時移除，目前僅保留 AdSense 基礎建設（`adsenseEnabled: false`，待 Google 審核通過）。待流量成長後重新評估是否回頭加入。
+> **ClawStudio 現況（2026-05）**：Monetag、Adsterra 及所有第三方廣告網路已**永久棄用**並從程式碼中完整移除。專案僅保留 Google AdSense 的基礎架構（`adsenseEnabled: false`，待 Google 審核通過後啟用），不再考慮回頭整合其他網路。
 
 ---
 
