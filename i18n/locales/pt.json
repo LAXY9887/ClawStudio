@@ -560,6 +560,10 @@
         "gifToSpriteBlogPost": {
           "title": "Blog: Converta GIF em Spritesheet com Claude + MCP",
           "description": "Uma demonstração ao vivo do Spritesheet Forge MCP — veja o Claude converter um GIF em um spritesheet e gerar um atlas JSON do TexturePacker por meio de conversa natural."
+        },
+        "buildingRemoteMcpServer": {
+          "title": "Blog: Guia completo para construir um servidor MCP remoto",
+          "description": "Guia completo para hospedar um servidor MCP no Cloudflare Workers e GCP Cloud Run — OAuth 2.1, preparação de arquivos e como manter o backend privado."
         }
       }
     },

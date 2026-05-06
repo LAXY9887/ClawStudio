@@ -560,6 +560,10 @@
         "gifToSpriteBlogPost": {
           "title": "Блог: преобразование GIF в спрайтлист с Claude + MCP",
           "description": "Живая демонстрация Spritesheet Forge MCP — смотрите, как Claude через естественный разговор конвертирует GIF в спрайтлист и генерирует Atlas JSON для TexturePacker."
+        },
+        "buildingRemoteMcpServer": {
+          "title": "Блог: Полное руководство по созданию удалённого MCP сервера",
+          "description": "Полное руководство по размещению MCP сервера на Cloudflare Workers и GCP Cloud Run — OAuth 2.1, промежуточное хранилище файлов и защита кода бэкенда."
         }
       }
     },

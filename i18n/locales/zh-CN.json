@@ -560,6 +560,10 @@
         "gifToSpriteBlogPost": {
           "title": "博客：用 Claude + MCP 将 GIF 转成 Spritesheet",
           "description": "Spritesheet Forge MCP 实机演示 — 看 Claude 透过自然对话将 GIF 转成 Spritesheet 并生成 TexturePacker Atlas JSON。"
+        },
+        "buildingRemoteMcpServer": {
+          "title": "博客：构建 Remote MCP Server 完整指南",
+          "description": "完整指南：在 Cloudflare Workers 和 GCP Cloud Run 上构建 Remote MCP Server，涵盖 OAuth 2.1、文件暂存与保护后端代码。"
         }
       }
     },

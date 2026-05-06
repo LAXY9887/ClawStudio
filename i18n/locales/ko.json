@@ -560,6 +560,10 @@
         "gifToSpriteBlogPost": {
           "title": "블로그: Claude + MCP로 GIF를 스프라이트시트로 변환",
           "description": "Spritesheet Forge MCP 라이브 데모 — Claude 가 자연스러운 대화를 통해 GIF 를 스프라이트시트로 변환하고 TexturePacker Atlas JSON 을 생성하는 과정을 확인하세요."
+        },
+        "buildingRemoteMcpServer": {
+          "title": "블로그: Remote MCP 서버 구축 완전 가이드",
+          "description": "Cloudflare Workers와 GCP Cloud Run에서 MCP 서버를 호스팅하는 완전 가이드 — OAuth 2.1, 파일 스테이징, 백엔드를 비공개로 유지하는 방법을 다룹니다."
         }
       }
     },
