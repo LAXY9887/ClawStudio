@@ -28,7 +28,7 @@ if (!post.value) {
         class="prose prose-neutral dark:prose-invert max-w-none
                prose-headings:font-semibold prose-h2:text-xl
                prose-img:rounded-lg prose-img:border prose-img:border-muted prose-img:w-full
-               prose-pre:bg-muted/30 prose-code:text-primary prose-code:before:content-none prose-code:after:content-none
+               prose-pre:bg-muted/30 prose-pre:overflow-x-auto prose-code:text-primary prose-code:before:content-none prose-code:after:content-none
                prose-a:text-primary prose-a:underline prose-a:underline-offset-2"
       />
     </template>

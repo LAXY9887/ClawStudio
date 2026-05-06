@@ -19,7 +19,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto px-4 py-10 space-y-8">
+  <div class="max-w-5xl mx-auto px-4 py-10 space-y-8">
     <!-- Breadcrumb -->
     <nav class="flex items-center gap-1.5 text-sm text-muted flex-wrap">
       <NuxtLink :to="localePath('/')" class="hover:text-primary">
