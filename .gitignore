@@ -4,6 +4,10 @@
 # Claude Code local config
 .claude/
 
+# Agent skills — managed by plugin installer, not hand-maintained
+.agents/
+skills/
+
 # Nuxt dev/build outputs
 .output
 .data
