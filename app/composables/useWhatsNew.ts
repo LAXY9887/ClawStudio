@@ -24,6 +24,14 @@ const ENTRIES: WhatsNewEntry[] = [
     to: '/blog/spritesheet-forge-mcp-demo',
     date: '2026-05-05',
     isNew: true
+  },
+  {
+    key: 'buildingRemoteMcpServer',
+    type: 'blog',
+    icon: 'i-lucide-book-open',
+    to: '/blog/building-remote-mcp-server',
+    date: '2026-05-06',
+    isNew: true
   }
 ]
 
