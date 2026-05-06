@@ -556,14 +556,6 @@
         "spritesheetForgeMcp": {
           "title": "Spritesheet Forge MCP サーバー",
           "description": "8つの Spritesheet Forge ツールが MCP サーバーとして AI コーディングエージェントで利用可能になりました。Claude Desktop、VS Code などから使用できます。"
-        },
-        "gifToSpriteBlogPost": {
-          "title": "ブログ：Claude + MCP で GIF をスプライトシートに変換",
-          "description": "Spritesheet Forge MCP のライブデモ — Claude が自然な会話を通じて GIF をスプライトシートに変換し、TexturePacker Atlas JSON を生成する様子をご覧ください。"
-        },
-        "buildingRemoteMcpServer": {
-          "title": "ブログ：Remote MCP サーバー構築完全ガイド",
-          "description": "Cloudflare Workers と GCP Cloud Run で MCP サーバーをホストする完全ガイド — OAuth 2.1、ファイルステージング、バックエンドをプライベートに保つ方法を解説します。"
         }
       }
     },
@@ -676,6 +668,10 @@
         "title": "画像エディター",
         "description": "ブラウザ内で画像をトリミング・リサイズ・圧縮・回転・反転できます。アップロード不要 — 100% プライバシー保護。"
       }
+    },
+    "latestBlog": {
+      "heading": "ブログの最新記事",
+      "viewAll": "すべての記事を見る"
     }
   },
   "gifToSprite": {

@@ -556,14 +556,6 @@
         "spritesheetForgeMcp": {
           "title": "Spritesheet Forge MCP 服务器",
           "description": "8 个 Spritesheet Forge 工具现已可通过 MCP 服务器供 AI 编程代理使用，支持 Claude Desktop、VS Code 等。"
-        },
-        "gifToSpriteBlogPost": {
-          "title": "博客：用 Claude + MCP 将 GIF 转成 Spritesheet",
-          "description": "Spritesheet Forge MCP 实机演示 — 看 Claude 透过自然对话将 GIF 转成 Spritesheet 并生成 TexturePacker Atlas JSON。"
-        },
-        "buildingRemoteMcpServer": {
-          "title": "博客：构建 Remote MCP Server 完整指南",
-          "description": "完整指南：在 Cloudflare Workers 和 GCP Cloud Run 上构建 Remote MCP Server，涵盖 OAuth 2.1、文件暂存与保护后端代码。"
         }
       }
     },
@@ -676,6 +668,10 @@
         "title": "图片编辑器",
         "description": "在浏览器中裁剪、调整大小、压缩、旋转、翻转图片。无需上传服务器 — 100% 私密。"
       }
+    },
+    "latestBlog": {
+      "heading": "最新文章",
+      "viewAll": "查看全部文章"
     }
   },
   "gifToSprite": {
