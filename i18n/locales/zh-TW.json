@@ -556,16 +556,12 @@
         "spritesheetForgeMcp": {
           "title": "Spritesheet Forge MCP 伺服器",
           "description": "8 個 Spritesheet Forge 工具現已可透過 MCP 伺服器供 AI 編碼代理使用，支援 Claude Desktop、VS Code 等。"
-        },
-        "gifToSpriteBlogPost": {
-          "title": "部落格：Claude + MCP 實機展示 GIF 轉 Spritesheet 工作流",
-          "description": "Spritesheet Forge MCP 實機展示 — 看 Claude 透過對話把 GIF 轉成 Spritesheet 並產生 TexturePacker JSON Atlas。"
-        },
-        "buildingRemoteMcpServer": {
-          "title": "部落格：建置 Remote MCP Server 完整指南",
-          "description": "完整指南：在 Cloudflare Workers 和 GCP Cloud Run 上建置 Remote MCP Server，涵蓋 OAuth 2.1、檔案暫存與保護後端程式碼。"
         }
       }
+    },
+    "latestBlog": {
+      "heading": "最新文章",
+      "viewAll": "查看全部文章"
     },
     "tools": {
       "gifToSprite": {

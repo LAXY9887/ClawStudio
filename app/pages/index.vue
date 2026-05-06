@@ -15,6 +15,16 @@ const TYPE_COLORS: Record<string, 'primary' | 'info' | 'success'> = {
   blog: 'info',
   tool: 'success'
 }
+
+const TAG_COLORS: Record<string, 'primary' | 'info' | 'success'> = {
+  tutorial: 'success',
+  guide: 'primary',
+  news: 'info'
+}
+
+const { data: latestPosts } = await useAsyncData('home-latest-posts', () =>
+  queryCollection('blog').where('path', 'LIKE', '/en/blog/%').order('date', 'DESC').limit(4).all()
+)
 </script>
 
 <template>
@@ -75,6 +85,58 @@ const TYPE_COLORS: Record<string, 'primary' | 'info' | 'success'> = {
                 <p class="text-xs text-muted">
                   {{ entry.date }}
                 </p>
+              </div>
+            </UCard>
+          </NuxtLink>
+        </div>
+      </section>
+
+      <!-- Latest Blog Posts -->
+      <section v-if="latestPosts && latestPosts.length > 0">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <UIcon name="i-lucide-book-open" class="text-xl text-primary" />
+            <h2 class="text-xl font-semibold">
+              {{ t('home.latestBlog.heading') }}
+            </h2>
+          </div>
+          <NuxtLink
+            :to="localePath('/blog')"
+            class="text-sm text-primary hover:underline flex items-center gap-1"
+          >
+            {{ t('home.latestBlog.viewAll') }}
+            <UIcon name="i-lucide-arrow-right" class="text-sm" />
+          </NuxtLink>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <NuxtLink
+            v-for="post in latestPosts"
+            :key="post.stem"
+            :to="localePath(`/blog/${post.stem?.split('/').pop()}`)"
+            class="group block"
+          >
+            <UCard class="h-full transition-shadow group-hover:shadow-lg">
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <UBadge
+                    :label="post.tag"
+                    :color="TAG_COLORS[post.tag] ?? 'primary'"
+                    variant="subtle"
+                  />
+                  <span class="text-xs text-muted">{{ post.date }}</span>
+                  <span class="text-xs text-muted">· {{ post.readingTime }} min</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <UIcon name="i-lucide-book-open" class="text-2xl text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h3 class="font-semibold">
+                      {{ post.title }}
+                    </h3>
+                    <p class="text-sm text-muted mt-1">
+                      {{ post.description }}
+                    </p>
+                  </div>
+                </div>
               </div>
             </UCard>
           </NuxtLink>
