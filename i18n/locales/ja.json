@@ -417,14 +417,7 @@
     "seoTitle": "ブログ — ClawStudiouo",
     "seoDescription": "ゲーム開発者やデザイナーがClawStudiouoツールを使用するためのチュートリアル、ガイド、およびワークフロー。",
     "title": "ブログ",
-    "subtitle": "ゲーム開発者やデザイナー向けのチュートリアルとガイド。",
-    "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "GIF to Spritesheet for Unity and Godot",
-        "description": "完全なワークフローガイド：アニメーションGIFをUnityおよびGodotゲームエンジン向けに最適化されたスプライトシートに変換します。",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "ゲーム開発者やデザイナー向けのチュートリアルとガイド。"
   },
   "mcp": {
     "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
@@ -565,8 +558,12 @@
           "description": "8つの Spritesheet Forge ツールが MCP サーバーとして AI コーディングエージェントで利用可能になりました。Claude Desktop、VS Code などから使用できます。"
         },
         "gifToSpriteBlogPost": {
-          "title": "ブログ：GIF Spritesheet を Unity と Godot にインポート",
-          "description": "生成したスプライトシートを Unity と Godot Engine にインポートするステップバイステップガイドです。"
+          "title": "ブログ：Claude + MCP で GIF をスプライトシートに変換",
+          "description": "Spritesheet Forge MCP のライブデモ — Claude が自然な会話を通じて GIF をスプライトシートに変換し、TexturePacker Atlas JSON を生成する様子をご覧ください。"
+        },
+        "buildingRemoteMcpServer": {
+          "title": "ブログ：Remote MCP サーバー構築完全ガイド",
+          "description": "Cloudflare Workers と GCP Cloud Run で MCP サーバーをホストする完全ガイド — OAuth 2.1、ファイルステージング、バックエンドをプライベートに保つ方法を解説します。"
         }
       }
     },

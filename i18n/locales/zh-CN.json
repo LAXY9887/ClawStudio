@@ -417,14 +417,7 @@
     "seoTitle": "博客 — ClawStudiouo",
     "seoDescription": "针对使用 ClawStudiouo 工具的游戏开发者与设计师的教程、指南与工作流程。",
     "title": "博客",
-    "subtitle": "针对游戏开发者与设计师的教程与指南。",
-    "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "GIF 转 Spritesheet：Unity 和 Godot 工作流程",
-        "description": "完整的工作流程指南：将动画 GIF 转换为针对 Unity 和 Godot 游戏引擎优化的精灵表。",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "针对游戏开发者与设计师的教程与指南。"
   },
   "mcp": {
     "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
@@ -565,8 +558,12 @@
           "description": "8 个 Spritesheet Forge 工具现已可通过 MCP 服务器供 AI 编程代理使用，支持 Claude Desktop、VS Code 等。"
         },
         "gifToSpriteBlogPost": {
-          "title": "博客：将 GIF Spritesheet 导入 Unity 与 Godot",
-          "description": "逐步指南，教你将生成的 Sprite Sheet 导入 Unity 和 Godot Engine。"
+          "title": "博客：用 Claude + MCP 将 GIF 转成 Spritesheet",
+          "description": "Spritesheet Forge MCP 实机演示 — 看 Claude 透过自然对话将 GIF 转成 Spritesheet 并生成 TexturePacker Atlas JSON。"
+        },
+        "buildingRemoteMcpServer": {
+          "title": "博客：构建 Remote MCP Server 完整指南",
+          "description": "完整指南：在 Cloudflare Workers 和 GCP Cloud Run 上构建 Remote MCP Server，涵盖 OAuth 2.1、文件暂存与保护后端代码。"
         }
       }
     },

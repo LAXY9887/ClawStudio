@@ -417,14 +417,7 @@
     "seoTitle": "Блог — ClawStudiouo",
     "seoDescription": "Уроки, руководства и рабочие процессы для разработчиков и дизайнеров игр, использующих инструменты ClawStudiouo.",
     "title": "Блог",
-    "subtitle": "Уроки и руководства для разработчиков и дизайнеров игр.",
-    "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "GIF в Spritesheet для Unity и Godot",
-        "description": "Полное руководство рабочего процесса: преобразование анимированных GIF в спрайт-листы, оптимизированные для игровых движков Unity и Godot.",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "Уроки и руководства для разработчиков и дизайнеров игр."
   },
   "mcp": {
     "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",
@@ -565,8 +558,12 @@
           "description": "Все 8 инструментов Spritesheet Forge теперь доступны как MCP-сервер для ИИ-агентов разработки — используйте их из Claude Desktop, VS Code и других."
         },
         "gifToSpriteBlogPost": {
-          "title": "Блог: импорт GIF-спрайтлиста в Unity и Godot",
-          "description": "Пошаговое руководство по импорту сгенерированных спрайт-листов в Unity и Godot Engine."
+          "title": "Блог: преобразование GIF в спрайтлист с Claude + MCP",
+          "description": "Живая демонстрация Spritesheet Forge MCP — смотрите, как Claude через естественный разговор конвертирует GIF в спрайтлист и генерирует Atlas JSON для TexturePacker."
+        },
+        "buildingRemoteMcpServer": {
+          "title": "Блог: Полное руководство по созданию удалённого MCP сервера",
+          "description": "Полное руководство по размещению MCP сервера на Cloudflare Workers и GCP Cloud Run — OAuth 2.1, промежуточное хранилище файлов и защита кода бэкенда."
         }
       }
     },

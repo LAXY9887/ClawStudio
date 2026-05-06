@@ -417,14 +417,7 @@
     "seoTitle": "Blog — ClawStudiouo",
     "seoDescription": "Tutoriais, guias e fluxos de trabalho para desenvolvedores e designers de jogos usando ferramentas ClawStudiouo.",
     "title": "Blog",
-    "subtitle": "Tutoriais e guias para desenvolvedores e designers de jogos.",
-    "posts": {
-      "gifToSpritesheetUnityGodot": {
-        "title": "GIF para Spritesheet para Unity e Godot",
-        "description": "Guia de fluxo de trabalho completo: converta GIFs animados em folhas de sprites otimizadas para os motores de jogos Unity e Godot.",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "Tutoriais e guias para desenvolvedores e designers de jogos."
   },
   "mcp": {
     "seoTitle": "Servidor Spritesheet Forge MCP — ClawStudiouo",
@@ -565,8 +558,12 @@
           "description": "As 8 ferramentas do Spritesheet Forge agora estão disponíveis como servidor MCP para agentes de codificação IA — use-as no Claude Desktop, VS Code e mais."
         },
         "gifToSpriteBlogPost": {
-          "title": "Blog: Importar Spritesheet GIF no Unity e Godot",
-          "description": "Guia passo a passo para importar seus sprite sheets gerados no Unity e Godot Engine."
+          "title": "Blog: Converta GIF em Spritesheet com Claude + MCP",
+          "description": "Uma demonstração ao vivo do Spritesheet Forge MCP — veja o Claude converter um GIF em um spritesheet e gerar um atlas JSON do TexturePacker por meio de conversa natural."
+        },
+        "buildingRemoteMcpServer": {
+          "title": "Blog: Guia completo para construir um servidor MCP remoto",
+          "description": "Guia completo para hospedar um servidor MCP no Cloudflare Workers e GCP Cloud Run — OAuth 2.1, preparação de arquivos e como manter o backend privado."
         }
       }
     },

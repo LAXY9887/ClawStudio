@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
 const route = useRoute()
 const i18nHead = useLocaleHead({ addSeoAttributes: true } as any)
 const config = useRuntimeConfig()
@@ -71,6 +72,14 @@ const localeItems = computed(() =>
       </template>
 
       <template #right>
+        <UButton
+          icon="i-lucide-book-open"
+          :label="t('nav.blog')"
+          :to="localePath('/blog')"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+        />
         <UDropdownMenu :items="localeItems">
           <UButton
             icon="i-lucide-globe"

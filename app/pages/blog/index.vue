@@ -2,7 +2,10 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
-const { posts } = useBlogPosts()
+
+const { data: posts } = await useAsyncData('blog-index', () =>
+  queryCollection('blog').path('/en/blog').all()
+)
 
 useSeoMeta({
   title: () => t('blog.seoTitle'),
@@ -26,8 +29,8 @@ useSeoMeta({
     <div class="space-y-4">
       <NuxtLink
         v-for="post in posts"
-        :key="post.slug"
-        :to="localePath(`/blog/${post.slug}`)"
+        :key="post.stem"
+        :to="localePath(`/blog/${post.stem?.split('/').pop()}`)"
         class="group block"
       >
         <UCard class="transition-shadow group-hover:shadow-lg">
@@ -38,10 +41,10 @@ useSeoMeta({
               <span>· {{ post.readingTime }} min read</span>
             </div>
             <h2 class="text-lg font-semibold group-hover:text-primary transition-colors">
-              {{ t(post.titleKey) }}
+              {{ post.title }}
             </h2>
             <p class="text-sm text-muted leading-relaxed">
-              {{ t(post.descriptionKey) }}
+              {{ post.description }}
             </p>
           </div>
         </UCard>
