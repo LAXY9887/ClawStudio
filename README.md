@@ -37,6 +37,7 @@ Each tool also exposes its corresponding RapidAPI endpoint for programmatic acce
 - **Frontend**: Nuxt 4 + Nuxt UI v4 + Tailwind CSS 4
 - **Backend Proxy**: Nitro (Nuxt built-in server) — `server/api/`
 - **Backends**: 4 GCP Cloud Run microservices (GIF, PNG2SS, UniIMGC, EXIFRm)
+- **Blog**: `@nuxt/content` v3 — Markdown files in `content/{locale}/blog/`, dynamic routing via `app/pages/blog/[slug].vue`
 - **Deployment**: Firebase App Hosting (`pnpm firebase:redeploy`)
 - **i18n**: `@nuxtjs/i18n` — 9 locales (en, zh-TW, zh-CN, ja, ko, de, es, pt, ru)
 - **SEO**: `@nuxtjs/sitemap`, JSON-LD per tool page
@@ -104,11 +105,27 @@ In-repo documentation lives under [docs/](docs/):
 
 - [tool-page-architecture.md](docs/tool-page-architecture.md) — page layout pattern and shared components
 - [adding-a-new-tool.md](docs/adding-a-new-tool.md) — checklist for new tools
+- [blog-publishing-guide.md](docs/blog-publishing-guide.md) — blog system architecture and publishing workflow
 - [reusable-components.md](docs/reusable-components.md) — `ToolPageLayout`, `SeoSections`, `RelatedTools`, etc.
 - [i18n-guide.md](docs/i18n-guide.md) — locale file structure and conventions
 - [ad-integration.md](docs/ad-integration.md) — AdSense slot map and compliance rules
 - API references: [gif2ss](docs/gif2ss-api-reference.md) · [png2ss](docs/png2ss-api-reference.md) · [uniimgc](docs/uniimgc-api-reference.md) · [exifrm](docs/exifrm-api-reference.md)
 - Feature plans: [docs/superpowers/plans/](docs/superpowers/plans/)
+
+## AI Agent Setup
+
+This project uses an AI agent plugin system (Superpowers) that installs skills into `skills/` and `.agents/skills/`. Both directories are **gitignored** — they are managed by the plugin installer, not version-controlled.
+
+If you clone this repo and use an AI coding agent, reinstall the plugins to restore the skill directories:
+
+```bash
+# Claude Code
+claude plugins install <plugin-name>
+
+# Or follow the plugin provider's installation instructions
+```
+
+Local Claude Code slash commands (e.g. `/new-blog-post`, `/i18n-translator`) live in `.claude/commands/` which is also gitignored. These are developer-local and need to be set up individually per machine.
 
 ## License
 
