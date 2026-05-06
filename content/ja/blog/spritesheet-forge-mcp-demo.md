@@ -1,28 +1,39 @@
 ---
-title: "GIF からゲーム対応スプライトシートへ: Claude + MCP ライブデモ"
-description: "Claude が Spritesheet Forge MCP サーバーを使用して GIF アニメーションをスプライトシートと TexturePacker 互換アトラス JSON に変換する様子を見てみましょう。手動ツールは不要です。"
+title: "Claude MCPでGIFをゲーム対応スプライトシートに変換：完全なウォークスルー"
+description: "ステップバイステップのデモ：ClaudeがSpritesheet Forge MCPを使ってGIFをスプライトシートPNGおよびTexturePacker互換アトラスJSON変換する方法 — ツールチェーン、パラメーター選択、Unity/Godot統合に関する注釈付き。"
 date: "2026-05-05"
-readingTime: 6
+readingTime: 8
 tag: "tutorial"
 ---
 
-## 従来のスプライトシートツールの問題点
+ゲーム開発者なら誰もがこのループを知っています：アニメーションツールからGIFをエクスポート、TexturePackerを開く、フレームの列を構成する、透明なボーダーを処理する、アトラスを生成する、JSON座標を検証する、UnityまたはGodotにインポートする。1フレーム変更して、すべてのステップを繰り返します。
 
-GIF アニメーションをゲーム対応スプライトシートに変換するには、これまで多段階のプロセスが必要でした: TexturePacker を開く、列数を設定する、背景を削除するかどうか決める、エクスポート、フレーム座標を確認、調整する。アニメーションを繰り返すたびに、このサイクル全体を繰り返す必要がありました。
+Spritesheet Forgeはホストされたモデル コンテキスト プロトコル（MCP）サーバーで、このワークフロー全体をClaudeとの会話に移動させます。必要なものを説明すれば、Claudeがツールを呼び出し、出力ファイルとメタデータが戻ります。インストールするソフトウェアはありません。フォーマット暗記も不要です。
 
-必要な結果を単に説明するだけで得られるとしたら、どうでしょうか?
+この記事は実際の変換 — 9フレームのGIFアニメーションをスプライトシートPNGおよびTexturePacker互換アトラスJSONに変換 — を通じて、正確なツール呼び出し、Claudeが選択したパラメーター、単一のセッション内で操作をチェーン化する方法を示します。
 
-## Spritesheet Forge: Claude 向けスプライトシートサーバー
+---
 
-**Spritesheet Forge** は、Claude にスプライトシート処理ツールへの直接アクセスを提供するホストされた MCP (Model Context Protocol) サーバーです。接続すると、Claude に GIF の変換、PNG のスプライトシートへのパッキング、既存スプライトシートの分割、Sprite Atlas JSON の生成など、すべて自然言語で行うよう依頼できます。
+## 利用可能なツール
 
-インストールするソフトウェアはありません。サーバーは Cloudflare Workers 上で実行され、ファイルをクラウドで処理します。Claude がファイルのアップロード、パラメータの選択、出力を処理します。必要な結果を説明するだけです。
+Spritesheet Forgeは接続後、Claudeに6つのツールを公開します：
 
-## 2分で Claude を接続
+| ツール | 入力 | 出力 | 主要なパラメーター |
+|---|---|---|---|
+| `gif_to_spritesheet` | アニメーションGIF | スプライトシートPNG | `columns`, `background_removal` |
+| `png_to_spritesheet` | PNGフレームのZIP | スプライトシートPNG | `columns`, `padding` |
+| `split_spritesheet` | スプライトシートPNG + フレーム数 | 個別フレーム + アトラスJSON | `columns`, `rows` |
+| `trim_png` | 透明ボーダー付きPNG | トリミングされたPNG + クロップ境界 | — |
+| `frames_to_animation` | PNGフレームのZIP | アニメーションGIF | `fps` |
+| `spritesheet_to_animation` | スプライトシートPNG + フレーム数 | アニメーションGIF | `columns`, `rows`, `fps` |
 
-Claude Desktop または Claude Code CLI 経由で接続できます:
+ツールはチェーン化するよう設計されています：1つのツールの出力URLは、再アップロードなしに次のツールへ直接渡すことができます。すべてのファイル転送はサーバー側で行われます。
 
-**Claude Desktop** — `claude_desktop_config.json` に追加:
+---
+
+## 2分でClaudeを接続する
+
+**Claude Desktop** — `claude_desktop_config.json`に追加（Settings → Developer経由でアクセス）：
 
 ```json
 {
@@ -35,49 +46,59 @@ Claude Desktop または Claude Code CLI 経由で接続できます:
 }
 ```
 
-**Claude Code CLI:**
+**Claude Code CLI：**
 
 ```bash
 claude mcp add spritesheet-forge --transport http https://mcp.clawstudiouo.com/mcp
 ```
 
-初回使用時、Claude は GitHub OAuth ページを開いてセッションを認証します。トークンはローカルに保存され、30 日間有効です。
+初回使用時、Claudeは自動的にGitHub OAuthページを開きます — 「Authorize」をクリックすればトークンが30日間ローカルに保存されます。認証のためにコンフィグファイルに触れることはありません。
 
-## デモ: GIF からスプライトシートへ
+---
 
-ここが入力です。75 × 165 px の 9 フレームのバナナキャットアニメーション:
+## デモ1：GIFからスプライトシートへ
 
-<img src="/blog/spritesheet-forge-mcp-demo/input.gif" alt="入力 GIF" style="width:150px;height:auto;display:block;margin:0 auto;border-radius:0.5rem;border:1px solid var(--ui-border);">
+入力は75 × 165 pxの9フレームバナナキャットアニメーションです：
 
-ファイルを Claude にドロップして、必要な内容を説明します:
+<img src="/blog/spritesheet-forge-mcp-demo/input.gif" alt="入力GIF — 75×165 pxの9フレームバナナキャットアニメーション" style="width:150px;height:auto;display:block;margin:0 auto;border-radius:0.5rem;border:1px solid var(--ui-border);">
 
-![Claude の会話: ユーザーが GIF を送信してスプライトシート変換を依頼](/blog/spritesheet-forge-mcp-demo/demo-1.png)
+ファイルをClaudeにドロップして、必要なものを説明します：
 
-Claude がファイルを自動的にアップロードし、背景削除を有効にして `gif_to_spritesheet` を呼び出します:
+![Claudeとの会話：ユーザーがGIFを送ってスプライトシート変換をリクエスト](/blog/spritesheet-forge-mcp-demo/demo-1.png)
 
-![gif_to_spritesheet MCP ツールを呼び出す Claude](/blog/spritesheet-forge-mcp-demo/demo-2.png)
+Claudeは自動的にファイルをアップロードし、`background_removal: true`で`gif_to_spritesheet`を呼び出します。ツールはすべてのフレームを1行に配置し、Cloudflare R2に保存されたURLで出力を返します：
 
-結果は正確なピクセル寸法と Unity セットアップ手順を含めて返されます:
+![Claudeがgif_to_spritesheet MCPツールを呼び出し](/blog/spritesheet-forge-mcp-demo/demo-2.png)
 
-![フレーム寸法テーブル付きスプライトシート結果を返す Claude](/blog/spritesheet-forge-mcp-demo/demo-3.png)
+結果は正確なピクセル寸法とUnity Sprite Editor設定ステップとともに返されます：
 
-出力スプライトシート — 675 × 165 px、単一行に 9 フレーム、透明背景:
+![Claudeがスプライトシート結果をフレーム寸法テーブルで返す](/blog/spritesheet-forge-mcp-demo/demo-3.png)
 
-![出力スプライトシート](/blog/spritesheet-forge-mcp-demo/spritesheet.png)
+出力 — 675 × 165 px、9フレーム1行、透明背景：
 
-## デモ: Sprite Atlas JSON
+![出力スプライトシート — 675×165 px、9フレーム、透明背景](/blog/spritesheet-forge-mcp-demo/spritesheet.png)
 
-TexturePacker 互換アトラスを取得するのに必要なのは、1つの後続質問だけです:
+**Claudeが選択したパラメーター：**
+- `columns: 9` — すべてのフレームを1つの水平ストリップに配置。UnityおよびGodotの単純なスプライトアニメーションのデフォルト期待値と一致します
+- `background_removal: true` — 白い背景を削除し、ピクセル単位のアルファ透明性を持つPNGを生成します
 
-![split_spritesheet を呼び出して Sprite Atlas JSON を生成する Claude](/blog/spritesheet-forge-mcp-demo/demo-4.png)
+どちらでもオーバーライドできます：`columns: 3`を指定すれば3×3グリッドを取得でき、エンジンがアルファの代わりにカラーキーを使う場合は背景削除を省略できます。
 
-![修正された Sprite Atlas とフレーム座標テーブルを返す Claude](/blog/spritesheet-forge-mcp-demo/demo-5.png)
+---
 
-Claude に出力を TexturePacker JSON Hash 仕様に対して検証するよう依頼できます:
+## デモ2：スプライトアトラスJSON
 
-![Sprite Atlas JSON 形式を検証する Claude — すべてのチェックに合格](/blog/spritesheet-forge-mcp-demo/demo-6.png)
+単一のフォローアップはスプライトシート出力URLからTexturePacker互換アトラスを生成します — 前のステップからのURLが直接渡され、再アップロードは不要です：
 
-最終アトラス — 75 × 165 px の 9 フレームすべて、Unity、Godot (`AtlasTexture`)、または TexturePacker 互換エンジンで読み込む準備ができています:
+![Claudeがsplit_spritesheetを呼び出してSprite Atlas JSONを生成](/blog/spritesheet-forge-mcp-demo/demo-4.png)
+
+![Claudeが修正されたSprite Atlasをフレーム座標テーブルとともに返す](/blog/spritesheet-forge-mcp-demo/demo-5.png)
+
+Claudeはインポート前にTexturePackerJSON Hashスペックに対して出力を検証できます：
+
+![Claudeが形式の検証 — すべてのチェックが完了](/blog/spritesheet-forge-mcp-demo/demo-6.png)
+
+最終アトラス — 各フレーム75 × 165 px、座標は左上隅からゼロインデックス：
 
 ```json
 {
@@ -103,11 +124,77 @@ Claude に出力を TexturePacker JSON Hash 仕様に対して検証するよう
 }
 ```
 
-## 自分で試してみましょう
+このフォーマットはUnity（`SpriteAtlasImporter`）、Godot（`AtlasTexture`）、Phaser 3（`Loader.atlas`）、およびTexturePacker JSON Hash出力を受け入れる他のエンジンで直接読み込まれます。
 
-Spritesheet Forge はオープンソースで無料で使用できます (無料ティアで毎月 100 オペレーション):
+---
 
-- **MCP セットアップガイド** — [clawstudiouo.com/mcp](https://clawstudiouo.com/mcp)
-- **Smithery でのワンクリックインストール** — [smithery.ai](https://smithery.ai/servers/lxya98874322688423/spritesheet-forge)
-- **GitHub リポジトリ** — [LAXY9887/Game-Dev.-Spritesheet-Forge](https://github.com/LAXY9887/Game-Dev.-Spritesheet-Forge)
-- **完全な API ドキュメント** — [GitHub Pages](https://laxy9887.github.io/Game-Dev.-Spritesheet-Forge)
+## ツールチェーン
+
+上記の2つのデモは大きなツールチェーンの一部です。すべてのツール出力はCloudflare R2に保存されたURL（1時間TTL）です。1つのツールの出力URLを次のツールへ直接渡すと、再アップロードが回避されます：
+
+```
+gif_to_spritesheet(input.gif)
+        │  スプライトシート PNG URL
+        ▼
+split_spritesheet(spritesheet URL, columns=9)
+        │  アトラス JSON + 個別フレームURL
+        ▼
+frames_to_animation(frame URLs, fps=12)   ← プレビューアニメーション
+        │
+        ▼
+trim_png(any frame URL)                   ← オプションのクリーンアップ
+```
+
+Claudeにこのチェーン全体を1つのメッセージで実行するよう依頼できます：*「このGIFをスプライトシートに変換し、アトラスJSONを生成し、12 fpsでプレビューアニメーションをください」* Claudeは各ツールを順序に呼び出し、自動的にURLを間に渡します。
+
+1つの制約に注意してください：**出力URLは60分後に期限切れになります**。セッション終了前に必要なファイルをダウンロードしてください。
+
+---
+
+## 次のステップ
+
+- **[Cloudflare WorkersとGCP Cloud Runを使ったリモートMCPサーバーの構築](/blog/building-remote-mcp-server)** — ホストされたサーバーを使用するのではなく独自のMCPサーバーを構築したい場合、この記事は完全なアーキテクチャをカバーします：OAuth 2.1 + PKCE、内部サービス認証、R2ファイルステージング、ツール設計。
+- *([UnityおよびGodotへのスプライトシートのインポート：ステップバイステップガイド](/blog/spritesheet-game-engine-import) — 近日公開)* — UnityのSprite Atlasワークフローおよび GodotのAtlasTextureノードの詳細なウォークスルー、アトラスJSON出力を直接配線する方法を含みます。
+
+Spritesheet Forgeはオープンソースで無料で使用できます（無料層で月100操作）：
+
+- **MCP設定ガイド** — [clawstudiouo.com/mcp](https://clawstudiouo.com/mcp)
+- **Smitheryで1クリックインストール** — [smithery.ai](https://smithery.ai/servers/lxya98874322688423/spritesheet-forge)
+- **GitHubリポジトリ** — [LAXY9887/Game-Dev.-Spritesheet-Forge](https://github.com/LAXY9887/Game-Dev.-Spritesheet-Forge)
+- **完全なAPI documentation** — [GitHub Pages](https://laxy9887.github.io/Game-Dev.-Spritesheet-Forge)
+
+---
+
+## よくある質問
+
+**Spritesheet Forgeとは何ですか？**
+
+Spritesheet ForgeはホストされたMCPサーバーで、Claudeにスプライトシート処理ツールへの直接アクセスを提供します。接続後、Claudeはgif変換、PNGフレームパッキング、アトラスJSON生成、既存スプライトシートの分割などを自然言語で実行できます — ローカルソフトウェアインストール不要です。
+
+**Spritesheet ForgeをClaudeに接続するにはどうしますか？**
+
+Claude Desktopの場合、`claude_desktop_config.json`にサーバー構成を追加します。Claude Code CLIの場合、`claude mcp add spritesheet-forge --transport http https://mcp.clawstudiouo.com/mcp`を実行します。初回使用時、Claudeは自動的にGitHub OAuthページを開きます — 「Authorize」をクリックすればトークンが30日間保存されます。完全な設定は[clawstudiouo.com/mcp](https://clawstudiouo.com/mcp)にあります。
+
+**Spritesheet Forgeはどのファイル形式をサポートしていますか？**
+
+`gif_to_spritesheet`は任意のアニメーションGIFを受け入れます。`png_to_spritesheet`および`frames_to_animation`はPNGフレームのZIPを受け入れます。すべての画像出力はPNG、アトラス出力はTexturePacker JSON Hashで、Unity、Godot、Phaser 3、Cocos2d、および同様のエンジンと互換性があります。
+
+**Spritesheet Forgeは無料ですか？**
+
+無料層には月100操作が含まれます — 中程度のアニメーションボリュームを備えたアクティブなゲーム開発に十分です。クレジットカードは不要です。サーバー自体はGitHubのオープンソースです。
+
+**Claudeは大きなスプライトファイルを処理できますか？**
+
+~185 KB未満のファイルはbase64でインラインで送信されます。より大きいファイルの場合、Claudeはサーバーの`/upload`エンドポイントにアップロードし、返されたURLをツールに渡します。これを手動で管理することはありません — Claudeがファイルサイズを検出し、正しい方法を自動的に選択します。
+
+**出力ファイルはどのくらい利用できますか？**
+
+ツール出力URLはCloudflare R2に1時間TTLで保存されます。セッションをダウンロードなしで閉じた場合、ファイルは期限切れになります。ワークフローの最後にダウンロードリンクを明確に表示するようClaudeに依頼してください。
+
+**1つのリクエストで複数のツールをチェーン化できますか？**
+
+はい。Claudeは自動的にツールを順序に呼び出し、各出力URLを次のツール入力として渡します。たとえば、*「このGIFを変換してフレームに分割し、12 fpsでプレビューGIFをください」*は3つのツールを手動ステップなしで実行します。
+
+**アトラスJSONはどのゲームエンジンと互換性がありますか？**
+
+出力フォーマットはTexturePacker JSON Hash — ゲーム開発で最も広くサポートされているアトラスフォーマットです。Unity（`SpriteAtlasImporter`）、Godot（`AtlasTexture`）、Phaser 3（`Loader.atlas`）、Cocos2d、およびTexturePacker出力を受け入れる他のエンジンと互換性があります。

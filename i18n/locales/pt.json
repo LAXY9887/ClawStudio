@@ -556,14 +556,6 @@
         "spritesheetForgeMcp": {
           "title": "Servidor Spritesheet Forge MCP",
           "description": "As 8 ferramentas do Spritesheet Forge agora estão disponíveis como servidor MCP para agentes de codificação IA — use-as no Claude Desktop, VS Code e mais."
-        },
-        "gifToSpriteBlogPost": {
-          "title": "Blog: Converta GIF em Spritesheet com Claude + MCP",
-          "description": "Uma demonstração ao vivo do Spritesheet Forge MCP — veja o Claude converter um GIF em um spritesheet e gerar um atlas JSON do TexturePacker por meio de conversa natural."
-        },
-        "buildingRemoteMcpServer": {
-          "title": "Blog: Guia completo para construir um servidor MCP remoto",
-          "description": "Guia completo para hospedar um servidor MCP no Cloudflare Workers e GCP Cloud Run — OAuth 2.1, preparação de arquivos e como manter o backend privado."
         }
       }
     },
@@ -676,6 +668,10 @@
         "title": "Editor de imagens",
         "description": "Corte, redimensione, comprima, gire e espelhe imagens no seu navegador. Sem uploads — 100% privado."
       }
+    },
+    "latestBlog": {
+      "heading": "Últimas publicações do blog",
+      "viewAll": "Ver todas as publicações"
     }
   },
   "gifToSprite": {
