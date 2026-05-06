@@ -61,6 +61,16 @@ export default defineNuxtConfig({
     exclude: ['/download', '/*/download']
   },
 
+  vite: {
+    build: {
+      sourcemap: false
+    }
+  },
+
+  nitro: {
+    minify: false
+  },
+
   compatibilityDate: '2025-01-15',
 
   eslint: {
