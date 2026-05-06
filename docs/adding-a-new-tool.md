@@ -2,6 +2,8 @@
 
 This guide walks through every step required to add a new tool page to the ClawStudio tool hub. The existing **GIF to Sprite** tool (`app/pages/tools/gif-to-sprite.vue`) is the reference implementation throughout.
 
+> **Blog posts are a separate system.** This guide covers tool pages only. For writing and publishing blog posts, see [`docs/blog-publishing-guide.md`](./blog-publishing-guide.md).
+
 ---
 
 ## Architecture Overview
@@ -190,12 +192,8 @@ function downloadResult() {
   URL.revokeObjectURL(url)
 }
 
-// Declare near the top of <script setup> alongside other composables:
-// const { openDirectLink } = useMonetagDirectLink()
-
 function onAdConfirm() {
   showAdModal.value = false
-  openDirectLink() // no-op unless ad provider is 'monetag'
   const localePath = useLocalePath()
   navigateTo({
     path: localePath('/download'),
