@@ -127,6 +127,21 @@ content/ru/blog/<slug>.md
 
 ---
 
+## 安全邊界：`/__nuxt_content/` 是公開端點
+
+`@nuxt/content` v3 在 build 時會在 `/__nuxt_content/blog/sql_dump.txt` 生成一份壓縮的 SQLite dump，供 client-side content querying 使用。這個端點是公開可存取的（任何人都可以 GET）。
+
+**影響範圍**：這個 dump 包含 `content/` 目錄下**所有已發布文章的完整內容**——標題、正文、frontmatter 全部都在裡面。
+
+**安全守則**：
+- `content/` 目錄只能放**打算公開的文章**。這個目錄沒有任何存取控制。
+- 不要把草稿、內部文件、含機密資訊的文章放在 `content/` 裡，即使尚未在前端顯示入口，內容仍會出現在 sql_dump 中。
+- 草稿用 git 另開分支管理，或放在 `.gitignore` 的本地目錄，確認後再 commit 進 `content/`。
+
+這是 `@nuxt/content` v3 的設計行為，無法關閉，也不需要關閉——blog 文章本來就是公開內容。只是要確保放進去的每一篇都是有意識要公開的。
+
+---
+
 ## 重要：哪些 i18n key 不再被使用
 
 `i18n/locales/*.json` 裡的 `blog.posts.*` 區塊（包含 `title`、`description`、`date`）是**遷移前的遺留資料**，目前的程式碼中沒有任何地方引用這些 key。文章的標題和描述完全來自 markdown frontmatter，由 `@nuxt/content` 直接讀取。

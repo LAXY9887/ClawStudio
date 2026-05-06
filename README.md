@@ -109,6 +109,7 @@ In-repo documentation lives under [docs/](docs/):
 - [reusable-components.md](docs/reusable-components.md) — `ToolPageLayout`, `SeoSections`, `RelatedTools`, etc.
 - [i18n-guide.md](docs/i18n-guide.md) — locale file structure and conventions
 - [ad-integration.md](docs/ad-integration.md) — AdSense slot map and compliance rules
+- [seo-ops.md](docs/seo-ops.md) — sitemap submission, robots.txt, and SEO operations
 - API references: [gif2ss](docs/gif2ss-api-reference.md) · [png2ss](docs/png2ss-api-reference.md) · [uniimgc](docs/uniimgc-api-reference.md) · [exifrm](docs/exifrm-api-reference.md)
 - Feature plans: [docs/superpowers/plans/](docs/superpowers/plans/)
 

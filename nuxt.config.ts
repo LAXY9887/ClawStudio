@@ -58,7 +58,8 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    exclude: ['/download', '/*/download']
+    exclude: ['/download', '/*/download'],
+    sitemaps: false
   },
 
   vite: {

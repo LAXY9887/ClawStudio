@@ -4,7 +4,7 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 
 const { data: posts } = await useAsyncData('blog-index', () =>
-  queryCollection('blog').path('/en/blog').all()
+  queryCollection('blog').where('path', 'LIKE', '/en/blog/%').order('date', 'DESC').all()
 )
 
 useSeoMeta({
