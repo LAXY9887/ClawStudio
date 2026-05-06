@@ -417,14 +417,7 @@
     "seoTitle": "博客 — ClawStudiouo",
     "seoDescription": "针对使用 ClawStudiouo 工具的游戏开发者与设计师的教程、指南与工作流程。",
     "title": "博客",
-    "subtitle": "针对游戏开发者与设计师的教程与指南。",
-    "posts": {
-      "spritesheetForgeMcpDemo": {
-        "title": "GIF 到 Spritesheet 的 AI 工作流：Claude + MCP 实机演示",
-        "description": "看 Claude 透过 Spritesheet Forge MCP 服务器，用对话把 GIF 动画转成 Spritesheet 和 TexturePacker JSON Atlas，全程无需手动操作。",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "针对游戏开发者与设计师的教程与指南。"
   },
   "mcp": {
     "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",

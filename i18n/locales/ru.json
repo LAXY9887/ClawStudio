@@ -417,14 +417,7 @@
     "seoTitle": "Блог — ClawStudiouo",
     "seoDescription": "Уроки, руководства и рабочие процессы для разработчиков и дизайнеров игр, использующих инструменты ClawStudiouo.",
     "title": "Блог",
-    "subtitle": "Уроки и руководства для разработчиков и дизайнеров игр.",
-    "posts": {
-      "spritesheetForgeMcpDemo": {
-        "title": "От GIF до готового спрайтлиста: Живая демонстрация Claude + MCP",
-        "description": "Смотрите, как Claude конвертирует GIF-анимацию в спрайтлист и Atlas JSON, совместимый с TexturePacker, используя сервер Spritesheet Forge MCP — без ручных инструментов.",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "Уроки и руководства для разработчиков и дизайнеров игр."
   },
   "mcp": {
     "seoTitle": "Spritesheet Forge MCP Server — ClawStudiouo",

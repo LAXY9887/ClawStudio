@@ -417,14 +417,7 @@
     "seoTitle": "Blog — ClawStudiouo",
     "seoDescription": "Tutoriais, guias e fluxos de trabalho para desenvolvedores e designers de jogos usando ferramentas ClawStudiouo.",
     "title": "Blog",
-    "subtitle": "Tutoriais e guias para desenvolvedores e designers de jogos.",
-    "posts": {
-      "spritesheetForgeMcpDemo": {
-        "title": "De GIF a Spritesheet pronto para o jogo: Uma demonstração ao vivo de Claude + MCP",
-        "description": "Veja o Claude converter uma animação GIF em um spritesheet e um atlas JSON compatível com TexturePacker usando o servidor Spritesheet Forge MCP — sem ferramentas manuais.",
-        "date": "2026-05-05"
-      }
-    }
+    "subtitle": "Tutoriais e guias para desenvolvedores e designers de jogos."
   },
   "mcp": {
     "seoTitle": "Servidor Spritesheet Forge MCP — ClawStudiouo",
