@@ -21,14 +21,14 @@ Browser  →  Nuxt Nitro API  →  GCP Cloud Run Service
 
 ### Current Tools (~27)
 
-| Category | Tools | Backend |
-|----------|-------|---------|
+| Category                 | Tools                                                                                                            | Backend                           |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | **Sprite & Frame** | GIF → Spritesheet, PNG → GIF, PNG → Spritesheet, PNG Trim, Spritesheet Splitter (with live animation preview) | `gifService`, `png2ssService` |
-| **Image Format** | HEIC ↔ JPG/PNG/WebP, PNG ↔ JPG/WebP, JPG ↔ WebP | `uniimgcService` |
-| **AVIF** | PNG/JPG/WebP ↔ AVIF | `uniimgcService` |
-| **Vector & Icon** | SVG → PNG, Favicon Generator | `uniimgcService` |
-| **Privacy** | EXIF Remover & Privacy Scanner | `exifrmService` |
-| **Image Editing** | Image Editor (crop / resize / compress / rotate / flip) | _client-side only_ |
+| **Image Format**   | HEIC ↔ JPG/PNG/WebP, PNG ↔ JPG/WebP, JPG ↔ WebP                                                               | `uniimgcService`                |
+| **AVIF**           | PNG/JPG/WebP ↔ AVIF                                                                                             | `uniimgcService`                |
+| **Vector & Icon**  | SVG → PNG, Favicon Generator                                                                                    | `uniimgcService`                |
+| **Privacy**        | EXIF Remover & Privacy Scanner                                                                                   | `exifrmService`                 |
+| **Image Editing**  | Image Editor (crop / resize / compress / rotate / flip)                                                          | _client-side only_              |
 
 Each tool also exposes its corresponding RapidAPI endpoint for programmatic access (linked from the tool page).
 
@@ -54,13 +54,13 @@ cp .env.example .env
 
 Required environment variables (see `.env.example`):
 
-| Variable | Description |
-|----------|-------------|
-| `NUXT_GIF_SERVICE_URL` | Cloud Run URL for the GIF service |
-| `NUXT_PNG2SS_SERVICE_URL` | Cloud Run URL for the PNG → Spritesheet service |
-| `NUXT_UNIIMGC_SERVICE_URL` | Cloud Run URL for the universal image converter |
-| `NUXT_EXIFRM_SERVICE_URL` | Cloud Run URL for the EXIF remover |
-| `NUXT_INTERNAL_KEY` | Shared `X-Internal-Key` header used by all four services |
+| Variable                     | Description                                                |
+| ---------------------------- | ---------------------------------------------------------- |
+| `NUXT_GIF_SERVICE_URL`     | Cloud Run URL for the GIF service                          |
+| `NUXT_PNG2SS_SERVICE_URL`  | Cloud Run URL for the PNG → Spritesheet service           |
+| `NUXT_UNIIMGC_SERVICE_URL` | Cloud Run URL for the universal image converter            |
+| `NUXT_EXIFRM_SERVICE_URL`  | Cloud Run URL for the EXIF remover                         |
+| `NUXT_INTERNAL_KEY`        | Shared `X-Internal-Key` header used by all four services |
 
 Pure client-side tools (Image Editor, Spritesheet Animator) work without any of these — useful for local development without backend services running.
 
@@ -126,7 +126,3 @@ claude plugins install <plugin-name>
 ```
 
 Local Claude Code slash commands (e.g. `/new-blog-post`, `/i18n-translator`) live in `.claude/commands/` which is also gitignored. These are developer-local and need to be set up individually per machine.
-
-## License
-
-[MIT](LICENSE)
