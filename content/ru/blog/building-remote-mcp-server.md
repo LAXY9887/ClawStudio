@@ -27,7 +27,7 @@ MCP (Model Context Protocol) — открытый стандарт, позвол
 - **Щедрый бесплатный уровень** — 2 миллиона запросов и 360,000 GB-секунд вычислений в месяц без стоимости
 - **Artifact Registry + Cloud Build** — конвейер развёртывания (собрать образ → отправить → развернуть) может быть полностью автоматизирован одной командой `gcloud`
 
-Специальный пост, охватывающий эту настройку GCP с нуля — развёртывание Cloud Run, Artifact Registry, CI/CD Cloud Build и конфигурацию IAM — скоро появится. *([Setting Up an API Service on GCP](/blog/setting-up-gcp-api-service) — coming soon)*
+Специальный пост, охватывающий эту настройку GCP с нуля — развёртывание Cloud Run, Artifact Registry, CI/CD Cloud Build и конфигурацию IAM — скоро появится. *([Setting Up an API Service on GCP](/blog/deploy-api-on-gcp-cloud-run))*
 
 ---
 

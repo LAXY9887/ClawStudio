@@ -27,7 +27,7 @@ MCP(Model Context Protocol)는 Claude와 같은 AI 어시스턴트가 자연어�
 - **무료 계층이 넉넉함** — 월 2백만 건 요청과 360,000 GB-초의 컴퓨팅이 무료입니다
 - **Artifact Registry + Cloud Build** — 배포 파이프라인(이미지 빌드 → 푸시 → 배포)을 단일 `gcloud` 명령으로 완전히 자동화할 수 있습니다
 
-처음부터 이 GCP 설정을 다루는 별도의 게시물 — Cloud Run 배포, Artifact Registry, Cloud Build CI/CD, IAM 구성 — 이 곧 나올 예정입니다. *([GCP에서 API 서비스 설정](/blog/setting-up-gcp-api-service) — 곧 제공)*
+처음부터 이 GCP 설정을 다루는 별도의 게시물 — Cloud Run 배포, Artifact Registry, Cloud Build CI/CD, IAM 구성 — 이 곧 나올 예정입니다. *([GCP에서 API 서비스 설정](/blog/deploy-api-on-gcp-cloud-run))*
 
 ---
 

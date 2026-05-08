@@ -27,7 +27,7 @@ MCP（Model Context Protocol，模型上下文协议）是一个开放标准，�
 - **免费额度够用** — 每月 200 万次请求、36 万 GB-seconds 的运算完全免费
 - **部署流程可以完全自动化** — Artifact Registry + Cloud Build，一行 `gcloud` 指令完成 build → push → deploy
 
-关于如何从零开始架设这套 GCP 架构——Cloud Run 部署、Artifact Registry、Cloud Build CI/CD、IAM 设定——之后会有一篇专门的教学文章。*([在 GCP 建立 API 服务](/blog/setting-up-gcp-api-service) — 即将发布)*
+关于如何从零开始架设这套 GCP 架构——Cloud Run 部署、Artifact Registry、Cloud Build CI/CD、IAM 设定——之后会有一篇专门的教学文章。*([在 GCP 建立 API 服务](/blog/deploy-api-on-gcp-cloud-run))*
 
 ---
 

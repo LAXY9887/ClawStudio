@@ -27,7 +27,7 @@ Weitere nennenswerte Vorteile:
 - **Großzügiger kostenloser Tarif** — 2 Millionen Anfragen und 360.000 GB-Sekunden Rechenzeit pro Monat kostenlos
 - **Artifact Registry + Cloud Build** — die Deployment-Pipeline (Image erstellen → hochladen → deployen) kann vollständig mit einem einzigen `gcloud`-Befehl automatisiert werden
 
-Ein dedizierter Beitrag, der diese GCP-Einrichtung von Grund auf abdeckt — Cloud Run Deployment, Artifact Registry, Cloud Build CI/CD und IAM-Konfiguration — erscheint bald. *([Setting Up an API Service on GCP](/blog/setting-up-gcp-api-service) — coming soon)*
+Ein dedizierter Beitrag, der diese GCP-Einrichtung von Grund auf abdeckt — Cloud Run Deployment, Artifact Registry, Cloud Build CI/CD und IAM-Konfiguration — erscheint bald. *([Setting Up an API Service on GCP](/blog/deploy-api-on-gcp-cloud-run))*
 
 ---
 

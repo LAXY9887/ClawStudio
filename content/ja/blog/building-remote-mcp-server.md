@@ -27,7 +27,7 @@ MCP (Model Context Protocol) はオープン スタンダードであり、Claud
 - **無料階層は寛容** — 毎月 200 万件のリクエストと 360,000 GB 秒のコンピュート、コスト なし
 - **Artifact Registry + Cloud Build** — デプロイメント パイプライン (イメージのビルド → プッシュ → デプロイ) は単一の `gcloud` コマンドで完全に自動化できます
 
-GCP のセットアップをゼロから説明する専用投稿 — Cloud Run デプロイメント、Artifact Registry、Cloud Build CI/CD、および IAM 設定 — はまもなく公開されます。*([GCP での API サービスのセットアップ](/blog/setting-up-gcp-api-service) — 近日公開予定)*
+GCP のセットアップをゼロから説明する専用投稿 — Cloud Run デプロイメント、Artifact Registry、Cloud Build CI/CD、および IAM 設定 — はまもなく公開されます。*([GCP での API サービスのセットアップ](/blog/deploy-api-on-gcp-cloud-run))*
 
 ---
 

@@ -27,7 +27,7 @@ Otros beneficios que vale la pena conocer:
 - **El nivel gratuito es generoso** — 2 millones de solicitudes y 360.000 GB-segundos de cómputo por mes sin costo
 - **Artifact Registry + Cloud Build** — el pipeline de despliegue (construir imagen → empujar → desplegar) puede ser completamente automatizado con un único comando `gcloud`
 
-Un post dedicado cubriendo esta configuración de GCP desde cero — despliegue de Cloud Run, Artifact Registry, CI/CD de Cloud Build, e configuración de IAM — próximamente. *([Configurar un Servicio de API en GCP](/blog/setting-up-gcp-api-service) — próximamente)*
+Un post dedicado cubriendo esta configuración de GCP desde cero — despliegue de Cloud Run, Artifact Registry, CI/CD de Cloud Build, e configuración de IAM — próximamente. *([Configurar un Servicio de API en GCP](/blog/deploy-api-on-gcp-cloud-run))*
 
 ---
 
