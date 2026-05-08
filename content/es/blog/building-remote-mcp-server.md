@@ -440,6 +440,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## Referencia de Definición de Herramientas MCP (Para Agentes de IA)
+
+La estructura JSON completa que define una herramienta MCP. Los agentes de IA y los clientes MCP leen estas definiciones para entender qué herramientas están disponibles, qué parámetros aceptan y qué significa cada parámetro.
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**Reglas para definiciones de herramientas que funcionan bien con LLMs:**
+
+- `description` en la herramienta misma: una oración, orientada a la acción, dice qué produce — no cómo funciona internamente
+- `description` en cada propiedad: incluya el rango válido para parámetros numéricos, liste todas las opciones enum con sus ventajas y desventajas, diga qué hace el valor predeterminado
+- `required`: liste solo los parámetros que la herramienta no puede inferir o establecer por defecto. Cada parámetro opcional necesita un `default`
+- Evite descripciones vagas como "el archivo de entrada" — indique qué formatos se aceptan y cómo suministrarlos
+
+---
+
 ## Preguntas Frecuentes
 
 **¿Qué es un servidor MCP remoto?**

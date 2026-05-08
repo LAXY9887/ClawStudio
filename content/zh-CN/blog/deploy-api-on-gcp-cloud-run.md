@@ -566,6 +566,64 @@ file /tmp/smoke_output.png
 
 ---
 
+## API 参考（供 AI Agent 使用）
+
+以下是本教程示例 API 端点的机器可读规格。实际的端点路径和请求/响应格式由你的应用程序决定——请将下方的占位符替换成你的真实路由。
+
+```json
+{
+  "baseUrl": "https://YOUR_SERVICE_URL.run.app",
+  "authentication": {
+    "type": "header",
+    "header": "X-Internal-Key",
+    "description": "Shared secret for direct access. Set as Cloud Run environment variable INTERNAL_KEY."
+  },
+  "endpoints": [
+    {
+      "name": "health_check",
+      "method": "GET",
+      "path": "/health",
+      "description": "Liveness check. Returns 200 OK when the service is running. No authentication required.",
+      "response": {
+        "200": { "status": "ok" }
+      }
+    },
+    {
+      "name": "process",
+      "method": "POST",
+      "path": "/process",
+      "description": "Main processing endpoint. Replace with your actual route and payload shape.",
+      "requestBody": {
+        "content-type": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "string", "description": "Input data for processing" }
+          },
+          "required": ["input"]
+        }
+      },
+      "response": {
+        "200": {
+          "output": "string — processing result"
+        },
+        "504": "Request exceeded --timeout limit. Increase timeout or break operation into smaller steps."
+      }
+    }
+  ],
+  "cloudRunConfig": {
+    "memory": "512Mi",
+    "cpu": 1,
+    "concurrency": 1,
+    "maxInstances": 100,
+    "timeout": 60,
+    "region": "us-central1"
+  }
+}
+```
+
+---
+
 ## 下一步
 
 这篇教程涵盖了基础知识。自然的下一步：

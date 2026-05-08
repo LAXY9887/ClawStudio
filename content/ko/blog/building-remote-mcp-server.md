@@ -440,6 +440,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## MCP 도구 정의 참조 (AI 에이전트용)
+
+MCP 도구를 정의하는 완전한 JSON 구조입니다. AI 에이전트와 MCP 클라이언트는 이 정의를 읽어 어떤 도구가 사용 가능한지, 어떤 매개변수를 허용하는지, 각 매개변수의 의미를 파악합니다.
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**LLM과 잘 작동하는 도구 정의 규칙:**
+
+- 도구 자체의 `description`: 한 문장, 행동 지향적, 내부 작동 방식이 아닌 무엇을 생성하는지 설명합니다
+- 각 속성의 `description`: 숫자 매개변수의 유효 범위를 포함하고, 트레이드오프와 함께 모든 enum 옵션을 나열하며, 기본값이 하는 작업을 설명합니다
+- `required`: 도구가 추론하거나 기본값을 사용할 수 없는 매개변수만 나열합니다. 모든 선택적 매개변수에는 `default`가 필요합니다
+- "입력 파일"과 같은 모호한 설명을 피하세요 — 허용되는 형식과 제공 방법을 명시합니다
+
+---
+
 ## 자주 묻는 질문
 
 **원격 MCP 서버란 무엇입니까?**

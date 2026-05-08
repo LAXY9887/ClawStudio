@@ -151,6 +151,163 @@ trim_png(any frame URL)                   ← дополнительная оч�
 
 ---
 
+## Справочник инструментов MCP (для ИИ-агентов)
+
+Полные схемы входных данных для всех семи инструментов Spritesheet Forge. Эти определения описывают точные параметры, которые ИИ-агенты могут передавать при вызове каждого инструмента через MCP.
+
+### gif_to_spritesheet
+
+```json
+{
+  "name": "gif_to_spritesheet",
+  "description": "Converts an animated GIF into a sprite sheet PNG.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "GIF file — base64 data URI or HTTPS URL" },
+      "columns": { "type": "integer", "description": "Grid columns (auto-calculated if omitted)" },
+      "padding": { "type": "integer", "default": 0, "description": "Pixel gap between frames" },
+      "remove_bg": { "type": "boolean", "default": false, "description": "Remove background from each frame" },
+      "bg_color": { "type": "string", "default": "auto", "description": "\"auto\" or \"#RRGGBB\"" },
+      "tolerance": { "type": "integer", "default": 30, "description": "Background removal threshold 0–255" }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### gif_to_frames
+
+```json
+{
+  "name": "gif_to_frames",
+  "description": "Extracts all frames from an animated GIF and returns them as individual PNG files in a ZIP archive.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "GIF file — base64 data URI or HTTPS URL" },
+      "remove_bg": { "type": "boolean", "default": false },
+      "bg_color": { "type": "string", "default": "auto" },
+      "tolerance": { "type": "integer", "default": 30 }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### png_to_spritesheet
+
+```json
+{
+  "name": "png_to_spritesheet",
+  "description": "Packs multiple PNG images into a single sprite sheet with optional atlas metadata.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "files": { "type": "array", "items": { "type": "string" }, "description": "PNG files — base64 data URIs or HTTPS URLs" },
+      "layout": { "type": "string", "default": "grid", "enum": ["grid", "horizontal", "vertical", "packed"] },
+      "columns": { "type": "integer", "description": "Grid columns (auto if omitted)" },
+      "cell_mode": { "type": "string", "default": "auto_max", "enum": ["auto_max", "auto_uniform", "fixed"] },
+      "cell_width": { "type": "integer", "description": "Required when cell_mode=fixed" },
+      "cell_height": { "type": "integer", "description": "Required when cell_mode=fixed" },
+      "padding": { "type": "integer", "default": 0 },
+      "bg_color": { "type": "string", "default": "transparent" },
+      "power_of_2": { "type": "boolean", "default": false, "description": "Pad canvas to next power of 2" },
+      "trim_input": { "type": "boolean", "default": false, "description": "Auto-trim transparent edges before packing" },
+      "extrude": { "type": "integer", "default": 0, "description": "Extrude outermost pixels by N px per frame" },
+      "metadata_format": { "type": "string", "default": "none", "enum": ["none", "json_array", "json_hash", "css"] }
+    },
+    "required": ["files"]
+  }
+}
+```
+
+### split_spritesheet
+
+```json
+{
+  "name": "split_spritesheet",
+  "description": "Splits a sprite sheet PNG into individual frames and optionally exports an atlas JSON.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "Spritesheet PNG — base64 data URI or HTTPS URL" },
+      "columns": { "type": "integer" },
+      "rows": { "type": "integer" },
+      "cell_width": { "type": "integer" },
+      "cell_height": { "type": "integer" },
+      "padding": { "type": "integer", "default": 0 },
+      "frame_count": { "type": "integer", "description": "Actual frame count if last row is incomplete" },
+      "skip_empty": { "type": "boolean", "default": true },
+      "output": { "type": "string", "default": "frames", "enum": ["frames", "metadata", "both"] },
+      "metadata_format": { "type": "string", "enum": ["json_array", "json_hash", "css"] }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### spritesheet_to_animation
+
+```json
+{
+  "name": "spritesheet_to_animation",
+  "description": "Converts a sprite sheet PNG into an animated GIF or WebP.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "Spritesheet PNG — base64 data URI or HTTPS URL" },
+      "columns": { "type": "integer" },
+      "rows": { "type": "integer" },
+      "frame_count": { "type": "integer" },
+      "duration": { "type": "integer", "default": 100, "description": "Frame duration in ms" },
+      "loop": { "type": "integer", "default": 0, "description": "0 = infinite" },
+      "output_format": { "type": "string", "default": "gif", "enum": ["gif", "webp"] }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### frames_to_animation
+
+```json
+{
+  "name": "frames_to_animation",
+  "description": "Combines multiple PNG frames into an animated GIF or WebP.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "files": { "type": "array", "items": { "type": "string" }, "description": "PNG frame files in order" },
+      "duration": { "type": "integer", "default": 100, "description": "Frame duration in ms (10–10000)" },
+      "loop": { "type": "integer", "default": 0 },
+      "output_format": { "type": "string", "default": "gif", "enum": ["gif", "webp"] }
+    },
+    "required": ["files"]
+  }
+}
+```
+
+### trim_png
+
+```json
+{
+  "name": "trim_png",
+  "description": "Crops transparent edges from one or more PNG files.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "files": { "type": "array", "items": { "type": "string" }, "description": "PNG files — single returns PNG, multiple returns ZIP" },
+      "threshold": { "type": "integer", "default": 0, "description": "Alpha threshold 0–255" },
+      "padding": { "type": "integer", "default": 0, "description": "Transparent margin to preserve after trim" }
+    },
+    "required": ["files"]
+  }
+}
+```
+
+---
+
 ## Что дальше
 
 - **[Building a Remote MCP Server with Cloudflare Workers and GCP Cloud Run](/blog/building-remote-mcp-server)** — если ты хочешь создать свой собственный MCP сервер вместо использования размещённого, здесь рассматривается полная архитектура: OAuth 2.1 + PKCE, внутренняя аутентификация сервиса, R2 file staging и проектирование инструментов.

@@ -566,6 +566,64 @@ file /tmp/smoke_output.png
 
 ---
 
+## API 참조 (AI 에이전트용)
+
+이 가이드에서 정의된 예시 API 엔드포인트에 대한 머신 읽기 가능 사양입니다. 실제 엔드포인트 경로와 요청/응답 형태는 애플리케이션에 의해 결정됩니다 — 아래의 플레이스홀더를 실제 라우트로 교체하십시오.
+
+```json
+{
+  "baseUrl": "https://YOUR_SERVICE_URL.run.app",
+  "authentication": {
+    "type": "header",
+    "header": "X-Internal-Key",
+    "description": "Shared secret for direct access. Set as Cloud Run environment variable INTERNAL_KEY."
+  },
+  "endpoints": [
+    {
+      "name": "health_check",
+      "method": "GET",
+      "path": "/health",
+      "description": "Liveness check. Returns 200 OK when the service is running. No authentication required.",
+      "response": {
+        "200": { "status": "ok" }
+      }
+    },
+    {
+      "name": "process",
+      "method": "POST",
+      "path": "/process",
+      "description": "Main processing endpoint. Replace with your actual route and payload shape.",
+      "requestBody": {
+        "content-type": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "string", "description": "Input data for processing" }
+          },
+          "required": ["input"]
+        }
+      },
+      "response": {
+        "200": {
+          "output": "string — processing result"
+        },
+        "504": "Request exceeded --timeout limit. Increase timeout or break operation into smaller steps."
+      }
+    }
+  ],
+  "cloudRunConfig": {
+    "memory": "512Mi",
+    "cpu": 1,
+    "concurrency": 1,
+    "maxInstances": 100,
+    "timeout": 60,
+    "region": "us-central1"
+  }
+}
+```
+
+---
+
 ## 다음 단계
 
 이 가이드는 기본 사항을 다룹니다. 다음으로 자연스러운 단계:

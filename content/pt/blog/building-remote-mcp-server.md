@@ -440,6 +440,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## Referência de Definição de Ferramentas MCP (Para Agentes de IA)
+
+A estrutura JSON completa que define uma ferramenta MCP. Agentes de IA e clientes MCP lêem essas definições para entender quais ferramentas estão disponíveis, quais parâmetros aceitam e o que cada parâmetro significa.
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**Regras para definições de ferramentas que funcionam bem com LLMs:**
+
+- `description` na própria ferramenta: uma frase, orientada à ação, diz o que produz — não como funciona internamente
+- `description` em cada propriedade: inclua o intervalo válido para parâmetros numéricos, liste todas as opções de enum com trade-offs, diga o que o padrão faz
+- `required`: liste apenas os parâmetros que a ferramenta não consegue inferir ou definir por padrão. Todo parâmetro opcional precisa de um `default`
+- Evite descrições vagas como "o arquivo de entrada" — diga quais formatos são aceitos e como fornecê-los
+
+---
+
 ## Perguntas Frequentes
 
 **O que é um servidor MCP remoto?**

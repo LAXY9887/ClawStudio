@@ -440,6 +440,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## MCPツール定義リファレンス（AIエージェント向け）
+
+MCPツールを定義する完全なJSON構造です。AIエージェントおよびMCPクライアントはこれらの定義を読み取り、利用可能なツール、受け付けるパラメータ、各パラメータの意味を把握します。
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**LLMと相性の良いツール定義のルール：**
+
+- ツール自体の`description`：1文、アクション指向で何を生成するかを述べます — 内部実装の説明ではありません
+- 各プロパティの`description`：数値パラメータには有効範囲を含め、enumオプションはトレードオフとともに列挙し、デフォルト値の挙動を明記します
+- `required`：ツールが推論またはデフォルト値を設定できないパラメータのみ記載します。任意パラメータには必ず`default`を付けます
+- 「入力ファイル」のような曖昧な説明は避けてください — 受け付けるフォーマットと渡し方を明記してください
+
+---
+
 ## よくある質問
 
 **リモート MCP サーバーとは何ですか？**

@@ -442,6 +442,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## MCP 工具定义参考（供 AI Agent 使用）
+
+以下是定义一个 MCP 工具的完整 JSON 结构。AI Agent 和 MCP client 通过这个结构了解有哪些工具可用、每个工具接受哪些参数，以及每个参数的含义。
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**让 LLM 正确使用工具定义的关键原则：**
+
+- 工具的 `description`：一句话，动词开头，说明产出什么——不要描述内部运作
+- 每个属性的 `description`：数字参数要写有效范围，enum 参数要列出各选项的取舍，说明默认值的行为
+- `required`：只列出工具无法推断或提供默认值的参数。所有可选参数都要有 `default`
+- 避免模糊描述如「输入文件」——要说清楚接受哪些格式、如何提供
+
+---
+
 ## 常见问题
 
 **Remote MCP Server 是什么？**

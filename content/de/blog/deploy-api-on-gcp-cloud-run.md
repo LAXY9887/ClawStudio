@@ -566,6 +566,64 @@ Das direkte Lesen des Geheimnisses aus `.env` (statt aus der Shell-Umgebung) ste
 
 ---
 
+## API-Referenz (für KI-Agenten)
+
+Maschinenlesbare Spezifikation für die in dieser Anleitung definierten Beispiel-API-Endpunkte. Die tatsächlichen Endpunkt-Pfade und Anfrage-/Antwort-Strukturen werden von Ihrer Anwendung bestimmt — ersetzen Sie die Platzhalter unten durch Ihre echten Routen.
+
+```json
+{
+  "baseUrl": "https://YOUR_SERVICE_URL.run.app",
+  "authentication": {
+    "type": "header",
+    "header": "X-Internal-Key",
+    "description": "Shared secret for direct access. Set as Cloud Run environment variable INTERNAL_KEY."
+  },
+  "endpoints": [
+    {
+      "name": "health_check",
+      "method": "GET",
+      "path": "/health",
+      "description": "Liveness check. Returns 200 OK when the service is running. No authentication required.",
+      "response": {
+        "200": { "status": "ok" }
+      }
+    },
+    {
+      "name": "process",
+      "method": "POST",
+      "path": "/process",
+      "description": "Main processing endpoint. Replace with your actual route and payload shape.",
+      "requestBody": {
+        "content-type": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "string", "description": "Input data for processing" }
+          },
+          "required": ["input"]
+        }
+      },
+      "response": {
+        "200": {
+          "output": "string — processing result"
+        },
+        "504": "Request exceeded --timeout limit. Increase timeout or break operation into smaller steps."
+      }
+    }
+  ],
+  "cloudRunConfig": {
+    "memory": "512Mi",
+    "cpu": 1,
+    "concurrency": 1,
+    "maxInstances": 100,
+    "timeout": 60,
+    "region": "us-central1"
+  }
+}
+```
+
+---
+
 ## Wie es weitergeht
 
 Diese Anleitung deckt die Grundlagen ab. Die nächsten naheliegenden Schritte:

@@ -440,6 +440,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## Справочник определений инструментов MCP (для ИИ-агентов)
+
+Полная JSON-структура, описывающая определение инструмента MCP. ИИ-агенты и MCP-клиенты считывают эти определения, чтобы понять, какие инструменты доступны, какие параметры они принимают и что означает каждый параметр.
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**Правила написания определений инструментов, эффективно работающих с LLM:**
+
+- `description` на уровне инструмента: одно предложение, ориентированное на действие, описывает результат — не внутреннее устройство
+- `description` для каждого свойства: указывайте допустимый диапазон для числовых параметров, перечисляйте все варианты enum с объяснением различий, описывайте поведение по умолчанию
+- `required`: включайте только те параметры, которые инструмент не может вывести или задать по умолчанию. Каждый необязательный параметр должен иметь `default`
+- Избегайте расплывчатых описаний вроде «входной файл» — указывайте, какие форматы принимаются и как их передавать
+
+---
+
 ## Часто задаваемые вопросы
 
 **Что такое удалённый MCP сервер?**
