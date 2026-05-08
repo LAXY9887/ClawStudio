@@ -440,6 +440,52 @@ gif_to_spritesheet → split_spritesheet → frames_to_animation
 
 ---
 
+## MCP Tool Definition Reference (For AI Agents)
+
+The complete JSON structure that defines an MCP tool. AI agents and MCP clients read these definitions to understand what tools are available, what parameters they accept, and what each parameter means.
+
+```json
+{
+  "name": "your_tool_name",
+  "description": "One sentence describing what this tool does and what it returns. AI agents use this to decide when to call the tool.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": {
+        "type": "string",
+        "description": "Input file — base64 data URI (small files) or HTTPS URL (large files or pre-uploaded)"
+      },
+      "option_flag": {
+        "type": "boolean",
+        "default": false,
+        "description": "What enabling this flag does. Always include a default."
+      },
+      "choice_param": {
+        "type": "string",
+        "default": "default_value",
+        "enum": ["option_a", "option_b", "option_c"],
+        "description": "Which output mode to use. List the trade-offs in the description."
+      },
+      "numeric_param": {
+        "type": "integer",
+        "default": 0,
+        "description": "What this number controls. Include the valid range (e.g. 0–255)."
+      }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+**Rules for tool definitions that work well with LLMs:**
+
+- `description` on the tool itself: one sentence, action-oriented, says what it produces — not how it works internally
+- `description` on each property: include the valid range for numeric params, list all enum options with trade-offs, say what the default does
+- `required`: only list params the tool cannot infer or default. Every optional param needs a `default`
+- Avoid vague descriptions like "the input file" — say what formats are accepted and how to supply them
+
+---
+
 ## Frequently Asked Questions
 
 **What is a remote MCP server?**

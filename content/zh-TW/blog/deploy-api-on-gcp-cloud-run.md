@@ -566,6 +566,64 @@ file /tmp/smoke_output.png
 
 ---
 
+## API 規格參考（供 AI Agent 使用）
+
+以下是本教學範例 API 端點的結構化規格。實際的端點路徑和請求／回應格式由你的應用程式決定——請將下方的 placeholder 替換成你的真實路由。
+
+```json
+{
+  "baseUrl": "https://YOUR_SERVICE_URL.run.app",
+  "authentication": {
+    "type": "header",
+    "header": "X-Internal-Key",
+    "description": "直接存取用的共用密鑰。設定為 Cloud Run 環境變數 INTERNAL_KEY。"
+  },
+  "endpoints": [
+    {
+      "name": "health_check",
+      "method": "GET",
+      "path": "/health",
+      "description": "存活檢查。服務正常運行時回傳 200 OK。不需要認證。",
+      "response": {
+        "200": { "status": "ok" }
+      }
+    },
+    {
+      "name": "process",
+      "method": "POST",
+      "path": "/process",
+      "description": "主要處理端點。請替換成你的實際路由和 payload 結構。",
+      "requestBody": {
+        "content-type": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "string", "description": "要處理的輸入資料" }
+          },
+          "required": ["input"]
+        }
+      },
+      "response": {
+        "200": {
+          "output": "string — 處理結果"
+        },
+        "504": "請求超過 --timeout 限制。增加逾時設定或將操作拆成更小的步驟。"
+      }
+    }
+  ],
+  "cloudRunConfig": {
+    "memory": "512Mi",
+    "cpu": 1,
+    "concurrency": 1,
+    "maxInstances": 100,
+    "timeout": 60,
+    "region": "us-central1"
+  }
+}
+```
+
+---
+
 ## 下一步
 
 這篇教學涵蓋了基本功。自然的下一步：

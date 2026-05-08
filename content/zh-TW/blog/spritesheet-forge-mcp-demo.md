@@ -151,6 +151,163 @@ trim_png(任意幀 URL)                   ← 選填的裁切處理
 
 ---
 
+## MCP 工具規格參考（供 AI Agent 使用）
+
+以下是 Spritesheet Forge 全部七個工具的完整 inputSchema。AI Agent 可透過這些定義了解每個工具接受哪些參數，以及如何透過 MCP 呼叫它們。
+
+### gif_to_spritesheet
+
+```json
+{
+  "name": "gif_to_spritesheet",
+  "description": "將動態 GIF 轉換為 spritesheet PNG。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "GIF 檔案 — base64 data URI 或 HTTPS URL" },
+      "columns": { "type": "integer", "description": "橫向格數（省略時自動計算）" },
+      "padding": { "type": "integer", "default": 0, "description": "格子之間的像素間距" },
+      "remove_bg": { "type": "boolean", "default": false, "description": "是否移除每個 frame 的背景" },
+      "bg_color": { "type": "string", "default": "auto", "description": "\"auto\" 或 \"#RRGGBB\"" },
+      "tolerance": { "type": "integer", "default": 30, "description": "背景移除的容許閾值 0–255" }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### gif_to_frames
+
+```json
+{
+  "name": "gif_to_frames",
+  "description": "將動態 GIF 的每個 frame 解壓縮為獨立 PNG，打包成 ZIP 回傳。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "GIF 檔案 — base64 data URI 或 HTTPS URL" },
+      "remove_bg": { "type": "boolean", "default": false },
+      "bg_color": { "type": "string", "default": "auto" },
+      "tolerance": { "type": "integer", "default": 30 }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### png_to_spritesheet
+
+```json
+{
+  "name": "png_to_spritesheet",
+  "description": "將多張 PNG 圖片打包成一張 spritesheet，並可輸出 atlas metadata。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "files": { "type": "array", "items": { "type": "string" }, "description": "PNG 檔案陣列 — base64 data URI 或 HTTPS URL" },
+      "layout": { "type": "string", "default": "grid", "enum": ["grid", "horizontal", "vertical", "packed"] },
+      "columns": { "type": "integer", "description": "格數（省略時自動）" },
+      "cell_mode": { "type": "string", "default": "auto_max", "enum": ["auto_max", "auto_uniform", "fixed"] },
+      "cell_width": { "type": "integer", "description": "cell_mode=fixed 時必填" },
+      "cell_height": { "type": "integer", "description": "cell_mode=fixed 時必填" },
+      "padding": { "type": "integer", "default": 0 },
+      "bg_color": { "type": "string", "default": "transparent" },
+      "power_of_2": { "type": "boolean", "default": false, "description": "將畫布尺寸補到 2 的冪次" },
+      "trim_input": { "type": "boolean", "default": false, "description": "打包前自動裁切透明邊緣" },
+      "extrude": { "type": "integer", "default": 0, "description": "每個 frame 的最外圍像素向外延伸 N px" },
+      "metadata_format": { "type": "string", "default": "none", "enum": ["none", "json_array", "json_hash", "css"] }
+    },
+    "required": ["files"]
+  }
+}
+```
+
+### split_spritesheet
+
+```json
+{
+  "name": "split_spritesheet",
+  "description": "將 spritesheet PNG 切割成獨立的 frame 圖片，並可匯出 atlas JSON。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "Spritesheet PNG — base64 data URI 或 HTTPS URL" },
+      "columns": { "type": "integer" },
+      "rows": { "type": "integer" },
+      "cell_width": { "type": "integer" },
+      "cell_height": { "type": "integer" },
+      "padding": { "type": "integer", "default": 0 },
+      "frame_count": { "type": "integer", "description": "最後一行不完整時的實際 frame 數" },
+      "skip_empty": { "type": "boolean", "default": true },
+      "output": { "type": "string", "default": "frames", "enum": ["frames", "metadata", "both"] },
+      "metadata_format": { "type": "string", "enum": ["json_array", "json_hash", "css"] }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### spritesheet_to_animation
+
+```json
+{
+  "name": "spritesheet_to_animation",
+  "description": "將 spritesheet PNG 轉換成動態 GIF 或 WebP。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "Spritesheet PNG — base64 data URI 或 HTTPS URL" },
+      "columns": { "type": "integer" },
+      "rows": { "type": "integer" },
+      "frame_count": { "type": "integer" },
+      "duration": { "type": "integer", "default": 100, "description": "每個 frame 的播放時間（毫秒）" },
+      "loop": { "type": "integer", "default": 0, "description": "0 = 無限循環" },
+      "output_format": { "type": "string", "default": "gif", "enum": ["gif", "webp"] }
+    },
+    "required": ["file"]
+  }
+}
+```
+
+### frames_to_animation
+
+```json
+{
+  "name": "frames_to_animation",
+  "description": "將多張 PNG frame 合成動態 GIF 或 WebP。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "files": { "type": "array", "items": { "type": "string" }, "description": "依序排列的 PNG frame 陣列" },
+      "duration": { "type": "integer", "default": 100, "description": "每個 frame 的播放時間（毫秒，10–10000）" },
+      "loop": { "type": "integer", "default": 0 },
+      "output_format": { "type": "string", "default": "gif", "enum": ["gif", "webp"] }
+    },
+    "required": ["files"]
+  }
+}
+```
+
+### trim_png
+
+```json
+{
+  "name": "trim_png",
+  "description": "裁切一張或多張 PNG 的透明邊緣。",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "files": { "type": "array", "items": { "type": "string" }, "description": "PNG 檔案 — 單張回傳 PNG，多張回傳 ZIP" },
+      "threshold": { "type": "integer", "default": 0, "description": "Alpha 閾值 0–255" },
+      "padding": { "type": "integer", "default": 0, "description": "裁切後保留的透明邊距（px）" }
+    },
+    "required": ["files"]
+  }
+}
+```
+
+---
+
 ## 接下來
 
 - **[用 Cloudflare Workers 和 GCP Cloud Run 建置遠端 MCP 伺服器](/blog/building-remote-mcp-server)** — 如果你想自己建 MCP 伺服器而不是使用託管版，這篇涵蓋完整架構：OAuth 2.1 + PKCE、內部服務驗證、R2 檔案暫存，以及工具設計。

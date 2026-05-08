@@ -105,7 +105,7 @@ In-repo documentation lives under [docs/](docs/):
 
 - [tool-page-architecture.md](docs/tool-page-architecture.md) — page layout pattern and shared components
 - [adding-a-new-tool.md](docs/adding-a-new-tool.md) — checklist for new tools
-- [blog-publishing-guide.md](docs/blog-publishing-guide.md) — blog system architecture and publishing workflow
+- [blog-publishing-guide.md](docs/blog-publishing-guide.md) — blog system architecture, publishing workflow, and AIO optimization (AI-readable reference blocks)
 - [reusable-components.md](docs/reusable-components.md) — `ToolPageLayout`, `SeoSections`, `RelatedTools`, etc.
 - [i18n-guide.md](docs/i18n-guide.md) — locale file structure and conventions
 - [ad-integration.md](docs/ad-integration.md) — AdSense slot map and compliance rules

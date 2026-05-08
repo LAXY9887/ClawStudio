@@ -127,6 +127,63 @@ content/ru/blog/<slug>.md
 
 ---
 
+## AIO 優化：AI 可讀的結構化參考區塊
+
+Google AI Overview、Perplexity 等 AI 搜尋系統在引用文章時，除了 FAQ 段落外，也高度依賴**結構化的機器可讀內容**。對於介紹工具或 API 的技術文章，應在 `## What's Next` 之前加入一個參考區塊。
+
+### MCP 工具文章
+
+章節名稱：`## MCP Tool Reference (For AI Agents)`
+
+每個工具一個 JSON 區塊，包含完整的 `inputSchema`：
+
+```markdown
+## MCP Tool Reference (For AI Agents)
+
+### tool_name
+
+\`\`\`json
+{
+  "name": "tool_name",
+  "description": "一句話描述產出什麼",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file": { "type": "string", "description": "..." },
+      "param": { "type": "integer", "default": 0, "description": "..." }
+    },
+    "required": ["file"]
+  }
+}
+\`\`\`
+```
+
+### API / Cloud Run 服務文章
+
+章節名稱：`## API Reference (For AI Agents)`
+
+一個 JSON 區塊包含 baseUrl、authentication、endpoints 陣列：
+
+```json
+{
+  "baseUrl": "https://your-service.run.app",
+  "authentication": { "type": "header", "header": "X-Internal-Key" },
+  "endpoints": [
+    { "name": "health_check", "method": "GET", "path": "/health", "description": "..." },
+    { "name": "process", "method": "POST", "path": "/process", "description": "..." }
+  ]
+}
+```
+
+### 適用原則
+
+- **工具/API 文章**：必加
+- **概念指引文章**（沒有具體工具端點）：可省略
+- JSON schema 必須從實際 MCP server 文件或程式碼取得，不可手動編寫
+- zh-TW 版本同步加入（heading 和說明翻譯，JSON 內容不變）
+
+---
+
 ## 安全邊界：`/__nuxt_content/` 是公開端點
 
 `@nuxt/content` v3 在 build 時會在 `/__nuxt_content/blog/sql_dump.txt` 生成一份壓縮的 SQLite dump，供 client-side content querying 使用。這個端點是公開可存取的（任何人都可以 GET）。
