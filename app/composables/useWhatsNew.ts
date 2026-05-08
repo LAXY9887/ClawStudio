@@ -16,6 +16,14 @@ const ENTRIES: WhatsNewEntry[] = [
     to: '/mcp',
     date: '2026-05-05',
     isNew: true
+  },
+  {
+    key: 'deployApiOnGcpCloudRun',
+    type: 'blog',
+    icon: 'i-lucide-book-open',
+    to: '/blog/deploy-api-on-gcp-cloud-run',
+    date: '2026-05-08',
+    isNew: true
   }
 ]
 
