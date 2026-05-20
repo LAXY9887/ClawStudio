@@ -11,7 +11,7 @@
     "typecheck": "nuxt typecheck",
     "deploy": "git push origin main",
     "firebase:secrets": "firebase apphosting:secrets:set",
-    "firebase:rollouts": "firebase apphosting:rollouts:list clawstudio-webapp",
+    "firebase:rollouts": "gcloud run revisions list --service clawstudio-webapp --region us-central1 --project clawstudio-c07ca --account angelcemept@gmail.com --sort-by=~metadata.creationTimestamp --limit 10 --format=\"table(metadata.name,status.conditions[0].status,metadata.creationTimestamp)\"",
     "firebase:redeploy": "firebase apphosting:rollouts:create clawstudio-webapp"
   },
   "dependencies": {
