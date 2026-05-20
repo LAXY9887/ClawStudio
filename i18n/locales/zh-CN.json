@@ -556,6 +556,10 @@
         "spritesheetForgeMcp": {
           "title": "Spritesheet Forge MCP 服务器",
           "description": "8 个 Spritesheet Forge 工具现已可通过 MCP 服务器供 AI 编程代理使用，支持 Claude Desktop、VS Code 等。"
+        },
+        "deployApiOnGcpCloudRun": {
+          "title": "在 GCP Cloud Run 上部署 API",
+          "description": "完整教程：将 Python API 容器化、推送到 Artifact Registry，并用一键部署 pipeline 部署到 Cloud Run。"
         }
       }
     },

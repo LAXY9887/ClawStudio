@@ -556,6 +556,10 @@
         "spritesheetForgeMcp": {
           "title": "Servidor Spritesheet Forge MCP",
           "description": "Las 8 herramientas de Spritesheet Forge ahora están disponibles como servidor MCP para agentes de codificación IA — úsalas desde Claude Desktop, VS Code y más."
+        },
+        "deployApiOnGcpCloudRun": {
+          "title": "Desplegar una API en GCP Cloud Run",
+          "description": "Tutorial paso a paso: containeriza una API de Python, súbela a Artifact Registry y despliégala en Cloud Run con un pipeline de release de un solo comando."
         }
       }
     },

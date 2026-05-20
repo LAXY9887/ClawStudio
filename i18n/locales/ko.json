@@ -556,6 +556,10 @@
         "spritesheetForgeMcp": {
           "title": "Spritesheet Forge MCP 서버",
           "description": "8개의 Spritesheet Forge 도구가 이제 AI 코딩 에이전트를 위한 MCP 서버로 제공됩니다 — Claude Desktop, VS Code 등에서 사용하세요."
+        },
+        "deployApiOnGcpCloudRun": {
+          "title": "GCP Cloud Run에 API 배포하기",
+          "description": "단계별 튜토리얼: Python API를 컨테이너화하고 Artifact Registry에 푸시하여 원커맨드 릴리즈 파이프라인으로 Cloud Run에 배포합니다."
         }
       }
     },

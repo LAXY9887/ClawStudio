@@ -556,6 +556,10 @@
         "spritesheetForgeMcp": {
           "title": "Сервер Spritesheet Forge MCP",
           "description": "Все 8 инструментов Spritesheet Forge теперь доступны как MCP-сервер для ИИ-агентов разработки — используйте их из Claude Desktop, VS Code и других."
+        },
+        "deployApiOnGcpCloudRun": {
+          "title": "Деплой API на GCP Cloud Run",
+          "description": "Пошаговое руководство: контейнеризируйте Python API, загрузите в Artifact Registry и разверните в Cloud Run с помощью однокомандного release pipeline."
         }
       }
     },
